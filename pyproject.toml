@@ -1,0 +1,29 @@
+[project]
+name = "howzero-threads"
+version = "0.1.0"
+description = "Threads API 자동화 - 댓글 수집, 자동 포스팅, 이메일 발송"
+requires-python = ">=3.10"
+dependencies = [
+    "requests>=2.31.0",
+    "python-dotenv>=1.0.0",
+    "apscheduler>=3.10.0",
+    "pydantic-settings>=2.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-mock>=3.0",
+    "responses>=0.23.0",
+    "pre-commit>=3.0",
+]
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
