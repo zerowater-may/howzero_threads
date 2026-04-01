@@ -1,0 +1,176 @@
+{
+  "rootPath": ".",
+  "manifest": {
+    "schemaVersion": 4,
+    "generatedAt": "2026-04-01T00:00:00.000Z",
+    "source": {
+      "companyId": null,
+      "companyName": "마케팅 콘텐츠 자동화 프리셋"
+    },
+    "includes": {
+      "company": true,
+      "agents": true,
+      "projects": true,
+      "issues": true,
+      "skills": false
+    },
+    "company": {
+      "path": "COMPANY.md",
+      "name": "{{COMPANY_NAME}}",
+      "description": "마케팅 콘텐츠 자동화를 위한 AI 직원 팀",
+      "brandColor": "#f59e0b",
+      "logoPath": null,
+      "requireBoardApprovalForNewAgents": true
+    },
+    "sidebar": {
+      "agents": ["content-director", "sns-writer", "performance-analyst"],
+      "projects": ["marketing-content"]
+    },
+    "agents": [
+      {
+        "slug": "content-director",
+        "name": "콘텐츠 디렉터",
+        "path": "agents/content-director/AGENTS.md",
+        "skills": [],
+        "role": "manager",
+        "title": "콘텐츠팀 디렉터",
+        "icon": "palette",
+        "capabilities": "콘텐츠 전략 총괄, 주간 캘린더 관리, SNS 라이터와 성과 분석가 관리, 월간 성과 리뷰.",
+        "reportsToSlug": null,
+        "adapterType": "claude_local",
+        "adapterConfig": {
+          "dangerouslySkipPermissions": false
+        },
+        "runtimeConfig": {
+          "heartbeat": {
+            "enabled": true,
+            "maxConcurrentRuns": 1
+          }
+        },
+        "permissions": {},
+        "budgetMonthlyCents": 0,
+        "metadata": {
+          "preset": "marketing-content",
+          "presetVersion": "1.0.0"
+        }
+      },
+      {
+        "slug": "sns-writer",
+        "name": "SNS 라이터",
+        "path": "agents/sns-writer/AGENTS.md",
+        "skills": [],
+        "role": "ic",
+        "title": "SNS 콘텐츠 전문 작성자",
+        "icon": "pen-tool",
+        "capabilities": "인스타그램/틱톡/쓰레드 등 채널별 최적화된 콘텐츠 초안 작성. 캐러셀, 릴스 스크립트, 숏폼 스크립트, 텍스트 포스트.",
+        "reportsToSlug": "content-director",
+        "adapterType": "claude_local",
+        "adapterConfig": {
+          "dangerouslySkipPermissions": false
+        },
+        "runtimeConfig": {
+          "heartbeat": {
+            "enabled": true,
+            "maxConcurrentRuns": 1
+          }
+        },
+        "permissions": {},
+        "budgetMonthlyCents": 0,
+        "metadata": {
+          "preset": "marketing-content",
+          "presetVersion": "1.0.0"
+        }
+      },
+      {
+        "slug": "performance-analyst",
+        "name": "성과 분석가",
+        "path": "agents/performance-analyst/AGENTS.md",
+        "skills": [],
+        "role": "ic",
+        "title": "마케팅 성과 분석 전문",
+        "icon": "bar-chart-3",
+        "capabilities": "채널별 성과 데이터 수집 및 분석. 주간/월간 성과 리포트 작성. 경쟁사 벤치마크. 데이터 기반 전략 제안.",
+        "reportsToSlug": "content-director",
+        "adapterType": "claude_local",
+        "adapterConfig": {
+          "dangerouslySkipPermissions": false
+        },
+        "runtimeConfig": {
+          "heartbeat": {
+            "enabled": true,
+            "maxConcurrentRuns": 1
+          }
+        },
+        "permissions": {},
+        "budgetMonthlyCents": 0,
+        "metadata": {
+          "preset": "marketing-content",
+          "presetVersion": "1.0.0"
+        }
+      }
+    ],
+    "skills": [],
+    "projects": [
+      {
+        "slug": "marketing-content",
+        "name": "마케팅 콘텐츠",
+        "path": "projects/marketing-content/PROJECT.md",
+        "description": "SNS 마케팅 콘텐츠 자동화 프로젝트. 콘텐츠 캘린더 관리, SNS 포스팅 초안 작성, 성과 분석 및 리포팅.",
+        "ownerAgentSlug": "content-director",
+        "leadAgentSlug": "content-director",
+        "targetDate": null,
+        "color": "#f59e0b",
+        "status": "in_progress",
+        "executionWorkspacePolicy": null,
+        "workspaces": [],
+        "metadata": null
+      }
+    ],
+    "issues": [
+      {
+        "tempId": "weekly-calendar",
+        "title": "주간 콘텐츠 캘린더 작성",
+        "description": "매주 금요일 다음 주 콘텐츠 캘린더를 작성합니다.\n\n## 포함 내용\n- 요일별 채널/콘텐츠 유형/주제 배정\n- 주간 테마 설정\n- 이전 주 성과 기반 조정사항\n- 시즌/이벤트 반영",
+        "status": "todo",
+        "priority": "high",
+        "assigneeAgentSlug": "content-director",
+        "projectSlug": "marketing-content"
+      },
+      {
+        "tempId": "daily-sns",
+        "title": "일일 SNS 포스팅 초안 작성",
+        "description": "콘텐츠 캘린더에 따라 당일 포스팅 초안을 작성합니다.\n\n## 채널별 가이드\n- 인스타 캐러셀: 후킹 슬라이드 + 본문 4장 + CTA\n- 인스타 릴스: 60초 이내 스크립트\n- 틱톡: 후킹 3초 + 본문 + CTA\n- 쓰레드: 300~500자 텍스트",
+        "status": "todo",
+        "priority": "high",
+        "assigneeAgentSlug": "sns-writer",
+        "projectSlug": "marketing-content"
+      },
+      {
+        "tempId": "weekly-performance",
+        "title": "주간 마케팅 성과 리포트",
+        "description": "매주 월요일 전주 마케팅 성과를 분석합니다.\n\n## 포함 내용\n- 채널별 도달/인게이지먼트/팔로워\n- TOP 3 / WORST 1 콘텐츠\n- 다음 주 전략 제안",
+        "status": "todo",
+        "priority": "medium",
+        "assigneeAgentSlug": "performance-analyst",
+        "projectSlug": "marketing-content"
+      },
+      {
+        "tempId": "monthly-report",
+        "title": "월간 종합 성과 리포트",
+        "description": "매월 1일 전월 종합 성과를 분석합니다.\n\n## 포함 내용\n- 월간 종합 대시보드\n- 채널별 상세 분석\n- 콘텐츠 유형별 성과 비교\n- ROI 추정\n- 다음 달 전략 제안\n- 경쟁사 벤치마크",
+        "status": "todo",
+        "priority": "medium",
+        "assigneeAgentSlug": "performance-analyst",
+        "projectSlug": "marketing-content"
+      }
+    ],
+    "envInputs": []
+  },
+  "files": {
+    "COMPANY.md": "# {{COMPANY_NAME}}\n\n마케팅 콘텐츠 자동화를 위한 AI 직원 팀입니다.\n\n## AI 직원 구성\n- 콘텐츠 디렉터: 전략 총괄, 캘린더 관리, 팀 관리\n- SNS 라이터: 채널별 콘텐츠 초안 작성\n- 성과 분석가: 데이터 수집, 리포트, 인사이트 제공",
+    "agents/content-director/AGENTS.md": "{{FILE:agents/content-director.md}}",
+    "agents/sns-writer/AGENTS.md": "{{FILE:agents/sns-writer.md}}",
+    "agents/performance-analyst/AGENTS.md": "{{FILE:agents/performance-analyst.md}}",
+    "projects/marketing-content/PROJECT.md": "# 마케팅 콘텐츠\n\nSNS 마케팅 콘텐츠 자동화 프로젝트.\n\n## 목표\n- 주 5회 이상 콘텐츠 발행\n- 인스타 저장률 5% 이상\n- 릴스/틱톡 완시청률 30% 이상\n- 월간 성과 리포트 자동 생성"
+  }
+}

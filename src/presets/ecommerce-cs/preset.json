@@ -1,0 +1,167 @@
+{
+  "rootPath": ".",
+  "manifest": {
+    "schemaVersion": 4,
+    "generatedAt": "2026-04-01T00:00:00.000Z",
+    "source": {
+      "companyId": null,
+      "companyName": "이커머스 CS 자동화 프리셋"
+    },
+    "includes": {
+      "company": true,
+      "agents": true,
+      "projects": true,
+      "issues": true,
+      "skills": false
+    },
+    "company": {
+      "path": "COMPANY.md",
+      "name": "{{COMPANY_NAME}}",
+      "description": "이커머스 CS 자동화를 위한 AI 직원 팀",
+      "brandColor": "#10b981",
+      "logoPath": null,
+      "requireBoardApprovalForNewAgents": true
+    },
+    "sidebar": {
+      "agents": ["cs-manager", "cs-responder", "order-assistant"],
+      "projects": ["cs-automation"]
+    },
+    "agents": [
+      {
+        "slug": "cs-manager",
+        "name": "CS 매니저",
+        "path": "agents/cs-manager/AGENTS.md",
+        "skills": [],
+        "role": "manager",
+        "title": "CS팀 매니저",
+        "icon": "headphones",
+        "capabilities": "CS팀 총괄 관리. 에스컬레이션 판단, 주간 CS 리포트 작성, CS 응대봇과 주문처리 보조 에이전트 관리.",
+        "reportsToSlug": null,
+        "adapterType": "claude_local",
+        "adapterConfig": {
+          "dangerouslySkipPermissions": false
+        },
+        "runtimeConfig": {
+          "heartbeat": {
+            "enabled": true,
+            "maxConcurrentRuns": 1
+          }
+        },
+        "permissions": {},
+        "budgetMonthlyCents": 0,
+        "metadata": {
+          "preset": "ecommerce-cs",
+          "presetVersion": "1.0.0"
+        }
+      },
+      {
+        "slug": "cs-responder",
+        "name": "CS 응대봇",
+        "path": "agents/cs-responder/AGENTS.md",
+        "skills": [],
+        "role": "ic",
+        "title": "고객 문의 응대 전문",
+        "icon": "message-circle",
+        "capabilities": "고객 문의 자동 분류 및 1차 응대. 배송/교환/환불/상품문의 처리. 에스컬레이션 필요 건 CS 매니저에게 전달.",
+        "reportsToSlug": "cs-manager",
+        "adapterType": "claude_local",
+        "adapterConfig": {
+          "dangerouslySkipPermissions": false
+        },
+        "runtimeConfig": {
+          "heartbeat": {
+            "enabled": true,
+            "maxConcurrentRuns": 1
+          }
+        },
+        "permissions": {},
+        "budgetMonthlyCents": 0,
+        "metadata": {
+          "preset": "ecommerce-cs",
+          "presetVersion": "1.0.0"
+        }
+      },
+      {
+        "slug": "order-assistant",
+        "name": "주문처리 보조",
+        "path": "agents/order-assistant/AGENTS.md",
+        "skills": [],
+        "role": "ic",
+        "title": "주문/반품/교환 처리 보조",
+        "icon": "package",
+        "capabilities": "주문 상태 확인, 반품/교환 접수 처리, 송장 정보 관리, 일일 주문 현황 정리.",
+        "reportsToSlug": "cs-manager",
+        "adapterType": "claude_local",
+        "adapterConfig": {
+          "dangerouslySkipPermissions": false
+        },
+        "runtimeConfig": {
+          "heartbeat": {
+            "enabled": true,
+            "maxConcurrentRuns": 1
+          }
+        },
+        "permissions": {},
+        "budgetMonthlyCents": 0,
+        "metadata": {
+          "preset": "ecommerce-cs",
+          "presetVersion": "1.0.0"
+        }
+      }
+    ],
+    "skills": [],
+    "projects": [
+      {
+        "slug": "cs-automation",
+        "name": "CS 자동화",
+        "path": "projects/cs-automation/PROJECT.md",
+        "description": "이커머스 고객 서비스 자동화 프로젝트. CS 문의 자동 응대, 주문/반품 처리, 주간 리포트 생성.",
+        "ownerAgentSlug": "cs-manager",
+        "leadAgentSlug": "cs-manager",
+        "targetDate": null,
+        "color": "#10b981",
+        "status": "in_progress",
+        "executionWorkspacePolicy": null,
+        "workspaces": [],
+        "metadata": null
+      }
+    ],
+    "issues": [
+      {
+        "tempId": "daily-cs",
+        "title": "일일 CS 문의 처리",
+        "description": "접수된 고객 문의를 분류하고 1차 응대합니다.\n\n## 처리 기준\n- 배송 문의: 주문번호 확인 → 배송 상태 안내\n- 교환/환불: 사유 확인 → 정책 안내 → 접수\n- 상품 문의: 상세 정보 안내\n- 에스컬레이션: 기준 초과 시 CS 매니저에게 전달",
+        "status": "todo",
+        "priority": "high",
+        "assigneeAgentSlug": "cs-responder",
+        "projectSlug": "cs-automation"
+      },
+      {
+        "tempId": "weekly-report",
+        "title": "주간 CS 리포트 생성",
+        "description": "매주 월요일 전주 CS 성과 리포트를 작성합니다.\n\n## 포함 내용\n- 총 문의 건수 및 해결률\n- 문의 유형별 분석\n- 에스컬레이션 건 요약\n- 개선 제안",
+        "status": "todo",
+        "priority": "medium",
+        "assigneeAgentSlug": "cs-manager",
+        "projectSlug": "cs-automation"
+      },
+      {
+        "tempId": "daily-orders",
+        "title": "일일 주문 현황 정리",
+        "description": "매일 18시 주문 현황을 정리합니다.\n\n## 포함 내용\n- 신규 주문 건수 및 금액\n- 출고/배송 완료 건수\n- 반품/교환 접수 건수\n- 미처리 건 목록\n- 배송 이슈 목록",
+        "status": "todo",
+        "priority": "medium",
+        "assigneeAgentSlug": "order-assistant",
+        "projectSlug": "cs-automation"
+      }
+    ],
+    "envInputs": []
+  },
+  "files": {
+    "COMPANY.md": "# {{COMPANY_NAME}}\n\n이커머스 CS 자동화를 위한 AI 직원 팀입니다.\n\n## AI 직원 구성\n- CS 매니저: CS팀 총괄, 에스컬레이션 판단, 주간 리포트\n- CS 응대봇: 고객 문의 자동 분류 및 1차 응대\n- 주문처리 보조: 주문 상태 관리, 반품/교환 처리",
+    "agents/cs-manager/AGENTS.md": "{{FILE:agents/cs-manager.md}}",
+    "agents/cs-responder/AGENTS.md": "{{FILE:agents/cs-responder.md}}",
+    "agents/order-assistant/AGENTS.md": "{{FILE:agents/order-assistant.md}}",
+    "projects/cs-automation/PROJECT.md": "# CS 자동화\n\n이커머스 고객 서비스 자동화 프로젝트.\n\n## 목표\n- CS 문의 1차 응답 시간 5분 이내\n- 자동 처리율 70% 이상\n- 주간 리포트 자동 생성\n- 에스컬레이션 기준 명확화"
+  }
+}
