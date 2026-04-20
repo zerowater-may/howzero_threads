@@ -11,8 +11,15 @@ class FrameError(RuntimeError):
     pass
 
 
-# 1080x1440 carousel is 3:4 portrait. Crop source (16:9) to 3:4 from center.
-_CROP_FILTER = "crop='min(iw,ih*3/4)':'min(ih,iw*4/3)'"
+# 1080x1440 carousel 3:4. Pipeline:
+#   1) center-crop source (16:9) to 3:4
+#   2) upscale to 1080x1440 via Lanczos (high-quality resampling)
+#   3) light unsharp mask to restore detail lost to YouTube re-encoding
+_CROP_FILTER = (
+    "crop='min(iw,ih*3/4)':'min(ih,iw*4/3)',"
+    "scale=1080:1440:flags=lanczos,"
+    "unsharp=5:5:0.8:3:3:0.4"
+)
 
 
 def extract_frame(video_path: Path, timestamp: float, out_path: Path) -> Path:
@@ -22,7 +29,7 @@ def extract_frame(video_path: Path, timestamp: float, out_path: Path) -> Path:
         "-ss", str(timestamp),
         "-i", str(video_path),
         "-frames:v", "1",
-        "-q:v", "2",
+        "-q:v", "1",
         "-vf", _CROP_FILTER,
         "-y",
         "-loglevel", "error",
@@ -59,8 +66,10 @@ def extract_frames_for_span(
 
     frames: list[Path] = []
     for i, scene in enumerate(selected, start=1):
-        # Aim for 1s into the scene, but clamp to span bounds.
-        ts = max(span.start, min(scene.start + 1.0, span.end - 0.1))
+        # Scene midpoint is more stable than scene-start+1s (which often
+        # catches motion-blurred transitions or title cards).
+        midpoint = (scene.start + scene.end) / 2.0
+        ts = max(span.start, min(midpoint, span.end - 0.1))
         name = f"h{span.rank:02d}_f{i:02d}.jpg"
         try:
             frames.append(extract_frame(video_path, ts, out_dir / name))

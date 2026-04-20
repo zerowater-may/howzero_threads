@@ -1,4 +1,4 @@
-"""Wrapper around yt-dlp. Downloads video (≤480p for speed) + info.json."""
+"""Wrapper around yt-dlp. Downloads video (≤720p, balances size vs frame quality) + info.json."""
 
 import re
 import subprocess
@@ -44,7 +44,7 @@ def download_video(url: str, out_dir: Path) -> DownloadResult:
 
     cmd = [
         "yt-dlp",
-        "-f", "bestvideo[height<=480]+bestaudio/best[height<=480]",
+        "-f", "bestvideo[height<=720]+bestaudio/best[height<=720]",
         "--merge-output-format", "mp4",
         "--write-info-json",
         "--no-playlist",
