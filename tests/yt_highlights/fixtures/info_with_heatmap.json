@@ -1,0 +1,17 @@
+{
+  "id": "vid_heatmap",
+  "title": "Video With Heatmap",
+  "duration": 60.0,
+  "chapters": [
+    {"start_time": 0, "end_time": 30, "title": "Intro"},
+    {"start_time": 30, "end_time": 60, "title": "Main"}
+  ],
+  "heatmap": [
+    {"start_time": 0.0,  "end_time": 10.0, "value": 0.20},
+    {"start_time": 10.0, "end_time": 20.0, "value": 0.30},
+    {"start_time": 20.0, "end_time": 30.0, "value": 0.95},
+    {"start_time": 30.0, "end_time": 40.0, "value": 0.80},
+    {"start_time": 40.0, "end_time": 50.0, "value": 0.60},
+    {"start_time": 50.0, "end_time": 60.0, "value": 0.85}
+  ]
+}

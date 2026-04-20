@@ -1,0 +1,11 @@
+{
+  "id": "vid_chapters",
+  "title": "Video With Only Chapters",
+  "duration": 120.0,
+  "chapters": [
+    {"start_time": 0,   "end_time": 30,  "title": "Intro"},
+    {"start_time": 30,  "end_time": 70,  "title": "Main Topic"},
+    {"start_time": 70,  "end_time": 120, "title": "Outro"}
+  ],
+  "heatmap": null
+}
