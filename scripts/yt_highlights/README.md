@@ -36,7 +36,10 @@ Produces in `./out/<run_name>/`:
 
 1. If `heatmap` field exists in `info.json` → rank by replay value (YouTube Most Replayed).
 2. Else if `chapters` exist → each chapter becomes one highlight span.
-3. Else → `transcript_fallback` with `highlights: []`. Downstream consumers must then use the transcript directly (out of scope for this module).
+3. Else → heuristic lexical scorer on the transcript (`fallback.py`):
+   sliding 15s windows scored by hook words (핵심, 결론, 놀랍…), concrete
+   numbers/amounts (만원/%/억), and punctuation (? !). Top N non-overlapping
+   windows returned, kind=`transcript_fallback`.
 
 ## highlights.json schema (v1)
 
@@ -83,9 +86,9 @@ Ran against `https://youtu.be/H-IdU1jTr6M` (KBS 추적60분, 583s):
 - Download: ✅ 480p mp4 + info.json
 - Transcript: ✅ 220 Korean segments
 - Scene detection: ✅ 92 scenes
-- Highlights: 0 (source: `transcript_fallback` — heatmap and chapters both null)
-
-The pipeline worked correctly; the video simply had no Most Replayed signal yet. Use a more-viewed video to exercise the heatmap path.
+- Heatmap/chapters: both `null` (not yet populated by YouTube)
+- Highlights: ✅ **14 spans via `transcript_fallback`**, 28 cropped JPGs
+- Top-ranked span transcript preview: `">> 수강생들의 피해가 생기는 이유는 무엇일까? 고액강이 강사 제한을 받았던…"` (the documentary's central question — correctly identified by hook-word + number scoring).
 
 ## Tests
 

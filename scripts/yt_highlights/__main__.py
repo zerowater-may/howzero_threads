@@ -9,6 +9,7 @@ from .download import download_video, DownloadError
 from .transcript import fetch_transcript, save_transcript
 from .scenes import detect_scenes, save_scenes
 from .heatmap import extract_highlight_candidates, detect_source
+from .fallback import extract_from_transcript
 from .frames import extract_frames_for_span
 from .merge import build_highlights
 
@@ -67,6 +68,14 @@ def main(argv: list[str] | None = None) -> int:
     spans = extract_highlight_candidates(
         info, threshold=args.threshold, top_n=args.top_n
     )
+    # If neither heatmap nor chapters were available, fall back to
+    # heuristic scoring over the transcript.
+    if source == "transcript_fallback" and transcript:
+        spans = extract_from_transcript(
+            transcript,
+            duration=float(info.get("duration") or 0.0),
+            top_n=args.top_n,
+        )
     print(f"[4/5] highlights: {len(spans)} spans from {source}")
 
     # 5. Frames per span
