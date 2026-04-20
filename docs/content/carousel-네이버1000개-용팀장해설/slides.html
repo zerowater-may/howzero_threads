@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>네이버 1000개 정책 — 용팀장 해설</title>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #e5e5e5; font-family: 'Noto Sans KR', sans-serif; }
+
+  .slide {
+    width: 1080px; height: 1440px;
+    position: relative;
+    background: #FAF8F5;
+    color: #1a1a1a;
+    overflow: hidden;
+    margin: 24px auto;
+    padding: 80px;
+  }
+  .slide.dark { background: #1a0a0a; color: #fff; }
+  .slide.bleed { padding: 0; }
+
+  .head { font-family: 'Black Han Sans', sans-serif; letter-spacing: -0.5px; line-height: 1.15; }
+  .whisper {
+    font-family: 'Gaegu', cursive; font-weight: 700;
+    color: #999; font-size: 26px; line-height: 1.4;
+  }
+  .slide.dark .whisper { color: #a89999; }
+
+  .hl-red {
+    background: linear-gradient(170deg, transparent 10%, #e8b4b4 15%, #d4a0a0 50%, #e8b4b4 85%, transparent 90%);
+    padding: 2px 14px; display: inline;
+    -webkit-box-decoration-break: clone; box-decoration-break: clone;
+  }
+  .hl-gold {
+    background: linear-gradient(168deg, transparent 10%, #ffd54f 15%, #ffca28 50%, #ffd54f 85%, transparent 90%);
+    padding: 2px 14px; display: inline;
+    -webkit-box-decoration-break: clone; box-decoration-break: clone;
+  }
+
+  .footer {
+    position: absolute; z-index: 10;
+    bottom: 48px; left: 80px; right: 80px;
+    display: flex; align-items: center; justify-content: space-between;
+    font-family: 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 22px;
+  }
+  .handle { color: #3F0000; }
+  .slide.dark .handle, .slide.bleed .handle { color: #ffd54f; }
+  .page-num {
+    width: 48px; height: 48px; border: 2px solid #1a1a1a; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; font-size: 20px;
+  }
+  .slide.dark .page-num, .slide.bleed .page-num { border-color: #fff; color: #fff; }
+  .arrow-next {
+    width: 48px; height: 48px; background: #3F0000;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 28px;
+  }
+  .slide.dark .arrow-next, .slide.bleed .arrow-next { background: #ffd54f; color: #1a0a0a; }
+
+  .kicker {
+    font-family: 'Gaegu', cursive; font-weight: 700; font-size: 30px;
+    color: #3F0000; margin-bottom: 14px;
+  }
+  .num {
+    font-family: 'Black Han Sans', sans-serif; font-size: 38px;
+    color: #3F0000; margin-bottom: 20px; letter-spacing: 2px;
+  }
+
+  /* ========================================================
+     LAYOUT PRIMITIVES
+     ======================================================== */
+
+  /* L2 HERO — full-bleed image top, dark text block bottom */
+  .L-hero { padding: 0; display: flex; flex-direction: column; background: #1a0a0a; }
+  .L-hero .hero-img {
+    position: relative; width: 100%; height: 780px; overflow: hidden;
+  }
+  .L-hero .hero-img img {
+    width: 100%; height: 100%; object-fit: cover; filter: brightness(0.62);
+  }
+  .L-hero .hero-img::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(26,10,10,0) 40%, rgba(26,10,10,1) 100%);
+  }
+  .L-hero .hero-text {
+    flex: 1; color: #fff; padding: 30px 80px 140px;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+
+  /* L3 SIDE — 60% image left / 40% text right (or reverse with 50:50) */
+  .L-side { padding: 0; display: grid; grid-template-columns: 3fr 2fr; }
+  .L-side-rev { padding: 0; display: grid; grid-template-columns: 1fr 1fr; }
+  .L-side .side-img, .L-side-rev .side-img {
+    position: relative; overflow: hidden; background: #1a0a0a;
+  }
+  .L-side .side-img img, .L-side-rev .side-img img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .L-side .side-caption, .L-side-rev .side-caption {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: rgba(26,10,10,0.9); color: #ffd54f;
+    padding: 12px 20px;
+    font-family: 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 18px;
+  }
+  .L-side .side-text, .L-side-rev .side-text {
+    padding: 80px 60px 140px;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+
+  /* L4 BOTTOM — big text top, image bottom */
+  .L-bottom { padding: 80px 80px 0 80px; display: flex; flex-direction: column; }
+  .L-bottom .bottom-text { flex: 1; }
+  .L-bottom .bottom-img {
+    margin: 0 -80px; position: relative;
+  }
+  .L-bottom .bottom-img img {
+    width: 100%; height: 620px; object-fit: cover;
+    border-top: 4px solid #1a1a1a;
+  }
+  .L-bottom .bottom-caption {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: rgba(26,10,10,0.9); color: #ffd54f;
+    padding: 12px 80px;
+    font-family: 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 18px;
+  }
+
+  /* L6 OVERLAY — full-bleed image + centered white card */
+  .L-overlay { padding: 0; position: relative; }
+  .L-overlay .overlay-img { position: absolute; inset: 0; }
+  .L-overlay .overlay-img img {
+    width: 100%; height: 100%; object-fit: cover; filter: brightness(0.32) saturate(0.7);
+  }
+  .L-overlay .overlay-img::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(26,10,10,0.6) 0%, rgba(26,10,10,0.2) 45%, rgba(26,10,10,0.7) 100%);
+  }
+  .L-overlay .overlay-card {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 820px;
+    background: #FAF8F5; border: 4px solid #1a1a1a;
+    padding: 48px 44px 44px;
+    box-shadow: 14px 14px 0 rgba(26,10,10,0.7);
+    z-index: 2;
+  }
+  .L-overlay .overlay-card .inline-tag {
+    display: inline-block;
+    background: #3F0000; color: #ffd54f;
+    font-family: 'Black Han Sans', sans-serif; font-size: 24px;
+    padding: 6px 14px; margin-bottom: 16px;
+    letter-spacing: 1px;
+  }
+
+  /* L5 SANDWICH — text → image → text */
+  .L-sandwich { padding: 80px 80px 140px; display: flex; flex-direction: column; gap: 28px; }
+  .L-sandwich .sandwich-img {
+    position: relative; border: 3px solid #1a1a1a; overflow: hidden;
+  }
+  .L-sandwich .sandwich-img img {
+    display: block; width: 100%; height: auto;
+    aspect-ratio: 16 / 9; object-fit: cover;
+  }
+  .L-sandwich .sandwich-caption {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: rgba(26,10,10,0.9); color: #ffd54f;
+    padding: 10px 18px;
+    font-family: 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 18px;
+  }
+
+  /* L1 TOP — image top + text bottom (classic) */
+  .L-top { padding: 80px 80px 140px; }
+  .L-top .top-img {
+    border: 3px solid #1a1a1a; overflow: hidden; margin-bottom: 22px;
+    position: relative;
+  }
+  .L-top .top-img img {
+    display: block; width: 100%; height: auto;
+    aspect-ratio: 16 / 9; object-fit: cover;
+  }
+  .L-top .top-caption {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: rgba(26,10,10,0.9); color: #ffd54f;
+    padding: 10px 18px;
+    font-family: 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 18px;
+  }
+
+  /* ========================================================
+     SHARED COMPONENTS
+     ======================================================== */
+
+  .stats-vert {
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .stats-vert .stat {
+    background: #fff; border: 3px solid #1a1a1a; padding: 18px 22px;
+    display: flex; align-items: baseline; gap: 14px;
+  }
+  .stats-vert .stat-num {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 46px; color: #3F0000; line-height: 1;
+  }
+  .stats-vert .stat-label {
+    font-family: 'Noto Sans KR', sans-serif; font-weight: 700;
+    font-size: 18px; color: #333;
+  }
+
+  .formula-row {
+    display: grid; grid-template-columns: 1fr 60px 1fr; gap: 10px;
+    margin-top: 12px; align-items: stretch;
+  }
+  .formula-box {
+    background: #fff; border: 3px solid #1a1a1a; padding: 22px;
+    text-align: center;
+  }
+  .formula-box.bad { opacity: 0.55; }
+  .formula-box .num-big {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 56px; color: #3F0000; line-height: 1;
+  }
+  .formula-box.bad .num-big { color: #777; text-decoration: line-through; }
+  .formula-box .label {
+    font-family: 'Noto Sans KR', sans-serif; font-weight: 700;
+    font-size: 16px; margin-top: 10px; color: #555;
+  }
+  .arrow-mid {
+    font-family: 'Black Han Sans', sans-serif; font-size: 52px;
+    color: #3F0000;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .cond-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
+  .cond-col { background: #fff; border: 3px solid #1a1a1a; padding: 22px 20px; }
+  .cond-label {
+    font-family: 'Black Han Sans', sans-serif; font-size: 32px; line-height: 1;
+    margin-bottom: 14px; color: #3F0000;
+  }
+  .cond-col.up .cond-label {
+    background: linear-gradient(168deg, transparent 10%, #ffd54f 15%, #ffca28 50%, #ffd54f 85%, transparent 90%);
+    padding: 4px 10px; display: inline-block; color: #1a1a1a;
+  }
+  .cond-list {
+    font-family: 'Noto Sans KR', sans-serif; font-weight: 700;
+    font-size: 20px; line-height: 1.7; list-style: none;
+  }
+  .cond-list li { margin-bottom: 6px; padding-left: 16px; position: relative; }
+  .cond-list li::before {
+    content: "›"; position: absolute; left: 0; color: #3F0000;
+    font-family: 'Black Han Sans', sans-serif; font-size: 24px; line-height: 1;
+  }
+
+  .step-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .step {
+    background: #fff; border: 3px solid #1a1a1a; padding: 24px 20px;
+  }
+  .step-n {
+    font-family: 'Black Han Sans', sans-serif; font-size: 50px; color: #3F0000; line-height: 1;
+    margin-bottom: 10px;
+  }
+  .step-title {
+    font-family: 'Black Han Sans', sans-serif; font-size: 34px; margin-bottom: 6px;
+  }
+  .step-body {
+    font-family: 'Noto Sans KR', sans-serif; font-weight: 700;
+    font-size: 18px; color: #444; line-height: 1.5;
+  }
+
+  .check-list { display: flex; flex-direction: column; gap: 10px; }
+  .check {
+    background: #fff; border: 2px solid #1a1a1a; padding: 18px 22px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .check-n {
+    font-family: 'Black Han Sans', sans-serif; font-size: 34px;
+    color: #3F0000; line-height: 1; min-width: 46px;
+  }
+  .check-body {
+    font-family: 'Noto Sans KR', sans-serif; font-weight: 700;
+    font-size: 20px; line-height: 1.4;
+  }
+  .check-body b {
+    font-family: 'Black Han Sans', sans-serif; font-weight: 400; font-size: 24px;
+    display: block;
+  }
+
+  .body-text {
+    font-family: 'Noto Sans KR', sans-serif; font-weight: 700;
+    font-size: 24px; line-height: 1.6; color: #222; margin-top: 14px;
+  }
+  .body-text b {
+    font-family: 'Black Han Sans', sans-serif; font-weight: 400; font-size: 28px;
+  }
+
+  .head-1 { font-size: 86px; }
+  .head-2 { font-size: 66px; margin-bottom: 16px; }
+  .head-3 { font-size: 54px; margin-bottom: 12px; }
+  .head-4 { font-size: 44px; margin-bottom: 10px; line-height: 1.18; }
+  .head-hero { font-size: 100px; color: #fff; }
+  .head-hero .accent { color: #ffd54f; }
+
+  /* Slide 10 CTA */
+  .cta-btn {
+    display: inline-block;
+    background: #ffd54f; color: #1a0a0a; padding: 24px 52px;
+    font-family: 'Black Han Sans', sans-serif; font-size: 42px; margin-bottom: 16px;
+  }
+  .cta-sub {
+    font-family: 'Gaegu', cursive; font-weight: 700;
+    font-size: 26px; color: #c4a9a9; margin-bottom: 18px;
+  }
+  .tag-line {
+    font-family: 'Black Han Sans', sans-serif; font-size: 30px;
+    color: #ffd54f;
+  }
+  .name-big {
+    font-family: 'Black Han Sans', sans-serif; font-size: 54px; color: #fff; margin-bottom: 6px;
+  }
+  .handle-big {
+    font-family: 'Gaegu', cursive; font-weight: 700;
+    font-size: 32px; color: #ffd54f; margin-bottom: 30px;
+  }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 — L2 HERO (도발형 훅) -->
+<div class="slide L-hero bleed" id="slide-1">
+  <div class="hero-img"><img src="frames/h01_f01.jpg" alt="용팀장"></div>
+  <div class="hero-text">
+    <div style="font-family: 'Noto Sans KR', sans-serif; font-weight: 900; font-size: 22px; color: #ffd54f; margin-bottom: 14px; letter-spacing: 2px;">● 6.2 시행 · 셀러 90% 직격</div>
+    <div class="head head-hero" style="font-size: 128px; line-height: 1.02;">
+      구매대행,<br>
+      진짜<br>
+      <span class="accent">끝났다.</span>
+    </div>
+    <div style="font-family: 'Gaegu', cursive; font-weight: 700; font-size: 38px; color: #c4a9a9; margin-top: 32px;">— 네이버가 드디어 터뜨린 1,000개 한도.</div>
+  </div>
+  <div class="footer">
+    <span class="handle">@braveyong</span>
+    <div class="page-num">1</div>
+    <div class="arrow-next">→</div>
+  </div>
+</div>
+
+<!-- SLIDE 2 — L3 SIDE (image left 60%, text right 40%) -->
+<div class="slide L-side bleed" id="slide-2">
+  <div class="side-img">
+    <img src="frames/h03_f01.jpg" alt="용팀장 소개">
+    <div class="side-caption">용팀장 본인 유튜브</div>
+  </div>
+  <div class="side-text">
+    <div class="num">WHO</div>
+    <div class="head head-3">
+      부동산<br>
+      <span class="hl-gold">20채</span> 직장인.
+    </div>
+    <div class="stats-vert">
+      <div class="stat"><div class="stat-num">1~2h</div><div class="stat-label">하루 투입</div></div>
+      <div class="stat"><div class="stat-num">700↑</div><div class="stat-label">월 순수익(만원)</div></div>
+      <div class="stat"><div class="stat-num">20채</div><div class="stat-label">보유 부동산</div></div>
+    </div>
+    <div class="whisper" style="margin-top: 20px;">— 실셀러가 말한다.</div>
+  </div>
+  <div class="footer">
+    <span class="handle">@braveyong</span>
+    <div class="page-num">2</div>
+    <div class="arrow-next">→</div>
+  </div>
+</div>
+
+<!-- SLIDE 3 — L4 BOTTOM (text top, image bottom) -->
+<div class="slide L-bottom" id="slide-3">
+  <div class="bottom-text">
+    <div class="num">FACT 01</div>
+    <div class="head head-1" style="margin-bottom: 32px;">
+      기본 한도,<br>
+      <span class="hl-red">1/10로 잘렸다.</span>
+    </div>
+    <div class="formula-row">
+      <div class="formula-box bad">
+        <div class="num-big">10,000</div>
+        <div class="label">기존 파워 등급</div>
+      </div>
+      <div class="arrow-mid">→</div>
+      <div class="formula-box">
+        <div class="num-big">1,000</div>
+        <div class="label">6.2 이후 기본</div>
+      </div>
+    </div>
+    <div class="whisper" style="margin-top: 20px;">— 웬만해선 만개였던 시대는 끝났다.</div>
+  </div>
+  <div class="bottom-img">
+    <img src="frames/h06_f01.jpg" alt="정책 설명">
+    <div class="bottom-caption">"바뀐 정책, 딱 이것만 알면 됩니다"</div>
+  </div>
+  <div class="footer">
+    <span class="handle">@braveyong</span>
+    <div class="page-num">3</div>
+    <div class="arrow-next">→</div>
+  </div>
+</div>
+
+<!-- SLIDE 4 — L6 OVERLAY (full-bleed + white card) -->
+<div class="slide L-overlay bleed" id="slide-4">
+  <div class="overlay-img"><img src="frames/h07_f01.jpg" alt="3% 룰"></div>
+  <div class="overlay-card">
+    <span class="inline-tag">FACT 02 · 파워 등급 조건</span>
+    <div class="kicker" style="margin-bottom: 10px;">90%가 모르는 진짜 조건</div>
+    <div class="head head-4">
+      5,000개 상향의 열쇠 =<br>
+      <span class="hl-gold">판매 종류 3%</span>
+    </div>
+    <div class="cond-grid" style="margin-top: 20px;">
+      <div class="cond-col">
+        <div class="cond-label">1,000 유지</div>
+        <ul class="cond-list">
+          <li>매출 500만↑ or 판매 100건↑</li>
+          <li>팔린 상품 종류 30개↑</li>
+        </ul>
+      </div>
+      <div class="cond-col up">
+        <div class="cond-label">5,000 상향</div>
+        <ul class="cond-list">
+          <li>위 조건 모두</li>
+          <li>팔린 상품 종류 150개↑</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <span class="handle">@braveyong</span>
+    <div class="page-num">4</div>
+    <div class="arrow-next">→</div>
+  </div>
+</div>
+
+<!-- SLIDE 5 — L2 HERO (다른 인물 프레임) -->
+<div class="slide L-hero bleed" id="slide-5">
+  <div class="hero-img"><img src="frames/h04_f01.jpg" alt="단톡방 난리"></div>
+  <div class="hero-text" style="padding-top: 40px;">
+    <div style="font-family: 'Gaegu', cursive; font-weight: 700; font-size: 30px; color: #ffd54f; margin-bottom: 12px;">"지금 구매대행 단톡방 난리난 이유"</div>
+    <div class="head head-hero" style="font-size: 82px;">
+      경쟁자가 사라진<br>
+      그 자리가,<br>
+      <span class="accent">내 자리</span>다.
+    </div>
+  </div>
+  <div class="footer">
+    <span class="handle">@braveyong</span>
+    <div class="page-num">5</div>
+    <div class="arrow-next">→</div>
+  </div>
+</div>
+
+<!-- SLIDE 6 — L5 SANDWICH (text → image → text/steps) -->
+<div class="slide L-sandwich" id="slide-6">
+  <div>
+    <div class="num">ACTION</div>
+    <div class="head head-2">
+      살아남는 공식은<br>
+      <span class="hl-gold">딱 2단계</span>다.
+    </div>
+  </div>
+  <div class="sandwich-img">
+    <img src="frames/h08_f01.jpg" alt="살아남는 2가지">
+    <div class="sandwich-caption">"이 2가지만 하면 살아남습니다"</div>
+  </div>
+  <div class="step-row">
+    <div class="step">
+      <div class="step-n">01</div>
+      <div class="step-title">유입</div>
+      <div class="step-body">SEO 상위노출.<br>일단 들어오게.</div>
+    </div>
+    <div class="step">
+      <div class="step-n">02</div>
+      <div class="step-title">전환</div>
+      <div class="step-body">들어온 고객을<br>반드시 구매로.</div>
+    </div>
+  </div>
+  <div class="footer">
+    <span class="handle">@braveyong</span>
+    <div class="page-num">6</div>
+    <div class="arrow-next">→</div>
+  </div>
+</div>
+
+<!-- SLIDE 7 — L1 TOP -->
+<div class="slide L-top" id="slide-7">
+  <div class="top-img">
+    <img src="frames/h09_f01.jpg" alt="상품명 분석">
+    <div class="top-caption">"상품명 하나가 매출을 결정합니다"</div>
+  </div>
+  <div class="num">TIP 01</div>
+  <div class="head head-2">
+    상품명 <span class="hl-gold">49자</span> 안에<br>
+    키워드를 꽉꽉 채워라.
+  </div>
+  <div class="body-text">
+    대표어 → 용도 → 소재 → 사이즈 → 사용처. <b>타겟 키워드 검색 1페이지 상위 상품의 카테고리</b>와 내 상품 카테고리가 일치해야 노출된다.
+  </div>
+  <div class="whisper" style="margin-top: 16px;">— 이름 짓는 게 마케팅의 70%.</div>
+  <div class="footer">
+    <span class="handle">@braveyong</span>
+    <div class="page-num">7</div>
+    <div class="arrow-next">→</div>
+  </div>
+</div>
+
+<!-- SLIDE 8 — L3 SIDE-REV (text left 50%, image right 50%) -->
+<div class="slide L-side-rev bleed" id="slide-8">
+  <div class="side-text">
+    <div class="num">TIP 02</div>
+    <div class="head head-2" style="font-size: 58px; line-height: 1.15;">
+      카테고리가<br>
+      틀리면<br>
+      <span class="hl-red">노출 0</span>.
+    </div>
+    <div class="body-text" style="font-size: 22px; margin-top: 18px;">
+      소싱 프로그램이 찍어준<br>
+      카테고리 그대로 올리면<br>
+      <b>검색에 안 잡힌다.</b>
+    </div>
+    <div class="whisper" style="margin-top: 20px;">— 1페이지 상위와 일치 여부 확인.</div>
+  </div>
+  <div class="side-img">
+    <img src="frames/h10_f01.jpg" alt="네이버 쇼핑 실제 화면">
+    <div class="side-caption">실제 네이버 쇼핑 결과 화면</div>
+  </div>
+  <div class="footer">
+    <span class="handle">@braveyong</span>
+    <div class="page-num">8</div>
+    <div class="arrow-next">→</div>
+  </div>
+</div>
+
+<!-- SLIDE 9 — L4 BOTTOM -->
+<div class="slide L-bottom" id="slide-9">
+  <div class="bottom-text">
+    <div class="num">TO DO</div>
+    <div class="head head-2" style="margin-bottom: 28px;">
+      <span class="hl-red">6.2 전</span>에<br>
+      해야 할 3가지.
+    </div>
+    <div class="check-list">
+      <div class="check">
+        <div class="check-n">01</div>
+        <div class="check-body"><b>효자상품 1개 고정</b>1,000개 한도 안에서 가장 잘되는 1개부터</div>
+      </div>
+      <div class="check">
+        <div class="check-n">02</div>
+        <div class="check-body"><b>카테고리 검증</b>1페이지 상위와 내 카테고리 일치 확인</div>
+      </div>
+      <div class="check">
+        <div class="check-n">03</div>
+        <div class="check-body"><b>상품명 49자 재작성</b>대표어 + 용도 + 소재 + 사이즈</div>
+      </div>
+    </div>
+  </div>
+  <div class="bottom-img">
+    <img src="frames/h12_f01.jpg" alt="지금 할 일" style="height: 400px;">
+    <div class="bottom-caption">"지금 당장 이것부터 바꾸세요"</div>
+  </div>
+  <div class="footer">
+    <span class="handle">@braveyong</span>
+    <div class="page-num">9</div>
+    <div class="arrow-next">→</div>
+  </div>
+</div>
+
+<!-- SLIDE 10 — L2 HERO (CTA) -->
+<div class="slide L-hero bleed dark" id="slide-10">
+  <div class="hero-img"><img src="frames/h05_f01.jpg" alt="용팀장"></div>
+  <div class="hero-text" style="text-align: center; align-items: center;">
+    <div class="name-big">용감한용팀장</div>
+    <div class="handle-big">@braveyong</div>
+    <div class="cta-btn">단톡방에서 만나자</div>
+    <div class="cta-sub">고정 댓글 → 1000개 시대 생존 가이드</div>
+    <div class="tag-line">가짜는 가고, 진짜만 남는다.</div>
+  </div>
+  <div class="footer">
+    <span class="handle">은행원도 몰랐던 직장인 N잡의 세계</span>
+    <div class="page-num">10</div>
+  </div>
+</div>
+
+</body>
+</html>
