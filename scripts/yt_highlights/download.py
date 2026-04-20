@@ -16,8 +16,8 @@ class DownloadResult(TypedDict):
     info_path: Path
 
 
-_WATCH_RE = re.compile(r"[?&]v=([A-Za-z0-9_-]+)")
-_SHORT_RE = re.compile(r"youtu\.be/([A-Za-z0-9_-]+)")
+_WATCH_RE = re.compile(r"[?&]v=([A-Za-z0-9_-]{11})")
+_SHORT_RE = re.compile(r"youtu\.be/([A-Za-z0-9_-]{11})")
 
 
 def extract_video_id(url: str) -> str:
