@@ -203,6 +203,21 @@
     font-family: 'Noto Sans KR', sans-serif; font-weight: 700;
     font-size: 18px; color: #333;
   }
+  .stats-horiz {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px;
+  }
+  .stats-horiz .stat {
+    background: #fff; border: 3px solid #1a1a1a;
+    padding: 26px 14px; text-align: center;
+  }
+  .stats-horiz .stat-num {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 52px; color: #3F0000; line-height: 1;
+  }
+  .stats-horiz .stat-label {
+    font-family: 'Noto Sans KR', sans-serif; font-weight: 700;
+    font-size: 17px; color: #333; margin-top: 10px;
+  }
 
   .formula-row {
     display: grid; grid-template-columns: 1fr 60px 1fr; gap: 10px;
@@ -341,25 +356,23 @@
   </div>
 </div>
 
-<!-- SLIDE 2 — L3 SIDE (image left 60%, text right 40%) -->
-<div class="slide L-side bleed" id="slide-2">
-  <div class="side-img">
+<!-- SLIDE 2 — L1 TOP (image top + text bottom) -->
+<div class="slide L-top" id="slide-2">
+  <div class="top-img">
     <img src="frames/h03_f01.jpg" alt="용팀장 소개">
-    <div class="side-caption">용팀장 본인 유튜브</div>
+    <div class="top-caption">용팀장 본인 유튜브 · 인트로</div>
   </div>
-  <div class="side-text">
-    <div class="num">WHO</div>
-    <div class="head head-3">
-      부동산<br>
-      <span class="hl-gold">20채</span> 직장인.
-    </div>
-    <div class="stats-vert">
-      <div class="stat"><div class="stat-num">1~2h</div><div class="stat-label">하루 투입</div></div>
-      <div class="stat"><div class="stat-num">700↑</div><div class="stat-label">월 순수익(만원)</div></div>
-      <div class="stat"><div class="stat-num">20채</div><div class="stat-label">보유 부동산</div></div>
-    </div>
-    <div class="whisper" style="margin-top: 20px;">— 실셀러가 말한다.</div>
+  <div class="num">WHO</div>
+  <div class="head head-2">
+    부동산 <span class="hl-gold">20채</span> 직장인이<br>
+    말하는 진짜 정책.
   </div>
+  <div class="stats-horiz" style="margin-top: 20px;">
+    <div class="stat"><div class="stat-num">20채</div><div class="stat-label">보유 부동산</div></div>
+    <div class="stat"><div class="stat-num">1~2h</div><div class="stat-label">하루 투입</div></div>
+    <div class="stat"><div class="stat-num">700↑</div><div class="stat-label">월 순수익(만원)</div></div>
+  </div>
+  <div class="whisper" style="margin-top: 18px;">— 8살 아이 키우는 가장. 그리고 실셀러.</div>
   <div class="footer">
     <span class="handle">@braveyong</span>
     <div class="page-num">2</div>
@@ -505,25 +518,21 @@
   </div>
 </div>
 
-<!-- SLIDE 8 — L3 SIDE-REV (text left 50%, image right 50%) -->
-<div class="slide L-side-rev bleed" id="slide-8">
-  <div class="side-text">
+<!-- SLIDE 8 — L5 SANDWICH (text → image → text) -->
+<div class="slide L-sandwich" id="slide-8">
+  <div>
     <div class="num">TIP 02</div>
-    <div class="head head-2" style="font-size: 58px; line-height: 1.15;">
-      카테고리가<br>
-      틀리면<br>
+    <div class="head head-2">
+      카테고리가 틀리면<br>
       <span class="hl-red">노출 0</span>.
     </div>
-    <div class="body-text" style="font-size: 22px; margin-top: 18px;">
-      소싱 프로그램이 찍어준<br>
-      카테고리 그대로 올리면<br>
-      <b>검색에 안 잡힌다.</b>
-    </div>
-    <div class="whisper" style="margin-top: 20px;">— 1페이지 상위와 일치 여부 확인.</div>
   </div>
-  <div class="side-img">
+  <div class="sandwich-img">
     <img src="frames/h10_f01.jpg" alt="네이버 쇼핑 실제 화면">
-    <div class="side-caption">실제 네이버 쇼핑 결과 화면</div>
+    <div class="sandwich-caption">"카테고리 잘못 넣으면? 올려도 아무도 못 봅니다" — 실제 네이버 쇼핑 결과</div>
+  </div>
+  <div class="body-text">
+    소싱 프로그램이 찍어준 카테고리 그대로 올리면 <b>엉뚱한 분류에 잡혀</b> 검색 결과에 노출되지 않는다. 타겟 키워드로 검색해서 <b>1페이지 상위 상품의 카테고리와 반드시 일치</b>시켜야 한다.
   </div>
   <div class="footer">
     <span class="handle">@braveyong</span>
