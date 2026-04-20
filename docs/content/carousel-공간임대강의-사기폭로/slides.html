@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>공간임대 강의 사기 폭로 (용팀장)</title>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #e5e5e5; font-family: 'Noto Sans KR', sans-serif; }
+
+  .slide {
+    width: 1080px; height: 1440px;
+    padding: 80px 80px 120px;
+    position: relative;
+    background: #FAF8F5;
+    color: #1a1a1a;
+    overflow: hidden;
+    margin: 24px auto;
+  }
+  .slide.dark { background: #1a0a0a; color: #fff; }
+
+  .head { font-family: 'Black Han Sans', sans-serif; letter-spacing: -0.5px; line-height: 1.15; }
+  .whisper {
+    font-family: 'Gaegu', cursive; font-weight: 700;
+    color: #999; font-size: 28px; line-height: 1.4;
+  }
+  .slide.dark .whisper { color: #a89999; }
+
+  .hl-red {
+    background: linear-gradient(170deg, transparent 10%, #e8b4b4 15%, #d4a0a0 50%, #e8b4b4 85%, transparent 90%);
+    padding: 2px 14px; display: inline;
+    -webkit-box-decoration-break: clone; box-decoration-break: clone;
+  }
+  .hl-gold {
+    background: linear-gradient(168deg, transparent 10%, #ffd54f 15%, #ffca28 50%, #ffd54f 85%, transparent 90%);
+    padding: 2px 14px; display: inline;
+    -webkit-box-decoration-break: clone; box-decoration-break: clone;
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 48px; left: 80px; right: 80px;
+    display: flex; align-items: center; justify-content: space-between;
+    font-family: 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 22px;
+  }
+  .handle { color: #3F0000; }
+  .slide.dark .handle { color: #ffd54f; }
+  .page-num {
+    width: 48px; height: 48px; border: 2px solid #1a1a1a; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; font-size: 20px;
+  }
+  .slide.dark .page-num { border-color: #fff; color: #fff; }
+  .arrow-next {
+    width: 48px; height: 48px; background: #3F0000;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 28px;
+  }
+  .slide.dark .arrow-next { background: #ffd54f; color: #1a0a0a; }
+
+  .kicker {
+    font-family: 'Gaegu', cursive; font-weight: 700; font-size: 34px;
+    color: #3F0000; margin-bottom: 20px;
+  }
+  .slide.dark .kicker { color: #ffd54f; }
+  .num {
+    font-family: 'Black Han Sans', sans-serif; font-size: 44px;
+    color: #3F0000; margin-bottom: 24px; letter-spacing: 2px;
+  }
+
+  /* Inline frame component (KBS 화면 인용) */
+  .frame-card {
+    border: 3px solid #1a1a1a;
+    overflow: hidden;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .frame-card img {
+    display: block; width: 100%; height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+  .frame-caption {
+    background: #1a0a0a; color: #ffd54f;
+    font-family: 'Noto Sans KR', sans-serif; font-weight: 700;
+    font-size: 18px; padding: 10px 18px;
+    letter-spacing: 0.5px;
+  }
+
+  /* Slide 1 — Hook (Dark cover) */
+  .s1 { display: flex; flex-direction: column; justify-content: space-between; padding: 180px 90px 180px 50px; }
+  .s1 .tag {
+    font-family: 'Gaegu', cursive; font-weight: 700; font-size: 36px;
+    color: #ffd54f; margin-bottom: 24px;
+  }
+  .s1 .head1 { font-size: 118px; color: #fff; }
+  .s1 .accent { color: #ffd54f; }
+  .s1 .sub {
+    font-family: 'Gaegu', cursive; font-weight: 700;
+    font-size: 38px; color: #c4a9a9; margin-top: 32px;
+  }
+
+  /* Slide 2 — Stat numbers */
+  .s2 .head1 { font-size: 78px; margin-bottom: 40px; }
+  .s2 .stats {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; margin-top: 32px;
+  }
+  .s2 .stat {
+    background: #fff; border: 3px solid #1a1a1a;
+    padding: 36px 20px; text-align: center;
+  }
+  .s2 .stat-num {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 78px; color: #3F0000; line-height: 1;
+  }
+  .s2 .stat-label {
+    font-family: 'Noto Sans KR', sans-serif; font-weight: 700;
+    font-size: 20px; color: #333; margin-top: 14px;
+  }
+  .s2 .whisper { margin-top: 32px; }
+
+  /* Story slides with inline frame */
+  .story .num { margin-bottom: 18px; }
+  .story .head1 { font-size: 62px; margin-bottom: 24px; line-height: 1.15; }
+  .story .body {
+    font-family: 'Noto Sans KR', sans-serif; font-weight: 700;
+    font-size: 28px; line-height: 1.6; color: #222; margin-top: 20px;
+  }
+  .story .body b {
+    font-family: 'Black Han Sans', sans-serif;
+    font-weight: 400; font-size: 34px;
+  }
+  .story .whisper { margin-top: 24px; }
+
+  /* Slide 9 — 교훈 VS */
+  .s9 .head1 { font-size: 78px; margin-bottom: 36px; }
+  .s9 .vs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 24px; }
+  .s9 .vs-col {
+    background: #fff; border: 3px solid #1a1a1a; padding: 30px 26px;
+  }
+  .s9 .vs-label {
+    font-family: 'Black Han Sans', sans-serif; font-size: 46px; line-height: 1;
+    margin-bottom: 22px;
+  }
+  .s9 .vs-col.bad .vs-label { color: #999; text-decoration: line-through; }
+  .s9 .vs-col.good .vs-label { color: #3F0000; }
+  .s9 .vs-list {
+    font-family: 'Noto Sans KR', sans-serif; font-weight: 700;
+    font-size: 22px; line-height: 1.7; list-style: none;
+  }
+  .s9 .vs-col.bad .vs-list { color: #888; }
+  .s9 .vs-list li { margin-bottom: 8px; padding-left: 18px; position: relative; }
+  .s9 .vs-list li::before { content: "—"; position: absolute; left: 0; }
+
+  /* Slide 10 — Dark CTA */
+  .s10 { text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; padding-top: 120px; }
+  .s10 .photo-slot {
+    width: 210px; height: 210px; border-radius: 50%;
+    background: #2a1515; border: 4px solid #ffd54f;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Black Han Sans', sans-serif; font-size: 72px;
+    color: #ffd54f; margin-bottom: 40px;
+  }
+  .s10 .name {
+    font-family: 'Black Han Sans', sans-serif; font-size: 60px; color: #fff; margin-bottom: 10px;
+  }
+  .s10 .handle-big {
+    font-family: 'Gaegu', cursive; font-weight: 700;
+    font-size: 36px; color: #ffd54f; margin-bottom: 40px;
+  }
+  .s10 .cta-btn {
+    background: #ffd54f; color: #1a0a0a; padding: 28px 60px;
+    font-family: 'Black Han Sans', sans-serif; font-size: 44px; margin-bottom: 18px;
+  }
+  .s10 .cta-sub {
+    font-family: 'Gaegu', cursive; font-weight: 700;
+    font-size: 30px; color: #c4a9a9; margin-bottom: 24px;
+  }
+  .s10 .tag-line {
+    font-family: 'Black Han Sans', sans-serif; font-size: 34px;
+    color: #ffd54f; margin-top: 16px;
+  }
+  .s10 .src-note {
+    font-family: 'Gaegu', cursive; font-weight: 700;
+    font-size: 22px; color: #8a7676; margin-top: 40px;
+  }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 — HOOK -->
+<div class="slide s1 dark" id="slide-1">
+  <div>
+    <div class="tag">긴급 소비자 경고</div>
+    <div class="head head1">
+      광고 보고<br>
+      <span class="accent">200만원</span><br>
+      보냈더니,<br>
+      <span class="accent">고소</span>당했다.
+    </div>
+  </div>
+  <div>
+    <div class="sub">KBS 추적60분이 취재한 공간임대 강의 사기</div>
+  </div>
+  <div class="footer">
+    <span class="handle">@braveyong</span>
+    <div class="page-num">1</div>
+    <div class="arrow-next">→</div>
+  </div>
+</div>
+
+<!-- SLIDE 2 — STAT -->
+<div class="slide s2" id="slide-2">
+  <div class="kicker">숫자로 먼저 보자.</div>
+  <div class="head head1">
+    짜여진 판의<br>
+    <span class="hl-red">수익 구조.</span>
+  </div>
+  <div class="stats">
+    <div class="stat"><div class="stat-num">300만</div><div class="stat-label">1인당 수강료</div></div>
+    <div class="stat"><div class="stat-num">20명</div><div class="stat-label">1회 모집</div></div>
+    <div class="stat"><div class="stat-num">6,000만</div><div class="stat-label">회차당 매출</div></div>
+  </div>
+  <div class="whisper">※ "강사 몫은 1,000~2,000만원" — KBS 취재 증언 중</div>
+  <div class="footer">
+    <span class="handle">@braveyong</span>
+    <div class="page-num">2</div>
+    <div class="arrow-next">→</div>
+  </div>
+</div>
+
+<!-- SLIDE 3 — 미끼 -->
+<div class="slide story" id="slide-3">
+  <div class="num">STORY 01 · 미끼</div>
+  <div class="frame-card">
+    <img src="frames/h03_f01.jpg" alt="광고 장면">
+    <div class="frame-caption">KBS 추적60분 · 강의 광고 장면 인용</div>
+  </div>
+  <div class="head head1">
+    "<span class="hl-gold">100% 환불</span> 보장"<br>
+    이 말부터 의심하자.
+  </div>
+  <div class="body">
+    에어비앤비로 <b>월 10개 이상 운영</b>, 매물 리스트는 <b>200만원</b>에 판매. 수익 안 나면 전액 환불 — 그런 광고였다.
+  </div>
+  <div class="whisper">— "리스크 없다"는 약속은 사업의 가장 큰 리스크다.</div>
+  <div class="footer">
+    <span class="handle">@braveyong</span>
+    <div class="page-num">3</div>
+    <div class="arrow-next">→</div>
+  </div>
+</div>
+
+<!-- SLIDE 4 — 리스트 정체 -->
+<div class="slide story" id="slide-4">
+  <div class="num">STORY 02 · 실체</div>
+  <div class="frame-card">
+    <img src="frames/h13_f01.jpg" alt="강사 인터뷰">
+    <div class="frame-caption">KBS 추적60분 · 강사 인터뷰</div>
+  </div>
+  <div class="head head1">
+    <span class="hl-red">그 리스트는</span><br>
+    어디서 왔나?
+  </div>
+  <div class="body">
+    강사의 답: <b>"네이버에서 모은 연락처"</b>. 검수되지 않은 일반 부동산 번호와 개인 휴대폰이 뒤섞인 목록.
+  </div>
+  <div class="whisper">— 200만원짜리 "독점 리스트"의 진짜 출처.</div>
+  <div class="footer">
+    <span class="handle">@braveyong</span>
+    <div class="page-num">4</div>
+    <div class="arrow-next">→</div>
+  </div>
+</div>
+
+<!-- SLIDE 5 — 불가능 -->
+<div class="slide story" id="slide-5">
+  <div class="num">STORY 03 · 구조적 불가능</div>
+  <div class="frame-card">
+    <img src="frames/h10_f01.jpg" alt="운영사 인터뷰">
+    <div class="frame-caption">KBS 추적60분 · 운영사 인터뷰</div>
+  </div>
+  <div class="head head1">
+    운영사는<br>
+    <span class="hl-gold">개인에게</span><br>
+    임대하지 않는다.
+  </div>
+  <div class="body">
+    "1세대 미신고가 나면 30세대 전체 영업이 멈춘다. 그 리스크를 개인에게 맡길 리 없다." — 애초에 가능한 모델이 아니었다.
+  </div>
+  <div class="whisper">— 팔 수 없는 걸 팔았다는 뜻이다.</div>
+  <div class="footer">
+    <span class="handle">@braveyong</span>
+    <div class="page-num">5</div>
+    <div class="arrow-next">→</div>
+  </div>
+</div>
+
+<!-- SLIDE 6 — 환불 거절 -->
+<div class="slide story" id="slide-6">
+  <div class="num">STORY 04 · 환불 거절</div>
+  <div class="frame-card">
+    <img src="frames/h04_f01.jpg" alt="피해자 인터뷰">
+    <div class="frame-caption">KBS 추적60분 · 수강생 미소 씨 인터뷰</div>
+  </div>
+  <div class="head head1">
+    "<span class="hl-red">과제 안 했잖아요</span>"<br>
+    이게 환불 거절 사유다.
+  </div>
+  <div class="body">
+    <b>"1번만 제출해라"</b>는 공지를 보고 제출했더니, 업체는 <b>"2개 다 내야 했다"</b>며 환불 거절. 수강생 책임으로 돌렸다.
+  </div>
+  <div class="whisper">— 규정은 그들에게 유리하게 해석된다.</div>
+  <div class="footer">
+    <span class="handle">@braveyong</span>
+    <div class="page-num">6</div>
+    <div class="arrow-next">→</div>
+  </div>
+</div>
+
+<!-- SLIDE 7 — 고소 -->
+<div class="slide story" id="slide-7">
+  <div class="num">STORY 05 · 보복</div>
+  <div class="frame-card">
+    <img src="frames/h05_f01.jpg" alt="피해자 인터뷰">
+    <div class="frame-caption">KBS 추적60분 · 고소 당한 수강생</div>
+  </div>
+  <div class="head head1">
+    후기 올렸더니<br>
+    <span class="hl-red">고소</span>가 돌아왔다.
+  </div>
+  <div class="body">
+    스레드에 피해 후기를 올린 수강생은 <b>"허위사실·영업방해"</b> 혐의로 고소당했다. 돈 잃고 법정까지 가야 하는 이중 피해.
+  </div>
+  <div class="whisper">— 침묵시키는 가장 빠른 방법이 소송이다.</div>
+  <div class="footer">
+    <span class="handle">@braveyong</span>
+    <div class="page-num">7</div>
+    <div class="arrow-next">→</div>
+  </div>
+</div>
+
+<!-- SLIDE 8 — 짜여진 판 -->
+<div class="slide story" id="slide-8">
+  <div class="num">STORY 06 · 판의 구조</div>
+  <div class="frame-card">
+    <img src="frames/h11_f01.jpg" alt="피해자 증언">
+    <div class="frame-caption">KBS 추적60분 · 피해자 증언</div>
+  </div>
+  <div class="head head1">
+    "이미<br>
+    <span class="hl-red">짜여진 판</span>,<br>
+    들어가면 당한다."
+  </div>
+  <div class="body">
+    강의 → 리스트 판매 → 전화 돌리기 → 실체 없음 → 환불 꼬투리 → 후기 차단. <b>하나의 완결된 사기 구조</b>다.
+  </div>
+  <div class="whisper">— 실수가 아니라 설계된 흐름.</div>
+  <div class="footer">
+    <span class="handle">@braveyong</span>
+    <div class="page-num">8</div>
+    <div class="arrow-next">→</div>
+  </div>
+</div>
+
+<!-- SLIDE 9 — 교훈 VS -->
+<div class="slide s9" id="slide-9">
+  <div class="num">LESSON</div>
+  <div class="head head1">
+    <span class="hl-red">가짜</span>와 <span class="hl-gold">진짜</span>는<br>
+    이렇게 다르다.
+  </div>
+  <div class="vs-grid">
+    <div class="vs-col bad">
+      <div class="vs-label">가짜 강사</div>
+      <ul class="vs-list">
+        <li>매출만 크게 불러라</li>
+        <li>100% 환불 보장 약속</li>
+        <li>검증 없는 리스트 판매</li>
+        <li>부정 후기는 고소로 차단</li>
+      </ul>
+    </div>
+    <div class="vs-col good">
+      <div class="vs-label">진짜 셀러</div>
+      <ul class="vs-list">
+        <li>순수익을 공개한다</li>
+        <li>환불 규정이 투명하다</li>
+        <li>검증 가능한 데이터만 판다</li>
+        <li>피드백을 기록으로 남긴다</li>
+      </ul>
+    </div>
+  </div>
+  <div class="whisper" style="margin-top: 28px;">※ 강의 사기 판별: 질문을 막으려 하면 판이다.</div>
+  <div class="footer">
+    <span class="handle">@braveyong</span>
+    <div class="page-num">9</div>
+    <div class="arrow-next">→</div>
+  </div>
+</div>
+
+<!-- SLIDE 10 — DARK CTA -->
+<div class="slide s10 dark" id="slide-10">
+  <div class="photo-slot">용</div>
+  <div class="name">용감한용팀장</div>
+  <div class="handle-big">@braveyong</div>
+  <div class="cta-btn">단톡방에서 만나자</div>
+  <div class="cta-sub">고액 강의 거르는 체크리스트 · 무료 공개</div>
+  <div class="tag-line">가짜는 가고, 진짜만 남는다.</div>
+  <div class="src-note">원본: KBS 추적60분 (260403 방송) · 인용 공정이용</div>
+  <div class="footer">
+    <span class="handle">은행원도 몰랐던 직장인 N잡의 세계</span>
+    <div class="page-num">10</div>
+  </div>
+</div>
+
+</body>
+</html>

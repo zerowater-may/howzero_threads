@@ -11,13 +11,14 @@ class FrameError(RuntimeError):
     pass
 
 
-# 1080x1440 carousel 3:4. Pipeline:
-#   1) center-crop source (16:9) to 3:4
-#   2) upscale to 1080x1440 via Lanczos (high-quality resampling)
-#   3) light unsharp mask to restore detail lost to YouTube re-encoding
+# Preserve source aspect ratio (usually 16:9). Carousel slides layer
+# the frame on top of text — center-cropping to 3:4 destroys the composition
+# and often clips news chyrons, interview subjects, or on-screen text.
+# Pipeline:
+#   1) scale to 1080 wide (keep aspect, even height)
+#   2) light unsharp mask to restore detail lost in re-encoding
 _CROP_FILTER = (
-    "crop='min(iw,ih*3/4)':'min(ih,iw*4/3)',"
-    "scale=1080:1440:flags=lanczos,"
+    "scale=1080:-2:flags=lanczos,"
     "unsharp=5:5:0.8:3:3:0.4"
 )
 
