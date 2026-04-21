@@ -1,4 +1,4 @@
-"""Assemble concise Nano Banana prompts for Jipsaja brand carousel templates.
+"""Assemble concise Nano Banana prompts for Zipsaja brand carousel templates.
 
 V2 approach (tuned to avoid IMAGE_RECITATION rejection):
 - Caller attaches a mascot reference image to the Gemini request.

@@ -30,7 +30,7 @@ from scripts.nano_carousel.types import SlideSpec
 
 
 _BRAND_ASSETS_DIR = Path(
-    ".claude/skills/carousel/brands/jipsaja/assets"
+    ".claude/skills/carousel/brands/zipsaja/assets"
 ).resolve()
 
 _TARGET_SIZE = (1080, 1440)

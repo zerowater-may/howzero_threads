@@ -1,11 +1,11 @@
-# 집사자 (Jipsaja) 브랜드 프리셋
+# 집사자 (Zipsaja) 브랜드 프리셋
 
 인스타 `@go.nyangee` 계열 **친근한 부동산/내집마련 큐레이터** 스타일을 재현한 프리셋.
 손그림 마스코트(**집사자** — 집을 지키는 사자)가 반말로 정보를 정리해주는 톤.
 
 ## 기본 정보
 
-- **브랜드명**: 집사자 (Jipsaja)
+- **브랜드명**: 집사자 (Zipsaja)
 - **마스코트**: 노란 사자 + 흰 날개. "집사자"는 "집 사자" / "집 + 사자"의 이중 의미.
 - **분야**: 부동산 정보 / 내집마련 / 신혼부부·생애최초 가이드 / 청약·대출
 - **한 줄 소개**: 어려운 부동산, 옆집 친한 오빠처럼 풀어주는 집사자의 큐레이션.
@@ -179,7 +179,7 @@ body { font-family: 'Noto Sans KR', sans-serif; color: #1a1a1a; }
 
 ## 마스코트 에셋 라이브러리
 
-위치: `.claude/skills/carousel/brands/jipsaja/assets/`
+위치: `.claude/skills/carousel/brands/zipsaja/assets/`
 
 **컬러 버전** (날개 달린 풀컬러):
 - `mascot.png` — 기본 컬러 캐릭터 (노란 사자 + 흰 날개)
@@ -217,7 +217,7 @@ body { font-family: 'Noto Sans KR', sans-serif; color: #1a1a1a; }
   </div>
 
   <div style="position: relative; margin-top: 80px; display:flex; justify-content:center;">
-    <img src="brands/jipsaja/assets/mascot.png" class="mascot" style="width:360px;">
+    <img src="brands/zipsaja/assets/mascot.png" class="mascot" style="width:360px;">
     <div class="bubble" style="position:absolute; left: 60px; top: 40px;">
       서울<br>9억대 아파트,<br>어디가 좋을까?
     </div>
@@ -302,7 +302,7 @@ body { font-family: 'Noto Sans KR', sans-serif; color: #1a1a1a; }
 
 ## 키워드
 
-`jipsaja`, `집사자`, `go.nyangee`, `부린이`, `내집마련`, `부동산친절`, `cute-realty`, `yellow-highlight`, `jua-font`
+`zipsaja`, `집사자`, `go.nyangee`, `부린이`, `내집마련`, `부동산친절`, `cute-realty`, `yellow-highlight`, `jua-font`
 
 ---
 
