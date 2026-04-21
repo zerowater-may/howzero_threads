@@ -22,6 +22,10 @@ yt = [
     "youtube-transcript-api>=1.2.4",
     "scenedetect[opencv]>=0.6.4",
 ]
+nano = [
+    "Pillow>=10.0.0",
+    "numpy>=1.24.0",
+]
 
 [build-system]
 requires = ["setuptools>=68.0"]
