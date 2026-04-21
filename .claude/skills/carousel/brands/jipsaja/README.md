@@ -179,7 +179,7 @@ body { font-family: 'Noto Sans KR', sans-serif; color: #1a1a1a; }
 
 ## 마스코트 에셋 라이브러리
 
-위치: `.claude/skills/carousel/brands/jipsaja-assets/`
+위치: `.claude/skills/carousel/brands/jipsaja/assets/`
 
 **컬러 버전** (날개 달린 풀컬러):
 - `mascot.png` — 기본 컬러 캐릭터 (노란 사자 + 흰 날개)
@@ -217,7 +217,7 @@ body { font-family: 'Noto Sans KR', sans-serif; color: #1a1a1a; }
   </div>
 
   <div style="position: relative; margin-top: 80px; display:flex; justify-content:center;">
-    <img src="brands/jipsaja-assets/mascot.png" class="mascot" style="width:360px;">
+    <img src="brands/jipsaja/assets/mascot.png" class="mascot" style="width:360px;">
     <div class="bubble" style="position:absolute; left: 60px; top: 40px;">
       서울<br>9억대 아파트,<br>어디가 좋을까?
     </div>
