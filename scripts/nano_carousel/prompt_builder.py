@@ -1,85 +1,75 @@
-"""Assemble Nano Banana prompts for Jipsaja-branded blank slide templates.
+"""Assemble concise Nano Banana prompts for Jipsaja brand carousel templates.
 
-Key principle: NEVER include user content (headline text, body) in the
-prompt — that tempts the model to render Korean text in the image.
-We only describe the LAYOUT STRUCTURE and brand style.
+V2 approach (tuned to avoid IMAGE_RECITATION rejection):
+- Caller attaches a mascot reference image to the Gemini request.
+- Prompts are kept short (~1800 chars) — long prompts trigger recitation
+  rejection. One tight style block + layout + negatives.
+- Never include Korean user content (headline/body) — HTML overlays text later.
 """
 
 from scripts.nano_carousel.types import SlideSpec
 
 
-_BRAND_BASE = """A square Instagram carousel slide template, 1080x1440 pixels,
-hand-drawn doodle illustration in the style of a Korean influencer's
-iPad Procreate notebook. White background (#FFFFFF).
+_STYLE_AND_CHARACTER = """A single Instagram carousel slide, exactly 1080 x 1440 pixels, 3:4 portrait.
+Informational card news style, 2D flat illustration in simple hand-drawn doodle
+style, like an iPad Procreate sketch. Cute, casual layout. White background.
 
-Color palette: only black outlines (#1a1a1a) and mustard yellow accent (#FACC15).
-No gradients, no shading, solid flat colors only.
+CHARACTER — USE THE ATTACHED REFERENCE IMAGE:
+Keep the exact same lion character from the reference — same mane, eyes,
+mouth, proportions, angel wings hint. Fill the character body in mustard
+yellow. Place it at the bottom-left or bottom corner with an explaining
+or curious expression.
 
-Line quality: hand-drawn, slightly wobbly, imperfect. Not math-perfect,
-not vector-clean. Slightly asymmetric — amateur notebook doodle quality,
-NOT a polished Canva sticker, NOT a kawaii mascot logo."""
+COLORS: black outlines (#1a1a1a) + white background + single mustard
+yellow accent (#FACC15). No gradients. Solid flat colors only.
 
-
-_NEGATIVE = """CRITICAL RULES — violate these and the image is unusable:
-- ABSOLUTELY NO text, letters, words, numbers, typography, fonts,
-  Korean characters, English characters, or gibberish anywhere
-- All yellow highlight patches, speech bubbles, and rectangular info boxes
-  must be 100% completely empty and blank inside
-- No watermark, no signature, no logo
-- No 3D render, no glossy, no gradients
-- No photorealistic elements"""
-
-
-_MASCOT_MARKER = """Mascot placement: draw a single solid bright green circle
-(#00FF00, approximately 200 pixels diameter) at the designated mascot slot
-location. This circle is a placeholder marker — do NOT draw a lion, animal,
-character, or any figure. Just a plain green circle."""
+LINES: imperfect hand-drawn black lines, slightly wobbly and uneven.
+Yellow highlight patches look like real marker brush strokes with edges
+that slightly overflow. Wobbly organic borders, NOT straight rulers."""
 
 
 def _layout_instructions(layout: str) -> str:
     if layout == "apartment-card":
-        return """LAYOUT: Apartment listing card.
-- Top (y 80-220): wide mustard yellow marker highlight patch for the headline,
-  wobbly hand-drawn brush stroke shape, empty interior.
-- Upper-middle (y 260-640): one large rectangular info box with a
-  thick wobbly black border, empty interior, occupying most of the width.
-- Lower-middle (y 680-950): two side-by-side smaller info boxes.
-  Left box: white background with black wobbly border.
-  Right box: mustard yellow fill with black wobbly border.
-- Bottom-left corner (x 80-280, y 1160-1360): a single solid bright
-  green circle (#00FF00) for the mascot placeholder marker.
-- Bottom-right area (x 300-1000, y 1160-1340): empty space,
-  reserved for handwritten whisper text overlay (keep background white)."""
+        return """LAYOUT (apartment card):
+- TOP (y 100-240): wide wobbly mustard-yellow marker highlight, empty inside.
+- MIDDLE (y 280-640): one large rectangular info box with thick wobbly
+  black border, empty inside.
+- LOWER (y 680-960): two side-by-side boxes. Left: white with black border.
+  Right: solid mustard yellow with black border. Both empty inside.
+- BOTTOM (y 1000-1360): the lion character at bottom-left, with an empty
+  wobbly speech bubble on its right side."""
 
     if layout == "cover":
-        return """LAYOUT: Cover slide.
-- Top half (y 100-700): three stacked wobbly mustard yellow marker
-  highlights, centered horizontally, empty interior.
-- Bottom half: one large solid bright green circle (#00FF00) centered
-  for the mascot placeholder marker, flanked by empty wobbly
-  speech bubble shape on one side."""
+        return """LAYOUT (cover):
+- TOP HALF: three stacked wobbly mustard yellow marker highlights, each
+  at slightly different angles, empty inside.
+- BOTTOM HALF: the lion character centered, with an empty wobbly speech
+  bubble asking a question."""
 
     if layout == "cta-dark":
-        return """LAYOUT: Dark CTA slide with inverted colors.
-- Background: solid dark charcoal (#1a1a1a).
-- Top-center: a large mustard yellow marker highlight, empty interior.
-- Middle-center: solid bright green circle (#00FF00) for mascot marker.
-- Bottom: one empty rectangular box with mustard yellow fill
-  and black wobbly border."""
+        return """LAYOUT (dark CTA):
+- Dark charcoal (#1a1a1a) background instead of white.
+- TOP: wobbly mustard yellow marker highlight, empty inside.
+- MIDDLE: the lion character, excited or waving.
+- BOTTOM: one large wobbly button shape filled mustard yellow with black
+  border, empty inside."""
 
-    return "LAYOUT: Generic — top yellow highlight, middle empty box, bottom green mascot circle."
+    return """LAYOUT (generic): top yellow highlight, middle empty box,
+bottom lion character + empty speech bubble."""
+
+
+_NEGATIVE = """CRITICAL — strictly forbidden:
+NO text, letters, words, numbers, typography, fonts, gibberish.
+NO placeholder text like "lorem ipsum", "title here", "whisper text".
+Every banner, box, and speech bubble is 100% blank inside.
+No 3D, no gradients, no glossy, no kawaii sticker style, no vector-clean.
+Match the reference character exactly — do not redesign."""
 
 
 def build_prompt(spec: SlideSpec) -> str:
-    """Assemble the full Nano Banana prompt for a given slide spec.
-
-    Deliberately excludes all user content (headline, body, whisper) —
-    those are overlaid later via HTML. Nano Banana only gets structural
-    instructions to prevent Korean text leakage into the image.
-    """
+    """Concise Nano Banana prompt. ~1800 chars to avoid recitation rejection."""
     return "\n\n".join([
-        _BRAND_BASE,
+        _STYLE_AND_CHARACTER,
         _layout_instructions(spec.layout),
-        _MASCOT_MARKER,
         _NEGATIVE,
     ])

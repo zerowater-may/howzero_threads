@@ -1,29 +1,39 @@
-"""CLI for nano_carousel MVP.
+"""CLI for nano_carousel V2 pipeline.
 
 Usage:
     python -m scripts.nano_carousel --spec spec.json --out output-dir/
 
-Requires GEMINI_API_KEY in env (load via .env.gemini).
+V2 flow:
+1. Build rich text prompt (layout + brand style + negative)
+2. Attach mascot-hero.png as reference image
+3. Call Nano Banana 2 (gemini-3.1-flash-image-preview) with aspectRatio 3:4
+4. Pillow resize to exactly 1080x1440
+5. Render HTML with text overlay (no mascot overlay — AI drew it)
+6. Puppeteer capture
+
+Requires GEMINI_API_KEY in env or .env.gemini.
 """
 
 import argparse
 import json
 import os
-import shutil
 import subprocess
 import sys
 from pathlib import Path
 
+from PIL import Image
+
 from scripts.nano_carousel.gemini_client import generate_image, GeminiError
 from scripts.nano_carousel.html_renderer import render_slide_html
-from scripts.nano_carousel.marker_detector import detect_green_marker
 from scripts.nano_carousel.prompt_builder import build_prompt
-from scripts.nano_carousel.types import MarkerBBox, SlideSpec
+from scripts.nano_carousel.types import SlideSpec
 
 
 _BRAND_ASSETS_DIR = Path(
     ".claude/skills/carousel/brands/jipsaja-assets"
 ).resolve()
+
+_TARGET_SIZE = (1080, 1440)
 
 
 def _load_spec(path: Path) -> SlideSpec:
@@ -43,13 +53,29 @@ def _resolve_api_key() -> str:
     raise SystemExit("GEMINI_API_KEY not found (env or .env.gemini)")
 
 
-def _copy_mascot(pose: str, out_dir: Path) -> Path:
-    src = _BRAND_ASSETS_DIR / f"mascot-{pose}.png"
-    if not src.exists():
-        raise SystemExit(f"mascot asset not found: {src}")
-    dst = out_dir / src.name
-    shutil.copy(src, dst)
-    return dst
+def _resolve_reference_image() -> Path:
+    """Pick the reference mascot image for character consistency.
+
+    Prefer mascot-hero.png (larger, cleaner) over the smaller pose icons,
+    since Gemini reference-image binding works best with a clear canonical
+    sample rather than a cropped low-res tile.
+    """
+    candidate = _BRAND_ASSETS_DIR / "mascot-hero.png"
+    if not candidate.exists():
+        raise SystemExit(f"reference mascot not found: {candidate}")
+    return candidate
+
+
+def _resize_to_target(path: Path) -> None:
+    """Force the generated template to exactly 1080x1440.
+
+    Nano Banana may return a 3:4 image that is not exactly 1080x1440
+    (e.g. 896x1200). We resize to match the HTML canvas.
+    """
+    im = Image.open(path)
+    if im.size != _TARGET_SIZE:
+        im = im.convert("RGB").resize(_TARGET_SIZE, Image.LANCZOS)
+        im.save(path, "PNG")
 
 
 def _write_capture_mjs(out_dir: Path) -> Path:
@@ -74,19 +100,17 @@ await browser.close();
     return mjs
 
 
-def _default_mascot_bbox_for(layout: str) -> MarkerBBox:
-    if layout == "apartment-card":
-        return MarkerBBox(x=100, y=1200, w=180, h=180, cx=190, cy=1290)
-    return MarkerBBox(x=420, y=620, w=240, h=240, cx=540, cy=740)
-
-
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(prog="nano_carousel")
     p.add_argument("--spec", required=True, type=Path)
     p.add_argument("--out", required=True, type=Path)
     p.add_argument(
-        "--model", default="gemini-2.5-flash-image",
-        help="Gemini image model id",
+        "--model", default="gemini-3.1-flash-image-preview",
+        help="Gemini image model id (Nano Banana 2 is preview)",
+    )
+    p.add_argument(
+        "--aspect-ratio", default="3:4",
+        help="Aspect ratio hint passed to generationConfig.imageConfig",
     )
     p.add_argument("--skip-capture", action="store_true",
                    help="render HTML only, skip Puppeteer")
@@ -98,56 +122,45 @@ def main(argv: list[str] | None = None) -> int:
     # Stage 1: build prompt
     prompt = build_prompt(spec)
     (args.out / "prompt.txt").write_text(prompt, encoding="utf-8")
-    print(f"[1/5] prompt built ({len(prompt)} chars)")
+    print(f"[1/4] prompt built ({len(prompt)} chars)")
 
-    # Stage 2: generate template image
+    # Stage 2: generate template with reference image
+    reference = _resolve_reference_image()
     template_path = args.out / "template.png"
     try:
         generate_image(
-            prompt=prompt, api_key=_resolve_api_key(),
-            out_path=template_path, model=args.model,
+            prompt=prompt,
+            api_key=_resolve_api_key(),
+            out_path=template_path,
+            model=args.model,
+            reference_image_paths=[reference],
+            aspect_ratio=args.aspect_ratio,
         )
     except GeminiError as e:
         print(f"[FAIL] image generation: {e}")
         return 1
-    print(f"[2/5] template generated: {template_path}")
+    _resize_to_target(template_path)
+    print(f"[2/4] template generated + resized to 1080x1440: {template_path}")
 
-    # Stage 3: detect green marker
-    bbox = detect_green_marker(template_path)
-    if bbox is None:
-        print("[WARN] no green marker detected — using default position")
-        bbox = _default_mascot_bbox_for(spec.layout)
-    (args.out / "markers.json").write_text(
-        json.dumps({"mascot": bbox.__dict__}, indent=2),
-        encoding="utf-8",
-    )
-    print(f"[3/5] mascot bbox: x={bbox.x} y={bbox.y} w={bbox.w} h={bbox.h}")
-
-    # Stage 4: copy mascot asset + render HTML
-    mascot_path = _copy_mascot(spec.mascot_pose, args.out)
-    html = render_slide_html(
-        spec=spec,
-        template_image_path=template_path,
-        mascot_bbox=bbox,
-        mascot_asset_path=mascot_path,
-    )
+    # Stage 3: render HTML with text overlay
+    html = render_slide_html(spec=spec, template_image_path=template_path)
     html_path = args.out / "slides.html"
     html_path.write_text(html, encoding="utf-8")
-    print(f"[4/5] html rendered: {html_path}")
+    print(f"[3/4] html rendered: {html_path}")
 
-    # Stage 5: Puppeteer capture
+    # Stage 4: Puppeteer capture
     if args.skip_capture:
-        print("[5/5] capture skipped")
+        print("[4/4] capture skipped")
         return 0
 
     _write_capture_mjs(args.out)
     npm_ok = (args.out / "node_modules" / "puppeteer").exists()
     if not npm_ok:
-        print("[5/5] puppeteer not installed in out dir. "
+        print("[4/4] puppeteer not installed in out dir. "
               "Run once:  cd <out> && npm init -y && npm install puppeteer")
         return 0
     subprocess.run(["node", "capture.mjs"], cwd=args.out, check=True)
-    print(f"[5/5] PNG captured → {args.out}/slide-1.png")
+    print(f"[4/4] PNG captured → {args.out}/slide-{spec.idx}.png")
     return 0
 
 

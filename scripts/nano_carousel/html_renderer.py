@@ -1,9 +1,13 @@
-"""Assemble the final slides.html with image + mascot + text overlay."""
+"""Assemble slides.html with text overlay on top of an AI-generated template.
+
+V2: the mascot is drawn by Nano Banana as part of the template image
+(using reference-image consistency). This renderer overlays only text.
+"""
 
 from pathlib import Path
 
 from scripts.nano_carousel.layout_presets import apartment_card_text_blocks
-from scripts.nano_carousel.types import MarkerBBox, SlideSpec, TextBlock
+from scripts.nano_carousel.types import SlideSpec, TextBlock
 
 
 _FONT_MAP = {
@@ -39,10 +43,12 @@ def render_slide_html(
     *,
     spec: SlideSpec,
     template_image_path: Path,
-    mascot_bbox: MarkerBBox,
-    mascot_asset_path: Path,
 ) -> str:
-    """Return a complete HTML document containing one slide."""
+    """Return a complete HTML document with text overlay on the template.
+
+    The template image must already contain the AI-drawn mascot at the
+    designed corner position (via Nano Banana reference-image workflow).
+    """
     blocks = _text_blocks_for(spec)
     text_html = "\n".join(
         f'<div style="{_block_css(b)}">{b.content}</div>' for b in blocks
@@ -57,13 +63,10 @@ def render_slide_html(
 body {{ background:#ddd; }}
 .slide {{ width:1080px; height:1440px; position:relative; overflow:hidden;
   background:url('{template_image_path.name}') no-repeat top left / 1080px 1440px; }}
-.mascot {{ position:absolute; left:{mascot_bbox.x}px; top:{mascot_bbox.y}px;
-  width:{mascot_bbox.w}px; height:{mascot_bbox.h}px; object-fit:contain; }}
 </style>
 </head>
 <body>
 <div class="slide" id="slide-{spec.idx}">
-  <img class="mascot" src="{mascot_asset_path.name}" alt="mascot">
   {text_html}
 </div>
 </body>
