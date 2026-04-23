@@ -4,6 +4,45 @@
 <meta charset="utf-8">
 <title>seoul-10y 05</title>
 <link rel="stylesheet" href="../../../../../../.claude/skills/zipsaja-design/colors_and_type.css">
+<style>
+  /* Slide chrome — 자체완결 (zipsaja-design slide.css에 의존하지 않음) */
+  html, body { margin: 0; padding: 0; background: var(--zs-page); }
+  .zs-slide {
+    position: relative;
+    width: 1080px; height: 1440px;
+    background: var(--zs-page);     /* 베이지 캔버스 */
+    box-sizing: border-box;
+    overflow: hidden;
+    margin: 0 auto;
+    font-family: var(--ff-body);
+    color: var(--fg-1);
+  }
+  /* Page number tag (top-right) */
+  .zs-num {
+    position: absolute; top: 50px; right: 80px;
+    font-family: var(--ff-headline); font-size: 28px;
+    background: var(--zs-yellow);
+    border: 3px solid var(--zs-ink);
+    border-radius: 999px;
+    padding: 4px 18px;
+    color: var(--zs-ink);
+    z-index: 10;
+  }
+  /* Footer (bottom — fixed) */
+  .zs-foot {
+    position: absolute; left: 80px; right: 80px; bottom: 50px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--ff-headline); font-size: 22px;
+    color: var(--fg-3);
+    z-index: 5;
+  }
+  .zs-foot .handle b {
+    font-family: var(--ff-body); font-weight: 700; font-size: 22px;
+    color: var(--zs-ink);
+  }
+  .zs-foot .right { display: flex; align-items: center; gap: 12px; font-size: 24px; }
+  .zs-foot .pg { color: var(--fg-3); }
+</style>
 
 <style>
   .dd-head { padding: 80px 60px 16px; }
