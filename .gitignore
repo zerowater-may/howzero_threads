@@ -22,3 +22,6 @@ data/token.json
 htmlcov/
 
 *.log
+
+# git worktrees (isolated feature branches)
+.worktrees/
