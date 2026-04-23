@@ -83,3 +83,16 @@ def test_render_rank_bar_live(tmp_path):
     h = open(out[0]).read()
     assert h.count('class="rb-row"') == 5
     assert "서초" in h
+
+
+def test_render_compare_2col(tmp_path):
+    spec = {"slug":"c2","slides":[{"type":"compare-2col","title":"비교","left":{"label":"용산","value":"3.13배"},"right":{"label":"도봉","value":"1.88배"},"sub":"양극화"}]}
+    sp = tmp_path / "spec.yaml"; sp.write_text(yaml.safe_dump(spec, allow_unicode=True))
+    h = open(render_carousel(str(sp), str(tmp_path))[0]).read()
+    assert "3.13배" in h and "1.88배" in h
+
+def test_render_deep_detail(tmp_path):
+    spec = {"slug":"dd","slides":[{"type":"deep-detail","title":"용산은 왜?","target":"용산","bullets":["한남","국제업무지구"]}]}
+    sp = tmp_path / "spec.yaml"; sp.write_text(yaml.safe_dump(spec, allow_unicode=True))
+    h = open(render_carousel(str(sp), str(tmp_path))[0]).read()
+    assert "한남" in h and "국제업무지구" in h
