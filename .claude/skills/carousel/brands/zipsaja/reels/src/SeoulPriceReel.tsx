@@ -31,9 +31,46 @@ export const SeoulPriceReel: React.FC<{ data: SeoulPriceDataset }> = ({ data }) 
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
+  const maxAbsChange = Math.max(
+    ...data.districts.map((d) => Math.abs(d.changePct)),
+    10,
+  );
+
+  const ROWS_START_FRAME = 30;
+  const ROW_STAGGER = 6;
+  const TABLE_TOP = 620;
+
   return (
     <AbsoluteFill style={{ backgroundColor: BG, fontFamily: "Noto Sans KR" }}>
       <Header frame={frame} fps={fps} data={data} />
+      <div
+        style={{
+          position: "absolute",
+          top: TABLE_TOP,
+          left: 40,
+          width: 1000,
+          background: CREAM_BOX,
+          border: `3px solid ${INK}`,
+          borderRadius: 20,
+          padding: "16px 8px",
+        }}
+      >
+        <ColumnHeader frame={frame} />
+        {data.districts.map((d, i) => (
+          <Row
+            key={d.district}
+            district={d.district}
+            priceLastYear={d.priceLastYear}
+            priceThisYear={d.priceThisYear}
+            changePct={d.changePct}
+            appearFrame={ROWS_START_FRAME + i * ROW_STAGGER}
+            frame={frame}
+            fps={fps}
+            maxAbsChange={maxAbsChange}
+          />
+        ))}
+      </div>
+      <Footer frame={frame} />
     </AbsoluteFill>
   );
 };
@@ -144,3 +181,190 @@ const MetaPill: React.FC<{ label: string }> = ({ label }) => (
     {label}
   </span>
 );
+
+// 만원 → "22억 6,798만원" 포맷
+function fmtPrice(manwon: number): string {
+  const eok = Math.floor(manwon / 10000);
+  const rest = manwon % 10000;
+  if (rest === 0) return `${eok}억`;
+  return `${eok}억 ${rest.toLocaleString("ko-KR")}만원`;
+}
+
+interface RowProps {
+  district: string;
+  priceLastYear: number;
+  priceThisYear: number;
+  changePct: number;
+  appearFrame: number;
+  frame: number;
+  fps: number;
+  maxAbsChange: number;
+}
+
+const Row: React.FC<RowProps> = ({
+  district,
+  priceLastYear,
+  priceThisYear,
+  changePct,
+  appearFrame,
+  frame,
+  fps,
+  maxAbsChange,
+}) => {
+  const local = frame - appearFrame;
+  const rowOpacity = interpolate(local, [0, 8], [0, 1], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
+  const rowY = interpolate(local, [0, 8], [20, 0], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+    easing: Easing.out(Easing.cubic),
+  });
+  const barProgress = interpolate(local, [6, 26], [0, 1], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+    easing: Easing.out(Easing.cubic),
+  });
+
+  const isPositive = changePct >= 0;
+  const barColor = isPositive ? BAR_POS : BAR_NEG;
+  const barWidth = (Math.abs(changePct) / maxAbsChange) * 260 * barProgress;
+
+  return (
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        opacity: rowOpacity,
+        transform: `translateY(${rowY}px)`,
+        height: 48,
+        padding: "0 14px",
+        borderBottom: "1px solid rgba(0,0,0,0.08)",
+      }}
+    >
+      <div
+        style={{
+          width: 140,
+          fontFamily: "Jua",
+          fontSize: 30,
+          color: ACCENT,
+          letterSpacing: -1,
+        }}
+      >
+        {district}
+      </div>
+      <div
+        style={{
+          width: 220,
+          fontFamily: "Noto Sans KR",
+          fontWeight: 700,
+          fontSize: 24,
+          color: INK,
+          textAlign: "right",
+          paddingRight: 16,
+        }}
+      >
+        {fmtPrice(priceLastYear)}
+      </div>
+      <div
+        style={{
+          width: 220,
+          fontFamily: "Noto Sans KR",
+          fontWeight: 700,
+          fontSize: 24,
+          color: INK,
+          textAlign: "right",
+          paddingRight: 16,
+        }}
+      >
+        {fmtPrice(priceThisYear)}
+      </div>
+      <div
+        style={{
+          flex: 1,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "flex-start",
+          position: "relative",
+          height: 28,
+          marginLeft: 10,
+        }}
+      >
+        <div style={{ width: 4, background: "#888", height: "100%" }} />
+        <div
+          style={{
+            width: barWidth,
+            height: 20,
+            background: barColor,
+            marginLeft: isPositive ? 0 : -barWidth,
+            transform: isPositive ? "none" : "translateX(-100%)",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            left: isPositive ? barWidth + 14 : -barWidth - 70,
+            top: "50%",
+            transform: "translateY(-50%)",
+            fontFamily: "Noto Sans KR",
+            fontWeight: 700,
+            fontSize: 22,
+            color: barColor,
+          }}
+        >
+          {isPositive ? "+" : ""}
+          {changePct.toFixed(1)}%
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const ColumnHeader: React.FC<{ frame: number }> = ({ frame }) => {
+  const op = interpolate(frame, [20, 35], [0, 1], { extrapolateRight: "clamp" });
+  return (
+    <div
+      style={{
+        display: "flex",
+        opacity: op,
+        padding: "8px 14px 14px",
+        borderBottom: `2px solid ${INK}`,
+        marginBottom: 6,
+        fontFamily: "Jua",
+        fontSize: 24,
+        color: INK,
+      }}
+    >
+      <div style={{ width: 140 }}>지역</div>
+      <div style={{ width: 220, textAlign: "right", paddingRight: 16 }}>
+        25.1.1~4.18
+      </div>
+      <div style={{ width: 220, textAlign: "right", paddingRight: 16 }}>
+        26.1.1~4.18
+      </div>
+      <div style={{ flex: 1, marginLeft: 10 }}>동일기간 변동률</div>
+    </div>
+  );
+};
+
+const Footer: React.FC<{ frame: number }> = ({ frame }) => {
+  const op = interpolate(frame, [600, 630], [0, 1], { extrapolateRight: "clamp" });
+  return (
+    <div
+      style={{
+        position: "absolute",
+        bottom: 80,
+        width: 1080,
+        textAlign: "center",
+        opacity: op,
+        fontFamily: "Gaegu",
+        fontWeight: 700,
+        fontSize: 32,
+        color: INK,
+      }}
+    >
+      *자세한 설명은 아래 캡션을 참고해주세요!*
+    </div>
+  );
+};
