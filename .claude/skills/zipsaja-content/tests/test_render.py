@@ -42,3 +42,24 @@ def test_render_cta(tmp_path):
     sp.write_text(yaml.safe_dump(spec, allow_unicode=True))
     out = render_carousel(str(sp), str(tmp_path))
     assert "DM 환영" in open(out[0]).read()
+
+
+def test_render_map_seoul_live(tmp_path):
+    spec = {
+        "slug": "map-test",
+        "slides": [{
+            "type": "map-seoul",
+            "sql": "price-by-gu",
+            "sql_params": {"pyeong_min": 56, "pyeong_max": 63},
+            "color_metric": "median",
+            "title": "서울 24평 호가",
+            "sub": "테스트",
+        }],
+    }
+    sp = tmp_path / "spec.yaml"
+    sp.write_text(yaml.safe_dump(spec, allow_unicode=True))
+    out = render_carousel(str(sp), str(tmp_path))
+    h = open(out[0]).read()
+    assert "<svg" in h
+    assert 'data-name="강남구"' in h
+    assert "viewBox" in h

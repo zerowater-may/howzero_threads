@@ -50,6 +50,46 @@ def render_carousel(spec_path: str, out_dir: str) -> list[str]:
         if "mascot" in slide:
             ctx["mascot_path"] = os.path.join(MASCOTS_DIR, f"mascot-{slide['mascot']}.png")
 
+        if kind.startswith("map-"):
+            from lib.geo.projector import project_seoul
+            from lib.colors import percentile_tiers
+            from lib.db import query
+            from lib.sql_loader import load as sqlload
+            from lib.validator import flag_outliers
+
+            geo = project_seoul(os.path.join(SKILL_ROOT, "lib/geo/seoul.geojson"))
+            sql_preset = slide["sql"]
+            sql_params = slide.get("sql_params", {})
+            rows = query(sqlload(sql_preset, **sql_params))
+            rows = flag_outliers(rows)
+            metric = slide.get("color_metric", "median")
+            values = [float(r[metric]) for r in rows]
+            cuts = percentile_tiers(values, n=5)
+            def tier(v):
+                v = float(v)
+                for _i, c in enumerate(cuts):
+                    if v < c: return _i + 1
+                return 5
+            ctx["geo"] = geo
+            ctx["rows_by_gu"] = {r["gu"]: {**r, "tier": tier(r[metric])} for r in rows}
+            ctx["metric"] = metric
+
+        if kind == "rank-bar":
+            from lib.db import query
+            from lib.sql_loader import load as sqlload
+            sql_preset = slide["sql"]
+            sql_params = slide.get("sql_params", {})
+            rows = query(sqlload(sql_preset, **sql_params))
+            metric = slide.get("metric", "median")
+            top_n = int(slide.get("top_n", 5))
+            sorted_rows = sorted(rows, key=lambda r: float(r[metric]), reverse=True)[:top_n]
+            max_val = max(float(r[metric]) for r in sorted_rows) if sorted_rows else 1
+            ctx["bars"] = [
+                {**r, "pct": round(float(r[metric]) / max_val * 100, 1)}
+                for r in sorted_rows
+            ]
+            ctx["metric"] = metric
+
         html = tpl.render(**ctx)
         out_path = os.path.join(slides_dir, f"{i:02d}-{kind}.html")
         with open(out_path, "w") as f:
