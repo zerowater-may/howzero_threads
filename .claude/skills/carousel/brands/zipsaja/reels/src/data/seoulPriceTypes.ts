@@ -19,6 +19,7 @@ export const SEOUL_DISTRICTS_ORDER = [
   "성북구","은평구","관악구","구로구","강북구","금천구","노원구","중랑구","도봉구",
 ] as const;
 
+/** Format 만원 amount for display. Input must be a non-negative integer. */
 export function formatWon(manwon: number): { eok: number; man: number; display: string } {
   const eok = Math.floor(manwon / 10000);
   const man = manwon % 10000;
