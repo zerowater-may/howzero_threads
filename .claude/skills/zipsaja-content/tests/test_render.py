@@ -26,3 +26,19 @@ def test_tone_violation_raises(tmp_path):
     import pytest
     with pytest.raises(ValueError, match="tone violations"):
         render_carousel(str(spec_path), str(tmp_path))
+
+
+def test_render_quote_big(tmp_path):
+    spec = {"slug": "qb", "slides": [{"type": "quote-big", "value": "용산 3.13배", "subtitle": "강남이 1위 아니다"}]}
+    sp = tmp_path / "spec.yaml"
+    sp.write_text(yaml.safe_dump(spec, allow_unicode=True))
+    out = render_carousel(str(sp), str(tmp_path))
+    h = open(out[0]).read()
+    assert "용산 3.13배" in h
+
+def test_render_cta(tmp_path):
+    spec = {"slug": "cta", "slides": [{"type": "cta", "handle": "@zipsaja", "msg": "DM 환영"}]}
+    sp = tmp_path / "spec.yaml"
+    sp.write_text(yaml.safe_dump(spec, allow_unicode=True))
+    out = render_carousel(str(sp), str(tmp_path))
+    assert "DM 환영" in open(out[0]).read()

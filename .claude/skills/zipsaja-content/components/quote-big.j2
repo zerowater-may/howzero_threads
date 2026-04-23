@@ -1,0 +1,16 @@
+{% extends "_base.html.j2" %}
+{% block style %}
+<style>
+  .qb-wrap { display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; padding: 100px 60px; }
+  .qb-value { font-family: var(--ff-headline); font-size: 220px; line-height: 1; color: var(--zs-yellow); letter-spacing: -3px; text-align:center; }
+  .qb-sub { font-family: var(--ff-body); font-weight: 700; font-size: 48px; color: var(--zs-ink); margin-top: 36px; text-align:center; }
+  .qb-mascot { position:absolute; right:50px; top:50px; width:180px; }
+</style>
+{% endblock %}
+{% block content %}
+<div class="qb-wrap">
+  <div class="qb-value">{{ value }}</div>
+  <div class="qb-sub">{{ subtitle }}</div>
+</div>
+{% if mascot %}<img src="{{ mascot_path }}" class="qb-mascot" alt="">{% endif %}
+{% endblock %}
