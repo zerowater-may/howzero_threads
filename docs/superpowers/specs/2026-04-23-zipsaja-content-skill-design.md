@@ -64,6 +64,7 @@
 │   ├── colors.py            # tier ramp (percentile-based) + WCAG contrast checker
 │   ├── footer.py            # build footer with live counts
 │   ├── tone.py              # 금지어 검사 ("끝났다", "여러분", 이모지 등)
+│   ├── hook_draft.py        # 데이터 인사이트 추출 → hook 후보 5개 (tone.py 통과 필수)
 │   ├── validator.py         # outlier flag (n<30), multi-method (median/mean/p25/p75)
 │   ├── render.py            # Jinja → HTML → Puppeteer → PNG
 │   └── db.py                # SSH + psql wrapper, query → dict
@@ -83,12 +84,14 @@
 
 | # | 단계 | 누가 | 설명 |
 |---|------|------|------|
-| 1 | HOOK 정하기 | 👤 사람 | 토픽 + hook 카피 + 8~10장 outline (yaml) |
+| 1 | TOPIC 정하기 | 👤 사람 | 토픽 한 줄 + 대상 SQL preset 지정 |
 | 2 | DATA 쿼리 | 🤖 자동 | live-counts + 토픽 SQL preset 실행, json 캐시 |
-| 3 | VALIDATE | 🤖→👤 | n<30 ★, 다중방법 비교 → 사람 OK 검수 |
-| 4 | RENDER | 🤖 자동 | Jinja+컴포넌트 → HTML (slides/01.html ~ NN.html) |
-| 5 | REVIEW | 🤖→👤 | contrast/footer/톤/출처 자동 체크 → 사람 최종 검수 |
-| 6 | PUBLISH | 🤖 자동 | Puppeteer 1080×1440 PNG (exports/) |
+| 2.5 | HOOK 초안 | 🤖→👤 | 데이터 인사이트 자동 추출 → hook 후보 5개 제안 → 사람이 고르거나 새로 씀 |
+| 3 | OUTLINE 확정 | 👤 사람 | hook 확정 + 8~10장 slide outline (yaml) |
+| 4 | VALIDATE | 🤖→👤 | n<30 ★, 다중방법 비교 → 사람 OK 검수 |
+| 5 | RENDER | 🤖 자동 | Jinja+컴포넌트 → HTML (slides/01.html ~ NN.html) |
+| 6 | REVIEW | 🤖→👤 | contrast/footer/톤/출처 자동 체크 → 사람 최종 검수 |
+| 7 | PUBLISH | 🤖 자동 | Puppeteer 1080×1440 PNG (exports/) |
 
 ## 3. Mistake prevention — 13 guards (자동)
 
@@ -257,10 +260,29 @@ zipsaja-content build <slug>
 - [ ] 13개 가드 모두 자동화됨 (각 가드 unit test 통과)
 - [ ] 9개 컴포넌트 모두 1080×1440 렌더 OK
 - [ ] 5개 SQL preset 모두 라이브 쿼리 통과
+- [ ] `hook_draft.py`가 데이터 기반 hook 후보 5개 생성, tone.py 통과, hallucination 테스트 통과
 - [ ] dogfood 카드뉴스 ("10년 비교") 7~10장 PNG 추출 완료
 - [ ] meta.json에 출처/시점/검증/카피 모두 기록
 - [ ] tone/contrast 위반 시 빌드가 실제로 멈춤
 - [ ] 자연어 호출 ("강남 vs 서초 카드뉴스") → spec.yaml draft까지 자동
+
+## 10-A. Hook drafting — how it works
+
+`lib/hook_draft.py` 는 데이터 fetch 결과 (step 2 산출물) 를 받아 **인사이트 자동 추출**:
+
+1. **TOP / BOTTOM 추출** — 최대/최소 값, 차이 배수
+2. **통념 파괴 탐지** — "top by X" != "top by Y" (예: 강남 매물 비쌈 vs 용산 상승률 1위)
+3. **변환 hook** — "N년 전 X억 → 지금 Y억"
+4. **양극화 hook** — top vs bottom 격차 배수
+5. **감정 hook** — "X년에 산 사람" 같은 카피 템플릿
+
+출력: hook 후보 **5개** (한글, 반말, 각 25자 이내).
+
+### 가드
+- 모든 후보 `tone.py` 통과 필수 (통과 못 하면 drop)
+- 데이터에 **없는 숫자/이름** 포함 금지 (hallucination 방지 — fetch 결과 json의 숫자만 사용 가능, lint로 검증)
+- 표본 수 적은 단지/구 기반 hook = ★ 표시
+- 사람이 후보 고르지 않고 새로 써도 OK (후보는 참고용)
 
 ## 11. Risks / open questions
 
