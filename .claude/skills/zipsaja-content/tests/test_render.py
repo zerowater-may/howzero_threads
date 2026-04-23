@@ -63,3 +63,23 @@ def test_render_map_seoul_live(tmp_path):
     assert "<svg" in h
     assert 'data-name="강남구"' in h
     assert "viewBox" in h
+
+
+def test_render_rank_bar_live(tmp_path):
+    spec = {
+        "slug": "rb",
+        "slides": [{
+            "type": "rank-bar",
+            "sql": "price-by-gu",
+            "sql_params": {"pyeong_min": 56, "pyeong_max": 63},
+            "metric": "median",
+            "top_n": 5,
+            "title": "TOP 5",
+        }],
+    }
+    sp = tmp_path / "spec.yaml"
+    sp.write_text(yaml.safe_dump(spec, allow_unicode=True))
+    out = render_carousel(str(sp), str(tmp_path))
+    h = open(out[0]).read()
+    assert h.count('class="rb-row"') == 5
+    assert "서초" in h
