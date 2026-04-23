@@ -96,3 +96,17 @@ def test_render_deep_detail(tmp_path):
     sp = tmp_path / "spec.yaml"; sp.write_text(yaml.safe_dump(spec, allow_unicode=True))
     h = open(render_carousel(str(sp), str(tmp_path))[0]).read()
     assert "한남" in h and "국제업무지구" in h
+
+
+def test_render_distribution(tmp_path):
+    spec = {"slug":"dist","slides":[{
+        "type":"distribution","title":"서초 동별",
+        "group_label":"동","value_label":"억",
+        "rows":[
+            {"label":"잠원동","n":367,"value":"39.0","is_outlier":False},
+            {"label":"반포동","n":566,"value":"37.2","is_outlier":False},
+        ],
+    }]}
+    sp = tmp_path / "spec.yaml"; sp.write_text(yaml.safe_dump(spec, allow_unicode=True))
+    h = open(render_carousel(str(sp), str(tmp_path))[0]).read()
+    assert "잠원동" in h and "39.0" in h
