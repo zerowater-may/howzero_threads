@@ -1,0 +1,56 @@
+slug: seoul-10y
+topic: "10년간 서울 어디가 제일 올랐을까"
+mascot_default: hero
+data_queries:
+  - name: history
+    sql: price-history-Ny
+    params:
+      years_ago: 10
+      pyeong_min: 56
+      pyeong_max: 63
+slides:
+  - type: cover
+    headline: "10년간 서울"
+    sub: "어디가 제일 올랐을까?"
+    mascot: hero
+  - type: quote-big
+    value: "용산 3.13배"
+    subtitle: "강남이 1위 아니다"
+    mascot: surprise
+  - type: rank-bar
+    sql: price-history-Ny
+    sql_params:
+      years_ago: 10
+      pyeong_min: 56
+      pyeong_max: 63
+    metric: multiple
+    top_n: 5
+    title: "TOP 5 — 10년 상승률"
+  - type: map-seoul
+    sql: price-history-Ny
+    sql_params:
+      years_ago: 10
+      pyeong_min: 56
+      pyeong_max: 63
+    color_metric: multiple
+    title: "구별 10년 상승률"
+    sub: "진할수록 많이 올랐다"
+  - type: deep-detail
+    title: "용산은 왜?"
+    target: "용산"
+    bullets:
+      - "한남뉴타운 진행"
+      - "용산국제업무지구 재추진"
+      - "강·역세권 신축 프리미엄"
+  - type: compare-2col
+    title: "10년 양극화"
+    left:
+      label: "용산"
+      value: "3.13배"
+    right:
+      label: "도봉"
+      value: "1.88배"
+    sub: "격차 1.7배 더 벌어짐"
+  - type: cta
+    handle: "@zipsaja"
+    msg: "더 자세한 데이터는 DM"

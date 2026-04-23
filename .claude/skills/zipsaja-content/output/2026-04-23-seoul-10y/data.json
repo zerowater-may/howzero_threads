@@ -1,0 +1,210 @@
+{
+  "live_counts": {
+    "complexes": "1377",
+    "active_articles": "42048",
+    "last_scan": "2026-04-23",
+    "min_units": "300"
+  },
+  "history": [
+    {
+      "gu": "용산구",
+      "eok_then": "106130.6",
+      "eok_now": "331798.8",
+      "multiple": "3.13",
+      "gain_pct": "213",
+      "samples": "1481/121"
+    },
+    {
+      "gu": "성동구",
+      "eok_then": "58502.0",
+      "eok_now": "181853.2",
+      "multiple": "3.11",
+      "gain_pct": "211",
+      "samples": "3763/314"
+    },
+    {
+      "gu": "광진구",
+      "eok_then": "63809.0",
+      "eok_now": "186495.3",
+      "multiple": "2.92",
+      "gain_pct": "192",
+      "samples": "1456/113"
+    },
+    {
+      "gu": "서초구",
+      "eok_then": "115197.5",
+      "eok_now": "329601.0",
+      "multiple": "2.86",
+      "gain_pct": "186",
+      "samples": "2540/206"
+    },
+    {
+      "gu": "강동구",
+      "eok_then": "54638.4",
+      "eok_now": "155831.7",
+      "multiple": "2.85",
+      "gain_pct": "185",
+      "samples": "2936/468"
+    },
+    {
+      "gu": "송파구",
+      "eok_then": "84979.9",
+      "eok_now": "236885.1",
+      "multiple": "2.79",
+      "gain_pct": "179",
+      "samples": "7355/1072"
+    },
+    {
+      "gu": "동작구",
+      "eok_then": "58946.9",
+      "eok_now": "156456.4",
+      "multiple": "2.65",
+      "gain_pct": "165",
+      "samples": "4194/468"
+    },
+    {
+      "gu": "영등포구",
+      "eok_then": "54111.3",
+      "eok_now": "139345.9",
+      "multiple": "2.58",
+      "gain_pct": "158",
+      "samples": "2630/531"
+    },
+    {
+      "gu": "동대문구",
+      "eok_then": "45537.0",
+      "eok_now": "117456.7",
+      "multiple": "2.58",
+      "gain_pct": "158",
+      "samples": "3149/710"
+    },
+    {
+      "gu": "마포구",
+      "eok_then": "65001.7",
+      "eok_now": "167199.2",
+      "multiple": "2.57",
+      "gain_pct": "157",
+      "samples": "3694/305"
+    },
+    {
+      "gu": "강남구",
+      "eok_then": "110080.2",
+      "eok_now": "264937.2",
+      "multiple": "2.41",
+      "gain_pct": "141",
+      "samples": "3561/327"
+    },
+    {
+      "gu": "중구",
+      "eok_then": "56971.3",
+      "eok_now": "135595.6",
+      "multiple": "2.38",
+      "gain_pct": "138",
+      "samples": "977/161"
+    },
+    {
+      "gu": "종로구",
+      "eok_then": "56007.7",
+      "eok_now": "130095.4",
+      "multiple": "2.32",
+      "gain_pct": "132",
+      "samples": "607/124"
+    },
+    {
+      "gu": "관악구",
+      "eok_then": "41700.0",
+      "eok_now": "96158.2",
+      "multiple": "2.31",
+      "gain_pct": "131",
+      "samples": "2602/610"
+    },
+    {
+      "gu": "서대문구",
+      "eok_then": "52092.1",
+      "eok_now": "119362.1",
+      "multiple": "2.29",
+      "gain_pct": "129",
+      "samples": "3229/647"
+    },
+    {
+      "gu": "강서구",
+      "eok_then": "49892.9",
+      "eok_now": "111094.4",
+      "multiple": "2.23",
+      "gain_pct": "123",
+      "samples": "6268/974"
+    },
+    {
+      "gu": "양천구",
+      "eok_then": "54617.1",
+      "eok_now": "119425.9",
+      "multiple": "2.19",
+      "gain_pct": "119",
+      "samples": "1944/498"
+    },
+    {
+      "gu": "성북구",
+      "eok_then": "43742.7",
+      "eok_now": "95581.0",
+      "multiple": "2.19",
+      "gain_pct": "119",
+      "samples": "5592/1314"
+    },
+    {
+      "gu": "중랑구",
+      "eok_then": "33547.7",
+      "eok_now": "71401.9",
+      "multiple": "2.13",
+      "gain_pct": "113",
+      "samples": "2322/592"
+    },
+    {
+      "gu": "은평구",
+      "eok_then": "46907.6",
+      "eok_now": "99890.2",
+      "multiple": "2.13",
+      "gain_pct": "113",
+      "samples": "2590/994"
+    },
+    {
+      "gu": "금천구",
+      "eok_then": "34055.0",
+      "eok_now": "71757.7",
+      "multiple": "2.11",
+      "gain_pct": "111",
+      "samples": "1131/279"
+    },
+    {
+      "gu": "노원구",
+      "eok_then": "31869.3",
+      "eok_now": "67009.9",
+      "multiple": "2.10",
+      "gain_pct": "110",
+      "samples": "7851/1658"
+    },
+    {
+      "gu": "구로구",
+      "eok_then": "40949.4",
+      "eok_now": "81798.1",
+      "multiple": "2.00",
+      "gain_pct": "100",
+      "samples": "3849/877"
+    },
+    {
+      "gu": "강북구",
+      "eok_then": "39498.4",
+      "eok_now": "78399.4",
+      "multiple": "1.98",
+      "gain_pct": "98",
+      "samples": "1601/395"
+    },
+    {
+      "gu": "도봉구",
+      "eok_then": "32209.8",
+      "eok_now": "60486.9",
+      "multiple": "1.88",
+      "gain_pct": "88",
+      "samples": "3235/507"
+    }
+  ]
+}

@@ -39,13 +39,13 @@ def render_carousel(spec_path: str, out_dir: str) -> list[str]:
 
         tpl = env.get_template(f"{kind}.j2")
         ctx = {
-            **slide,
             "num": i,
             "total": total,
             "footer_text": footer,
             "tokens_css": TOKENS_CSS,
-            "title": f"{spec['slug']} {i:02d}",
+            "page_title": f"{spec['slug']} {i:02d}",
             "screen_label": f"{i:02d} {kind}",
+            **slide,  # slide fields take priority (including slide's own 'title')
         }
         if "mascot" in slide:
             ctx["mascot_path"] = os.path.join(MASCOTS_DIR, f"mascot-{slide['mascot']}.png")

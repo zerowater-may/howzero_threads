@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<title>{{ title|default('zipsaja') }}</title>
+<title>{{ page_title|default(title)|default('zipsaja') }}</title>
 <link rel="stylesheet" href="{{ tokens_css }}">
 {% block style %}{% endblock %}
 </head>
