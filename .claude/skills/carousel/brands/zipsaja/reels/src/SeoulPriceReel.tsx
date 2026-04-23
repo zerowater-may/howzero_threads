@@ -37,7 +37,7 @@ export const SeoulPriceReel: React.FC<{ data: SeoulPriceDataset }> = ({ data }) 
 
   const ROWS_START_FRAME = 30;
   const ROW_STAGGER = 6;
-  const TABLE_TOP = 620;
+  const TABLE_TOP = 640;
 
   return (
     <AbsoluteFill style={{ backgroundColor: BG, fontFamily: "Noto Sans KR" }}>
@@ -226,7 +226,7 @@ const Row: React.FC<RowProps> = ({
         alignItems: "center",
         opacity: rowOpacity,
         transform: `translateY(${rowY}px)`,
-        height: 48,
+        height: 42,
         padding: "0 14px",
         borderBottom: "1px solid rgba(0,0,0,0.08)",
       }}
@@ -235,7 +235,7 @@ const Row: React.FC<RowProps> = ({
         style={{
           width: 140,
           fontFamily: "Jua",
-          fontSize: 30,
+          fontSize: 26,
           color: ACCENT,
           letterSpacing: -1,
         }}
@@ -247,7 +247,7 @@ const Row: React.FC<RowProps> = ({
           width: 220,
           fontFamily: "Noto Sans KR",
           fontWeight: 700,
-          fontSize: 24,
+          fontSize: 22,
           color: INK,
           textAlign: "right",
           paddingRight: 16,
@@ -260,7 +260,7 @@ const Row: React.FC<RowProps> = ({
           width: 220,
           fontFamily: "Noto Sans KR",
           fontWeight: 700,
-          fontSize: 24,
+          fontSize: 22,
           color: INK,
           textAlign: "right",
           paddingRight: 16,
@@ -354,7 +354,7 @@ const Footer: React.FC<{ frame: number }> = ({ frame }) => {
     <div
       style={{
         position: "absolute",
-        bottom: 80,
+        bottom: 50,
         width: 1080,
         textAlign: "center",
         opacity: op,
