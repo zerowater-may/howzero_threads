@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ko"><head>
+<meta charset="utf-8">
+<title>주변에 AI 광인들 특징 모음 — 캐러셀</title>
+<link rel="stylesheet" href="comic.css">
+<style>
+  html, body { height: 100%; margin:0; background:#e9e9e9; overflow:hidden; }
+  body { display:flex; align-items:center; justify-content:center; }
+  .stage {
+    position: relative;
+    width: 1080px; height: 1440px;
+    background: white;
+    transform-origin: center center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+  }
+  .stage iframe {
+    width:1080px; height:1440px; border:0; display:block;
+    background:white;
+  }
+  .nav {
+    position: fixed; top: 50%; transform: translateY(-50%);
+    width: 56px; height: 56px; border-radius: 50%;
+    background: white; border: 3px solid #141414;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Gaegu', sans-serif; font-weight: 700; font-size: 32px;
+    cursor: pointer; z-index: 10; user-select: none;
+    box-shadow: 3px 3px 0 #141414;
+  }
+  .nav:hover { background: #FFD43B; }
+  .nav.prev { left: 24px; }
+  .nav.next { right: 24px; }
+  .counter {
+    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+    background: white; border: 3px solid #141414; border-radius: 999px;
+    padding: 10px 20px; font-family:'Gaegu'; font-weight:700; font-size: 22px;
+    box-shadow: 3px 3px 0 #141414; z-index: 10;
+  }
+  .dots {
+    position: fixed; top: 24px; left: 50%; transform: translateX(-50%);
+    display: flex; gap: 8px; z-index: 10;
+  }
+  .dot {
+    width: 14px; height: 14px; border-radius: 50%;
+    background: white; border: 2px solid #141414; cursor: pointer;
+  }
+  .dot.active { background: #141414; }
+</style>
+</head>
+<body>
+
+<div class="stage" id="stage">
+  <iframe id="frame" src="slide-00-cover.html"></iframe>
+</div>
+
+<div class="nav prev" id="prev">‹</div>
+<div class="nav next" id="next">›</div>
+<div class="dots" id="dots"></div>
+<div class="counter" id="counter">1 / 10</div>
+
+<script>
+  const slides = [
+    'slide-00-cover.html',
+    'slide-01.html',
+    'slide-02.html',
+    'slide-03.html',
+    'slide-04.html',
+    'slide-05.html',
+    'slide-06.html',
+    'slide-07.html',
+    'slide-08.html',
+    'slide-09.html',
+  ];
+
+  const frame = document.getElementById('frame');
+  const prev = document.getElementById('prev');
+  const next = document.getElementById('next');
+  const counter = document.getElementById('counter');
+  const dotsWrap = document.getElementById('dots');
+  const stage = document.getElementById('stage');
+
+  let idx = Number(localStorage.getItem('ai-kwangin-idx') || 0);
+  if (idx < 0 || idx >= slides.length) idx = 0;
+
+  slides.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'dot';
+    d.addEventListener('click', () => go(i));
+    dotsWrap.appendChild(d);
+  });
+
+  function go(n) {
+    idx = (n + slides.length) % slides.length;
+    frame.src = slides[idx];
+    counter.textContent = (idx+1) + ' / ' + slides.length;
+    [...dotsWrap.children].forEach((d, i) => d.classList.toggle('active', i === idx));
+    localStorage.setItem('ai-kwangin-idx', idx);
+    window.postMessage({ slideIndexChanged: idx }, '*');
+  }
+
+  prev.addEventListener('click', () => go(idx - 1));
+  next.addEventListener('click', () => go(idx + 1));
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft') go(idx - 1);
+    if (e.key === 'ArrowRight') go(idx + 1);
+  });
+
+  // fit to viewport
+  function fit() {
+    const vw = window.innerWidth, vh = window.innerHeight;
+    const s = Math.min(vw / 1080, vh / 1440) * 0.94;
+    stage.style.transform = 'scale(' + s + ')';
+  }
+  window.addEventListener('resize', fit);
+  fit();
+  go(idx);
+</script>
+
+</body></html>

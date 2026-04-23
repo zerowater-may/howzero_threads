@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko"><head>
+<meta charset="utf-8"><title>UI Kit — Carousel</title>
+<link rel="stylesheet" href="../../colors_and_type.css">
+<style>
+  body{margin:0;background:var(--zs-page);font-family:var(--ff-body);color:var(--fg-1);}
+  .wrap{max-width:1180px;margin:0 auto;padding:32px 24px 80px;}
+  h1{font-family:var(--ff-headline);font-size:42px;margin:0 0 6px;}
+  .sub{font-weight:700;color:var(--fg-3);font-size:14px;margin-bottom:28px;}
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+  .card{background:#fff;border:3px solid var(--zs-ink);border-radius:18px;overflow:hidden;box-shadow:var(--shadow-stamp-sm);}
+  .meta{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;border-bottom:2px solid var(--zs-ink);background:var(--zs-cream);font-weight:700;font-size:12px;}
+  .meta b{font-family:var(--ff-headline);font-size:16px;}
+  .frame{width:100%;aspect-ratio: 3/4;border:0;display:block;background:#fff;}
+  .nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;}
+  .nav a{font-family:var(--ff-headline);font-size:14px;background:#fff;border:2px solid var(--zs-ink);border-radius:999px;padding:4px 12px;text-decoration:none;color:inherit;}
+</style></head>
+<body>
+  <div class="wrap">
+    <h1>집사자 캐러셀 UI Kit</h1>
+    <div class="sub">1080×1440 · 10장 구성 · 커버 → 도입 → 조건 → 매물 5개 → 정리 → CTA</div>
+
+    <div class="nav">
+      <a href="slide-01-cover.html">01 커버</a>
+      <a href="slide-02-intro.html">02 도입</a>
+      <a href="slide-03-conditions.html">03 조건</a>
+      <a href="slide-04-listing.html">04 매물 #1</a>
+      <a href="slide-05-listing.html">05 매물 #2</a>
+      <a href="slide-06-checkpoint.html">06 체크포인트</a>
+      <a href="slide-07-summary.html">07 정리</a>
+      <a href="slide-08-cta.html">08 CTA</a>
+    </div>
+
+    <div class="grid">
+      <div class="card"><div class="meta"><b>01 — Cover</b><span>HOOK</span></div><iframe class="frame" src="slide-01-cover.html"></iframe></div>
+      <div class="card"><div class="meta"><b>02 — Intro</b><span>HOOK CONFIRM</span></div><iframe class="frame" src="slide-02-intro.html"></iframe></div>
+      <div class="card"><div class="meta"><b>03 — Conditions</b><span>VALUE</span></div><iframe class="frame" src="slide-03-conditions.html"></iframe></div>
+      <div class="card"><div class="meta"><b>04 — Listing #1</b><span>VALUE</span></div><iframe class="frame" src="slide-04-listing.html"></iframe></div>
+      <div class="card"><div class="meta"><b>05 — Listing #2</b><span>VALUE</span></div><iframe class="frame" src="slide-05-listing.html"></iframe></div>
+      <div class="card"><div class="meta"><b>06 — Check Point</b><span>VALUE</span></div><iframe class="frame" src="slide-06-checkpoint.html"></iframe></div>
+      <div class="card"><div class="meta"><b>07 — Summary</b><span>VALUE</span></div><iframe class="frame" src="slide-07-summary.html"></iframe></div>
+      <div class="card"><div class="meta"><b>08 — CTA</b><span>CTA</span></div><iframe class="frame" src="slide-08-cta.html"></iframe></div>
+    </div>
+  </div>
+</body></html>

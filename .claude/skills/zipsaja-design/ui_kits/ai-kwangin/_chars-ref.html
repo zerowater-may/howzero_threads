@@ -1,0 +1,38 @@
+<!-- 공용 캐릭터 SVG 정의
+     각 슬라이드에서 <svg><use href="chars.svg#wife"/></svg> 형태로 쓰거나
+     인라인 복붙해서 사용 -->
+
+<!-- 와이프 (빨간 리본) - 둥근 실루엣 + 점 2개 눈 + 빨간 리본 -->
+<svg class="hd-char-wife" viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg">
+  <!-- 본체: 둥근 마름모 / 물방울 -->
+  <path d="M 100 30
+           C 50 30, 30 100, 45 170
+           C 55 220, 145 220, 155 170
+           C 170 100, 150 30, 100 30 Z"
+        fill="white" stroke="#141414" stroke-width="3.5" stroke-linejoin="round"/>
+  <!-- 눈 -->
+  <circle cx="78" cy="110" r="3.5" fill="#141414"/>
+  <circle cx="118" cy="110" r="3.5" fill="#141414"/>
+  <!-- 리본 (머리 위) -->
+  <path d="M 100 30 L 70 15 L 75 40 Z" fill="#E5192E" stroke="#141414" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M 100 30 L 130 15 L 125 40 Z" fill="#E5192E" stroke="#141414" stroke-width="2" stroke-linejoin="round"/>
+  <circle cx="100" cy="27" r="4" fill="#E5192E" stroke="#141414" stroke-width="2"/>
+</svg>
+
+<!-- 남편 (리본 없음, 안경 있음) - 약간 비스듬 -->
+<svg class="hd-char-husband" viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg">
+  <path d="M 100 35
+           C 55 35, 35 105, 50 175
+           C 60 220, 140 225, 150 180
+           C 170 110, 145 35, 100 35 Z"
+        fill="white" stroke="#141414" stroke-width="3.5" stroke-linejoin="round"/>
+  <!-- 안경 -->
+  <circle cx="78" cy="115" r="11" fill="none" stroke="#141414" stroke-width="2.2"/>
+  <circle cx="118" cy="115" r="11" fill="none" stroke="#141414" stroke-width="2.2"/>
+  <line x1="89" y1="115" x2="107" y2="115" stroke="#141414" stroke-width="2.2"/>
+  <!-- 눈 (안경 속 작은 점) -->
+  <circle cx="78" cy="115" r="2.5" fill="#141414"/>
+  <circle cx="118" cy="115" r="2.5" fill="#141414"/>
+  <!-- 입 -->
+  <path d="M 88 145 Q 100 152 112 145" fill="none" stroke="#141414" stroke-width="2.2" stroke-linecap="round"/>
+</svg>

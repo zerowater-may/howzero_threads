@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ko"><head>
+<meta charset="utf-8"><title>Colors — Semantic</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body{margin:0;padding:24px;background:#fff;font-family:var(--ff-body);}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .sw{border:2px solid var(--zs-ink);border-radius:12px;overflow:hidden;}
+  .chip{height:80px;display:flex;align-items:center;justify-content:center;font-family:var(--ff-headline);font-size:38px;color:#fff;}
+  .info{padding:8px 10px;background:#fff;}
+  .name{font-weight:700;font-size:13px;}
+  .hex{font-size:11px;color:var(--fg-3);font-weight:700;}
+  .note{margin-top:14px;font-size:11px;color:var(--fg-3);font-weight:700;}
+</style></head>
+<body>
+  <div class="grid">
+    <div class="sw"><div class="chip" style="background:var(--zs-good);">✓</div><div class="info"><div class="name">Good</div><div class="hex">#2E7D32</div></div></div>
+    <div class="sw"><div class="chip" style="background:var(--zs-warn);">!</div><div class="info"><div class="name">Warn</div><div class="hex">#E65100</div></div></div>
+    <div class="sw"><div class="chip" style="background:var(--zs-bad);">✗</div><div class="info"><div class="name">Bad</div><div class="hex">#C62828</div></div></div>
+  </div>
+  <div class="note">아이콘 표시에만. 면적·배경 색으로 사용 금지.</div>
+</body></html>

@@ -1,0 +1,64 @@
+/* Shared slide chrome for all 1080×1440 carousel slides.
+   Each slide is a standalone HTML file (so it can be captured as a single PNG)
+   and links this stylesheet alongside ../../colors_and_type.css. */
+
+html, body { margin:0; padding:0; background: var(--zs-page); }
+
+.zs-slide {
+  position: relative;
+  width: 1080px;
+  height: 1440px;
+  background: var(--zs-page);   /* 베이지 캔버스 (집사자 v1 기본 배경) */
+  padding: 100px 80px 140px;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin: 0 auto;
+  font-family: var(--ff-body);
+  color: var(--fg-1);
+}
+.zs-slide.dark   { background: var(--zs-ink);   color: #fff; }
+.zs-slide.cream  { background: var(--zs-cream-soft); }
+.zs-slide.yellow { background: var(--zs-yellow); }
+
+/* --- Footer (every slide) ---------------------------------------------- */
+.zs-foot {
+  position: absolute; left: 80px; right: 80px; bottom: 60px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--ff-headline);
+  font-size: 26px;
+}
+.zs-foot .handle { display:flex; align-items:center; gap: 12px; }
+.zs-foot .handle img { width: 44px; height: 44px; }
+.zs-foot .handle b { font-family: var(--ff-headline); font-weight: 400; font-size: 28px; line-height: 1; }
+.zs-foot .right { display:flex; align-items:center; gap: 14px; }
+.zs-foot .pg { color: var(--fg-3); }
+.zs-slide.dark .zs-foot .pg { color: rgba(255,255,255,0.6); }
+.zs-slide.dark .zs-foot { color: #fff; }
+.zs-slide.dark .zs-foot .handle b { color:#fff; }
+
+/* --- Slide-number tag (top-right) -------------------------------------- */
+.zs-num {
+  position: absolute; top: 50px; right: 80px;
+  font-family: var(--ff-headline); font-size: 28px;
+  background: var(--zs-yellow);
+  border: 3px solid var(--zs-ink);
+  border-radius: 999px;
+  padding: 4px 18px;
+  color: var(--zs-ink);
+}
+
+/* --- Tail/connector for mascot bubble ---------------------------------- */
+.zs-bubble {
+  position: relative; display: inline-block;
+  background: #fff; border: 3px solid var(--zs-ink); border-radius: 22px;
+  padding: 18px 28px; box-shadow: var(--shadow-stamp-sm);
+  font-family: var(--ff-hand); font-weight: 700; font-size: var(--fs-bubble);
+  line-height: 1.3; max-width: 720px;
+  white-space: nowrap;
+}
+.zs-bubble.tail-bl::before, .zs-bubble.tail-bl::after { content:""; position:absolute; bottom:-22px; left:60px; width:0;height:0;border:14px solid transparent; }
+.zs-bubble.tail-bl::before { border-top-color: var(--zs-ink); bottom:-30px; }
+.zs-bubble.tail-bl::after  { border-top-color: #fff; bottom:-22px; left:62px; border-width:12px; }
+.zs-bubble.tail-l::before, .zs-bubble.tail-l::after { content:""; position:absolute; top:46%; width:0;height:0;border:14px solid transparent; }
+.zs-bubble.tail-l::before { left:-28px; border-right-color: var(--zs-ink); }
+.zs-bubble.tail-l::after  { left:-22px; border-right-color: #fff; border-width:12px; top:48%; }
