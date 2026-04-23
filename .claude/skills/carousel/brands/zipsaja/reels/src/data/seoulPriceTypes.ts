@@ -23,6 +23,6 @@ export const SEOUL_DISTRICTS_ORDER = [
 export function formatWon(manwon: number): { eok: number; man: number; display: string } {
   const eok = Math.floor(manwon / 10000);
   const man = manwon % 10000;
-  const display = man === 0 ? `${eok}억` : `${eok}억 ${man.toLocaleString()}만원`;
+  const display = man === 0 ? `${eok}억` : `${eok}억 ${man.toLocaleString("ko-KR")}만원`;
   return { eok, man, display };
 }

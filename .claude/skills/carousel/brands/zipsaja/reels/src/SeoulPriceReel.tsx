@@ -4,14 +4,13 @@ import {
   Easing,
   interpolate,
   spring,
-  staticFile,
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
 import { loadFont as loadJua } from "@remotion/google-fonts/Jua";
 import { loadFont as loadNoto } from "@remotion/google-fonts/NotoSansKR";
 import { loadFont as loadGaegu } from "@remotion/google-fonts/Gaegu";
-import type { SeoulPriceDataset } from "./data/seoulPriceTypes";
+import { formatWon, type SeoulPriceDataset } from "./data/seoulPriceTypes";
 
 loadJua();
 loadNoto();
@@ -65,7 +64,6 @@ export const SeoulPriceReel: React.FC<{ data: SeoulPriceDataset }> = ({ data }) 
             changePct={d.changePct}
             appearFrame={ROWS_START_FRAME + i * ROW_STAGGER}
             frame={frame}
-            fps={fps}
             maxAbsChange={maxAbsChange}
           />
         ))}
@@ -182,14 +180,6 @@ const MetaPill: React.FC<{ label: string }> = ({ label }) => (
   </span>
 );
 
-// 만원 → "22억 6,798만원" 포맷
-function fmtPrice(manwon: number): string {
-  const eok = Math.floor(manwon / 10000);
-  const rest = manwon % 10000;
-  if (rest === 0) return `${eok}억`;
-  return `${eok}억 ${rest.toLocaleString("ko-KR")}만원`;
-}
-
 interface RowProps {
   district: string;
   priceLastYear: number;
@@ -197,7 +187,6 @@ interface RowProps {
   changePct: number;
   appearFrame: number;
   frame: number;
-  fps: number;
   maxAbsChange: number;
 }
 
@@ -208,7 +197,6 @@ const Row: React.FC<RowProps> = ({
   changePct,
   appearFrame,
   frame,
-  fps,
   maxAbsChange,
 }) => {
   const local = frame - appearFrame;
@@ -265,7 +253,7 @@ const Row: React.FC<RowProps> = ({
           paddingRight: 16,
         }}
       >
-        {fmtPrice(priceLastYear)}
+        {formatWon(priceLastYear).display}
       </div>
       <div
         style={{
@@ -278,7 +266,7 @@ const Row: React.FC<RowProps> = ({
           paddingRight: 16,
         }}
       >
-        {fmtPrice(priceThisYear)}
+        {formatWon(priceThisYear).display}
       </div>
       <div
         style={{
