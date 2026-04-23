@@ -217,7 +217,7 @@ const Row: React.FC<RowProps> = ({
 
   const isPositive = changePct >= 0;
   const barColor = isPositive ? BAR_POS : BAR_NEG;
-  const barWidth = (Math.abs(changePct) / maxAbsChange) * 260 * barProgress;
+  const barWidth = (Math.abs(changePct) / maxAbsChange) * 130 * barProgress;
 
   return (
     <div
@@ -268,37 +268,49 @@ const Row: React.FC<RowProps> = ({
       >
         {formatWon(priceThisYear).display}
       </div>
+      {/* 바 + 변동률 — 0선 중앙 고정, 양수는 오른쪽·음수는 왼쪽 */}
       <div
         style={{
-          flex: 1,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "flex-start",
           position: "relative",
+          width: 280,
           height: 28,
           marginLeft: 10,
         }}
       >
-        <div style={{ width: 4, background: "#888", height: "100%" }} />
-        <div
-          style={{
-            width: barWidth,
-            height: 20,
-            background: barColor,
-            marginLeft: isPositive ? 0 : -barWidth,
-            transform: isPositive ? "none" : "translateX(-100%)",
-          }}
-        />
+        {/* 0선 */}
         <div
           style={{
             position: "absolute",
-            left: isPositive ? barWidth + 14 : -barWidth - 70,
+            left: "50%",
+            top: 0,
+            width: 2,
+            height: "100%",
+            background: "#888",
+          }}
+        />
+        {/* 바 */}
+        <div
+          style={{
+            position: "absolute",
+            left: isPositive ? "50%" : `calc(50% - ${barWidth}px)`,
+            top: 4,
+            width: barWidth,
+            height: 20,
+            background: barColor,
+          }}
+        />
+        {/* 퍼센트 라벨 */}
+        <div
+          style={{
+            position: "absolute",
+            left: isPositive ? `calc(50% + ${barWidth + 8}px)` : `calc(50% - ${barWidth + 8}px)`,
             top: "50%",
-            transform: "translateY(-50%)",
+            transform: isPositive ? "translateY(-50%)" : "translate(-100%, -50%)",
             fontFamily: "Noto Sans KR",
             fontWeight: 700,
             fontSize: 22,
             color: barColor,
+            whiteSpace: "nowrap",
           }}
         >
           {isPositive ? "+" : ""}
