@@ -26,6 +26,10 @@ nano = [
     "Pillow>=10.0.0",
     "numpy>=1.24.0",
 ]
+zipsaja-prices = [
+    "psycopg2-binary>=2.9",
+    "sshtunnel>=0.4.0",
+]
 
 [build-system]
 requires = ["setuptools>=68.0"]
