@@ -1,0 +1,33 @@
+{
+  "generatedAt": "2026-04-23T00:00:00+09:00",
+  "periodLabel": "25.1.1 ~ 4.18 vs 26.1.1 ~ 4.18",
+  "sizeLabel": "24평대 / 전용 55㎡ ~ 60㎡",
+  "source": "국토부 실거래가",
+  "districts": [
+    {"district":"서초구","priceLastYear":226798,"priceThisYear":235528,"changePct":3.8},
+    {"district":"강남구","priceLastYear":207450,"priceThisYear":196021,"changePct":-5.5},
+    {"district":"용산구","priceLastYear":148527,"priceThisYear":186178,"changePct":25.3},
+    {"district":"송파구","priceLastYear":152307,"priceThisYear":155326,"changePct":2.0},
+    {"district":"성동구","priceLastYear":127269,"priceThisYear":154044,"changePct":21.1},
+    {"district":"마포구","priceLastYear":144311,"priceThisYear":146802,"changePct":1.9},
+    {"district":"동작구","priceLastYear":110315,"priceThisYear":130371,"changePct":18.2},
+    {"district":"강동구","priceLastYear":112659,"priceThisYear":126734,"changePct":12.5},
+    {"district":"광진구","priceLastYear":107171,"priceThisYear":122668,"changePct":14.5},
+    {"district":"중구","priceLastYear":104782,"priceThisYear":122332,"changePct":16.7},
+    {"district":"영등포구","priceLastYear":97995,"priceThisYear":115652,"changePct":18.0},
+    {"district":"종로구","priceLastYear":119064,"priceThisYear":106294,"changePct":-10.7},
+    {"district":"동대문구","priceLastYear":85452,"priceThisYear":97399,"changePct":14.0},
+    {"district":"서대문구","priceLastYear":93634,"priceThisYear":95625,"changePct":2.1},
+    {"district":"양천구","priceLastYear":93065,"priceThisYear":93553,"changePct":0.5},
+    {"district":"강서구","priceLastYear":83289,"priceThisYear":92577,"changePct":11.2},
+    {"district":"성북구","priceLastYear":76517,"priceThisYear":88018,"changePct":15.0},
+    {"district":"은평구","priceLastYear":78771,"priceThisYear":87339,"changePct":10.9},
+    {"district":"관악구","priceLastYear":75216,"priceThisYear":81970,"changePct":9.0},
+    {"district":"구로구","priceLastYear":76364,"priceThisYear":81378,"changePct":7.6},
+    {"district":"강북구","priceLastYear":72416,"priceThisYear":89723,"changePct":11.7},
+    {"district":"금천구","priceLastYear":71016,"priceThisYear":75245,"changePct":6.9},
+    {"district":"노원구","priceLastYear":71504,"priceThisYear":74321,"changePct":4.6},
+    {"district":"중랑구","priceLastYear":67136,"priceThisYear":74157,"changePct":12.3},
+    {"district":"도봉구","priceLastYear":62832,"priceThisYear":69765,"changePct":13.1}
+  ]
+}
