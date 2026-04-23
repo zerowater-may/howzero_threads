@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="ko"><head>
+<meta charset="utf-8"><title>집사자 — 2026.4.1 시세 캐러셀</title>
+<link rel="stylesheet" href="../../colors_and_type.css">
+<style>
+  body { margin:0; background: var(--zs-page); font-family: var(--ff-body); color: var(--fg-1); }
+  .stage {
+    display: flex; align-items: center; justify-content: center;
+    gap: 24px;
+    min-height: 100vh;
+    padding: 40px 60px;
+    box-sizing: border-box;
+  }
+  .btn {
+    width: 64px; height: 64px;
+    background: #fff; border: 3px solid var(--zs-ink); border-radius: 999px;
+    box-shadow: var(--shadow-stamp-sm);
+    font-family: var(--ff-headline); font-size: 32px;
+    cursor: pointer; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.1s;
+  }
+  .btn:hover { transform: translate(1px,1px); box-shadow: 2px 2px 0 var(--zs-ink); }
+  .btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+  .card-frame {
+    position: relative;
+    background: #fff;
+    border: 3px solid var(--zs-ink);
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: var(--shadow-stamp);
+    /* scale 1080x1440 down to fit */
+    width: min(calc(100vh - 140px) * 0.75, 540px);
+    aspect-ratio: 3/4;
+  }
+  .frame {
+    width: 1080px; height: 1440px;
+    border: 0; display: block;
+    transform-origin: top left;
+  }
+  .card-frame iframe {
+    position: absolute; top: 0; left: 0;
+  }
+
+  .side {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 14px; font-family: var(--ff-headline);
+  }
+  .counter {
+    background: var(--zs-ink); color: #fff;
+    padding: 8px 18px; border-radius: 999px;
+    font-size: 22px;
+  }
+  .title {
+    font-family: var(--ff-headline); font-size: 20px;
+    max-width: 180px; text-align: center; line-height: 1.2;
+  }
+  .dots { display:flex; gap: 6px; }
+  .dot { width: 10px; height: 10px; border: 2px solid var(--zs-ink); background: #fff; border-radius: 999px; cursor: pointer; }
+  .dot.active { background: var(--zs-yellow); }
+</style></head>
+<body>
+<div class="stage">
+  <button class="btn" id="prev" aria-label="prev">←</button>
+
+  <div class="card-frame" id="frame-wrap">
+    <iframe class="frame" id="frame" src="slide-01-seoul-24p.html"></iframe>
+  </div>
+
+  <div class="side">
+    <div class="counter" id="counter">1 / 6</div>
+    <div class="title" id="title">서울 · 24평 평균</div>
+    <div class="dots" id="dots"></div>
+    <button class="btn" id="next" aria-label="next">→</button>
+  </div>
+</div>
+
+<script>
+const slides = [
+  { file: 'slide-01-seoul-24p.html',         title: '서울 · 24평 평균' },
+  { file: 'slide-02-seoul-32p.html',         title: '서울 · 32평 평균' },
+  { file: 'slide-03-seoul-pyeongdang.html',  title: '서울 · 평당가' },
+  { file: 'slide-04-gyeonggi-24p.html',      title: '경기남부 · 24평' },
+  { file: 'slide-05-gyeonggi-32p.html',      title: '경기남부 · 32평' },
+  { file: 'slide-06-gyeonggi-pyeongdang.html', title: '경기남부 · 평당가' },
+];
+
+let cur = +localStorage.getItem('mm_cur') || 0;
+if (cur >= slides.length) cur = 0;
+
+const frame = document.getElementById('frame');
+const counter = document.getElementById('counter');
+const titleEl = document.getElementById('title');
+const dotsEl = document.getElementById('dots');
+
+// build dots
+slides.forEach((s, i) => {
+  const d = document.createElement('div');
+  d.className = 'dot' + (i === cur ? ' active' : '');
+  d.onclick = () => go(i);
+  dotsEl.appendChild(d);
+});
+
+function scaleFrame() {
+  const wrap = document.getElementById('frame-wrap');
+  const scale = wrap.offsetWidth / 1080;
+  frame.style.transform = `scale(${scale})`;
+  frame.style.width = '1080px';
+  frame.style.height = '1440px';
+}
+
+function render() {
+  frame.src = slides[cur].file;
+  counter.textContent = `${cur+1} / ${slides.length}`;
+  titleEl.textContent = slides[cur].title;
+  [...dotsEl.children].forEach((d,i) => d.classList.toggle('active', i === cur));
+  localStorage.setItem('mm_cur', cur);
+  scaleFrame();
+}
+
+function go(i) {
+  cur = Math.max(0, Math.min(slides.length - 1, i));
+  render();
+}
+
+document.getElementById('prev').onclick = () => go(cur - 1);
+document.getElementById('next').onclick = () => go(cur + 1);
+
+window.addEventListener('keydown', e => {
+  if (e.key === 'ArrowLeft') go(cur - 1);
+  if (e.key === 'ArrowRight') go(cur + 1);
+});
+
+window.addEventListener('resize', scaleFrame);
+render();
+</script>
+</body></html>

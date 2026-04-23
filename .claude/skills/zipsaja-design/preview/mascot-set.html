@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko"><head>
+<meta charset="utf-8"><title>Mascot Set</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;padding:0;background:var(--zs-white);}
+  body{padding:28px;font-family:var(--ff-body);}
+  h1{font-family:var(--ff-headline);font-size:24px;margin:0 0 4px;color:var(--zs-ink);}
+  .sub{font-family:var(--ff-body);font-weight:700;font-size:12px;color:var(--fg-3);margin:0 0 18px;}
+  .row{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;}
+  .cell{
+    display:flex;flex-direction:column;align-items:center;gap:4px;
+    border:2px solid var(--zs-ink);border-radius:14px;padding:10px 6px;
+    background:var(--zs-cream-soft);
+  }
+  .cell img{width:96px;height:96px;object-fit:contain;}
+  .lab{font-family:var(--ff-headline);font-weight:800;font-size:13px;color:var(--zs-ink);}
+  .meta{font-family:var(--ff-body);font-size:10px;color:var(--fg-3);font-weight:700;text-align:center;line-height:1.25;}
+  .legend{
+    margin-top:14px;display:flex;gap:18px;flex-wrap:wrap;
+    font-family:var(--ff-body);font-size:11px;color:var(--fg-2);font-weight:700;
+  }
+  .legend b{color:var(--zs-ink);}
+</style></head>
+<body>
+  <h1>Mascot Set — 집사자</h1>
+  <div class="sub">10종 · PNG 512×512 · 라인아트만, 칠하지 않음</div>
+
+  <div class="row">
+    <div class="cell"><img src="../assets/mascots/mascot-hero.png"><div class="lab">hero</div><div class="meta">커버 / 메인 히어로</div></div>
+    <div class="cell"><img src="../assets/mascots/mascot-default.png"><div class="lab">default</div><div class="meta">기본 / 중립</div></div>
+    <div class="cell"><img src="../assets/mascots/mascot-blank.png"><div class="lab">blank</div><div class="meta">덤덤 / 정보 전달</div></div>
+    <div class="cell"><img src="../assets/mascots/mascot-smile.png"><div class="lab">smile</div><div class="meta">잔잔한 미소</div></div>
+    <div class="cell"><img src="../assets/mascots/mascot-happy.png"><div class="lab">happy</div><div class="meta">행복 / 결말</div></div>
+
+    <div class="cell"><img src="../assets/mascots/mascot-shining.png"><div class="lab">shining</div><div class="meta">강조 / 반짝</div></div>
+    <div class="cell"><img src="../assets/mascots/mascot-surprise.png"><div class="lab">surprise</div><div class="meta">놀람 / 반전</div></div>
+    <div class="cell"><img src="../assets/mascots/mascot-worried.png"><div class="lab">worried</div><div class="meta">걱정 / 염려</div></div>
+    <div class="cell"><img src="../assets/mascots/mascot-angry.png"><div class="lab">angry</div><div class="meta">경고 / 주의</div></div>
+    <div class="cell"><img src="../assets/mascots/mascot-side.png"><div class="lab">side</div><div class="meta">옆모습 / 액션</div></div>
+  </div>
+
+  <div class="legend">
+    <div><b>커버</b> hero / default</div>
+    <div><b>정보</b> blank / smile</div>
+    <div><b>강조</b> shining / surprise</div>
+    <div><b>경고</b> worried / angry</div>
+    <div><b>모션</b> side</div>
+    <div><b>마무리</b> happy</div>
+  </div>
+</body></html>

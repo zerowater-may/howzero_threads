@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ko"><head>
+<meta charset="utf-8"><title>Radii & Borders</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body{margin:0;padding:24px;background:#fff;font-family:var(--ff-body);}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .demo{display:flex;flex-direction:column;gap:8px;align-items:center;}
+  .box{width:120px;height:80px;background:var(--zs-yellow);border:3px solid var(--zs-ink);}
+  .lab{font-weight:700;font-size:13px;}
+  .meta{font-size:11px;color:var(--fg-3);font-weight:700;}
+</style></head>
+<body>
+  <div class="grid">
+    <div class="demo"><div class="box" style="border-radius:8px;"></div><div class="lab">--radius-tag</div><div class="meta">8px · 작은 태그</div></div>
+    <div class="demo"><div class="box" style="border-radius:16px;"></div><div class="lab">--radius-card</div><div class="meta">16px · 카드 / 박스</div></div>
+    <div class="demo"><div class="box" style="border-radius:999px;width:140px;height:46px;"></div><div class="lab">--radius-pill</div><div class="meta">999px · 노란 Pill</div></div>
+  </div>
+  <div style="margin-top:18px;display:flex;gap:24px;align-items:center;">
+    <div style="font-weight:700;font-size:13px;">Border:</div>
+    <div style="display:flex;gap:14px;align-items:center;">
+      <div style="width:80px;height:30px;background:#fff;border:2px solid var(--zs-ink);border-radius:8px;"></div>
+      <div style="font-size:11px;color:var(--fg-3);font-weight:700;">2px (thin)</div>
+      <div style="width:80px;height:30px;background:#fff;border:3px solid var(--zs-ink);border-radius:8px;"></div>
+      <div style="font-size:11px;color:var(--fg-3);font-weight:700;">3px (signature)</div>
+    </div>
+  </div>
+</body></html>

@@ -1,0 +1,124 @@
+/* Hand-drawn comic carousel — 1080×1440
+   Reference: daily AI 광인 특징 모음 style
+   - 순백 배경
+   - Gaegu (손글씨체) 메인
+   - 삐뚤한 박스 타이틀
+   - 텍스트 플로팅 (말풍선 없이)
+   - 연결선 (글씨 → 캐릭터)
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@700;900&display=swap');
+
+:root {
+  --hd-ink: #141414;
+  --hd-red: #E5192E;
+  --hd-bg: #FFFFFF;
+  --hd-muted: #555;
+  --ff-head: 'Noto Sans KR', sans-serif;  /* 박스 타이틀 – 또렷한 고딕 */
+  --ff-hand: 'Gaegu', 'Noto Sans KR', sans-serif; /* 본문 손글씨 */
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--ff-hand);
+  color: var(--hd-ink);
+  background: #e9e9e9;
+}
+
+.hd-slide {
+  width: 1080px;
+  height: 1440px;
+  background: var(--hd-bg);
+  position: relative;
+  overflow: hidden;
+  padding: 60px;
+  margin: 0 auto;
+}
+
+/* 상단 타이틀 박스 — 삐뚤한 느낌은 border-radius 비대칭으로 */
+.hd-titlebox {
+  border: 5px solid var(--hd-ink);
+  border-radius: 6px 8px 4px 9px;
+  padding: 22px 28px 18px;
+  display: inline-block;
+  max-width: 100%;
+  position: relative;
+  transform: rotate(-0.4deg);
+}
+
+.hd-titlebox h2 {
+  margin: 0;
+  font-family: var(--ff-head);
+  font-weight: 900;
+  font-size: 54px;
+  line-height: 1.2;
+  letter-spacing: -1px;
+}
+
+/* 손글씨 대사 */
+.hd-line {
+  font-family: var(--ff-hand);
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 1.25;
+  color: var(--hd-ink);
+  letter-spacing: -0.5px;
+  position: absolute;
+  white-space: pre-line;
+}
+
+.hd-line.sm {
+  font-size: 36px;
+  font-weight: 400;
+}
+
+.hd-line.xs {
+  font-size: 30px;
+  font-weight: 400;
+  color: var(--hd-muted);
+}
+
+.hd-line.emphasis {
+  font-family: var(--ff-head);
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+/* SFX — 효과음 (피싱-, 뿌에에엥-, 줄줄줄-) */
+.hd-sfx {
+  position: absolute;
+  font-family: var(--ff-head);
+  font-weight: 900;
+  font-size: 72px;
+  color: var(--hd-ink);
+  letter-spacing: -1px;
+  transform: rotate(-14deg);
+}
+
+/* 연결선 (대사 → 캐릭터) */
+.hd-tail {
+  position: absolute;
+  stroke: var(--hd-ink);
+  stroke-width: 2.5;
+  fill: none;
+  stroke-linecap: round;
+}
+
+/* 캐릭터 컨테이너 — 회전 등 미세 조정 */
+.hd-char {
+  position: absolute;
+  transform-origin: center bottom;
+}
+
+/* 페이지 번호 / 푸터 */
+.hd-num {
+  position: absolute;
+  right: 60px;
+  bottom: 40px;
+  font-family: var(--ff-hand);
+  font-weight: 700;
+  font-size: 30px;
+  color: #999;
+}

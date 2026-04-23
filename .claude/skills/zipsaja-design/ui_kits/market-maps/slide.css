@@ -1,0 +1,131 @@
+/* Market-map carousel — 집사자 wrapper on top of raw yumyum maps.
+   Each slide = 1080×1440, uses ../../colors_and_type.css + ../carousel/slide.css. */
+
+.map-slide { padding: 0 !important; overflow:hidden; }
+
+/* ---------- Top strip: hook + title -------------------------------------- */
+.map-top {
+  position: absolute; top: 0; left: 0; right: 0;
+  padding: 56px 70px 40px;
+  background: var(--zs-white);
+  z-index: 4;
+}
+
+/* cream variant on even slides for rhythm */
+.map-slide.cream .map-top { background: var(--zs-cream-soft); }
+
+.hook {
+  display: inline-flex; align-items: baseline; gap: 14px;
+  font-family: var(--ff-headline);
+  font-size: 34px;
+  margin-bottom: 22px;
+}
+.hook-pill {
+  font-family: var(--ff-headline);
+  font-size: 38px;
+  padding: 4px 22px 8px;
+  line-height: 1;
+}
+.hook-tail { color: var(--fg-2); font-weight: 500; }
+.hook-tail b { color: var(--zs-orange); font-weight: 700; }
+
+.map-title {
+  font-family: var(--ff-headline);
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.05;
+  letter-spacing: -1.5px;
+}
+.map-title .date {
+  display: block;
+  font-family: var(--ff-body);
+  font-weight: 500;
+  font-size: 28px;
+  color: var(--fg-3);
+  margin-bottom: 8px;
+}
+.map-title .t1 { display: block; font-size: 92px; }
+.map-title .t2 { display: block; font-size: 108px; margin-top: 4px; }
+.map-title .t2-pill {
+  font-family: var(--ff-headline);
+  font-size: 108px;
+  padding: 0 26px 6px;
+  line-height: 1.1;
+  vertical-align: baseline;
+}
+
+/* ---------- Map image area ----------------------------------------------- */
+.map-wrap {
+  position: absolute;
+  top: 360px;          /* below title strip */
+  left: 0; right: 0; bottom: 90px;  /* above footer */
+  background: var(--zs-white);
+  overflow: hidden;
+  z-index: 1;
+}
+.map-slide.cream .map-wrap { background: var(--zs-cream-soft); }
+
+/* Original image is 1440×1800. Internal layout:
+   - 0 ~ 330px: title band (cover/hide)
+   - 330 ~ 1600px: map body
+   - 1600 ~ 1800px: handle band (cover/hide)
+   We want to show only map body. Clip with a sized/positioned img. */
+.map-img {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  /* Original 1440×1800. Map body spans ~486→1650 (1164px).
+     Scale 0.85 so map body fits the 990px container.
+     Width becomes 1224, shift up 486*0.85=413 to hide title band. */
+  width: 1224px;
+  height: auto;
+  transform: translate(-50%, -413px);
+}
+
+.map-mask-top, .map-mask-bot { display: none; }
+
+/* ---------- Mascot stamp (covers original "단위: 억원" in bottom right) ----- */
+.map-mascot {
+  position: absolute;
+  right: 20px;
+  bottom: 110px;
+  width: 170px;
+  height: 170px;
+  z-index: 3;
+  filter: drop-shadow(3px 3px 0 rgba(0,0,0,0.18));
+}
+
+/* unit tag (over-rides the original "단위: 억원" that bleeds through) */
+.map-unit {
+  position: absolute;
+  left: 40px;
+  bottom: 120px;
+  z-index: 3;
+  font-family: var(--ff-headline);
+  font-size: 28px;
+  background: var(--zs-ink);
+  color: #fff;
+  padding: 6px 18px;
+  border-radius: 999px;
+}
+
+/* ---------- Footer override --------------------------------------------- */
+.map-slide .zs-foot {
+  background: var(--zs-ink);
+  color: #fff;
+  left: 0; right: 0; bottom: 0;
+  padding: 28px 70px;
+  margin: 0;
+  z-index: 5;
+}
+.map-slide .zs-foot .handle b { color: #fff; font-family: var(--ff-headline); font-weight: 700; font-size: 32px; }
+.map-slide .zs-foot .handle img { filter: invert(1) brightness(2); width: 44px; height: 44px; }
+.map-slide .zs-foot .pg { color: rgba(255,255,255,0.7); font-family: var(--ff-headline); font-size: 28px; }
+.map-slide .zs-foot .right { font-family: var(--ff-headline); font-size: 28px; }
+
+/* ---------- Slide number ------------------------------------------------- */
+.map-slide .zs-num {
+  top: 40px;
+  right: 40px;
+  z-index: 6;
+}

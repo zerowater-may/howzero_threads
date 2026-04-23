@@ -1,0 +1,224 @@
+/* =========================================================================
+   집사자 (zipsaja) — Color & Type Foundations
+   Instagram carousel design system. 1080×1440px output.
+   ========================================================================= */
+
+/* ---------- Webfonts ---------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Gaegu:wght@400;700&display=swap');
+
+@font-face {
+  font-family: 'Gmarket Sans';
+  src: url('fonts/GmarketSansTTFLight.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Gmarket Sans';
+  src: url('fonts/GmarketSansTTFMedium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Gmarket Sans';
+  src: url('fonts/GmarketSansTTFBold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* ---------- Brand palette -------------------------------------------
+     액센트 = 오렌지 (기존 zipsaja v1 룰 보존). 변수명은 호환성 위해 yellow로 유지.
+     배경 = 베이지 (기존 zipsaja v1 메인 배경).                          */
+  --zs-yellow:        #EA2E00;   /* PRIMARY ACCENT — 오렌지 (pills, CTA, hl) */
+  --zs-yellow-deep:   #C42600;   /* pressed / shadow side of accent */
+  --zs-orange:        #C42600;   /* check-point / whisper accent (진한 오렌지) */
+  --zs-orange-deep:   #9F1F00;   /* pressed / shadow side of orange */
+  --zs-cream:         #F5EDE0;   /* info-box background — 연한 베이지 */
+  --zs-cream-soft:    #FBF5EA;   /* tonal background washes — 더 연한 베이지 */
+  --zs-white:         #FFFFFF;   /* 순백 — 사진 박스 / 화이트 카드 전용 */
+  --zs-ink:           #1A1A1A;   /* borders, body text, mascot ink */
+  --zs-ink-soft:      #2B2B2B;   /* secondary text */
+  --zs-ink-mute:      #6B6B6B;   /* tertiary / captions */
+  --zs-ink-faint:     #B5B5B5;   /* disabled / hairline */
+  --zs-page:          #F0E7D6;   /* page wash behind cards — 따뜻한 베이지 (메인 배경) */
+
+  /* Semantic tonal accents — used SPARINGLY, never as gradients */
+  --zs-good:          #2E7D32;   /* "통과 / 추천" check */
+  --zs-warn:          #E65100;   /* "조심해" warn */
+  --zs-bad:           #C62828;   /* "금지" cross */
+
+  /* ---------- Foreground / background semantic ------------------------ */
+  --fg-1: var(--zs-ink);         /* primary text */
+  --fg-2: var(--zs-ink-soft);    /* secondary text */
+  --fg-3: var(--zs-ink-mute);    /* tertiary text, captions */
+  --fg-faint: var(--zs-ink-faint);
+  --fg-on-yellow: var(--zs-ink);
+  --fg-on-dark: #FFFFFF;
+
+  --bg-canvas:  var(--zs-page);    /* 슬라이드 캔버스 = 베이지 (기존 zipsaja 메인 배경) */
+  --bg-page:    var(--zs-page);
+  --bg-cream:   var(--zs-cream);
+  --bg-yellow:  var(--zs-yellow);  /* legacy alias — 실제 값은 오렌지 */
+  --bg-accent:  var(--zs-yellow);  /* semantic alias for accent fill */
+  --bg-dark:    var(--zs-ink);
+
+  /* ---------- Borders / radii / shadow -------------------------------- */
+  --border-w:        3px;             /* thick black border — signature */
+  --border-w-thin:   2px;
+  --border-color:    var(--zs-ink);
+  --radius-card:     16px;            /* boxes / callouts */
+  --radius-pill:     999px;           /* yellow pill highlight */
+  --radius-tag:      8px;             /* small tags */
+
+  --shadow-stamp:    4px 4px 0 0 var(--zs-ink);   /* offset block shadow */
+  --shadow-stamp-sm: 3px 3px 0 0 var(--zs-ink);
+  --shadow-soft:     0 2px 8px rgba(0,0,0,0.06);
+
+  /* ---------- Spacing scale (8pt) ------------------------------------- */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 48px;
+  --sp-8: 64px;
+  --sp-9: 96px;
+
+  /* ---------- Type families ------------------------------------------- */
+  --ff-headline: 'Gmarket Sans', 'Noto Sans KR', system-ui, sans-serif;   /* 브랜드 디스플레이 (Bold 700) */
+  --ff-body:     'Gmarket Sans', 'Noto Sans KR', system-ui, sans-serif;   /* 본문 (Medium 500 / Bold 700) */
+  --ff-hand:     'Gaegu', 'Noto Sans KR', cursive;                        /* 말풍선 / 코멘트 */
+
+  /* ---------- Type scale (carousel — large) --------------------------- */
+  --fs-hero:    120px;   /* cover hook (1-line) */
+  --fs-h1:       96px;   /* cover title */
+  --fs-h2:       72px;   /* slide headline */
+  --fs-h3:       54px;   /* sub-headline */
+  --fs-h4:       42px;   /* body headline / list-item title */
+  --fs-body-lg:  36px;   /* primary body */
+  --fs-body:     30px;   /* default body */
+  --fs-body-sm:  26px;   /* dense body, label */
+  --fs-caption:  22px;   /* footnote, page num */
+  --fs-bubble:   34px;   /* mascot speech bubble (Gaegu) */
+
+  /* ---------- Line height --------------------------------------------- */
+  --lh-tight:    1.15;
+  --lh-snug:     1.30;
+  --lh-normal:   1.50;
+  --lh-relaxed:  1.65;
+}
+
+/* ---------- Base type ---------------------------------------------------- */
+html, body {
+  font-family: var(--ff-body);
+  font-weight: 500;
+  color: var(--fg-1);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ---------- Semantic type classes --------------------------------------- */
+.t-hero   { font-family: var(--ff-headline); font-size: var(--fs-hero); line-height: var(--lh-tight); letter-spacing: -1.5px; }
+.t-h1     { font-family: var(--ff-headline); font-size: var(--fs-h1);   line-height: var(--lh-tight); letter-spacing: -1px; }
+.t-h2     { font-family: var(--ff-headline); font-size: var(--fs-h2);   line-height: var(--lh-snug);  letter-spacing: -0.5px; }
+.t-h3     { font-family: var(--ff-headline); font-size: var(--fs-h3);   line-height: var(--lh-snug); }
+.t-h4     { font-family: var(--ff-headline); font-size: var(--fs-h4);   line-height: var(--lh-snug); }
+
+.t-body-lg{ font-family: var(--ff-body); font-weight: 700; font-size: var(--fs-body-lg); line-height: var(--lh-normal); }
+.t-body   { font-family: var(--ff-body); font-weight: 700; font-size: var(--fs-body);    line-height: var(--lh-normal); }
+.t-body-sm{ font-family: var(--ff-body); font-weight: 700; font-size: var(--fs-body-sm); line-height: var(--lh-normal); }
+.t-caption{ font-family: var(--ff-body); font-weight: 700; font-size: var(--fs-caption); line-height: var(--lh-snug); color: var(--fg-3); }
+
+.t-bubble { font-family: var(--ff-hand); font-weight: 700; font-size: var(--fs-bubble); line-height: var(--lh-snug); }
+.t-hand   { font-family: var(--ff-hand); font-weight: 700; }
+
+/* ---------- Brand patterns ---------------------------------------------- */
+
+/* Yellow pill highlight — 노란 Pill 하이라이트
+   Use as <span class="zs-pill">매물</span> inline.
+   Has a soft hatching texture made from a repeating-radial dot pattern. */
+.zs-pill {
+  display: inline-block;
+  padding: 2px 16px 4px;
+  background-color: var(--zs-yellow);
+  background-image:
+    radial-gradient(circle at 2px 2px, rgba(0,0,0,0.10) 1px, transparent 1.6px);
+  background-size: 8px 8px;
+  border-radius: var(--radius-pill);
+  color: var(--fg-on-yellow);
+  font-family: var(--ff-headline);
+  line-height: 1.15;
+  white-space: nowrap !important;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* Yellow pill — flat (no hatching), used in body */
+.zs-pill-flat {
+  display: inline-block;
+  padding: 2px 14px 4px;
+  background: var(--zs-yellow);
+  border-radius: var(--radius-pill);
+  font-family: var(--ff-headline);
+  line-height: 1.15;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* Inline highlighter — 형광펜은 액센트 색만 사용 (현재: 오렌지)
+   주의: 형광펜은 텍스트 하단 45%만 칠해진다.
+   따라서 텍스트 색은 검정(잉크)으로 — 위 55%(투명/베이지)와 아래 45%(오렌지) 둘 다 가독. */
+.zs-hl {
+  background: linear-gradient(
+    to top,
+    var(--zs-yellow) 0%,
+    var(--zs-yellow) 45%,
+    transparent 45.01%,
+    transparent 100%
+  );
+  color: var(--zs-ink);
+  padding: 0 4px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* Bordered black-frame box — 검은 굵은 테두리 박스 */
+.zs-box {
+  background: var(--zs-white);
+  border: var(--border-w) solid var(--border-color);
+  border-radius: var(--radius-card);
+  padding: var(--sp-6) var(--sp-7);
+}
+
+/* Cream info box — 크림 정보 박스 */
+.zs-box-cream {
+  background: var(--zs-cream);
+  border: var(--border-w) solid var(--border-color);
+  border-radius: var(--radius-card);
+  padding: var(--sp-6) var(--sp-7);
+}
+
+/* Orange check-point box — Check Point 오렌지 박스 + 흰 텍스트 */
+.zs-box-check {
+  background: var(--zs-orange);
+  border: var(--border-w) solid var(--border-color);
+  border-radius: var(--radius-card);
+  padding: var(--sp-6) var(--sp-7);
+  color: #fff;
+}
+.zs-box-check * { color: inherit; }
+
+/* Whisper — 속사임 텍스트 오렌지 */
+.zs-whisper-orange {
+  color: var(--zs-orange);
+  font-family: var(--ff-hand);
+  font-weight: 700;
+}
+
+/* Stamp shadow — ink offset block shadow under cards */
+.zs-stamp     { box-shadow: var(--shadow-stamp); }
+.zs-stamp-sm  { box-shadow: var(--shadow-stamp-sm); }

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko"><head>
+<meta charset="utf-8"><title>03 — Hourly</title>
+<link rel="stylesheet" href="../../colors_and_type.css">
+<link rel="stylesheet" href="../carousel/slide.css">
+<style>.nowrap{white-space:nowrap;}
+.hour{display:flex;flex-direction:column;align-items:center;gap:8px;padding:18px 10px;border:3px solid var(--zs-ink);border-radius:18px;background:var(--zs-white);}
+.hour.peak{background:var(--zs-yellow);}
+.hour .t{font-family:var(--ff-hand);font-weight:700;font-size:24px;color:var(--fg-3);}
+.hour .icon{font-family:var(--ff-headline);font-size:38px;line-height:1;}
+.hour .deg{font-family:var(--ff-headline);font-size:42px;line-height:1;}
+.hour .rain{font-family:var(--ff-body);font-weight:700;font-size:18px;color:var(--fg-3);}
+</style>
+</head>
+<body>
+<section class="zs-slide cream" data-screen-label="W03 Hourly">
+  <div class="zs-num">03</div>
+
+  <div style="font-family:var(--ff-hand);font-weight:700;font-size:40px;color:var(--fg-2);margin-top:50px;">시간대별로 보면</div>
+  <h2 style="font-family:var(--ff-headline);font-size:88px;line-height:1.1;margin:20px 0 12px;">
+    <span class="zs-hl">오후 2시</span>가 제일<br>
+    따뜻해 <span style="font-size:64px;">☀</span>
+  </h2>
+  <p style="font-family:var(--ff-body);font-weight:700;font-size:26px;color:var(--fg-3);margin:12px 0 32px;">새벽 5~7시는 두 자릿수 겨우 — 출근길 주의</p>
+
+  <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:10px;max-width:920px;">
+    <div class="hour"><div class="t">06시</div><div class="icon">◐</div><div class="deg">11°</div><div class="rain">0%</div></div>
+    <div class="hour"><div class="t">09시</div><div class="icon">☀</div><div class="deg">15°</div><div class="rain">0%</div></div>
+    <div class="hour"><div class="t">12시</div><div class="icon">☀</div><div class="deg">19°</div><div class="rain">10%</div></div>
+    <div class="hour peak"><div class="t">14시</div><div class="icon">☀</div><div class="deg">22°</div><div class="rain">10%</div></div>
+    <div class="hour"><div class="t">18시</div><div class="icon">☁</div><div class="deg">18°</div><div class="rain">20%</div></div>
+    <div class="hour"><div class="t">21시</div><div class="icon">☁</div><div class="deg">14°</div><div class="rain">20%</div></div>
+  </div>
+
+  <div style="margin-top:36px;display:inline-flex;align-items:center;gap:14px;background:var(--zs-white);border:3px solid var(--zs-ink);border-radius:14px;padding:14px 22px;box-shadow:var(--shadow-stamp-sm);">
+    <span style="font-family:var(--ff-hand);font-weight:700;font-size:24px;color:var(--fg-3);">일교차</span>
+    <span style="font-family:var(--ff-headline);font-size:38px;line-height:1;"><span class="zs-hl">11°</span></span>
+    <span style="font-family:var(--ff-body);font-weight:700;font-size:22px;color:var(--fg-2);">· 아침·낮 옷차림 따로</span>
+  </div>
+
+  <div style="position:absolute;right:60px;bottom:230px;display:flex;flex-direction:column;align-items:flex-end;gap:8px;">
+    <div class="zs-bubble">낮엔 반팔도 괜찮아</div>
+    <img src="../../assets/mascots/mascot-surprise.png" style="width:200px;height:200px;">
+  </div>
+
+  <div class="zs-foot">
+    <div class="handle"><img src="../../assets/mascots/mascot-blank.png"><b>@zipsaja</b></div>
+    <div class="right"><span class="pg">3 / 6</span><span>→</span></div>
+  </div>
+</section>
+</body></html>
