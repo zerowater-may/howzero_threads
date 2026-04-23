@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>{{ title|default('zipsaja') }}</title>
+<link rel="stylesheet" href="{{ tokens_css }}">
+{% block style %}{% endblock %}
+</head>
+<body>
+<section class="zs-slide" data-screen-label="{{ screen_label|default('') }}">
+  {% if num %}<div class="zs-num">{{ "%02d"|format(num) }}</div>{% endif %}
+  {% block content %}{% endblock %}
+  <div class="zs-foot">
+    <div class="handle"><b>{{ footer_text }}</b></div>
+    <div class="right"><span class="pg">{{ num }} / {{ total }}</span><span>→</span></div>
+  </div>
+</section>
+</body>
+</html>

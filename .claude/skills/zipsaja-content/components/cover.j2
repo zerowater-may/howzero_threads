@@ -1,0 +1,16 @@
+{% extends "_base.html.j2" %}
+{% block style %}
+<style>
+  .cover-hero { padding: 200px 80px 0; }
+  .cover-hero h1 { font-family: var(--ff-headline); font-size: 120px; line-height: 1.05; margin: 0 0 24px; letter-spacing: -2px; }
+  .cover-hero .sub { font-family: var(--ff-body); font-weight: 700; font-size: 44px; color: var(--fg-2); }
+  .cover-mascot { position: absolute; right: 60px; bottom: 220px; width: 280px; }
+</style>
+{% endblock %}
+{% block content %}
+<div class="cover-hero">
+  <h1>{{ headline }}</h1>
+  <p class="sub">{{ sub }}</p>
+</div>
+{% if mascot %}<img src="{{ mascot_path }}" class="cover-mascot" alt="">{% endif %}
+{% endblock %}
