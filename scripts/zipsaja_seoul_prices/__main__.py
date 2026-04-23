@@ -11,9 +11,8 @@ from pathlib import Path
 import psycopg2
 from sshtunnel import SSHTunnelForwarder
 
-DEFAULT_OUT = Path(
-    ".claude/skills/carousel/brands/zipsaja/reels/public/data/seoul-prices.json"
-)
+REPO_ROOT = Path(__file__).resolve().parents[2]
+DEFAULT_OUT = REPO_ROOT / ".claude/skills/carousel/brands/zipsaja/reels/public/data/seoul-prices.json"
 
 # 서울 25개 자치구 정렬 순서 (스크린샷 기준)
 DISTRICT_ORDER = [
