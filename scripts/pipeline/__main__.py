@@ -113,6 +113,38 @@ def main(argv: list[str] | None = None) -> int:
         state.status = "data-ready"
         state.save(state_path)
         print(f"[pipeline] data ready → {len(state.data['dataset']['districts'])} districts", file=sys.stderr)
+
+        # Chain content steps (zipsaja only). Each content script reads data.json and writes into bundle.
+        bundle = bundle_path(args.brand, slug)
+        data_path = bundle / "data.json"
+
+        content_steps = [
+            ("content-carousel", "scripts.content_carousel", ["--data", str(data_path), "--out", str(bundle / "carousel")]),
+            ("content-reels",    "scripts.content_reels",    ["--data", str(data_path), "--out", str(bundle / "reels")]),
+            ("content-attachments", "scripts.content_attachments", ["--data", str(data_path), "--out", str(bundle / "attachments")]),
+            ("content-captions", "scripts.content_captions", ["--data", str(data_path), "--out", str(bundle / "captions")]),
+        ]
+
+        for step_name, module, step_args in content_steps:
+            print(f"[pipeline] running {step_name}...", file=sys.stderr)
+            step_result = subprocess.run(
+                [sys.executable, "-m", module, *step_args],
+                check=False,
+            )
+            if step_result.returncode != 0:
+                state.mark_failed(step_name, f"exit {step_result.returncode}")
+                state.save(state_path)
+                print(f"[pipeline] {step_name} FAILED ({step_result.returncode}) — remaining steps skipped", file=sys.stderr)
+                return step_result.returncode
+            # Record artifact path by stripping "content-" prefix
+            artifact_key = step_name.split("-", 1)[1]
+            state.artifacts[artifact_key] = {"path": str(bundle / artifact_key)}
+            state.save(state_path)
+            print(f"[pipeline] ✓ {step_name}", file=sys.stderr)
+
+        state.status = "completed"
+        state.save(state_path)
+        print(f"[pipeline] 🎉 all steps completed → {bundle}", file=sys.stderr)
     else:
         print(f"[pipeline] brand={args.brand} — no data fetch step (Plan 2+ will add content generation)", file=sys.stderr)
         state.status = "data-ready"
