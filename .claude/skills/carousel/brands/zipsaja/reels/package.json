@@ -1,0 +1,24 @@
+{
+  "name": "zipsaja-reels",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "remotion studio",
+    "build": "remotion render ZipsajaReel out/zipsaja-gayang.mp4",
+    "build:sanggye": "remotion render NowonSanggyeReel out/zipsaja-sanggye.mp4",
+    "build:seoul": "remotion render SeoulPriceReel out/zipsaja-seoul-price.mp4 --log=error",
+    "upgrade": "remotion upgrade"
+  },
+  "dependencies": {
+    "@remotion/cli": "^4.0.0",
+    "@remotion/google-fonts": "^4.0.451",
+    "@remotion/transitions": "^4.0.451",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "typescript": "^5.5.4"
+  }
+}
