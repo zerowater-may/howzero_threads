@@ -16,6 +16,7 @@ env/
 data/*.json
 data/*.sqlite
 data/token.json
+data/viewtrap/
 
 .pytest_cache/
 .coverage
@@ -35,6 +36,7 @@ htmlcov/
 **/.cache/
 .remotion/
 chrome-headless-shell
+scripts/content_carousel/package-lock.json
 
 # GitHub 100MB 한도 — 거대 미디어는 별도 보관
 brands/howzero/howzero_carousel_pmqTgyPZdto/pmqTgyPZdto.mp4
