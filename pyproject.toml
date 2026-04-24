@@ -26,9 +26,18 @@ nano = [
     "Pillow>=10.0.0",
     "numpy>=1.24.0",
 ]
+viewtrap = [
+    "playwright>=1.52.0",
+]
 zipsaja-prices = [
     "psycopg2-binary>=2.9",
     "sshtunnel>=0.4.0",
+]
+content = [
+    "jinja2>=3.1",
+    "openpyxl>=3.1",
+    "weasyprint>=62.0",
+    "anthropic>=0.69",
 ]
 
 [build-system]
