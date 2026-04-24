@@ -36,6 +36,7 @@ howzero/
 │   ├── persona-howzero.md
 │   ├── CHANGELOG.md
 │   ├── MARKETING-MASTER-STRATEGY.md
+│   ├── ai/                         ← AI 메타 중립 미러 (Codex/Cursor용)
 │   ├── superpowers/plans/          ← 구현 plan
 │   ├── content/                    ← 비어있음 (모두 brands/로 이동됨)
 │   └── marketing/
@@ -53,7 +54,6 @@ howzero/
 │   ├── yt_highlights/              ← YouTube → highlights.json + 프레임
 │   ├── nano_carousel/              ← Carousel 자동화
 │   ├── zipsaja_reel/
-│   ├── zipsaja_seoul_prices/       ← 서울 부동산 데이터
 │   ├── apps_script/
 │   ├── fetch_comments.py
 │   └── post.py
@@ -131,6 +131,10 @@ python3 -m scripts.yt_highlights <YouTube URL> --out <dir>
 - **README.md**: 파일명은 대문자
 - **환경별 설정 파일**: `.env.development`, `.env.production`
 - **Git push 전**: 글로벌 ~/AGENTS.md의 GitHub 계정 스위치 절차 따를 것
+- **AI 메타 원본**: Claude 전용 원본은 `.claude/skills/**/SKILL.md`, `.claude/agents/**/*.md`
+- **AI 메타 미러**: Codex/Cursor 등 비-Claude 도구는 `docs/ai/**` 우선 참조
+- **동기화 명령**: Claude 메타 수정 후 `python3 scripts/sync_ai_meta.py` 실행
+- **수정 금지**: `docs/ai/**`는 생성 산출물이다. 직접 수정하지 말 것
 
 ---
 
