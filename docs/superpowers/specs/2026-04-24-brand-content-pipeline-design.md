@@ -40,8 +40,8 @@
 |---|---|---|---|---|
 | 1 | `pipeline` (master) | Router · interactive checkpoints · state machine | CLI args, user input | `pipeline-state.json` |
 | 2 | `zipsaja-data-fetch` | SSH tunnel + SQL preset + dataset assembly | `state.brand == "zipsaja"`, `state.topic` | `state.data` |
-| 3 | `content-carousel` | Brand-toned carousel HTML + PNG (wraps existing `/carousel`) | `state.brand`, `state.data` | `state.artifacts.carousel` |
-| 4 | `content-reels` | Carousel → 9:16 22s mp4 (wraps existing `/reels`) | `state.artifacts.carousel` | `state.artifacts.reels` |
+| 3 | `content-carousel` | Brand-toned carousel HTML + PNG. **Translation layer** over existing `/carousel` — converts `state.data` into the `topic + text` input shape `/carousel` accepts (Text mode). No modification of `/carousel` itself. | `state.brand`, `state.data` | `state.artifacts.carousel` |
+| 4 | `content-reels` | Carousel directory → 9:16 22s mp4. Calls existing `/reels` which already accepts `carousel-dir + duration` args (verified in `.claude/skills/reels/scripts/carousel-to-reels.sh`). | `state.artifacts.carousel.path` | `state.artifacts.reels` |
 | 5 | `content-attachments` | Excel raw + PDF insights | `state.data` | `state.artifacts.{excel,pdf}` |
 | 6 | `content-captions` | 3-platform captions (Instagram lead-magnet hook front-placed) | `state.data`, `state.artifacts.reels` (for duration cues) | `state.artifacts.captions` |
 | — | `howzero-data-fetch` (future) | TBD when howzero data source is defined | — | — |
@@ -56,8 +56,10 @@ pipeline
   │    ├─ content-carousel → content-reels (depends on carousel)
   │    ├─ content-attachments
   │    └─ content-captions (depends on data + reels preview)
-  └─ finalize: /brands-organize
+  └─ finalize: write bundle + update brands/{brand}/INDEX.md (manual or future tool)
 ```
+
+**Note on `/brands-organize`:** Existing `brands-organize` skill hardcodes `_carousel_` and `_reels_` target types only (`.claude/skills/brands-organize/scripts/organize.sh:52-88`). It cannot route `_pipeline_` bundles. Rather than extending `brands-organize`, the pipeline master writes directly to the bundle path. `brands-organize` stays as-is for one-off manual carousel/reels organization.
 
 **Isolation rules:**
 - Each skill reads/writes only `pipeline-state.json`. No direct inter-skill calls.
@@ -75,7 +77,7 @@ pipeline
 | 2. Data fetch (howzero/braveyong) | Skipped | Topic text passed through as-is |
 | 3. Artifact batch | Automatic | All 4 artifacts generated in parallel without interruption |
 | 4. Final review | Interactive | All outputs presented together; user can request modifications (per-artifact retry) |
-| 5. brands/ organize | Automatic | Moves everything into `brands/{brand}/{brand}_pipeline_{slug}/` |
+| 5. Write to bundle path | Automatic | Pipeline master writes **directly** to `brands/{brand}/{brand}_pipeline_{slug}/` (does NOT call `/brands-organize` — that skill is hardcoded for legacy `_carousel_` / `_reels_` types only, see §11 open question) |
 
 **Example zipsaja dialogue:**
 ```
@@ -225,11 +227,15 @@ Add new section 8 to `AGENTS.md`:
 | braveyong | 없음 (주제 텍스트만)                                    | TBD |
 
 ### zipsaja SSH 접속 설정 (고정)
-- SSH alias: `hh-worker-2`
+- SSH alias: `hh-worker-2` (151.245.106.86, root) — **not** batch_server
 - DB: `postgresql://proptech@localhost:5432/proptech_db`
 - Password: `/opt/proptech/.env` 참조 (DATABASE_URL)
-- 주요 테이블: `real_prices` (1M+ rows, trade_type A1=매매), `complexes` (total_units, gu)
-- 인덱스: `idx_complexes_total_units`, `idx_complexes_gu`, `idx_real_prices_trade_date`
+- 주요 테이블 (실측):
+  - `real_prices` (2,385,471 rows; trade_type `A1`=매매 기준 1,009,824 rows)
+  - `complexes` (1,377 rows; `total_units`, `gu`, `dong`, `build_year`)
+- 인덱스 (실측): `idx_complexes_total_units`, `idx_complexes_gu`, `idx_complexes_gu_dong`, `idx_real_prices_trade_date`, `idx_real_prices_complex_trade`
+
+**기존 `scripts/zipsaja_seoul_prices` 는 polluted 상태** — `batch_server` + `bulsaja_analytics` + 존재하지 않는 뷰 `zipsaja_seoul_gu_price_compare`를 쿼리함. 새 `zipsaja-data-fetch` 스킬 구현 시 **완전 교체** (삭제 또는 레거시 보존).
 
 ### SQL 프리셋
 - leejaemyung-before-after — 취임 전 12개월 vs 취임 후 평균가 (구별)
@@ -276,6 +282,9 @@ The following are explicitly excluded from this design spec and must go through 
 - **Auto-posting to Instagram/Threads/LinkedIn** — this pipeline stops at generating files. Posting is manual or a separate automation.
 - **Analytics / comment-lead-magnet delivery automation** — caption tells users to comment "엑셀" to get the file, but actually sending files via DM is a separate job (existing `scripts/post.py` territory).
 - **Multi-language** — Korean only.
+- **`/carousel` SKILL.md path references fix** — pre-existing bug in `.claude/skills/carousel/SKILL.md:26,481` pointing to non-existent `brands/zipsaja/*` paths. Fix tracked separately; pipeline implementation does not block on it.
+- **`/brands-organize` extension for `_pipeline_` type** — pipeline master writes directly to target path, bypassing `brands-organize`. Extending `brands-organize` is a separate cleanup.
+- **`INDEX.md` auto-generation tool** — pipeline manually appends a row for MVP. Automating INDEX maintenance is deferred.
 
 ---
 
@@ -297,12 +306,32 @@ MVP = skills 1 + 2 + 3 + 4 (+ content-reels via existing `/reels`).
 
 To resolve during `writing-plans` for each sub-skill:
 
-- How does `pipeline` persist and recover `pipeline-state.json` across turns (if user closes and re-opens)?
-- Exact SQL for each preset (column list, aggregation window).
-- PDF rendering library (weasyprint vs reportlab vs Remotion stills).
-- Excel library (openpyxl vs pandas.to_excel).
-- Caption generation: Claude Sonnet with brand-specific prompt templates?
-- Carousel reuses existing `/carousel` — does the pipeline provide a data JSON that `/carousel` consumes, or does `content-carousel` wrap `/carousel` with additional logic?
+**Persistence & Recovery**
+- `pipeline` persists `pipeline-state.json` across turns — follow the existing `StateStore` JSON load/save pattern at `src/howzero_threads/store/state.py` for consistency.
+- Is a single `failedAt` field enough for resume, or do we need `completedSteps[]` / `pendingSteps[]`? (no existing pipeline precedent in repo)
+
+**Data layer (zipsaja)**
+- Exact SQL for each preset (column list, aggregation window, pivot-date logic for `leejaemyung-before-after`). Current fetcher has only one hardcoded SQL constant with no preset layer.
+- Should `zipsaja-data-fetch` delete the existing `scripts/zipsaja_seoul_prices` package or leave it as legacy? Recommendation: delete, since it references an incorrect infra stack.
+
+**Carousel integration (F1 resolution trade-off)**
+- **Chosen approach**: `content-carousel` translates `state.data` into a `topic + text` string and invokes `/carousel` in Text mode. No change to `/carousel` itself. Risk: translation layer is brittle for rich tabular data.
+- **Alternative considered**: Extend `/carousel` with a "D. StructuredData" input mode that accepts `data.json`. Rejected for now — larger blast radius; revisit if translation proves lossy.
+- **Known bug (out of scope)**: `.claude/skills/carousel/SKILL.md:26,481` references paths `brands/zipsaja/README.md`, `brands/zipsaja/workflow.md`, `brands/zipsaja/assets/` that don't exist at those paths — actual location is `.claude/skills/carousel/brands/zipsaja/`. This is a pre-existing bug to fix separately, not a blocker for the pipeline.
+
+**Reels integration**
+- `/reels` takes `carousel-dir + duration` args (`.claude/skills/reels/scripts/carousel-to-reels.sh:3,24`). `content-reels` just passes `state.artifacts.carousel.path` through. No wrapping complexity.
+
+**Output library choices**
+- PDF rendering library — weasyprint (HTML→PDF, good for zipsaja brand HTML reuse) vs reportlab (code-first).
+- Excel library — openpyxl (full control) vs pandas.to_excel (one-liner, limited formatting).
+
+**Caption generation**
+- Use Claude Sonnet with brand-specific prompt templates (zipsaja: 반말, orange pill references, lead-magnet hook front-placed on Instagram variant).
+
+**Bundle organization**
+- Pipeline master writes directly to `brands/{brand}/{brand}_pipeline_{slug}/` and appends a row to `brands/{brand}/INDEX.md`. `brands-organize` skill stays uninvolved (its scanner is hardcoded for legacy types).
+- Open: should INDEX.md update be atomic (new pipeline command) or follow existing manual pattern? Manual is simpler for MVP.
 
 ---
 
