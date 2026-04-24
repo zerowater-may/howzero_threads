@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>{{ dataset.title }}</title>
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;700;900&family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: 'Noto Sans KR', sans-serif; color:#1a1a1a; background:#F0E7D6; }
+  .slide {
+    width:1080px; height:1440px; padding:80px 70px;
+    display:flex; flex-direction:column; position:relative;
+    page-break-after:always; background:#F0E7D6;
+  }
+  .cover h1 { font-family:'Jua'; font-size:96px; line-height:1.1; text-align:center; margin-top:120px; }
+  .cover .pill {
+    display:inline-block; background:#EA2E00; color:#fff;
+    padding:14px 36px; border-radius:999px; font-family:'Jua'; font-size:56px;
+  }
+  .cover .subtitle { text-align:center; font-size:32px; margin-top:48px; color:#555; font-weight:500; }
+  .cover .source { position:absolute; bottom:80px; left:0; right:0; text-align:center; font-family:'Gaegu'; font-size:28px; color:#EA2E00; }
+  .data h2 { font-family:'Jua'; font-size:56px; margin-bottom:16px; }
+  .data .meta { font-size:22px; color:#666; margin-bottom:28px; }
+  table { width:100%; border-collapse:collapse; background:#F5EDE0; border:3px solid #1a1a1a; border-radius:16px; overflow:hidden; }
+  th { background:#EA2E00; color:#fff; font-family:'Jua'; font-size:26px; padding:14px 12px; text-align:center; }
+  td { font-family:'Noto Sans KR'; font-weight:700; font-size:24px; padding:10px 12px; border-bottom:1px solid rgba(0,0,0,0.08); }
+  td.gu { color:#EA2E00; font-family:'Jua'; text-align:left; font-size:26px; }
+  td.price { text-align:right; }
+  td.pct { text-align:right; font-weight:900; }
+  .pct.pos { color:#EA2E00; }
+  .pct.neg { color:#1A4FA0; }
+  .bar-cell { position:relative; height:22px; background:transparent; }
+  .zero { position:absolute; left:50%; top:0; bottom:0; width:2px; background:#888; }
+  .bar { position:absolute; top:2px; height:18px; }
+  .bar.pos { left:50%; background:#EA2E00; }
+  .bar.neg { background:#1A4FA0; }
+  .footer-cta {
+    background:#1a1a1a; color:#fff; border-radius:20px;
+    padding:48px 40px; margin-top:auto; text-align:center;
+  }
+  .footer-cta .hook { font-family:'Gaegu'; font-size:36px; color:#EA2E00; margin-bottom:16px; }
+  .footer-cta h3 { font-family:'Jua'; font-size:52px; color:#fff; line-height:1.15; }
+</style>
+</head>
+<body>
+
+<div class="slide cover">
+  <h1><span class="pill">{{ dataset.title_short }}</span></h1>
+  <h1 style="font-size:72px; margin-top:36px;">{{ dataset.title_rest }}</h1>
+  <p class="subtitle">{{ dataset.subtitle }}<br>{{ dataset.periodLabel }}</p>
+  <p class="source">{{ dataset.source }}</p>
+</div>
+
+{% for chunk in district_chunks %}
+<div class="slide data">
+  <h2>{{ chunk.header }}</h2>
+  <p class="meta">{{ dataset.sizeLabel | default('300세대 이상 아파트 · 평형 무관') }}</p>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:20%;">지역</th>
+        <th style="width:25%;">취임 전</th>
+        <th style="width:25%;">취임 후</th>
+        <th style="width:20%;">바 차트</th>
+        <th style="width:10%;">변동률</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for d in chunk.rows %}
+      <tr>
+        <td class="gu">{{ d.district }}</td>
+        <td class="price">{{ d.priceBefore_display }}</td>
+        <td class="price">{{ d.priceAfter_display }}</td>
+        <td class="bar-cell">
+          <div class="zero"></div>
+          <div class="bar {% if d.changePct >= 0 %}pos{% else %}neg{% endif %}"
+               style="width:{{ d.bar_width_px }}px; {% if d.changePct < 0 %}left:calc(50% - {{ d.bar_width_px }}px);{% endif %}"></div>
+        </td>
+        <td class="pct {% if d.changePct >= 0 %}pos{% else %}neg{% endif %}">
+          {% if d.changePct >= 0 %}+{% endif %}{{ "%.1f"|format(d.changePct) }}%
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endfor %}
+
+<div class="slide cover">
+  <h1 style="margin-top:200px;"><span class="pill">데이터 더</span></h1>
+  <h1 style="font-size:72px; margin-top:36px;">궁금하지?</h1>
+  <div class="footer-cta">
+    <p class="hook">💬 댓글 달면 보내줄게</p>
+    <h3>"엑셀" — 데이터 파일<br>"PDF" — 요약 리포트</h3>
+  </div>
+  <p class="source">{{ dataset.source }}</p>
+</div>
+
+</body>
+</html>
