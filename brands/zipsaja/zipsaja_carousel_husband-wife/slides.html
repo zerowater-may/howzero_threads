@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>집사자 — 남편이 강남 전세 고집한 결과</title>
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  /* ===== Brand tokens (zipsaja preset) ===== */
+  :root {
+    --bg:        #F0E7D6;     /* 베이지 캔버스 */
+    --bg-cream:  #F5EDE0;     /* 연한 베이지 박스 */
+    --bg-dark:   #1a1a1a;
+    --bg-white:  #fff;
+    --ink:       #1a1a1a;
+    --ink-soft:  #333;
+    --accent:    #EA2E00;     /* 오렌지 */
+    --accent-2:  #C42600;
+    --cool:      #2a5a7f;     /* 전세 냉정 */
+    --hot:       #EA2E00;     /* 매매 열정 */
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: 'Noto Sans KR', sans-serif; color: var(--ink); background: #ddd; padding: 30px; }
+
+  .slide {
+    width: 1080px; height: 1440px;
+    background: var(--bg);
+    padding: 80px 70px 130px;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto 30px;
+  }
+  .slide.cream { background: var(--bg-cream); }
+  .slide.white { background: var(--bg-white); }
+  .slide.dark  { background: var(--bg-dark); color: #fff; }
+
+  /* ===== Headline / body ===== */
+  .js-head    { font-family: 'Jua', sans-serif; font-size: 92px; line-height: 1.15; letter-spacing: -1px; color: var(--ink); margin: 0; }
+  .js-head-xl { font-family: 'Jua', sans-serif; font-size: 132px; line-height: 1.05; letter-spacing: -2px; color: var(--ink); margin: 0; }
+  .js-head-md { font-family: 'Jua', sans-serif; font-size: 72px; line-height: 1.18; color: var(--ink); margin: 0; }
+  .js-body    { font-family: 'Noto Sans KR'; font-weight: 700; font-size: 34px; line-height: 1.55; color: var(--ink); margin: 0; }
+  .js-body-lg { font-family: 'Noto Sans KR'; font-weight: 700; font-size: 42px; line-height: 1.5; color: var(--ink); }
+  .js-body-sm { font-family: 'Noto Sans KR'; font-weight: 700; font-size: 28px; line-height: 1.5; color: var(--ink-soft); }
+
+  /* ===== Pill (오렌지 물감 강조) ===== */
+  .pill {
+    display: inline-block;
+    color: #fff;
+    padding: 14px 36px 18px;
+    font-family: 'Jua', sans-serif;
+    line-height: 1;
+    letter-spacing: -1px;
+    background:
+      radial-gradient(ellipse at 20% 30%, rgba(255,255,255,0.08) 2px, transparent 5px),
+      radial-gradient(ellipse at 70% 60%, rgba(0,0,0,0.1) 1.5px, transparent 4px),
+      radial-gradient(circle at 50% 50%, var(--accent) 55%, var(--accent-2) 100%);
+    background-size: 16px 16px, 14px 14px, 100% 100%;
+    border-radius: 999px;
+    transform: rotate(-0.8deg);
+    box-shadow: 4px 6px 0 rgba(196, 38, 0, 0.3);
+    white-space: nowrap;
+  }
+  .pill.cool {
+    background: radial-gradient(circle at 50% 50%, var(--cool) 55%, #1a3e5a 100%);
+    box-shadow: 4px 6px 0 rgba(26, 62, 90, 0.3);
+  }
+
+  /* ===== Cream / cards ===== */
+  .cream-box {
+    background: var(--bg-cream);
+    border: 3px solid var(--ink);
+    border-radius: 16px;
+    padding: 28px 32px;
+    box-shadow: 4px 4px 0 0 var(--ink);
+  }
+  .check-box {
+    background: var(--accent);
+    color: #fff;
+    border: 3px solid var(--ink);
+    border-radius: 16px;
+    padding: 30px 36px;
+    box-shadow: 4px 4px 0 0 var(--ink);
+  }
+
+  /* ===== Bubble (말풍선) ===== */
+  .bubble {
+    position: relative;
+    display: inline-block;
+    background: #fff;
+    border: 2.5px solid var(--ink);
+    border-radius: 24px;
+    padding: 18px 26px;
+    font-family: 'Gaegu', cursive;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.35;
+    color: var(--ink);
+    max-width: 460px;
+  }
+  .bubble.tail-bl::after {
+    content: ''; position: absolute;
+    bottom: -14px; left: 40px;
+    width: 22px; height: 22px;
+    background: #fff;
+    border-right: 2.5px solid var(--ink);
+    border-bottom: 2.5px solid var(--ink);
+    transform: rotate(45deg);
+  }
+  .bubble.tail-br::after {
+    content: ''; position: absolute;
+    bottom: -14px; right: 40px;
+    width: 22px; height: 22px;
+    background: #fff;
+    border-right: 2.5px solid var(--ink);
+    border-bottom: 2.5px solid var(--ink);
+    transform: rotate(45deg);
+  }
+
+  /* ===== Mascot ===== */
+  .mascot     { width: 240px; height: auto; }
+  .mascot-lg  { width: 360px; }
+  .mascot-md  { width: 200px; }
+  .mascot-sm  { width: 140px; }
+  .mascot-xs  { width: 100px; }
+
+  /* ===== Footer (every slide) ===== */
+  .foot {
+    position: absolute;
+    left: 70px; right: 70px; bottom: 50px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: 'Noto Sans KR'; font-weight: 700; font-size: 22px; color: var(--ink-soft);
+  }
+  .slide.dark .foot { color: rgba(255,255,255,0.7); }
+  .foot .handle { color: var(--ink); font-family: 'Jua', sans-serif; font-size: 26px; }
+  .slide.dark .foot .handle { color: #fff; }
+  .foot .pg { font-family: 'Jua', sans-serif; font-size: 24px; }
+
+  /* ===== Whisper ===== */
+  .whisper { font-family: 'Gaegu', cursive; font-weight: 700; font-size: 30px; color: #888; }
+  .whisper-orange { font-family: 'Gaegu', cursive; font-weight: 700; font-size: 32px; color: var(--accent); }
+
+  /* ===== Num tag ===== */
+  .num-tag {
+    position: absolute; top: 50px; right: 70px;
+    background: var(--accent); color: #fff;
+    border: 3px solid var(--ink); border-radius: 999px;
+    padding: 6px 22px;
+    font-family: 'Jua', sans-serif; font-size: 30px;
+    box-shadow: 3px 3px 0 0 var(--ink);
+    transform: rotate(-2deg);
+  }
+
+  /* Compare grid for slide 8 */
+  .vs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .vs-cell {
+    background: var(--bg-cream); border: 3px solid var(--ink); border-radius: 16px;
+    padding: 38px 28px; text-align: center; box-shadow: 4px 4px 0 0 var(--ink);
+  }
+  .vs-cell.hot { background: var(--accent); color: #fff; }
+  .vs-cell.cool { background: var(--cool); color: #fff; }
+  .vs-cell .lbl { font-family: 'Jua'; font-size: 46px; line-height: 1.1; }
+  .vs-cell .sub { font-family: 'Noto Sans KR'; font-weight: 700; font-size: 24px; opacity: 0.85; margin-top: 6px; }
+  .vs-cell .num { font-family: 'Jua'; font-size: 120px; line-height: 1; margin-top: 14px; }
+  .vs-cell .unit { font-size: 54px; }
+  .vs-cell .note { font-family: 'Gaegu'; font-weight: 700; font-size: 26px; opacity: 0.9; margin-top: 6px; }
+
+  /* Number row for slide 6/7 */
+  .num-row {
+    display: flex; align-items: center; justify-content: space-between;
+    background: #fff; border: 3px solid var(--ink); border-radius: 16px;
+    padding: 22px 28px; box-shadow: 4px 4px 0 0 var(--ink);
+    margin-bottom: 16px;
+  }
+  .num-row .lbl { font-family: 'Jua'; font-size: 38px; line-height: 1.1; }
+  .num-row .arrow { font-family: 'Jua'; font-size: 48px; color: var(--accent); }
+  .num-row .val { font-family: 'Jua'; font-size: 52px; color: var(--ink); }
+  .num-row .val.hot { color: var(--accent); }
+
+  /* Timeline (for step sequence) */
+  .tl-row {
+    display: flex; align-items: center; gap: 20px;
+    padding: 22px 28px;
+    background: #fff;
+    border: 3px solid var(--ink); border-radius: 16px;
+    box-shadow: 4px 4px 0 0 var(--ink);
+    margin-bottom: 16px;
+  }
+  .tl-row .year { font-family: 'Jua'; font-size: 48px; color: var(--accent); width: 140px; flex-shrink: 0; }
+  .tl-row .text { font-family: 'Jua'; font-size: 40px; flex: 1; }
+
+  /* Slide 8 shock banner */
+  .shock {
+    background: var(--bg-dark); color: #fff;
+    border: 3px solid var(--ink); border-radius: 16px;
+    padding: 32px 36px; text-align: center;
+    box-shadow: 4px 4px 0 0 var(--accent);
+    margin-top: 36px;
+  }
+  .shock .gap-num {
+    font-family: 'Jua'; font-size: 180px; line-height: 1;
+    color: var(--accent); letter-spacing: -4px;
+  }
+  .shock .gap-unit { font-size: 80px; }
+</style>
+</head>
+<body>
+
+<!-- ============ SLIDE 1 — HOOK COVER ============ -->
+<section class="slide" id="slide-1">
+  <div class="num-tag">01</div>
+
+  <div style="margin-top: 80px;">
+    <div class="whisper" style="margin-bottom: 18px;">2016년, 신혼 때 우리 싸움…</div>
+    <h1 class="js-head-xl" style="font-size: 128px;">
+      남편이<br>
+      <span style="font-size: 128px;">강남 전세</span><br>
+      고집한<br>
+      <span class="pill" style="font-size: 128px; padding: 18px 52px 26px; margin-top: 10px;">결과</span>
+    </h1>
+  </div>
+
+  <img src="/Users/zerowater/Dropbox/zerowater/howzero/.claude/skills/zipsaja-design/assets/mascots/mascot-angry.png"
+       class="mascot-lg"
+       style="position: absolute; right: 30px; bottom: 180px;">
+
+  <div class="whisper-orange" style="position: absolute; bottom: 130px; left: 70px;">
+    10년 후 자산 9억 차이…
+  </div>
+
+  <div class="foot">
+    <span class="handle">@zipsaja</span>
+    <span class="pg">1 / 10  →</span>
+  </div>
+</section>
+
+<!-- ============ SLIDE 2 — SETUP (2016 상황) ============ -->
+<section class="slide cream" id="slide-2">
+  <div class="num-tag">02</div>
+
+  <div style="margin-top: 70px;">
+    <div class="whisper-orange" style="margin-bottom: 14px;">2016년 봄, 결혼 직전</div>
+    <h2 class="js-head" style="font-size: 88px;">
+      자기자본 <span class="pill" style="font-size: 88px; padding: 14px 34px 20px;">2억</span><br>
+      대출 여력 3억
+    </h2>
+  </div>
+
+  <div class="cream-box" style="margin-top: 50px; max-width: 820px; background: #fff;">
+    <div class="js-body" style="font-size: 34px; line-height: 1.7;">
+      <b style="color: var(--accent);">어디 살지</b> 정하다가<br>
+      우리 부부 <b>대판 싸웠거든…</b><br>
+      <span style="color: #888; font-size: 28px;">결혼 전에 이런 일 흔해…</span>
+    </div>
+  </div>
+
+  <img src="/Users/zerowater/Dropbox/zerowater/howzero/.claude/skills/zipsaja-design/assets/mascots/mascot-worried.png"
+       class="mascot"
+       style="position: absolute; right: 50px; bottom: 200px;">
+
+  <div class="foot">
+    <span class="handle">@zipsaja</span>
+    <span class="pg">2 / 10  →</span>
+  </div>
+</section>
+
+<!-- ============ SLIDE 3 — 남편 주장 ============ -->
+<section class="slide" id="slide-3">
+  <div class="num-tag">03</div>
+
+  <div style="margin-top: 60px;">
+    <div class="whisper" style="margin-bottom: 14px;">남편은 이렇게 말했어…</div>
+    <h2 class="js-head" style="font-size: 80px;">
+      <span class="pill cool" style="font-size: 80px; padding: 14px 36px 20px;">무리 말자</span><br>
+      안전이 최고야
+    </h2>
+  </div>
+
+  <div class="cream-box" style="margin-top: 44px; max-width: 880px; background: #fff; border-color: var(--cool);">
+    <div style="font-family: 'Jua'; font-size: 40px; margin-bottom: 12px; color: var(--cool);">남편의 선택 👨</div>
+    <div class="js-body" style="font-size: 34px; line-height: 1.7;">
+      <b style="color: var(--cool);">강남 끝자락 3.5억 전세</b><br>
+      · 대출 없이 편하게<br>
+      · 위치 좋은 곳에서 시작<br>
+      · "나중에 사도 돼"
+    </div>
+  </div>
+
+  <div style="position: absolute; right: 40px; bottom: 210px;">
+    <div class="bubble tail-br" style="margin-bottom: 14px;">
+      빚지고 시작하기<br>싫어~
+    </div>
+    <img src="/Users/zerowater/Dropbox/zerowater/howzero/.claude/skills/zipsaja-design/assets/mascots/mascot-blank.png"
+         class="mascot" style="display: block; margin-left: auto;">
+  </div>
+
+  <div class="foot">
+    <span class="handle">@zipsaja</span>
+    <span class="pg">3 / 10  →</span>
+  </div>
+</section>
+
+<!-- ============ SLIDE 4 — 내 주장 ============ -->
+<section class="slide cream" id="slide-4">
+  <div class="num-tag">04</div>
+
+  <div style="margin-top: 60px;">
+    <div class="whisper-orange" style="margin-bottom: 14px;">근데 나는 생각이 달랐어…</div>
+    <h2 class="js-head" style="font-size: 80px;">
+      <span class="pill" style="font-size: 80px; padding: 14px 34px 20px;">지금 사자</span><br>
+      빚져도 내 집
+    </h2>
+  </div>
+
+  <div class="cream-box" style="margin-top: 44px; max-width: 880px; background: #fff; border-color: var(--accent);">
+    <div style="font-family: 'Jua'; font-size: 40px; margin-bottom: 12px; color: var(--accent);">내 주장 👩</div>
+    <div class="js-body" style="font-size: 34px; line-height: 1.7;">
+      <b style="color: var(--accent);">강북 구축 4.5억 매매</b><br>
+      · 2억 자기자본 + 대출 2.5억<br>
+      · 구축이라도 내 집<br>
+      · "지금 아니면 늦어"
+    </div>
+  </div>
+
+  <div style="position: absolute; left: 70px; bottom: 210px; display: flex; align-items: flex-end; gap: 16px;">
+    <img src="/Users/zerowater/Dropbox/zerowater/howzero/.claude/skills/zipsaja-design/assets/mascots/mascot-shining.png"
+         class="mascot-md">
+    <div class="bubble" style="margin-bottom: 30px;">
+      지금 안 사면<br>진짜 못 산다고!
+    </div>
+  </div>
+
+  <div class="foot">
+    <span class="handle">@zipsaja</span>
+    <span class="pg">4 / 10  →</span>
+  </div>
+</section>
+
+<!-- ============ SLIDE 5 — 결정 (남편 승) ============ -->
+<section class="slide" id="slide-5">
+  <div class="num-tag">05</div>
+
+  <div style="margin-top: 60px;">
+    <div class="whisper" style="margin-bottom: 14px;">결국…</div>
+    <h2 class="js-head" style="font-size: 88px;">
+      남편 의견<br>
+      <span class="pill cool" style="font-size: 88px; padding: 14px 38px 20px;">따름</span>
+    </h2>
+  </div>
+
+  <div class="cream-box" style="margin-top: 44px; max-width: 880px; background: #fff;">
+    <div class="js-body-lg" style="font-size: 44px; line-height: 1.5;">
+      <b>강남 3.5억 전세</b><br>
+      <span style="color: #888; font-size: 32px; font-weight: 500;">빚 없이, 마음 편하게 시작~</span>
+    </div>
+  </div>
+
+  <div class="whisper-orange" style="margin-top: 44px;">
+    (이때까지만 해도 괜찮았어…)
+  </div>
+
+  <div style="position: absolute; right: 50px; bottom: 210px;">
+    <div class="bubble tail-br" style="margin-bottom: 14px;">
+      10년 뒤에<br>후회할 줄은…
+    </div>
+    <img src="/Users/zerowater/Dropbox/zerowater/howzero/.claude/skills/zipsaja-design/assets/mascots/mascot-worried.png"
+         class="mascot" style="display: block; margin-left: auto;">
+  </div>
+
+  <div class="foot">
+    <span class="handle">@zipsaja</span>
+    <span class="pg">5 / 10  →</span>
+  </div>
+</section>
+
+<!-- ============ SLIDE 6 — 2026 전세 결과 ============ -->
+<section class="slide cream" id="slide-6">
+  <div class="num-tag">06</div>
+
+  <div style="margin-top: 60px;">
+    <div class="whisper" style="margin-bottom: 14px;">10년 후, 2026년</div>
+    <h2 class="js-head" style="font-size: 80px;">
+      강남 전세<br>
+      지금 <span class="pill cool" style="font-size: 80px; padding: 14px 34px 20px;">얼마</span>냐면…
+    </h2>
+  </div>
+
+  <div style="margin-top: 44px; max-width: 880px;">
+    <div class="num-row">
+      <div class="lbl">2016년 전세</div>
+      <div class="arrow">→</div>
+      <div class="val" style="color: var(--cool);">3.5억</div>
+    </div>
+    <div class="num-row" style="background: var(--cool); color: #fff; border-color: var(--cool);">
+      <div class="lbl" style="color: #fff;">2026년 전세 (갱신)</div>
+      <div class="arrow" style="color: #fff;">→</div>
+      <div class="val" style="color: #fff;">6.0억</div>
+    </div>
+  </div>
+
+  <div class="check-box" style="margin-top: 30px; max-width: 880px; background: var(--bg-dark); border-color: var(--bg-dark);">
+    <div style="font-family: 'Jua'; font-size: 38px; color: #fff;">
+      갱신 보증금 <b style="color: var(--accent);">+2.5억</b>
+    </div>
+    <div class="js-body" style="font-size: 28px; color: rgba(255,255,255,0.85); margin-top: 8px;">
+      순자산 증식: 저축 누적 <b style="color: var(--accent);">2~3억</b>만…
+    </div>
+  </div>
+
+  <div class="foot">
+    <span class="handle">@zipsaja</span>
+    <span class="pg">6 / 10  →</span>
+  </div>
+</section>
+
+<!-- ============ SLIDE 7 — 만약 매매했다면 ============ -->
+<section class="slide" id="slide-7">
+  <div class="num-tag">07</div>
+
+  <div style="margin-top: 60px;">
+    <div class="whisper-orange" style="margin-bottom: 14px;">근데 만약 내 말대로 샀다면?</div>
+    <h2 class="js-head" style="font-size: 80px;">
+      강북 구축<br>
+      지금 <span class="pill" style="font-size: 80px; padding: 14px 34px 20px;">얼마</span>냐면…
+    </h2>
+  </div>
+
+  <div style="margin-top: 44px; max-width: 880px;">
+    <div class="num-row">
+      <div class="lbl">2016년 매매가</div>
+      <div class="arrow">→</div>
+      <div class="val">4.5억</div>
+    </div>
+    <div class="num-row" style="background: var(--accent); color: #fff; border-color: var(--accent);">
+      <div class="lbl" style="color: #fff;">2026년 현재 시세</div>
+      <div class="arrow" style="color: #fff;">→</div>
+      <div class="val" style="color: #fff;">13.5억</div>
+    </div>
+  </div>
+
+  <div class="check-box" style="margin-top: 30px; max-width: 880px; background: #fff; color: var(--ink);">
+    <div style="font-family: 'Jua'; font-size: 38px;">
+      <b style="color: var(--accent);">+9억</b> 상승 (3배)
+    </div>
+    <div class="js-body" style="font-size: 28px; color: var(--ink-soft); margin-top: 8px;">
+      서울 24평 평균 <b style="color: var(--accent);">+203%</b> (2016~2026)
+    </div>
+  </div>
+
+  <div class="foot">
+    <span class="handle">@zipsaja</span>
+    <span class="pg">7 / 10  →</span>
+  </div>
+</section>
+
+<!-- ============ SLIDE 8 — 격차 충격 ============ -->
+<section class="slide dark" id="slide-8">
+  <div style="position: absolute; top: 50px; right: 70px; background: var(--accent); color: #fff; border: 3px solid var(--accent); border-radius: 999px; padding: 6px 22px; font-family: 'Jua'; font-size: 30px; transform: rotate(-2deg);">08</div>
+
+  <div style="margin-top: 60px;">
+    <div class="whisper" style="color: rgba(255,255,255,0.7); margin-bottom: 14px;">남편 얼굴 어떡함?</div>
+    <h2 class="js-head" style="color: #fff; font-size: 92px;">
+      자산 격차<br>
+      <span class="pill" style="font-size: 92px; padding: 14px 40px 20px;">9억</span>
+    </h2>
+  </div>
+
+  <div class="vs-grid" style="margin-top: 44px;">
+    <div class="vs-cell cool">
+      <div class="lbl">남편 (전세파)</div>
+      <div class="sub">자기자본 + 저축</div>
+      <div class="num">3<span class="unit">억</span></div>
+      <div class="note">10년 동안 +1억</div>
+    </div>
+    <div class="vs-cell hot">
+      <div class="lbl">나 (매매파 가정)</div>
+      <div class="sub">집값 — 잔여대출</div>
+      <div class="num">12<span class="unit">억</span></div>
+      <div class="note">10년 동안 +10억</div>
+    </div>
+  </div>
+
+  <div class="shock">
+    <div style="font-family: 'Jua'; font-size: 42px; color: #fff;">
+      10년 후 격차
+    </div>
+    <div class="gap-num">9<span class="gap-unit">억</span></div>
+  </div>
+
+  <div class="foot">
+    <span class="handle">@zipsaja</span>
+    <span class="pg">9 / 10  →</span>
+  </div>
+</section>
+
+<!-- ============ SLIDE 9 — 교훈 ============ -->
+<section class="slide cream" id="slide-9">
+  <div class="num-tag">09</div>
+
+  <div style="margin-top: 60px;">
+    <div class="whisper" style="margin-bottom: 14px;">10년이 알려준 것</div>
+    <h2 class="js-head" style="font-size: 84px;">
+      <span class="pill" style="font-size: 84px; padding: 14px 36px 20px;">진짜 교훈</span><br>
+      3가지
+    </h2>
+  </div>
+
+  <div style="margin-top: 48px; display: flex; flex-direction: column; gap: 16px; max-width: 880px;">
+    <div class="cream-box" style="background: #fff; display: flex; align-items: center; gap: 22px;">
+      <div style="font-family: 'Jua'; font-size: 48px; color: var(--accent); width: 64px;">✓</div>
+      <div class="js-body" style="flex: 1;"><b>전세는 시세 상승을</b> 절대 못 잡아</div>
+    </div>
+    <div class="cream-box" style="background: #fff; display: flex; align-items: center; gap: 22px;">
+      <div style="font-family: 'Jua'; font-size: 48px; color: var(--accent); width: 64px;">✓</div>
+      <div class="js-body" style="flex: 1;">구축이라도 <b>내 집 = 자산</b></div>
+    </div>
+    <div class="cream-box" style="background: #fff; display: flex; align-items: center; gap: 22px;">
+      <div style="font-family: 'Jua'; font-size: 48px; color: var(--accent); width: 64px;">✓</div>
+      <div class="js-body" style="flex: 1;"><b>위치보다 매매 결정</b>이 먼저</div>
+    </div>
+  </div>
+
+  <div style="position: absolute; right: 50px; bottom: 200px;">
+    <div class="bubble tail-br" style="margin-bottom: 14px;">
+      그래서 난 지금도<br>후회해…
+    </div>
+    <img src="/Users/zerowater/Dropbox/zerowater/howzero/.claude/skills/zipsaja-design/assets/mascots/mascot-worried.png"
+         class="mascot" style="display: block; margin-left: auto;">
+  </div>
+
+  <div class="foot">
+    <span class="handle">@zipsaja</span>
+    <span class="pg">9 / 10  →</span>
+  </div>
+</section>
+
+<!-- ============ SLIDE 10 — CTA (댓글 싸움 유도) ============ -->
+<section class="slide dark" id="slide-10">
+  <div style="position: absolute; top: 50px; right: 70px; background: var(--accent); color: #fff; border: 3px solid var(--accent); border-radius: 999px; padding: 6px 22px; font-family: 'Jua'; font-size: 30px; transform: rotate(-2deg);">10</div>
+
+  <div style="text-align: center; margin-top: 120px;">
+    <img src="/Users/zerowater/Dropbox/zerowater/howzero/.claude/skills/zipsaja-design/assets/mascots/mascot-hero.png"
+         class="mascot-lg" style="filter: invert(1);">
+
+    <h2 class="js-head" style="color: #fff; font-size: 92px; margin: 28px 0 24px;">
+      너는<br>
+      <span class="pill cool" style="font-size: 92px; padding: 14px 38px 20px;">전세파</span>?<br>
+      <span class="pill" style="font-size: 92px; padding: 14px 38px 20px;">매매파</span>?
+    </h2>
+
+    <p style="font-family: 'Gaegu', cursive; font-weight: 700; font-size: 38px; color: var(--accent); margin: 30px 0 40px;">
+      댓글로 싸워보자 🔥
+    </p>
+
+    <div style="display: flex; justify-content: center; gap: 18px; flex-wrap: wrap;">
+      <span style="background: #fff; color: var(--ink); border-radius: 999px; padding: 14px 30px; font-family: 'Jua'; font-size: 30px;">팔로우</span>
+      <span style="background: var(--accent); color: #fff; border-radius: 999px; padding: 14px 30px; font-family: 'Jua'; font-size: 30px;">저장</span>
+      <span style="background: var(--cool); color: #fff; border-radius: 999px; padding: 14px 30px; font-family: 'Jua'; font-size: 30px;">공유</span>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span class="handle" style="color: #fff;">@zipsaja</span>
+    <span class="pg" style="color: rgba(255,255,255,0.7);">10 / 10</span>
+  </div>
+</section>
+
+</body>
+</html>

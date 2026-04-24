@@ -25,3 +25,16 @@ htmlcov/
 
 # git worktrees (isolated feature branches)
 .worktrees/
+
+# 설정 백업 파일
+*.bak
+
+# Node modules (모든 위치)
+**/node_modules/
+# Webpack/Remotion 캐시
+**/.cache/
+.remotion/
+chrome-headless-shell
+
+# GitHub 100MB 한도 — 거대 미디어는 별도 보관
+brands/howzero/howzero_carousel_pmqTgyPZdto/pmqTgyPZdto.mp4

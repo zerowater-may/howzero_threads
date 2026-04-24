@@ -1,0 +1,37 @@
+A square Instagram carousel slide template, 1080x1440 pixels,
+hand-drawn doodle illustration in the style of a Korean influencer's
+iPad Procreate notebook. White background (#FFFFFF).
+
+Color palette: only black outlines (#1a1a1a) and mustard yellow accent (#FACC15).
+No gradients, no shading, solid flat colors only.
+
+Line quality: hand-drawn, slightly wobbly, imperfect. Not math-perfect,
+not vector-clean. Slightly asymmetric — amateur notebook doodle quality,
+NOT a polished Canva sticker, NOT a kawaii mascot logo.
+
+LAYOUT: Apartment listing card.
+- Top (y 80-220): wide mustard yellow marker highlight patch for the headline,
+  wobbly hand-drawn brush stroke shape, empty interior.
+- Upper-middle (y 260-640): one large rectangular info box with a
+  thick wobbly black border, empty interior, occupying most of the width.
+- Lower-middle (y 680-950): two side-by-side smaller info boxes.
+  Left box: white background with black wobbly border.
+  Right box: mustard yellow fill with black wobbly border.
+- Bottom-left corner (x 80-280, y 1160-1360): a single solid bright
+  green circle (#00FF00) for the mascot placeholder marker.
+- Bottom-right area (x 300-1000, y 1160-1340): empty space,
+  reserved for handwritten whisper text overlay (keep background white).
+
+Mascot placement: draw a single solid bright green circle
+(#00FF00, approximately 200 pixels diameter) at the designated mascot slot
+location. This circle is a placeholder marker — do NOT draw a lion, animal,
+character, or any figure. Just a plain green circle.
+
+CRITICAL RULES — violate these and the image is unusable:
+- ABSOLUTELY NO text, letters, words, numbers, typography, fonts,
+  Korean characters, English characters, or gibberish anywhere
+- All yellow highlight patches, speech bubbles, and rectangular info boxes
+  must be 100% completely empty and blank inside
+- No watermark, no signature, no logo
+- No 3D render, no glossy, no gradients
+- No photorealistic elements

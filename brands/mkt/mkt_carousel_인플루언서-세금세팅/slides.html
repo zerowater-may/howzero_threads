@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>인플루언서 세금 세팅 — mkt 스타일</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #d0d0d0;
+    font-family: 'Pretendard', 'Noto Sans KR', -apple-system, sans-serif;
+    color: #1a1a1a;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .slide {
+    width: 1080px; height: 1440px;
+    background: #ECECEC;
+    padding: 80px 80px 140px;
+    position: relative;
+    overflow: hidden;
+    margin: 24px auto;
+  }
+  .slide.cover { padding: 0; background: #1a1a1a; color: #fff; }
+
+  /* ===== 공통 컴포넌트 ===== */
+
+  /* 주황 불릿 */
+  .dot {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: #FF5A1F;
+    margin-bottom: 36px;
+  }
+
+  /* 헤드라인 */
+  .head {
+    font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+    font-weight: 900;
+    font-size: 68px;
+    line-height: 1.25;
+    letter-spacing: -1.2px;
+    color: #1a1a1a;
+    margin-bottom: 40px;
+  }
+  .head-lg { font-size: 78px; }
+  .head-sm { font-size: 56px; }
+
+  /* 본문 */
+  .body-text {
+    font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 1.55;
+    color: #2a2a2a;
+  }
+  .body-text b, .body-text strong {
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+  .body-text p + p { margin-top: 26px; }
+
+  /* 사진 카드 */
+  .photo {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-bottom: 40px;
+    display: block;
+  }
+
+  /* 로고 워터마크 */
+  .watermark {
+    position: absolute;
+    bottom: 90px; left: 80px;
+    font-family: 'Pretendard'; font-weight: 900; font-size: 58px;
+    color: rgba(0, 0, 0, 0.09);
+    letter-spacing: -3px;
+    user-select: none;
+  }
+
+  /* 페이지 번호 */
+  .page-num {
+    position: absolute;
+    bottom: 80px; right: 80px;
+    font-family: 'Pretendard'; font-weight: 700; font-size: 20px;
+    color: #999;
+    letter-spacing: 1px;
+  }
+
+  /* 핸들 */
+  .handle {
+    position: absolute;
+    bottom: 80px; left: 80px;
+    font-family: 'Pretendard'; font-weight: 700; font-size: 22px;
+    color: #666;
+  }
+
+  /* 강조 박스 */
+  .accent-box {
+    background: #1a1a1a;
+    color: #fff;
+    padding: 28px 32px;
+    margin-top: 32px;
+    border-radius: 4px;
+  }
+  .accent-box .label {
+    font-size: 18px; font-weight: 700; color: #ffd54f;
+    letter-spacing: 1px; margin-bottom: 10px;
+  }
+  .accent-box .value {
+    font-family: 'Pretendard'; font-weight: 900;
+    font-size: 42px; line-height: 1.2;
+  }
+
+  /* ===== COVER (S1) ===== */
+  .s-cover {
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .s-cover .cover-img-wrap {
+    position: absolute; inset: 0;
+  }
+  .s-cover .cover-img-wrap img {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: grayscale(1) brightness(0.68) contrast(1.1);
+  }
+  .s-cover .cover-img-wrap::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.85) 100%);
+  }
+  .s-cover .cover-logo {
+    position: absolute; top: 80px; left: 50%; transform: translateX(-50%);
+    font-family: 'Pretendard'; font-weight: 900; font-size: 48px;
+    letter-spacing: -3px; color: #fff;
+  }
+  .s-cover .cover-title {
+    position: absolute; bottom: 180px; left: 50%; transform: translateX(-50%);
+    font-family: 'Pretendard'; font-weight: 900; font-size: 62px;
+    line-height: 1.3; color: #fff; text-align: center;
+    letter-spacing: -1.5px;
+    width: 900px;
+  }
+  .s-cover .cover-kicker {
+    position: absolute; bottom: 120px; left: 50%; transform: translateX(-50%);
+    font-family: 'Pretendard'; font-weight: 500; font-size: 22px;
+    color: #ccc; letter-spacing: 2px;
+  }
+
+  /* ===== S10 DARK CTA ===== */
+  .s-cta {
+    background: #1a1a1a;
+    color: #fff;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 80px 160px;
+  }
+  .s-cta .kicker {
+    font-family: 'Pretendard'; font-weight: 700; font-size: 22px;
+    color: #FF5A1F; letter-spacing: 2px; margin-bottom: 24px;
+  }
+  .s-cta .head {
+    color: #fff; font-size: 72px; margin-bottom: 32px;
+  }
+  .s-cta .body-text { color: #ccc; font-size: 28px; }
+  .s-cta .watermark { color: rgba(255,255,255,0.08); }
+  .s-cta .handle { color: #888; }
+  .s-cta .page-num { color: #666; }
+
+  .source-note {
+    font-family: 'Pretendard'; font-weight: 500; font-size: 18px;
+    color: #888; margin-top: 48px; line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 — COVER -->
+<div class="slide s-cover cover" id="slide-1">
+  <div class="cover-img-wrap"><img src="frames/h01_f01.jpg" alt="세무사 인터뷰"></div>
+  <div class="cover-logo">mkt</div>
+  <div class="cover-title">
+    유튜브로 돈 벌기<br>
+    시작했다면<br>
+    꼭 봐야 할 글
+  </div>
+  <div class="cover-kicker">세금 세팅 편 · 인플루언서 포함</div>
+</div>
+
+<!-- SLIDE 2 — 도입 (텍스트 전용) -->
+<div class="slide" id="slide-2">
+  <div class="dot"></div>
+  <div class="head">
+    수익이 나기 시작한 순간,<br>
+    진짜 공부가 시작됩니다.
+  </div>
+  <div class="body-text">
+    <p>영상이 터졌고, 광고가 붙었고, 협찬이 들어왔어요.<br>그런데 이제는 '얼마 벌었냐'보다 '얼마 남느냐'가 중요해집니다.</p>
+    <p>많은 분들이 <b>매출이 늘수록 세금이 빠르게 따라 늘어나는</b> 경험을 합니다.</p>
+    <p>오늘은 유튜버·인플루언서가 수익 초기에<br>반드시 세팅해야 할 절세 포인트 5가지를 정리합니다.</p>
+  </div>
+  <div class="watermark">mkt</div>
+  <div class="handle">@mkt.co.kr</div>
+  <div class="page-num">02</div>
+</div>
+
+<!-- SLIDE 3 — 창업감면 (X/O) -->
+<div class="slide" id="slide-3">
+  <div class="dot"></div>
+  <div class="head">
+    세금 그냥 내기 (X)<br>
+    창업 감면 먼저 확인하기 (O)
+  </div>
+  <div class="body-text">
+    <p>청년 창업 감면 제도는 <b>5년간 소득세 최대 100% 면제</b>입니다.<br>유튜버·1인 크리에이터 대부분이 나이·지역 요건을 충족합니다.</p>
+    <p>지금 감면을 못 받고 계셨다면<br><b>과거분도 환급</b> 받으실 수 있습니다.</p>
+  </div>
+  <div class="accent-box">
+    <div class="label">CORE</div>
+    <div class="value">5년 × 최대 100% 면제</div>
+  </div>
+  <div class="watermark">mkt</div>
+  <div class="handle">@mkt.co.kr</div>
+  <div class="page-num">03</div>
+</div>
+
+<!-- SLIDE 4 — 공유오피스 함정 (X/O) -->
+<div class="slide" id="slide-4">
+  <div class="dot"></div>
+  <div class="head">
+    주소만 옮기기 (X)<br>
+    실제 사업장 유지 (O)
+  </div>
+  <div class="body-text">
+    <p>'창업 감면 되는 지역'에 공유오피스 주소만 등록하는 분이 많습니다.</p>
+    <p>하지만 실제 활동지와 등록지가 따로라면<br><b>국세청이 사후에 부인할 수 있습니다.</b></p>
+    <p>감면 받고도 과거로 돌아가 추징될 수 있어요.<br>지역 요건은 실제로 일해온 곳에서 충족시켜야 합니다.</p>
+  </div>
+  <div class="watermark">mkt</div>
+  <div class="handle">@mkt.co.kr</div>
+  <div class="page-num">04</div>
+</div>
+
+<!-- SLIDE 5 — 고용증대 세액공제 (X/O) -->
+<div class="slide" id="slide-5">
+  <div class="dot"></div>
+  <div class="head">
+    편집자를 프리랜서로 (X)<br>
+    정식 채용으로 (O)
+  </div>
+  <div class="body-text">
+    <p>편집자·감독을 고정 급여로 쓰고 계신가요?<br><b>4대보험 채용으로 전환</b>하면 고용증대 세액공제가 열립니다.</p>
+    <p>직원 1명 채용 시 <b>연 최대 1,550만원</b>을<br>3년간 세금에서 빼줍니다.</p>
+  </div>
+  <div class="accent-box">
+    <div class="label">CORE</div>
+    <div class="value">1명 × 1,550만원 × 3년</div>
+  </div>
+  <div class="watermark">mkt</div>
+  <div class="handle">@mkt.co.kr</div>
+  <div class="page-num">05</div>
+</div>
+
+<!-- SLIDE 6 — 경조사·접대비 (X/O) -->
+<div class="slide" id="slide-6">
+  <div class="dot"></div>
+  <div class="head">
+    경조사비 그냥 쓰기 (X)<br>
+    영수증·내역 남기기 (O)
+  </div>
+  <div class="body-text">
+    <p>구독자·협업자 결혼식, 돌잔치, 장례식.<br>자주 가지만 <b>내역이 없으면 비용 처리가 안 됩니다.</b></p>
+    <p>모바일 청첩장·부의금 내역은 <b>캡처해서 세무사에 전달</b>하세요.</p>
+    <p>건당 20만원까지, 한도 내 4~50건도 가능합니다.<br>평상시의 습관이 연말 세금을 바꿉니다.</p>
+  </div>
+  <div class="watermark">mkt</div>
+  <div class="handle">@mkt.co.kr</div>
+  <div class="page-num">06</div>
+</div>
+
+<!-- SLIDE 7 — 노란우산공제 (X/O) -->
+<div class="slide" id="slide-7">
+  <div class="dot"></div>
+  <div class="head">
+    나중에 가입하기 (X)<br>
+    지금 가입하기 (O)
+  </div>
+  <div class="body-text">
+    <p>노란우산공제는 개인 사업자·프리랜서를 위한 <b>국가 보장 절세 금융상품</b>입니다.</p>
+    <p>월 <b>40~50만원</b> 수준이면 적절합니다.<br>납입액 전액이 소득공제되고 나중에 퇴직금처럼 돌려받아요.</p>
+    <p>아직 가입 안 하셨다면 오늘이 가장 빠릅니다.</p>
+  </div>
+  <div class="watermark">mkt</div>
+  <div class="handle">@mkt.co.kr</div>
+  <div class="page-num">07</div>
+</div>
+
+<!-- SLIDE 8 — 법인전환 타이밍 (사진 + 텍스트) -->
+<div class="slide" id="slide-8">
+  <img src="frames/h14_f01.jpg" class="photo" alt="세무사 설명">
+  <div class="dot" style="margin-bottom: 24px;"></div>
+  <div class="head head-sm">
+    법인 전환,<br>
+    숫자부터 보세요.
+  </div>
+  <div class="body-text">
+    <p>두 가지 신호가 오면 <b>법인 전환을 고민</b>할 시점입니다.</p>
+    <p>① 이익이 <b>8,800만원</b>을 넘는다<br>② 매출이 <b>7억 5천만원</b>을 넘는다</p>
+    <p>감으로 결정하지 말고 두 기준으로 판단하세요.</p>
+  </div>
+  <div class="watermark">mkt</div>
+  <div class="handle">@mkt.co.kr</div>
+  <div class="page-num">08</div>
+</div>
+
+<!-- SLIDE 9 — 정리 (텍스트 전용) -->
+<div class="slide" id="slide-9">
+  <div class="dot"></div>
+  <div class="head">
+    다섯 가지를<br>
+    관통하는 하나의 습관.
+  </div>
+  <div class="body-text">
+    <p>창업 감면, 실제 주소, 정식 채용, 영수증 기록, 노란우산.<br>다섯 개 모두 <b>"수익이 나기 전에 세팅해 두는"</b> 일입니다.</p>
+    <p>세금은 1년에 한 번 몰아서 고민하는 게 아니라<br>매일 소소하게 기록해 두는 일에 가깝습니다.</p>
+    <p>돈이 들어오기 시작한 지금이<br>평생의 세금 구조를 정하는 순간입니다.</p>
+  </div>
+  <div class="watermark">mkt</div>
+  <div class="handle">@mkt.co.kr</div>
+  <div class="page-num">09</div>
+</div>
+
+<!-- SLIDE 10 — DARK CTA -->
+<div class="slide s-cta cover" id="slide-10">
+  <div class="kicker">● FROM mkt.co.kr</div>
+  <div class="head">
+    마케터도<br>
+    사업자 구조를 압니다.
+  </div>
+  <div class="body-text">
+    <p>브랜드가 커질수록 당신도 사업자입니다.<br>다음 인사이트 위크에선 <b>'크리에이터 경제와 세무'</b>를 다룹니다.</p>
+  </div>
+  <div class="source-note">
+    영상 원본 · YouTube 『유튜브로 돈 벌기 시작했다면? 이렇게 세팅해야 세금 아낍니다』<br>
+    인용 공정이용 · 비평·요약 목적
+  </div>
+  <div class="watermark">mkt</div>
+  <div class="handle">@mkt.co.kr</div>
+  <div class="page-num">10</div>
+</div>
+
+</body>
+</html>

@@ -135,14 +135,14 @@ const Header: React.FC<{ frame: number; fps: number; data: SeoulPriceDataset }> 
       <div
         style={{
           fontFamily: "Jua",
-          fontSize: 110,
+          fontSize: 64,
           lineHeight: 1.05,
           color: INK,
           transform: `scale(${pillScale})`,
           letterSpacing: -2,
         }}
       >
-        서울 실거래 1년간 변화
+        이재명 대통령 당선후 서울 실거래 변화
       </div>
 
       {/* 기간 안내 */}
@@ -338,12 +338,12 @@ const ColumnHeader: React.FC<{ frame: number }> = ({ frame }) => {
     >
       <div style={{ width: 140 }}>지역</div>
       <div style={{ width: 220, textAlign: "right", paddingRight: 16 }}>
-        25.1.1~4.18
+        취임 전
       </div>
       <div style={{ width: 220, textAlign: "right", paddingRight: 16 }}>
-        26.1.1~4.18
+        취임 후
       </div>
-      <div style={{ flex: 1, marginLeft: 10 }}>동일기간 변동률</div>
+      <div style={{ flex: 1, marginLeft: 10 }}>변동률</div>
     </div>
   );
 };

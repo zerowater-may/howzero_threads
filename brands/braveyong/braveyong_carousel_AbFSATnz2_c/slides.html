@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>용팀장 - 구매대행 1000개 제한 긴급 분석</title>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #dcd8cf; padding: 60px 0;
+  display: flex; flex-direction: column; align-items: center; gap: 40px;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.slide {
+  width: 1080px; height: 1440px;
+  background: #FAF8F5;
+  position: relative;
+  overflow: hidden;
+  padding: 80px 80px 120px;
+}
+.slide.dark { background: #1A0A0A; color: #fff; }
+
+/* ====== Typography ====== */
+.title { font-family: 'Black Han Sans', sans-serif; font-weight: 400; color: #1A1A1A; letter-spacing: -2px; line-height: 1.05; }
+.title-xl { font-size: 124px; }
+.title-lg { font-size: 104px; }
+.title-md { font-size: 78px; }
+.title-sm { font-size: 60px; }
+.slide.dark .title { color: #fff; }
+
+.body { font-family: 'Noto Sans KR', sans-serif; font-weight: 700; color: #1A1A1A; line-height: 1.45; }
+.body-lg { font-size: 44px; font-weight: 900; line-height: 1.35; }
+.body-md { font-size: 36px; }
+.body-sm { font-size: 28px; color: #555; font-weight: 700; }
+.slide.dark .body { color: #fff; }
+.slide.dark .body-sm { color: #d4a0a0; }
+
+.whisper {
+  font-family: 'Gaegu', cursive; font-weight: 700;
+  font-size: 32px; color: #888;
+  display: inline-block; transform: rotate(-1deg);
+}
+.slide.dark .whisper { color: #E8B4B4; }
+
+/* ====== Highlights ====== */
+.hl-red {
+  background: linear-gradient(170deg, transparent 10%, #e8b4b4 15%, #d4a0a0 50%, #e8b4b4 85%, transparent 90%);
+  padding: 2px 10px; display: inline;
+  box-decoration-break: clone; -webkit-box-decoration-break: clone;
+}
+.hl-gold {
+  background: linear-gradient(168deg, transparent 10%, #FFD54F 15%, #FFCA28 50%, #FFD54F 85%, transparent 90%);
+  padding: 2px 10px; display: inline;
+  box-decoration-break: clone; -webkit-box-decoration-break: clone;
+}
+.hl-dark {
+  background: linear-gradient(172deg, transparent 8%, #3F0000 14%, #5A0000 50%, #3F0000 86%, transparent 92%);
+  color: #fff; padding: 2px 10px; display: inline;
+  box-decoration-break: clone; -webkit-box-decoration-break: clone;
+}
+
+/* ====== Components ====== */
+.tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 20px; border-radius: 4px;
+  background: #3F0000; color: #fff;
+  font-family: 'Noto Sans KR'; font-size: 22px; font-weight: 900;
+  letter-spacing: 2px;
+}
+.tag::before { content: '●'; color: #FFCA28; font-size: 14px; }
+
+.num-label {
+  font-family: 'Black Han Sans', sans-serif; font-size: 100px;
+  color: #3F0000; line-height: 0.9;
+  letter-spacing: -4px;
+}
+.slide.dark .num-label { color: #E8B4B4; }
+
+.callout {
+  background: #fff; border: 4px solid #1A1A1A; border-radius: 8px;
+  padding: 36px 44px; margin-top: 28px;
+}
+.slide.dark .callout { background: #2a1414; border-color: #E8B4B4; }
+
+.stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 40px; }
+.stat-card {
+  background: #fff; border: 4px solid #1A1A1A; border-radius: 8px;
+  padding: 36px 28px; text-align: center;
+}
+.stat-num {
+  font-family: 'Black Han Sans', sans-serif;
+  font-size: 104px; color: #3F0000; line-height: 1; letter-spacing: -3px;
+}
+.stat-label {
+  font-family: 'Noto Sans KR'; font-size: 24px; color: #555;
+  font-weight: 900; margin-top: 14px;
+}
+
+.vs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 32px; }
+.vs-card {
+  background: #fff; border: 4px solid #1A1A1A; border-radius: 8px;
+  padding: 32px 28px;
+}
+.vs-card.bad { border-color: #3F0000; }
+.vs-card.good { border-color: #8B2020; background: #FFF8E1; }
+.vs-head {
+  font-family: 'Black Han Sans', sans-serif; font-size: 44px;
+  text-align: center; margin-bottom: 20px;
+}
+.vs-head.bad { color: #3F0000; }
+.vs-head.good { color: #8B2020; }
+.vs-list { list-style: none; padding: 0; }
+.vs-list li {
+  font-family: 'Noto Sans KR'; font-size: 26px; font-weight: 700;
+  padding: 10px 0; border-bottom: 1px dashed #ccc;
+  display: flex; align-items: flex-start; gap: 10px;
+}
+.vs-list li:last-child { border-bottom: none; }
+.vs-list.bad li::before { content: '✗'; color: #3F0000; font-weight: 900; font-size: 28px; }
+.vs-list.good li::before { content: '✓'; color: #8B2020; font-weight: 900; font-size: 28px; }
+
+.quote-bad {
+  background: #1A0A0A; color: #fff; border-radius: 8px;
+  padding: 40px 44px; margin-top: 24px;
+  font-family: 'Noto Sans KR', sans-serif; font-size: 34px;
+  font-weight: 700; line-height: 1.5;
+  position: relative;
+}
+.quote-bad::before {
+  content: '✗'; position: absolute; top: -18px; left: 28px;
+  background: #3F0000; color: #fff;
+  width: 48px; height: 48px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; font-weight: 900;
+}
+
+.steps { margin-top: 40px; }
+.step-row {
+  display: flex; align-items: center; gap: 24px;
+  padding: 22px 0; border-bottom: 2px dashed #ddd;
+}
+.step-row:last-child { border-bottom: none; }
+.step-num {
+  font-family: 'Black Han Sans', sans-serif;
+  font-size: 72px; color: #FFCA28;
+  -webkit-text-stroke: 2px #1A1A1A;
+  line-height: 1; letter-spacing: -2px;
+  min-width: 96px;
+}
+.step-text {
+  font-family: 'Noto Sans KR'; font-size: 36px; font-weight: 900;
+  line-height: 1.3;
+}
+
+.check-list { margin-top: 40px; list-style: none; padding: 0; }
+.check-list li {
+  display: flex; align-items: flex-start; gap: 20px;
+  padding: 18px 0;
+  font-family: 'Noto Sans KR'; font-size: 38px; font-weight: 900;
+  color: #1A1A1A;
+}
+.check-list li::before {
+  content: '✔'; color: #3F0000;
+  font-size: 42px; font-weight: 900;
+  flex-shrink: 0;
+}
+.slide.dark .check-list li { color: #fff; }
+.slide.dark .check-list li::before { color: #FFCA28; }
+
+.cta-btn {
+  display: inline-block;
+  background: #3F0000; color: #fff;
+  padding: 24px 48px; border-radius: 6px;
+  font-family: 'Noto Sans KR'; font-size: 36px; font-weight: 900;
+  letter-spacing: -1px;
+  box-shadow: 6px 6px 0 #FFCA28;
+}
+.cta-btn.gold { background: #FFCA28; color: #1A1A1A; box-shadow: 6px 6px 0 #3F0000; }
+
+.face-bg {
+  position: absolute; inset: 0;
+  background-size: cover;
+  background-position: center 20%;
+  background-repeat: no-repeat;
+  filter: grayscale(0.35) contrast(1.15) brightness(0.75);
+  z-index: 0;
+}
+.face-bg.face-bottom {
+  top: auto; bottom: 0; height: 780px;
+  background-size: 1400px auto; background-position: center top;
+  filter: grayscale(0.2) contrast(1.12) brightness(0.92);
+}
+.face-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(180deg, rgba(10,5,5,0.55) 0%, rgba(10,5,5,0.4) 35%, rgba(10,5,5,0.65) 65%, rgba(10,5,5,0.92) 88%, #0a0505 100%);
+}
+.face-overlay.face-overlay-bottom {
+  background: linear-gradient(180deg, #1A0A0A 0%, rgba(26,10,10,0.98) 40%, rgba(26,10,10,0.7) 55%, rgba(26,10,10,0.25) 75%, rgba(26,10,10,0.1) 100%);
+}
+.slide.dark .face-overlay {
+  background: linear-gradient(180deg, rgba(26,10,10,0.72) 0%, rgba(26,10,10,0.58) 35%, rgba(26,10,10,0.78) 65%, rgba(26,10,10,0.96) 88%, #1A0A0A 100%);
+}
+.slide.dark .face-overlay.face-overlay-bottom {
+  background: linear-gradient(180deg, #1A0A0A 0%, rgba(26,10,10,0.97) 40%, rgba(26,10,10,0.65) 55%, rgba(26,10,10,0.25) 78%, rgba(26,10,10,0.08) 100%);
+}
+
+/* Inline image card for mid-slide YouTube frames */
+.frame-card {
+  width: 100%; margin-top: 24px;
+  border: 4px solid #1A1A1A; border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 8px 8px 0 #3F0000;
+  background: #fff;
+}
+.frame-card img { width: 100%; display: block; }
+.frame-caption {
+  padding: 14px 20px; background: #1A0A0A; color: #FFCA28;
+  font-family: 'Noto Sans KR'; font-size: 20px; font-weight: 900;
+  letter-spacing: 1px; text-transform: uppercase;
+  display: flex; align-items: center; gap: 10px;
+}
+.frame-caption::before {
+  content: '▶'; color: #E8B4B4; font-size: 14px;
+}
+.slide-content { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; }
+
+.watermark-num {
+  position: absolute; top: 40px; right: 70px;
+  font-family: 'Black Han Sans', sans-serif;
+  font-size: 200px; color: rgba(63,0,0,0.06);
+  line-height: 0.9; letter-spacing: -10px;
+  z-index: 1;
+}
+.slide.dark .watermark-num { color: rgba(232,180,180,0.08); }
+
+/* ====== Footer ====== */
+.footer {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 24px 80px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: 'Noto Sans KR'; font-size: 20px;
+  color: #888;
+  border-top: 2px solid rgba(63,0,0,0.12);
+}
+.slide.dark .footer { border-top-color: rgba(232,180,180,0.2); color: #d4a0a0; }
+.footer .handle { color: #3F0000; font-weight: 900; letter-spacing: 1px; }
+.slide.dark .footer .handle { color: #FFCA28; }
+.footer .page-num {
+  font-family: 'Black Han Sans', sans-serif; font-size: 32px;
+  color: #3F0000;
+}
+.slide.dark .footer .page-num { color: #FFCA28; }
+
+.arrow-next {
+  font-family: 'Black Han Sans', sans-serif; font-size: 28px;
+  color: #3F0000;
+}
+.slide.dark .arrow-next { color: #FFCA28; }
+
+/* ====== Cover specific ====== */
+.cover {
+  display: flex; flex-direction: column; justify-content: space-between;
+  height: 100%; padding-bottom: 20px;
+}
+.cover-top { display: flex; flex-direction: column; gap: 20px; }
+.cover-title {
+  font-family: 'Black Han Sans', sans-serif;
+  font-size: 148px; color: #1A1A1A; line-height: 0.95; letter-spacing: -4px;
+}
+.cover-title .line2 { display: block; color: #3F0000; }
+.cover-sub {
+  font-family: 'Noto Sans KR'; font-size: 38px; font-weight: 900;
+  color: #1A1A1A; line-height: 1.3; margin-top: 12px;
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================= -->
+<!-- SLIDE 1: HOOK - 구매대행 진짜 끝났다 -->
+<!-- ============================================= -->
+<div class="slide dark" id="slide-1">
+  <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 20% 30%, rgba(63,0,0,0.35) 0%, transparent 60%), radial-gradient(ellipse at 80% 90%, rgba(255,202,40,0.08) 0%, transparent 55%); z-index: 0;"></div>
+  <div class="slide-content" style="justify-content: space-between; padding-bottom: 40px;">
+    <div style="padding-top: 60px;">
+      <div style="margin-bottom: 32px;"><span class="tag" style="background:#FFCA28; color:#1A0A0A;">정책 긴급 분석</span></div>
+      <div class="cover-title" style="color:#fff; font-size: 172px; letter-spacing: -6px;">
+        구매대행,<span class="line2" style="color:#FFCA28;">진짜 끝났다.</span>
+      </div>
+      <div class="cover-sub" style="color:#fff; margin-top: 40px; font-size: 42px;">
+        네이버가 <span style="background: #3F0000; color:#fff; padding: 4px 16px;">상품 등록 1,000개</span>로<br>
+        칼같이 막아버렸습니다.
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <div style="font-family: 'Black Han Sans', sans-serif; font-size: 96px; color: #FFCA28; line-height: 0.95; letter-spacing: -3px;">
+        근데 나는<br>
+        <span style="color: #fff;">오히려 좋다.</span>
+      </div>
+      <div class="whisper" style="font-size: 34px; color: #E8B4B4; margin-top: 12px;">왜인지 지금부터 풀어드립니다.</div>
+    </div>
+  </div>
+  <div class="footer">
+    <span style="color:#d4a0a0;">용감한 용팀장 · 가짜는 가고 진짜만 남는다</span>
+    <span class="page-num" style="color:#FFCA28;">01</span>
+    <span class="arrow-next" style="color:#FFCA28;">NEXT →</span>
+  </div>
+</div>
+
+<!-- ============================================= -->
+<!-- SLIDE 2: 무슨 일이 터진 건가 -->
+<!-- ============================================= -->
+<div class="slide" id="slide-2">
+  <div class="watermark-num">02</div>
+  <div class="slide-content">
+    <div style="display: flex; gap: 20px; align-items: baseline; margin-bottom: 20px;">
+      <span class="num-label">02</span>
+      <span class="body-sm">무슨 일이 터진 건가</span>
+    </div>
+    <div class="title title-md">
+      만 개에서 <span class="hl-red">1,000개</span>로.<br>
+      90%가 잘려나간다.
+    </div>
+
+    <div class="frame-card">
+      <img src="frames/h06_clean.jpg" alt="네이버 정책 공지">
+      <div class="frame-caption">실제 네이버 공지 · 2026년 6월 시행</div>
+    </div>
+
+    <div class="stat-row" style="margin-top: 32px;">
+      <div class="stat-card">
+        <div class="body-sm" style="margin-bottom: 8px;">기존</div>
+        <div class="stat-num" style="color: #888; font-size: 80px;">10,000</div>
+        <div class="stat-label">상품 등록 한도</div>
+      </div>
+      <div class="stat-card" style="border-color: #3F0000; background: #FFF8E1;">
+        <div class="body-sm" style="margin-bottom: 8px; color: #3F0000;">변경</div>
+        <div class="stat-num" style="font-size: 80px;">1,000</div>
+        <div class="stat-label">90% 셀러 적용</div>
+      </div>
+    </div>
+
+    <div style="margin-top: 24px;">
+      <span class="whisper">"무지성 셀러는 알아서 걸러진다."</span>
+    </div>
+  </div>
+  <div class="footer">
+    <span class="handle">@brave._.yong_</span>
+    <span class="page-num">02</span>
+    <span class="arrow-next">NEXT →</span>
+  </div>
+</div>
+
+<!-- ============================================= -->
+<!-- SLIDE 3: 가짜 vs 진짜 -->
+<!-- ============================================= -->
+<div class="slide" id="slide-3">
+  <div class="watermark-num">03</div>
+  <div class="slide-content">
+    <div style="display: flex; gap: 20px; align-items: baseline; margin-bottom: 20px;">
+      <span class="num-label">03</span>
+      <span class="body-sm">진짜 셀러의 시대가 왔다</span>
+    </div>
+    <div class="title title-md">
+      <span class="hl-red">가짜</span>는 가고<br>
+      <span class="hl-gold">진짜</span>만 남는다.
+    </div>
+
+    <div class="vs-grid" style="margin-top: 40px;">
+      <div class="vs-card bad">
+        <div class="vs-head bad">가짜 셀러</div>
+        <ul class="vs-list bad">
+          <li>프로그램이 찾아준 상품 그대로</li>
+          <li>수천 개 뿌리고 얻어걸리기</li>
+          <li>상품명 = 소싱툴 자동 생성</li>
+          <li>무지성 대량 등록</li>
+        </ul>
+      </div>
+      <div class="vs-card good">
+        <div class="vs-head good">진짜 셀러</div>
+        <ul class="vs-list good">
+          <li>효자 상품 발굴 + 집중 운영</li>
+          <li>상품명 직접 설계 (SEO)</li>
+          <li>카테고리 정확히 매칭</li>
+          <li>본질에 베팅</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="margin-top: 36px;">
+      <span class="whisper">경쟁자 다 도망간 지금, 빈자리가 치트키다.</span>
+    </div>
+  </div>
+  <div class="footer">
+    <span class="handle">@brave._.yong_</span>
+    <span class="page-num">03</span>
+    <span class="arrow-next">NEXT →</span>
+  </div>
+</div>
+
+<!-- ============================================= -->
+<!-- SLIDE 4: 5,000개 뚫는 조건 -->
+<!-- ============================================= -->
+<div class="slide" id="slide-4">
+  <div class="watermark-num">04</div>
+  <div class="slide-content">
+    <div style="display: flex; gap: 20px; align-items: baseline; margin-bottom: 20px;">
+      <span class="num-label">04</span>
+      <span class="body-sm">5,000개로 뚫는 조건</span>
+    </div>
+    <div class="title title-md">
+      이 <span class="hl-gold">둘 중 하나</span>만 충족하면<br>
+      한도가 5배 늘어난다.
+    </div>
+
+    <div class="steps">
+      <div class="step-row">
+        <div class="step-num">①</div>
+        <div>
+          <div class="step-text">최근 3개월 매출 <span class="hl-gold">500만 원</span> 이상</div>
+          <div class="body body-sm" style="margin-top: 6px;">구매 확정 금액 기준</div>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num" style="color: #E8B4B4;">OR</div>
+        <div>
+          <div class="step-text">최근 3개월 판매 건수 <span class="hl-gold">100건</span> 이상</div>
+          <div class="body body-sm" style="margin-top: 6px;">실제 구매 완료 기준</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top: 40px;">
+      <div class="body body-md">
+        ＋ <span class="hl-red">판매 상품 비중 3%</span> 조건까지 통과해야 한다.
+      </div>
+    </div>
+
+    <div style="margin-top: 28px;">
+      <span class="whisper">500만 원? 100건? 생각보다 가깝다.</span>
+    </div>
+  </div>
+  <div class="footer">
+    <span class="handle">@brave._.yong_</span>
+    <span class="page-num">04</span>
+    <span class="arrow-next">NEXT →</span>
+  </div>
+</div>
+
+<!-- ============================================= -->
+<!-- SLIDE 5: 판매 상품 비중 3% -->
+<!-- ============================================= -->
+<div class="slide" id="slide-5">
+  <div class="watermark-num">05</div>
+  <div class="slide-content">
+    <div style="display: flex; gap: 20px; align-items: baseline; margin-bottom: 20px;">
+      <span class="num-label">05</span>
+      <span class="body-sm">90%가 몰랐던 숨은 덫</span>
+    </div>
+    <div class="title title-md">
+      판매 <span class="hl-red">상품 수</span>가 중요하다.<br>
+      판매 건수가 아니라.
+    </div>
+
+    <div class="stat-row" style="margin-top: 44px;">
+      <div class="stat-card">
+        <div class="body-sm" style="margin-bottom: 8px;">한도 1,000개</div>
+        <div class="stat-num">30</div>
+        <div class="stat-label">다른 상품 종 개수</div>
+      </div>
+      <div class="stat-card" style="border-color: #3F0000;">
+        <div class="body-sm" style="margin-bottom: 8px; color: #3F0000;">한도 5,000개</div>
+        <div class="stat-num">150</div>
+        <div class="stat-label">13개월 누적 기준</div>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top: 40px;">
+      <div class="body body-md">
+        효자 상품 하나가 <span class="hl-gold">100번</span> 팔려도<br>
+        <span class="hl-dark">1종으로만 집계된다.</span>
+      </div>
+    </div>
+
+    <div style="margin-top: 24px;">
+      <span class="whisper">다양한 상품이 팔려야 살아남는다.</span>
+    </div>
+  </div>
+  <div class="footer">
+    <span class="handle">@brave._.yong_</span>
+    <span class="page-num">05</span>
+    <span class="arrow-next">NEXT →</span>
+  </div>
+</div>
+
+<!-- ============================================= -->
+<!-- SLIDE 6: 살아남는 공식 (유입→전환) -->
+<!-- ============================================= -->
+<div class="slide" id="slide-6">
+  <div class="watermark-num">06</div>
+  <div class="slide-content">
+    <div style="display: flex; gap: 20px; align-items: baseline; margin-bottom: 20px;">
+      <span class="num-label">06</span>
+      <span class="body-sm">살아남는 공식</span>
+    </div>
+    <div class="title title-md">
+      유입이 없으면<br>
+      <span class="hl-red">전환도 없다.</span>
+    </div>
+
+    <div class="steps" style="margin-top: 32px;">
+      <div class="step-row">
+        <div class="step-num">①</div>
+        <div>
+          <div class="step-text">유입: <span class="hl-gold">상품명</span>이 9할</div>
+          <div class="body body-sm" style="margin-top: 6px;">검색 노출 → 클릭의 전부가 여기서 결정</div>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num">②</div>
+        <div>
+          <div class="step-text">전환: <span class="hl-red">상세페이지</span> + 가격</div>
+          <div class="body body-sm" style="margin-top: 6px;">유입 후에만 의미 있음</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top: 36px;">
+      <div class="body body-md">
+        지금 <span class="hl-dark">상품명</span>이 엉망이면<br>
+        나머지 모든 최적화는 의미 없다.
+      </div>
+    </div>
+
+    <div style="margin-top: 24px;">
+      <span class="whisper">상품명을 이렇게까지 신경 쓰는 셀러, 거의 없다.</span>
+    </div>
+  </div>
+  <div class="footer">
+    <span class="handle">@brave._.yong_</span>
+    <span class="page-num">06</span>
+    <span class="arrow-next">NEXT →</span>
+  </div>
+</div>
+
+<!-- ============================================= -->
+<!-- SLIDE 7: 실제 사례 BAD (업소용 중탕기) -->
+<!-- ============================================= -->
+<div class="slide" id="slide-7">
+  <div class="watermark-num">07</div>
+  <div class="slide-content">
+    <div style="display: flex; gap: 20px; align-items: baseline; margin-bottom: 20px;">
+      <span class="num-label">07</span>
+      <span class="body-sm">실제 망한 상품명 케이스</span>
+    </div>
+    <div class="title title-md">
+      소싱툴이 지은 이름,<br>
+      그대로 올리면 <span class="hl-red">0건 팔린다.</span>
+    </div>
+
+    <div class="frame-card">
+      <img src="frames/h10_clean.jpg" alt="실제 상품명 분해 사례">
+      <div class="frame-caption">실제 네이버 쇼핑 · 상품명 분해 케이스</div>
+    </div>
+
+    <div class="vs-grid" style="margin-top: 28px;">
+      <div class="vs-card bad">
+        <div class="body body-md" style="text-align: center;">
+          <div style="color: #3F0000; font-weight: 900; font-size: 24px; margin-bottom: 6px;">등록 카테고리</div>
+          기타 주방가전
+        </div>
+      </div>
+      <div class="vs-card good" style="background: #FFF8E1;">
+        <div class="body body-md" style="text-align: center;">
+          <div style="color: #8B2020; font-weight: 900; font-size: 24px; margin-bottom: 6px;">1페이지 노출은</div>
+          곰솥 들통
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 20px;">
+      <span class="whisper">카테고리 미스매치 = 5페이지, 10페이지 뒤로...</span>
+    </div>
+  </div>
+  <div class="footer">
+    <span class="handle">@brave._.yong_</span>
+    <span class="page-num">07</span>
+    <span class="arrow-next">NEXT →</span>
+  </div>
+</div>
+
+<!-- ============================================= -->
+<!-- SLIDE 8: 4개 키워드 모두 미스매치 (테이블) -->
+<!-- ============================================= -->
+<div class="slide" id="slide-8">
+  <div class="watermark-num">08</div>
+  <div class="slide-content">
+    <div style="display: flex; gap: 20px; align-items: baseline; margin-bottom: 20px;">
+      <span class="num-label">08</span>
+      <span class="body-sm">카테고리 미스매치 실제 검증</span>
+    </div>
+    <div class="title title-md">
+      한 상품에 키워드 5개.<br>
+      <span class="hl-red">전부 다른 카테고리</span>로 튕긴다.
+    </div>
+
+    <div style="margin-top: 36px; background: #fff; border: 4px solid #1A1A1A; border-radius: 8px; overflow: hidden;">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; padding: 18px 28px; background: #1A0A0A; color: #FFCA28; font-family: 'Noto Sans KR'; font-weight: 900; font-size: 22px; letter-spacing: 1px;">
+        <div>상품명에 넣은 키워드</div>
+        <div>실제 1페이지 노출 카테고리</div>
+      </div>
+      <div style="padding: 0 28px;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; padding: 20px 0; border-bottom: 2px dashed #ddd; font-family: 'Noto Sans KR'; font-size: 26px; font-weight: 700;">
+          <div>업소용 중탕기</div>
+          <div style="color: #3F0000;">✗ 기타 주방가전 (등록) → <b>곰솥 들통</b></div>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; padding: 20px 0; border-bottom: 2px dashed #ddd; font-family: 'Noto Sans KR'; font-size: 26px; font-weight: 700;">
+          <div>업소용 육수통</div>
+          <div style="color: #3F0000;">✗ <b>곰솥 들통</b></div>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; padding: 20px 0; border-bottom: 2px dashed #ddd; font-family: 'Noto Sans KR'; font-size: 26px; font-weight: 700;">
+          <div>짜장 소스통</div>
+          <div style="color: #3F0000;">✗ <b>기타 보관용기 · 양념통</b></div>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; padding: 20px 0; border-bottom: 2px dashed #ddd; font-family: 'Noto Sans KR'; font-size: 26px; font-weight: 700;">
+          <div>찌개 국통</div>
+          <div style="color: #3F0000;">✗ <b>곰솥 들통</b></div>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; padding: 20px 0; font-family: 'Noto Sans KR'; font-size: 26px; font-weight: 700;">
+          <div>국물 보온기기</div>
+          <div style="color: #3F0000;">✗ <b>전기물통</b></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top: 24px;">
+      <div class="body body-md">
+        결론: <span class="hl-dark">뒤에 붙은 키워드는 전부 쓰레기 키워드다.</span>
+      </div>
+    </div>
+
+    <div style="margin-top: 20px;">
+      <span class="whisper">"1페이지는커녕 5~10페이지 어딘가 묻혀 있다."</span>
+    </div>
+  </div>
+  <div class="footer">
+    <span class="handle">@brave._.yong_</span>
+    <span class="page-num">08</span>
+    <span class="arrow-next">NEXT →</span>
+  </div>
+</div>
+
+<!-- ============================================= -->
+<!-- SLIDE 9: Before/After 상품명 재설계 -->
+<!-- ============================================= -->
+<div class="slide" id="slide-9">
+  <div class="watermark-num">09</div>
+  <div class="slide-content">
+    <div style="display: flex; gap: 20px; align-items: baseline; margin-bottom: 20px;">
+      <span class="num-label">09</span>
+      <span class="body-sm">상품명 Before / After</span>
+    </div>
+    <div class="title title-md">
+      같은 상품, <span class="hl-gold">다른 결과.</span><br>
+      이름 하나가 매출을 가른다.
+    </div>
+
+    <div style="margin-top: 36px;">
+      <div style="background: #fff; border: 4px solid #3F0000; border-radius: 8px; padding: 28px 32px;">
+        <div style="display: inline-block; background: #3F0000; color: #fff; padding: 6px 16px; border-radius: 4px; font-family: 'Noto Sans KR'; font-weight: 900; font-size: 22px; letter-spacing: 2px; margin-bottom: 16px;">✗ BEFORE</div>
+        <div style="font-family: 'Noto Sans KR'; font-size: 28px; font-weight: 700; color: #1A1A1A; line-height: 1.45;">
+          "업소용 중탕기 육수용 짜장 수수용 찌개 국통 국물 보온기기"
+        </div>
+        <div style="margin-top: 16px; display: flex; gap: 10px; flex-wrap: wrap;">
+          <div style="background: #1A0A0A; color: #E8B4B4; padding: 8px 14px; border-radius: 4px; font-size: 20px; font-weight: 900;">카테고리: 기타 주방가전</div>
+          <div style="background: #3F0000; color: #fff; padding: 8px 14px; border-radius: 4px; font-size: 20px; font-weight: 900;">노출: 5페이지 뒤</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 24px;">
+      <div style="background: #FFF8E1; border: 4px solid #8B2020; border-radius: 8px; padding: 28px 32px;">
+        <div style="display: inline-block; background: #FFCA28; color: #1A0A0A; padding: 6px 16px; border-radius: 4px; font-family: 'Noto Sans KR'; font-weight: 900; font-size: 22px; letter-spacing: 2px; margin-bottom: 16px;">✓ AFTER</div>
+        <div style="font-family: 'Noto Sans KR'; font-size: 28px; font-weight: 900; color: #1A1A1A; line-height: 1.45;">
+          "업소용 <span class="hl-gold">곰솥 들통</span> 대형 육수통 <span class="hl-gold">업소용 국통</span> 12L 보온"
+        </div>
+        <div style="margin-top: 16px; display: flex; gap: 10px; flex-wrap: wrap;">
+          <div style="background: #8B2020; color: #fff; padding: 8px 14px; border-radius: 4px; font-size: 20px; font-weight: 900;">카테고리: 곰솥 들통</div>
+          <div style="background: #FFCA28; color: #1A0A0A; padding: 8px 14px; border-radius: 4px; font-size: 20px; font-weight: 900;">노출: 1페이지</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 20px;">
+      <span class="whisper">메인 키워드 = 실제 노출 카테고리와 일치하는 단어만.</span>
+    </div>
+  </div>
+  <div class="footer">
+    <span class="handle">@brave._.yong_</span>
+    <span class="page-num">09</span>
+    <span class="arrow-next">NEXT →</span>
+  </div>
+</div>
+
+<!-- ============================================= -->
+<!-- SLIDE 10: SEO 공식 -->
+<!-- ============================================= -->
+<div class="slide" id="slide-10">
+  <div class="watermark-num">10</div>
+  <div class="slide-content">
+    <div style="display: flex; gap: 20px; align-items: baseline; margin-bottom: 20px;">
+      <span class="num-label">10</span>
+      <span class="body-sm">팔리는 상품명 공식</span>
+    </div>
+    <div class="title title-md">
+      <span class="hl-gold">메인 키워드</span>부터<br>
+      역순으로 설계한다.
+    </div>
+
+    <div class="steps" style="margin-top: 40px;">
+      <div class="step-row">
+        <div class="step-num">①</div>
+        <div>
+          <div class="step-text">1페이지 노출 <span class="hl-gold">메인 키워드</span> 확정</div>
+          <div class="body body-sm" style="margin-top: 6px;">네이버 가격비교에서 검색 → 실제 노출 카테고리 확인</div>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num">②</div>
+        <div>
+          <div class="step-text">등록 <span class="hl-red">카테고리 = 노출 카테고리</span></div>
+          <div class="body body-sm" style="margin-top: 6px;">다르면 뒷페이지로 묻힌다</div>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num">③</div>
+        <div>
+          <div class="step-text">서브 + 속성 키워드 순서대로</div>
+          <div class="body body-sm" style="margin-top: 6px;">쓰레기 키워드 붙이지 말 것</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 24px;">
+      <span class="whisper">한 상품에 1~2시간. 10개만 제대로 해도 바뀐다.</span>
+    </div>
+  </div>
+  <div class="footer">
+    <span class="handle">@brave._.yong_</span>
+    <span class="page-num">10</span>
+    <span class="arrow-next">NEXT →</span>
+  </div>
+</div>
+
+<!-- ============================================= -->
+<!-- SLIDE 11: 지금 당장 할 것 -->
+<!-- ============================================= -->
+<div class="slide" id="slide-11">
+  <div class="watermark-num">11</div>
+  <div class="slide-content">
+    <div style="display: flex; gap: 20px; align-items: baseline; margin-bottom: 20px;">
+      <span class="num-label">11</span>
+      <span class="body-sm">지금 당장 해야 할 네 가지</span>
+    </div>
+    <div class="title title-md">
+      오늘 밤 <span class="hl-gold">네 가지</span>만<br>
+      점검하고 자자.
+    </div>
+
+    <ul class="check-list">
+      <li>내 TOP 10 상품의 <span class="hl-red">&nbsp;상품명 재설계&nbsp;</span></li>
+      <li>검색 결과 1페이지 <span class="hl-gold">&nbsp;카테고리 확인&nbsp;</span></li>
+      <li>최근 3개월 <span class="hl-dark">&nbsp;매출/판매 종 수&nbsp;</span> 리뷰</li>
+      <li>프로그램 의존도 <span class="hl-red">&nbsp;30% → 10%&nbsp;</span>로</li>
+    </ul>
+
+    <div class="callout" style="margin-top: 40px; background: #FFF8E1; border-color: #8B2020;">
+      <div class="body body-md">
+        1,000개 꽉꽉 채워서 판매하면<br>
+        <span class="hl-dark">기존 1,000개와 결과가 다르다.</span>
+      </div>
+    </div>
+
+    <div style="margin-top: 24px;">
+      <span class="whisper">이 네 가지면 상위 1%다.</span>
+    </div>
+  </div>
+  <div class="footer">
+    <span class="handle">@brave._.yong_</span>
+    <span class="page-num">11</span>
+    <span class="arrow-next">NEXT →</span>
+  </div>
+</div>
+
+<!-- ============================================= -->
+<!-- SLIDE 12: CTA 다크 -->
+<!-- ============================================= -->
+<div class="slide dark" id="slide-12">
+  <div class="face-bg" style="background-image:url('frames/h08_clean.jpg'); background-size: 1400px auto; background-position: center -50px;"></div>
+  <div class="face-overlay"></div>
+  <div class="slide-content">
+    <div style="display: flex; gap: 20px; align-items: baseline; margin-bottom: 20px;">
+      <span class="num-label">12</span>
+      <span class="body-sm" style="color: #E8B4B4;">진짜 셀러 모집</span>
+    </div>
+    <div class="title title-lg">
+      가짜는 가고,<br>
+      <span style="color: #FFCA28;">진짜만 남는다.</span>
+    </div>
+
+    <div style="margin-top: 48px;">
+      <div class="body body-md" style="color: #fff; line-height: 1.5;">
+        이 변화에서 흔들리지 않고<br>
+        <span style="color: #FFCA28; font-weight: 900;">끝까지 살아남고 싶은 분</span>,<br>
+        단톡방에서 함께 가죠.
+      </div>
+    </div>
+
+    <div style="margin-top: 48px; display: flex; flex-direction: column; gap: 18px; align-items: flex-start;">
+      <div class="cta-btn gold">고정 댓글 단톡방 참여</div>
+      <div class="cta-btn">무료 강의 신청</div>
+    </div>
+
+    <div style="position: absolute; bottom: 160px; left: 80px; right: 80px;">
+      <div class="whisper" style="font-size: 36px; color: #E8B4B4;">"끝까지 본 당신은 이미 상위 1%입니다."</div>
+      <div class="body body-sm" style="color: #d4a0a0; margin-top: 12px;">— 용감한 용팀장</div>
+    </div>
+  </div>
+  <div class="footer">
+    <span class="handle">@brave._.yong_</span>
+    <span class="page-num">12</span>
+    <span>END</span>
+  </div>
+</div>
+
+</body>
+</html>

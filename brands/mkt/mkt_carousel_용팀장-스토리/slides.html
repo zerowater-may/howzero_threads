@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>용팀장 스토리</title>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #e5e5e5; font-family: 'Noto Sans KR', sans-serif; }
+
+  .slide {
+    width: 1080px; height: 1440px;
+    padding: 80px 80px 120px;
+    position: relative;
+    background: #FAF8F5;
+    color: #1a1a1a;
+    overflow: hidden;
+    margin: 24px auto;
+  }
+  .slide.dark { background: #1a0a0a; color: #fff; }
+
+  /* Typography */
+  .head {
+    font-family: 'Black Han Sans', sans-serif;
+    letter-spacing: -0.5px;
+    line-height: 1.15;
+  }
+  .body {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    line-height: 1.5;
+  }
+  .whisper {
+    font-family: 'Gaegu', cursive;
+    font-weight: 700;
+    color: #999;
+    font-size: 30px;
+    line-height: 1.4;
+  }
+  .slide.dark .whisper { color: #a89999; }
+
+  /* Highlights */
+  .hl-red {
+    background: linear-gradient(170deg, transparent 10%, #e8b4b4 15%, #d4a0a0 50%, #e8b4b4 85%, transparent 90%);
+    padding: 2px 14px; display: inline;
+    -webkit-box-decoration-break: clone; box-decoration-break: clone;
+  }
+  .hl-gold {
+    background: linear-gradient(168deg, transparent 10%, #ffd54f 15%, #ffca28 50%, #ffd54f 85%, transparent 90%);
+    padding: 2px 14px; display: inline;
+    -webkit-box-decoration-break: clone; box-decoration-break: clone;
+  }
+  .hl-dark {
+    background: linear-gradient(172deg, transparent 8%, #3F0000 14%, #5a0000 50%, #3F0000 86%, transparent 92%);
+    color: #fff; padding: 2px 14px; display: inline;
+    -webkit-box-decoration-break: clone; box-decoration-break: clone;
+  }
+
+  /* Footer */
+  .footer {
+    position: absolute;
+    bottom: 48px; left: 80px; right: 80px;
+    display: flex; align-items: center; justify-content: space-between;
+    font-family: 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 22px;
+  }
+  .handle { color: #3F0000; }
+  .slide.dark .handle { color: #ffd54f; }
+  .page-num {
+    width: 48px; height: 48px; border: 2px solid #1a1a1a; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+  }
+  .slide.dark .page-num { border-color: #fff; color: #fff; }
+  .arrow-next {
+    width: 48px; height: 48px; background: #3F0000;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 28px;
+  }
+  .slide.dark .arrow-next { background: #ffd54f; color: #1a0a0a; }
+
+  /* Slide 1 — Hook (Dark cover) */
+  .s1 { display: flex; flex-direction: column; justify-content: space-between; padding: 180px 90px 180px 50px; }
+  .s1 .tag {
+    font-family: 'Gaegu', cursive; font-weight: 700; font-size: 36px;
+    color: #ffd54f; margin-bottom: 32px;
+  }
+  .s1 .head1 { font-size: 130px; color: #fff; }
+  .s1 .accent { color: #ffd54f; }
+  .s1 .sub {
+    font-family: 'Gaegu', cursive; font-weight: 700;
+    font-size: 42px; color: #c4a9a9; margin-top: 40px;
+  }
+  .s1 .whisper { color: #8a7676; font-size: 34px; }
+
+  /* Slide 2 — Hook confirmation (stat cards) */
+  .s2 .kicker {
+    font-family: 'Gaegu', cursive; font-weight: 700; font-size: 34px;
+    color: #3F0000; margin-bottom: 24px;
+  }
+  .s2 .head1 { font-size: 86px; margin-bottom: 48px; }
+  .s2 .stats {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-top: 40px;
+  }
+  .s2 .stat {
+    background: #fff; border: 3px solid #1a1a1a;
+    padding: 40px 20px; text-align: center;
+  }
+  .s2 .stat-num {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 96px; color: #3F0000; line-height: 1;
+  }
+  .s2 .stat-label {
+    font-family: 'Noto Sans KR', sans-serif; font-weight: 700;
+    font-size: 22px; color: #1a1a1a; margin-top: 20px;
+  }
+  .s2 .whisper { margin-top: 40px; }
+
+  /* Slide 3 — Story: 시작 배경 (big quote) */
+  .s3 { display: flex; flex-direction: column; justify-content: center; }
+  .s3 .num {
+    font-family: 'Black Han Sans', sans-serif; font-size: 48px;
+    color: #3F0000; margin-bottom: 32px; letter-spacing: 2px;
+  }
+  .s3 .quote { font-size: 110px; line-height: 1.15; margin-bottom: 48px; }
+  .s3 .desc {
+    font-family: 'Noto Sans KR', sans-serif; font-weight: 700;
+    font-size: 36px; color: #555; line-height: 1.6; margin-bottom: 40px;
+  }
+
+  /* Slide 4 — Story: 실패 (ban-list) */
+  .s4 .num {
+    font-family: 'Black Han Sans', sans-serif; font-size: 48px;
+    color: #3F0000; margin-bottom: 32px; letter-spacing: 2px;
+  }
+  .s4 .head1 { font-size: 78px; margin-bottom: 48px; }
+  .s4 .ban-list {
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .s4 .ban-item {
+    display: flex; align-items: center; gap: 24px;
+    background: #fff; border: 2px solid #1a1a1a; padding: 28px 32px;
+  }
+  .s4 .ban-x {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 52px; color: #3F0000; line-height: 1;
+  }
+  .s4 .ban-text {
+    font-family: 'Noto Sans KR', sans-serif; font-weight: 700;
+    font-size: 34px;
+  }
+  .s4 .whisper { margin-top: 36px; }
+
+  /* Slide 5 — VS 비교 (가짜 vs 진짜) */
+  .s5 .num {
+    font-family: 'Black Han Sans', sans-serif; font-size: 48px;
+    color: #3F0000; margin-bottom: 32px; letter-spacing: 2px;
+  }
+  .s5 .head1 { font-size: 76px; margin-bottom: 40px; }
+  .s5 .vs-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+  }
+  .s5 .vs-col {
+    background: #fff; border: 3px solid #1a1a1a; padding: 32px 28px;
+  }
+  .s5 .vs-label {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 48px; line-height: 1; margin-bottom: 24px;
+  }
+  .s5 .vs-col.bad .vs-label { color: #999; text-decoration: line-through; }
+  .s5 .vs-col.good .vs-label { color: #3F0000; }
+  .s5 .vs-list {
+    font-family: 'Noto Sans KR', sans-serif; font-weight: 700;
+    font-size: 24px; line-height: 1.7;
+  }
+  .s5 .vs-col.bad .vs-list { color: #888; }
+  .s5 .vs-list li { margin-bottom: 8px; list-style: none; }
+  .s5 .vs-list li::before { content: "— "; }
+  .s5 .whisper { margin-top: 32px; }
+
+  /* Slide 6 — 깨달음 (callout quote) */
+  .s6 { display: flex; flex-direction: column; justify-content: center; }
+  .s6 .num {
+    font-family: 'Black Han Sans', sans-serif; font-size: 48px;
+    color: #3F0000; margin-bottom: 32px; letter-spacing: 2px;
+  }
+  .s6 .quote-mark {
+    font-family: 'Black Han Sans', sans-serif; font-size: 200px;
+    color: #3F0000; line-height: 0.5; margin-bottom: 40px;
+  }
+  .s6 .quote-body { font-size: 96px; line-height: 1.25; margin-bottom: 48px; }
+  .s6 .cite {
+    font-family: 'Gaegu', cursive; font-weight: 700;
+    font-size: 34px; color: #3F0000;
+  }
+
+  /* Slide 7 — 결과 (stat 강조) */
+  .s7 .num {
+    font-family: 'Black Han Sans', sans-serif; font-size: 48px;
+    color: #3F0000; margin-bottom: 32px; letter-spacing: 2px;
+  }
+  .s7 .head1 { font-size: 68px; margin-bottom: 40px; }
+  .s7 .big-stat {
+    background: #fff; border: 3px solid #1a1a1a;
+    padding: 60px 40px; text-align: center; margin-bottom: 24px;
+  }
+  .s7 .big-num {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 160px; color: #3F0000; line-height: 1;
+  }
+  .s7 .big-label {
+    font-family: 'Noto Sans KR', sans-serif; font-weight: 900;
+    font-size: 32px; margin-top: 16px;
+  }
+  .s7 .sub-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .s7 .sub-stat {
+    background: #fff; border: 2px solid #1a1a1a; padding: 28px; text-align: center;
+  }
+  .s7 .sub-num {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 58px; color: #3F0000; line-height: 1;
+  }
+  .s7 .sub-label {
+    font-family: 'Noto Sans KR', sans-serif; font-weight: 700;
+    font-size: 20px; margin-top: 12px; color: #555;
+  }
+  .s7 .whisper { margin-top: 32px; }
+
+  /* Slide 8 — 메시지/슬로건 (big statement) */
+  .s8 { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
+  .s8 .num {
+    font-family: 'Black Han Sans', sans-serif; font-size: 48px;
+    color: #3F0000; margin-bottom: 32px; letter-spacing: 2px;
+  }
+  .s8 .kicker {
+    font-family: 'Gaegu', cursive; font-weight: 700; font-size: 40px;
+    color: #555; margin-bottom: 32px;
+  }
+  .s8 .slogan { font-size: 140px; line-height: 1.1; margin-bottom: 48px; }
+  .s8 .desc {
+    font-family: 'Noto Sans KR', sans-serif; font-weight: 700;
+    font-size: 34px; color: #555; line-height: 1.6;
+  }
+
+  /* Slide 9 — Simple CTA (question) */
+  .s9 { display: flex; flex-direction: column; justify-content: center; text-align: left; }
+  .s9 .num {
+    font-family: 'Black Han Sans', sans-serif; font-size: 48px;
+    color: #3F0000; margin-bottom: 40px; letter-spacing: 2px;
+  }
+  .s9 .question { font-size: 120px; line-height: 1.15; margin-bottom: 48px; }
+  .s9 .desc {
+    font-family: 'Noto Sans KR', sans-serif; font-weight: 700;
+    font-size: 36px; color: #555; line-height: 1.6;
+  }
+
+  /* Slide 10 — Dark CTA + photo slot */
+  .s10 { text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; padding-top: 120px; }
+  .s10 .photo-slot {
+    width: 220px; height: 220px; border-radius: 50%;
+    background: #2a1515; border: 4px solid #ffd54f;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Black Han Sans', sans-serif; font-size: 72px;
+    color: #ffd54f;
+    margin-bottom: 48px;
+  }
+  .s10 .name {
+    font-family: 'Black Han Sans', sans-serif; font-size: 64px;
+    color: #fff; margin-bottom: 16px;
+  }
+  .s10 .handle-big {
+    font-family: 'Gaegu', cursive; font-weight: 700;
+    font-size: 38px; color: #ffd54f; margin-bottom: 56px;
+  }
+  .s10 .cta-btn {
+    background: #ffd54f; color: #1a0a0a; padding: 32px 72px;
+    font-family: 'Black Han Sans', sans-serif; font-size: 52px;
+    margin-bottom: 24px;
+  }
+  .s10 .cta-sub {
+    font-family: 'Gaegu', cursive; font-weight: 700;
+    font-size: 32px; color: #c4a9a9;
+  }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 — HOOK -->
+<div class="slide s1 dark" id="slide-1">
+  <div>
+    <div class="tag">진짜 셀러의 시대</div>
+    <div class="head head1">
+      부동산 <span class="accent">20채</span><br>
+      있는 직장인이<br>
+      왜 또 <span class="accent">부업</span>을<br>
+      하고 있을까?
+    </div>
+  </div>
+  <div>
+    <div class="whisper">— 8살 아이 키우는 평범한 가장의 이야기</div>
+  </div>
+  <div class="footer">
+    <span class="handle">@braveyong</span>
+    <div class="page-num">1</div>
+    <div class="arrow-next">→</div>
+  </div>
+</div>
+
+<!-- SLIDE 2 — HOOK CONFIRMATION -->
+<div class="slide s2" id="slide-2">
+  <div class="kicker">숫자로 먼저 말한다.</div>
+  <div class="head head1">
+    <span class="hl-gold">진짜</span>는<br>
+    이렇게 생겼다.
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-num">20채</div>
+      <div class="stat-label">부동산 보유</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">1~2h</div>
+      <div class="stat-label">하루 투입 시간</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">700↑</div>
+      <div class="stat-label">월 순수익(만원)</div>
+    </div>
+  </div>
+  <div class="whisper">※ 매출 말고 순수익 기준이다. 꼼수 없다.</div>
+  <div class="footer">
+    <span class="handle">@braveyong</span>
+    <div class="page-num">2</div>
+    <div class="arrow-next">→</div>
+  </div>
+</div>
+
+<!-- SLIDE 3 — STORY: 배경 -->
+<div class="slide s3" id="slide-3">
+  <div class="num">STORY 01</div>
+  <div class="head quote">
+    자산은 있는데,<br>
+    <span class="hl-red">현금이 없었다.</span>
+  </div>
+  <div class="desc">
+    결혼하고 아이 낳고 나니까 보였다.<br>
+    20채를 가지고 있어도, 매달 쓸 돈은<br>
+    결국 <b>내가 벌어야</b> 했다는 걸.
+  </div>
+  <div class="whisper">— 부동산은 멈춰있고, 아이는 자란다.</div>
+  <div class="footer">
+    <span class="handle">@braveyong</span>
+    <div class="page-num">3</div>
+    <div class="arrow-next">→</div>
+  </div>
+</div>
+
+<!-- SLIDE 4 — STORY: 실패 (ban-list) -->
+<div class="slide s4" id="slide-4">
+  <div class="num">STORY 02</div>
+  <div class="head head1">
+    <span class="hl-red">다 해봤다.</span><br>
+    결과는 처참했다.
+  </div>
+  <div class="ban-list">
+    <div class="ban-item">
+      <span class="ban-x">✕</span>
+      <span class="ban-text">대량등록 프로그램</span>
+    </div>
+    <div class="ban-item">
+      <span class="ban-x">✕</span>
+      <span class="ban-text">AI 딸깍 자동화 솔루션</span>
+    </div>
+    <div class="ban-item">
+      <span class="ban-x">✕</span>
+      <span class="ban-text">감으로 올리는 도박식 소싱</span>
+    </div>
+    <div class="ban-item">
+      <span class="ban-x">✕</span>
+      <span class="ban-text">매출 100~200만 원의 덫</span>
+    </div>
+  </div>
+  <div class="whisper">매출은 있는데 마진은 0원. 이게 사업인가 싶었다.</div>
+  <div class="footer">
+    <span class="handle">@braveyong</span>
+    <div class="page-num">4</div>
+    <div class="arrow-next">→</div>
+  </div>
+</div>
+
+<!-- SLIDE 5 — VS -->
+<div class="slide s5" id="slide-5">
+  <div class="num">STORY 03</div>
+  <div class="head head1">
+    <span class="hl-gold">가짜</span>를 버리고<br>
+    <span class="hl-red">진짜</span>로 갈아탔다.
+  </div>
+  <div class="vs-grid">
+    <div class="vs-col bad">
+      <div class="vs-label">가짜</div>
+      <ul class="vs-list">
+        <li>대량등록으로 수량 채우기</li>
+        <li>AI 딸깍에 의존</li>
+        <li>감으로 소싱</li>
+        <li>매출에만 취해있기</li>
+      </ul>
+    </div>
+    <div class="vs-col good">
+      <div class="vs-label">진짜</div>
+      <ul class="vs-list">
+        <li>효자상품 1개를 파고들기</li>
+        <li>네이버 SEO로 상위노출</li>
+        <li>데이터로 소싱 결정</li>
+        <li>순수익에 집중</li>
+      </ul>
+    </div>
+  </div>
+  <div class="whisper">— 프로그램은 거들 뿐, 결국 사람이 판단한다.</div>
+  <div class="footer">
+    <span class="handle">@braveyong</span>
+    <div class="page-num">5</div>
+    <div class="arrow-next">→</div>
+  </div>
+</div>
+
+<!-- SLIDE 6 — 깨달음 (quote) -->
+<div class="slide s6" id="slide-6">
+  <div class="num">STORY 04</div>
+  <div class="quote-mark">"</div>
+  <div class="head quote-body">
+    사업은<br>
+    <span class="hl-red">아파봐야</span><br>
+    성장한다.
+  </div>
+  <div class="cite">— 마진 0원의 밤이 나에게 알려준 것</div>
+  <div class="footer">
+    <span class="handle">@braveyong</span>
+    <div class="page-num">6</div>
+    <div class="arrow-next">→</div>
+  </div>
+</div>
+
+<!-- SLIDE 7 — 결과 -->
+<div class="slide s7" id="slide-7">
+  <div class="num">STORY 05</div>
+  <div class="head head1">
+    <span class="hl-gold">시스템화</span> 후,<br>
+    삶이 바뀌었다.
+  </div>
+  <div class="big-stat">
+    <div class="big-num">700~800</div>
+    <div class="big-label">월 순수익 (만원)</div>
+  </div>
+  <div class="sub-stats">
+    <div class="sub-stat">
+      <div class="sub-num">1~2h</div>
+      <div class="sub-label">하루 관리 시간</div>
+    </div>
+    <div class="sub-stat">
+      <div class="sub-num">0개</div>
+      <div class="sub-label">대량등록 프로그램</div>
+    </div>
+  </div>
+  <div class="whisper">— 시간에 갇히지 않는 구조, 그게 진짜다.</div>
+  <div class="footer">
+    <span class="handle">@braveyong</span>
+    <div class="page-num">7</div>
+    <div class="arrow-next">→</div>
+  </div>
+</div>
+
+<!-- SLIDE 8 — 슬로건 -->
+<div class="slide s8" id="slide-8">
+  <div class="num">STORY 06</div>
+  <div class="kicker">그래서 나는 이렇게 말한다.</div>
+  <div class="head slogan">
+    <span class="hl-red">가짜</span>는 가고<br>
+    <span class="hl-gold">진짜</span>만<br>
+    남는다.
+  </div>
+  <div class="desc">
+    프로그램이 만드는 매출은 오래가지 않는다.<br>
+    <b>내가 아는 상품, 내가 만든 시스템</b>만 남는다.
+  </div>
+  <div class="footer">
+    <span class="handle">@braveyong</span>
+    <div class="page-num">8</div>
+    <div class="arrow-next">→</div>
+  </div>
+</div>
+
+<!-- SLIDE 9 — Simple CTA -->
+<div class="slide s9" id="slide-9">
+  <div class="num">지금, 당신에게</div>
+  <div class="head question">
+    듣고 끝낼 건가,<br>
+    <span class="hl-red">움직일</span> 건가?
+  </div>
+  <div class="desc">
+    대부분은 여기서 창을 닫는다.<br>
+    <b>끝까지 본 당신은 이미 준비된 1%</b>다.<br>
+    <br>
+    다음 장에서 만나자.
+  </div>
+  <div class="footer">
+    <span class="handle">@braveyong</span>
+    <div class="page-num">9</div>
+    <div class="arrow-next">→</div>
+  </div>
+</div>
+
+<!-- SLIDE 10 — DARK CTA -->
+<div class="slide s10 dark" id="slide-10">
+  <div class="photo-slot">용</div>
+  <div class="name">용감한용팀장</div>
+  <div class="handle-big">@braveyong</div>
+  <div class="cta-btn">단톡방에서 만나자</div>
+  <div class="cta-sub">고정 댓글 링크 → 무료 강의부터 공개</div>
+  <div class="footer">
+    <span class="handle">은행원도 몰랐던 직장인 N잡의 세계</span>
+    <div class="page-num">10</div>
+  </div>
+</div>
+
+</body>
+</html>

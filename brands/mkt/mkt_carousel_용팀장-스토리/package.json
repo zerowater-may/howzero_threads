@@ -1,0 +1,9 @@
+{
+  "name": "carousel-braveyong-story",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "dependencies": {
+    "puppeteer": "^23.0.0"
+  }
+}

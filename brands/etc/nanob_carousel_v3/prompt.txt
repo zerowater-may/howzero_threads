@@ -1,0 +1,32 @@
+A single Instagram carousel slide, exactly 1080 x 1440 pixels, 3:4 portrait.
+Informational card news style, 2D flat illustration in simple hand-drawn doodle
+style, like an iPad Procreate sketch. Cute, casual layout. White background.
+
+CHARACTER — USE THE ATTACHED REFERENCE IMAGE:
+Keep the exact same lion character from the reference — same mane, eyes,
+mouth, proportions, angel wings hint. Fill the character body in mustard
+yellow. Place it at the bottom-left or bottom corner with an explaining
+or curious expression.
+
+COLORS: black outlines (#1a1a1a) + white background + single mustard
+yellow accent (#FACC15). No gradients. Solid flat colors only.
+
+LINES: imperfect hand-drawn black lines, slightly wobbly and uneven.
+Yellow highlight patches look like real marker brush strokes with edges
+that slightly overflow. Wobbly organic borders, NOT straight rulers.
+
+LAYOUT (apartment card):
+- TOP (y 100-240): wide wobbly mustard-yellow marker highlight, empty inside.
+- MIDDLE (y 280-640): one large rectangular info box with thick wobbly
+  black border, empty inside.
+- LOWER (y 680-960): two side-by-side boxes. Left: white with black border.
+  Right: solid mustard yellow with black border. Both empty inside.
+- BOTTOM (y 1000-1360): the lion character at bottom-left, with an empty
+  wobbly speech bubble on its right side.
+
+CRITICAL — strictly forbidden:
+NO text, letters, words, numbers, typography, fonts, gibberish.
+NO placeholder text like "lorem ipsum", "title here", "whisper text".
+Every banner, box, and speech bubble is 100% blank inside.
+No 3D, no gradients, no glossy, no kawaii sticker style, no vector-clean.
+Match the reference character exactly — do not redesign.

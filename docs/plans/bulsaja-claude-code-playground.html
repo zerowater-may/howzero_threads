@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>bulsaja + Claude Code 통합 아키텍처 시뮬레이터</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#fafafa;color:#1a1a1a;display:flex;height:100vh;overflow:hidden}
+.sidebar{width:340px;background:#111827;color:#e5e7eb;border-right:1px solid #1f2937;display:flex;flex-direction:column;overflow-y:auto;flex-shrink:0}
+.main{flex:1;display:flex;flex-direction:column;overflow:hidden}
+.canvas-area{flex:1;position:relative;overflow:hidden}
+.canvas-area{background:#f8fafc}
+.prompt-area{height:140px;background:#f1f5f9;border-top:1px solid #e2e8f0;padding:12px;display:flex;flex-direction:column}
+.prompt-area textarea{flex:1;background:#fff;color:#334155;border:1px solid #cbd5e1;border-radius:6px;padding:8px;font-family:'SF Mono',Menlo,monospace;font-size:11px;resize:none}
+.prompt-area .copy-btn{align-self:flex-end;margin-top:6px;padding:6px 16px;background:#6366f1;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:12px;font-weight:500}
+.prompt-area .copy-btn:hover{background:#4f46e5}
+.prompt-area .copy-btn.copied{background:#10b981}
+
+h2{font-size:11px;color:#9ca3af;text-transform:uppercase;letter-spacing:1.5px;padding:16px 16px 8px;border-bottom:1px solid #1f2937;font-weight:600}
+.section{padding:12px 16px}
+.section label{display:block;font-size:12px;color:#9ca3af;margin-bottom:6px;font-weight:500}
+
+.preset-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:12px}
+.preset-btn{padding:8px;background:#1f2937;border:1px solid #374151;border-radius:6px;color:#d1d5db;font-size:11px;cursor:pointer;text-align:center;transition:all .15s;font-weight:500}
+.preset-btn:hover{background:#374151;border-color:#4b5563}
+.preset-btn.active{background:#4f46e5;border-color:#6366f1;color:#fff}
+
+.toggle-row{display:flex;align-items:center;gap:8px;padding:5px 0}
+.toggle-row input{accent-color:#6366f1}
+.toggle-row span{font-size:12px;color:#d1d5db}
+.color-dot{width:12px;height:12px;border-radius:3px;display:inline-block;border:1px solid rgba(255,255,255,.15)}
+
+.goal-input{width:100%;padding:10px;background:#1f2937;border:1px solid #374151;border-radius:6px;color:#f3f4f6;font-size:12px;margin-bottom:8px}
+.goal-input:focus{outline:none;border-color:#6366f1;box-shadow:0 0 0 2px rgba(99,102,241,.25)}
+.run-btn{width:100%;padding:12px;background:#10b981;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;margin-bottom:6px;transition:all .15s;letter-spacing:.3px}
+.run-btn:hover{background:#059669;transform:translateY(-1px)}
+.run-btn.running{background:#f59e0b;animation:pulse 1.5s infinite}
+.run-btn.paused{background:#6366f1}
+.ctrl-row{display:flex;gap:6px}
+.ctrl-btn{flex:1;padding:8px;background:#1f2937;color:#d1d5db;border:1px solid #374151;border-radius:6px;font-size:11px;cursor:pointer;font-weight:500}
+.ctrl-btn:hover{background:#374151}
+.ctrl-btn.danger{background:#7f1d1d;border-color:#991b1b;color:#fca5a5}
+.ctrl-btn.danger:hover{background:#991b1b}
+
+.task-list{margin-top:10px}
+.task-item{display:flex;align-items:center;gap:8px;padding:8px 10px;background:#1f2937;border-radius:6px;margin-bottom:4px;font-size:12px;border-left:4px solid #374151;color:#d1d5db}
+.task-item.pending{border-left-color:#6b7280}
+.task-item.running{border-left-color:#f59e0b;background:#292524}
+.task-item.done{border-left-color:#10b981;background:#0f2922}
+.task-item.failed{border-left-color:#ef4444;background:#2a1215}
+.task-item.awaiting{border-left-color:#a78bfa;background:#1e1b4b;animation:glow 1.5s infinite}
+.task-item .status-icon{font-size:15px}
+.task-item .task-name{flex:1;font-weight:500}
+.approve-btn{padding:4px 10px;background:#10b981;color:#fff;border:none;border-radius:4px;font-size:11px;cursor:pointer;font-weight:600}
+.approve-btn:hover{background:#059669}
+.reject-btn{padding:4px 10px;background:#ef4444;color:#fff;border:none;border-radius:4px;font-size:11px;cursor:pointer;font-weight:600}
+.reject-btn:hover{background:#dc2626}
+
+.rate-limit-bar{margin-top:10px;background:#1f2937;border-radius:6px;overflow:hidden;height:24px;position:relative;border:1px solid #374151}
+.rate-limit-fill{height:100%;transition:width .5s;border-radius:5px}
+.rate-limit-text{position:absolute;top:0;left:0;right:0;text-align:center;font-size:11px;line-height:24px;color:#fff;font-weight:500;text-shadow:0 1px 2px rgba(0,0,0,.5)}
+
+.log-area{margin-top:10px;max-height:140px;overflow-y:auto;background:#0f172a;border-radius:6px;padding:8px;font-family:'SF Mono',Menlo,monospace;font-size:11px;color:#64748b;border:1px solid #1e293b}
+.log-area .log-line{margin-bottom:3px;line-height:1.5}
+.log-area .log-line.info{color:#60a5fa}
+.log-area .log-line.success{color:#34d399}
+.log-area .log-line.warn{color:#fbbf24}
+.log-area .log-line.error{color:#f87171}
+
+svg{width:100%;height:100%}
+.node{cursor:pointer;transition:all .15s}
+.node:hover rect{stroke-width:2.5;filter:brightness(1.05)}
+.node-label{font-size:11px;font-weight:700;fill:#1e293b;pointer-events:none}
+.node-sub{font-size:8.5px;fill:#64748b;pointer-events:none;font-weight:500}
+.conn-label{font-size:9px;fill:#94a3b8}
+
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.7}}
+@keyframes glow{0%,100%{box-shadow:0 0 0 rgba(139,92,246,0)}50%{box-shadow:0 0 8px rgba(139,92,246,.4)}}
+@keyframes flowDash{to{stroke-dashoffset:-20}}
+.flow-active{animation:flowDash 1s linear infinite}
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+  <h2>🦆 bulsaja × Claude Code</h2>
+
+  <div class="section">
+    <label>프리셋</label>
+    <div class="preset-grid">
+      <button class="preset-btn active" onclick="setPreset('full')">전체 시스템</button>
+      <button class="preset-btn" onclick="setPreset('workflow')">워크플로우</button>
+      <button class="preset-btn" onclick="setPreset('security')">보안 레이어</button>
+      <button class="preset-btn" onclick="setPreset('dataflow')">데이터 흐름</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <label>레이어 표시</label>
+    <div class="toggle-row"><input type="checkbox" checked onchange="toggleLayer('electron',this.checked)"><span class="color-dot" style="background:#2563eb"></span><span>Electron (Main)</span></div>
+    <div class="toggle-row"><input type="checkbox" checked onchange="toggleLayer('claude',this.checked)"><span class="color-dot" style="background:#059669"></span><span>Claude Code CLI</span></div>
+    <div class="toggle-row"><input type="checkbox" checked onchange="toggleLayer('api',this.checked)"><span class="color-dot" style="background:#d97706"></span><span>bulsaja API</span></div>
+    <div class="toggle-row"><input type="checkbox" checked onchange="toggleLayer('security',this.checked)"><span class="color-dot" style="background:#e11d48"></span><span>보안 레이어</span></div>
+    <div class="toggle-row"><input type="checkbox" checked onchange="toggleLayer('ui',this.checked)"><span class="color-dot" style="background:#6366f1"></span><span>셀러 UI</span></div>
+  </div>
+
+  <h2>⚡ 워크플로우 시뮬레이션</h2>
+  <div class="section">
+    <input class="goal-input" id="goalInput" value="알리 인기상품 10개 소싱 → 스마트스토어 업로드" placeholder="Goal 입력...">
+    <button class="run-btn" id="runBtn" onclick="toggleRun()">▶ Goal 실행</button>
+    <div class="ctrl-row">
+      <button class="ctrl-btn" onclick="pauseRun()">⏸ 일시정지</button>
+      <button class="ctrl-btn danger" onclick="cancelRun()">⏹ 취소</button>
+    </div>
+
+    <div class="task-list" id="taskList"></div>
+
+    <label style="margin-top:12px;display:block">Rate Limit (Max 구독)</label>
+    <div class="rate-limit-bar">
+      <div class="rate-limit-fill" id="rateFill" style="width:45%;background:linear-gradient(90deg,#10b981,#f59e0b)"></div>
+      <div class="rate-limit-text" id="rateText">45% 사용 | 리셋까지 2시간 34분</div>
+    </div>
+
+    <div class="log-area" id="logArea"></div>
+  </div>
+
+  <h2>📊 비용 추적</h2>
+  <div class="section" style="font-size:12px">
+    <div style="display:flex;justify-content:space-between;margin-bottom:4px"><span>구독 타입</span><span style="color:#10b981">Max ($200/월)</span></div>
+    <div style="display:flex;justify-content:space-between;margin-bottom:4px"><span>API 과금</span><span style="color:#10b981">$0 (구독)</span></div>
+    <div style="display:flex;justify-content:space-between;margin-bottom:4px"><span>이번 세션 토큰</span><span id="tokenCount">0</span></div>
+    <div style="display:flex;justify-content:space-between"><span>예상 소요 시간</span><span id="estTime">~3분</span></div>
+  </div>
+</div>
+
+<div class="main">
+  <div class="canvas-area">
+    <svg id="canvas" viewBox="0 0 900 520"></svg>
+  </div>
+  <div class="prompt-area">
+    <textarea id="promptOutput" readonly></textarea>
+    <button class="copy-btn" id="copyBtn" onclick="copyPrompt()">📋 프롬프트 복사</button>
+  </div>
+</div>
+
+<script>
+const state = {
+  preset: 'full',
+  layers: { electron: true, claude: true, api: true, security: true, ui: true },
+  running: false,
+  paused: false,
+  currentTask: -1,
+  tasks: [],
+  rateUsage: 45,
+  tokens: 0,
+  logs: [],
+  comments: []
+};
+
+const TASKS_TEMPLATE = [
+  { id: 't1', name: '🎯 Goal 분해 (Planning)', type: 'planning', status: 'pending', checkpoint: false },
+  { id: 't2', name: '📦 상품 소싱 (10개)', type: 'sourcing', status: 'pending', checkpoint: true },
+  { id: 't3', name: '🖼️ 이미지 번역', type: 'image_translate', status: 'pending', checkpoint: true },
+  { id: 't4', name: '✍️ AI 상품명 생성', type: 'ai_name', status: 'pending', checkpoint: true },
+  { id: 't5', name: '🚀 스마트스토어 업로드', type: 'upload', status: 'pending', checkpoint: true },
+];
+
+const nodes = [
+  // UI Layer — 인디고
+  { id: 'seller-ui', label: '셀러 UI', sub: 'renderer/pages/claude-goal.tsx', x: 80, y: 30, w: 130, h: 44, layer: 'ui', fill: '#eef2ff', stroke: '#6366f1' },
+  { id: 'goal-input', label: 'Goal 입력', sub: 'useClaudeGoal.ts', x: 250, y: 30, w: 110, h: 44, layer: 'ui', fill: '#eef2ff', stroke: '#6366f1' },
+  { id: 'checkpoint-ui', label: '✅ 승인 체크포인트', sub: 'checkpoint-dialog.tsx', x: 420, y: 30, w: 160, h: 44, layer: 'ui', fill: '#f5f3ff', stroke: '#8b5cf6' },
+  { id: 'progress-ui', label: '진행 상황 표시', sub: 'progress-panel.tsx', x: 630, y: 30, w: 130, h: 44, layer: 'ui', fill: '#eef2ff', stroke: '#6366f1' },
+
+  // Electron Main Layer — 블루
+  { id: 'ipc-handler', label: 'IPC Handler', sub: 'main/ipc/claude-goal-handler.ts', x: 80, y: 125, w: 130, h: 44, layer: 'electron', fill: '#dbeafe', stroke: '#2563eb' },
+  { id: 'goal-planner', label: 'GoalPlanner', sub: 'main/claude/goal-planner.ts', x: 250, y: 125, w: 120, h: 44, layer: 'electron', fill: '#dbeafe', stroke: '#2563eb' },
+  { id: 'task-queue', label: 'TaskQueue', sub: 'main/claude/task-queue.ts', x: 420, y: 125, w: 120, h: 44, layer: 'electron', fill: '#dbeafe', stroke: '#2563eb' },
+  { id: 'session-store', label: 'SessionStore', sub: 'main/claude/session-store.ts', x: 580, y: 125, w: 120, h: 44, layer: 'electron', fill: '#dbeafe', stroke: '#2563eb' },
+  { id: 'stream-parser', label: 'StreamParser', sub: 'main/claude/stream-parser.ts', x: 740, y: 125, w: 120, h: 44, layer: 'electron', fill: '#dbeafe', stroke: '#2563eb' },
+
+  // Security Layer — 로즈/핑크
+  { id: 'env-whitelist', label: '🔒 ENV 화이트리스트', sub: 'PATH, HOME, BULSAJA_TOKEN만', x: 80, y: 220, w: 160, h: 44, layer: 'security', fill: '#ffe4e6', stroke: '#e11d48' },
+  { id: 'prompt-guard', label: '🛡️ Prompt Injection 방어', sub: '경계 표시 + 시스템 방어', x: 280, y: 220, w: 180, h: 44, layer: 'security', fill: '#ffe4e6', stroke: '#e11d48' },
+  { id: 'tool-whitelist', label: '🔐 Tool 화이트리스트', sub: 'Bash, Read만 허용', x: 510, y: 220, w: 160, h: 44, layer: 'security', fill: '#ffe4e6', stroke: '#e11d48' },
+
+  // Claude Code Layer — 에메랄드
+  { id: 'claude-runner', label: 'ClaudeRunner', sub: 'child_process.spawn("claude")', x: 80, y: 315, w: 150, h: 44, layer: 'claude', fill: '#d1fae5', stroke: '#059669' },
+  { id: 'claude-cli', label: 'claude CLI', sub: '--print - --stream-json', x: 280, y: 315, w: 130, h: 44, layer: 'claude', fill: '#d1fae5', stroke: '#059669' },
+  { id: 'skills-md', label: 'CLAUDE.md (스킬)', sub: 'bulsaja API 스펙 주입', x: 460, y: 315, w: 150, h: 44, layer: 'claude', fill: '#d1fae5', stroke: '#059669' },
+  { id: 'bash-curl', label: 'bash → curl', sub: 'API 호출 실행', x: 660, y: 315, w: 120, h: 44, layer: 'claude', fill: '#d1fae5', stroke: '#059669' },
+
+  // bulsaja API Layer — 앰버/오렌지
+  { id: 'sourcing-api', label: '📦 소싱 API', sub: '/api/sourcing/search', x: 60, y: 425, w: 120, h: 44, layer: 'api', fill: '#fef3c7', stroke: '#d97706' },
+  { id: 'translate-api', label: '🖼️ 이미지번역 API', sub: '/api/imageTranslateTask', x: 220, y: 425, w: 150, h: 44, layer: 'api', fill: '#fef3c7', stroke: '#d97706' },
+  { id: 'ai-name-api', label: '✍️ 상품명 API', sub: '/api/ai/product-name', x: 410, y: 425, w: 130, h: 44, layer: 'api', fill: '#fef3c7', stroke: '#d97706' },
+  { id: 'upload-api', label: '🚀 업로드 API', sub: '/api/market-upload', x: 580, y: 425, w: 120, h: 44, layer: 'api', fill: '#fef3c7', stroke: '#d97706' },
+  { id: 'photokit', label: 'PhotoKit 클러스터', sub: '이미지번역 Worker', x: 740, y: 425, w: 130, h: 44, layer: 'api', fill: '#fef3c7', stroke: '#d97706' },
+];
+
+const connections = [
+  // UI → Electron
+  { from: 'goal-input', to: 'ipc-handler', type: 'data', label: 'IPC invoke' },
+  { from: 'ipc-handler', to: 'progress-ui', type: 'event', label: 'IPC send (진행)' },
+  { from: 'task-queue', to: 'checkpoint-ui', type: 'event', label: '승인 요청' },
+
+  // Electron internal
+  { from: 'ipc-handler', to: 'goal-planner', type: 'data', label: 'Goal' },
+  { from: 'goal-planner', to: 'task-queue', type: 'data', label: 'SubTask[]' },
+  { from: 'task-queue', to: 'claude-runner', type: 'tool', label: 'execute(prompt)' },
+  { from: 'claude-runner', to: 'stream-parser', type: 'data', label: 'stdout stream' },
+  { from: 'stream-parser', to: 'session-store', type: 'data', label: 'sessionId 저장' },
+
+  // Security
+  { from: 'claude-runner', to: 'env-whitelist', type: 'security', label: 'env 필터' },
+  { from: 'goal-planner', to: 'prompt-guard', type: 'security', label: '입력 검증' },
+  { from: 'claude-runner', to: 'tool-whitelist', type: 'security', label: 'allowedTools' },
+
+  // Claude → API
+  { from: 'claude-cli', to: 'skills-md', type: 'tool', label: '--add-dir' },
+  { from: 'claude-cli', to: 'bash-curl', type: 'tool', label: 'Bash tool' },
+  { from: 'bash-curl', to: 'sourcing-api', type: 'data', label: 'curl POST' },
+  { from: 'bash-curl', to: 'translate-api', type: 'data', label: 'curl POST' },
+  { from: 'bash-curl', to: 'ai-name-api', type: 'data', label: 'curl POST' },
+  { from: 'bash-curl', to: 'upload-api', type: 'data', label: 'curl POST' },
+  { from: 'translate-api', to: 'photokit', type: 'data', label: 'RabbitMQ' },
+];
+
+const connStyles = {
+  data: { color: '#3b82f6', dash: '' },
+  tool: { color: '#10b981', dash: '6,3' },
+  event: { color: '#f59e0b', dash: '4,4' },
+  security: { color: '#ec4899', dash: '3,3' },
+};
+
+function renderDiagram() {
+  const svg = document.getElementById('canvas');
+  svg.innerHTML = '';
+
+  // Defs (arrowheads)
+  const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+  Object.entries(connStyles).forEach(([type, s]) => {
+    const marker = document.createElementNS('http://www.w3.org/2000/svg', 'marker');
+    marker.setAttribute('id', `arrow-${type}`);
+    marker.setAttribute('markerWidth', '8');
+    marker.setAttribute('markerHeight', '6');
+    marker.setAttribute('refX', '7');
+    marker.setAttribute('refY', '3');
+    marker.setAttribute('orient', 'auto');
+    const poly = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+    poly.setAttribute('points', '0 0, 8 3, 0 6');
+    poly.setAttribute('fill', s.color);
+    marker.appendChild(poly);
+    defs.appendChild(marker);
+  });
+  svg.appendChild(defs);
+
+  // Layer labels
+  const layerLabels = [
+    { y: 15, text: '셀러 UI (Renderer)', layer: 'ui' },
+    { y: 105, text: 'Electron Main Process', layer: 'electron' },
+    { y: 195, text: '보안 레이어', layer: 'security' },
+    { y: 295, text: 'Claude Code CLI (child_process)', layer: 'claude' },
+    { y: 405, text: 'bulsaja API Server (api.bulsaja.com)', layer: 'api' },
+  ];
+  layerLabels.forEach(l => {
+    if (!state.layers[l.layer]) return;
+    const t = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    t.setAttribute('x', '10');
+    t.setAttribute('y', String(l.y));
+    t.setAttribute('fill', '#444');
+    t.setAttribute('font-size', '10');
+    t.textContent = l.text;
+    svg.appendChild(t);
+  });
+
+  // Connections
+  connections.forEach(c => {
+    const from = nodes.find(n => n.id === c.from);
+    const to = nodes.find(n => n.id === c.to);
+    if (!from || !to) return;
+    if (!state.layers[from.layer] || !state.layers[to.layer]) return;
+
+    const s = connStyles[c.type] || connStyles.data;
+    const x1 = from.x + from.w / 2, y1 = from.y + from.h;
+    const x2 = to.x + to.w / 2, y2 = to.y;
+    const midY = (y1 + y2) / 2;
+
+    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.setAttribute('d', `M${x1},${y1} C${x1},${midY} ${x2},${midY} ${x2},${y2}`);
+    path.setAttribute('fill', 'none');
+    path.setAttribute('stroke', s.color);
+    path.setAttribute('stroke-width', '1.5');
+    path.setAttribute('stroke-opacity', '0.6');
+    path.setAttribute('marker-end', `url(#arrow-${c.type})`);
+    if (s.dash) path.setAttribute('stroke-dasharray', s.dash);
+
+    // Animate active connections during simulation
+    if (state.running && !state.paused && isActiveConnection(c)) {
+      path.setAttribute('stroke-opacity', '1');
+      path.setAttribute('stroke-width', '2.5');
+      if (s.dash) path.classList.add('flow-active');
+    }
+
+    svg.appendChild(path);
+  });
+
+  // Nodes
+  nodes.forEach(n => {
+    if (!state.layers[n.layer]) return;
+
+    const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    g.classList.add('node');
+    g.onclick = () => addComment(n);
+
+    const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+    rect.setAttribute('x', n.x);
+    rect.setAttribute('y', n.y);
+    rect.setAttribute('width', n.w);
+    rect.setAttribute('height', n.h);
+    rect.setAttribute('rx', '6');
+    rect.setAttribute('fill', n.fill);
+    rect.setAttribute('stroke', n.stroke);
+    rect.setAttribute('stroke-width', '1.5');
+
+    // Highlight active node
+    if (state.running && isActiveNode(n.id)) {
+      rect.setAttribute('stroke-width', '3');
+      rect.setAttribute('filter', 'drop-shadow(0 0 6px ' + n.stroke + ')');
+    }
+
+    const hasComment = state.comments.some(c => c.target === n.id);
+    if (hasComment) {
+      rect.setAttribute('stroke-width', '2.5');
+      rect.setAttribute('stroke-dasharray', '');
+    }
+
+    g.appendChild(rect);
+
+    const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    label.setAttribute('x', n.x + n.w / 2);
+    label.setAttribute('y', n.y + 18);
+    label.setAttribute('text-anchor', 'middle');
+    label.classList.add('node-label');
+    label.textContent = n.label;
+    g.appendChild(label);
+
+    const sub = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    sub.setAttribute('x', n.x + n.w / 2);
+    sub.setAttribute('y', n.y + 32);
+    sub.setAttribute('text-anchor', 'middle');
+    sub.classList.add('node-sub');
+    sub.textContent = n.sub;
+    g.appendChild(sub);
+
+    svg.appendChild(g);
+  });
+
+  // Legend
+  const legendX = 700, legendY = 490;
+  Object.entries(connStyles).forEach(([type, s], i) => {
+    const labels = { data: '데이터', tool: 'Tool 호출', event: '이벤트/IPC', security: '보안' };
+    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line.setAttribute('x1', legendX + i * 100);
+    line.setAttribute('y1', legendY + 5);
+    line.setAttribute('x2', legendX + i * 100 + 20);
+    line.setAttribute('y2', legendY + 5);
+    line.setAttribute('stroke', s.color);
+    line.setAttribute('stroke-width', '2');
+    if (s.dash) line.setAttribute('stroke-dasharray', s.dash);
+    svg.appendChild(line);
+
+    const t = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    t.setAttribute('x', legendX + i * 100 + 24);
+    t.setAttribute('y', legendY + 9);
+    t.setAttribute('fill', '#666');
+    t.setAttribute('font-size', '10');
+    t.textContent = labels[type];
+    svg.appendChild(t);
+  });
+}
+
+function isActiveNode(nodeId) {
+  if (!state.running || state.currentTask < 0) return false;
+  const task = state.tasks[state.currentTask];
+  if (!task) return false;
+  const map = {
+    planning: ['goal-planner', 'claude-runner', 'claude-cli'],
+    sourcing: ['claude-cli', 'bash-curl', 'sourcing-api'],
+    image_translate: ['claude-cli', 'bash-curl', 'translate-api', 'photokit'],
+    ai_name: ['claude-cli', 'bash-curl', 'ai-name-api'],
+    upload: ['claude-cli', 'bash-curl', 'upload-api'],
+  };
+  return (map[task.type] || []).includes(nodeId);
+}
+
+function isActiveConnection(conn) {
+  if (!state.running || state.currentTask < 0) return false;
+  const task = state.tasks[state.currentTask];
+  if (!task) return false;
+  const from = nodes.find(n => n.id === conn.from);
+  const to = nodes.find(n => n.id === conn.to);
+  return from && to && isActiveNode(from.id) && isActiveNode(to.id);
+}
+
+function renderTasks() {
+  const el = document.getElementById('taskList');
+  el.innerHTML = state.tasks.map((t, i) => {
+    const icons = { pending: '⏳', running: '🔄', done: '✅', failed: '❌', awaiting: '🟣' };
+    const btns = t.status === 'awaiting' ?
+      `<button class="approve-btn" onclick="approveTask(${i})">승인</button><button class="reject-btn" onclick="rejectTask(${i})">거절</button>` : '';
+    return `<div class="task-item ${t.status}"><span class="status-icon">${icons[t.status]}</span><span class="task-name">${t.name}</span>${btns}</div>`;
+  }).join('');
+}
+
+function addLog(msg, level = 'info') {
+  state.logs.push({ msg, level, time: new Date().toLocaleTimeString() });
+  if (state.logs.length > 50) state.logs.shift();
+  const el = document.getElementById('logArea');
+  el.innerHTML = state.logs.map(l => `<div class="log-line ${l.level}">[${l.time}] ${l.msg}</div>`).join('');
+  el.scrollTop = el.scrollHeight;
+}
+
+function updateRateLimit(delta) {
+  state.rateUsage = Math.min(100, state.rateUsage + delta);
+  const fill = document.getElementById('rateFill');
+  const text = document.getElementById('rateText');
+  const pct = state.rateUsage;
+  fill.style.width = pct + '%';
+  fill.style.background = pct > 80 ? 'linear-gradient(90deg,#f59e0b,#ef4444)' :
+                           pct > 50 ? 'linear-gradient(90deg,#10b981,#f59e0b)' :
+                           'linear-gradient(90deg,#10b981,#3b82f6)';
+  const mins = Math.floor(Math.random() * 60 + 90);
+  text.textContent = `${pct}% 사용 | 리셋까지 ${Math.floor(mins/60)}시간 ${mins%60}분`;
+}
+
+function updateTokens(delta) {
+  state.tokens += delta;
+  document.getElementById('tokenCount').textContent = state.tokens.toLocaleString();
+}
+
+let simTimer = null;
+
+function toggleRun() {
+  if (state.running) return;
+  state.running = true;
+  state.paused = false;
+  state.currentTask = -1;
+  state.tasks = TASKS_TEMPLATE.map(t => ({ ...t, status: 'pending' }));
+  state.logs = [];
+  state.tokens = 0;
+
+  document.getElementById('runBtn').textContent = '🔄 실행 중...';
+  document.getElementById('runBtn').classList.add('running');
+
+  addLog('Goal 접수: ' + document.getElementById('goalInput').value, 'info');
+  addLog('Claude Code CLI spawn 시작...', 'info');
+
+  renderTasks();
+  runNextTask();
+}
+
+function runNextTask() {
+  if (!state.running || state.paused) return;
+
+  state.currentTask++;
+  if (state.currentTask >= state.tasks.length) {
+    finishRun();
+    return;
+  }
+
+  const task = state.tasks[state.currentTask];
+  task.status = 'running';
+  addLog(`Task 시작: ${task.name}`, 'info');
+  renderTasks();
+  renderDiagram();
+
+  // Simulate execution time
+  const durations = { planning: 2000, sourcing: 3000, image_translate: 4000, ai_name: 2500, upload: 3000 };
+  const dur = durations[task.type] || 2000;
+
+  simTimer = setTimeout(() => {
+    if (!state.running) return;
+
+    task.status = 'done';
+    updateRateLimit(Math.floor(Math.random() * 8 + 3));
+    updateTokens(Math.floor(Math.random() * 5000 + 2000));
+
+    const msgs = {
+      planning: '5개 SubTask 생성 완료',
+      sourcing: '10개 상품 수집 완료 (알리익스프레스)',
+      image_translate: '10개 이미지 한글 번역 완료 (PhotoKit)',
+      ai_name: '10개 AI 상품명 생성 완료',
+      upload: '10개 스마트스토어 업로드 완료',
+    };
+    addLog(`✓ ${msgs[task.type] || '완료'}`, 'success');
+    renderTasks();
+    renderDiagram();
+
+    // Checkpoint: 셀러 승인 요청
+    if (task.checkpoint && state.currentTask < state.tasks.length - 1) {
+      const next = state.tasks[state.currentTask + 1];
+      if (next) {
+        next.status = 'awaiting';
+        addLog(`⏸ 셀러 승인 대기: "${next.name}" 진행할까요?`, 'warn');
+        renderTasks();
+        return; // 승인 대기 — runNextTask 호출하지 않음
+      }
+    }
+
+    runNextTask();
+  }, dur);
+}
+
+function approveTask(idx) {
+  const task = state.tasks[idx];
+  task.status = 'pending';
+  addLog(`✅ 셀러 승인: "${task.name}" 진행`, 'success');
+  renderTasks();
+  state.currentTask = idx - 1; // runNextTask에서 +1 됨
+  runNextTask();
+}
+
+function rejectTask(idx) {
+  const task = state.tasks[idx];
+  task.status = 'failed';
+  addLog(`❌ 셀러 거절: "${task.name}" 중단`, 'error');
+  // 이후 task도 skip
+  for (let i = idx + 1; i < state.tasks.length; i++) {
+    state.tasks[i].status = 'failed';
+  }
+  renderTasks();
+  finishRun();
+}
+
+function pauseRun() {
+  if (!state.running) return;
+  state.paused = !state.paused;
+  if (state.paused) {
+    clearTimeout(simTimer);
+    document.getElementById('runBtn').textContent = '⏸ 일시정지';
+    document.getElementById('runBtn').classList.remove('running');
+    document.getElementById('runBtn').classList.add('paused');
+    addLog('⏸ 셀러가 일시정지함', 'warn');
+  } else {
+    document.getElementById('runBtn').textContent = '🔄 실행 중...';
+    document.getElementById('runBtn').classList.add('running');
+    document.getElementById('runBtn').classList.remove('paused');
+    addLog('▶ 재개', 'info');
+    runNextTask();
+  }
+  renderDiagram();
+}
+
+function cancelRun() {
+  state.running = false;
+  state.paused = false;
+  clearTimeout(simTimer);
+  state.tasks.forEach(t => { if (t.status === 'running' || t.status === 'pending' || t.status === 'awaiting') t.status = 'failed'; });
+  document.getElementById('runBtn').textContent = '▶ Goal 실행';
+  document.getElementById('runBtn').classList.remove('running', 'paused');
+  addLog('⏹ 셀러가 전체 취소함. Claude CLI SIGTERM 전송.', 'error');
+  renderTasks();
+  renderDiagram();
+}
+
+function finishRun() {
+  state.running = false;
+  const done = state.tasks.filter(t => t.status === 'done').length;
+  const total = state.tasks.length;
+  document.getElementById('runBtn').textContent = '▶ Goal 실행';
+  document.getElementById('runBtn').classList.remove('running', 'paused');
+  addLog(`완료: ${done}/${total} 성공 | 토큰: ${state.tokens.toLocaleString()} | Rate: ${state.rateUsage}%`, done === total ? 'success' : 'warn');
+  renderDiagram();
+}
+
+function setPreset(name) {
+  state.preset = name;
+  document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+
+  const presets = {
+    full: { electron: true, claude: true, api: true, security: true, ui: true },
+    workflow: { electron: true, claude: true, api: true, security: false, ui: true },
+    security: { electron: true, claude: true, api: false, security: true, ui: false },
+    dataflow: { electron: false, claude: true, api: true, security: false, ui: false },
+  };
+  state.layers = { ...presets[name] };
+
+  document.querySelectorAll('.toggle-row input').forEach((cb, i) => {
+    const keys = ['electron', 'claude', 'api', 'security', 'ui'];
+    cb.checked = state.layers[keys[i]];
+  });
+
+  renderDiagram();
+  updatePrompt();
+}
+
+function toggleLayer(layer, checked) {
+  state.layers[layer] = checked;
+  renderDiagram();
+  updatePrompt();
+}
+
+function addComment(node) {
+  const text = prompt(`💬 ${node.label} (${node.sub})\n\n피드백/코멘트:`);
+  if (text) {
+    state.comments.push({ id: Date.now(), target: node.id, targetLabel: node.label, targetFile: node.sub, text });
+    renderDiagram();
+    updatePrompt();
+  }
+}
+
+function copyPrompt() {
+  const text = document.getElementById('promptOutput').value;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById('copyBtn');
+    btn.textContent = '✅ 복사됨!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = '📋 프롬프트 복사'; btn.classList.remove('copied'); }, 1500);
+  });
+}
+
+function updatePrompt() {
+  const parts = [];
+  parts.push('bulsaja Electron 앱에 Claude Code Max CLI를 내장하여 이커머스 워크플로우를 자율 실행하는 시스템을 구축한다.');
+  parts.push('');
+  parts.push('## 아키텍처: Task-per-Spawn');
+
+  const visibleLayers = Object.entries(state.layers).filter(([,v]) => v).map(([k]) => k);
+  if (visibleLayers.length < 5) {
+    const names = { electron: 'Electron Main', claude: 'Claude CLI', api: 'bulsaja API', security: '보안', ui: '셀러 UI' };
+    parts.push(`표시된 레이어: ${visibleLayers.map(l => names[l]).join(', ')}`);
+  }
+
+  parts.push('');
+  parts.push('핵심 흐름: Goal 입력 → GoalPlanner(분해) → TaskQueue(순차 실행) → ClaudeRunner(spawn) → claude CLI → curl → bulsaja API');
+  parts.push('');
+  parts.push('보안: ENV 화이트리스트(PATH,HOME만), Prompt Injection 경계 표시, Tool 화이트리스트(Bash,Read만)');
+  parts.push('셀러 통제: 각 단계마다 승인 체크포인트, 일시정지/취소 가능');
+
+  if (state.comments.length > 0) {
+    parts.push('');
+    parts.push('## 피드백');
+    state.comments.forEach(c => {
+      parts.push(`**${c.targetLabel}** (${c.targetFile}): ${c.text}`);
+    });
+  }
+
+  document.getElementById('promptOutput').value = parts.join('\n');
+}
+
+// Init
+renderDiagram();
+renderTasks();
+updatePrompt();
+state.tasks = TASKS_TEMPLATE.map(t => ({ ...t }));
+renderTasks();
+</script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>가양동 TOP 5 (템플릿 오버레이)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Gaegu:wght@400;700&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Noto Sans KR', sans-serif; background: #bbb; }
+
+  .slide {
+    width: 1080px; height: 1440px;
+    position: relative;
+    overflow: hidden;
+    margin: 40px auto;
+    background: url('template_1080x1440.png') no-repeat top left / 1080px 1440px;
+  }
+
+  /* Genspark 워터마크 덮기 */
+  .wm-cover {
+    position: absolute;
+    right: 10px; bottom: 10px;
+    width: 260px; height: 60px;
+    background: #F5F1E8;
+    border-radius: 4px;
+  }
+
+  /* 헤드라인 — 노란 형광펜 안 */
+  .headline {
+    position: absolute;
+    top: 86px; left: 80px;
+    width: 920px; height: 120px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Jua', sans-serif;
+    font-size: 76px;
+    line-height: 1;
+    color: #1a1a1a;
+    text-align: center;
+    letter-spacing: -1.5px;
+    transform: rotate(-1.2deg);
+  }
+
+  /* 좌측 긴 박스 5개 */
+  .row {
+    position: absolute;
+    left: 115px;
+    width: 640px;
+    height: 128px;
+    display: flex; align-items: center;
+    padding: 0 20px 0 55px;
+  }
+  .row .r-title {
+    font-family: 'Jua', sans-serif;
+    font-size: 42px;
+    color: #1a1a1a;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+  }
+  .row .r-sub {
+    font-family: 'Noto Sans KR';
+    font-weight: 700;
+    font-size: 26px;
+    color: #555;
+    margin-top: 6px;
+    line-height: 1;
+  }
+
+  .row-1 { top: 351px; }
+  .row-2 { top: 515px; }
+  .row-3 { top: 678px; }
+  .row-4 { top: 842px; }
+  .row-5 { top: 1005px; }
+
+  /* 우측 번호 박스 5개 */
+  .num {
+    position: absolute;
+    left: 820px;
+    width: 150px;
+    height: 130px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Jua', sans-serif;
+    font-size: 80px;
+    line-height: 1;
+    color: #1a1a1a;
+    transform: rotate(-3deg);
+  }
+  .num-1 { top: 351px; color: #E6A700; }
+  .num-2 { top: 515px; color: #E88C9A; }
+  .num-3 { top: 678px; color: #6BB6DE; }
+  .num-4 { top: 842px; color: #E6A700; }
+  .num-5 { top: 1005px; color: #E88C9A; }
+
+  /* 하단 멘트 (사자 오른쪽 빈 공간) */
+  .tagline {
+    position: absolute;
+    top: 1165px;
+    left: 320px;
+    width: 720px;
+    font-family: 'Gaegu', cursive;
+    font-weight: 700;
+    font-size: 44px;
+    color: #E6A700;
+    line-height: 1.25;
+    transform: rotate(-0.8deg);
+  }
+  .tagline small {
+    display: block;
+    font-family: 'Noto Sans KR';
+    font-weight: 700;
+    font-size: 22px;
+    color: #777;
+    margin-top: 8px;
+    transform: rotate(0.8deg);
+  }
+
+  /* 핸들 */
+  .handle {
+    position: absolute;
+    bottom: 30px;
+    left: 330px;
+    font-family: 'Jua', sans-serif;
+    font-size: 36px;
+    color: #1a1a1a;
+  }
+</style>
+</head>
+<body>
+
+<div class="slide" id="slide-1">
+  <div class="wm-cover"></div>
+
+  <div class="headline">가양동 9억대 매물 TOP 5</div>
+
+  <!-- 박스 1 -->
+  <div class="row row-1">
+    <div>
+      <div class="r-title">가양2단지성지 34A</div>
+      <div class="r-sub">5년 +136% · 현재 호가 7.16억</div>
+    </div>
+  </div>
+  <div class="num num-1">1</div>
+
+  <!-- 박스 2 -->
+  <div class="row row-2">
+    <div>
+      <div class="r-title">강변3단지 34</div>
+      <div class="r-sub">5년 +122% · 현재 호가 7.40억</div>
+    </div>
+  </div>
+  <div class="num num-2">2</div>
+
+  <!-- 박스 3 -->
+  <div class="row row-3">
+    <div>
+      <div class="r-title">가양9단지 34</div>
+      <div class="r-sub">5년 +121% · 현재 호가 6.62억</div>
+    </div>
+  </div>
+  <div class="num num-3">3</div>
+
+  <!-- 박스 4 -->
+  <div class="row row-4">
+    <div>
+      <div class="r-title">한보구암마을 84</div>
+      <div class="r-sub">1년 +48% · 현재 호가 11억</div>
+    </div>
+  </div>
+  <div class="num num-4">4</div>
+
+  <!-- 박스 5 -->
+  <div class="row row-5">
+    <div>
+      <div class="r-title">강서한강자이 98A</div>
+      <div class="r-sub">갭 47.7% · 현재 호가 17.25억</div>
+    </div>
+  </div>
+  <div class="num num-5">5</div>
+
+  <!-- 하단 멘트 -->
+  <div class="tagline">
+    5년치 시세 다 뽑아봤다구~
+    <small>// 국토부 실거래 + 현재 호가 기준</small>
+  </div>
+
+  <div class="handle">@집사자</div>
+</div>
+
+</body>
+</html>

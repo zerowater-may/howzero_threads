@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>집사자 - 강서구 가양동 아파트 찾아봤다구</title>
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #d4c9b0; padding: 60px 0;
+  display: flex; flex-direction: column; align-items: center; gap: 40px;
+  font-family: 'Noto Sans KR', sans-serif; color: #1a1a1a;
+}
+
+.slide {
+  width: 1080px; height: 1440px;
+  background: #F0E7D6;
+  padding: 80px 70px 130px;
+  position: relative;
+  overflow: hidden;
+}
+.slide.white { background: #fff; }
+.slide.dark { background: #1a1a1a; color: #fff; }
+
+/* ============ Typography ============ */
+.js-head { font-family: 'Jua', sans-serif; font-size: 92px; line-height: 1.15; letter-spacing: -1px; color: #1a1a1a; }
+.js-head-xl { font-size: 128px; line-height: 1.05; }
+.js-head-lg { font-size: 110px; line-height: 1.1; }
+.js-head-md { font-size: 78px; line-height: 1.15; }
+.js-head-sm { font-size: 60px; line-height: 1.2; }
+
+.js-body { font-family: 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 34px; line-height: 1.55; color: #1a1a1a; }
+.js-body-lg { font-size: 42px; font-weight: 900; line-height: 1.4; }
+.js-body-sm { font-size: 26px; font-weight: 500; color: #555; }
+
+.slide.dark .js-head, .slide.dark .js-body { color: #fff; }
+.slide.dark .js-body-sm { color: #ccc; }
+
+/* ============ WIREFRAME: Pill (물감 SVG 배경 + 깔끔 텍스트) ============ */
+.pill {
+  position: relative;
+  display: inline-block;
+  padding: 14px 40px;
+  font-family: 'Jua', sans-serif;
+  color: #fff;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  transform: rotate(-0.8deg);
+  margin: 4px 0;
+}
+.pill-bg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+.pill-bg rect { fill: #EA2E00; filter: url(#paintStroke); }
+.pill-text { position: relative; z-index: 1; }
+.pill.sm { padding: 8px 24px; font-size: 38px; transform: rotate(-0.5deg); }
+.pill.xl { padding: 20px 56px; font-size: 120px; line-height: 1; }
+.pill.dark .pill-bg rect { fill: #1a1a1a; }
+.pill.cream .pill-bg rect { fill: #F5EDE0; stroke: #1a1a1a; stroke-width: 3; }
+.pill.cream .pill-text { color: #1a1a1a; }
+
+/* ============ WIREFRAME: 형광펜 (물감 마커 하이라이트) ============ */
+.hl {
+  position: relative;
+  display: inline-block;
+  padding: 0 10px;
+  color: #1a1a1a;
+  z-index: 1;
+}
+.hl::before {
+  content: '';
+  position: absolute;
+  inset: 6px -4px 2px -4px;
+  background: #FACC15;
+  filter: url(#markerStroke);
+  z-index: -1;
+  transform: rotate(-0.5deg);
+}
+.hl.red::before { background: #EA2E00; }
+.hl.red { color: #fff; }
+
+/* ============ Box styles (질감 살짝 유지) ============ */
+.cream-box {
+  background: #F5EDE0;
+  border: 3px solid #1a1a1a;
+  border-radius: 16px;
+  padding: 28px 32px;
+  position: relative;
+}
+.check-box {
+  background: #EA2E00;
+  color: #fff;
+  border: 3px solid #1a1a1a;
+  border-radius: 16px;
+  padding: 28px 32px;
+  position: relative;
+}
+.check-label { font-family: 'Jua', sans-serif; font-size: 42px; line-height: 1; color: #1a1a1a; margin-bottom: 14px; }
+.white-box { background: #fff; border: 3px solid #1a1a1a; border-radius: 16px; padding: 28px 32px; }
+
+/* ============ Bubble (말풍선) ============ */
+.bubble { position: relative; display: inline-block; background: #fff; border: 2.5px solid #1a1a1a; border-radius: 24px; padding: 18px 26px; font-family: 'Gaegu', cursive; font-weight: 700; font-size: 30px; line-height: 1.35; color: #1a1a1a; max-width: 380px; }
+.bubble::after { content: ''; position: absolute; bottom: -14px; left: 40px; width: 22px; height: 22px; background: #fff; border-right: 2.5px solid #1a1a1a; border-bottom: 2.5px solid #1a1a1a; transform: rotate(45deg); }
+
+/* ============ Mascot ============ */
+.mascot { width: 220px; height: auto; image-rendering: auto; }
+.mascot-lg { width: 380px; }
+.mascot-md { width: 260px; }
+.mascot-sm { width: 140px; }
+.mascot-xs { width: 100px; }
+
+/* ============ Meta & Whisper ============ */
+.meta-paren { font-family: 'Noto Sans KR'; font-weight: 700; font-size: 26px; color: #555; letter-spacing: -0.5px; }
+.whisper-orange { font-family: 'Gaegu', cursive; font-weight: 700; font-size: 30px; color: #EA2E00; transform: rotate(-1deg); display: inline-block; }
+
+/* ============ Stat cards ============ */
+.stat-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; margin-top: 32px; }
+.stat-card { background: #fff; border: 3px solid #1a1a1a; border-radius: 16px; padding: 24px 20px; text-align: center; }
+.stat-num { font-family: 'Jua', sans-serif; font-size: 60px; color: #EA2E00; line-height: 1; letter-spacing: -2px; }
+.stat-label { font-family: 'Noto Sans KR'; font-size: 22px; color: #555; font-weight: 700; margin-top: 10px; }
+
+/* ============ Rank List ============ */
+.rank-row { display: grid; grid-template-columns: 70px 1fr auto; gap: 18px; align-items: center; padding: 20px 26px; background: #fff; border: 3px solid #1a1a1a; border-radius: 16px; margin-bottom: 14px; }
+.rank-num { font-family: 'Jua', sans-serif; font-size: 54px; color: #EA2E00; line-height: 1; text-align: center; }
+.rank-title { font-family: 'Jua', sans-serif; font-size: 32px; line-height: 1.15; color: #1a1a1a; }
+.rank-sub { font-family: 'Noto Sans KR'; font-size: 22px; font-weight: 700; color: #666; margin-top: 6px; }
+.rank-badge { background: #EA2E00; color: #fff; padding: 10px 18px; border-radius: 12px; font-family: 'Jua', sans-serif; font-size: 30px; line-height: 1; }
+
+/* ============ Price trend ============ */
+.trend-box { background: #fff; border: 3px solid #1a1a1a; border-radius: 16px; padding: 30px 34px; margin-top: 30px; }
+.trend-row { display: grid; grid-template-columns: 1fr auto; gap: 20px; padding: 14px 0; border-bottom: 2px dashed #e5dfd0; font-family: 'Noto Sans KR'; font-size: 28px; font-weight: 700; }
+.trend-row:last-child { border-bottom: none; }
+.trend-year { color: #888; }
+.trend-val { color: #1a1a1a; font-family: 'Jua'; font-size: 34px; }
+.trend-val.hot { color: #EA2E00; }
+
+/* ============ Footer ============ */
+.footer { position: absolute; bottom: 0; left: 0; right: 0; padding: 24px 70px; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR'; font-size: 22px; color: #888; border-top: 2px dashed rgba(26,26,26,0.15); }
+.footer .handle { color: #EA2E00; font-weight: 900; font-family: 'Jua', sans-serif; font-size: 28px; }
+.footer .page-num { font-family: 'Jua', sans-serif; font-size: 34px; color: #1a1a1a; }
+.slide.dark .footer { color: #aaa; border-top-color: rgba(255,255,255,0.15); }
+.slide.dark .footer .handle { color: #EA2E00; }
+.slide.dark .footer .page-num { color: #fff; }
+</style>
+</head>
+<body>
+
+<!-- ======== SVG Filter Definitions (wireframe 물감 효과) ======== -->
+<svg width="0" height="0" style="position: absolute;">
+  <defs>
+    <!-- pill 모양 경계를 울퉁불퉁하게 — 손붓 스트로크 느낌 -->
+    <filter id="paintStroke" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.018 0.028" numOctaves="2" seed="5" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="12"/>
+    </filter>
+    <!-- 형광펜 마커 — 가로로 길쭉하게 일그러진 스트로크 -->
+    <filter id="markerStroke" x="-5%" y="-10%" width="110%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04 0.015" numOctaves="2" seed="7" result="mn"/>
+      <feDisplacementMap in="SourceGraphic" in2="mn" scale="8"/>
+    </filter>
+  </defs>
+</svg>
+
+<!-- ============================================= -->
+<!-- SLIDE 1: 커버 -->
+<!-- ============================================= -->
+<div class="slide" id="slide-1">
+  <div style="margin-top: 60px; text-align: center;">
+    <span class="pill sm dark"><svg class="pill-bg"><rect width="100%" height="100%" rx="50"/></svg><span class="pill-text">📍 강서구 가양동</span></span>
+  </div>
+
+  <div class="js-head js-head-xl" style="text-align: center; margin-top: 36px;">
+    가양동<br>
+    <span class="pill"><svg class="pill-bg"><rect width="100%" height="100%" rx="100"/></svg><span class="pill-text">9억대</span></span><br>
+    <span style="font-size: 0.85em;">아파트 <span class="hl">찾아봤다구</span></span>
+  </div>
+
+  <div style="position: relative; margin-top: 50px; display: flex; justify-content: center; align-items: flex-end;">
+    <img src="assets/mascot-hero.png" class="mascot mascot-lg">
+    <div class="bubble" style="position: absolute; left: 90px; top: 20px;">
+      9호선 급행 + 마곡!<br>가양동 지금 어때?
+    </div>
+    <div class="whisper-orange" style="position: absolute; right: 40px; top: 80px;">
+      26년 4월 기준<br>찾아봤어~
+    </div>
+  </div>
+
+  <div class="footer">
+    <span class="handle">@zipsaja</span>
+    <span class="page-num">01</span>
+    <span class="whisper-orange" style="font-size: 22px;">다음 →</span>
+  </div>
+</div>
+
+<!-- ============================================= -->
+<!-- SLIDE 2: 왜 가양동? -->
+<!-- ============================================= -->
+<div class="slide" id="slide-2">
+  <div style="margin-bottom: 24px;">
+    <span class="pill sm dark"><svg class="pill-bg"><rect width="100%" height="100%" rx="50"/></svg><span class="pill-text">02 · 이 글 왜 봐야돼?</span></span>
+  </div>
+  <div class="js-head js-head-md">
+    9호선 <span class="hl">급행역</span>에<br>
+    <span class="pill"><svg class="pill-bg"><rect width="100%" height="100%" rx="100"/></svg><span class="pill-text">마곡지구</span></span> 옆집.
+  </div>
+
+  <div class="cream-box" style="margin-top: 36px;">
+    <div class="js-body">
+      가양동은 90년대 지어진 <span class="hl">대단지 아파트</span>가 많아.<br>
+      그래서 9억대에도 <b>전용 34~39</b>면 들어갈 수 있어.<br>
+      근데 9호선 급행 한 번만 타면 <span class="hl red">여의도·강남 직통</span>이라구.
+    </div>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="stat-num">5개</div>
+      <div class="stat-label">대단지 1000세대+</div>
+    </div>
+    <div class="stat-card" style="background: #EA2E00;">
+      <div class="stat-num" style="color: #fff;">136%</div>
+      <div class="stat-label" style="color: #fff;">5년 최고 상승률</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">9호선</div>
+      <div class="stat-label">급행 + 마곡 5분</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px; position: relative;">
+    <div class="bubble" style="margin-left: 40px;">
+      대출 꼭 알아보고 와야해!<br>생애최초면 체크 필수~
+    </div>
+    <img src="assets/mascot-smile.png" class="mascot mascot-sm" style="position: absolute; right: 20px; bottom: -20px;">
+  </div>
+
+  <div class="footer"><span class="handle">@zipsaja</span><span class="page-num">02</span><span class="whisper-orange" style="font-size: 22px;">다음 →</span></div>
+</div>
+
+<!-- ============================================= -->
+<!-- SLIDE 3: 한눈에 보기 (랭킹) -->
+<!-- ============================================= -->
+<div class="slide white" id="slide-3">
+  <div style="margin-bottom: 24px;">
+    <span class="pill sm dark"><svg class="pill-bg"><rect width="100%" height="100%" rx="50"/></svg><span class="pill-text">03 · 한눈에 보기</span></span>
+  </div>
+  <div class="js-head js-head-md">
+    5년 <span class="hl">상승률</span><br>
+    <span class="pill"><svg class="pill-bg"><rect width="100%" height="100%" rx="100"/></svg><span class="pill-text">TOP 5</span></span> 여기다!
+  </div>
+
+  <div style="margin-top: 40px;">
+    <div class="rank-row" style="background: #F5EDE0;">
+      <div class="rank-num">1</div>
+      <div>
+        <div class="rank-title">가양2단지성지 34A</div>
+        <div class="rank-sub">1,624세대 · 1992년 · 전용 34㎡</div>
+      </div>
+      <div class="rank-badge">+136%</div>
+    </div>
+    <div class="rank-row">
+      <div class="rank-num">2</div>
+      <div><div class="rank-title">강변3단지 34</div><div class="rank-sub">1,556세대 · 1992년 · 전용 34㎡</div></div>
+      <div class="rank-badge">+122%</div>
+    </div>
+    <div class="rank-row">
+      <div class="rank-num">3</div>
+      <div><div class="rank-title">가양9단지 34</div><div class="rank-sub">1,005세대 · 1993년 · 전용 34㎡</div></div>
+      <div class="rank-badge">+120%</div>
+    </div>
+    <div class="rank-row">
+      <div class="rank-num">4</div>
+      <div><div class="rank-title">가양6단지 58C</div><div class="rank-sub">1,476세대 · 1992년 · 전용 58㎡</div></div>
+      <div class="rank-badge">+120%</div>
+    </div>
+    <div class="rank-row">
+      <div class="rank-num">5</div>
+      <div><div class="rank-title">강변3단지 39</div><div class="rank-sub">1,556세대 · 1992년 · 전용 39㎡</div></div>
+      <div class="rank-badge">+117%</div>
+    </div>
+  </div>
+
+  <div style="position: absolute; bottom: 150px; right: 70px;">
+    <div class="whisper-orange" style="font-size: 28px; text-align: right;">작은 평수가<br>제일 잘 올랐네~</div>
+    <img src="assets/mascot-shining.png" class="mascot mascot-sm" style="margin-top: 8px; margin-left: auto; display: block;">
+  </div>
+
+  <div class="footer"><span class="handle">@zipsaja</span><span class="page-num">03</span><span class="whisper-orange" style="font-size: 22px;">다음 →</span></div>
+</div>
+
+<!-- ============================================= -->
+<!-- SLIDE 4: 정책 사이클 타이밍 -->
+<!-- ============================================= -->
+<div class="slide white" id="slide-4">
+  <div style="margin-bottom: 24px;">
+    <span class="pill sm dark"><svg class="pill-bg"><rect width="100%" height="100%" rx="50"/></svg><span class="pill-text">04 · 타이밍이 중요한 이유</span></span>
+  </div>
+  <div class="js-head js-head-md">
+    근데 이 상승,<br>
+    <span class="pill"><svg class="pill-bg"><rect width="100%" height="100%" rx="100"/></svg><span class="pill-text">언제</span></span> 일어난 거게?
+  </div>
+
+  <div class="js-body" style="margin-top: 28px; font-size: 28px; color: #555;">
+    가양2단지성지 34A 실거래 기준으로 <span class="hl">정책 사이클</span> 한번 볼게~
+  </div>
+
+  <div style="margin-top: 36px; display: flex; flex-direction: column; gap: 16px;">
+    <div style="background: #F5EDE0; border: 3px solid #1a1a1a; border-radius: 16px; padding: 22px 28px; display: grid; grid-template-columns: auto 1fr auto; gap: 20px; align-items: center;">
+      <div style="font-family: 'Jua'; font-size: 44px; color: #1a1a1a; line-height: 1;">①</div>
+      <div>
+        <div style="font-family: 'Jua'; font-size: 32px; color: #1a1a1a;">2017~2022 · <span style="color: #EA2E00;">상승기</span></div>
+        <div class="js-body-sm" style="margin-top: 4px;">민주당 집권 · 2.67억 → 6.3억</div>
+      </div>
+      <div style="font-family: 'Jua'; font-size: 48px; color: #EA2E00; line-height: 1;">+136%</div>
+    </div>
+    <div style="background: #fff; border: 3px solid #1a1a1a; border-radius: 16px; padding: 22px 28px; display: grid; grid-template-columns: auto 1fr auto; gap: 20px; align-items: center;">
+      <div style="font-family: 'Jua'; font-size: 44px; color: #1a1a1a; line-height: 1;">②</div>
+      <div>
+        <div style="font-family: 'Jua'; font-size: 32px; color: #1a1a1a;">2022~2024 · <span style="color: #888;">조정기</span></div>
+        <div class="js-body-sm" style="margin-top: 4px;">국민의힘 집권 · 6.3억 → 4.88억</div>
+      </div>
+      <div style="font-family: 'Jua'; font-size: 48px; color: #555; line-height: 1;">−22%</div>
+    </div>
+    <div style="background: #F5EDE0; border: 3px solid #EA2E00; border-radius: 16px; padding: 22px 28px; display: grid; grid-template-columns: auto 1fr auto; gap: 20px; align-items: center;">
+      <div style="font-family: 'Jua'; font-size: 44px; color: #EA2E00; line-height: 1;">③</div>
+      <div>
+        <div style="font-family: 'Jua'; font-size: 32px; color: #1a1a1a;">2024~2026 · <span class="hl red" style="color: #fff;">재상승</span></div>
+        <div class="js-body-sm" style="margin-top: 4px;">민주당 재집권 · 4.88억 → 6.53억</div>
+      </div>
+      <div style="font-family: 'Jua'; font-size: 48px; color: #EA2E00; line-height: 1;">+34%</div>
+    </div>
+  </div>
+
+  <div class="cream-box" style="margin-top: 24px; background: #1a1a1a; border-color: #EA2E00;">
+    <div style="font-family: 'Jua'; font-size: 28px; color: #FACC15; margin-bottom: 6px;">🗓 지금이 2026년 4월</div>
+    <div class="js-body" style="font-size: 22px; color: #fff;">
+      민주당 2기 초입 · 사이클이 반복될지는 <b>아무도 몰라</b>~<br>
+      <span style="color: #F5EDE0;">과거 데이터는 참고용, 미래 보장 아니다!</span>
+    </div>
+  </div>
+
+  <div style="position: absolute; bottom: 150px; right: 70px; text-align: right;">
+    <div class="whisper-orange" style="font-size: 24px;">숫자 보고 판단하자~<br>감으로 사지 말고!</div>
+  </div>
+  <img src="assets/mascot-default.png" class="mascot mascot-xs" style="position: absolute; bottom: 150px; left: 70px;">
+
+  <div class="footer"><span class="handle">@zipsaja</span><span class="page-num">04</span><span class="whisper-orange" style="font-size: 22px;">다음 →</span></div>
+</div>
+
+<!-- ============================================= -->
+<!-- SLIDE 5: 가양2단지성지 -->
+<!-- ============================================= -->
+<div class="slide" id="slide-5">
+  <div class="js-head js-head-md" style="text-align: center;">강서구 가양동</div>
+  <div style="text-align: center; margin-top: 20px;">
+    <span class="pill" style="font-size: 72px; padding: 18px 48px;"><svg class="pill-bg"><rect width="100%" height="100%" rx="100"/></svg><span class="pill-text">가양2단지성지</span></span>
+  </div>
+  <div class="meta-paren" style="text-align: center; margin-top: 18px; font-size: 26px;">
+    (1,624세대 / 1992년 / 전용 34㎡ / 방2화1)
+  </div>
+
+  <div class="trend-box">
+    <div class="js-body-lg" style="color: #EA2E00; margin-bottom: 12px;">💰 시세 뽑아봤다구</div>
+    <div class="trend-row"><span class="trend-year">2017년</span><span class="trend-val">2.67억</span></div>
+    <div class="trend-row"><span class="trend-year">2022년</span><span class="trend-val">6.3억</span></div>
+    <div class="trend-row"><span class="trend-year">2026년 4월 실거래</span><span class="trend-val hot">6.53억</span></div>
+    <div class="trend-row"><span class="trend-year">호가 평균</span><span class="trend-val hot">7.16억</span></div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 28px;">
+    <div class="cream-box">
+      <div class="js-body" style="font-size: 28px;"><b>9호선 증미역</b> 도보 5분<br>(급행은 가양역 1정거장)</div>
+    </div>
+    <div class="check-box">
+      <div class="check-label">Check Point!</div>
+      <div class="js-body" style="font-size: 26px; color: #fff;">
+        25→26 <b>+21.3%</b><br>매물 6개 · 갭 4.65억<br>갭률 67.2%
+      </div>
+    </div>
+  </div>
+
+  <div style="position: absolute; bottom: 150px; left: 70px;">
+    <div class="bubble">여기가 5년 <span class="hl red">+136%</span>!<br>가양동 대장이라구~</div>
+  </div>
+  <img src="assets/mascot-happy.png" class="mascot mascot-sm" style="position: absolute; bottom: 150px; right: 70px;">
+
+  <div class="footer"><span class="handle">@zipsaja</span><span class="page-num">05</span><span class="whisper-orange" style="font-size: 22px;">다음 →</span></div>
+</div>
+
+<!-- ============================================= -->
+<!-- SLIDE 5: 강변3단지 -->
+<!-- ============================================= -->
+<div class="slide" id="slide-6">
+  <div class="js-head js-head-md" style="text-align: center;">강서구 가양동</div>
+  <div style="text-align: center; margin-top: 20px;">
+    <span class="pill" style="font-size: 72px; padding: 18px 48px;"><svg class="pill-bg"><rect width="100%" height="100%" rx="100"/></svg><span class="pill-text">강변3단지</span></span>
+  </div>
+  <div class="meta-paren" style="text-align: center; margin-top: 18px; font-size: 26px;">
+    (1,556세대 / 1992년 / 전용 34·39·49㎡)
+  </div>
+
+  <div class="trend-box">
+    <div class="js-body-lg" style="color: #EA2E00; margin-bottom: 12px;">💰 평형별 현재 호가</div>
+    <div class="trend-row"><span class="trend-year">34㎡ (전용 10평)</span><span class="trend-val hot">7.4억</span></div>
+    <div class="trend-row"><span class="trend-year">39㎡ (전용 12평)</span><span class="trend-val hot">8.29억</span></div>
+    <div class="trend-row"><span class="trend-year">49㎡ (전용 15평)</span><span class="trend-val hot">11.11억</span></div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 28px;">
+    <div class="cream-box">
+      <div class="js-body" style="font-size: 28px;"><b>한강 조망</b> 가능<br>일부 동 남향</div>
+    </div>
+    <div class="check-box">
+      <div class="check-label">Check Point!</div>
+      <div class="js-body" style="font-size: 26px; color: #fff;">
+        34㎡ 5년 <b>+122%</b><br>갭률 66.2%<br>25→26 +12.8%
+      </div>
+    </div>
+  </div>
+
+  <div style="position: absolute; bottom: 150px; left: 70px;">
+    <div class="bubble">대단지라 거래도<br>꾸준해서 <span class="hl">안정적</span>이야~</div>
+  </div>
+  <img src="assets/mascot-default.png" class="mascot mascot-sm" style="position: absolute; bottom: 150px; right: 70px;">
+
+  <div class="footer"><span class="handle">@zipsaja</span><span class="page-num">06</span><span class="whisper-orange" style="font-size: 22px;">다음 →</span></div>
+</div>
+
+<!-- ============================================= -->
+<!-- SLIDE 6: 가양9단지 -->
+<!-- ============================================= -->
+<div class="slide" id="slide-7">
+  <div class="js-head js-head-md" style="text-align: center;">강서구 가양동</div>
+  <div style="text-align: center; margin-top: 20px;">
+    <span class="pill" style="font-size: 72px; padding: 18px 48px;"><svg class="pill-bg"><rect width="100%" height="100%" rx="100"/></svg><span class="pill-text">가양9단지</span></span>
+  </div>
+  <div class="meta-paren" style="text-align: center; margin-top: 18px; font-size: 26px;">
+    (1,005세대 / 1993년 / 전용 34·39·49㎡)
+  </div>
+
+  <div class="trend-box">
+    <div class="js-body-lg" style="color: #EA2E00; margin-bottom: 12px;">💰 시세 뽑아봤다구</div>
+    <div class="trend-row"><span class="trend-year">34㎡ 17→22</span><span class="trend-val">2.67 → 5.88억</span></div>
+    <div class="trend-row"><span class="trend-year">현재 호가 34㎡</span><span class="trend-val hot">6.62억</span></div>
+    <div class="trend-row"><span class="trend-year">현재 호가 39㎡</span><span class="trend-val hot">7.57억</span></div>
+    <div class="trend-row"><span class="trend-year">현재 호가 49㎡</span><span class="trend-val hot">9.28억</span></div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 28px;">
+    <div class="cream-box">
+      <div class="js-body" style="font-size: 28px;"><b>가양역 초역세권</b><br>9호선 <span class="hl red">급행 정차역</span></div>
+    </div>
+    <div class="check-box">
+      <div class="check-label">Check Point!</div>
+      <div class="js-body" style="font-size: 26px; color: #fff;">
+        34㎡ <b>갭률 62.2%</b><br>급행+저점, 일석이조!<br>거래수 449건
+      </div>
+    </div>
+  </div>
+
+  <div style="position: absolute; bottom: 150px; left: 70px;">
+    <div class="bubble"><span class="hl">첫집</span>으로 34㎡ 노려봐~<br>대출 6억대면 돼!</div>
+  </div>
+  <img src="assets/mascot-smile.png" class="mascot mascot-sm" style="position: absolute; bottom: 150px; right: 70px;">
+
+  <div class="footer"><span class="handle">@zipsaja</span><span class="page-num">07</span><span class="whisper-orange" style="font-size: 22px;">다음 →</span></div>
+</div>
+
+<!-- ============================================= -->
+<!-- SLIDE 7: 가양6단지 -->
+<!-- ============================================= -->
+<div class="slide" id="slide-8">
+  <div class="js-head js-head-md" style="text-align: center;">강서구 가양동</div>
+  <div style="text-align: center; margin-top: 20px;">
+    <span class="pill" style="font-size: 72px; padding: 18px 48px;"><svg class="pill-bg"><rect width="100%" height="100%" rx="100"/></svg><span class="pill-text">가양6단지</span></span>
+  </div>
+  <div class="meta-paren" style="text-align: center; margin-top: 18px; font-size: 26px;">
+    (1,476세대 / 1992년 / 전용 49·58㎡ 중형)
+  </div>
+
+  <div class="trend-box">
+    <div class="js-body-lg" style="color: #EA2E00; margin-bottom: 12px;">💰 중형 평형대 호가</div>
+    <div class="trend-row"><span class="trend-year">49㎡ (전용 15평)</span><span class="trend-val hot">11.02억</span></div>
+    <div class="trend-row"><span class="trend-year">58A㎡ (전용 18평)</span><span class="trend-val hot">12.3억</span></div>
+    <div class="trend-row"><span class="trend-year">58C㎡ (전용 18평)</span><span class="trend-val hot">12.13억</span></div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 28px;">
+    <div class="cream-box">
+      <div class="js-body" style="font-size: 28px;"><b>방 3개 · 화 2개</b><br>신혼 + 아이 한 명 OK</div>
+    </div>
+    <div class="check-box">
+      <div class="check-label">Check Point!</div>
+      <div class="js-body" style="font-size: 26px; color: #fff;">
+        58C 5년 <b>+120%</b><br>25→26 +15.3%<br>갭률 66~68%
+      </div>
+    </div>
+  </div>
+
+  <div style="position: absolute; bottom: 150px; left: 70px;">
+    <div class="bubble">아이 한 명 키우면<br><span class="hl">58 타입</span> 추천~</div>
+  </div>
+  <img src="assets/mascot-happy.png" class="mascot mascot-sm" style="position: absolute; bottom: 150px; right: 70px;">
+
+  <div class="footer"><span class="handle">@zipsaja</span><span class="page-num">08</span><span class="whisper-orange" style="font-size: 22px;">다음 →</span></div>
+</div>
+
+<!-- ============================================= -->
+<!-- SLIDE 8: 강서한강자이 -->
+<!-- ============================================= -->
+<div class="slide" id="slide-9">
+  <div class="js-head js-head-md" style="text-align: center;">강서구 가양동</div>
+  <div style="text-align: center; margin-top: 20px;">
+    <span class="pill" style="font-size: 64px; padding: 18px 44px;"><svg class="pill-bg"><rect width="100%" height="100%" rx="100"/></svg><span class="pill-text">강서한강자이</span></span>
+  </div>
+  <div class="meta-paren" style="text-align: center; margin-top: 18px; font-size: 26px;">
+    (790세대 / 2013년 <span class="hl red">신축</span> / 전용 59·84·98·124·127㎡)
+  </div>
+
+  <div class="trend-box">
+    <div class="js-body-lg" style="color: #EA2E00; margin-bottom: 12px;">💎 신축 대장 호가</div>
+    <div class="trend-row"><span class="trend-year">59㎡ (전용 18평)</span><span class="trend-val hot">14.5~15억</span></div>
+    <div class="trend-row"><span class="trend-year">84㎡ (전용 25평)</span><span class="trend-val hot">16~17억</span></div>
+    <div class="trend-row"><span class="trend-year">98㎡ / 124㎡</span><span class="trend-val hot">17.25~18억</span></div>
+    <div class="trend-row"><span class="trend-year">127㎡ 대형</span><span class="trend-val hot">19억</span></div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 28px;">
+    <div class="cream-box">
+      <div class="js-body" style="font-size: 26px;">2013년 준공<br><b>가양동 유일 신축</b></div>
+    </div>
+    <div class="check-box">
+      <div class="check-label">Check Point!</div>
+      <div class="js-body" style="font-size: 24px; color: #fff;">
+        98A <b>갭률 47.7%</b><br>(가양동 최저)<br>5년 +100% 안정
+      </div>
+    </div>
+  </div>
+
+  <div style="position: absolute; bottom: 150px; left: 70px;">
+    <div class="bubble"><span class="hl">신축</span> 가고 싶으면<br>여기가 유일한 옵션이야!</div>
+  </div>
+  <img src="assets/mascot-shining.png" class="mascot mascot-sm" style="position: absolute; bottom: 150px; right: 70px;">
+
+  <div class="footer"><span class="handle">@zipsaja</span><span class="page-num">09</span><span class="whisper-orange" style="font-size: 22px;">다음 →</span></div>
+</div>
+
+<!-- ============================================= -->
+<!-- SLIDE 9: 갭률 TOP 5 -->
+<!-- ============================================= -->
+<div class="slide white" id="slide-10">
+  <div style="margin-bottom: 24px;">
+    <span class="pill sm dark"><svg class="pill-bg"><rect width="100%" height="100%" rx="50"/></svg><span class="pill-text">10 · 갭투자 노리는 사람 주목</span></span>
+  </div>
+  <div class="js-head js-head-md">
+    <span class="pill"><svg class="pill-bg"><rect width="100%" height="100%" rx="100"/></svg><span class="pill-text">갭률 낮은</span></span><br>
+    매물 <span class="hl">TOP 5</span>
+  </div>
+
+  <div style="margin-top: 36px;">
+    <div class="rank-row" style="background: #F5EDE0;">
+      <div class="rank-num">1</div>
+      <div><div class="rank-title">강서한강자이 98A</div><div class="rank-sub">호가 16.5억 · 갭 7.5억</div></div>
+      <div class="rank-badge" style="background: #1a1a1a;">47.7%</div>
+    </div>
+    <div class="rank-row">
+      <div class="rank-num">2</div>
+      <div><div class="rank-title">동신,대아 134</div><div class="rank-sub">호가 14.9억 · 갭 6.4억</div></div>
+      <div class="rank-badge" style="background: #1a1a1a;">49.5%</div>
+    </div>
+    <div class="rank-row">
+      <div class="rank-num">3</div>
+      <div><div class="rank-title">가양우성 84</div><div class="rank-sub">호가 12.5억 · 갭 6.0억</div></div>
+      <div class="rank-badge" style="background: #1a1a1a;">50.4%</div>
+    </div>
+    <div class="rank-row">
+      <div class="rank-num">4</div>
+      <div><div class="rank-title">강나루현대 84</div><div class="rank-sub">호가 12.8억 · 갭 6.3억</div></div>
+      <div class="rank-badge" style="background: #1a1a1a;">51.2%</div>
+    </div>
+    <div class="rank-row">
+      <div class="rank-num">5</div>
+      <div><div class="rank-title">한강타운 84</div><div class="rank-sub">호가 12.0억 · 갭 6.0억</div></div>
+      <div class="rank-badge" style="background: #1a1a1a;">56.4%</div>
+    </div>
+  </div>
+
+  <div style="position: absolute; bottom: 155px; right: 70px; text-align: right;">
+    <div class="whisper-orange">전세끼고 매수할 때<br><span class="hl">갭률 낮으면</span> 유리해!</div>
+  </div>
+  <img src="assets/mascot-surprise.png" class="mascot mascot-xs" style="position: absolute; bottom: 155px; left: 70px;">
+
+  <div class="footer"><span class="handle">@zipsaja</span><span class="page-num">10</span><span class="whisper-orange" style="font-size: 22px;">다음 →</span></div>
+</div>
+
+<!-- ============================================= -->
+<!-- SLIDE 10: 체크리스트 -->
+<!-- ============================================= -->
+<div class="slide" id="slide-11">
+  <div style="margin-bottom: 24px;">
+    <span class="pill sm dark"><svg class="pill-bg"><rect width="100%" height="100%" rx="50"/></svg><span class="pill-text">11 · 사기 전에 꼭 체크</span></span>
+  </div>
+  <div class="js-head js-head-md">
+    가양동 <span class="pill"><svg class="pill-bg"><rect width="100%" height="100%" rx="100"/></svg><span class="pill-text">사기 전에</span></span><br>
+    꼭 <span class="hl">확인할 것!</span>
+  </div>
+
+  <div style="margin-top: 36px; display: flex; flex-direction: column; gap: 18px;">
+    <div class="cream-box" style="display: flex; align-items: center; gap: 20px;">
+      <div style="font-family: 'Jua'; font-size: 48px; color: #EA2E00;">1</div>
+      <div class="js-body" style="font-size: 30px;">
+        <span class="hl">9호선 급행</span> 역이냐 일반역이냐<br>
+        <span class="js-body-sm">가양역(급행) · 증미역(일반) 차이 큼</span>
+      </div>
+    </div>
+    <div class="cream-box" style="display: flex; align-items: center; gap: 20px;">
+      <div style="font-family: 'Jua'; font-size: 48px; color: #EA2E00;">2</div>
+      <div class="js-body" style="font-size: 30px;">
+        <b>구축</b>이라 재건축 기대 있는지<br>
+        <span class="js-body-sm">1992년 단지 30년 넘음</span>
+      </div>
+    </div>
+    <div class="cream-box" style="display: flex; align-items: center; gap: 20px;">
+      <div style="font-family: 'Jua'; font-size: 48px; color: #EA2E00;">3</div>
+      <div class="js-body" style="font-size: 30px;">
+        <span class="hl">대출 한도</span> 생애최초 / 신혼 조건<br>
+        <span class="js-body-sm">DSR · LTV 꼭 미리 계산</span>
+      </div>
+    </div>
+    <div class="cream-box" style="display: flex; align-items: center; gap: 20px;">
+      <div style="font-family: 'Jua'; font-size: 48px; color: #EA2E00;">4</div>
+      <div class="js-body" style="font-size: 30px;">
+        <b>갭투자</b>면 전세가율 60% 이상<br>
+        <span class="js-body-sm">리스크 낮추려면 갭률 70% 이하</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="position: absolute; bottom: 160px; right: 70px; text-align: right;">
+    <div class="whisper-orange">이 4개만 체크해도<br>실패 확률 팍 줄어~</div>
+  </div>
+  <img src="assets/mascot-happy.png" class="mascot mascot-sm" style="position: absolute; bottom: 150px; left: 70px;">
+
+  <div class="footer"><span class="handle">@zipsaja</span><span class="page-num">11</span><span class="whisper-orange" style="font-size: 22px;">다음 →</span></div>
+</div>
+
+<!-- ============================================= -->
+<!-- SLIDE 11: CTA 다크 -->
+<!-- ============================================= -->
+<div class="slide dark" id="slide-12">
+  <div style="margin-bottom: 24px;">
+    <span class="pill sm"><svg class="pill-bg"><rect width="100%" height="100%" rx="50"/></svg><span class="pill-text">END · 다음 동네는?</span></span>
+  </div>
+  <div class="js-head js-head-lg" style="color: #fff;">
+    가양동 <span class="hl">잘 봤지?</span>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <div class="js-body-lg" style="color: #fff; line-height: 1.4;">
+      내집마련 고민 중이면<br>
+      <span class="hl">저장해두고 다시 봐봐~</span>
+    </div>
+  </div>
+
+  <div style="margin-top: 50px; display: flex; flex-direction: column; gap: 18px; align-items: flex-start;">
+    <span class="pill" style="padding: 22px 44px; font-size: 38px;"><svg class="pill-bg"><rect width="100%" height="100%" rx="100"/></svg><span class="pill-text">🔖 저장하고 다시 보기</span></span>
+    <span class="pill cream" style="padding: 22px 44px; font-size: 38px;"><svg class="pill-bg"><rect width="100%" height="100%" rx="100"/></svg><span class="pill-text">💬 질문은 DM으로~</span></span>
+  </div>
+
+  <div style="position: absolute; bottom: 250px; left: 70px; right: 70px; display: flex; justify-content: space-between; align-items: flex-end;">
+    <div>
+      <div class="bubble" style="background: #fff; max-width: 380px;">
+        다음엔 <b>목동? 화곡?</b><br>댓글로 알려주라~
+      </div>
+    </div>
+    <img src="assets/mascot-hero.png" class="mascot mascot-md">
+  </div>
+
+  <div class="footer"><span class="handle">@zipsaja</span><span class="page-num">12</span><span>END</span></div>
+</div>
+
+</body>
+</html>

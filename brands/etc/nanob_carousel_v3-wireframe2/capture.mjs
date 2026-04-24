@@ -1,0 +1,13 @@
+import puppeteer from 'puppeteer';
+import { fileURLToPath } from 'url';
+import { dirname, resolve } from 'path';
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const b = await puppeteer.launch({ headless: true });
+const p = await b.newPage();
+await p.setViewport({ width: 1080, height: 1440, deviceScaleFactor: 2 });
+await p.goto(`file://${resolve(__dirname, 'slides.html')}`, { waitUntil: 'networkidle0' });
+await new Promise(r => setTimeout(r, 1500));
+const el = await p.$('#slide-1');
+await el.screenshot({ path: resolve(__dirname, 'slide-1.png'), type: 'png' });
+console.log('slide-1.png');
+await b.close();

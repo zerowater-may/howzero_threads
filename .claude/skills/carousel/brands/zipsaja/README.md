@@ -18,13 +18,14 @@
 
 | 요소 | 값 |
 |------|------|
-| **배경 (본문)** | `#FFFFFF` (순백) |
+| **배경 (본문)** | `#F0E7D6` (따뜻한 베이지) |
+| **배경 (대체)** | `#FFFFFF` (순백 — 지도/평면도 영역) |
 | **다크 CTA 배경** | `#1a1a1a` |
 | **텍스트** | `#1a1a1a` |
 | **본문 보조** | `#333` |
-| **메인 액센트 (노란 형광펜)** | `#FFD43B` |
-| **서브 액센트 (진한 노랑)** | `#F5B100` |
-| **서브 액센트 (크림 박스)** | `#FFF4D6` |
+| **메인 액센트 (오렌지 형광펜)** | `#EA2E00` |
+| **서브 액센트 (진한 오렌지)** | `#C42600` |
+| **서브 액센트 (연한 베이지 박스)** | `#F5EDE0` |
 | **박스 테두리** | `#1a1a1a` 2.5~3px solid |
 | **말풍선 선** | `#1a1a1a` 2.5px solid |
 | **Headline 폰트** | `Jua` (Google Fonts — 둥근 한글 Bold) |
@@ -37,15 +38,44 @@
 <link href="https://fonts.googleapis.com/css2?family=Jua&family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
 ```
 
+### SVG Filter 정의 (물감 효과)
+
+`body` 안 최상단에 한 번만 삽입. CSS `filter: url(#paintStroke)` 등으로 참조.
+
+```html
+<svg width="0" height="0" style="position: absolute;">
+  <defs>
+    <!-- Pill에 쓰는 강한 물감 스트로크 경계 -->
+    <filter id="paintStroke" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.018 0.025"
+        numOctaves="2" seed="5" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="11"/>
+    </filter>
+    <!-- 글자 잉크 번짐 -->
+    <filter id="inkBleed" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04"
+        numOctaves="2" seed="3" result="bleedNoise"/>
+      <feDisplacementMap in="SourceGraphic" in2="bleedNoise" scale="3"/>
+    </filter>
+    <!-- 수채화 번짐 배경 -->
+    <filter id="paintBleed" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.01"
+        numOctaves="3" seed="11" result="wcNoise"/>
+      <feDisplacementMap in="SourceGraphic" in2="wcNoise" scale="18"/>
+    </filter>
+  </defs>
+</svg>
+```
+
 ## 규칙 — 스타일 DNA
 
 ### 반드시 할 것
 
-- **노란 Pill 하이라이트**: 단어·구 전체를 **둥근 pill 모양 노란색**으로 감쌈. inline이 아니라 block처럼 크게. `border-radius: 999px`.
+- **오렌지 Pill 하이라이트**: 단어·구 전체를 **둥근 pill 모양 오렌지색(`#EA2E00`)**으로 감쌈. 흰색 텍스트. inline이 아니라 block처럼 크게. `border-radius: 999px`.
 - **점박이 hatching**: pill 양끝 또는 테두리에 작은 점 패턴(`radial-gradient`)으로 손으로 그린 듯한 질감 추가.
 - **말풍선 (speech bubble)**: 마스코트 대사는 둥근 말풍선에 담아 그림에 꼬리(tail) 연결. Gaegu 700 폰트.
 - **검은 굵은 테두리 박스**: 지도·평면도·체크포인트 박스는 모두 `3px solid #1a1a1a`로 두른다. `border-radius: 16px`.
-- **Check Point 박스**: 노란 배경(`#FFD43B` 또는 `#FFF4D6`) + 검은 굵은 테두리 + `Check Point!` 라벨.
+- **Check Point 박스**: 오렌지 배경(`#EA2E00`, 흰 텍스트) 또는 연한 베이지(`#F5EDE0`) + 검은 굵은 테두리 + `Check Point!` 라벨.
 - **마스코트 등장**: 모든 본문 슬라이드에 최소 1번 집사자 마스코트(작아도 OK) 배치. 말풍선 또는 코너 액센트.
 - **반말 / 친근 어미**: "~해봐", "~찾아봤다구", "~알아두면 좋아!", "~꼭 받아야봐".
 - **정보 박스 괄호**: 단지 정보는 `(1074세대 / 2004년 / 전용84 / 계단식 방3화2)` 처럼 슬래시로 구분.
@@ -60,7 +90,7 @@
 | 그라디언트 배경 | 순백 고정. AI 디자인 티 남. |
 | 복잡한 폰트 (Black Han Sans 같은 각진 체) | Jua의 둥근 느낌이 브랜드 본체. |
 | 전문가 존댓말 ("~입니다") | 친구 톤 깨짐. 반말로 통일. |
-| 형광펜 여러 색 순환 | 노란색 하나만. 강조 필요하면 크림(`#FFF4D6`) 박스로. |
+| 형광펜 여러 색 순환 | 오렌지 하나만. 강조 필요하면 연한 베이지(`#F5EDE0`) 박스로. |
 
 ## 공통 컴포넌트 CSS
 
@@ -69,11 +99,12 @@ body { font-family: 'Noto Sans KR', sans-serif; color: #1a1a1a; }
 
 .slide {
   width: 1080px; height: 1440px;
-  background: #fff;
+  background: #F0E7D6;
   padding: 80px 70px 130px;
   position: relative;
   overflow: hidden;
 }
+.slide.white { background: #fff; }
 .slide.dark { background: #1a1a1a; color: #fff; }
 
 /* Headline — Jua 둥근 손글씨 */
@@ -95,24 +126,43 @@ body { font-family: 'Noto Sans KR', sans-serif; color: #1a1a1a; }
   color: #1a1a1a;
 }
 
-/* Pill 하이라이트 — 단어 감싸는 노란 알약 */
+/* Pill 하이라이트 — 물감 스트로크 느낌 (V2) */
 .pill {
   display: inline-block;
-  background: #FFD43B;
-  padding: 6px 28px;
-  border-radius: 999px;
+  color: #fff;
+  padding: 14px 40px;
+  font-family: 'Jua', sans-serif;
   line-height: 1.1;
-  /* 점박이 텍스처 — 양끝 hatching 느낌 */
-  background-image:
-    radial-gradient(circle, rgba(245,177,0,0.35) 1.5px, transparent 2.5px);
-  background-size: 12px 12px;
-  background-position: 0 0;
-  background-color: #FFD43B;
+  letter-spacing: -1px;
+  position: relative;
+  /* 다중 레이어: radial dots (붓터치) + core gradient */
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(255,255,255,0.08) 2px, transparent 5px),
+    radial-gradient(ellipse at 70% 60%, rgba(0,0,0,0.1) 1.5px, transparent 4px),
+    radial-gradient(circle at 50% 50%, #EA2E00 55%, #C42600 100%);
+  background-size: 16px 16px, 14px 14px, 100% 100%;
+  border-radius: 999px;
+  /* SVG filter로 경계 울퉁불퉁 = 물감 느낌 */
+  filter: url(#paintStroke);
+  transform: rotate(-0.8deg);  /* 손붓 기울기 */
+  box-shadow: 4px 6px 0 rgba(196, 38, 0, 0.3);
 }
 
-/* 옅은 크림 박스 — 부제/정보용 */
+/* 물감 타이틀 (커버 대형 헤드라인) */
+.paint-head {
+  font-family: 'Jua', sans-serif;
+  color: #1a1a1a;
+  position: relative;
+  display: inline-block;
+  filter: url(#inkBleed);
+  text-shadow:
+    1px 1px 0 rgba(234,46,0,0.15),
+    -1px 2px 0 rgba(0,0,0,0.08);
+}
+
+/* 옅은 베이지 박스 — 부제/정보용 */
 .cream-box {
-  background: #FFF4D6;
+  background: #F5EDE0;
   border: 3px solid #1a1a1a;
   border-radius: 16px;
   padding: 28px 32px;
@@ -120,7 +170,8 @@ body { font-family: 'Noto Sans KR', sans-serif; color: #1a1a1a; }
 
 /* Check Point 박스 */
 .check-box {
-  background: #FFD43B;
+  background: #EA2E00;
+  color: #fff;
   border: 3px solid #1a1a1a;
   border-radius: 16px;
   padding: 28px 32px;
@@ -170,10 +221,10 @@ body { font-family: 'Noto Sans KR', sans-serif; color: #1a1a1a; }
   letter-spacing: -0.5px;
 }
 
-/* 귓속말 코멘트 — Gaegu 노란 */
-.whisper-yellow {
+/* 귓속말 코멘트 — Gaegu 오렌지 */
+.whisper-orange {
   font-family: 'Gaegu', cursive; font-weight: 700; font-size: 28px;
-  color: #F5B100;
+  color: #EA2E00;
 }
 ```
 
@@ -204,7 +255,7 @@ body { font-family: 'Noto Sans KR', sans-serif; color: #1a1a1a; }
 - 흑백 선화라 **주변 노란 형광펜·컬러와 충돌 안 함**
 - 기본 크기는 200~260px, 코너 액센트용은 100~140px
 - 좌우반전(`transform: scaleX(-1)`)으로 방향 맞추기
-- 색 필요하면 CSS `filter: sepia(1) saturate(5) hue-rotate(-10deg)`로 노란 톤 입히기 가능
+- 색 필요하면 CSS `filter: sepia(1) saturate(5) hue-rotate(0deg)`로 오렌지 톤 입히기 가능
 
 ## 커버 슬라이드 구조
 
@@ -221,7 +272,7 @@ body { font-family: 'Noto Sans KR', sans-serif; color: #1a1a1a; }
     <div class="bubble" style="position:absolute; left: 60px; top: 40px;">
       서울<br>9억대 아파트,<br>어디가 좋을까?
     </div>
-    <div class="whisper-yellow" style="position:absolute; right: 80px; top: 140px;">
+    <div class="whisper-orange" style="position:absolute; right: 80px; top: 140px;">
       서울 동서남북에서<br>찾아봤다구
     </div>
   </div>
@@ -266,7 +317,7 @@ body { font-family: 'Noto Sans KR', sans-serif; color: #1a1a1a; }
 
 1. **커버** — 큰 pill 제목 3줄 + 마스코트 말풍선 질문
 2. **도입** — "이 글 왜 봐야 돼?" 마스코트 설명 (반말)
-3. **조건 박스** — 대출 공식 / 종잣돈 계산 (크림 박스 + 노란 pill)
+3. **조건 박스** — 대출 공식 / 종잣돈 계산 (베이지 박스 + 오렌지 pill)
 4. **매물 1** — 단지명 pill + 지도/평면도 + Check Point
 5. **매물 2** — 동일 포맷
 6. **매물 3** — 동일 포맷
@@ -302,7 +353,7 @@ body { font-family: 'Noto Sans KR', sans-serif; color: #1a1a1a; }
 
 ## 키워드
 
-`zipsaja`, `집사자`, `go.nyangee`, `부린이`, `내집마련`, `부동산친절`, `cute-realty`, `yellow-highlight`, `jua-font`
+`zipsaja`, `집사자`, `go.nyangee`, `부린이`, `내집마련`, `부동산친절`, `cute-realty`, `orange-beige`, `jua-font`
 
 ---
 

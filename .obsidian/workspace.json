@@ -1,0 +1,236 @@
+{
+  "main": {
+    "id": "35a74c09891e7a8f",
+    "type": "split",
+    "children": [
+      {
+        "id": "616e05ec7f6617f4",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7985b31cba5b20c2",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "insight.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "insight"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "15f0e5ac3b3d2a8d",
+    "type": "split",
+    "children": [
+      {
+        "id": "4a5f080fff22a051",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "36c10fc0a3ec3541",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "파일 탐색기"
+            }
+          },
+          {
+            "id": "6bb1a95feb1ca539",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "검색"
+            }
+          },
+          {
+            "id": "0dc2d5aa3692a3b8",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "북마크"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "a7f466279d7f7d2f",
+    "type": "split",
+    "children": [
+      {
+        "id": "a9a7759a5a0e8bb0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7db6063386086783",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "무제.canvas",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "무제 의 백링크"
+            }
+          },
+          {
+            "id": "3b167d4714d23166",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "무제.canvas",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "무제 의 나가는 링크"
+            }
+          },
+          {
+            "id": "74186e81e86345ae",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "태그"
+            }
+          },
+          {
+            "id": "7ea74325d4b4e748",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "모든 속성"
+            }
+          },
+          {
+            "id": "4053a6fa50859ce3",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "무제.canvas",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "무제 의 개요"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:빠른 전환기 열기": false,
+      "graph:그래프 뷰 열기": false,
+      "canvas:새 캔버스 만들기": false,
+      "daily-notes:오늘의 일일 노트 열기": false,
+      "templates:템플릿 삽입": false,
+      "command-palette:명령어 팔레트 열기": false,
+      "bases:새 베이스 생성하기": false
+    }
+  },
+  "active": "7985b31cba5b20c2",
+  "lastOpenFiles": [
+    "docs/content/carousel-zipsaja-10y-ago-20260422/template_04.png",
+    "docs/content/carousel-zipsaja-10y-ago-20260422/template_08.png",
+    "docs/content/carousel-zipsaja-10y-ago-20260422/template_05.png",
+    "docs/content/carousel-zipsaja-10y-ago-20260422/template_10.png",
+    "docs/content/carousel-zipsaja-10y-ago-20260422/template_09.png",
+    "docs/content/carousel-zipsaja-10y-ago-20260422/template_07.png",
+    "docs/content/carousel-zipsaja-10y-ago-20260422/nano-slide-10.png",
+    "docs/content/carousel-zipsaja-10y-ago-20260422/nano-slide-9.png",
+    "docs/content/carousel-zipsaja-10y-ago-20260422/nano-slide-8.png",
+    "docs/content/carousel-zipsaja-10y-ago-20260422/nano-slide-7.png",
+    "docs/content/carousel-zipsaja-10y-ago-20260422/nano-slide-6.png",
+    "docs/content/carousel-zipsaja-10y-ago-20260422/capture_nano.mjs",
+    "docs/content/carousel-zipsaja-10y-ago-20260422/nano_slides.html",
+    "docs/content/carousel-zipsaja-10y-ago-20260422/specs.json",
+    "docs/content/carousel-zipsaja-10y-ago-20260422/package.json",
+    "docs/content/carousel-zipsaja-10y-ago-20260422/assets",
+    "docs/content/carousel-zipsaja-10y-ago-20260422",
+    "docs/content/carousel-zipsaja-seoul-avg-24py-20260422/~$seoul_24py_avg_20260422.xlsx",
+    "docs/content/carousel-zipsaja-seoul-avg-24py-20260422/seoul_24py_avg_20260422.xlsx",
+    "docs/content/carousel-zipsaja-seoul-avg-24py-20260422/html",
+    "docs/content/carousel-zipsaja-seoul-avg-24py-20260422/capture.mjs",
+    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/puppeteer-core/README.md",
+    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/chromium-bidi/README.md",
+    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/puppeteer-core/src/bidi/core/README.md",
+    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/puppeteer-core/src/templates/README.md",
+    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/puppeteer-core/src/injected/README.md",
+    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/zod/README.md",
+    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/@puppeteer/browsers/README.md",
+    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/@tootallnate/quickjs-emscripten/README.md",
+    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/bare-url/README.md",
+    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/bare-fs/README.md",
+    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/bare-os/README.md",
+    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/devtools-protocol/README.md",
+    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/yargs/README.md",
+    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/puppeteer/README.md",
+    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/semver/README.md",
+    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/js-yaml/README.md",
+    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/socks/README.md",
+    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/pac-resolver/README.md",
+    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/ast-types/README.md",
+    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/ip-address/README.md",
+    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/get-uri/README.md",
+    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/ws/README.md",
+    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/basic-ftp/README.md",
+    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/source-map/CHANGELOG.md",
+    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/socks/docs/examples/javascript/bindExample.md",
+    "무제.canvas"
+  ]
+}

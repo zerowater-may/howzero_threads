@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>스마트스토어 1000개 정책</title>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #e5e5e5; font-family: 'Noto Sans KR', sans-serif; }
+
+  .slide {
+    width: 1080px; height: 1440px;
+    padding: 80px 80px 120px;
+    position: relative;
+    background: #FAF8F5;
+    color: #1a1a1a;
+    overflow: hidden;
+    margin: 24px auto;
+  }
+  .slide.dark { background: #1a0a0a; color: #fff; }
+
+  .head { font-family: 'Black Han Sans', sans-serif; letter-spacing: -0.5px; line-height: 1.15; }
+  .whisper {
+    font-family: 'Gaegu', cursive; font-weight: 700;
+    color: #999; font-size: 30px; line-height: 1.4;
+  }
+  .slide.dark .whisper { color: #a89999; }
+
+  .hl-red {
+    background: linear-gradient(170deg, transparent 10%, #e8b4b4 15%, #d4a0a0 50%, #e8b4b4 85%, transparent 90%);
+    padding: 2px 14px; display: inline;
+    -webkit-box-decoration-break: clone; box-decoration-break: clone;
+  }
+  .hl-gold {
+    background: linear-gradient(168deg, transparent 10%, #ffd54f 15%, #ffca28 50%, #ffd54f 85%, transparent 90%);
+    padding: 2px 14px; display: inline;
+    -webkit-box-decoration-break: clone; box-decoration-break: clone;
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 48px; left: 80px; right: 80px;
+    display: flex; align-items: center; justify-content: space-between;
+    font-family: 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 22px;
+  }
+  .handle { color: #3F0000; }
+  .slide.dark .handle { color: #ffd54f; }
+  .page-num {
+    width: 48px; height: 48px; border: 2px solid #1a1a1a; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; font-size: 20px;
+  }
+  .slide.dark .page-num { border-color: #fff; color: #fff; }
+  .arrow-next {
+    width: 48px; height: 48px; background: #3F0000;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 28px;
+  }
+  .slide.dark .arrow-next { background: #ffd54f; color: #1a0a0a; }
+
+  .kicker {
+    font-family: 'Gaegu', cursive; font-weight: 700; font-size: 34px;
+    color: #3F0000; margin-bottom: 24px;
+  }
+  .slide.dark .kicker { color: #ffd54f; }
+  .num {
+    font-family: 'Black Han Sans', sans-serif; font-size: 44px;
+    color: #3F0000; margin-bottom: 28px; letter-spacing: 2px;
+  }
+
+  /* SLIDE 1 — Hook (Dark cover) */
+  .s1 { display: flex; flex-direction: column; justify-content: space-between; padding: 180px 90px 180px 50px; }
+  .s1 .tag {
+    font-family: 'Gaegu', cursive; font-weight: 700; font-size: 36px;
+    color: #ffd54f; margin-bottom: 32px;
+  }
+  .s1 .head1 { font-size: 128px; color: #fff; }
+  .s1 .accent { color: #ffd54f; }
+  .s1 .date {
+    font-family: 'Gaegu', cursive; font-weight: 700;
+    font-size: 44px; color: #c4a9a9; margin-top: 40px;
+  }
+  .s1 .sub {
+    font-family: 'Gaegu', cursive; font-weight: 700;
+    font-size: 38px; color: #8a7676; margin-top: 12px;
+  }
+
+  /* SLIDE 2 — Hook confirmation stats */
+  .s2 .head1 { font-size: 84px; margin-bottom: 48px; }
+  .s2 .arrow-row {
+    display: flex; align-items: center; justify-content: center; gap: 30px;
+    margin-top: 32px; margin-bottom: 40px;
+  }
+  .s2 .big-before, .s2 .big-after {
+    background: #fff; border: 3px solid #1a1a1a;
+    padding: 40px 36px; text-align: center; flex: 1;
+  }
+  .s2 .big-before {
+    opacity: 0.55;
+  }
+  .s2 .big-before .num-big {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 90px; color: #999; text-decoration: line-through; line-height: 1;
+  }
+  .s2 .big-after .num-big {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 110px; color: #3F0000; line-height: 1;
+  }
+  .s2 .label {
+    font-family: 'Noto Sans KR', sans-serif; font-weight: 700;
+    font-size: 22px; margin-top: 14px; color: #555;
+  }
+  .s2 .arrow-mid {
+    font-family: 'Black Han Sans', sans-serif; font-size: 80px; color: #3F0000;
+  }
+  .s2 .stats-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+  .s2 .stat {
+    background: #fff; border: 2px solid #1a1a1a; padding: 24px 20px; text-align: center;
+  }
+  .s2 .stat-num {
+    font-family: 'Black Han Sans', sans-serif; font-size: 64px; color: #3F0000; line-height: 1;
+  }
+  .s2 .stat-label { font-size: 20px; font-weight: 700; margin-top: 10px; color: #555; }
+
+  /* SLIDE 3 — 기본 한도 1000 강조 */
+  .s3 { display: flex; flex-direction: column; justify-content: center; }
+  .s3 .head1 { font-size: 76px; margin-bottom: 32px; }
+  .s3 .big-block {
+    background: #3F0000; padding: 72px 48px; text-align: center; margin: 24px 0;
+  }
+  .s3 .big-num {
+    font-family: 'Black Han Sans', sans-serif; font-size: 240px;
+    color: #ffd54f; line-height: 1;
+  }
+  .s3 .big-unit {
+    font-family: 'Black Han Sans', sans-serif; font-size: 80px;
+    color: #fff; margin-top: -20px;
+  }
+  .s3 .big-sub {
+    font-family: 'Noto Sans KR', sans-serif; font-weight: 700;
+    font-size: 28px; color: #e8c0c0; margin-top: 20px;
+  }
+  .s3 .desc {
+    font-family: 'Noto Sans KR', sans-serif; font-weight: 700;
+    font-size: 30px; color: #333; line-height: 1.6; margin-top: 24px;
+  }
+
+  /* SLIDE 4 — 유지/상향 조건 */
+  .s4 .head1 { font-size: 68px; margin-bottom: 36px; }
+  .s4 .cond-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .s4 .cond-col {
+    background: #fff; border: 3px solid #1a1a1a; padding: 32px 28px;
+  }
+  .s4 .cond-label {
+    font-family: 'Black Han Sans', sans-serif; font-size: 44px; line-height: 1;
+    margin-bottom: 20px; color: #3F0000;
+  }
+  .s4 .cond-col.up .cond-label { color: #1a1a1a; }
+  .s4 .cond-col.up .cond-label span {
+    background: linear-gradient(168deg, transparent 10%, #ffd54f 15%, #ffca28 50%, #ffd54f 85%, transparent 90%);
+    padding: 0 10px;
+  }
+  .s4 .cond-list {
+    font-family: 'Noto Sans KR', sans-serif; font-weight: 700;
+    font-size: 26px; line-height: 1.7; list-style: none;
+  }
+  .s4 .cond-list li { margin-bottom: 10px; position: relative; padding-left: 22px; }
+  .s4 .cond-list li::before {
+    content: "›"; position: absolute; left: 0; color: #3F0000;
+    font-family: 'Black Han Sans', sans-serif; font-size: 30px; line-height: 1;
+  }
+  .s4 .cond-list .emp {
+    font-family: 'Black Han Sans', sans-serif; font-size: 38px; color: #3F0000;
+  }
+  .s4 .cond-warn {
+    background: #1a1a1a; color: #ffd54f; padding: 24px 28px; margin-top: 28px;
+    font-family: 'Noto Sans KR', sans-serif; font-weight: 900; font-size: 24px;
+    line-height: 1.5;
+  }
+
+  /* SLIDE 5 — 3% 룰 */
+  .s5 .head1 { font-size: 70px; margin-bottom: 28px; }
+  .s5 .formula {
+    background: #fff; border: 3px solid #1a1a1a; padding: 36px 32px;
+    text-align: center;
+    font-family: 'Black Han Sans', sans-serif; font-size: 52px; color: #1a1a1a;
+    line-height: 1.3;
+  }
+  .s5 .formula .num-big { color: #3F0000; font-size: 72px; }
+  .s5 .formula small {
+    display: block; font-family: 'Noto Sans KR', sans-serif; font-weight: 700;
+    font-size: 22px; color: #777; margin-top: 14px; letter-spacing: 0;
+  }
+  .s5 .ex-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
+  .s5 .ex {
+    background: #FAF0DC; border: 2px solid #1a1a1a; padding: 24px 20px; text-align: center;
+  }
+  .s5 .ex-num {
+    font-family: 'Black Han Sans', sans-serif; font-size: 58px; color: #3F0000; line-height: 1;
+  }
+  .s5 .ex-label {
+    font-family: 'Noto Sans KR', sans-serif; font-weight: 700;
+    font-size: 20px; margin-top: 12px; color: #333;
+  }
+  .s5 .ex small { display: block; font-size: 18px; color: #777; margin-top: 4px; font-weight: 400; }
+  .s5 .warn {
+    margin-top: 24px; font-family: 'Noto Sans KR', sans-serif; font-weight: 900;
+    font-size: 26px; color: #1a1a1a;
+  }
+
+  /* SLIDE 6 — 가짜 vs 진짜 VS */
+  .s6 .head1 { font-size: 76px; margin-bottom: 36px; }
+  .s6 .vs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .s6 .vs-col {
+    background: #fff; border: 3px solid #1a1a1a; padding: 32px 28px;
+  }
+  .s6 .vs-label {
+    font-family: 'Black Han Sans', sans-serif; font-size: 48px; line-height: 1;
+    margin-bottom: 24px;
+  }
+  .s6 .vs-col.bad .vs-label { color: #999; text-decoration: line-through; }
+  .s6 .vs-col.good .vs-label { color: #3F0000; }
+  .s6 .vs-list {
+    font-family: 'Noto Sans KR', sans-serif; font-weight: 700;
+    font-size: 24px; line-height: 1.7; list-style: none;
+  }
+  .s6 .vs-col.bad .vs-list { color: #888; }
+  .s6 .vs-list li { margin-bottom: 8px; padding-left: 20px; position: relative; }
+  .s6 .vs-list li::before { content: "—"; position: absolute; left: 0; }
+  .s6 .conclusion {
+    margin-top: 32px;
+    font-family: 'Black Han Sans', sans-serif; font-size: 44px; line-height: 1.3;
+    text-align: center;
+  }
+
+  /* SLIDE 7 — 기회 quote */
+  .s7 { display: flex; flex-direction: column; justify-content: center; }
+  .s7 .quote-mark {
+    font-family: 'Black Han Sans', sans-serif; font-size: 180px;
+    color: #3F0000; line-height: 0.5; margin-bottom: 32px;
+  }
+  .s7 .quote-body { font-size: 96px; line-height: 1.25; margin-bottom: 40px; }
+  .s7 .pct {
+    font-family: 'Black Han Sans', sans-serif; font-size: 140px;
+    color: #3F0000; line-height: 1; margin-top: 16px;
+  }
+  .s7 .cite {
+    font-family: 'Gaegu', cursive; font-weight: 700;
+    font-size: 34px; color: #3F0000; margin-top: 20px;
+  }
+
+  /* SLIDE 8 — 6가지 대응 전략 */
+  .s8 .head1 { font-size: 62px; margin-bottom: 28px; }
+  .s8 .action-list { display: flex; flex-direction: column; gap: 12px; }
+  .s8 .action {
+    background: #fff; border: 2px solid #1a1a1a; padding: 20px 24px;
+    display: flex; align-items: center; gap: 20px;
+  }
+  .s8 .action-num {
+    font-family: 'Black Han Sans', sans-serif; font-size: 44px;
+    color: #3F0000; line-height: 1; min-width: 60px;
+  }
+  .s8 .action-body {
+    font-family: 'Noto Sans KR', sans-serif; font-weight: 700;
+    font-size: 24px; line-height: 1.4;
+  }
+  .s8 .action-body b {
+    font-family: 'Black Han Sans', sans-serif; font-weight: 400; font-size: 28px;
+    color: #1a1a1a; display: block; margin-bottom: 2px;
+  }
+
+  /* SLIDE 9 — Simple CTA */
+  .s9 { display: flex; flex-direction: column; justify-content: center; }
+  .s9 .head1 { font-size: 120px; line-height: 1.15; margin-bottom: 48px; }
+  .s9 .desc {
+    font-family: 'Noto Sans KR', sans-serif; font-weight: 700;
+    font-size: 36px; color: #333; line-height: 1.6;
+  }
+  .s9 .countdown {
+    margin-top: 40px; background: #1a1a1a; color: #ffd54f;
+    padding: 28px 36px; font-family: 'Black Han Sans', sans-serif; font-size: 48px;
+    text-align: center;
+  }
+
+  /* SLIDE 10 — Dark CTA */
+  .s10 { text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; padding-top: 120px; }
+  .s10 .photo-slot {
+    width: 220px; height: 220px; border-radius: 50%;
+    background: #2a1515; border: 4px solid #ffd54f;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Black Han Sans', sans-serif; font-size: 72px;
+    color: #ffd54f; margin-bottom: 40px;
+  }
+  .s10 .name {
+    font-family: 'Black Han Sans', sans-serif; font-size: 60px; color: #fff; margin-bottom: 12px;
+  }
+  .s10 .handle-big {
+    font-family: 'Gaegu', cursive; font-weight: 700;
+    font-size: 38px; color: #ffd54f; margin-bottom: 40px;
+  }
+  .s10 .cta-btn {
+    background: #ffd54f; color: #1a0a0a; padding: 28px 60px;
+    font-family: 'Black Han Sans', sans-serif; font-size: 46px; margin-bottom: 20px;
+  }
+  .s10 .cta-sub {
+    font-family: 'Gaegu', cursive; font-weight: 700;
+    font-size: 30px; color: #c4a9a9; margin-bottom: 20px;
+  }
+  .s10 .tag-line {
+    font-family: 'Black Han Sans', sans-serif; font-size: 34px;
+    color: #ffd54f; margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 -->
+<div class="slide s1 dark" id="slide-1">
+  <div>
+    <div class="tag">스마트스토어 긴급 공지</div>
+    <div class="head head1">
+      <span class="accent">90%</span>가<br>
+      퇴출되는<br>
+      정책이<br>
+      온다.
+    </div>
+  </div>
+  <div>
+    <div class="date">6월 2일, 기본 등록 한도</div>
+    <div class="sub">10,000개 → <span style="color:#ffd54f">1,000개</span>로 축소</div>
+  </div>
+  <div class="footer">
+    <span class="handle">@braveyong</span>
+    <div class="page-num">1</div>
+    <div class="arrow-next">→</div>
+  </div>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide s2" id="slide-2">
+  <div class="kicker">스마트스토어 정책 변경</div>
+  <div class="head head1">
+    기본 등록 한도가<br>
+    <span class="hl-red">1/10로 잘린다.</span>
+  </div>
+  <div class="arrow-row">
+    <div class="big-before">
+      <div class="num-big">10,000</div>
+      <div class="label">기존 파워 등급 한도</div>
+    </div>
+    <div class="arrow-mid">→</div>
+    <div class="big-after">
+      <div class="num-big">1,000</div>
+      <div class="label">6.2 이후 기본 한도</div>
+    </div>
+  </div>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-num">90%↑</div><div class="stat-label">영향 받는 셀러 비율</div></div>
+    <div class="stat"><div class="stat-num">6.2</div><div class="stat-label">정책 시행일</div></div>
+  </div>
+  <div class="whisper">신규든 기존이든 상관없다. 조건 못 맞추면 1,000개로 강등.</div>
+  <div class="footer">
+    <span class="handle">@braveyong</span>
+    <div class="page-num">2</div>
+    <div class="arrow-next">→</div>
+  </div>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="slide s3" id="slide-3">
+  <div class="num">FACT 01</div>
+  <div class="head head1">
+    기본으로 주는 건<br>
+    <span class="hl-red">딱 이만큼</span>이다.
+  </div>
+  <div class="big-block">
+    <div class="big-num">1,000</div>
+    <div class="big-unit">개</div>
+    <div class="big-sub">모든 스토어의 새로운 기본 등록 한도</div>
+  </div>
+  <div class="desc">
+    씨앗·새싹·파워·빅파워 구분 없이<br>
+    <b>출발선은 1,000개부터</b>. 여기서 못 올리면 끝.
+  </div>
+  <div class="whisper">예전엔 파워만 찍어도 1만 개. 이젠 증명 못하면 아무것도 없다.</div>
+  <div class="footer">
+    <span class="handle">@braveyong</span>
+    <div class="page-num">3</div>
+    <div class="arrow-next">→</div>
+  </div>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="slide s4" id="slide-4">
+  <div class="num">FACT 02</div>
+  <div class="head head1">
+    <span class="hl-gold">1,000</span> 유지 vs <span class="hl-red">5,000</span> 상향<br>
+    조건은 완전히 다르다.
+  </div>
+  <div class="cond-grid">
+    <div class="cond-col">
+      <div class="cond-label">1,000 유지</div>
+      <ul class="cond-list">
+        <li>최근 3개월 <span class="emp">매출 500만원↑</span></li>
+        <li>또는 <span class="emp">판매 100건↑</span></li>
+        <li>판매 상품 종류 <span class="emp">30개↑</span></li>
+      </ul>
+    </div>
+    <div class="cond-col up">
+      <div class="cond-label"><span>5,000 상향</span></div>
+      <ul class="cond-list">
+        <li>위 조건 모두 충족</li>
+        <li>판매 상품 종류 <span class="emp">150개↑</span></li>
+        <li>13개월 내 팔린 상품 기준</li>
+      </ul>
+    </div>
+  </div>
+  <div class="cond-warn">
+    ※ 효자상품 1개가 100번 팔려도 → '1건'으로 카운트된다.<br>
+    &nbsp;&nbsp;&nbsp;종류를 다양하게 팔아본 실력만 인정한다.
+  </div>
+  <div class="footer">
+    <span class="handle">@braveyong</span>
+    <div class="page-num">4</div>
+    <div class="arrow-next">→</div>
+  </div>
+</div>
+
+<!-- SLIDE 5 -->
+<div class="slide s5" id="slide-5">
+  <div class="num">FACT 03</div>
+  <div class="head head1">
+    이 모든 걸 결정하는<br>
+    <span class="hl-red">3% 룰</span>.
+  </div>
+  <div class="formula">
+    <span class="num-big">3%</span> = 최근 13개월 팔린 상품 종류 수<br>
+    <span style="font-size:36px; color:#555;">÷ 전체 등록 상품 수</span>
+    <small>이 수치를 못 넘기면 한도 상향은 영원히 불가능하다.</small>
+  </div>
+  <div class="ex-grid">
+    <div class="ex">
+      <div class="ex-num">30개↑</div>
+      <div class="ex-label">1,000 한도 유지</div>
+      <small>1,000 × 3% = 30</small>
+    </div>
+    <div class="ex">
+      <div class="ex-num">150개↑</div>
+      <div class="ex-label">5,000 한도 상향</div>
+      <small>5,000 × 3% = 150</small>
+    </div>
+  </div>
+  <div class="warn">
+    → 100개를 올리든 1만개를 올리든,<br>
+    &nbsp;&nbsp;&nbsp;<b>종류를 다양하게 팔아본 실력</b>만 인정된다.
+  </div>
+  <div class="footer">
+    <span class="handle">@braveyong</span>
+    <div class="page-num">5</div>
+    <div class="arrow-next">→</div>
+  </div>
+</div>
+
+<!-- SLIDE 6 -->
+<div class="slide s6" id="slide-6">
+  <div class="num">FACT 04</div>
+  <div class="head head1">
+    <span class="hl-red">가짜</span>는 퇴출,<br>
+    <span class="hl-gold">진짜</span>만 남는다.
+  </div>
+  <div class="vs-grid">
+    <div class="vs-col bad">
+      <div class="vs-label">퇴출</div>
+      <ul class="vs-list">
+        <li>번역기 대량등록 셀러</li>
+        <li>프로그램 딸깍 셀러</li>
+        <li>매출 0원 재고만 쌓은 셀러</li>
+        <li>종류 1~2개에 의존한 셀러</li>
+      </ul>
+    </div>
+    <div class="vs-col good">
+      <div class="vs-label">생존</div>
+      <ul class="vs-list">
+        <li>효자상품 발굴한 셀러</li>
+        <li>SEO로 상위노출 잡은 셀러</li>
+        <li>30~150종을 실제로 판 셀러</li>
+        <li>시스템 갖춘 셀러</li>
+      </ul>
+    </div>
+  </div>
+  <div class="conclusion">
+    네이버의 메시지 →<br>
+    <span class="hl-gold">"진짜 셀러만 살아남아라"</span>
+  </div>
+  <div class="footer">
+    <span class="handle">@braveyong</span>
+    <div class="page-num">6</div>
+    <div class="arrow-next">→</div>
+  </div>
+</div>
+
+<!-- SLIDE 7 -->
+<div class="slide s7" id="slide-7">
+  <div class="num">FACT 05</div>
+  <div class="quote-mark">"</div>
+  <div class="head quote-body">
+    경쟁자가 사라진<br>
+    그 자리가<br>
+    <span class="hl-red">너의 자리</span>다.
+  </div>
+  <div class="cite">— 준비된 1%에게만 보이는 기회</div>
+  <div class="footer">
+    <span class="handle">@braveyong</span>
+    <div class="page-num">7</div>
+    <div class="arrow-next">→</div>
+  </div>
+</div>
+
+<!-- SLIDE 8 -->
+<div class="slide s8" id="slide-8">
+  <div class="num">ACTION</div>
+  <div class="head head1">
+    <span class="hl-gold">지금부터</span> 해야 할 6가지.
+  </div>
+  <div class="action-list">
+    <div class="action">
+      <div class="action-num">01</div>
+      <div class="action-body"><b>수동화 + 효자상품</b>프로그램 의존 버리고 1개를 제대로 판다</div>
+    </div>
+    <div class="action">
+      <div class="action-num">02</div>
+      <div class="action-body"><b>비시즌성 상품 공략</b>1년 내내 꾸준히 팔리는 구조로 세팅</div>
+    </div>
+    <div class="action">
+      <div class="action-num">03</div>
+      <div class="action-body"><b>상품명 49자, 카테고리 일치</b>1페이지 상위 상품 카테고리 그대로 따라가기</div>
+    </div>
+    <div class="action">
+      <div class="action-num">04</div>
+      <div class="action-body"><b>AI 썸네일 + 속성값 필수</b>Gemini 스튜디오 느낌. 필터에 걸리는 속성 전부 입력</div>
+    </div>
+    <div class="action">
+      <div class="action-num">05</div>
+      <div class="action-body"><b>리뷰 100개 집중</b>텍스트 1,000원 / 사진 2,000원 리워드 팜플렛 동봉</div>
+    </div>
+    <div class="action">
+      <div class="action-num">06</div>
+      <div class="action-body"><b>옵션 촘촘히 + 품절 무관</b>객단가와 인기도 점수로 SEO 가중치 확보</div>
+    </div>
+  </div>
+  <div class="footer">
+    <span class="handle">@braveyong</span>
+    <div class="page-num">8</div>
+    <div class="arrow-next">→</div>
+  </div>
+</div>
+
+<!-- SLIDE 9 -->
+<div class="slide s9" id="slide-9">
+  <div class="num">지금, 당신에게</div>
+  <div class="head head1">
+    <span class="hl-red">6월 2일 전에</span><br>
+    움직여야 한다.
+  </div>
+  <div class="desc">
+    대부분은 "아직 시간 있지" 하고 넘긴다.<br>
+    <b>끝까지 읽은 당신은 이미 준비된 1%</b>다.<br>
+    다음 장에서 만나자.
+  </div>
+  <div class="countdown">D-DAY: 2026.06.02</div>
+  <div class="footer">
+    <span class="handle">@braveyong</span>
+    <div class="page-num">9</div>
+    <div class="arrow-next">→</div>
+  </div>
+</div>
+
+<!-- SLIDE 10 -->
+<div class="slide s10 dark" id="slide-10">
+  <div class="photo-slot">용</div>
+  <div class="name">용감한용팀장</div>
+  <div class="handle-big">@braveyong</div>
+  <div class="cta-btn">단톡방에서 만나자</div>
+  <div class="cta-sub">고정 댓글 → 무료 강의 + 정책 대응 가이드</div>
+  <div class="tag-line">가짜는 가고, 진짜만 남는다.</div>
+  <div class="footer">
+    <span class="handle">스마트스토어 1,000개 정책 대응</span>
+    <div class="page-num">10</div>
+  </div>
+</div>
+
+</body>
+</html>

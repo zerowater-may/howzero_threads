@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #999; display: flex; flex-direction: column; align-items: center; gap: 40px; padding: 40px; }
+
+  .slide {
+    width: 1080px; height: 1440px;
+    background: #F5F3EE; position: relative;
+    padding: 80px 80px 120px; display: flex; flex-direction: column; overflow: hidden;
+  }
+
+  /* === 형광펜 === */
+  .hl-y { background: linear-gradient(170deg, transparent 10%, #d4f59c 15%, #c6ef72 50%, #d4f59c 85%, transparent 90%); padding: 2px 10px; display: inline; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+  .hl-p { background: linear-gradient(168deg, transparent 8%, #f8b4b4 14%, #f5a0a0 50%, #f8b4b4 86%, transparent 92%); padding: 2px 10px; display: inline; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+  .hl-lemon { background: linear-gradient(172deg, transparent 10%, #fff176 16%, #ffee58 50%, #fff176 84%, transparent 90%); padding: 2px 10px; display: inline; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+  .hl-g { background: linear-gradient(169deg, transparent 10%, #c6ef72 15%, #aee55c 50%, #c6ef72 85%, transparent 90%); padding: 2px 10px; display: inline; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+  .hl-b { background: linear-gradient(171deg, transparent 10%, #b3e5fc 15%, #81d4fa 50%, #b3e5fc 85%, transparent 90%); padding: 2px 10px; display: inline; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+
+  /* === Headline === */
+  .title { font-family: 'Nanum Pen Script', cursive; font-size: 78px; color: #1a1a1a; line-height: 1.25; margin-bottom: 40px; }
+
+  /* === Body === */
+  .body { font-family: 'Noto Sans KR', sans-serif; font-size: 36px; font-weight: 700; color: #333; line-height: 1.7; flex: 1; }
+
+  /* === Whisper === */
+  .whisper { font-family: 'Gaegu', cursive; font-size: 30px; font-weight: 700; color: #999; line-height: 1.5; margin-top: 16px; }
+
+  /* === callout === */
+  .callout { background: #fff; border: 3px solid #1a1a1a; border-radius: 6px; padding: 32px 40px; margin-top: 32px; }
+  .callout-text { font-family: 'Nanum Pen Script', cursive; font-size: 42px; color: #1a1a1a; line-height: 1.4; }
+
+  /* === 코드 블록 === */
+  .code-block { background: #1a1a1a; border-radius: 8px; padding: 32px 36px; margin-top: 24px; font-family: 'Courier New', monospace; font-size: 22px; color: #e0e0e0; line-height: 1.6; white-space: pre-wrap; }
+  .code-block .comment { color: #888; }
+  .code-block .key { color: #81d4fa; }
+  .code-block .val { color: #c6ef72; }
+
+  /* === 규칙 번호 워터마크 === */
+  .rule-num { font-family: 'Nanum Pen Script', cursive; font-size: 180px; color: rgba(0,0,0,0.05); position: absolute; top: 20px; right: 60px; line-height: 1; }
+
+  /* === 금지 목록 === */
+  .ban-list { display: flex; flex-direction: column; gap: 16px; margin-top: 20px; }
+  .ban-item { display: flex; align-items: center; gap: 16px; background: #fff; border: 2px solid #e0e0e0; border-radius: 6px; padding: 20px 24px; }
+  .ban-x { font-family: 'Nanum Pen Script', cursive; font-size: 36px; color: #e53935; flex-shrink: 0; }
+  .ban-text { font-family: 'Noto Sans KR', sans-serif; font-size: 28px; font-weight: 700; color: #333; }
+
+  /* === VS === */
+  .vs-container { display: flex; gap: 24px; margin-top: 24px; }
+  .vs-col { flex: 1; display: flex; flex-direction: column; gap: 14px; }
+  .vs-header { font-family: 'Nanum Pen Script', cursive; font-size: 42px; text-align: center; padding: 14px; border-radius: 6px; }
+  .vs-header.bad { background: linear-gradient(168deg, transparent 8%, #f8b4b4 14%, #f5a0a0 50%, #f8b4b4 86%, transparent 92%); color: #1a1a1a; }
+  .vs-header.good { background: linear-gradient(172deg, transparent 8%, #c6ef72 14%, #aee55c 50%, #c6ef72 86%, transparent 92%); color: #1a1a1a; }
+  .vs-item { font-family: 'Noto Sans KR', sans-serif; font-size: 26px; font-weight: 700; color: #333; padding: 16px 20px; background: #fff; border: 2px solid #e0e0e0; border-radius: 6px; line-height: 1.4; }
+
+  /* === 하단 === */
+  .footer { position: absolute; bottom: 40px; left: 80px; right: 80px; display: flex; justify-content: space-between; align-items: center; }
+  .handle { font-family: 'Noto Sans KR', sans-serif; font-size: 22px; color: #999; }
+  .page-num { width: 42px; height: 42px; background: #1a1a1a; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Noto Sans KR', sans-serif; font-size: 18px; font-weight: 700; }
+  .arrow-next svg { width: 60px; height: 20px; }
+  .arrow-svg { display: block; }
+
+  /* === 커버 (세이프존: 상하180 좌50 우120) === */
+  .s-cover { justify-content: center; align-items: center; text-align: center; padding: 180px 120px 180px 50px; }
+  .s-cover .title { font-size: 88px; margin-bottom: 28px; }
+  .s-cover .sub { font-family: 'Noto Sans KR', sans-serif; font-size: 30px; font-weight: 700; color: #666; line-height: 1.6; }
+  .s-cover .deco-line { width: 60px; height: 4px; background: #1a1a1a; margin: 0 auto 44px; }
+  .s-cover .swipe-hint { position: absolute; bottom: 100px; font-family: 'Gaegu', cursive; font-size: 30px; font-weight: 700; color: #bbb; }
+
+  /* === CTA (다크) === */
+  .s-cta { background: #1a1a1a; justify-content: center; align-items: center; text-align: center; }
+  .s-cta .title { color: #fff; font-size: 80px; }
+  .s-cta .body { color: #999; font-size: 32px; flex: none; margin-bottom: 48px; }
+  .s-cta .cta-btn { font-family: 'Nanum Pen Script', cursive; font-size: 44px; color: #1a1a1a; background: #FFE082; padding: 24px 64px; border-radius: 60px; display: inline-block; }
+  .s-cta .whisper-dark { font-family: 'Gaegu', cursive; font-size: 28px; font-weight: 700; color: #666; margin-top: 32px; }
+  .s-cta .handle { color: #555; }
+  .s-cta .page-num { background: #fff; color: #1a1a1a; }
+
+  /* === 사진 슬롯 === */
+  .photo-slot { width: 180px; height: 180px; border-radius: 50%; background: #333; border: 4px solid #555; display: flex; align-items: center; justify-content: center; font-family: 'Gaegu', cursive; font-size: 24px; color: #888; margin: 0 auto 28px; }
+</style>
+</head>
+<body>
+
+<!-- ===== 1. HOOK: Stop the scroll ===== -->
+<div class="slide s-cover" id="slide-1">
+  <div class="deco-line"></div>
+  <div class="title">
+    <span class="hl-lemon">Anthropic이 숨겨둔</span><br>
+    AI 퀄리티 규칙<br>
+    <span class="hl-p">5가지</span>
+  </div>
+  <div class="sub">
+    Claude Design 시스템 프롬프트가 유출됐습니다.<br>
+    그 안에 있던 규칙을 전부 공개합니다.
+  </div>
+  <div class="swipe-hint">밀어서 계속 →</div>
+  <div class="footer">
+    <span class="handle">@howzero</span>
+    <div class="page-num">1</div>
+    <svg class="arrow-svg" viewBox="0 0 60 20" width="60" height="20"><line x1="0" y1="10" x2="50" y2="10" stroke="#1a1a1a" stroke-width="2.5"/><polyline points="42,4 52,10 42,16" stroke="#1a1a1a" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+</div>
+
+<!-- ===== 2. HOOK CONFIRMATION ===== -->
+<div class="slide" id="slide-2">
+  <div class="title">
+    <span class="hl-b">왜 이걸 알아야 하나요</span>
+  </div>
+  <div class="body">
+    2026년 4월, Anthropic이<br>
+    AI 디자인 도구 <span class="hl-lemon">Claude Design</span>을<br>
+    출시했습니다.<br><br>
+
+    그런데 이 도구를 움직이는<br>
+    <span class="hl-p">시스템 프롬프트가 유출</span>됐습니다.<br><br>
+
+    그 안에 AI 결과물의 퀄리티를<br>
+    끌어올리는 규칙이 전부 있었습니다.<br><br>
+
+    이 규칙은 <span class="hl-y">어떤 AI를 쓰든</span> 적용됩니다.
+  </div>
+  <div class="whisper">
+    ChatGPT, Gemini, Claude 어디서든 써먹을 수 있는 규칙입니다
+  </div>
+  <div class="footer">
+    <span class="handle">@howzero</span>
+    <div class="page-num">2</div>
+    <svg class="arrow-svg" viewBox="0 0 60 20" width="60" height="20"><line x1="0" y1="10" x2="50" y2="10" stroke="#1a1a1a" stroke-width="2.5"/><polyline points="42,4 52,10 42,16" stroke="#1a1a1a" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+</div>
+
+<!-- ===== 3. 규칙 1 (VS 레이아웃) ===== -->
+<div class="slide" id="slide-3">
+  <div class="rule-num">01</div>
+  <div class="title">
+    <span class="hl-y">규칙 1</span><br>
+    맥락을 먼저 줘라
+  </div>
+  <div class="body" style="flex: none; margin-bottom: 24px;">
+    "로고 만들어줘"라고 바로 시키면<br>
+    AI는 <span class="hl-p">평균적인 결과물</span>을 냅니다.<br><br>
+    Anthropic은 Claude에게<br>
+    <span class="hl-y">기존 자료를 먼저 읽으라</span>고 지시했습니다.
+  </div>
+  <div class="vs-container">
+    <div class="vs-col">
+      <div class="vs-header bad">✕ 나쁜 프롬프트</div>
+      <div class="vs-item">발표 슬라이드<br>만들어줘</div>
+    </div>
+    <div class="vs-col">
+      <div class="vs-header good">✓ 좋은 프롬프트</div>
+      <div class="vs-item">아래 브랜드 가이드를<br>먼저 읽고 만들어줘</div>
+    </div>
+  </div>
+  <div class="whisper" style="margin-top: 28px;">
+    프롬프트 앞에 배경 정보를 넣어라. 맥락이 많을수록 결과가 구체적이다
+  </div>
+  <div class="footer">
+    <span class="handle">@howzero</span>
+    <div class="page-num">3</div>
+    <svg class="arrow-svg" viewBox="0 0 60 20" width="60" height="20"><line x1="0" y1="10" x2="50" y2="10" stroke="#1a1a1a" stroke-width="2.5"/><polyline points="42,4 52,10 42,16" stroke="#1a1a1a" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+</div>
+
+<!-- ===== 4. 규칙 2 (금지 목록 레이아웃) ===== -->
+<div class="slide" id="slide-4">
+  <div class="rule-num">02</div>
+  <div class="title">
+    <span class="hl-p">규칙 2</span><br>
+    AI 느낌을 금지해라
+  </div>
+  <div class="body" style="flex: none; font-size: 30px; margin-bottom: 16px;">
+    Anthropic이 명시한 금지 목록:
+  </div>
+  <div class="ban-list">
+    <div class="ban-item"><span class="ban-x">✕</span><span class="ban-text">그라디언트 배경 남발</span></div>
+    <div class="ban-item"><span class="ban-x">✕</span><span class="ban-text">이모지 남발</span></div>
+    <div class="ban-item"><span class="ban-x">✕</span><span class="ban-text">둥근 모서리 + 왼쪽 색깔 보더 카드</span></div>
+    <div class="ban-item"><span class="ban-x">✕</span><span class="ban-text">AI가 직접 그린 SVG 일러스트</span></div>
+    <div class="ban-item"><span class="ban-x">✕</span><span class="ban-text">Inter / Roboto / Arial 폰트</span></div>
+  </div>
+  <div class="whisper" style="margin-top: 24px;">
+    "이쁘게 만들어줘"가 아니라 "이건 하지 마"를 알려줘라
+  </div>
+  <div class="footer">
+    <span class="handle">@howzero</span>
+    <div class="page-num">4</div>
+    <svg class="arrow-svg" viewBox="0 0 60 20" width="60" height="20"><line x1="0" y1="10" x2="50" y2="10" stroke="#1a1a1a" stroke-width="2.5"/><polyline points="42,4 52,10 42,16" stroke="#1a1a1a" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+</div>
+
+<!-- ===== 5. 규칙 3 (callout 레이아웃) ===== -->
+<div class="slide" id="slide-5">
+  <div class="rule-num">03</div>
+  <div class="title">
+    <span class="hl-lemon">규칙 3</span><br>
+    3개 이상 대안을<br>만들게 해라
+  </div>
+  <div class="body" style="flex: none; margin-bottom: 28px;">
+    하나만 만들면 AI는<br>
+    <span class="hl-p">"평균적인"</span> 결과를 냅니다.<br><br>
+    3개 이상 만들게 하면<br>
+    서로 다른 방향을 탐색합니다.
+  </div>
+  <div class="callout">
+    <div class="callout-text">
+      버전 1: 안전한 방향<br>
+      버전 2: 실험적인 방향<br>
+      버전 3: 자유롭게
+    </div>
+  </div>
+  <div class="whisper" style="margin-top: 28px;">
+    "3가지 다른 방향으로 만들어줘"를 습관처럼 붙여라
+  </div>
+  <div class="footer">
+    <span class="handle">@howzero</span>
+    <div class="page-num">5</div>
+    <svg class="arrow-svg" viewBox="0 0 60 20" width="60" height="20"><line x1="0" y1="10" x2="50" y2="10" stroke="#1a1a1a" stroke-width="2.5"/><polyline points="42,4 52,10 42,16" stroke="#1a1a1a" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+</div>
+
+<!-- ===== 6. 규칙 4 (callout + 인용 레이아웃) ===== -->
+<div class="slide" id="slide-6">
+  <div class="rule-num">04</div>
+  <div class="title">
+    <span class="hl-g">규칙 4</span><br>
+    질문을 먼저 시켜라
+  </div>
+  <div class="body" style="flex: none; margin-bottom: 24px;">
+    Anthropic은 Claude에게<br>
+    작업 전 <span class="hl-lemon">최소 10개 질문</span>을<br>
+    하도록 설계했습니다.<br><br>
+    정보가 많을수록<br>
+    결과물이 좋아지기 때문입니다.
+  </div>
+  <div class="callout">
+    <div class="callout-text">
+      "이 작업을 시작하기 전에<br>
+      나한테 10개 이상 질문해줘.<br>
+      더 좋은 결과를 위해<br>
+      알아야 할 것들을 물어봐."
+    </div>
+  </div>
+  <div class="whisper" style="margin-top: 24px;">
+    또는 타겟/톤/분량/레퍼런스를 미리 프롬프트에 넣어도 된다
+  </div>
+  <div class="footer">
+    <span class="handle">@howzero</span>
+    <div class="page-num">6</div>
+    <svg class="arrow-svg" viewBox="0 0 60 20" width="60" height="20"><line x1="0" y1="10" x2="50" y2="10" stroke="#1a1a1a" stroke-width="2.5"/><polyline points="42,4 52,10 42,16" stroke="#1a1a1a" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+</div>
+
+<!-- ===== 7. 규칙 5 (인용 레이아웃) ===== -->
+<div class="slide" id="slide-7">
+  <div class="rule-num">05</div>
+  <div class="title">
+    <span class="hl-b">규칙 5</span><br>
+    채우지 말고 빼라
+  </div>
+  <div class="body" style="flex: none; margin-bottom: 24px;">
+    AI는 빈 공간을 싫어합니다.<br>
+    여백이 있으면 아이콘을 넣고<br>
+    통계를 넣고 장식을 넣습니다.<br><br>
+    결과 → <span class="hl-p">정보는 많은데 핵심이 안 보임</span>
+  </div>
+  <div style="font-family: 'Nanum Pen Script', cursive; font-size: 120px; color: #ddd; text-align: center; margin: 20px 0;">"</div>
+  <div class="body" style="flex: none; text-align: center; font-size: 42px;">
+    <span class="hl-lemon">하나를 넣기 위해</span><br>
+    <span class="hl-lemon">천 개를 거절하라</span>
+  </div>
+  <div class="whisper" style="margin-top: 32px;">
+    "많이 넣어줘"가 아니라 "필요 없는 건 빼줘"라고 시켜라
+  </div>
+  <div class="footer">
+    <span class="handle">@howzero</span>
+    <div class="page-num">7</div>
+    <svg class="arrow-svg" viewBox="0 0 60 20" width="60" height="20"><line x1="0" y1="10" x2="50" y2="10" stroke="#1a1a1a" stroke-width="2.5"/><polyline points="42,4 52,10 42,16" stroke="#1a1a1a" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+</div>
+
+<!-- ===== 8. 실용 정보: 복붙 템플릿 (코드 블록 레이아웃) ===== -->
+<div class="slide" id="slide-8">
+  <div class="title">
+    <span class="hl-lemon">복붙용 만능 템플릿</span>
+  </div>
+  <div class="body" style="flex: none; font-size: 28px; margin-bottom: 16px;">
+    5가지 규칙을 하나로 합치면 이렇게 됩니다.
+  </div>
+  <div class="code-block"><span class="comment">## 맥락</span>
+<span class="key">[배경 설명 + 브랜드 가이드 첨부]</span>
+
+<span class="comment">## 요청</span>
+<span class="val">3가지 서로 다른 방향으로 만들어줘</span>
+- 버전 1: 기본에 충실한 안
+- 버전 2: 실험적인 안
+- 버전 3: 자유롭게
+
+<span class="comment">## 금지</span>
+- 그라디언트 배경
+- 이모지
+- 둥근카드 + 색보더
+- AI 일러스트
+- 빈 공간 장식으로 채우기
+
+<span class="comment">## 시작 전</span>
+<span class="val">추가로 알아야 할 것이 있으면
+먼저 질문해줘.</span></div>
+  <div class="whisper" style="margin-top: 20px;">
+    [ ] 안에 자기 내용 넣으면 바로 쓸 수 있습니다
+  </div>
+  <div class="footer">
+    <span class="handle">@howzero</span>
+    <div class="page-num">8</div>
+    <svg class="arrow-svg" viewBox="0 0 60 20" width="60" height="20"><line x1="0" y1="10" x2="50" y2="10" stroke="#1a1a1a" stroke-width="2.5"/><polyline points="42,4 52,10 42,16" stroke="#1a1a1a" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+</div>
+
+<!-- ===== 9. Simple CTA ===== -->
+<div class="slide s-cta" id="slide-9">
+  <div class="title">
+    <span class="hl-lemon">이 규칙 하나면</span><br>
+    <span style="color: #fff;">AI 결과물이 달라집니다</span>
+  </div>
+  <div class="body">
+    저장해두고 다음에 AI 쓸 때<br>
+    바로 적용해보세요.
+  </div>
+  <div class="cta-btn">저장하기 →</div>
+  <div class="whisper-dark">
+    AI로 진짜 돈 버는 방법이 궁금하면 팔로우
+  </div>
+  <div class="footer">
+    <span class="handle" style="color: #555;">@howzero</span>
+    <div class="page-num" style="background: #fff; color: #1a1a1a;">9</div>
+    <svg class="arrow-svg" viewBox="0 0 60 20" width="60" height="20"><line x1="0" y1="10" x2="50" y2="10" stroke="#555" stroke-width="2.5"/><polyline points="42,4 52,10 42,16" stroke="#555" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+</div>
+
+<!-- ===== 10. CTA with photo slot ===== -->
+<div class="slide s-cta" id="slide-10">
+  <div class="photo-slot">PHOTO</div>
+  <div class="title" style="font-size: 72px;">
+    <span style="color: #fff;">더 많은 AI 실전 팁은</span><br>
+    <span class="hl-lemon">@howzero</span>
+  </div>
+  <div class="body" style="margin-bottom: 36px;">
+    코딩 없이 AI로 연매출 10억.<br>
+    그 과정을 전부 공개하고 있습니다.
+  </div>
+  <div class="cta-btn">팔로우 →</div>
+  <div class="footer">
+    <span class="handle" style="color: #555;">@howzero</span>
+    <div class="page-num" style="background: #fff; color: #1a1a1a;">10</div>
+    <div></div>
+  </div>
+</div>
+
+</body>
+</html>

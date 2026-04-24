@@ -1,0 +1,113 @@
+[
+  {
+    "idx": 1,
+    "layout": "cover",
+    "mascot_pose": "hero",
+    "headline": "강서구 가양동",
+    "body_lines": ["가양동", "9억대", "찾아봤다구"],
+    "checkpoint_lines": [],
+    "whisper": "9호선 급행 + 마곡!\n26년 4월 기준~"
+  },
+  {
+    "idx": 4,
+    "layout": "apartment-card",
+    "mascot_pose": "happy",
+    "headline": "가양2단지성지 34A",
+    "body_lines": [
+      "17년 2.67억 → 22년 6.3억",
+      "5년 +136%",
+      "26년 호가 평균 7.16억"
+    ],
+    "checkpoint_lines": [
+      "1,624세대 / 1992년",
+      "전용 34㎡ / 방2화1",
+      "증미역 도보 5분",
+      "갭 4.65억 / 갭률 67%"
+    ],
+    "whisper": "가양동 대장이라구~"
+  },
+  {
+    "idx": 5,
+    "layout": "apartment-card",
+    "mascot_pose": "default",
+    "headline": "강변3단지",
+    "body_lines": [
+      "34㎡ 호가 7.4억",
+      "39㎡ 호가 8.29억",
+      "49㎡ 호가 11.11억"
+    ],
+    "checkpoint_lines": [
+      "1,556세대 / 1992년",
+      "한강 조망 가능",
+      "34㎡ 5년 +122%",
+      "갭률 66.2%"
+    ],
+    "whisper": "대단지라 거래도\n꾸준해서 안정적이야~"
+  },
+  {
+    "idx": 6,
+    "layout": "apartment-card",
+    "mascot_pose": "smile",
+    "headline": "가양9단지 34A",
+    "body_lines": [
+      "17년 2.67억 → 22년 5.88억",
+      "26년 호가 6.62억",
+      "5년 +120%"
+    ],
+    "checkpoint_lines": [
+      "1,005세대 / 1993년",
+      "가양역 초역세권",
+      "갭 3.95억 / 갭률 62%",
+      "저점 매수 기회"
+    ],
+    "whisper": "첫집으로 34㎡\n노려봐~"
+  },
+  {
+    "idx": 7,
+    "layout": "apartment-card",
+    "mascot_pose": "happy",
+    "headline": "가양6단지 58C",
+    "body_lines": [
+      "전용 58 (방3화2)",
+      "22년 8.7억",
+      "26년 호가 12.13억"
+    ],
+    "checkpoint_lines": [
+      "1,476세대 / 1992년",
+      "중형 방3 구조",
+      "5년 +120%",
+      "25→26 +15.3%"
+    ],
+    "whisper": "아이 한 명 키우면\n58 타입 추천~"
+  },
+  {
+    "idx": 8,
+    "layout": "apartment-card",
+    "mascot_pose": "shining",
+    "headline": "강서한강자이",
+    "body_lines": [
+      "2013년 신축",
+      "59㎡ 14.5억 / 84㎡ 16억",
+      "98~127㎡ 17~19억"
+    ],
+    "checkpoint_lines": [
+      "790세대 / 2013년 준공",
+      "가양동 유일 신축",
+      "98A 갭률 47.7% (최저)",
+      "5년 +100% 안정"
+    ],
+    "whisper": "신축 가고 싶으면\n여기가 유일!"
+  },
+  {
+    "idx": 11,
+    "layout": "cta-dark",
+    "mascot_pose": "hero",
+    "headline": "가양동\n잘 봤지?",
+    "body_lines": [
+      "내집마련 고민 중이면",
+      "저장해두고 다시 봐봐~"
+    ],
+    "checkpoint_lines": ["저장하고 다시 보기"],
+    "whisper": "다음엔 목동? 화곡? 댓글로 알려주라~"
+  }
+]

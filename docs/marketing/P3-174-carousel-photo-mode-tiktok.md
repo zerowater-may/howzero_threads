@@ -1,0 +1,1 @@
+P3-174: 틱톡/인스타 Photo Mode(캐러셀) 전략 — 2026 Q1 최강 포맷. TikTok Photo Mode = 정적 캐러셀 슬라이드. Q1 2026 가장 높은 도달율 포맷(TLinky). 인스타 캐러셀(#25)과 동일 디자인 → 틱톡 Photo Mode로 재게시. 추가 제작 시간 0분. 텍스트 체크리스트/비교표/Before-After에 최적. KPI: Photo Mode 평균 도달 영상 대비 1.5배.

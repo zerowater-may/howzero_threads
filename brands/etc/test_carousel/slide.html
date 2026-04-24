@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  .slide {
+    width: 1080px;
+    height: 1080px;
+    background: #F5F3EE;
+    position: relative;
+    padding: 80px 80px 120px;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+
+  /* 제목 - 손글씨 스타일 */
+  .title {
+    font-family: 'Caveat', cursive;
+    font-size: 72px;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.1;
+    margin-bottom: 48px;
+    position: relative;
+    display: inline-block;
+  }
+
+  /* 형광펜 하이라이트 */
+  .highlight-yellow {
+    background: linear-gradient(transparent 55%, #FFE082 55%, #FFE082 90%, transparent 90%);
+    padding: 0 6px;
+  }
+
+  .highlight-peach {
+    background: linear-gradient(transparent 55%, #FFCCBC 55%, #FFCCBC 90%, transparent 90%);
+    padding: 0 6px;
+  }
+
+  /* 본문 */
+  .body-text {
+    font-family: 'Caveat', cursive;
+    font-size: 42px;
+    font-weight: 400;
+    color: #333;
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  /* 손그림 화살표 SVG */
+  .hand-arrow {
+    position: absolute;
+    bottom: 200px;
+    right: 120px;
+  }
+
+  /* 강조 박스 */
+  .callout {
+    background: #fff;
+    border: 3px solid #1a1a1a;
+    border-radius: 4px;
+    padding: 36px 44px;
+    margin-top: 40px;
+    display: inline-block;
+  }
+
+  .callout-text {
+    font-family: 'Caveat', cursive;
+    font-size: 38px;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.4;
+  }
+
+  /* 하단 바 */
+  .footer {
+    position: absolute;
+    bottom: 40px;
+    left: 80px;
+    right: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .handle {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 22px;
+    color: #999;
+    font-weight: 400;
+  }
+
+  .page-num {
+    width: 40px;
+    height: 40px;
+    background: #1a1a1a;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .next-arrow {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .next-arrow svg {
+    width: 60px;
+    height: 20px;
+  }
+</style>
+</head>
+<body>
+<div class="slide" id="slide">
+
+  <div class="title">
+    <span class="highlight-yellow">남들이 ChatGPT로</span><br>
+    <span class="highlight-yellow">장난칠 때,</span>
+  </div>
+
+  <div class="body-text">
+    저는 2024년에 GPT-3로<br>
+    SaaS를 만들어서<br>
+    <span class="highlight-peach">1년 만에 연매출 10억</span>을<br>
+    달성했습니다.
+  </div>
+
+  <div class="callout">
+    <div class="callout-text">
+      코딩 몰라도 됩니다.<br>
+      비즈니스 원리만 알면 충분합니다.
+    </div>
+  </div>
+
+  <!-- 손그림 느낌 화살표 -->
+  <svg class="hand-arrow" width="80" height="140" viewBox="0 0 80 140" fill="none">
+    <path d="M40 0 C38 30, 25 50, 30 80 C35 110, 42 115, 40 130"
+          stroke="#4285F4" stroke-width="5" stroke-linecap="round" fill="none"/>
+    <path d="M25 115 L40 138 L50 112"
+          stroke="#4285F4" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </svg>
+
+  <div class="footer">
+    <span class="handle">@howzero</span>
+    <div class="page-num">1</div>
+    <div class="next-arrow">
+      <svg viewBox="0 0 60 20">
+        <line x1="0" y1="10" x2="50" y2="10" stroke="#1a1a1a" stroke-width="2.5"/>
+        <polyline points="42,4 52,10 42,16" stroke="#1a1a1a" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

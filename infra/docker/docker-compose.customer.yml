@@ -1,0 +1,58 @@
+# 고객사별 에이전트 실행 컨테이너 격리 템플릿
+# 사용법: CUSTOMER_ID=customer-a docker compose -f docker-compose.customer.yml up -d
+#
+# 각 고객사는 독립된 컨테이너에서 에이전트를 실행하여
+# 파일시스템, 네트워크, 프로세스를 완전히 격리합니다.
+
+version: "3.9"
+
+services:
+  agent-runner:
+    image: node:22-slim
+    container_name: paperclip-agent-${CUSTOMER_ID:-default}
+    restart: unless-stopped
+    working_dir: /workspace
+    environment:
+      - CUSTOMER_ID=${CUSTOMER_ID:-default}
+      - NODE_ENV=production
+      - PAPERCLIP_API_URL=http://host.docker.internal:3100
+    volumes:
+      # 고객사 전용 워크스페이스 (읽기/쓰기)
+      - ${CUSTOMER_WORKSPACE:-./workspaces/default}:/workspace
+      # Claude Code / Codex CLI 설정 (읽기 전용)
+      - ${CLI_CONFIG_DIR:-/opt/paperclip/cli-config}:/home/node/.config:ro
+    networks:
+      - customer_net
+    deploy:
+      resources:
+        limits:
+          cpus: "2.0"
+          memory: 4G
+        reservations:
+          cpus: "0.5"
+          memory: 512M
+    # 보안 강화
+    security_opt:
+      - no-new-privileges:true
+    read_only: false
+    tmpfs:
+      - /tmp:size=512M
+    # 호스트 네트워크 직접 접근 차단 — Paperclip API만 허용
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    # 불필요한 커널 기능 제거
+    cap_drop:
+      - ALL
+    cap_add:
+      - CHOWN
+      - SETUID
+      - SETGID
+      - DAC_OVERRIDE
+
+networks:
+  customer_net:
+    driver: bridge
+    internal: false
+    ipam:
+      config:
+        - subnet: 172.28.${CUSTOMER_SUBNET:-0}.0/24

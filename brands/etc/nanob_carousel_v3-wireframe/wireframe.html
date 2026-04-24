@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background: #fff; }
+.slide { width:1080px; height:1440px; position:relative; background:#fff; }
+/* headline yellow bar (y 95-215) */
+.hl { position:absolute; left:110px; top:95px; width:860px; height:120px;
+  background:#FACC15; border-radius: 8px; }
+/* main body box (y 280-640) */
+.main { position:absolute; left:110px; top:280px; width:860px; height:360px;
+  border:4px solid #1a1a1a; background:#fff; border-radius: 8px; }
+/* left white box (y 680-960) */
+.left-box { position:absolute; left:110px; top:680px; width:380px; height:280px;
+  border:4px solid #1a1a1a; background:#fff; border-radius: 8px; }
+/* right yellow box */
+.right-box { position:absolute; left:540px; top:680px; width:430px; height:280px;
+  border:4px solid #1a1a1a; background:#FACC15; border-radius: 8px; }
+/* mascot slot (bottom-left, y 1040-1360) */
+.mascot-slot { position:absolute; left:110px; top:1040px; width:340px; height:340px;
+  background:#eee; border-radius:50%; }
+/* speech bubble (bottom-right) */
+.bubble { position:absolute; left:500px; top:1100px; width:500px; height:220px;
+  border:4px solid #1a1a1a; background:#fff; border-radius: 40px; }
+</style></head><body>
+<div class="slide" id="slide-1">
+  <div class="hl"></div>
+  <div class="main"></div>
+  <div class="left-box"></div>
+  <div class="right-box"></div>
+  <div class="mascot-slot"></div>
+  <div class="bubble"></div>
+</div>
+</body></html>

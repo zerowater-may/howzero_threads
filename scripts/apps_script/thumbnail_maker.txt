@@ -1,0 +1,248 @@
+// ============================================================
+// AI 썸네일 메이커 (Google Apps Script)
+// 모델: gemini-3.1-flash-image-preview (Nano Banana 2)
+// 흐름: A열 URL → Nano Banana 1회 호출 → B열 셀 이미지 + Drive 백업
+// ============================================================
+
+// ─── 설정 ────────────────────────────────────────────────
+const CONFIG = {
+  IMAGE_MODEL: 'gemini-3.1-flash-image-preview', // Nano Banana 2
+  IMAGE_URL_COL: 1,        // A: 원본 이미지 URL
+  RESULT_IMAGE_COL: 2,     // B: 결과 이미지 (셀에 직접 임베드)
+  PROMPT_OVERRIDE_COL: 3,  // C: (선택) 행별 추가 지시. 비우면 기본 템플릿
+  STATUS_COL: 4,           // D: 상태
+  DRIVE_LINK_COL: 5,       // E: Drive 백업 링크
+  START_ROW: 2,
+  API_KEY_CELL: 'G1',
+  FOLDER_NAME: 'Gemini_Generated_Thumbnails',
+  MAX_RETRIES: 3,
+};
+
+// 배경 팔레트 (코드에서 1개만 픽 → 모델이 헷갈리지 않게)
+const BG_PALETTE = [
+  ['Milk Tea', '#FDF4E1'], ['Powder Yellow', '#FFF8DC'], ['Sand Beige', '#FFEBCD'],
+  ['Sweet Peach', '#FFE4E1'], ['Apple Mango', '#FFEFD5'], ['Biscuit', '#FFE4C4'],
+  ['Lemon Chiffon', '#FFFACD'], ['Peach Puff', '#FFDAB9'], ['Mist Green', '#E0FFFF'],
+  ['Mint White', '#F5FFFA'], ['Lavender Grey', '#E6E6FA'], ['Green Tea', '#F0FFF0'],
+];
+
+function buildEditPrompt(extraInstruction) {
+  const [name, hex] = BG_PALETTE[Math.floor(Math.random() * BG_PALETTE.length)];
+  return [
+    `Edit this product photo into a high-end e-commerce thumbnail.`,
+    `KEEP the product itself 100% identical — same shape, color, label text, texture. Do not redraw or restyle the product.`,
+    `Replace ONLY the background with a seamless ${name} (${hex}) studio backdrop.`,
+    `Soft cinematic lighting from top-left. Long soft-edged drop shadow to bottom-right for natural 3D depth.`,
+    `Product centered, occupying ~85% of the frame, 45-degree quarter view.`,
+    `Hyper-realistic studio photography, sharp focus, natural depth of field.`,
+    `1:1 square. No text, no logos, no watermarks added.`,
+    extraInstruction ? `Additional direction: ${extraInstruction}` : '',
+  ].filter(Boolean).join(' ');
+}
+
+// ─── 메뉴 ────────────────────────────────────────────────
+function onOpen() {
+  SpreadsheetApp.getUi()
+    .createMenu('AI 썸네일 메이커')
+    .addItem('▶ 선택 행만 실행', 'runSelected')
+    .addItem('▶ 전체 자동 실행', 'runAll')
+    .addSeparator()
+    .addItem('📦 전체 ZIP 다운로드', 'downloadAllAsZip')
+    .addItem('📂 결과 폴더 열기', 'openResultFolder')
+    .addSeparator()
+    .addItem('시트 초기화', 'setupHeaders')
+    .addToUi();
+}
+
+function runAll() {
+  runRange_(CONFIG.START_ROW, null);
+}
+
+function runSelected() {
+  const r = SpreadsheetApp.getActiveSheet().getActiveRange();
+  runRange_(r.getRow(), r.getRow() + r.getNumRows() - 1);
+}
+
+// ─── 메인 ────────────────────────────────────────────────
+function runRange_(fromRow, toRow) {
+  const sheet  = SpreadsheetApp.getActiveSheet();
+  const apiKey = sheet.getRange(CONFIG.API_KEY_CELL).getValue().toString().trim();
+  if (!apiKey) {
+    SpreadsheetApp.getUi().alert('G1 셀에 API 키를 입력해주세요.');
+    return;
+  }
+
+  const folder = getOrCreateFolder_(CONFIG.FOLDER_NAME);
+  const last   = toRow || sheet.getLastRow();
+
+  for (let row = fromRow; row <= last; row++) {
+    const url = sheet.getRange(row, CONFIG.IMAGE_URL_COL).getValue().toString().trim();
+    if (!url) continue;
+    if (sheet.getRange(row, CONFIG.STATUS_COL).getValue() === '완료') continue;
+
+    setStatus_(sheet, row, '생성 중', '#F5A623');
+    SpreadsheetApp.flush();
+
+    try {
+      const srcBlob = fetchImageBlob_(url);
+      const extra   = sheet.getRange(row, CONFIG.PROMPT_OVERRIDE_COL).getValue().toString().trim();
+      const prompt  = buildEditPrompt(extra);
+
+      const outBlob = callNanoBanana_(apiKey, srcBlob, prompt)
+        .setName(`Product_${row}_${Date.now()}.png`);
+
+      // 1) 셀에 직접 박기 (=IMAGE() 보다 안정적)
+      const cellImage = SpreadsheetApp.newCellImage()
+        .setSourceUrl('data:image/png;base64,' + Utilities.base64Encode(outBlob.getBytes()))
+        .build();
+      sheet.getRange(row, CONFIG.RESULT_IMAGE_COL).setValue(cellImage);
+
+      // 2) Drive 백업 + 링크
+      const file = folder.createFile(outBlob);
+      try {
+        file.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+      } catch (_) {
+        // Workspace 정책으로 막힐 수 있음 — 무시하고 진행
+      }
+      sheet.getRange(row, CONFIG.DRIVE_LINK_COL).setValue(file.getUrl());
+
+      setStatus_(sheet, row, '완료', '#27AE60');
+    } catch (e) {
+      setStatus_(sheet, row, '오류: ' + e.message, '#E74C3C');
+    }
+    Utilities.sleep(800);
+  }
+}
+
+// ─── Nano Banana 2 호출 (재시도 포함) ────────────────────
+function callNanoBanana_(apiKey, srcBlob, prompt) {
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${CONFIG.IMAGE_MODEL}:generateContent?key=${apiKey}`;
+
+  const payload = {
+    contents: [{
+      parts: [
+        { text: prompt },
+        { inline_data: {
+            mime_type: srcBlob.getContentType() || 'image/jpeg',
+            data: Utilities.base64Encode(srcBlob.getBytes())
+        }}
+      ]
+    }],
+    generationConfig: {
+      responseModalities: ['IMAGE'],
+      temperature: 0.6,
+      imageConfig: { aspectRatio: '1:1' }
+    }
+  };
+
+  let lastErr;
+  for (let i = 0; i < CONFIG.MAX_RETRIES; i++) {
+    const res = UrlFetchApp.fetch(url, {
+      method: 'POST',
+      contentType: 'application/json',
+      payload: JSON.stringify(payload),
+      muteHttpExceptions: true
+    });
+    const code = res.getResponseCode();
+    const json = JSON.parse(res.getContentText());
+
+    if (code === 429 || code >= 500) {
+      lastErr = new Error(`HTTP ${code}: ${(json.error && json.error.message) || 'retry'}`);
+      Utilities.sleep(1500 * (i + 1));
+      continue;
+    }
+    if (json.error) throw new Error(json.error.message);
+
+    const parts = (json.candidates && json.candidates[0] && json.candidates[0].content.parts) || [];
+    const imgPart = parts.find(p => p.inline_data || p.inlineData);
+    if (!imgPart) throw new Error('이미지 파트 없음 (안전필터/프롬프트 거부 가능성)');
+
+    const inline = imgPart.inline_data || imgPart.inlineData;
+    return Utilities.newBlob(
+      Utilities.base64Decode(inline.data),
+      inline.mime_type || inline.mimeType || 'image/png'
+    );
+  }
+  throw lastErr || new Error('재시도 초과');
+}
+
+// ─── 유틸 ────────────────────────────────────────────────
+function fetchImageBlob_(url) {
+  const res = UrlFetchApp.fetch(url, { muteHttpExceptions: true, followRedirects: true });
+  if (res.getResponseCode() >= 400) throw new Error('원본 이미지 불러오기 실패');
+  return res.getBlob();
+}
+
+function getOrCreateFolder_(name) {
+  const it = DriveApp.getFoldersByName(name);
+  return it.hasNext() ? it.next() : DriveApp.createFolder(name);
+}
+
+function setStatus_(sheet, row, text, color) {
+  sheet.getRange(row, CONFIG.STATUS_COL).setValue(text)
+    .setBackground(color).setFontColor('#ffffff');
+}
+
+// ─── 전체 다운로드 / 폴더 열기 ───────────────────────────
+function downloadAllAsZip() {
+  const ui = SpreadsheetApp.getUi();
+  const folder = getOrCreateFolder_(CONFIG.FOLDER_NAME);
+
+  // 폴더의 PNG만 수집 (이전에 만든 ZIP 제외)
+  const blobs = [];
+  const it = folder.getFilesByType(MimeType.PNG);
+  while (it.hasNext()) {
+    const f = it.next();
+    blobs.push(f.getBlob().setName(f.getName()));
+  }
+
+  if (blobs.length === 0) {
+    ui.alert('다운로드할 이미지가 없습니다.');
+    return;
+  }
+
+  const zipName = `Thumbnails_${new Date().toISOString().slice(0, 19).replace(/[:T]/g, '-')}.zip`;
+  const zipBlob = Utilities.zip(blobs, zipName);
+  const zipFile = folder.createFile(zipBlob);
+  try {
+    zipFile.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+  } catch (_) {
+    // 정책상 막혀도 본인은 다운로드 가능
+  }
+
+  const directDownload = `https://drive.google.com/uc?export=download&id=${zipFile.getId()}`;
+  const html = HtmlService.createHtmlOutput(
+    `<div style="font-family:-apple-system,system-ui,sans-serif;padding:8px;">
+       <p style="margin:0 0 12px;"><b>${blobs.length}개</b> 이미지를 ZIP으로 묶었습니다.</p>
+       <p style="margin:0 0 8px;">
+         <a href="${directDownload}" target="_blank"
+            style="display:inline-block;padding:10px 16px;background:#1a73e8;color:#fff;
+                   border-radius:6px;text-decoration:none;">⬇ ZIP 바로 다운로드</a>
+       </p>
+       <p style="margin:8px 0 0;font-size:12px;color:#555;">
+         <a href="${zipFile.getUrl()}" target="_blank">Drive에서 보기</a>
+       </p>
+     </div>`
+  ).setWidth(360).setHeight(170);
+  ui.showModalDialog(html, '다운로드 준비 완료');
+}
+
+function openResultFolder() {
+  const folder = getOrCreateFolder_(CONFIG.FOLDER_NAME);
+  const html = HtmlService.createHtmlOutput(
+    `<script>window.open('${folder.getUrl()}', '_blank'); google.script.host.close();</script>`
+  ).setWidth(10).setHeight(10);
+  SpreadsheetApp.getUi().showModalDialog(html, '폴더 여는 중...');
+}
+
+function setupHeaders() {
+  const sheet = SpreadsheetApp.getActiveSheet();
+  sheet.getRange(1, 1, 1, 5).setValues([[
+    '원본 이미지 URL', '변환 결과', '추가 지시(선택)', '상태', 'Drive 백업'
+  ]]).setBackground('#2F4F4F').setFontColor('#ffffff').setFontWeight('bold');
+  sheet.setColumnWidth(1, 220);
+  sheet.setColumnWidth(2, 220);
+  sheet.setColumnWidth(3, 240);
+  sheet.setColumnWidth(5, 260);
+  sheet.setRowHeights(2, sheet.getMaxRows() - 1, 200);
+}

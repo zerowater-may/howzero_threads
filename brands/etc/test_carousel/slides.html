@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #999; display: flex; flex-direction: column; align-items: center; gap: 40px; padding: 40px; }
+
+  .slide {
+    width: 1080px;
+    height: 1350px;
+    background: #F5F3EE;
+    position: relative;
+    padding: 80px 80px 120px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* === 삐뚤빼뚤 형광펜 하이라이트만 === */
+  .hl-y {
+    background: linear-gradient(170deg, transparent 10%, #d4f59c 15%, #c6ef72 50%, #d4f59c 85%, transparent 90%);
+    padding: 2px 10px; display: inline;
+    box-decoration-break: clone; -webkit-box-decoration-break: clone;
+  }
+  .hl-p {
+    background: linear-gradient(168deg, transparent 8%, #f8b4b4 14%, #f5a0a0 50%, #f8b4b4 86%, transparent 92%);
+    padding: 2px 10px; display: inline;
+    box-decoration-break: clone; -webkit-box-decoration-break: clone;
+  }
+  .hl-lemon {
+    background: linear-gradient(172deg, transparent 10%, #fff176 16%, #ffee58 50%, #fff176 84%, transparent 90%);
+    padding: 2px 10px; display: inline;
+    box-decoration-break: clone; -webkit-box-decoration-break: clone;
+  }
+  .hl-g {
+    background: linear-gradient(169deg, transparent 10%, #c6ef72 15%, #aee55c 50%, #c6ef72 85%, transparent 90%);
+    padding: 2px 10px; display: inline;
+    box-decoration-break: clone; -webkit-box-decoration-break: clone;
+  }
+  .hl-b {
+    background: linear-gradient(171deg, transparent 10%, #b3e5fc 15%, #81d4fa 50%, #b3e5fc 85%, transparent 90%);
+    padding: 2px 10px; display: inline;
+    box-decoration-break: clone; -webkit-box-decoration-break: clone;
+  }
+
+  /* === 제목 (Nanum Pen Script) === */
+  .title {
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 78px; color: #1a1a1a; line-height: 1.25; margin-bottom: 40px;
+  }
+
+  /* === 본문 (Noto Sans KR) === */
+  .body {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 36px; font-weight: 700; color: #333; line-height: 1.7; flex: 1;
+  }
+
+  /* === 귓속말 (Gaegu) === */
+  .whisper {
+    font-family: 'Gaegu', cursive;
+    font-size: 30px; font-weight: 700; color: #999; line-height: 1.5; margin-top: 16px;
+  }
+
+  /* === callout 박스 === */
+  .callout {
+    background: #fff; border: 3px solid #1a1a1a; border-radius: 6px;
+    padding: 32px 40px; margin-top: 32px;
+  }
+  .callout-text {
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 42px; color: #1a1a1a; line-height: 1.4;
+  }
+
+  /* === 하단 === */
+  .footer {
+    position: absolute; bottom: 40px; left: 80px; right: 80px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .handle { font-family: 'Noto Sans KR', sans-serif; font-size: 22px; color: #999; }
+  .page-num {
+    width: 42px; height: 42px; background: #1a1a1a; color: #fff; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Noto Sans KR', sans-serif; font-size: 18px; font-weight: 700;
+  }
+  .arrow-next svg { width: 60px; height: 20px; }
+
+  /* === 통계 카드 === */
+  .stat-row { display: flex; gap: 24px; margin-top: 20px; }
+  .stat-card {
+    flex: 1; background: #fff; border: 3px solid #1a1a1a; border-radius: 6px;
+    padding: 32px; text-align: center;
+  }
+  .stat-num { font-family: 'Nanum Pen Script', cursive; font-size: 72px; color: #1a1a1a; line-height: 1; }
+  .stat-label { font-family: 'Noto Sans KR', sans-serif; font-size: 20px; font-weight: 700; color: #888; margin-top: 10px; }
+
+  /* === 3A 카드 === */
+  .three-cards { display: flex; gap: 24px; margin-top: 28px; }
+  .a-card {
+    flex: 1; background: #fff; border: 3px solid #1a1a1a; border-radius: 6px;
+    padding: 40px 24px; text-align: center;
+  }
+  .a-card .a-letter { font-family: 'Nanum Pen Script', cursive; font-size: 88px; color: #1a1a1a; line-height: 1; }
+  .a-card .a-en { font-family: 'Noto Sans KR', sans-serif; font-size: 24px; font-weight: 900; color: #1a1a1a; margin-top: 10px; letter-spacing: 1px; }
+  .a-card .a-ko { font-family: 'Gaegu', cursive; font-size: 28px; font-weight: 700; color: #888; margin-top: 4px; }
+
+  /* === VS 비교 === */
+  .vs-container { display: flex; gap: 24px; margin-top: 20px; flex: 1; }
+  .vs-col { flex: 1; display: flex; flex-direction: column; gap: 14px; }
+  .vs-header {
+    font-family: 'Nanum Pen Script', cursive; font-size: 42px; text-align: center;
+    padding: 14px; border-radius: 6px;
+  }
+  .vs-header.bad { background: linear-gradient(168deg, transparent 8%, #f8b4b4 14%, #f5a0a0 50%, #f8b4b4 86%, transparent 92%); color: #1a1a1a; }
+  .vs-header.good { background: linear-gradient(172deg, transparent 8%, #c6ef72 14%, #aee55c 50%, #c6ef72 86%, transparent 92%); color: #1a1a1a; }
+  .vs-item {
+    font-family: 'Noto Sans KR', sans-serif; font-size: 26px; font-weight: 700; color: #333;
+    padding: 16px 20px; background: #fff; border: 2px solid #e0e0e0; border-radius: 6px; line-height: 1.3;
+  }
+  .vs-divider { display: flex; align-items: center; justify-content: center; padding-top: 80px; }
+  .vs-text { font-family: 'Nanum Pen Script', cursive; font-size: 56px; color: #ccc; }
+
+  /* === 슬라이드 1 === */
+  .s1 { justify-content: center; align-items: center; text-align: center; }
+  .s1 .title { font-size: 92px; margin-bottom: 28px; }
+  .s1 .sub { font-family: 'Noto Sans KR', sans-serif; font-size: 30px; font-weight: 700; color: #666; line-height: 1.6; }
+  .s1 .deco-line { width: 60px; height: 4px; background: #1a1a1a; margin: 0 auto 44px; }
+  .s1 .swipe-hint { position: absolute; bottom: 95px; font-family: 'Gaegu', cursive; font-size: 30px; font-weight: 700; color: #bbb; }
+
+  /* === 슬라이드 8 === */
+  .s8 { background: #1a1a1a; justify-content: center; align-items: center; text-align: center; }
+  .s8 .title { color: #fff; font-size: 84px; }
+  .s8 .body { color: #999; font-size: 30px; flex: none; margin-bottom: 48px; }
+  .s8 .cta-btn {
+    font-family: 'Nanum Pen Script', cursive; font-size: 44px; color: #1a1a1a;
+    background: #FFE082; padding: 24px 64px; border-radius: 60px; display: inline-block;
+  }
+  .s8 .whisper-dark { font-family: 'Gaegu', cursive; font-size: 28px; font-weight: 700; color: #666; margin-top: 32px; }
+  .s8 .handle { color: #555; }
+  .s8 .page-num { background: #fff; color: #1a1a1a; }
+</style>
+</head>
+<body>
+
+<!-- ===== SLIDE 1: 커버 ===== -->
+<div class="slide s1" id="slide-1">
+  <div class="deco-line"></div>
+  <div class="title">
+    <span class="hl-y">제로에서 10억까지.</span><br>
+    <span class="hl-y">코딩도 제로.</span>
+  </div>
+  <div class="sub">
+    AI 하나로 1년 만에 연매출 10억.<br>
+    그 여정을 전부 공개합니다.
+  </div>
+  <div class="swipe-hint">밀어서 계속 →</div>
+  <div class="footer">
+    <span class="handle">@howzero</span>
+    <div class="page-num">1</div>
+    <div class="arrow-next"><svg viewBox="0 0 60 20"><line x1="0" y1="10" x2="50" y2="10" stroke="#1a1a1a" stroke-width="2.5"/><polyline points="42,4 52,10 42,16" stroke="#1a1a1a" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div>
+</div>
+
+<!-- ===== SLIDE 2: 시작 ===== -->
+<div class="slide" id="slide-2">
+  <div class="title">
+    <span class="hl-lemon">남들이 ChatGPT로</span><br>
+    <span class="hl-lemon">장난칠 때,</span>
+  </div>
+  <div class="body">
+    저는 2024년에 GPT-3로 SaaS를 만들어서<br>
+    <span class="hl-p">1년 만에 연매출 10억</span>을 달성했습니다.
+  </div>
+  <div class="whisper">
+    ← 프롬프트 몇 줄이 아니라, 진짜 제품을 만들었습니다
+  </div>
+  <div class="callout">
+    <div class="callout-text">
+      이론이 아닙니다.<br>
+      직접 해보고, 실패하고, 증명한 결과입니다.
+    </div>
+  </div>
+  <div class="footer">
+    <span class="handle">@howzero</span>
+    <div class="page-num">2</div>
+    <div class="arrow-next"><svg viewBox="0 0 60 20"><line x1="0" y1="10" x2="50" y2="10" stroke="#1a1a1a" stroke-width="2.5"/><polyline points="42,4 52,10 42,16" stroke="#1a1a1a" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div>
+</div>
+
+<!-- ===== SLIDE 3: 철학 ===== -->
+<div class="slide" id="slide-3">
+  <div class="title">
+    <span class="hl-b">핵심 철학</span>
+  </div>
+  <div style="font-family: 'Nanum Pen Script', cursive; font-size: 120px; color: #ddd; line-height: 0.6; margin-bottom: 28px;">"</div>
+  <div class="body" style="font-size: 42px; line-height: 1.6; flex: none;">
+    고객은 당신이 어떤 AI를 썼는지<br>
+    <span class="hl-p">관심 없습니다.</span><br><br>
+    오직 <span class="hl-lemon">결과</span>만 봅니다.
+  </div>
+  <div class="whisper" style="margin-top: 40px;">
+    도구 자랑 = 자기만족.<br>
+    고객이 원하는 건 "그래서 내 매출이 얼마나 올랐는데?"
+  </div>
+  <div class="footer">
+    <span class="handle">@howzero</span>
+    <div class="page-num">3</div>
+    <div class="arrow-next"><svg viewBox="0 0 60 20"><line x1="0" y1="10" x2="50" y2="10" stroke="#1a1a1a" stroke-width="2.5"/><polyline points="42,4 52,10 42,16" stroke="#1a1a1a" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div>
+</div>
+
+<!-- ===== SLIDE 4: 문제 ===== -->
+<div class="slide" id="slide-4">
+  <div class="title">
+    <span class="hl-lemon">기업의 진짜 문제는</span><br>
+    <span class="hl-p">AI 부재가 아닙니다</span>
+  </div>
+  <div class="body" style="flex: none; margin-bottom: 24px;">
+    문제의 80%는 엉망인 기본 프로세스에 있습니다.
+  </div>
+  <div class="stat-row">
+    <div class="stat-card">
+      <div class="stat-num"><span class="hl-p">80%</span></div>
+      <div class="stat-label">기본 프로세스 문제</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num"><span class="hl-b">20%</span></div>
+      <div class="stat-label">진짜 AI가 필요한 영역</div>
+    </div>
+  </div>
+  <div class="whisper" style="margin-top: 20px;">
+    AI는 화룡점정이지, 만병통치약이 아닙니다
+  </div>
+  <div class="callout" style="margin-top: 16px;">
+    <div class="callout-text">
+      AI를 도입하기 전, 낭비되는 시스템부터 고칩니다.
+    </div>
+  </div>
+  <div class="footer">
+    <span class="handle">@howzero</span>
+    <div class="page-num">4</div>
+    <div class="arrow-next"><svg viewBox="0 0 60 20"><line x1="0" y1="10" x2="50" y2="10" stroke="#1a1a1a" stroke-width="2.5"/><polyline points="42,4 52,10 42,16" stroke="#1a1a1a" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div>
+</div>
+
+<!-- ===== SLIDE 5: HOWAAA ===== -->
+<div class="slide" id="slide-5">
+  <div class="title" style="text-align: center; font-size: 96px;">
+    <span class="hl-lemon">HOWAAA</span>
+  </div>
+  <div class="body" style="text-align: center; flex: none; font-size: 26px; color: #888; margin-bottom: 12px;">
+    HowZero's AI Automation Agency
+  </div>
+  <div class="whisper" style="text-align: center; margin-bottom: 32px; margin-top: 0;">
+    진단하고. 자동화하고. 수익이 쌓인다.
+  </div>
+  <div class="three-cards">
+    <div class="a-card">
+      <div class="a-letter"><span class="hl-p">A¹</span></div>
+      <div class="a-en">AUDIT</div>
+      <div class="a-ko">진단</div>
+    </div>
+    <div class="a-card">
+      <div class="a-letter"><span class="hl-lemon">A²</span></div>
+      <div class="a-en">AUTOMATE</div>
+      <div class="a-ko">자동화</div>
+    </div>
+    <div class="a-card">
+      <div class="a-letter"><span class="hl-g">A³</span></div>
+      <div class="a-en">ACCUMULATE</div>
+      <div class="a-ko">수익 축적</div>
+    </div>
+  </div>
+  <div class="callout" style="margin-top: 36px; text-align: center;">
+    <div class="callout-text">
+      30분 무료 오딧으로<br>귀사의 비효율을 숫자로 보여드립니다.
+    </div>
+  </div>
+  <div class="footer">
+    <span class="handle">@howzero</span>
+    <div class="page-num">5</div>
+    <div class="arrow-next"><svg viewBox="0 0 60 20"><line x1="0" y1="10" x2="50" y2="10" stroke="#1a1a1a" stroke-width="2.5"/><polyline points="42,4 52,10 42,16" stroke="#1a1a1a" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div>
+</div>
+
+<!-- ===== SLIDE 6: VS 비교 ===== -->
+<div class="slide" id="slide-6">
+  <div class="title">
+    <span class="hl-lemon">하우제로는 다릅니다</span>
+  </div>
+  <div class="vs-container">
+    <div class="vs-col">
+      <div class="vs-header bad">✕ 남들</div>
+      <div class="vs-item">화려한 AI 툴 자랑</div>
+      <div class="vs-item">세팅에만 시간 낭비</div>
+      <div class="vs-item">복잡한 스택 쌓기</div>
+      <div class="vs-item">"이 툴 써보셨나요?"</div>
+    </div>
+    <div class="vs-divider">
+      <div class="vs-text">vs.</div>
+    </div>
+    <div class="vs-col">
+      <div class="vs-header good">✓ 하우제로</div>
+      <div class="vs-item"><span class="hl-g">결과(돈, 시간)만 말한다</span></div>
+      <div class="vs-item"><span class="hl-g">가장 단순한 자동화</span></div>
+      <div class="vs-item"><span class="hl-g">비즈니스 문제부터 해결</span></div>
+      <div class="vs-item"><span class="hl-g">"이번 달 얼마 벌었는데?"</span></div>
+    </div>
+  </div>
+  <div class="whisper" style="position: absolute; bottom: 80px; left: 80px; right: 80px; text-align: center;">
+    세팅 포르노에 빠지면 결과물은 0입니다
+  </div>
+  <div class="footer">
+    <span class="handle">@howzero</span>
+    <div class="page-num">6</div>
+    <div class="arrow-next"><svg viewBox="0 0 60 20"><line x1="0" y1="10" x2="50" y2="10" stroke="#1a1a1a" stroke-width="2.5"/><polyline points="42,4 52,10 42,16" stroke="#1a1a1a" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div>
+</div>
+
+<!-- ===== SLIDE 7: 결과 ===== -->
+<div class="slide" id="slide-7">
+  <div class="title">
+    <span class="hl-lemon">증명된 결과</span>
+  </div>
+  <div style="text-align: center; margin-bottom: 24px;">
+    <span style="font-family: 'Nanum Pen Script', cursive; font-size: 160px; color: #1a1a1a; line-height: 1; display: inline-block;">
+      <span class="hl-lemon">10억</span>
+    </span>
+    <br>
+    <span style="font-family: 'Noto Sans KR', sans-serif; font-size: 30px; font-weight: 700; color: #888;">연매출 달성</span>
+  </div>
+  <div class="stat-row">
+    <div class="stat-card">
+      <div class="stat-num">1년</div>
+      <div class="stat-label">달성 기간</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">0줄</div>
+      <div class="stat-label">직접 작성한 코드</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">1개</div>
+      <div class="stat-label">SaaS 제품</div>
+    </div>
+  </div>
+  <div class="whisper" style="margin-top: 20px; text-align: center;">
+    숫자는 거짓말을 안 합니다
+  </div>
+  <div class="callout" style="margin-top: 16px;">
+    <div class="callout-text">
+      코딩 몰라도 됩니다. 비즈니스 원리만 알면 충분합니다.
+    </div>
+  </div>
+  <div class="footer">
+    <span class="handle">@howzero</span>
+    <div class="page-num">7</div>
+    <div class="arrow-next"><svg viewBox="0 0 60 20"><line x1="0" y1="10" x2="50" y2="10" stroke="#1a1a1a" stroke-width="2.5"/><polyline points="42,4 52,10 42,16" stroke="#1a1a1a" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div>
+</div>
+
+<!-- ===== SLIDE 8: CTA ===== -->
+<div class="slide s8" id="slide-8">
+  <div class="title">
+    <span class="hl-lemon">무료 HOWAAA 오딧</span><br>
+    <span style="color: #fff;">신청하세요</span>
+  </div>
+  <div class="body">
+    귀사의 비효율을 숫자로 보여드립니다.<br>
+    30분이면 충분합니다.
+  </div>
+  <div class="cta-btn">무료 신청하기 →</div>
+  <div class="whisper-dark">
+    지금까지 읽었으면, 신청 안 할 이유가 없습니다 :)
+  </div>
+  <div class="footer">
+    <span class="handle" style="color: #555;">@howzero</span>
+    <div class="page-num" style="background: #fff; color: #1a1a1a;">8</div>
+    <div></div>
+  </div>
+</div>
+
+</body>
+</html>

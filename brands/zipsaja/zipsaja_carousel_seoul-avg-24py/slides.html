@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>집사자 - 서울 24평 평균 2026.4</title>
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #d4c9b0; padding: 60px 0;
+  display: flex; flex-direction: column; align-items: center; gap: 40px;
+  font-family: 'Noto Sans KR', sans-serif; color: #1a1a1a;
+}
+.slide {
+  width: 1080px; height: 1440px;
+  background: #F5EDE0;
+  padding: 70px 60px 100px;
+  position: relative; overflow: hidden;
+}
+
+/* Pill (wireframe 물감 배경 + 깔끔 텍스트) */
+.pill {
+  position: relative; display: inline-block;
+  padding: 12px 36px; font-family: 'Jua', sans-serif; color: #fff;
+  line-height: 1.1; letter-spacing: -1px; transform: rotate(-0.5deg);
+}
+.pill-bg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+.pill-bg rect { fill: #EA2E00; filter: url(#paintStroke); }
+.pill-text { position: relative; z-index: 1; }
+.pill.sm { padding: 8px 22px; font-size: 34px; }
+.pill.dark .pill-bg rect { fill: #1a1a1a; }
+
+/* 헤드라인 */
+.date-tag {
+  font-family: 'Jua', sans-serif; font-size: 38px;
+  color: #1a1a1a; letter-spacing: -1px;
+  text-align: center; margin-bottom: 6px;
+}
+.headline {
+  font-family: 'Jua', sans-serif; font-size: 120px;
+  color: #1a1a1a; text-align: center; letter-spacing: -3px;
+  line-height: 1.0;
+}
+.headline .hl-word {
+  position: relative; display: inline-block;
+  padding: 0 18px; color: #1a1a1a;
+}
+.headline .hl-word::before {
+  content: ''; position: absolute; inset: 14px -8px 14px -8px;
+  background: #FFB8E7; filter: url(#markerStroke);
+  z-index: -1; transform: rotate(-0.6deg);
+}
+
+/* Legend */
+.legend {
+  position: absolute; top: 310px; left: 60px;
+  background: #fff; border: 2.5px solid #1a1a1a;
+  border-radius: 14px; padding: 12px 14px;
+  display: flex; flex-direction: column; gap: 6px;
+  z-index: 5;
+}
+.legend-row {
+  display: flex; align-items: center; gap: 10px;
+  font-family: 'Jua', sans-serif; font-size: 20px; color: #1a1a1a;
+}
+.legend-swatch {
+  width: 38px; height: 26px; border: 2px solid #1a1a1a;
+  border-radius: 6px; flex-shrink: 0;
+}
+
+/* Grid */
+.grid-wrap {
+  margin-top: 320px; padding: 20px 40px;
+  background: #fff; border: 3px solid #1a1a1a;
+  border-radius: 24px;
+  position: relative;
+}
+.gu-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+.gu-card {
+  background: #fff; border: 2.5px solid #1a1a1a;
+  border-radius: 14px;
+  padding: 16px 10px;
+  text-align: center;
+  position: relative;
+  min-height: 118px;
+  display: flex; flex-direction: column; justify-content: center;
+  gap: 4px;
+}
+.gu-name {
+  font-family: 'Jua', sans-serif; font-size: 26px;
+  color: #1a1a1a; line-height: 1; letter-spacing: -1px;
+}
+.gu-price {
+  font-family: 'Jua', sans-serif; font-size: 38px;
+  color: #1a1a1a; line-height: 1;
+}
+
+/* Mascot + bubble */
+.bottom-zone {
+  position: absolute; bottom: 110px; left: 60px; right: 60px;
+  display: flex; justify-content: space-between; align-items: flex-end;
+}
+.bubble {
+  position: relative; background: #fff;
+  border: 2.5px solid #1a1a1a; border-radius: 24px;
+  padding: 16px 24px;
+  font-family: 'Gaegu', cursive; font-weight: 700;
+  font-size: 28px; color: #1a1a1a;
+  max-width: 420px;
+}
+.bubble::after {
+  content: ''; position: absolute;
+  bottom: -12px; right: 50px;
+  width: 20px; height: 20px; background: #fff;
+  border-right: 2.5px solid #1a1a1a;
+  border-bottom: 2.5px solid #1a1a1a;
+  transform: rotate(45deg);
+}
+.mascot { width: 180px; }
+.unit-tag {
+  position: absolute; bottom: 100px; right: 60px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 700; font-size: 22px; color: #888;
+}
+
+/* Footer */
+.footer {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 20px 60px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: 'Noto Sans KR'; font-size: 22px; color: #888;
+  border-top: 2px dashed rgba(26,26,26,0.15);
+}
+.footer .handle {
+  color: #EA2E00; font-weight: 900;
+  font-family: 'Jua', sans-serif; font-size: 28px;
+}
+.footer .page-num {
+  font-family: 'Jua'; font-size: 30px; color: #1a1a1a;
+}
+</style>
+</head>
+<body>
+
+<!-- SVG filter for 물감 경계 -->
+<svg width="0" height="0" style="position: absolute;">
+  <defs>
+    <filter id="paintStroke" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.018 0.028" numOctaves="2" seed="5" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="10"/>
+    </filter>
+    <filter id="markerStroke" x="-5%" y="-10%" width="110%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04 0.015" numOctaves="2" seed="7" result="mn"/>
+      <feDisplacementMap in="SourceGraphic" in2="mn" scale="8"/>
+    </filter>
+  </defs>
+</svg>
+
+<div class="slide" id="slide-1">
+  <!-- 제목 영역 -->
+  <div style="margin-top: 20px;">
+    <div style="text-align: center;">
+      <span class="pill sm dark"><svg class="pill-bg"><rect width="100%" height="100%" rx="50"/></svg><span class="pill-text">📊 2026.4 데이터</span></span>
+    </div>
+    <div class="date-tag" style="margin-top: 18px;">2026년 4월 기준</div>
+    <div class="headline" style="margin-top: 8px;">
+      서울<span class="hl-word">24평</span>평균
+    </div>
+  </div>
+
+  <!-- 범례 -->
+  <div class="legend">
+    <div class="legend-row"><div class="legend-swatch" style="background:#FFB8E7;"></div>18.0억↑</div>
+    <div class="legend-row"><div class="legend-swatch" style="background:#FF9F55;"></div>14.0억↑</div>
+    <div class="legend-row"><div class="legend-swatch" style="background:#FFD955;"></div>10.0억↑</div>
+    <div class="legend-row"><div class="legend-swatch" style="background:#5BE0CE;"></div>7.0억↑</div>
+    <div class="legend-row"><div class="legend-swatch" style="background:#B5B5FF;"></div>7.0억↓</div>
+  </div>
+
+  <!-- 지리 grid (5x5) -->
+  <div class="grid-wrap">
+    <div class="gu-grid" id="gu-grid"></div>
+  </div>
+
+  <!-- 하단 말풍선 + 마스코트 -->
+  <div class="bottom-zone">
+    <div class="bubble">
+      감으로 안 보고<br>
+      <b>데이터로</b> 보여준다구~📊
+    </div>
+    <img src="assets/mascot-happy.png" class="mascot">
+  </div>
+  <div class="unit-tag">단위 : 억 원</div>
+
+  <!-- footer -->
+  <div class="footer">
+    <span class="handle">@zipsaja</span>
+    <span style="font-family: 'Gaegu'; font-size: 22px; color: #888;">실거래가 · 공급 76~85㎡ 평균</span>
+  </div>
+</div>
+
+<!-- 데이터 주입 JS -->
+<script>
+const grid = [
+  ["강서", "은평", "종로", "도봉", "노원"],
+  ["양천", "마포", "서대문", "강북", "중랑"],
+  ["영등포", "용산", "중",   "성북", "동대문"],
+  ["구로", "동작", "성동",   "광진", "강동"],
+  ["금천", "관악", "서초",   "강남", "송파"]
+];
+const prices = {
+  "서초":28.0,"강남":21.9,"송파":19.0,"용산":17.4,"성동":16.6,
+  "종로":16.6,"마포":15.8,"광진":15.1,"강동":14.7,"동작":13.4,
+  "영등포":12.6,"중":11.8,"서대문":11.3,"동대문":10.5,"강서":10.5,
+  "은평":9.6,"양천":9.3,"성북":9.1,"관악":8.7,"구로":7.5,
+  "노원":6.8,"강북":6.7,"금천":6.6,"중랑":6.2,"도봉":5.9
+};
+function colorFor(p) {
+  if (p >= 18) return "#FFB8E7";
+  if (p >= 14) return "#FF9F55";
+  if (p >= 10) return "#FFD955";
+  if (p >=  7) return "#5BE0CE";
+  return "#B5B5FF";
+}
+const el = document.getElementById("gu-grid");
+grid.flat().forEach(name => {
+  const p = prices[name];
+  const card = document.createElement("div");
+  card.className = "gu-card";
+  card.style.background = colorFor(p);
+  card.innerHTML = `
+    <div class="gu-name">${name}</div>
+    <div class="gu-price">${p.toFixed(1)}</div>
+  `;
+  el.appendChild(card);
+});
+</script>
+
+</body>
+</html>

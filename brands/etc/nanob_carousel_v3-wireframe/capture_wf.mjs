@@ -1,0 +1,12 @@
+import puppeteer from 'puppeteer';
+import { fileURLToPath } from 'url';
+import { dirname, resolve } from 'path';
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const b = await puppeteer.launch({ headless: true });
+const p = await b.newPage();
+await p.setViewport({ width: 1080, height: 1440, deviceScaleFactor: 1 });
+await p.goto(`file://${resolve(__dirname, 'wireframe.html')}`, { waitUntil: 'networkidle0' });
+const el = await p.$('#slide-1');
+await el.screenshot({ path: resolve(__dirname, 'wireframe.png'), type: 'png' });
+console.log('wireframe.png saved');
+await b.close();

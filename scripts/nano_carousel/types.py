@@ -14,7 +14,12 @@ MascotPose = Literal[
 
 @dataclass(frozen=True)
 class SlideSpec:
-    """Input contract: what a single slide should say."""
+    """Input contract: what a single slide should say.
+
+    ``overrides`` lets a caller bypass auto-detected coordinates and
+    specify exact placement for specific roles. Partial overrides merge
+    with detected values. Supported keys per role: x, y, w, h, size.
+    """
     idx: int
     layout: LayoutType
     mascot_pose: MascotPose
@@ -22,6 +27,7 @@ class SlideSpec:
     body_lines: list[str]
     checkpoint_lines: list[str]
     whisper: str
+    overrides: dict | None = None
 
 
 @dataclass(frozen=True)

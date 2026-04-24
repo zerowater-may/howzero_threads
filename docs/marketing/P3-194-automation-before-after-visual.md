@@ -1,0 +1,1 @@
+P3-194: Before/After 비주얼 시리즈 — 자동화 전후를 시각적으로 충격 표현. 모든 콘텐츠에 Before(빨강, 혼란, 수동)/After(초록, 깔끔, 자동) 비주얼 통일. 숏폼: 화면 분할(좌:Before 우:After) + 숫자 오버레이. 캐러셀: Slide1 Before → Slide2 After → Slide3 "어떻게?". 가장 직관적 = 가장 높은 저장/공유 = 가장 강한 전환. KPI: Before/After 콘텐츠 저장율 7%+, 일반 대비 공유 2배.

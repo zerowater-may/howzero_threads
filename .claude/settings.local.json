@@ -1,0 +1,63 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__excalidraw__read_me",
+      "mcp__excalidraw__create_view",
+      "mcp__excalidraw__export_to_excalidraw",
+      "Bash(ls /Users/zerowater/Dropbox/zerowater/howzero/docs/content/A-*.md)",
+      "Bash(ls /Users/zerowater/Dropbox/zerowater/howzero/docs/content/B-*.md)",
+      "Bash(ls /Users/zerowater/Dropbox/zerowater/howzero/docs/content/C-*.md)",
+      "Bash(ls /Users/zerowater/Dropbox/zerowater/howzero/docs/content/D-*.md)",
+      "Bash(ls /Users/zerowater/Dropbox/zerowater/howzero/docs/content/E-*.md)",
+      "Bash(ls /Users/zerowater/Dropbox/zerowater/howzero/docs/content/email-*.md)",
+      "Bash(ls /Users/zerowater/Dropbox/zerowater/howzero/docs/content/cta-*.md)",
+      "Bash(ls /Users/zerowater/Dropbox/zerowater/howzero/docs/marketing/P1-*.md)",
+      "Bash(ls /Users/zerowater/Dropbox/zerowater/howzero/docs/marketing/P2-*.md)",
+      "Bash(ls /Users/zerowater/Dropbox/zerowater/howzero/docs/marketing/P3-*.md)",
+      "Bash(head -5 /Users/zerowater/Dropbox/zerowater/howzero/docs/content/B-001-*.md)",
+      "Bash(tmux -V)",
+      "Bash(mkdir -p /Users/zerowater/Dropbox/zerowater/howzero/.claude/skills/carousel/brands/zipsaja-assets)",
+      "Bash(cp /Users/zerowater/.claude/image-cache/4d74e807-4d40-4e63-a1e0-ebe2699023c9/6.png /Users/zerowater/Dropbox/zerowater/howzero/.claude/skills/carousel/brands/zipsaja-assets/mascot.png)",
+      "Bash(mkdir -p /Users/zerowater/Dropbox/zerowater/howzero/docs/content/carousel-gayang-zipsaja)",
+      "Bash(cp /Users/zerowater/Dropbox/zerowater/howzero/.claude/skills/carousel/brands/zipsaja-assets/mascot.png /Users/zerowater/Dropbox/zerowater/howzero/docs/content/carousel-gayang-zipsaja/mascot.png)",
+      "Bash(mkdir -p /Users/zerowater/Dropbox/zerowater/howzero/.claude/skills/carousel/brands/highoutputclub/assets)",
+      "Bash(cp /tmp/highoutputclub/highoutputclub/*.jpg /Users/zerowater/Dropbox/zerowater/howzero/.claude/skills/carousel/brands/highoutputclub/assets/)",
+      "Bash(mkdir -p /Users/zerowater/Dropbox/zerowater/howzero/.claude/skills/carousel/brands/highestlevel33/assets)",
+      "Bash(cp /tmp/highestlevel33/highestlevel33/*.jpg /Users/zerowater/Dropbox/zerowater/howzero/.claude/skills/carousel/brands/highestlevel33/assets/)",
+      "Bash(rm seoul_raw.svg)",
+      "Bash(mkdir -p assets)",
+      "Bash(cp /Users/zerowater/Dropbox/zerowater/howzero/.claude/skills/carousel/brands/zipsaja/assets/mascot-hero.png /Users/zerowater/Dropbox/zerowater/howzero/.claude/skills/carousel/brands/zipsaja/assets/mascot-happy.png assets/)",
+      "Bash(cp /Users/zerowater/Dropbox/zerowater/howzero/docs/content/carousel-zipsaja-gayang-20260420/package.json .)",
+      "Bash(mkdir -p /Users/zerowater/Dropbox/zerowater/howzero/docs/content/carousel-zipsaja-10y-ago-20260422/assets)",
+      "Bash(cp /Users/zerowater/Dropbox/zerowater/howzero/.claude/skills/carousel/brands/zipsaja/assets/mascot-worried.png /Users/zerowater/Dropbox/zerowater/howzero/docs/content/carousel-zipsaja-10y-ago-20260422/assets/)",
+      "Bash(cp /Users/zerowater/Dropbox/zerowater/howzero/docs/content/carousel-zipsaja-gayang-20260420/package.json /Users/zerowater/Dropbox/zerowater/howzero/docs/content/carousel-zipsaja-10y-ago-20260422/)",
+      "Bash(ln -sf /Users/zerowater/Dropbox/zerowater/howzero/docs/content/carousel-zipsaja-gayang-20260420/node_modules /Users/zerowater/Dropbox/zerowater/howzero/docs/content/carousel-zipsaja-10y-ago-20260422/node_modules)",
+      "Bash(mkdir -p .claude/skills/carousel/brands/zipsaja/reels/src)",
+      "Bash(mkdir -p .claude/skills/carousel/brands/zipsaja/reels/public/slides)",
+      "Bash(mkdir -p .claude/skills/carousel/brands/zipsaja/reels/public/audio)",
+      "Bash(mkdir -p out)",
+      "Bash(npx remotion *)",
+      "Bash(touch /Users/zerowater/Dropbox/zerowater/howzero/.worktrees/zipsaja-content/.claude/skills/zipsaja-content/lib/__init__.py)",
+      "Bash(touch /Users/zerowater/Dropbox/zerowater/howzero/.worktrees/zipsaja-content/.claude/skills/zipsaja-content/lib/geo/__init__.py)",
+      "Bash(touch /Users/zerowater/Dropbox/zerowater/howzero/.worktrees/zipsaja-content/.claude/skills/zipsaja-content/tests/__init__.py)",
+      "Bash(touch /Users/zerowater/Dropbox/zerowater/howzero/.worktrees/zipsaja-content/.claude/skills/zipsaja-content/output/.gitkeep)",
+      "Bash(ffprobe -v error -show_entries stream=width,height,duration,nb_frames,r_frame_rate,bit_rate -of json out/zipsaja-sanggye.mp4)",
+      "Bash(mkdir -p out/frames)",
+      "Bash(ffmpeg -y -i out/zipsaja-sanggye.mp4 -vf \"select='eq\\(n,60\\)+eq\\(n,150\\)+eq\\(n,250\\)+eq\\(n,350\\)+eq\\(n,450\\)+eq\\(n,550\\)+eq\\(n,650\\)+eq\\(n,750\\)+eq\\(n,850\\)'\" -vsync vfr -q:v 2 out/frames/frame-%02d.jpg)",
+      "Bash(cp .claude/settings.local.json .claude/settings.local.json.bak)",
+      "Bash(python3 -c ' *)"
+    ]
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/zerowater/Dropbox/zerowater/howzero/.claude/skills/brands-organize/scripts/check-leftover.sh"
+          }
+        ]
+      }
+    ]
+  }
+}

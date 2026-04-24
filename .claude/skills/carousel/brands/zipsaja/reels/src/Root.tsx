@@ -4,11 +4,16 @@ import { Slide1Cover } from "./slides/Slide1Cover";
 import { NowonSanggyeReel, NOWON_SANGGYE_TOTAL_FRAMES } from "./NowonSanggyeReel";
 import { NowonSanggyeCarousel, NOWON_SANGGYE_CAROUSEL_TOTAL_FRAMES } from "./NowonSanggyeCarousel";
 import { SeoulPriceReel, SEOUL_PRICE_TOTAL_FRAMES } from "./SeoulPriceReel";
-// Data source: hand-transcribed screenshot fixture (Task 1). batch_server PG has no
-// Seoul real-estate tables (verified 2026-04-24), so the sample JSON is the
-// authoritative input. The scripts/zipsaja_seoul_prices fetcher infrastructure is
-// in place for a future dataset but is not wired to a live table yet.
-import seoulPricesSample from "../public/data/seoul-prices.sample.json";
+import {
+  SeoulWeeklyRateReel,
+  SEOUL_WEEKLY_RATE_TOTAL_FRAMES,
+  type SeoulWeeklyRateDataset,
+} from "./SeoulWeeklyRateReel";
+import seoulWeeklyData from "../public/data/seoul-weekly-rate.json";
+// Data source: proptech_db on hh-worker-2 (real_prices JOIN complexes).
+// Period split at 2025-06-04 (이재명 대통령 취임일). 300세대 이상 아파트 매매 A1.
+// Query: scripts/zipsaja_seoul_prices/__main__.py (updated for hh-worker-2 connection).
+import seoulPricesData from "../public/data/seoul-prices.json";
 import type { SeoulPriceDataset } from "./data/seoulPriceTypes";
 
 const COVER_DURATION = 210;
@@ -56,7 +61,16 @@ export const Root: React.FC = () => {
         fps={FPS}
         width={1080}
         height={1920}
-        defaultProps={{ data: seoulPricesSample as SeoulPriceDataset }}
+        defaultProps={{ data: seoulPricesData as SeoulPriceDataset }}
+      />
+      <Composition
+        id="SeoulWeeklyRateReel"
+        component={SeoulWeeklyRateReel}
+        durationInFrames={SEOUL_WEEKLY_RATE_TOTAL_FRAMES}
+        fps={FPS}
+        width={1080}
+        height={1920}
+        defaultProps={{ data: seoulWeeklyData as SeoulWeeklyRateDataset }}
       />
     </>
   );

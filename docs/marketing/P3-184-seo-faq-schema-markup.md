@@ -1,0 +1,1 @@
+P3-184: FAQ Schema.org 마크업 전략 — 모든 페이지에 FAQ 구조화 데이터. 모든 블로그/랜딩/가격 페이지에 FAQ Schema 삽입. 구글 검색에서 FAQ 드롭다운 표시 → 검색 면적 2~3배 확장. 구현: Next.js JSON-LD 자동 삽입 (Claude Code: 블로그 발행 시 FAQ 데이터 자동 생성). 예: "비개발자도 Claude Code 쓸 수 있나요?" FAQ → 구글 Rich Snippet. KPI: FAQ Rich Snippet 노출 20키워드+, CTR +20%.

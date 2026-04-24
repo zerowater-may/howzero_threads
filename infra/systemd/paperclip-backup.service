@@ -1,0 +1,9 @@
+[Unit]
+Description=Paperclip PostgreSQL Backup
+After=postgresql.service
+
+[Service]
+Type=oneshot
+User=paperclip
+Group=paperclip
+ExecStart=/opt/paperclip/scripts/backup-db.sh

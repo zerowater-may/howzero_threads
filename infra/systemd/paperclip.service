@@ -1,0 +1,34 @@
+[Unit]
+Description=Paperclip AI Agent Platform
+After=network.target postgresql.service docker.service
+Wants=postgresql.service
+
+[Service]
+Type=simple
+User=paperclip
+Group=paperclip
+WorkingDirectory=/opt/paperclip
+ExecStart=/usr/bin/npx paperclipai start --instance production
+Restart=always
+RestartSec=5
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
+# Environment
+Environment=NODE_ENV=production
+EnvironmentFile=/opt/paperclip/.env
+
+# Security hardening
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/opt/paperclip /var/log/paperclip
+PrivateTmp=yes
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=paperclip
+
+[Install]
+WantedBy=multi-user.target

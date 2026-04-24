@@ -1,0 +1,24 @@
+viral 
+
+https://github.com/charlesdove977/goviralbro?mcp_token=eyJwaWQiOjQxMzE3OTQsInNpZCI6MTMyOTk0OTY1OSwiYXgiOiJjMTE3N2YwYTA0ZGZlZjY0NDhkNTYzYWRiY2ZiNDA3YSIsInRzIjoxNzc1MjY0MTE2LCJleHAiOjE3Nzc2ODMzMTZ9.wGZKHz1t1AfF1HZuXwkLs7VlVVoW0TzlE_rBd4fd2o0&fbclid=PARlRTSAQ9QNlleHRuA2FlbQIxMABzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAafich_NMV65lM7JFdKt8p-hLWocLBHj6pOF2O4kfnZGmEx-wJKIsf-A8sQJRQ_aem_cC10ZOPcGzVgebpg3UIiXw
+
+
+카드뉴스 캐러셀
+https://m.blog.naver.com/PostView.naver?blogId=sponge-ai&logNo=224237290083&proxyReferer=https:%2F%2Finstagram.com%2F&trackingCode=external&fbclid=PARlRTSAQ9QnBleHRuA2FlbQIxMABzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAadLyhvdanuifmlzKG1MuF_yPWqiripwBxWf3OSU2Tk08YY6CwiCVc3RArIP0Q_aem_FZJLXB8aEVkGMXe8OiDusw
+
+
+계정 레퍼런스 / Free claude
+https://assets.stanwith.me/live/msc/26131308/1n4mp/mecfreeclaudeguide.pdf?fbclid=PARlRTSAQ9QsBleHRuA2FlbQIxMABzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAacYNyEe9kDGip-DyxaBqDa7n-oMEvkddR5ItV55i7JMVj_q11phJxrzVMYNyA_aem_EN3xOGBd-eFUJFo41Qkohg
+
+
+데이터시각화 The tool is called MiroFish
+https://github.com/666ghj/MiroFish
+
+
+obsidian / excalidraw
+https://www.notion.so/How-to-Build-Your-Second-Brain-with-Claude-Code-Obsidian-3263674dbe00810a9e5ef035619b8da1?fbclid=PARlRTSAQ9Q7xleHRuA2FlbQIxMABzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAadzy76uU4iKtzUWbejMGEgOOByMpQap8p-jPgYCHVbe55IfHI4ZxIIProVGfw_aem_YcZMLUz20gxqxC-QLagxkA
+
+
+marketing 
+
+https://www.notion.so/10-Best-Claude-Skill-Repos-for-Marketing-2026-336080bd368b81d08d81e7d34e9c9134?fbclid=PARlRTSAQ9RCRleHRuA2FlbQIxMABzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAadzy76uU4iKtzUWbejMGEgOOByMpQap8p-jPgYCHVbe55IfHI4ZxIIProVGfw_aem_YcZMLUz20gxqxC-QLagxkA
