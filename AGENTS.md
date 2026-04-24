@@ -80,6 +80,7 @@ howzero/
 | `newsletter` | 뉴스레터 | `howzero_newsletter/D-***.md` |
 | `linkedin` | 링크드인 포스트 | `howzero_linkedin/E-***.md` |
 | `misc` | 1회성 자료 | `howzero_misc_cta-templates.md` |
+| `pipeline` | 통합 산출물 bundle (data.json + carousel + reels + attachments + captions) | `zipsaja_pipeline_leejaemyung-seoul` |
 
 **파일 작업 시:**
 1. ls 정렬 시 같은 type끼리 묶이도록 prefix 일관 유지
@@ -156,3 +157,49 @@ python3 -m scripts.yt_highlights <YouTube URL> --out <dir>
 - [docs/MARKETING-MASTER-STRATEGY.md](docs/MARKETING-MASTER-STRATEGY.md) — 마스터 전략
 - [docs/superpowers/plans/](docs/superpowers/plans/) — 구현 plan
 - [docs/persona-howzero-identity.md](docs/persona-howzero-identity.md) — 페르소나 상세
+
+---
+
+## 8. 콘텐츠 파이프라인 (`/pipeline`)
+
+주제 입력 → 브랜드별 데이터 수집 → 통합 번들 생성.
+
+### 브랜드 × 데이터 소스 매핑
+
+| 브랜드 | 데이터 소스 | 상태 |
+|---|---|---|
+| **zipsaja** | SSH `hh-worker-2` → `proptech_db` (real_prices × complexes) | **필수** (Plan 1 MVP 구현) |
+| **howzero** | 없음 (주제 텍스트만) | TBD — Plan 2+에서 데이터 소스 확정 시 매핑 추가 |
+| **braveyong** | 없음 (주제 텍스트만) | TBD — 동일 |
+
+### zipsaja SSH 접속 (고정)
+
+- SSH alias: `hh-worker-2` (151.245.106.86, root) — **batch_server 아님**
+- DB: `postgresql://proptech@localhost:5432/proptech_db`
+- Password: `/opt/proptech/.env` 의 DATABASE_URL 참조
+- 주요 테이블: `real_prices` (2.4M rows, trade_type A1 = 매매) × `complexes` (1377 rows, total_units + gu)
+- 비밀번호 획득: `ssh hh-worker-2 'grep DATABASE_URL /opt/proptech/.env'`
+
+### 사용
+
+```bash
+# zipsaja — 데이터 자동 페치
+python3 -m scripts.pipeline zipsaja 이재명 당선후 서울 실거래 변화
+
+# howzero/braveyong — 데이터 없이 state만
+python3 -m scripts.pipeline howzero 1인 기업가 시간관리
+```
+
+### 산출물 위치
+
+`brands/{brand}/{brand}_pipeline_{slug}/` — Plan 1 MVP는 `pipeline-state.json` + `data.json`까지. Plan 2+는 같은 번들에 carousel·reels·attachments·captions 추가.
+
+### 관련 스킬
+
+- `/pipeline` — 마스터 스킬 (`.claude/skills/pipeline/`)
+- `/zipsaja-data-fetch` — zipsaja 데이터 페처 (`.claude/skills/zipsaja-data-fetch/`)
+
+### 참고 문서
+
+- 설계: [docs/superpowers/specs/2026-04-24-brand-content-pipeline-design.md](docs/superpowers/specs/2026-04-24-brand-content-pipeline-design.md)
+- Plan 1 MVP: [docs/superpowers/plans/2026-04-24-pipeline-mvp.md](docs/superpowers/plans/2026-04-24-pipeline-mvp.md)
