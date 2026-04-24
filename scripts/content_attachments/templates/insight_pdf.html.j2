@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>{{ dataset.title }}</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 1.8cm; }
+  body { font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif; color:#1a1a1a; line-height:1.5; }
+  h1 { color:#EA2E00; font-size:24px; border-bottom:3px solid #EA2E00; padding-bottom:8px; }
+  h2 { color:#1a1a1a; font-size:16px; margin-top:20px; }
+  .meta { color:#666; font-size:11px; margin:8px 0 20px; }
+  table { width:100%; border-collapse:collapse; margin-top:10px; }
+  th { background:#F5EDE0; color:#1a1a1a; padding:7px; border:1px solid #ccc; font-size:11px; }
+  td { padding:5px 7px; border:1px solid #eee; font-size:11px; }
+  td.gu { color:#EA2E00; font-weight:700; }
+  td.price { text-align:right; }
+  td.pct { text-align:right; font-weight:700; }
+  td.pct.pos { color:#EA2E00; }
+  td.pct.neg { color:#1A4FA0; }
+  .summary { background:#F5EDE0; border-left:4px solid #EA2E00; padding:14px; margin-top:16px; }
+  .summary p { margin:4px 0; font-size:12px; }
+  .footer { margin-top:24px; padding-top:10px; border-top:1px solid #ccc; color:#888; font-size:10px; }
+</style>
+</head>
+<body>
+
+<h1>{{ dataset.title }}</h1>
+<p class="meta">{{ dataset.periodLabel }} · 출처 {{ dataset.source }}</p>
+
+<h2>요약 인사이트</h2>
+<div class="summary">
+  <p><strong>최대 상승:</strong> {{ insights.top_gu }} {{ "%+.1f"|format(insights.top_pct) }}%</p>
+  <p><strong>최대 하락:</strong> {{ insights.bottom_gu }} {{ "%+.1f"|format(insights.bottom_pct) }}%</p>
+  <p><strong>전체 평균:</strong> {{ "%+.1f"|format(insights.avg_pct) }}%</p>
+</div>
+
+<h2>전체 25개 구 데이터</h2>
+<table>
+  <thead>
+    <tr>
+      <th>지역</th>
+      <th>취임 전 (만원)</th>
+      <th>취임 후 (만원)</th>
+      <th>변동률</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for d in dataset.districts %}
+    <tr>
+      <td class="gu">{{ d.district }}</td>
+      <td class="price">{{ "{:,}".format(d.priceBefore) }}</td>
+      <td class="price">{{ "{:,}".format(d.priceAfter) }}</td>
+      <td class="pct {% if d.changePct >= 0 %}pos{% else %}neg{% endif %}">
+        {% if d.changePct >= 0 %}+{% endif %}{{ "%.1f"|format(d.changePct) }}%
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<div class="footer">
+  생성 시각 {{ dataset.generatedAt }} · 집사자 (zipsaja)
+</div>
+
+</body>
+</html>
