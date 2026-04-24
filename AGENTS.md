@@ -168,7 +168,7 @@ python3 -m scripts.yt_highlights <YouTube URL> --out <dir>
 
 | 브랜드 | 데이터 소스 | 상태 |
 |---|---|---|
-| **zipsaja** | SSH `hh-worker-2` → `proptech_db` (real_prices × complexes) | **필수** (Plan 1 MVP 구현) |
+| **zipsaja** | SSH `hh-worker-2` → `proptech_db` (real_prices × complexes) | **필수** (Plan 2-5 완료) |
 | **howzero** | 없음 (주제 텍스트만) | TBD — Plan 2+에서 데이터 소스 확정 시 매핑 추가 |
 | **braveyong** | 없음 (주제 텍스트만) | TBD — 동일 |
 
@@ -198,6 +198,42 @@ python3 -m scripts.pipeline howzero 1인 기업가 시간관리
 
 - `/pipeline` — 마스터 스킬 (`.claude/skills/pipeline/`)
 - `/zipsaja-data-fetch` — zipsaja 데이터 페처 (`.claude/skills/zipsaja-data-fetch/`)
+
+### 구현 상태 (Plan 1 + Plan 2-5 완료)
+
+| 단계 | 상태 | 스킬 |
+|---|---|---|
+| 데이터 수집 (zipsaja) | ✅ | `/zipsaja-data-fetch` |
+| 캐러셀 (Jinja2 + Puppeteer) | ✅ | `/content-carousel` |
+| 릴스 (Remotion + ffmpeg) | ✅ | `/content-reels` |
+| 첨부자료 (Excel + PDF) | ✅ | `/content-attachments` |
+| 캡션 (IG/Threads/LinkedIn) | ✅ | `/content-captions` |
+
+### 산출물 bundle 구조
+
+```
+brands/{brand}/{brand}_pipeline_{slug}/
+├── pipeline-state.json
+├── data.json                     # zipsaja: 25개 구 dataset
+├── carousel/
+│   ├── slides.html
+│   └── slide-01.png ~ slide-NN.png
+├── reels/
+│   ├── full.mp4
+│   └── zipsaja-reel-22s.mp4
+├── attachments/
+│   ├── seoul-price-data.xlsx
+│   └── seoul-price-insights.pdf
+└── captions/
+    ├── instagram.txt
+    ├── threads.txt
+    └── linkedin.txt
+```
+
+### 환경 변수 (zipsaja 기준)
+
+- `PG_PASSWORD` — proptech_db (데이터 수집)
+- `ANTHROPIC_API_KEY` — Claude API (캡션 생성)
 
 ### 참고 문서
 
