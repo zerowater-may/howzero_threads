@@ -1,0 +1,27 @@
+{% extends "_base.html.j2" %}
+{% block style %}
+<style>
+  .rb-head { padding: 80px 60px 32px; }
+  .rb-head h1 { font-family: var(--ff-headline); font-size: 64px; margin: 0; }
+  .rb-list { padding: 0 60px; }
+  .rb-row { display: grid; grid-template-columns: 80px 200px 1fr 200px; gap: 16px; align-items: center; padding: 18px 0; border-top: 2px solid var(--zs-ink); }
+  .rb-row:last-child { border-bottom: 2px solid var(--zs-ink); }
+  .rb-rank { font-family: var(--ff-headline); font-size: 56px; color: var(--zs-yellow); }
+  .rb-name { font-family: var(--ff-headline); font-size: 48px; }
+  .rb-bar  { height: 36px; background: var(--zs-yellow); border: 3px solid var(--zs-ink); border-radius: 8px; }
+  .rb-val  { font-family: var(--ff-headline); font-size: 44px; text-align: right; }
+</style>
+{% endblock %}
+{% block content %}
+<div class="rb-head"><h1>{{ title }}</h1></div>
+<div class="rb-list">
+  {% for b in bars %}
+  <div class="rb-row">
+    <div class="rb-rank">{{ loop.index }}</div>
+    <div class="rb-name">{{ b.gu|replace('구','') if b.gu != '중구' else '중구' }}</div>
+    <div><div class="rb-bar" style="width: {{ b.pct }}%;"></div></div>
+    <div class="rb-val">{{ b[metric] }}</div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

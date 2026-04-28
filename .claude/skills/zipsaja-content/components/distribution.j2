@@ -1,0 +1,24 @@
+{% extends "_base.html.j2" %}
+{% block style %}
+<style>
+  .dist-head { padding: 80px 60px 24px; }
+  .dist-head h1 { font-family: var(--ff-headline); font-size: 60px; margin: 0; }
+  .dist-table { padding: 0 60px; width: calc(100% - 120px); border-collapse: collapse; }
+  .dist-table th, .dist-table td { font-family: var(--ff-body); font-weight: 700; font-size: 32px; padding: 14px 8px; text-align: left; border-bottom: 2px solid var(--zs-ink); }
+  .dist-table th { font-family: var(--ff-headline); color: var(--fg-3); font-size: 26px; }
+  .dist-table td.num { text-align: right; font-family: var(--ff-headline); }
+</style>
+{% endblock %}
+{% block content %}
+<div class="dist-head"><h1>{{ title }}</h1></div>
+<table class="dist-table">
+  <tr><th>{{ group_label|default('항목') }}</th><th>매물</th><th class="num">{{ value_label|default('값') }}</th></tr>
+  {% for r in rows %}
+  <tr>
+    <td>{{ r.label }}</td>
+    <td>{{ r.n }}</td>
+    <td class="num">{{ r.value }}{% if r.is_outlier %} ★{% endif %}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

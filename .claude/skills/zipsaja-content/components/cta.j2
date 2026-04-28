@@ -1,0 +1,16 @@
+{% extends "_base.html.j2" %}
+{% block style %}
+<style>
+  .cta-wrap { display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; padding:100px 60px; background:var(--zs-ink); color:#fff; }
+  .cta-handle { font-family: var(--ff-headline); font-size:120px; color:var(--zs-yellow); margin-bottom:24px; }
+  .cta-msg { font-family: var(--ff-body); font-weight:700; font-size:48px; text-align:center; color:#fff; }
+  .zs-foot { color: rgba(255,255,255,0.7); }
+  .zs-foot b { color: #fff; }
+</style>
+{% endblock %}
+{% block content %}
+<div class="cta-wrap">
+  <div class="cta-handle">{{ handle }}</div>
+  <div class="cta-msg">{{ msg }}</div>
+</div>
+{% endblock %}

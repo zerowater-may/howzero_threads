@@ -1,0 +1,27 @@
+{% extends "_base.html.j2" %}
+{% block style %}
+<style>
+  .c2-head { padding: 80px 60px 24px; }
+  .c2-head h1 { font-family: var(--ff-headline); font-size: 60px; margin:0; }
+  .c2-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; padding: 24px 60px; }
+  .c2-cell { background: var(--zs-cream); border: 3px solid var(--zs-ink); border-radius: 16px; padding: 60px 32px; text-align: center; box-shadow: 4px 4px 0 0 var(--zs-ink); }
+  .c2-cell.right { background: var(--zs-yellow); }
+  .c2-label { font-family: var(--ff-headline); font-size: 48px; }
+  .c2-value { font-family: var(--ff-headline); font-size: 110px; color: var(--zs-ink); margin-top: 16px; line-height:1; }
+  .c2-sub { padding: 32px 60px 0; font-family: var(--ff-body); font-weight: 700; font-size: 36px; color: var(--fg-2); text-align:center; }
+</style>
+{% endblock %}
+{% block content %}
+<div class="c2-head"><h1>{{ title|default('') }}</h1></div>
+<div class="c2-grid">
+  <div class="c2-cell">
+    <div class="c2-label">{{ left.label }}</div>
+    <div class="c2-value">{{ left.value }}</div>
+  </div>
+  <div class="c2-cell right">
+    <div class="c2-label">{{ right.label }}</div>
+    <div class="c2-value">{{ right.value }}</div>
+  </div>
+</div>
+{% if sub %}<div class="c2-sub">{{ sub }}</div>{% endif %}
+{% endblock %}

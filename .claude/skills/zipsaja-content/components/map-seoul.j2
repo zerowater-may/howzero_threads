@@ -1,0 +1,44 @@
+{% extends "_base.html.j2" %}
+{% block style %}
+<style>
+  .map-head { padding: 80px 60px 20px; }
+  .map-head h1 { font-family: var(--ff-headline); font-size: 72px; margin: 0; line-height: 1.05; }
+  .map-head .sub { font-family: var(--ff-body); font-weight:700; font-size:26px; color: var(--fg-3); margin-top:6px; }
+  .map-svg { display:block; margin: 16px auto 0; width: 960px; height: auto; }
+  .map-svg .gu { stroke: var(--zs-ink); stroke-width: 3; stroke-linejoin: round; }
+  .map-svg .gu.t1 { fill: #ffffff; }
+  .map-svg .gu.t2 { fill: var(--zs-cream); }
+  .map-svg .gu.t3 { fill: #FFD8C9; }
+  .map-svg .gu.t4 { fill: var(--zs-yellow); }
+  .map-svg .gu.t5 { fill: var(--zs-orange-deep); }
+  .map-svg .lbl text { text-anchor: middle; font-family: var(--ff-headline); font-weight: 700; paint-order: stroke; stroke: rgba(255,255,255,0.6); stroke-width: 4; fill: var(--zs-ink); }
+  .map-svg .lbl-t4 text, .map-svg .lbl-t5 text { fill: #fff; stroke: rgba(0,0,0,0.35); }
+  .map-svg .lbl .n { font-size: 22px; }
+  .map-svg .lbl .v { font-size: 32px; }
+</style>
+{% endblock %}
+{% block content %}
+<div class="map-head">
+  <h1>{{ title }}</h1>
+  <div class="sub">{{ sub|default('') }}</div>
+</div>
+<svg class="map-svg" viewBox="{{ geo.viewbox }}" xmlns="http://www.w3.org/2000/svg">
+  {% for name, d in geo.paths.items() %}
+    {% set row = rows_by_gu.get(name) %}
+    {% if row %}
+      <path class="gu t{{ row.tier }}" d="{{ d }}" data-name="{{ name }}"/>
+    {% else %}
+      <path class="gu t1" d="{{ d }}" data-name="{{ name }}"/>
+    {% endif %}
+  {% endfor %}
+  {% for name, c in geo.centroids.items() %}
+    {% set row = rows_by_gu.get(name) %}
+    {% if row %}
+      <g class="lbl lbl-t{{ row.tier }}" transform="translate({{ c[0] }} {{ c[1] }})">
+        <text class="n" y="-6">{{ name|replace("구","") if name != "중구" else "중" }}{% if row.is_outlier %} ★{% endif %}</text>
+        <text class="v" y="22">{{ row[metric] }}</text>
+      </g>
+    {% endif %}
+  {% endfor %}
+</svg>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "_base.html.j2" %}
+{% block style %}
+<style>
+  .dd-head { padding: 80px 60px 16px; }
+  .dd-head h1 { font-family: var(--ff-headline); font-size: 72px; margin: 0; }
+  .dd-target { font-family: var(--ff-headline); font-size: 110px; color: var(--zs-yellow); padding: 0 60px; line-height: 1; }
+  .dd-bullets { padding: 32px 60px; font-family: var(--ff-body); font-weight: 700; font-size: 38px; line-height: 1.6; }
+  .dd-bullets li { margin-bottom: 12px; }
+</style>
+{% endblock %}
+{% block content %}
+<div class="dd-head"><h1>{{ title }}</h1></div>
+<div class="dd-target">{{ target }}</div>
+<ul class="dd-bullets">
+  {% for b in bullets %}<li>{{ b }}</li>{% endfor %}
+</ul>
+{% endblock %}
