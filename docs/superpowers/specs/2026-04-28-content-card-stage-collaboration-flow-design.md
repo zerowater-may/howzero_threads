@@ -1,9 +1,9 @@
 # Content Card Stage Collaboration Flow Design
 
-> Date: 2026-04-28  
-> Repo: `/Users/zerowater/Dropbox/zerowater/howzero-dashboard`  
-> Worktree: `/Users/zerowater/.config/superpowers/worktrees/howzero-dashboard/howaaa-trends-redesign-impl`  
-> Diagram: `docs/superpowers/specs/2026-04-28-content-card-stage-collaboration-flow.excalidraw.md`  
+> Date: 2026-04-28
+> Repo: `/Users/zerowater/Dropbox/zerowater/howzero-dashboard`
+> Worktree: `/Users/zerowater/.config/superpowers/worktrees/howzero-dashboard/howaaa-trends-redesign-impl`
+> Diagram: `docs/superpowers/specs/2026-04-28-content-card-stage-collaboration-flow.excalidraw.md`
 > Depends on:
 > - `docs/superpowers/specs/2026-04-27-howaa-actor-workforce-collaboration-design.md`
 > - `docs/superpowers/specs/2026-04-27-content-detail-board-redesign-design.md`
@@ -79,6 +79,7 @@ docs/superpowers/specs/2026-04-28-content-card-stage-collaboration-flow.excalidr
 ```txt
 docs/superpowers/specs/2026-04-28-content-card-stage-collaboration-flow/
 ├── README.md
+├── 00-overview-stage-plan.md
 ├── 00-overview-stage-map.excalidraw.md
 ├── 01-sourcing-stage-plan.md
 ├── 01-sourcing-stage-map.excalidraw.md
