@@ -74,11 +74,16 @@ AI 전략, 작업내역, 실행 상태, 활동, 산출물, 지시/스킬 근거,
 docs/superpowers/specs/2026-04-28-content-card-stage-collaboration-flow.excalidraw.md
 ```
 
-1~3단계만 따로 보는 축약 다이어그램과 상세 기획:
+단계별 분해 문서:
 
 ```txt
-docs/superpowers/specs/2026-04-28-content-card-first-3-steps-flow.excalidraw.md
-docs/superpowers/specs/2026-04-28-content-card-first-3-steps-design.md
+docs/superpowers/specs/2026-04-28-content-card-stage-collaboration-flow/
+├── README.md
+├── 00-overview-stage-map.excalidraw.md
+├── 01-sourcing-stage-plan.md
+├── 01-sourcing-stage-map.excalidraw.md
+├── ...
+└── 07-repurpose-stage-plan.md
 ```
 
 다이어그램은 5개 영역으로 구성된다.
