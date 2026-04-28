@@ -7,6 +7,12 @@ description: 기존 카드뉴스 캐러셀(docs/content/carousel-*/)을 Remotion
 
 기존 카러셀(`docs/content/carousel-*/slides.html`)을 9:16 릴스 MP4로 변환합니다.
 
+## zipsaja 신규 제작 예외
+
+이 스킬은 일반/legacy 캐러셀 → Remotion 변환 경로다.
+신규 zipsaja 콘텐츠 제작은 `zipsaja-remotion-render` 또는 `zipsaja-remotion-orchestrator`를 우선 사용한다.
+신규 zipsaja 릴스에는 HyperFrames를 사용하지 않는다.
+
 ---
 
 ## 워크플로우

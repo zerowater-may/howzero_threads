@@ -3,12 +3,12 @@
 Usage:
   python3 -m scripts.pipeline zipsaja 이재명 당선후 서울 실거래 변화
 
-Flow (MVP):
+Flow:
   1. Parse brand + topic
   2. Validate brand
   3. Compute slug + bundle path + pipeline_id
   4. Create PipelineState
-  5. If brand needs data fetch → invoke scripts.zipsaja_data_fetch
+  5. If brand needs data fetch → invoke scripts.zipsaja_data_fetch, then content generators
      Otherwise skip (howzero/braveyong: Plan 2+ will add content generation from topic only)
   6. Save state → brands/{brand}/{brand}_pipeline_{slug}/pipeline-state.json
 """
@@ -28,7 +28,19 @@ from .paths import bundle_path, make_slug, state_file_path
 from .state import PipelineState
 
 
-def build_parser() -> argparse.ArgumentParser:
+ZIPSAJA_REMOTION_STEPS = [
+    "brief",
+    "data",
+    "storyboard",
+    "carousel",
+    "remotion",
+    "attachments",
+    "captions",
+    "package-qa",
+]
+
+
+def build_parser() -> _TopicJoiningParser:
     parser = argparse.ArgumentParser(
         prog="pipeline",
         description="Brand content pipeline — Phase 1 MVP (master + zipsaja data fetch)",
@@ -58,6 +70,23 @@ def compute_pipeline_id(brand: str, slug: str, *, now: Optional[datetime] = None
     return f"{brand}_{now.strftime('%Y%m%d')}_{slug}"
 
 
+def configure_zipsaja_remotion_state(state: PipelineState) -> None:
+    state.set_workflow(
+        version="zipsaja-remotion-v1",
+        steps=ZIPSAJA_REMOTION_STEPS,
+        forbidden_tools=["hyperframes"],
+    )
+
+
+def zipsaja_content_step_for_artifact(artifact_key: str) -> str:
+    return "remotion" if artifact_key == "reels" else artifact_key
+
+
+def mark_zipsaja_automatic_placeholders_skipped(state: PipelineState) -> None:
+    state.mark_step("brief", "skipped")
+    state.mark_step("storyboard", "skipped")
+
+
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
 
@@ -80,6 +109,8 @@ def main(argv: list[str] | None = None) -> int:
         slug=slug,
         status="pending",
     )
+    if args.brand == "zipsaja":
+        configure_zipsaja_remotion_state(state)
 
     state_path = state_file_path(args.brand, slug)
     state.save(state_path)
@@ -100,7 +131,7 @@ def main(argv: list[str] | None = None) -> int:
 
         result = subprocess.run(cmd, check=False)
         if result.returncode != 0:
-            state.mark_failed("zipsaja-data-fetch", f"CLI exit {result.returncode}")
+            state.mark_failed("data", f"CLI exit {result.returncode}")
             state.save(state_path)
             print(f"[pipeline] zipsaja_data_fetch FAILED ({result.returncode})", file=sys.stderr)
             return result.returncode
@@ -111,6 +142,8 @@ def main(argv: list[str] | None = None) -> int:
             "dataset": json.loads(data_out.read_text(encoding="utf-8")),
         }
         state.status = "data-ready"
+        state.mark_step("data", "done")
+        state.record_artifact("data", str(data_out))
         state.save(state_path)
         print(f"[pipeline] data ready → {len(state.data['dataset']['districts'])} districts", file=sys.stderr)
 
@@ -132,19 +165,22 @@ def main(argv: list[str] | None = None) -> int:
                 check=False,
             )
             if step_result.returncode != 0:
-                state.mark_failed(step_name, f"exit {step_result.returncode}")
+                artifact_key = step_name.split("-", 1)[1]
+                state.mark_failed(zipsaja_content_step_for_artifact(artifact_key), f"exit {step_result.returncode}")
                 state.save(state_path)
                 print(f"[pipeline] {step_name} FAILED ({step_result.returncode}) — remaining steps skipped", file=sys.stderr)
                 return step_result.returncode
             # Record artifact path by stripping "content-" prefix
             artifact_key = step_name.split("-", 1)[1]
-            state.artifacts[artifact_key] = {"path": str(bundle / artifact_key)}
+            state.record_artifact(artifact_key, str(bundle / artifact_key))
+            state.mark_step(zipsaja_content_step_for_artifact(artifact_key), "done")
             state.save(state_path)
             print(f"[pipeline] ✓ {step_name}", file=sys.stderr)
 
-        state.status = "completed"
+        state.status = "qa-pending"
+        mark_zipsaja_automatic_placeholders_skipped(state)
         state.save(state_path)
-        print(f"[pipeline] 🎉 all steps completed → {bundle}", file=sys.stderr)
+        print(f"[pipeline] content generated; package QA pending → {bundle}", file=sys.stderr)
     else:
         print(f"[pipeline] brand={args.brand} — no data fetch step (Plan 2+ will add content generation)", file=sys.stderr)
         state.status = "data-ready"

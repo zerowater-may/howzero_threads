@@ -1,24 +1,24 @@
 ---
 name: pipeline
-description: 브랜드 선택 + 주제 입력 → 데이터 수집 (zipsaja만) + pipeline-state.json 생성. content-* 산출물 스킬들의 기반 스킬. 트리거 — `/pipeline`, "파이프라인 돌려", "콘텐츠 생성 시작".
+description: 브랜드 선택 + 주제 입력 → zipsaja 데이터 수집 + 캐러셀·Remotion 릴스·첨부자료·캡션 생성 + QA 대기 상태 기록. 트리거 — `/pipeline`, "파이프라인 돌려", "콘텐츠 생성 시작".
 ---
 
 # Brand Content Pipeline 마스터 스킬
 
-`/pipeline <brand> <주제>` 진입점. Phase 1 MVP는 zipsaja용 데이터 수집 + 번들 폴더 초기화까지만 수행. 캐러셀·릴스·첨부자료·캡션은 Plan 2+의 content-* 스킬이 같은 번들에 추가로 기록.
+`/pipeline <brand> <주제>` 진입점. zipsaja는 데이터 수집 후 같은 번들 안에 캐러셀, Remotion 릴스, 첨부자료, 캡션까지 자동 생성한다. 자동 생성이 끝나면 `status="qa-pending"`으로 남기고 `package-qa` 단계는 `pending` 상태로 둔다.
 
 ## 지원 브랜드
 
 | 브랜드 | 데이터 소스 | 상태 |
 |---|---|---|
-| zipsaja | SSH hh-worker-2 → proptech_db (real_prices × complexes) | ✅ MVP 지원 |
+| zipsaja | SSH hh-worker-2 → proptech_db (real_prices × complexes) | ✅ 데이터 + 콘텐츠 생성 + QA 대기 |
 | howzero | 없음 (주제 텍스트만, 향후 추가) | ⏳ Plan 2+ |
 | braveyong | 없음 (주제 텍스트만, 향후 추가) | ⏳ Plan 2+ |
 
 ## 사용
 
 ```bash
-# zipsaja (데이터 자동 페치)
+# zipsaja (데이터 자동 페치 + 콘텐츠 자동 생성)
 python3 -m scripts.pipeline zipsaja 이재명 당선후 서울 실거래 변화
 
 # howzero/braveyong (데이터 없이 state만 초기화)
@@ -35,12 +35,25 @@ python3 -m scripts.pipeline howzero 1인 기업가 시간관리
 
 ```
 brands/{brand}/{brand}_pipeline_{slug}/
-├── pipeline-state.json   # 상태 + 메타데이터 + data 블록
-└── data.json             # zipsaja: 25개 구 dataset (Plan 2 캐러셀이 소비)
+├── pipeline-state.json   # 상태 + 메타데이터 + data 블록 + artifact 경로
+├── data.json             # zipsaja: 25개 구 dataset
+├── carousel/
+│   ├── slides.html
+│   └── slide-01.png ...
+├── reels/
+│   ├── full.mp4
+│   └── zipsaja-reel-22s.mp4
+├── attachments/
+│   ├── seoul-price-data.xlsx
+│   └── seoul-price-insights.pdf
+└── captions/
+    ├── instagram.txt
+    ├── threads.txt
+    └── linkedin.txt
 ```
 
 - `slug`는 주제에서 자동 추출 (공백 → 하이픈, 특수문자 제거, 한글 유지).
-- `pipeline-state.json` 은 PipelineState dataclass 직렬화. 실패 시 `status="failed"` + `failed_at` 필드로 재개 가능.
+- `pipeline-state.json` 은 PipelineState dataclass 직렬화. 자동 생성 완료 시 `status="qa-pending"`이며, QA 완료 전에는 `completed`로 표시하지 않는다. 실패 시 `status="failed"` + `failed_at` 필드로 재개 가능.
 
 ## 환경 변수
 
@@ -51,14 +64,19 @@ brands/{brand}/{brand}_pipeline_{slug}/
 ssh hh-worker-2 'grep DATABASE_URL /opt/proptech/.env'
 ```
 
-## 제한 사항 (Plan 1)
+## zipsaja Remotion v1
 
-- ❌ 캐러셀 생성 — Plan 2에서 `content-carousel` 스킬 추가
-- ❌ 릴스 mp4 — Plan 3에서 `content-reels`
-- ❌ Excel/PDF — Plan 4에서 `content-attachments`
-- ❌ 캡션 (IG/Threads/LinkedIn) — Plan 5에서 `content-captions`
+zipsaja는 `zipsaja-remotion-v1` stateful DAG를 사용한다.
+`python3 -m scripts.pipeline zipsaja <주제>`는 `pipeline-state.json`에 Remotion 워크플로우 메타데이터를 기록한 뒤 다음 단계를 자동으로 이어서 실행한다.
 
-Plan 1의 MVP는 **데이터 확보 + 번들 폴더 초기화**까지. 이후 plan들이 같은 번들에 산출물을 덧붙이는 구조.
+1. `scripts.zipsaja_data_fetch`
+2. `scripts.content_carousel`
+3. `scripts.content_reels` (Remotion)
+4. `scripts.content_attachments`
+5. `scripts.content_captions`
+6. `package-qa`는 수동/전용 QA 단계로 `pending` 유지
+
+현재 자동 CLI는 별도 브리프와 스토리보드를 생성하지 않으므로 `brief`, `storyboard`는 `skipped`로 기록한다. 신규 zipsaja 릴스는 Remotion만 사용한다. HyperFrames는 신규 산출물에 사용하지 않는다.
 
 ## 트러블슈팅
 

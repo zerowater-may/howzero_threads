@@ -43,6 +43,12 @@ python3 -m scripts.zipsaja_data_fetch --min-total-units 500 \
   --out brands/zipsaja/zipsaja_pipeline_500plus/data.json
 ```
 
+## Remotion DAG에서의 역할
+
+이 스킬은 `zipsaja-remotion-v1`의 `data` 단계다.
+완료 후 `pipeline-state.json`의 `steps.data = "done"`과 `artifacts.data.path`를 기록한다.
+이 스킬은 영상이나 카러셀을 만들지 않는다.
+
 ## 출력 스키마
 
 ```json

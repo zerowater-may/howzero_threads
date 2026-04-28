@@ -190,6 +190,16 @@ python3 -m scripts.pipeline zipsaja 이재명 당선후 서울 실거래 변화
 python3 -m scripts.pipeline howzero 1인 기업가 시간관리
 ```
 
+### zipsaja Remotion 단일 워크플로우
+
+신규 zipsaja 콘텐츠는 `zipsaja-remotion-v1`을 표준으로 사용한다.
+
+1. `zipsaja-remotion-orchestrator`가 `pipeline-state.json`을 기준으로 다음 단계를 결정한다.
+2. 단계 스킬은 `zipsaja-brief`, `zipsaja-data-fetch`, `zipsaja-storyboard`, `zipsaja-carousel-render`, `zipsaja-remotion-render`, `zipsaja-attachments`, `zipsaja-captions`, `zipsaja-package-qa`로 나눈다.
+3. 신규 zipsaja 릴스는 Remotion만 사용한다.
+4. HyperFrames는 기존 산출물 보관용으로만 취급하고, 신규 zipsaja 릴스 제작에는 사용하지 않는다.
+5. 모든 단계는 `pipeline-state.json`을 읽고 자기 단계 상태와 artifact path를 갱신한다.
+
 ### 산출물 위치
 
 `brands/{brand}/{brand}_pipeline_{slug}/` — Plan 1 MVP는 `pipeline-state.json` + `data.json`까지. Plan 2+는 같은 번들에 carousel·reels·attachments·captions 추가.
