@@ -40,6 +40,10 @@ def map_to_remotion_schema(src: dict[str, Any]) -> dict[str, Any]:
         "periodLabel": src["periodLabel"],
         "sizeLabel": src.get("sizeLabel", ""),
         "source": src["source"],
+        "districtLabel": src.get("districtLabel", "지역"),
+        "beforeLabel": src.get("beforeLabel", "취임 전"),
+        "afterLabel": src.get("afterLabel", "취임 후"),
+        "changeLabel": src.get("changeLabel", "변동률"),
         "districts": mapped_districts,
     }
 

@@ -1,0 +1,55 @@
+{
+  "topic": "신혼부부 3억 모았는데 대출 규제로 1억 더 필요해짐",
+  "hook": "3억 모았는데, 어제보다 1억 더 필요해졌대.",
+  "carousel": [
+    {
+      "slide": 1,
+      "role": "cover",
+      "headline": "3억 모았는데, 어제보다 1억 더 필요해졌대.",
+      "body": [
+        "서울 평균가 12.3억 vs 신혼 평균 자산 3.3억"
+      ],
+      "visual": "zipsaja beige/orange cover"
+    },
+    {
+      "slide": 2,
+      "role": "data",
+      "headline": "핵심 숫자",
+      "body": [
+        "data.json rows"
+      ],
+      "visual": "comparison table"
+    },
+    {
+      "slide": 3,
+      "role": "cta",
+      "headline": "이건 집값 잡는 정책이야, 신혼부부 잡는 정책이야?",
+      "body": [
+        "댓글 유도"
+      ],
+      "visual": "black CTA band"
+    }
+  ],
+  "reel": {
+    "durationSec": 30,
+    "composition": "Remotion",
+    "beats": [
+      {
+        "start": 0,
+        "end": 3,
+        "message": "3억 모았는데, 어제보다 1억 더 필요해졌대."
+      },
+      {
+        "start": 3,
+        "end": 25,
+        "message": "서울 평균가 12.3억 vs 신혼 평균 자산 3.3억"
+      },
+      {
+        "start": 25,
+        "end": 30,
+        "message": "이건 집값 잡는 정책이야, 신혼부부 잡는 정책이야?"
+      }
+    ]
+  },
+  "cta": "이건 집값 잡는 정책이야, 신혼부부 잡는 정책이야?"
+}

@@ -1,0 +1,53 @@
+{
+  "generatedAt": "2026-04-29T06:45:00+09:00",
+  "title": "같은 연봉인데 부모찬스 2억이 인생 난이도를 바꿈",
+  "subtitle": "자기자본 3억 vs 5억, LTV 40% 단순 시뮬레이션",
+  "periodLabel": "2026년 서울 24평급 평균 + 규제지역 LTV 40% 단순 계산",
+  "source": "proptech_db 실거래가, 금융위원회 10.15 대책 FAQ",
+  "sizeLabel": "서울 24평급 · 300세대 이상 · 매매 A1 기준",
+  "districtLabel": "시나리오",
+  "beforeLabel": "자기자본",
+  "afterLabel": "매수가능가",
+  "changeLabel": "확장률",
+  "sheetTitle": "비교 데이터",
+  "ctaHook": "댓글로 싸워보자",
+  "ctaText": "부모찬스 없는 첫집, 노력으로 커버 가능하다고 봐?",
+  "districts": [
+    {
+      "district": "부모찬스 없음",
+      "priceBefore": 30000,
+      "priceAfter": 50000,
+      "changePct": 66.7
+    },
+    {
+      "district": "부모찬스 2억",
+      "priceBefore": 50000,
+      "priceAfter": 83300,
+      "changePct": 66.6
+    },
+    {
+      "district": "선택지 차이",
+      "priceBefore": 20000,
+      "priceAfter": 33300,
+      "changePct": 66.5
+    },
+    {
+      "district": "도봉 평균 접근",
+      "priceBefore": 30000,
+      "priceAfter": 59000,
+      "changePct": 96.7
+    },
+    {
+      "district": "구로 평균 접근",
+      "priceBefore": 30000,
+      "priceAfter": 75000,
+      "changePct": 150.0
+    },
+    {
+      "district": "관악 평균 접근",
+      "priceBefore": 30000,
+      "priceAfter": 87000,
+      "changePct": 190.0
+    }
+  ]
+}

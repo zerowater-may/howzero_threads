@@ -1,0 +1,55 @@
+{
+  "topic": "같은 연봉인데 부모찬스 2억이 인생 난이도를 바꿈",
+  "hook": "네 연봉보다 부모 2억이 더 셌다.",
+  "carousel": [
+    {
+      "slide": 1,
+      "role": "cover",
+      "headline": "네 연봉보다 부모 2억이 더 셌다.",
+      "body": [
+        "자기자본 3억 vs 5억, LTV 40% 단순 시뮬레이션"
+      ],
+      "visual": "zipsaja beige/orange cover"
+    },
+    {
+      "slide": 2,
+      "role": "data",
+      "headline": "핵심 숫자",
+      "body": [
+        "data.json rows"
+      ],
+      "visual": "comparison table"
+    },
+    {
+      "slide": 3,
+      "role": "cta",
+      "headline": "부모찬스 없는 첫집, 노력으로 커버 가능하다고 봐?",
+      "body": [
+        "댓글 유도"
+      ],
+      "visual": "black CTA band"
+    }
+  ],
+  "reel": {
+    "durationSec": 30,
+    "composition": "Remotion",
+    "beats": [
+      {
+        "start": 0,
+        "end": 3,
+        "message": "네 연봉보다 부모 2억이 더 셌다."
+      },
+      {
+        "start": 3,
+        "end": 25,
+        "message": "자기자본 3억 vs 5억, LTV 40% 단순 시뮬레이션"
+      },
+      {
+        "start": 25,
+        "end": 30,
+        "message": "부모찬스 없는 첫집, 노력으로 커버 가능하다고 봐?"
+      }
+    ]
+  },
+  "cta": "부모찬스 없는 첫집, 노력으로 커버 가능하다고 봐?"
+}

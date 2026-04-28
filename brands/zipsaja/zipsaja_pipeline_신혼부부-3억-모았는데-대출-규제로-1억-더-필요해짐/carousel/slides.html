@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>{{ dataset.title }}</title>
+<title>신혼부부 3억 모았는데 대출 규제로 1억 더 필요해짐</title>
 <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;700;900&family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
@@ -45,55 +45,97 @@
 <body>
 
 <div class="slide cover">
-  <h1><span class="pill">{{ dataset.title_short }}</span></h1>
-  <h1 style="font-size:72px; margin-top:36px;">{{ dataset.title_rest }}</h1>
-  <p class="subtitle">{{ dataset.subtitle }}<br>{{ dataset.periodLabel }}</p>
-  <p class="source">{{ dataset.source }}</p>
+  <h1><span class="pill">신혼부부 3억 모았는데</span></h1>
+  <h1 style="font-size:72px; margin-top:36px;">대출 규제로 1억 더 필요해짐</h1>
+  <p class="subtitle">서울 평균가 12.3억 vs 신혼 평균 자산 3.3억<br>서울시 주거실태조사 보도 + 금융위 대출규제 자료 기준</p>
+  <p class="source">서울시 주거실태조사 보도, 금융위원회 대출규제 자료</p>
 </div>
 
-{% for chunk in district_chunks %}
+
 <div class="slide data">
-  <h2>{{ chunk.header }}</h2>
-  <p class="meta">{{ dataset.sizeLabel | default('300세대 이상 아파트 · 평형 무관') }}</p>
+  <h2>신혼 평균 자산 ~ 규제 후 현금부담</h2>
+  <p class="meta">신혼부부 평균 자산 · 서울 평균 아파트 가격 비교</p>
   <table>
     <thead>
       <tr>
-        <th style="width:20%;">{{ dataset.districtLabel | default('지역') }}</th>
-        <th style="width:25%;">{{ dataset.beforeLabel | default('취임 전') }}</th>
-        <th style="width:25%;">{{ dataset.afterLabel | default('취임 후') }}</th>
+        <th style="width:20%;">쟁점</th>
+        <th style="width:25%;">신혼 평균자산</th>
+        <th style="width:25%;">비교 금액</th>
         <th style="width:20%;">바 차트</th>
-        <th style="width:10%;">{{ dataset.changeLabel | default('변동률') }}</th>
+        <th style="width:10%;">격차율</th>
       </tr>
     </thead>
     <tbody>
-      {% for d in chunk.rows %}
+
       <tr>
-        <td class="gu">{{ d.district }}</td>
-        <td class="price">{{ d.priceBefore_display }}</td>
-        <td class="price">{{ d.priceAfter_display }}</td>
+        <td class="gu">신혼 평균 자산</td>
+        <td class="price">3억 3,000만원</td>
+        <td class="price">3억 3,000만원</td>
         <td class="bar-cell">
           <div class="zero"></div>
-          <div class="bar {% if d.changePct >= 0 %}pos{% else %}neg{% endif %}"
-               style="width:{{ d.bar_width_px }}px; {% if d.changePct < 0 %}left:calc(50% - {{ d.bar_width_px }}px);{% endif %}"></div>
+          <div class="bar pos"
+               style="width:0px; "></div>
         </td>
-        <td class="pct {% if d.changePct >= 0 %}pos{% else %}neg{% endif %}">
-          {% if d.changePct >= 0 %}+{% endif %}{{ "%.1f"|format(d.changePct) }}%
+        <td class="pct pos">
+          +0.0%
         </td>
       </tr>
-      {% endfor %}
+
+      <tr>
+        <td class="gu">서울 평균 아파트</td>
+        <td class="price">3억 3,000만원</td>
+        <td class="price">12억 3,000만원</td>
+        <td class="bar-cell">
+          <div class="zero"></div>
+          <div class="bar pos"
+               style="width:100px; "></div>
+        </td>
+        <td class="pct pos">
+          +272.7%
+        </td>
+      </tr>
+
+      <tr>
+        <td class="gu">단순 현금 격차</td>
+        <td class="price">3억 3,000만원</td>
+        <td class="price">9억</td>
+        <td class="bar-cell">
+          <div class="zero"></div>
+          <div class="bar pos"
+               style="width:63px; "></div>
+        </td>
+        <td class="pct pos">
+          +172.7%
+        </td>
+      </tr>
+
+      <tr>
+        <td class="gu">규제 후 현금부담</td>
+        <td class="price">3억 3,000만원</td>
+        <td class="price">4억 3,000만원</td>
+        <td class="bar-cell">
+          <div class="zero"></div>
+          <div class="bar pos"
+               style="width:11px; "></div>
+        </td>
+        <td class="pct pos">
+          +30.3%
+        </td>
+      </tr>
+
     </tbody>
   </table>
 </div>
-{% endfor %}
+
 
 <div class="slide cover">
   <h1 style="margin-top:160px;"><span class="pill">데이터 더</span></h1>
   <h1 style="font-size:72px; margin-top:36px;">궁금하지?</h1>
   <div class="footer-cta">
-    <p class="hook">{{ dataset.ctaHook | default('댓글 달면 보내줄게') }}</p>
-    <h3>{{ dataset.ctaText | default('"엑셀" — 데이터 파일<br>"PDF" — 요약 리포트') | safe }}</h3>
+    <p class="hook">댓글로 싸워보자</p>
+    <h3>이건 집값 잡는 정책이야, 신혼부부 잡는 정책이야?</h3>
   </div>
-  <p class="source">{{ dataset.source }}</p>
+  <p class="source">서울시 주거실태조사 보도, 금융위원회 대출규제 자료</p>
 </div>
 
 </body>

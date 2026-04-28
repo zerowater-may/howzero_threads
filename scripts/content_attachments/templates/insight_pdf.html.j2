@@ -30,19 +30,19 @@
 
 <h2>요약 인사이트</h2>
 <div class="summary">
-  <p><strong>최대 상승:</strong> {{ insights.top_gu }} {{ "%+.1f"|format(insights.top_pct) }}%</p>
-  <p><strong>최대 하락:</strong> {{ insights.bottom_gu }} {{ "%+.1f"|format(insights.bottom_pct) }}%</p>
+  <p><strong>최대 {{ dataset.changeLabel | default('상승') }}:</strong> {{ insights.top_gu }} {{ "%+.1f"|format(insights.top_pct) }}%</p>
+  <p><strong>최소 {{ dataset.changeLabel | default('변동') }}:</strong> {{ insights.bottom_gu }} {{ "%+.1f"|format(insights.bottom_pct) }}%</p>
   <p><strong>전체 평균:</strong> {{ "%+.1f"|format(insights.avg_pct) }}%</p>
 </div>
 
-<h2>전체 25개 구 데이터</h2>
+<h2>전체 데이터</h2>
 <table>
   <thead>
     <tr>
-      <th>지역</th>
-      <th>취임 전 (만원)</th>
-      <th>취임 후 (만원)</th>
-      <th>변동률</th>
+      <th>{{ dataset.districtLabel | default('지역') }}</th>
+      <th>{{ dataset.beforeLabel | default('취임 전') }} (만원)</th>
+      <th>{{ dataset.afterLabel | default('취임 후') }} (만원)</th>
+      <th>{{ dataset.changeLabel | default('변동률') }}</th>
     </tr>
   </thead>
   <tbody>

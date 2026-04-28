@@ -1,0 +1,55 @@
+{
+  "topic": "전세 보증금 올려줬는데 집값 상승분은 집주인이 가져감",
+  "hook": "나는 보증금 올려줬고, 집주인은 집값 오른 걸 가져갔다.",
+  "carousel": [
+    {
+      "slide": 1,
+      "role": "cover",
+      "headline": "나는 보증금 올려줬고, 집주인은 집값 오른 걸 가져갔다.",
+      "body": [
+        "2021년 vs 2026년, 전세 상승분과 매매 상승분 비교"
+      ],
+      "visual": "zipsaja beige/orange cover"
+    },
+    {
+      "slide": 2,
+      "role": "data",
+      "headline": "핵심 숫자",
+      "body": [
+        "data.json rows"
+      ],
+      "visual": "comparison table"
+    },
+    {
+      "slide": 3,
+      "role": "cta",
+      "headline": "전세 5년, 안정이었을까 기회비용이었을까?",
+      "body": [
+        "댓글 유도"
+      ],
+      "visual": "black CTA band"
+    }
+  ],
+  "reel": {
+    "durationSec": 30,
+    "composition": "Remotion",
+    "beats": [
+      {
+        "start": 0,
+        "end": 3,
+        "message": "나는 보증금 올려줬고, 집주인은 집값 오른 걸 가져갔다."
+      },
+      {
+        "start": 3,
+        "end": 25,
+        "message": "2021년 vs 2026년, 전세 상승분과 매매 상승분 비교"
+      },
+      {
+        "start": 25,
+        "end": 30,
+        "message": "전세 5년, 안정이었을까 기회비용이었을까?"
+      }
+    ]
+  },
+  "cta": "전세 5년, 안정이었을까 기회비용이었을까?"
+}

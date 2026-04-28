@@ -1,0 +1,47 @@
+{
+  "generatedAt": "2026-04-29T06:45:00+09:00",
+  "title": "전세 보증금 올려줬는데 집값 상승분은 집주인이 가져감",
+  "subtitle": "2021년 vs 2026년, 전세 상승분과 매매 상승분 비교",
+  "periodLabel": "2021년 전체 vs 2026.1.1~4.24 실거래 평균",
+  "source": "proptech_db 국토부 실거래가 ingest DB",
+  "sizeLabel": "서울 24평급 · 전세 B1 vs 매매 A1 · 300세대 이상",
+  "districtLabel": "구",
+  "beforeLabel": "전세 상승",
+  "afterLabel": "매매 상승",
+  "changeLabel": "차이율",
+  "sheetTitle": "비교 데이터",
+  "ctaHook": "댓글로 싸워보자",
+  "ctaText": "전세 5년, 안정이었을까 기회비용이었을까?",
+  "districts": [
+    {
+      "district": "강남",
+      "priceBefore": 14000,
+      "priceAfter": 60100,
+      "changePct": 329.3
+    },
+    {
+      "district": "송파",
+      "priceBefore": 9400,
+      "priceAfter": 56000,
+      "changePct": 495.7
+    },
+    {
+      "district": "서초",
+      "priceBefore": 5400,
+      "priceAfter": 48800,
+      "changePct": 803.7
+    },
+    {
+      "district": "마포",
+      "priceBefore": 12400,
+      "priceAfter": 37600,
+      "changePct": 203.2
+    },
+    {
+      "district": "성동",
+      "priceBefore": 8800,
+      "priceAfter": 39600,
+      "changePct": 350.0
+    }
+  ]
+}

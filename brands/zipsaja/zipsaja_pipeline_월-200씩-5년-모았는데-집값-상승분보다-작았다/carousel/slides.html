@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>월 200씩 5년 모았는데 집값 상승분보다 작았다</title>
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;700;900&family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: 'Noto Sans KR', sans-serif; color:#1a1a1a; background:#F0E7D6; }
+  .slide {
+    width:1080px; height:1350px; padding:70px 70px;
+    display:flex; flex-direction:column; position:relative;
+    page-break-after:always; background:#F0E7D6;
+  }
+  .cover h1 { font-family:'Jua'; font-size:96px; line-height:1.1; text-align:center; margin-top:100px; }
+  .cover .pill {
+    display:inline-block; background:#EA2E00; color:#fff;
+    padding:14px 36px; border-radius:999px; font-family:'Jua'; font-size:56px;
+  }
+  .cover .subtitle { text-align:center; font-size:32px; margin-top:48px; color:#555; font-weight:500; }
+  .cover .source { position:absolute; bottom:70px; left:0; right:0; text-align:center; font-family:'Gaegu'; font-size:28px; color:#EA2E00; }
+  .data h2 { font-family:'Jua'; font-size:56px; margin-bottom:16px; }
+  .data .meta { font-size:22px; color:#666; margin-bottom:28px; }
+  table { width:100%; border-collapse:collapse; background:#F5EDE0; border:3px solid #1a1a1a; border-radius:16px; overflow:hidden; }
+  th { background:#EA2E00; color:#fff; font-family:'Jua'; font-size:26px; padding:14px 12px; text-align:center; }
+  td { font-family:'Noto Sans KR'; font-weight:700; font-size:24px; padding:10px 12px; border-bottom:1px solid rgba(0,0,0,0.08); }
+  td.gu { color:#EA2E00; font-family:'Jua'; text-align:left; font-size:26px; }
+  td.price { text-align:right; }
+  td.pct { text-align:right; font-weight:900; }
+  .pct.pos { color:#EA2E00; }
+  .pct.neg { color:#1A4FA0; }
+  .bar-cell { position:relative; height:22px; background:transparent; }
+  .zero { position:absolute; left:50%; top:0; bottom:0; width:2px; background:#888; }
+  .bar { position:absolute; top:2px; height:18px; }
+  .bar.pos { left:50%; background:#EA2E00; }
+  .bar.neg { background:#1A4FA0; }
+  .footer-cta {
+    background:#1a1a1a; color:#fff; border-radius:20px;
+    padding:48px 40px; margin-top:auto; text-align:center;
+  }
+  .footer-cta .hook { font-family:'Gaegu'; font-size:36px; color:#EA2E00; margin-bottom:16px; }
+  .footer-cta h3 { font-family:'Jua'; font-size:52px; color:#fff; line-height:1.15; }
+</style>
+</head>
+<body>
+
+<div class="slide cover">
+  <h1><span class="pill">월 200씩 5년</span></h1>
+  <h1 style="font-size:72px; margin-top:36px;">모았는데 집값 상승분보다 작았다</h1>
+  <p class="subtitle">월 200 저축 1.2억 vs 2021~2026 서울 24평급 상승분<br>2021년 전체 vs 2026.1.1~4.24 실거래 평균</p>
+  <p class="source">proptech_db 국토부 실거래가 ingest DB</p>
+</div>
+
+
+<div class="slide data">
+  <h2>강남 ~ 동작</h2>
+  <p class="meta">서울 24평급 · 매매 A1 · 300세대 이상</p>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:20%;">구</th>
+        <th style="width:25%;">5년 저축</th>
+        <th style="width:25%;">집값 상승</th>
+        <th style="width:20%;">바 차트</th>
+        <th style="width:10%;">초과율</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td class="gu">강남</td>
+        <td class="price">1억 2,000만원</td>
+        <td class="price">6억 100만원</td>
+        <td class="bar-cell">
+          <div class="zero"></div>
+          <div class="bar pos"
+               style="width:100px; "></div>
+        </td>
+        <td class="pct pos">
+          +400.8%
+        </td>
+      </tr>
+
+      <tr>
+        <td class="gu">종로</td>
+        <td class="price">1억 2,000만원</td>
+        <td class="price">5억 8,000만원</td>
+        <td class="bar-cell">
+          <div class="zero"></div>
+          <div class="bar pos"
+               style="width:96px; "></div>
+        </td>
+        <td class="pct pos">
+          +383.3%
+        </td>
+      </tr>
+
+      <tr>
+        <td class="gu">송파</td>
+        <td class="price">1억 2,000만원</td>
+        <td class="price">5억 6,000만원</td>
+        <td class="bar-cell">
+          <div class="zero"></div>
+          <div class="bar pos"
+               style="width:91px; "></div>
+        </td>
+        <td class="pct pos">
+          +366.7%
+        </td>
+      </tr>
+
+      <tr>
+        <td class="gu">서초</td>
+        <td class="price">1억 2,000만원</td>
+        <td class="price">4억 8,800만원</td>
+        <td class="bar-cell">
+          <div class="zero"></div>
+          <div class="bar pos"
+               style="width:77px; "></div>
+        </td>
+        <td class="pct pos">
+          +306.7%
+        </td>
+      </tr>
+
+      <tr>
+        <td class="gu">용산</td>
+        <td class="price">1억 2,000만원</td>
+        <td class="price">4억 3,300만원</td>
+        <td class="bar-cell">
+          <div class="zero"></div>
+          <div class="bar pos"
+               style="width:65px; "></div>
+        </td>
+        <td class="pct pos">
+          +260.8%
+        </td>
+      </tr>
+
+      <tr>
+        <td class="gu">성동</td>
+        <td class="price">1억 2,000만원</td>
+        <td class="price">3억 9,600만원</td>
+        <td class="bar-cell">
+          <div class="zero"></div>
+          <div class="bar pos"
+               style="width:57px; "></div>
+        </td>
+        <td class="pct pos">
+          +230.0%
+        </td>
+      </tr>
+
+      <tr>
+        <td class="gu">마포</td>
+        <td class="price">1억 2,000만원</td>
+        <td class="price">3억 7,600만원</td>
+        <td class="bar-cell">
+          <div class="zero"></div>
+          <div class="bar pos"
+               style="width:53px; "></div>
+        </td>
+        <td class="pct pos">
+          +213.3%
+        </td>
+      </tr>
+
+      <tr>
+        <td class="gu">동작</td>
+        <td class="price">1억 2,000만원</td>
+        <td class="price">3억 4,500만원</td>
+        <td class="bar-cell">
+          <div class="zero"></div>
+          <div class="bar pos"
+               style="width:47px; "></div>
+        </td>
+        <td class="pct pos">
+          +187.5%
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+<div class="slide data">
+  <h2>강서 ~ 성북</h2>
+  <p class="meta">서울 24평급 · 매매 A1 · 300세대 이상</p>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:20%;">구</th>
+        <th style="width:25%;">5년 저축</th>
+        <th style="width:25%;">집값 상승</th>
+        <th style="width:20%;">바 차트</th>
+        <th style="width:10%;">초과율</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td class="gu">강서</td>
+        <td class="price">1억 2,000만원</td>
+        <td class="price">1억 8,100만원</td>
+        <td class="bar-cell">
+          <div class="zero"></div>
+          <div class="bar pos"
+               style="width:13px; "></div>
+        </td>
+        <td class="pct pos">
+          +50.8%
+        </td>
+      </tr>
+
+      <tr>
+        <td class="gu">성북</td>
+        <td class="price">1억 2,000만원</td>
+        <td class="price">1억 2,700만원</td>
+        <td class="bar-cell">
+          <div class="zero"></div>
+          <div class="bar pos"
+               style="width:1px; "></div>
+        </td>
+        <td class="pct pos">
+          +5.8%
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+
+<div class="slide cover">
+  <h1 style="margin-top:160px;"><span class="pill">데이터 더</span></h1>
+  <h1 style="font-size:72px; margin-top:36px;">궁금하지?</h1>
+  <div class="footer-cta">
+    <p class="hook">댓글로 싸워보자</p>
+    <h3>월급으로 서울 집 따라잡는 거, 아직 가능하다고 봐?</h3>
+  </div>
+  <p class="source">proptech_db 국토부 실거래가 ingest DB</p>
+</div>
+
+</body>
+</html>

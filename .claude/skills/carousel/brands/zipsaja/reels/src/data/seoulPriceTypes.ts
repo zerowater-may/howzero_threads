@@ -7,9 +7,15 @@ export interface DistrictPrice {
 
 export interface SeoulPriceDataset {
   generatedAt: string;     // ISO8601, fetcher가 찍음
+  title?: string;
+  subtitle?: string;
   periodLabel: string;     // "25.1.1 ~ 4.18 vs 26.1.1 ~ 4.18"
   sizeLabel: string;       // "24평대 / 전용 55㎡ ~ 60㎡"
   source: string;          // "국토부 실거래가"
+  districtLabel?: string;
+  beforeLabel?: string;
+  afterLabel?: string;
+  changeLabel?: string;
   districts: DistrictPrice[]; // 25개 (서울 자치구)
 }
 

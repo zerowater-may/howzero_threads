@@ -1,0 +1,77 @@
+{
+  "generatedAt": "2026-04-29T06:45:00+09:00",
+  "title": "월 200씩 5년 모았는데 집값 상승분보다 작았다",
+  "subtitle": "월 200 저축 1.2억 vs 2021~2026 서울 24평급 상승분",
+  "periodLabel": "2021년 전체 vs 2026.1.1~4.24 실거래 평균",
+  "source": "proptech_db 국토부 실거래가 ingest DB",
+  "sizeLabel": "서울 24평급 · 매매 A1 · 300세대 이상",
+  "districtLabel": "구",
+  "beforeLabel": "5년 저축",
+  "afterLabel": "집값 상승",
+  "changeLabel": "초과율",
+  "sheetTitle": "비교 데이터",
+  "ctaHook": "댓글로 싸워보자",
+  "ctaText": "월급으로 서울 집 따라잡는 거, 아직 가능하다고 봐?",
+  "districts": [
+    {
+      "district": "강남",
+      "priceBefore": 12000,
+      "priceAfter": 60100,
+      "changePct": 400.8
+    },
+    {
+      "district": "종로",
+      "priceBefore": 12000,
+      "priceAfter": 58000,
+      "changePct": 383.3
+    },
+    {
+      "district": "송파",
+      "priceBefore": 12000,
+      "priceAfter": 56000,
+      "changePct": 366.7
+    },
+    {
+      "district": "서초",
+      "priceBefore": 12000,
+      "priceAfter": 48800,
+      "changePct": 306.7
+    },
+    {
+      "district": "용산",
+      "priceBefore": 12000,
+      "priceAfter": 43300,
+      "changePct": 260.8
+    },
+    {
+      "district": "성동",
+      "priceBefore": 12000,
+      "priceAfter": 39600,
+      "changePct": 230.0
+    },
+    {
+      "district": "마포",
+      "priceBefore": 12000,
+      "priceAfter": 37600,
+      "changePct": 213.3
+    },
+    {
+      "district": "동작",
+      "priceBefore": 12000,
+      "priceAfter": 34500,
+      "changePct": 187.5
+    },
+    {
+      "district": "강서",
+      "priceBefore": 12000,
+      "priceAfter": 18100,
+      "changePct": 50.8
+    },
+    {
+      "district": "성북",
+      "priceBefore": 12000,
+      "priceAfter": 12700,
+      "changePct": 5.8
+    }
+  ]
+}

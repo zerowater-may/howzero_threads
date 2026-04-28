@@ -12,7 +12,7 @@ from openpyxl.utils import get_column_letter
 def write_excel(dataset: dict[str, Any], out_path: Path) -> None:
     wb = Workbook()
     ws = wb.active
-    ws.title = "서울 실거래"
+    ws.title = dataset.get("sheetTitle", "데이터")
 
     # A1: title (merged)
     ws["A1"] = dataset["title"]
@@ -27,7 +27,12 @@ def write_excel(dataset: dict[str, Any], out_path: Path) -> None:
     ws["A2"].alignment = Alignment(horizontal="center")
 
     # Row 3: column headers
-    headers = ["지역", "취임 전 (만원)", "취임 후 (만원)", "변동률(%)"]
+    headers = [
+        dataset.get("districtLabel", "지역"),
+        f"{dataset.get('beforeLabel', '취임 전')} (만원)",
+        f"{dataset.get('afterLabel', '취임 후')} (만원)",
+        f"{dataset.get('changeLabel', '변동률')}(%)",
+    ]
     for col, name in enumerate(headers, start=1):
         cell = ws.cell(row=3, column=col, value=name)
         cell.font = Font(name="Malgun Gothic", size=12, bold=True, color="FFFFFF")

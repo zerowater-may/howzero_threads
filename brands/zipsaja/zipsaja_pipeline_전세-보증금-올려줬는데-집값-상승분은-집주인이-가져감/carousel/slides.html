@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>{{ dataset.title }}</title>
+<title>전세 보증금 올려줬는데 집값 상승분은 집주인이 가져감</title>
 <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;700;900&family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
@@ -45,55 +45,111 @@
 <body>
 
 <div class="slide cover">
-  <h1><span class="pill">{{ dataset.title_short }}</span></h1>
-  <h1 style="font-size:72px; margin-top:36px;">{{ dataset.title_rest }}</h1>
-  <p class="subtitle">{{ dataset.subtitle }}<br>{{ dataset.periodLabel }}</p>
-  <p class="source">{{ dataset.source }}</p>
+  <h1><span class="pill">전세 보증금 올려줬는데</span></h1>
+  <h1 style="font-size:72px; margin-top:36px;">집값 상승분은 집주인이 가져감</h1>
+  <p class="subtitle">2021년 vs 2026년, 전세 상승분과 매매 상승분 비교<br>2021년 전체 vs 2026.1.1~4.24 실거래 평균</p>
+  <p class="source">proptech_db 국토부 실거래가 ingest DB</p>
 </div>
 
-{% for chunk in district_chunks %}
+
 <div class="slide data">
-  <h2>{{ chunk.header }}</h2>
-  <p class="meta">{{ dataset.sizeLabel | default('300세대 이상 아파트 · 평형 무관') }}</p>
+  <h2>강남 ~ 성동</h2>
+  <p class="meta">서울 24평급 · 전세 B1 vs 매매 A1 · 300세대 이상</p>
   <table>
     <thead>
       <tr>
-        <th style="width:20%;">{{ dataset.districtLabel | default('지역') }}</th>
-        <th style="width:25%;">{{ dataset.beforeLabel | default('취임 전') }}</th>
-        <th style="width:25%;">{{ dataset.afterLabel | default('취임 후') }}</th>
+        <th style="width:20%;">구</th>
+        <th style="width:25%;">전세 상승</th>
+        <th style="width:25%;">매매 상승</th>
         <th style="width:20%;">바 차트</th>
-        <th style="width:10%;">{{ dataset.changeLabel | default('변동률') }}</th>
+        <th style="width:10%;">차이율</th>
       </tr>
     </thead>
     <tbody>
-      {% for d in chunk.rows %}
+
       <tr>
-        <td class="gu">{{ d.district }}</td>
-        <td class="price">{{ d.priceBefore_display }}</td>
-        <td class="price">{{ d.priceAfter_display }}</td>
+        <td class="gu">강남</td>
+        <td class="price">1억 4,000만원</td>
+        <td class="price">6억 100만원</td>
         <td class="bar-cell">
           <div class="zero"></div>
-          <div class="bar {% if d.changePct >= 0 %}pos{% else %}neg{% endif %}"
-               style="width:{{ d.bar_width_px }}px; {% if d.changePct < 0 %}left:calc(50% - {{ d.bar_width_px }}px);{% endif %}"></div>
+          <div class="bar pos"
+               style="width:41px; "></div>
         </td>
-        <td class="pct {% if d.changePct >= 0 %}pos{% else %}neg{% endif %}">
-          {% if d.changePct >= 0 %}+{% endif %}{{ "%.1f"|format(d.changePct) }}%
+        <td class="pct pos">
+          +329.3%
         </td>
       </tr>
-      {% endfor %}
+
+      <tr>
+        <td class="gu">송파</td>
+        <td class="price">9,400만원</td>
+        <td class="price">5억 6,000만원</td>
+        <td class="bar-cell">
+          <div class="zero"></div>
+          <div class="bar pos"
+               style="width:62px; "></div>
+        </td>
+        <td class="pct pos">
+          +495.7%
+        </td>
+      </tr>
+
+      <tr>
+        <td class="gu">서초</td>
+        <td class="price">5,400만원</td>
+        <td class="price">4억 8,800만원</td>
+        <td class="bar-cell">
+          <div class="zero"></div>
+          <div class="bar pos"
+               style="width:100px; "></div>
+        </td>
+        <td class="pct pos">
+          +803.7%
+        </td>
+      </tr>
+
+      <tr>
+        <td class="gu">마포</td>
+        <td class="price">1억 2,400만원</td>
+        <td class="price">3억 7,600만원</td>
+        <td class="bar-cell">
+          <div class="zero"></div>
+          <div class="bar pos"
+               style="width:25px; "></div>
+        </td>
+        <td class="pct pos">
+          +203.2%
+        </td>
+      </tr>
+
+      <tr>
+        <td class="gu">성동</td>
+        <td class="price">8,800만원</td>
+        <td class="price">3억 9,600만원</td>
+        <td class="bar-cell">
+          <div class="zero"></div>
+          <div class="bar pos"
+               style="width:44px; "></div>
+        </td>
+        <td class="pct pos">
+          +350.0%
+        </td>
+      </tr>
+
     </tbody>
   </table>
 </div>
-{% endfor %}
+
 
 <div class="slide cover">
   <h1 style="margin-top:160px;"><span class="pill">데이터 더</span></h1>
   <h1 style="font-size:72px; margin-top:36px;">궁금하지?</h1>
   <div class="footer-cta">
-    <p class="hook">{{ dataset.ctaHook | default('댓글 달면 보내줄게') }}</p>
-    <h3>{{ dataset.ctaText | default('"엑셀" — 데이터 파일<br>"PDF" — 요약 리포트') | safe }}</h3>
+    <p class="hook">댓글로 싸워보자</p>
+    <h3>전세 5년, 안정이었을까 기회비용이었을까?</h3>
   </div>
-  <p class="source">{{ dataset.source }}</p>
+  <p class="source">proptech_db 국토부 실거래가 ingest DB</p>
 </div>
 
 </body>

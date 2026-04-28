@@ -28,6 +28,22 @@ const CREAM_BOX = "#F5EDE0";
 const BAR_POS = "#EA2E00";
 const BAR_NEG = "#1A4FA0";
 
+const splitTitleLines = (title: string): string[] => {
+  const normalized = title.trim();
+  if (!normalized) {
+    return ["서울 실거래", "데이터 변화"];
+  }
+  if (normalized.length <= 18) {
+    return [normalized];
+  }
+  const midpoint = Math.floor(normalized.length / 2);
+  const before = normalized.lastIndexOf(" ", midpoint);
+  const after = normalized.indexOf(" ", midpoint);
+  const splitAt =
+    before > 5 ? before : after > 0 && after < normalized.length - 5 ? after : midpoint;
+  return [normalized.slice(0, splitAt).trim(), normalized.slice(splitAt).trim()];
+};
+
 export const SeoulPriceReel: React.FC<{ data: SeoulPriceDataset }> = ({ data }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -56,7 +72,7 @@ export const SeoulPriceReel: React.FC<{ data: SeoulPriceDataset }> = ({ data }) 
           padding: "16px 8px",
         }}
       >
-        <ColumnHeader frame={frame} />
+        <ColumnHeader frame={frame} data={data} />
         {data.districts.map((d, i) => (
           <Row
             key={d.district}
@@ -80,6 +96,10 @@ const Header: React.FC<{ frame: number; fps: number; data: SeoulPriceDataset }> 
   fps,
   data,
 }) => {
+  const title = data.title || "서울 실거래 변화";
+  const titleLines = splitTitleLines(title);
+  const titleFontSize = title.length > 24 ? 54 : 64;
+
   // 0~15f: bookmark flag slide-down + title pill scale-in
   const flagY = interpolate(frame, [0, 10], [-80, 0], {
     extrapolateRight: "clamp",
@@ -137,14 +157,16 @@ const Header: React.FC<{ frame: number; fps: number; data: SeoulPriceDataset }> 
       <div
         style={{
           fontFamily: "Jua",
-          fontSize: 64,
-          lineHeight: 1.05,
+          fontSize: titleFontSize,
+          lineHeight: 1.08,
           color: INK,
           transform: `scale(${pillScale})`,
-          letterSpacing: -2,
+          letterSpacing: 0,
         }}
       >
-        이재명 대통령 당선후 서울 실거래 변화
+        {titleLines.map((line) => (
+          <div key={line}>{line}</div>
+        ))}
       </div>
 
       {/* 기간 안내 */}
@@ -323,7 +345,7 @@ const Row: React.FC<RowProps> = ({
   );
 };
 
-const ColumnHeader: React.FC<{ frame: number }> = ({ frame }) => {
+const ColumnHeader: React.FC<{ frame: number; data: SeoulPriceDataset }> = ({ frame, data }) => {
   const op = interpolate(frame, [20, 35], [0, 1], { extrapolateRight: "clamp" });
   return (
     <div
@@ -338,14 +360,14 @@ const ColumnHeader: React.FC<{ frame: number }> = ({ frame }) => {
         color: INK,
       }}
     >
-      <div style={{ width: 140 }}>지역</div>
+      <div style={{ width: 140 }}>{data.districtLabel || "지역"}</div>
       <div style={{ width: 220, textAlign: "right", paddingRight: 16 }}>
-        취임 전
+        {data.beforeLabel || "취임 전"}
       </div>
       <div style={{ width: 220, textAlign: "right", paddingRight: 16 }}>
-        취임 후
+        {data.afterLabel || "취임 후"}
       </div>
-      <div style={{ flex: 1, marginLeft: 10 }}>변동률</div>
+      <div style={{ flex: 1, marginLeft: 10 }}>{data.changeLabel || "변동률"}</div>
     </div>
   );
 };
