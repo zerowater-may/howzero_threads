@@ -14,7 +14,8 @@ from pathlib import Path
 
 from .render import (
     REELS_DATA_TARGET,
-    ffmpeg_trim_22s,
+    REEL_OUTPUT_NAME,
+    ffmpeg_export_reel,
     map_to_remotion_schema,
     trigger_remotion_render,
 )
@@ -45,9 +46,9 @@ def main(argv: list[str] | None = None) -> int:
     if rc != 0:
         return rc
 
-    # Trim to 22s
-    trimmed = args.out / "zipsaja-reel-22s.mp4"
-    rc = ffmpeg_trim_22s(full_out, trimmed)
+    # Export the publishing reel from the full Remotion render.
+    trimmed = args.out / REEL_OUTPUT_NAME
+    rc = ffmpeg_export_reel(full_out, trimmed)
     if rc != 0:
         return rc
 

@@ -1,6 +1,6 @@
 ---
 name: zipsaja-design
-description: Use this skill to generate well-branded interfaces and assets for 집사자 (zipsaja), a Korean Instagram real-estate carousel brand for 20–30s first-home buyers. Covers Instagram carousel cards (1080×1440), brand voice (반말 친구 톤), the orange-on-beige + black-bordered visual system, mascot usage, and ready-made UI kit components.
+description: Use this skill to generate well-branded interfaces and assets for 집사자 (zipsaja), a Korean Instagram real-estate carousel brand for 20–30s first-home buyers. Covers Instagram carousel cards (1080×1350), brand voice (반말 친구 톤), the orange-on-beige + black-bordered visual system, mascot usage, and ready-made UI kit components.
 user-invocable: true
 ---
 
@@ -21,13 +21,13 @@ user-invocable: true
 - **오렌지 (`#EA2E00`) 는 유일한 액센트.** 그라디언트 금지. 형광펜도 오렌지만.
 - **베이지 (`#F0E7D6`) 가 캔버스 기본 배경.** 흰색은 사진 박스 등 보조용.
 - **검은 3px 테두리 + 16px radius** 가 모든 박스의 기본형.
-- **슬라이드 = 1080×1440 (3:4)**, 10장 구성: 커버 → 도입 → 조건 → 매물 5개 → 정리 → CTA.
+- **슬라이드 = 1080×1350 (4:5)**, 10장 이하 구성: 커버 → 도입 → 조건/데이터 → 정리 → CTA.
 - **슬라이드 = 1메시지** 원칙. 빈 공간은 디자인의 일부.
 - 마스코트 말풍선은 **Gaegu** 폰트. 헤드라인·본문은 **Gmarket Sans** (Bold/Medium), 폴백 **Noto Sans KR**.
 
 ## 출력 형식
 
-- **시각 산출물 (캐러셀, 목업, 일회성 프로토)** — 자산을 `assets/` 에서 복사하고 자체 완결적 HTML 을 작성해 사용자에게 보여라. PNG 가 필요하면 1080×1440 으로 캡처하라.
+- **시각 산출물 (캐러셀, 목업, 일회성 프로토)** — 자산을 `assets/` 에서 복사하고 자체 완결적 HTML 을 작성해 사용자에게 보여라. PNG 가 필요하면 1080×1350 으로 캡처하라. 기존 1080×1440 UI kit은 legacy 레퍼런스로만 보고 게시 전 4:5로 마이그레이션한다.
 - **프로덕션 코드** — `colors_and_type.css` 를 import 하고 README 의 시각 가이드 + 컴포넌트 패턴을 따라라.
 
 ## 사용자가 컨텍스트 없이 이 스킬을 호출했다면

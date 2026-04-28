@@ -15,7 +15,7 @@ def test_pipeline_state_records_remotion_workflow_steps(tmp_path: Path):
 
     state.set_workflow(
         version="zipsaja-remotion-v1",
-        steps=["brief", "data", "storyboard", "carousel", "remotion"],
+        steps=["brief", "data", "storyboard", "remotion", "carousel"],
         forbidden_tools=["hyperframes"],
     )
     state.mark_step("brief", "done")

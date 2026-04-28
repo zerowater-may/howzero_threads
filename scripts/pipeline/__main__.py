@@ -32,8 +32,8 @@ ZIPSAJA_REMOTION_STEPS = [
     "brief",
     "data",
     "storyboard",
-    "carousel",
     "remotion",
+    "carousel",
     "attachments",
     "captions",
     "package-qa",
@@ -50,6 +50,10 @@ def build_parser() -> _TopicJoiningParser:
     parser.add_argument("--preset", default="leejaemyung-before-after")
     parser.add_argument("--pivot-date", default=None)
     parser.add_argument("--min-total-units", type=int, default=None)
+    parser.add_argument("--data-title", default=None)
+    parser.add_argument("--data-subtitle", default=None)
+    parser.add_argument("--data-period", default=None)
+    parser.add_argument("--data-source", default=None)
     return _TopicJoiningParser(parser)
 
 
@@ -128,6 +132,13 @@ def main(argv: list[str] | None = None) -> int:
             cmd += ["--pivot-date", args.pivot_date]
         if args.min_total_units is not None:
             cmd += ["--min-total-units", str(args.min_total_units)]
+        cmd += ["--title", args.data_title or args.topic]
+        if args.data_subtitle:
+            cmd += ["--subtitle", args.data_subtitle]
+        if args.data_period:
+            cmd += ["--period", args.data_period]
+        if args.data_source:
+            cmd += ["--source", args.data_source]
 
         result = subprocess.run(cmd, check=False)
         if result.returncode != 0:
@@ -152,8 +163,8 @@ def main(argv: list[str] | None = None) -> int:
         data_path = bundle / "data.json"
 
         content_steps = [
-            ("content-carousel", "scripts.content_carousel", ["--data", str(data_path), "--out", str(bundle / "carousel")]),
             ("content-reels",    "scripts.content_reels",    ["--data", str(data_path), "--out", str(bundle / "reels")]),
+            ("content-carousel", "scripts.content_carousel", ["--data", str(data_path), "--out", str(bundle / "carousel")]),
             ("content-attachments", "scripts.content_attachments", ["--data", str(data_path), "--out", str(bundle / "attachments")]),
             ("content-captions", "scripts.content_captions", ["--data", str(data_path), "--out", str(bundle / "captions")]),
         ]

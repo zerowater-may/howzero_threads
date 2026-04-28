@@ -1,6 +1,6 @@
 # zipsaja-content
 
-Sister skill of `zipsaja-design`. Generates 1080×1440 instagram carousel slides from proptech_db data.
+Sister skill of `zipsaja-design`. Generates 1080×1350 Instagram carousel slides from proptech_db data for new posts.
 
 ## Setup
 

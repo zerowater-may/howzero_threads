@@ -15,8 +15,8 @@ def test_zipsaja_remotion_steps_are_ordered():
         "brief",
         "data",
         "storyboard",
-        "carousel",
         "remotion",
+        "carousel",
         "attachments",
         "captions",
         "package-qa",
@@ -77,6 +77,61 @@ def test_zipsaja_automatic_pipeline_finishes_with_package_qa_pending(monkeypatch
     assert state.steps["brief"] == "skipped"
     assert state.steps["storyboard"] == "skipped"
     assert state.steps["package-qa"] == "pending"
+
+
+def test_zipsaja_pipeline_passes_topic_and_metadata_to_data_fetch(monkeypatch, tmp_path: Path):
+    _patch_pipeline_paths(monkeypatch, tmp_path)
+    captured_commands = []
+
+    def fake_run(cmd, check=False):
+        captured_commands.append(cmd)
+        if cmd[2] == "scripts.zipsaja_data_fetch":
+            data_out = Path(cmd[cmd.index("--out") + 1])
+            data_out.parent.mkdir(parents=True, exist_ok=True)
+            data_out.write_text('{"districts": []}', encoding="utf-8")
+        return SimpleNamespace(returncode=0)
+
+    monkeypatch.setattr(pipeline_main.subprocess, "run", fake_run)
+
+    assert pipeline_main.main([
+        "zipsaja",
+        "전세난 대출규제 댓글싸움",
+        "--data-subtitle",
+        "2025년 vs 2026년",
+        "--data-period",
+        "2025.1 ~ 2025.12 vs 2026.1 ~ 현재",
+        "--data-source",
+        "국토부 실거래가 + 웹 이슈",
+    ]) == 0
+
+    data_fetch_cmd = captured_commands[0]
+    assert data_fetch_cmd[data_fetch_cmd.index("--title") + 1] == "전세난 대출규제 댓글싸움"
+    assert data_fetch_cmd[data_fetch_cmd.index("--subtitle") + 1] == "2025년 vs 2026년"
+    assert data_fetch_cmd[data_fetch_cmd.index("--period") + 1] == "2025.1 ~ 2025.12 vs 2026.1 ~ 현재"
+    assert data_fetch_cmd[data_fetch_cmd.index("--source") + 1] == "국토부 실거래가 + 웹 이슈"
+
+
+def test_zipsaja_automatic_pipeline_runs_remotion_before_carousel(monkeypatch, tmp_path: Path):
+    _patch_pipeline_paths(monkeypatch, tmp_path)
+    captured_modules = []
+
+    def fake_run(cmd, check=False):
+        captured_modules.append(cmd[2])
+        if cmd[2] == "scripts.zipsaja_data_fetch":
+            data_out = Path(cmd[cmd.index("--out") + 1])
+            data_out.parent.mkdir(parents=True, exist_ok=True)
+            data_out.write_text('{"districts": []}', encoding="utf-8")
+        return SimpleNamespace(returncode=0)
+
+    monkeypatch.setattr(pipeline_main.subprocess, "run", fake_run)
+
+    assert pipeline_main.main(["zipsaja", "test topic"]) == 0
+
+    assert captured_modules[:3] == [
+        "scripts.zipsaja_data_fetch",
+        "scripts.content_reels",
+        "scripts.content_carousel",
+    ]
 
 
 def test_zipsaja_data_fetch_failure_marks_canonical_data_step(monkeypatch, tmp_path: Path):

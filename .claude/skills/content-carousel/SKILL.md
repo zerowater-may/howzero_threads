@@ -1,6 +1,6 @@
 ---
 name: content-carousel
-description: zipsaja 데이터셋 → Jinja2 템플릿 → 1080×1440 캐러셀 PNG. /pipeline의 zipsaja 분기에서 자동 호출되며 단독 실행도 가능.
+description: zipsaja 데이터셋 → Jinja2 템플릿 → 1080×1350 캐러셀 PNG. /pipeline의 zipsaja 분기에서 자동 호출되며 단독 실행도 가능.
 ---
 
 # content-carousel 스킬
@@ -30,7 +30,7 @@ python3 -m scripts.content_carousel \
 └── slide-06.png   # 다크 CTA (댓글 리드매그넷)
 ```
 
-- 1080×1440 @2x (2160×2880 픽셀).
+- 1080×1350, 4:5 Instagram Feed/Carousel 표준 픽셀.
 - zipsaja 브랜드 디자인: `#F0E7D6` 베이지 배경, `#EA2E00` 오렌지 pill, Jua 폰트.
 
 ## 요구사항

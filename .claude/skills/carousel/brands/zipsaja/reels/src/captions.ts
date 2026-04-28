@@ -4,7 +4,7 @@ export type Caption = {
   accent?: string; // 강조할 단어 (line1 또는 line2 내부 substring)
 };
 
-// 슬라이드 1~12 캡션. 22초 컷에서는 1~8번이 노출됨.
+// Legacy carousel-to-reel captions. New zipsaja workflow renders 30s data-driven Remotion reels.
 export const CAPTIONS: Caption[] = [
   { line1: "강서구 가양동", line2: "9억대 아파트 찾아봤다구", accent: "9억대" },
   { line1: "9호선 급행 + 마곡 옆집", line2: "가양동, 지금 어때?", accent: "급행" },

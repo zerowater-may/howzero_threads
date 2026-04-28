@@ -1,0 +1,208 @@
+{
+  "pipeline_id": "zipsaja_20260428_전세난-때문에-월세로-밀려나는-서울-집값-잡으려면-대출-막아야-하나",
+  "brand": "zipsaja",
+  "topic": "전세난 때문에 월세로 밀려나는 서울, 집값 잡으려면 대출 막아야 하나",
+  "slug": "전세난-때문에-월세로-밀려나는-서울-집값-잡으려면-대출-막아야-하나",
+  "created_at": "2026-04-28T17:08:05.432089+09:00",
+  "status": "completed",
+  "failed_at": null,
+  "failed_reason": null,
+  "data": {
+    "source": "ssh:hh-worker-2/proptech_db",
+    "preset": "leejaemyung-before-after",
+    "dataset": {
+      "generatedAt": "2026-04-28T17:08:12.580838+09:00",
+      "title": "전세난 때문에 월세로 밀려나는 서울, 집값 잡으려면 대출 막아야 하나",
+      "subtitle": "2025년 거래 vs 2026년 현재 거래",
+      "periodLabel": "2025.1.1 ~ 2025.12.31 vs 2026.1.1 ~ 현재",
+      "source": "국토부 실거래가(매매) + 2026.4 전세난/대출규제 웹 이슈",
+      "districts": [
+        {
+          "district": "서초구",
+          "priceBefore": 327644,
+          "priceAfter": 326326,
+          "changePct": -0.4
+        },
+        {
+          "district": "강남구",
+          "priceBefore": 272846,
+          "priceAfter": 266084,
+          "changePct": -2.5
+        },
+        {
+          "district": "용산구",
+          "priceBefore": 271367,
+          "priceAfter": 321561,
+          "changePct": 18.5
+        },
+        {
+          "district": "송파구",
+          "priceBefore": 212542,
+          "priceAfter": 239580,
+          "changePct": 12.7
+        },
+        {
+          "district": "성동구",
+          "priceBefore": 162161,
+          "priceAfter": 181951,
+          "changePct": 12.2
+        },
+        {
+          "district": "마포구",
+          "priceBefore": 167185,
+          "priceAfter": 167917,
+          "changePct": 0.4
+        },
+        {
+          "district": "동작구",
+          "priceBefore": 143997,
+          "priceAfter": 156658,
+          "changePct": 8.8
+        },
+        {
+          "district": "강동구",
+          "priceBefore": 142912,
+          "priceAfter": 156128,
+          "changePct": 9.2
+        },
+        {
+          "district": "광진구",
+          "priceBefore": 158471,
+          "priceAfter": 186787,
+          "changePct": 17.9
+        },
+        {
+          "district": "중구",
+          "priceBefore": 128665,
+          "priceAfter": 135496,
+          "changePct": 5.3
+        },
+        {
+          "district": "영등포구",
+          "priceBefore": 138636,
+          "priceAfter": 140070,
+          "changePct": 1.0
+        },
+        {
+          "district": "종로구",
+          "priceBefore": 132274,
+          "priceAfter": 132153,
+          "changePct": -0.1
+        },
+        {
+          "district": "동대문구",
+          "priceBefore": 108712,
+          "priceAfter": 117600,
+          "changePct": 8.2
+        },
+        {
+          "district": "서대문구",
+          "priceBefore": 116132,
+          "priceAfter": 118691,
+          "changePct": 2.2
+        },
+        {
+          "district": "양천구",
+          "priceBefore": 119056,
+          "priceAfter": 119529,
+          "changePct": 0.4
+        },
+        {
+          "district": "강서구",
+          "priceBefore": 105319,
+          "priceAfter": 110263,
+          "changePct": 4.7
+        },
+        {
+          "district": "성북구",
+          "priceBefore": 89700,
+          "priceAfter": 95626,
+          "changePct": 6.6
+        },
+        {
+          "district": "은평구",
+          "priceBefore": 97846,
+          "priceAfter": 100234,
+          "changePct": 2.4
+        },
+        {
+          "district": "관악구",
+          "priceBefore": 89377,
+          "priceAfter": 96286,
+          "changePct": 7.7
+        },
+        {
+          "district": "구로구",
+          "priceBefore": 80018,
+          "priceAfter": 81739,
+          "changePct": 2.2
+        },
+        {
+          "district": "강북구",
+          "priceBefore": 72993,
+          "priceAfter": 78344,
+          "changePct": 7.3
+        },
+        {
+          "district": "금천구",
+          "priceBefore": 68163,
+          "priceAfter": 71837,
+          "changePct": 5.4
+        },
+        {
+          "district": "노원구",
+          "priceBefore": 66873,
+          "priceAfter": 66878,
+          "changePct": 0.0
+        },
+        {
+          "district": "중랑구",
+          "priceBefore": 71331,
+          "priceAfter": 71420,
+          "changePct": 0.1
+        },
+        {
+          "district": "도봉구",
+          "priceBefore": 59796,
+          "priceAfter": 60485,
+          "changePct": 1.2
+        }
+      ]
+    }
+  },
+  "tone": null,
+  "artifacts": {
+    "data": {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_전세난-때문에-월세로-밀려나는-서울-집값-잡으려면-대출-막아야-하나/data.json"
+    },
+    "carousel": {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_전세난-때문에-월세로-밀려나는-서울-집값-잡으려면-대출-막아야-하나/carousel"
+    },
+    "reels": {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_전세난-때문에-월세로-밀려나는-서울-집값-잡으려면-대출-막아야-하나/reels"
+    },
+    "attachments": {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_전세난-때문에-월세로-밀려나는-서울-집값-잡으려면-대출-막아야-하나/attachments"
+    },
+    "captions": {
+      "path": "brands/zipsaja/zipsaja_pipeline_전세난-때문에-월세로-밀려나는-서울-집값-잡으려면-대출-막아야-하나/captions"
+    },
+    "package-qa": {
+      "path": "brands/zipsaja/zipsaja_pipeline_전세난-때문에-월세로-밀려나는-서울-집값-잡으려면-대출-막아야-하나"
+    }
+  },
+  "workflow_version": "zipsaja-remotion-v1",
+  "forbidden_tools": [
+    "hyperframes"
+  ],
+  "steps": {
+    "brief": "skipped",
+    "data": "done",
+    "storyboard": "skipped",
+    "carousel": "done",
+    "remotion": "done",
+    "attachments": "done",
+    "captions": "done",
+    "package-qa": "done"
+  }
+}

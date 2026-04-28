@@ -30,6 +30,15 @@ find brands/zipsaja/zipsaja_pipeline_<slug>/carousel -name 'slide-*.png' | sort
 
 The slide PNG validation must return at least one `slide-*.png` file.
 
+Check the first slide size:
+
+```bash
+sips -g pixelWidth -g pixelHeight \
+  brands/zipsaja/zipsaja_pipeline_<slug>/carousel/slide-01.png
+```
+
+Expected: `1080` x `1350`.
+
 ## State Update
 
 Set:

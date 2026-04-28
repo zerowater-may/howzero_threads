@@ -34,6 +34,16 @@ test -f brands/zipsaja/zipsaja_pipeline_<slug>/captions/threads.txt
 test -f brands/zipsaja/zipsaja_pipeline_<slug>/captions/linkedin.txt
 ```
 
+Threads must be a hook, not a mini caption:
+
+```bash
+awk 'NF {count++} END {exit !(count >= 2 && count <= 3)}' \
+  brands/zipsaja/zipsaja_pipeline_<slug>/captions/threads.txt
+rg -n '^#' brands/zipsaja/zipsaja_pipeline_<slug>/captions/threads.txt && exit 1 || true
+```
+
+Expected: 2-3 non-empty lines, no hashtags, no long explanation.
+
 ## State Update
 
 Set:

@@ -14,6 +14,8 @@ REELS_PROJECT = (
     / ".claude/skills/carousel/brands/zipsaja/reels"
 )
 REELS_DATA_TARGET = REELS_PROJECT / "public/data/seoul-prices.json"
+REEL_DURATION_SECONDS = 30
+REEL_OUTPUT_NAME = "zipsaja-reel-30s.mp4"
 
 
 def map_to_remotion_schema(src: dict[str, Any]) -> dict[str, Any]:
@@ -67,13 +69,18 @@ def trigger_remotion_render(*, out_path: Path) -> int:
     return 0
 
 
-def ffmpeg_trim_22s(src: Path, dst: Path) -> int:
-    """Re-encode + trim to 22 seconds with CRF 18."""
+def ffmpeg_export_reel(
+    src: Path,
+    dst: Path,
+    *,
+    duration_seconds: int = REEL_DURATION_SECONDS,
+) -> int:
+    """Re-encode + trim to the standard zipsaja Reel duration."""
     dst.parent.mkdir(parents=True, exist_ok=True)
     result = subprocess.run(
         [
             "ffmpeg", "-y", "-i", str(src),
-            "-t", "22",
+            "-t", str(duration_seconds),
             "-c:v", "libx264", "-preset", "medium", "-crf", "18",
             "-pix_fmt", "yuv420p", "-movflags", "+faststart",
             str(dst),

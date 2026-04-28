@@ -16,8 +16,9 @@ Do not run `npx hyperframes`, do not create `hyperframes_reel`, and do not add H
 
 - `brands/zipsaja/zipsaja_pipeline_<slug>/pipeline-state.json`
 - `brands/zipsaja/zipsaja_pipeline_<slug>/data.json`
-- `brands/zipsaja/zipsaja_pipeline_<slug>/carousel/` if the selected Remotion composition uses captured slides
 - optional `brands/zipsaja/zipsaja_pipeline_<slug>/storyboard.json`
+
+Do not require `carousel/`. New zipsaja reels are full 30-second Remotion compositions driven by data/storyboard, not stitched carousel PNGs.
 
 ## Command
 
@@ -37,11 +38,11 @@ This wrapper uses Remotion only through `scripts.content_reels` and the existing
 
 ```bash
 test -f brands/zipsaja/zipsaja_pipeline_<slug>/reels/full.mp4
-test -f brands/zipsaja/zipsaja_pipeline_<slug>/reels/zipsaja-reel-22s.mp4
+test -f brands/zipsaja/zipsaja_pipeline_<slug>/reels/zipsaja-reel-30s.mp4
 ffprobe -v error -select_streams v:0 \
-  -show_entries stream=width,height,r_frame_rate \
+  -show_entries stream=width,height,r_frame_rate:format=duration \
   -of default=nokey=1:noprint_wrappers=1 \
-  brands/zipsaja/zipsaja_pipeline_<slug>/reels/zipsaja-reel-22s.mp4
+  brands/zipsaja/zipsaja_pipeline_<slug>/reels/zipsaja-reel-30s.mp4
 ```
 
 Expected video stream values:
@@ -49,6 +50,7 @@ Expected video stream values:
 - width: `1080`
 - height: `1920`
 - frame rate: `30/1`
+- duration: about `30` seconds
 
 ## State Update
 

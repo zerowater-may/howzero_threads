@@ -4,6 +4,7 @@ from scripts.content_carousel.render import (
     build_context,
     format_price_display,
     chunk_districts,
+    render_html,
 )
 
 
@@ -70,3 +71,18 @@ def test_build_context_title_split():
     ctx = build_context(dataset, max_bar_px=100, per_slide=8)
     assert ctx["dataset"]["title_short"] == "이재명 대통령 당선후"
     assert ctx["dataset"]["title_rest"] == "서울 실거래 변화"
+
+
+def test_render_html_uses_instagram_portrait_canvas():
+    dataset = {
+        "title": "이재명 대통령 당선후 서울 실거래 변화",
+        "subtitle": "",
+        "periodLabel": "",
+        "source": "",
+        "sizeLabel": "",
+        "districts": [],
+    }
+
+    html = render_html(dataset, per_slide=8)
+
+    assert "width:1080px; height:1350px;" in html

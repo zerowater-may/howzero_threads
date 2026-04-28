@@ -17,7 +17,9 @@ loadNoto();
 loadGaegu();
 
 export const FPS = 30;
-export const SEOUL_PRICE_TOTAL_FRAMES = 660; // 22s
+export const SEOUL_PRICE_TOTAL_FRAMES = FPS * 30; // 30s
+const FOOTER_FADE_START_FRAME = SEOUL_PRICE_TOTAL_FRAMES - FPS * 2;
+const FOOTER_FADE_END_FRAME = SEOUL_PRICE_TOTAL_FRAMES - FPS;
 
 const BG = "#F0E7D6";
 const ACCENT = "#EA2E00";
@@ -349,7 +351,9 @@ const ColumnHeader: React.FC<{ frame: number }> = ({ frame }) => {
 };
 
 const Footer: React.FC<{ frame: number }> = ({ frame }) => {
-  const op = interpolate(frame, [600, 630], [0, 1], { extrapolateRight: "clamp" });
+  const op = interpolate(frame, [FOOTER_FADE_START_FRAME, FOOTER_FADE_END_FRAME], [0, 1], {
+    extrapolateRight: "clamp",
+  });
   return (
     <div
       style={{

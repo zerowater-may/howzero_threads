@@ -1,6 +1,6 @@
 ---
 name: reels
-description: 기존 카드뉴스 캐러셀(docs/content/carousel-*/)을 Remotion 9:16 릴스 영상(1080x1920 MP4)으로 변환합니다. 슬라이드 재캡처 → Remotion 컴포지션 생성 → 렌더 → 22초 트림까지 자동화. 브랜드 zipsaja/howzero/braveyong 지원.
+description: legacy 카드뉴스 캐러셀(docs/content/carousel-*/)을 Remotion 9:16 릴스 영상(1080x1920 MP4)으로 변환합니다. 신규 zipsaja 제작에는 사용하지 않습니다.
 ---
 
 # 캐러셀 → Remotion 릴스 변환 스킬
@@ -11,7 +11,7 @@ description: 기존 카드뉴스 캐러셀(docs/content/carousel-*/)을 Remotion
 
 이 스킬은 일반/legacy 캐러셀 → Remotion 변환 경로다.
 신규 zipsaja 콘텐츠 제작은 `zipsaja-remotion-render` 또는 `zipsaja-remotion-orchestrator`를 우선 사용한다.
-신규 zipsaja 릴스에는 HyperFrames를 사용하지 않는다.
+신규 zipsaja 릴스에는 HyperFrames를 사용하지 않고, 캐러셀 PNG를 이어붙이지도 않는다.
 
 ---
 

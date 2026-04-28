@@ -1,4 +1,10 @@
-from scripts.content_reels.render import map_to_remotion_schema
+from pathlib import Path
+
+from scripts.content_reels.render import (
+    REEL_DURATION_SECONDS,
+    REEL_OUTPUT_NAME,
+    map_to_remotion_schema,
+)
 
 
 def test_maps_price_before_after_to_last_this_year():
@@ -39,3 +45,16 @@ def test_map_preserves_generated_at_and_source():
     assert mapped["generatedAt"] == "2026-04-24T00:00:00+09:00"
     assert mapped["source"] == "src"
     assert mapped["periodLabel"] == "label"
+
+
+def test_reels_standard_output_is_30_seconds():
+    assert REEL_DURATION_SECONDS == 30
+    assert REEL_OUTPUT_NAME == "zipsaja-reel-30s.mp4"
+
+
+def test_seoul_price_reel_composition_duration_is_30_seconds():
+    source = Path(".claude/skills/carousel/brands/zipsaja/reels/src/SeoulPriceReel.tsx").read_text(
+        encoding="utf-8",
+    )
+
+    assert "export const SEOUL_PRICE_TOTAL_FRAMES = FPS * 30" in source

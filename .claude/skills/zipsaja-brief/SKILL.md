@@ -41,7 +41,7 @@ Write `brief.md` with this structure:
 <what the carousel will teach>
 
 ## Reel Promise
-<what the 22s Remotion reel will show first>
+<what the 30s Remotion reel will show first>
 
 ## CTA
 <save/comment/DM CTA>

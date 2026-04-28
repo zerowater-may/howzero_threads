@@ -11,6 +11,7 @@ from .prompts import instagram_prompt, linkedin_prompt, threads_prompt
 
 _DEFAULT_MODEL = "claude-sonnet-4-6"
 _MAX_TOKENS = 2048
+_THREADS_MAX_LINES = 3
 
 
 def _summarize_insights(dataset: dict[str, Any]) -> str:
@@ -37,6 +38,23 @@ def _call_claude(client: anthropic.Anthropic, prompt: str) -> str:
     return "".join(block.text for block in message.content if hasattr(block, "text")).strip()
 
 
+def normalize_threads_caption(text: str) -> str:
+    """Keep Threads copy in the zipsaja 2-3 line hook format."""
+    lines = []
+    for raw_line in text.splitlines():
+        line = raw_line.strip()
+        if not line:
+            continue
+        if line.startswith("#"):
+            continue
+        if line.lower().startswith(("출력:", "threads:", "thread:")):
+            continue
+        lines.append(line)
+        if len(lines) == _THREADS_MAX_LINES:
+            break
+    return "\n".join(lines).strip()
+
+
 def generate_captions(dataset: dict[str, Any], *, out_dir: Path) -> dict[str, Path]:
     """Call Anthropic 3 times, one per platform. Writes IG/Threads/LinkedIn .txt files.
 
@@ -61,6 +79,8 @@ def generate_captions(dataset: dict[str, Any], *, out_dir: Path) -> dict[str, Pa
     ):
         prompt = builder(ctx)
         text = _call_claude(client, prompt)
+        if platform == "threads":
+            text = normalize_threads_caption(text)
         out_path = out_dir / f"{platform}.txt"
         out_path.parent.mkdir(parents=True, exist_ok=True)
         out_path.write_text(text, encoding="utf-8")

@@ -7,7 +7,7 @@ description: "Combines brief.md and data.json into storyboard.json for carousel/
 
 Create `brands/zipsaja/zipsaja_pipeline_<slug>/storyboard.json`.
 
-This skill turns the approved brief and fetched data into one shared source for the carousel and the 22s Remotion reel.
+This skill turns the approved brief and fetched data into one shared source for the 30s Remotion reel and the separate carousel distribution asset.
 
 ## Required Inputs
 
@@ -35,12 +35,12 @@ Write `storyboard.json` with this schema:
     }
   ],
   "reel": {
-    "durationSec": 22,
+    "durationSec": 30,
     "composition": "Remotion",
     "beats": [
       {"start": 0, "end": 3, "message": "첫 훅"},
-      {"start": 3, "end": 18, "message": "데이터 전개"},
-      {"start": 18, "end": 22, "message": "CTA"}
+      {"start": 3, "end": 25, "message": "데이터 전개"},
+      {"start": 25, "end": 30, "message": "CTA"}
     ]
   },
   "cta": "댓글/저장/DM CTA"

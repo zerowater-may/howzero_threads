@@ -17,7 +17,7 @@ async function main() {
 
   const browser = await puppeteer.launch({ headless: "new" });
   const page = await browser.newPage();
-  await page.setViewport({ width: 1080, height: 1440, deviceScaleFactor: 2 });
+  await page.setViewport({ width: 1080, height: 1350, deviceScaleFactor: 1 });
   await page.goto(url, { waitUntil: "networkidle0" });
   await page.evaluateHandle("document.fonts.ready");
 

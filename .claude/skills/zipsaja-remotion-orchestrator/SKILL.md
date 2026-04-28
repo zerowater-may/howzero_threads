@@ -1,6 +1,6 @@
 ---
 name: zipsaja-remotion-orchestrator
-description: "zipsaja 콘텐츠 제작, zipsaja 파이프라인, 집사자 캐러셀+릴스, Remotion 단일 워크플로우, HyperFrames 제거/금지, 단계별 스킬 병렬화 요청 시 반드시 사용. 신규 zipsaja 릴스는 항상 Remotion으로만 만든다."
+description: "zipsaja 콘텐츠 제작, zipsaja 파이프라인, 집사자 30초 Remotion 릴스+4:5 캐러셀, Remotion 단일 워크플로우, HyperFrames 제거/금지, 단계별 스킬 병렬화 요청 시 반드시 사용. 신규 zipsaja 릴스는 항상 Remotion으로만 만든다."
 ---
 
 # zipsaja Remotion Orchestrator
@@ -26,15 +26,16 @@ Historical `hyperframes_reel` folders may stay in old bundles, but do not create
    - `brief` → `zipsaja-brief`
    - `data` → `zipsaja-data-fetch`
    - `storyboard` → `zipsaja-storyboard`
-   - `carousel` → `zipsaja-carousel-render`
    - `remotion` → `zipsaja-remotion-render`
+   - `carousel` → `zipsaja-carousel-render`
    - `attachments` → `zipsaja-attachments`
    - `captions` → `zipsaja-captions`
    - `package-qa` → `zipsaja-package-qa`
+   - publish request → `zipsaja-publish`
 5. Each sub-skill must update its own step status and artifact path.
 6. When the user explicitly asks for parallel work, split only independent steps:
    - after `brief`: `data` and asset checks
-   - after `storyboard`: `carousel`, `attachments`, `captions`
+   - after `storyboard`: `remotion`, `carousel`, `attachments`, `captions`
 7. Report the current state path and next step after each run.
 
 ## Recovery
@@ -47,8 +48,15 @@ If the state mentions HyperFrames for a new reel, stop and ask to migrate that s
 The workflow is complete only when:
 
 - `reels/full.mp4` exists
-- a 22s mp4 exists under `reels/`
+- `reels/zipsaja-reel-30s.mp4` exists
+- if API posting Reels, `reels/zipsaja-reel-30s-audio-mapped-ig-safe.mp4` exists or the user has chosen no baked audio
+- if API posting Reels, `publish-ready/instagram-reel-cover.png` exists or `--instagram-thumb-offset-ms` is set intentionally
 - `carousel/slides.html` exists
+- carousel PNGs are 1080x1350 for Instagram/Threads feed use
 - `captions/` exists when captions were requested
 - `attachments/` exists when lead magnet files were requested
 - `zipsaja-package-qa` has verified no new HyperFrames output was created
+
+Publishing is a separate explicit action after completion. Do not auto-publish unless the user asks to publish.
+
+Carousel is a distribution branch, not a prerequisite for Remotion rendering.

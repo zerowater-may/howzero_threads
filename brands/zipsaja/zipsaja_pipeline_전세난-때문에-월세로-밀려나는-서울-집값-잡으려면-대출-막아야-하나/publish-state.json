@@ -1,0 +1,157 @@
+{
+  "createdAt": "2026-04-28T19:52:03.377353+09:00",
+  "mode": "publish-now",
+  "bundle": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_전세난-때문에-월세로-밀려나는-서울-집값-잡으려면-대출-막아야-하나",
+  "media": {
+    "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_전세난-때문에-월세로-밀려나는-서울-집값-잡으려면-대출-막아야-하나/reels/zipsaja-reel-22s-audio-mapped.mp4",
+    "type": "video",
+    "note": "Published Instagram reel used this audio-mapped file; future uploads prefer zipsaja-reel-22s-audio-mapped-ig-safe.mp4."
+  },
+  "platforms": {
+    "threads": {
+      "status": "published",
+      "postId": "69f09156e48f8cb39c4b401b",
+      "response": {
+        "post": {
+          "recycling": {
+            "enabled": false,
+            "gapFreq": "month",
+            "recycleCount": 0,
+            "contentVariations": [],
+            "contentVariationIndex": 0
+          },
+          "_id": "69f09156e48f8cb39c4b401b",
+          "userId": "6925d39a4d42babc89dd33e5",
+          "title": "",
+          "content": "전세난 심해지면 월세로 밀리고,\n월세가 부담되면 매매로 도망가고,\n근데 집값 잡겠다고 대출은 더 막음.\n\n이거 진짜 서민 위한 정책 맞아?\n\n2025년 vs 2026년 현재 서울 25개 구 실거래:\n용산 +18.5%\n광진 +17.9%\n송파 +12.7%\n\n근데 강남은 -2.5%, 서초는 -0.4%.\n\n댓글 질문:\n1. 대출 더 막아야 집값 잡힌다\n2. 전세 공급부터 풀어야 서민이 산다",
+          "mediaItems": [
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1777373513010_by8rag4z_slide-01.png",
+              "_id": "69f09156e48f8cb39c4b401c"
+            },
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1777373514420_w4ur1wta_slide-02.png",
+              "_id": "69f09156e48f8cb39c4b401d"
+            },
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1777373515847_inuk8387_slide-03.png",
+              "_id": "69f09156e48f8cb39c4b401e"
+            },
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1777373518978_p4gsvuzi_slide-04.png",
+              "_id": "69f09156e48f8cb39c4b401f"
+            },
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1777373520392_jhrc9t0u_slide-05.png",
+              "_id": "69f09156e48f8cb39c4b4020"
+            },
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1777373521938_sqy0u0ow_slide-06.png",
+              "_id": "69f09156e48f8cb39c4b4021"
+            }
+          ],
+          "platforms": [
+            {
+              "platform": "threads",
+              "accountId": {
+                "_id": "69f08af4985e734bf3c9c749",
+                "profileId": "6925d3d1359f1d8910fb02e6",
+                "platform": "threads",
+                "displayName": "zipsaja_",
+                "isActive": true,
+                "profilePicture": "https://scontent-lhr8-2.cdninstagram.com/v/t51.82787-19/682266102_18095452699904183_162638842714231833_n.jpg?stp=dst-jpg_s206x206_tt6&_nc_cat=103&ccb=7-5&_nc_sid=30ff31&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy5DMyJ9&_nc_ohc=KBzQ9I4z0QsQ7kNvwG3JkrV&_nc_oc=Adpbi7T887fLxHrEMOBWEgxSPHcMoPi8gUk6mhZmjhKwp1FJFUZytUyLomhjSspELRI&_nc_zt=24&_nc_ht=scontent-lhr8-2.cdninstagram.com&edm=AP4hL3IEAAAA&_nc_gid=KGWkOu4ZB5E4uv8QAp3pYw&_nc_tpa=Q5bMBQEJJ6nKHhZFi9EiFQysijQuevxqnBKaXfTjYfcGOxqX7nE7qGcz1mT_pYUlRskq7j-dh7pBr0wDvw&oh=00_Af0YmMqox5cMWdQH-pq3Ugl3GXk7KB_BS5B-yW6-OcAzGg&oe=69F65EF0",
+                "username": "zipsaja_"
+              },
+              "profileId": "6925d3d1359f1d8910fb02e6",
+              "customMedia": [],
+              "scheduledFor": "2026-04-28T10:52:04.137Z",
+              "platformSpecificData": {
+                "topic_tag": "부동산",
+                "__platformUserIdSnapshot": "26700354756297895",
+                "__usernameSnapshot": "zipsaja_",
+                "publishingStarted": "2026-04-28T10:52:07.027Z",
+                "lastPublishStage": "publishing"
+              },
+              "status": "published",
+              "publishAttempts": 0,
+              "contentHash": "c401f2a37adf68e35cd76b210b917a62",
+              "_id": "69f09156e48f8cb39c4b4022",
+              "platformPostId": "18081848333199880",
+              "platformPostUrl": "https://www.threads.com/@zipsaja_/post/DXrDQN0kdJ8",
+              "publishedAt": "2026-04-28T10:52:45.214Z"
+            }
+          ],
+          "scheduledFor": "2026-04-28T10:52:04.137Z",
+          "timezone": "UTC",
+          "status": "published",
+          "tags": [],
+          "hashtags": [],
+          "mentions": [],
+          "visibility": "public",
+          "crosspostingEnabled": true,
+          "metadata": {
+            "usageCounted": true
+          },
+          "publishAttempts": 0,
+          "contentHash": "c401f2a37adf68e35cd76b210b917a62",
+          "createdAt": "2026-04-28T10:52:06.690Z",
+          "updatedAt": "2026-04-28T10:52:45.309Z",
+          "__v": 0,
+          "publishingClaimedAt": "2026-04-28T10:52:06.775Z"
+        },
+        "message": "Post published successfully"
+      }
+    },
+    "instagram_reel": {
+      "status": "published",
+      "postId": "69f09497655c433c4504834d",
+      "platformPostId": "17853564039662037",
+      "platformPostUrl": "https://www.instagram.com/reel/DXrEzKxjlxx/"
+    },
+    "instagram_carousel": {
+      "status": "published",
+      "postId": "69f094c4655c433c45048797",
+      "platformPostId": "18177294757395600",
+      "platformPostUrl": "https://www.instagram.com/p/DXrE9uJF2n_/"
+    }
+  },
+  "threadsCarouselMedia": [
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_전세난-때문에-월세로-밀려나는-서울-집값-잡으려면-대출-막아야-하나/publish-ready/threads-carousel/slide-01.png",
+      "publicUrl": "https://media.zernio.com/temp/1777373513010_by8rag4z_slide-01.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_전세난-때문에-월세로-밀려나는-서울-집값-잡으려면-대출-막아야-하나/publish-ready/threads-carousel/slide-02.png",
+      "publicUrl": "https://media.zernio.com/temp/1777373514420_w4ur1wta_slide-02.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_전세난-때문에-월세로-밀려나는-서울-집값-잡으려면-대출-막아야-하나/publish-ready/threads-carousel/slide-03.png",
+      "publicUrl": "https://media.zernio.com/temp/1777373515847_inuk8387_slide-03.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_전세난-때문에-월세로-밀려나는-서울-집값-잡으려면-대출-막아야-하나/publish-ready/threads-carousel/slide-04.png",
+      "publicUrl": "https://media.zernio.com/temp/1777373518978_p4gsvuzi_slide-04.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_전세난-때문에-월세로-밀려나는-서울-집값-잡으려면-대출-막아야-하나/publish-ready/threads-carousel/slide-05.png",
+      "publicUrl": "https://media.zernio.com/temp/1777373520392_jhrc9t0u_slide-05.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_전세난-때문에-월세로-밀려나는-서울-집값-잡으려면-대출-막아야-하나/publish-ready/threads-carousel/slide-06.png",
+      "publicUrl": "https://media.zernio.com/temp/1777373521938_sqy0u0ow_slide-06.png",
+      "contentType": "image/png"
+    }
+  ],
+  "updatedAt": "2026-04-28T20:20:15.008569+09:00"
+}

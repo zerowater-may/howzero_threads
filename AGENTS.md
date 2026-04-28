@@ -43,7 +43,7 @@ howzero/
 ├── .claude/                        ← Claude Code 설정
 │   ├── skills/
 │   │   ├── carousel/               ← 카러셀 생성 (브랜드 프리셋)
-│   │   ├── reels/                  ← 카러셀 → Remotion 9:16 릴스
+│   │   ├── reels/                  ← legacy 카러셀 → Remotion 9:16 릴스
 │   │   ├── brands-organize/        ← 새 콘텐츠 → brands/ 자동 정리
 │   │   ├── zipsaja-design/         ← zipsaja 브랜드 디자인 시스템
 │   │   └── excalidraw-diagram/
@@ -71,7 +71,7 @@ howzero/
 | Type | 의미 | 예시 |
 |---|---|---|
 | `carousel` | 인스타 캐러셀 (slides.html + slide-XX.png) | `zipsaja_carousel_seoul-10y` |
-| `reels` | Remotion 릴스 mp4 모음 (full.mp4, 22s.mp4, raw.mp4) | `zipsaja_reels_husband-wife` |
+| `reels` | Remotion 릴스 mp4 모음 (full.mp4, 30s.mp4, raw.mp4) | `zipsaja_reels_husband-wife` |
 | `captions` | 자막/캡션 txt | `braveyong_captions_AbFSATnz2_c.txt` |
 | `comments` | 댓글/이메일 자료 (xlsx, csv) | `zipsaja_comments_general.xlsx` |
 | `script` | 긴 영상 대본 (.md) | `howzero_script/A-001-*.md` |
@@ -195,8 +195,8 @@ python3 -m scripts.pipeline howzero 1인 기업가 시간관리
 신규 zipsaja 콘텐츠는 `zipsaja-remotion-v1`을 표준으로 사용한다.
 
 1. `zipsaja-remotion-orchestrator`가 `pipeline-state.json`을 기준으로 다음 단계를 결정한다.
-2. 단계 스킬은 `zipsaja-brief`, `zipsaja-data-fetch`, `zipsaja-storyboard`, `zipsaja-carousel-render`, `zipsaja-remotion-render`, `zipsaja-attachments`, `zipsaja-captions`, `zipsaja-package-qa`로 나눈다.
-3. 신규 zipsaja 릴스는 Remotion만 사용한다.
+2. 단계 스킬은 `zipsaja-brief`, `zipsaja-data-fetch`, `zipsaja-storyboard`, `zipsaja-remotion-render`, `zipsaja-carousel-render`, `zipsaja-attachments`, `zipsaja-captions`, `zipsaja-package-qa`로 나눈다.
+3. 신규 zipsaja 릴스는 Remotion만 사용하며, 30초 전체를 Remotion 컴포지션으로 만든다.
 4. HyperFrames는 기존 산출물 보관용으로만 취급하고, 신규 zipsaja 릴스 제작에는 사용하지 않는다.
 5. 모든 단계는 `pipeline-state.json`을 읽고 자기 단계 상태와 artifact path를 갱신한다.
 
@@ -208,14 +208,15 @@ python3 -m scripts.pipeline howzero 1인 기업가 시간관리
 
 - `/pipeline` — 마스터 스킬 (`.claude/skills/pipeline/`)
 - `/zipsaja-data-fetch` — zipsaja 데이터 페처 (`.claude/skills/zipsaja-data-fetch/`)
+- `/zipsaja-publish` — Zernio Instagram/Threads 게시 (`.claude/skills/zipsaja-publish/`)
 
 ### 구현 상태 (Plan 1 + Plan 2-5 완료)
 
 | 단계 | 상태 | 스킬 |
 |---|---|---|
 | 데이터 수집 (zipsaja) | ✅ | `/zipsaja-data-fetch` |
-| 캐러셀 (Jinja2 + Puppeteer) | ✅ | `/content-carousel` |
 | 릴스 (Remotion + ffmpeg) | ✅ | `/content-reels` |
+| 캐러셀 (Jinja2 + Puppeteer) | ✅ | `/content-carousel` |
 | 첨부자료 (Excel + PDF) | ✅ | `/content-attachments` |
 | 캡션 (IG/Threads/LinkedIn) | ✅ | `/content-captions` |
 
@@ -230,15 +231,36 @@ brands/{brand}/{brand}_pipeline_{slug}/
 │   └── slide-01.png ~ slide-NN.png
 ├── reels/
 │   ├── full.mp4
-│   └── zipsaja-reel-22s.mp4
+│   ├── zipsaja-reel-30s.mp4
+│   ├── zipsaja-reel-30s-audio-mapped.mp4
+│   └── zipsaja-reel-30s-audio-mapped-ig-safe.mp4
+├── publish-ready/
+│   ├── instagram-carousel/slide-01.png ~ slide-NN.png
+│   ├── instagram-reel-cover.png
+│   └── threads-carousel/slide-01.png ~ slide-NN.png
 ├── attachments/
 │   ├── seoul-price-data.xlsx
 │   └── seoul-price-insights.pdf
-└── captions/
+├── captions/
     ├── instagram.txt
     ├── threads.txt
     └── linkedin.txt
+└── publish-state.json
 ```
+
+### 게시 워크플로우 (Zernio)
+
+Instagram 플랫폼 음악을 앱에서 직접 고를 수 있는 API는 없다. 신규 zipsaja 게시 자동화는 다음 기준을 따른다.
+
+1. Instagram Reels — 외부 음원을 쓸 경우 `reels/zipsaja-reel-30s-audio-mapped.mp4`처럼 오디오를 영상에 먼저 박고 Zernio API로 게시한다.
+2. Reels 업로드 파일은 1080x1920, 9:16, H.264, 30fps, 30초를 기준으로 하며, `reels/zipsaja-reel-30s-audio-mapped-ig-safe.mp4`가 있으면 이를 우선 사용한다. 핵심 텍스트는 릴스 UI/그리드 crop을 피해 중앙 4:5 안쪽에 둔다. 기존 `22s` 파일은 30초 파일이 없을 때만 legacy fallback이다.
+3. Reels 커버는 `publish-ready/instagram-reel-cover.png` 1080x1920 파일을 Zernio `instagramThumbnail`로 업로드한다. 커버가 없으면 `--instagram-thumb-offset-ms` 프레임을 썸네일로 쓴다.
+4. Instagram Carousel — 이미지 캐러셀은 1080x1350, 4:5 기준이다. 오디오를 담을 수 없으므로 `publish-ready/instagram-carousel/slide-*.png`를 음악 없이 Feed carousel로 게시한다.
+5. Threads — 기본은 `publish-ready/threads-carousel/slide-*.png` 이미지 캐러셀 게시다. 본문은 `captions/threads.txt`의 2~3줄 훅만 사용한다. 해시태그/긴 설명 금지, topic tag는 Zernio `--topic-tag`로 처리한다.
+6. 모든 게시 결과는 번들 루트의 `publish-state.json`에 누적 기록한다.
+7. 명령은 `python3 -m scripts.zernio_publish <bundle> --platform instagram --instagram-media both --now` 또는 `--platform threads --threads-media carousel --now`를 사용한다.
+
+도식화: [docs/superpowers/plans/2026-04-28-zipsaja-remotion-zernio-workflow.excalidraw.md](docs/superpowers/plans/2026-04-28-zipsaja-remotion-zernio-workflow.excalidraw.md)
 
 ### 환경 변수 (zipsaja 기준)
 

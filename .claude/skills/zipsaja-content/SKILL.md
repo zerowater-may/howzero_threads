@@ -1,6 +1,6 @@
 ---
 name: zipsaja-content
-description: Generate 1080×1440 zipsaja brand instagram carousel slides from proptech_db data. Auto-injects footer with live counts, validates samples, runs tone/contrast guards, exports PNG. Use when the user asks for "카드뉴스", "캐러셀", "데이터 시각화" with zipsaja brand. Sister skill of zipsaja-design.
+description: Generate 1080×1350 zipsaja brand instagram carousel slides from proptech_db data. Auto-injects footer with live counts, validates samples, runs tone/contrast guards, exports PNG. Use when the user asks for "카드뉴스", "캐러셀", "데이터 시각화" with zipsaja brand. Sister skill of zipsaja-design.
 user-invocable: true
 ---
 
@@ -53,5 +53,7 @@ user-invocable: true
 ├── `spec.yaml` (입력)
 ├── `data.json` (라이브 쿼리 결과)
 ├── `slides/*.html` (렌더 결과)
-├── `exports/*.png` (1080×1440)
+├── `exports/*.png` (1080×1350 for new Instagram carousel posts)
 └── `meta.json` (빌드 메타)
+
+Legacy outputs or templates that still render 1080×1440 must be migrated to 1080×1350 before publishing.

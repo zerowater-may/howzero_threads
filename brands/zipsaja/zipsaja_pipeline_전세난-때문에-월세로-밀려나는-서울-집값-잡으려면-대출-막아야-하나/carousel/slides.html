@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>전세난 때문에 월세로 밀려나는 서울, 집값 잡으려면 대출 막아야 하나</title>
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;700;900&family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: 'Noto Sans KR', sans-serif; color:#1a1a1a; background:#F0E7D6; }
+  .slide {
+    width:1080px; height:1440px; padding:80px 70px;
+    display:flex; flex-direction:column; position:relative;
+    page-break-after:always; background:#F0E7D6;
+  }
+  .cover h1 { font-family:'Jua'; font-size:96px; line-height:1.1; text-align:center; margin-top:120px; }
+  .cover .pill {
+    display:inline-block; background:#EA2E00; color:#fff;
+    padding:14px 36px; border-radius:999px; font-family:'Jua'; font-size:56px;
+  }
+  .cover .subtitle { text-align:center; font-size:32px; margin-top:48px; color:#555; font-weight:500; }
+  .cover .source { position:absolute; bottom:80px; left:0; right:0; text-align:center; font-family:'Gaegu'; font-size:28px; color:#EA2E00; }
+  .data h2 { font-family:'Jua'; font-size:56px; margin-bottom:16px; }
+  .data .meta { font-size:22px; color:#666; margin-bottom:28px; }
+  table { width:100%; border-collapse:collapse; background:#F5EDE0; border:3px solid #1a1a1a; border-radius:16px; overflow:hidden; }
+  th { background:#EA2E00; color:#fff; font-family:'Jua'; font-size:26px; padding:14px 12px; text-align:center; }
+  td { font-family:'Noto Sans KR'; font-weight:700; font-size:24px; padding:10px 12px; border-bottom:1px solid rgba(0,0,0,0.08); }
+  td.gu { color:#EA2E00; font-family:'Jua'; text-align:left; font-size:26px; }
+  td.price { text-align:right; }
+  td.pct { text-align:right; font-weight:900; }
+  .pct.pos { color:#EA2E00; }
+  .pct.neg { color:#1A4FA0; }
+  .bar-cell { position:relative; height:22px; background:transparent; }
+  .zero { position:absolute; left:50%; top:0; bottom:0; width:2px; background:#888; }
+  .bar { position:absolute; top:2px; height:18px; }
+  .bar.pos { left:50%; background:#EA2E00; }
+  .bar.neg { background:#1A4FA0; }
+  .footer-cta {
+    background:#1a1a1a; color:#fff; border-radius:20px;
+    padding:48px 40px; margin-top:auto; text-align:center;
+  }
+  .footer-cta .hook { font-family:'Gaegu'; font-size:36px; color:#EA2E00; margin-bottom:16px; }
+  .footer-cta h3 { font-family:'Jua'; font-size:52px; color:#fff; line-height:1.15; }
+</style>
+</head>
+<body>
+
+<div class="slide cover">
+  <h1><span class="pill">전세난 때문에 월세로</span></h1>
+  <h1 style="font-size:72px; margin-top:36px;">밀려나는 서울, 집값 잡으려면 대출 막아야 하나</h1>
+  <p class="subtitle">2025년 거래 vs 2026년 현재 거래<br>2025.1.1 ~ 2025.12.31 vs 2026.1.1 ~ 현재</p>
+  <p class="source">국토부 실거래가(매매) + 2026.4 전세난/대출규제 웹 이슈</p>
+</div>
+
+
+<div class="slide data">
+  <h2>서초구 ~ 강동구</h2>
+  <p class="meta">300세대 이상 아파트 · 평형 무관</p>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:20%;">지역</th>
+        <th style="width:25%;">취임 전</th>
+        <th style="width:25%;">취임 후</th>
+        <th style="width:20%;">바 차트</th>
+        <th style="width:10%;">변동률</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td class="gu">서초구</td>
+        <td class="price">32억 7,644만원</td>
+        <td class="price">32억 6,326만원</td>
+        <td class="bar-cell">
+          <div class="zero"></div>
+          <div class="bar neg"
+               style="width:2px; left:calc(50% - 2px);"></div>
+        </td>
+        <td class="pct neg">
+          -0.4%
+        </td>
+      </tr>
+
+      <tr>
+        <td class="gu">강남구</td>
+        <td class="price">27억 2,846만원</td>
+        <td class="price">26억 6,084만원</td>
+        <td class="bar-cell">
+          <div class="zero"></div>
+          <div class="bar neg"
+               style="width:14px; left:calc(50% - 14px);"></div>
+        </td>
+        <td class="pct neg">
+          -2.5%
+        </td>
+      </tr>
+
+      <tr>
+        <td class="gu">용산구</td>
+        <td class="price">27억 1,367만원</td>
+        <td class="price">32억 1,561만원</td>
+        <td class="bar-cell">
+          <div class="zero"></div>
+          <div class="bar pos"
+               style="width:100px; "></div>
+        </td>
+        <td class="pct pos">
+          +18.5%
+        </td>
+      </tr>
+
+      <tr>
+        <td class="gu">송파구</td>
+        <td class="price">21억 2,542만원</td>
+        <td class="price">23억 9,580만원</td>
+        <td class="bar-cell">
+          <div class="zero"></div>
+          <div class="bar pos"
+               style="width:69px; "></div>
+        </td>
+        <td class="pct pos">
+          +12.7%
+        </td>
+      </tr>
+
+      <tr>
+        <td class="gu">성동구</td>
+        <td class="price">16억 2,161만원</td>
+        <td class="price">18억 1,951만원</td>
+        <td class="bar-cell">
+          <div class="zero"></div>
+          <div class="bar pos"
+               style="width:66px; "></div>
+        </td>
+        <td class="pct pos">
+          +12.2%
+        </td>
+      </tr>
+
+      <tr>
+        <td class="gu">마포구</td>
+        <td class="price">16억 7,185만원</td>
+        <td class="price">16억 7,917만원</td>
+        <td class="bar-cell">
+          <div class="zero"></div>
+          <div class="bar pos"
+               style="width:2px; "></div>
+        </td>
+        <td class="pct pos">
+          +0.4%
+        </td>
+      </tr>
+
+      <tr>
+        <td class="gu">동작구</td>
+        <td class="price">14억 3,997만원</td>
+        <td class="price">15억 6,658만원</td>
+        <td class="bar-cell">
+          <div class="zero"></div>
+          <div class="bar pos"
+               style="width:48px; "></div>
+        </td>
+        <td class="pct pos">
+          +8.8%
+        </td>
+      </tr>
+
+      <tr>
+        <td class="gu">강동구</td>
+        <td class="price">14억 2,912만원</td>
+        <td class="price">15억 6,128만원</td>
+        <td class="bar-cell">
+          <div class="zero"></div>
+          <div class="bar pos"
+               style="width:50px; "></div>
+        </td>
+        <td class="pct pos">
+          +9.2%
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+<div class="slide data">
+  <h2>광진구 ~ 강서구</h2>
+  <p class="meta">300세대 이상 아파트 · 평형 무관</p>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:20%;">지역</th>
+        <th style="width:25%;">취임 전</th>
+        <th style="width:25%;">취임 후</th>
+        <th style="width:20%;">바 차트</th>
+        <th style="width:10%;">변동률</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td class="gu">광진구</td>
+        <td class="price">15억 8,471만원</td>
+        <td class="price">18억 6,787만원</td>
+        <td class="bar-cell">
+          <div class="zero"></div>
+          <div class="bar pos"
+               style="width:97px; "></div>
+        </td>
+        <td class="pct pos">
+          +17.9%
+        </td>
+      </tr>
+
+      <tr>
+        <td class="gu">중구</td>
+        <td class="price">12억 8,665만원</td>
+        <td class="price">13억 5,496만원</td>
+        <td class="bar-cell">
+          <div class="zero"></div>
+          <div class="bar pos"
+               style="width:29px; "></div>
+        </td>
+        <td class="pct pos">
+          +5.3%
+        </td>
+      </tr>
+
+      <tr>
+        <td class="gu">영등포구</td>
+        <td class="price">13억 8,636만원</td>
+        <td class="price">14억 70만원</td>
+        <td class="bar-cell">
+          <div class="zero"></div>
+          <div class="bar pos"
+               style="width:5px; "></div>
+        </td>
+        <td class="pct pos">
+          +1.0%
+        </td>
+      </tr>
+
+      <tr>
+        <td class="gu">종로구</td>
+        <td class="price">13억 2,274만원</td>
+        <td class="price">13억 2,153만원</td>
+        <td class="bar-cell">
+          <div class="zero"></div>
+          <div class="bar neg"
+               style="width:1px; left:calc(50% - 1px);"></div>
+        </td>
+        <td class="pct neg">
+          -0.1%
+        </td>
+      </tr>
+
+      <tr>
+        <td class="gu">동대문구</td>
+        <td class="price">10억 8,712만원</td>
+        <td class="price">11억 7,600만원</td>
+        <td class="bar-cell">
+          <div class="zero"></div>
+          <div class="bar pos"
+               style="width:44px; "></div>
+        </td>
+        <td class="pct pos">
+          +8.2%
+        </td>
+      </tr>
+
+      <tr>
+        <td class="gu">서대문구</td>
+        <td class="price">11억 6,132만원</td>
+        <td class="price">11억 8,691만원</td>
+        <td class="bar-cell">
+          <div class="zero"></div>
+          <div class="bar pos"
+               style="width:12px; "></div>
+        </td>
+        <td class="pct pos">
+          +2.2%
+        </td>
+      </tr>
+
+      <tr>
+        <td class="gu">양천구</td>
+        <td class="price">11억 9,056만원</td>
+        <td class="price">11억 9,529만원</td>
+        <td class="bar-cell">
+          <div class="zero"></div>
+          <div class="bar pos"
+               style="width:2px; "></div>
+        </td>
+        <td class="pct pos">
+          +0.4%
+        </td>
+      </tr>
+
+      <tr>
+        <td class="gu">강서구</td>
+        <td class="price">10억 5,319만원</td>
+        <td class="price">11억 263만원</td>
+        <td class="bar-cell">
+          <div class="zero"></div>
+          <div class="bar pos"
+               style="width:25px; "></div>
+        </td>
+        <td class="pct pos">
+          +4.7%
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+<div class="slide data">
+  <h2>성북구 ~ 중랑구</h2>
+  <p class="meta">300세대 이상 아파트 · 평형 무관</p>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:20%;">지역</th>
+        <th style="width:25%;">취임 전</th>
+        <th style="width:25%;">취임 후</th>
+        <th style="width:20%;">바 차트</th>
+        <th style="width:10%;">변동률</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td class="gu">성북구</td>
+        <td class="price">8억 9,700만원</td>
+        <td class="price">9억 5,626만원</td>
+        <td class="bar-cell">
+          <div class="zero"></div>
+          <div class="bar pos"
+               style="width:36px; "></div>
+        </td>
+        <td class="pct pos">
+          +6.6%
+        </td>
+      </tr>
+
+      <tr>
+        <td class="gu">은평구</td>
+        <td class="price">9억 7,846만원</td>
+        <td class="price">10억 234만원</td>
+        <td class="bar-cell">
+          <div class="zero"></div>
+          <div class="bar pos"
+               style="width:13px; "></div>
+        </td>
+        <td class="pct pos">
+          +2.4%
+        </td>
+      </tr>
+
+      <tr>
+        <td class="gu">관악구</td>
+        <td class="price">8억 9,377만원</td>
+        <td class="price">9억 6,286만원</td>
+        <td class="bar-cell">
+          <div class="zero"></div>
+          <div class="bar pos"
+               style="width:42px; "></div>
+        </td>
+        <td class="pct pos">
+          +7.7%
+        </td>
+      </tr>
+
+      <tr>
+        <td class="gu">구로구</td>
+        <td class="price">8억 18만원</td>
+        <td class="price">8억 1,739만원</td>
+        <td class="bar-cell">
+          <div class="zero"></div>
+          <div class="bar pos"
+               style="width:12px; "></div>
+        </td>
+        <td class="pct pos">
+          +2.2%
+        </td>
+      </tr>
+
+      <tr>
+        <td class="gu">강북구</td>
+        <td class="price">7억 2,993만원</td>
+        <td class="price">7억 8,344만원</td>
+        <td class="bar-cell">
+          <div class="zero"></div>
+          <div class="bar pos"
+               style="width:39px; "></div>
+        </td>
+        <td class="pct pos">
+          +7.3%
+        </td>
+      </tr>
+
+      <tr>
+        <td class="gu">금천구</td>
+        <td class="price">6억 8,163만원</td>
+        <td class="price">7억 1,837만원</td>
+        <td class="bar-cell">
+          <div class="zero"></div>
+          <div class="bar pos"
+               style="width:29px; "></div>
+        </td>
+        <td class="pct pos">
+          +5.4%
+        </td>
+      </tr>
+
+      <tr>
+        <td class="gu">노원구</td>
+        <td class="price">6억 6,873만원</td>
+        <td class="price">6억 6,878만원</td>
+        <td class="bar-cell">
+          <div class="zero"></div>
+          <div class="bar pos"
+               style="width:0px; "></div>
+        </td>
+        <td class="pct pos">
+          +0.0%
+        </td>
+      </tr>
+
+      <tr>
+        <td class="gu">중랑구</td>
+        <td class="price">7억 1,331만원</td>
+        <td class="price">7억 1,420만원</td>
+        <td class="bar-cell">
+          <div class="zero"></div>
+          <div class="bar pos"
+               style="width:1px; "></div>
+        </td>
+        <td class="pct pos">
+          +0.1%
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+<div class="slide data">
+  <h2>도봉구</h2>
+  <p class="meta">300세대 이상 아파트 · 평형 무관</p>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:20%;">지역</th>
+        <th style="width:25%;">취임 전</th>
+        <th style="width:25%;">취임 후</th>
+        <th style="width:20%;">바 차트</th>
+        <th style="width:10%;">변동률</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td class="gu">도봉구</td>
+        <td class="price">5억 9,796만원</td>
+        <td class="price">6억 485만원</td>
+        <td class="bar-cell">
+          <div class="zero"></div>
+          <div class="bar pos"
+               style="width:6px; "></div>
+        </td>
+        <td class="pct pos">
+          +1.2%
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+
+<div class="slide cover">
+  <h1 style="margin-top:200px;"><span class="pill">데이터 더</span></h1>
+  <h1 style="font-size:72px; margin-top:36px;">궁금하지?</h1>
+  <div class="footer-cta">
+    <p class="hook">💬 댓글 달면 보내줄게</p>
+    <h3>"엑셀" — 데이터 파일<br>"PDF" — 요약 리포트</h3>
+  </div>
+  <p class="source">국토부 실거래가(매매) + 2026.4 전세난/대출규제 웹 이슈</p>
+</div>
+
+</body>
+</html>
