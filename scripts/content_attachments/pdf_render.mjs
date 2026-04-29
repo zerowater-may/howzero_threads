@@ -21,7 +21,10 @@ async function main() {
   const url = `file://${absHtml}`;
   fs.mkdirSync(path.dirname(pdfPath), { recursive: true });
 
-  const browser = await puppeteer.launch({ headless: "new" });
+  const launchArgs = process.getuid?.() === 0
+    ? ["--no-sandbox", "--disable-setuid-sandbox"]
+    : [];
+  const browser = await puppeteer.launch({ headless: "new", args: launchArgs });
   const page = await browser.newPage();
   await page.goto(url, { waitUntil: "networkidle0" });
   await page.evaluateHandle("document.fonts.ready");
