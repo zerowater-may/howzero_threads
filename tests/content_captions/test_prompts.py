@@ -1,4 +1,4 @@
-from scripts.content_captions.generate import normalize_threads_caption
+from scripts.content_captions.generate import normalize_threads_caption, resolve_caption_provider
 from scripts.content_captions.prompts import (
     instagram_prompt,
     linkedin_prompt,
@@ -50,3 +50,22 @@ def test_normalize_threads_caption_keeps_only_hook_lines():
     lines = caption.splitlines()
     assert len(lines) == 3
     assert all(not line.startswith("#") for line in lines)
+
+
+def test_resolve_caption_provider_prefers_explicit_env(monkeypatch):
+    monkeypatch.setenv("CONTENT_CAPTIONS_PROVIDER", "kimi")
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "anthropic-key")
+
+    assert resolve_caption_provider() == "kimi"
+
+
+def test_resolve_caption_provider_supports_kimi_and_deepseek_without_anthropic(monkeypatch):
+    monkeypatch.delenv("CONTENT_CAPTIONS_PROVIDER", raising=False)
+    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    monkeypatch.setenv("MOONSHOT_API_KEY", "moonshot-key")
+    monkeypatch.setenv("DEEPSEEK_API_KEY", "deepseek-key")
+
+    assert resolve_caption_provider() == "kimi"
+
+    monkeypatch.delenv("MOONSHOT_API_KEY", raising=False)
+    assert resolve_caption_provider() == "deepseek"
