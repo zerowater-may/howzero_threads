@@ -15,7 +15,10 @@ async function main() {
   const absHtml = path.resolve(htmlPath);
   const url = `file://${absHtml}`;
 
-  const browser = await puppeteer.launch({ headless: "new" });
+  const launchArgs = process.getuid?.() === 0
+    ? ["--no-sandbox", "--disable-setuid-sandbox"]
+    : [];
+  const browser = await puppeteer.launch({ headless: "new", args: launchArgs });
   const page = await browser.newPage();
   await page.setViewport({ width: 1080, height: 1350, deviceScaleFactor: 1 });
   await page.goto(url, { waitUntil: "networkidle0" });
