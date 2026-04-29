@@ -1,0 +1,23 @@
+{
+  "title": "전세 살라더니 1년 새 보증금 5천 더 필요해짐",
+  "slides": [
+    {"no": 1, "headline": "전세 살라더니 1년 새 보증금 5천 더 필요", "role": "hook"},
+    {"no": 2, "headline": "실거래로 계산했다", "role": "method"},
+    {"no": 3, "headline": "중위값 5.0억에서 5.5억", "role": "main_stat"},
+    {"no": 4, "headline": "평균도 5.37억에서 5.75억", "role": "support_stat"},
+    {"no": 5, "headline": "집계 조건 충족 24개 구 모두 상승", "role": "breadth"},
+    {"no": 6, "headline": "금천 서초 동대문은 15% 넘게 상승", "role": "shock"},
+    {"no": 7, "headline": "마포 성북 은평도 10%대", "role": "spread"},
+    {"no": 8, "headline": "전세도 안전지대가 아니다", "role": "interpretation"},
+    {"no": 9, "headline": "매수는 대출, 전세는 보증금", "role": "conflict"},
+    {"no": 10, "headline": "첫집러는 어디로 가야 하냐", "role": "cta"}
+  ],
+  "reel": [
+    {"start": 0, "duration": 4, "headline": ["전세 살라더니", "5천 더 필요"], "accent": "중위값 5.0억 → 5.5억"},
+    {"start": 4, "duration": 5, "headline": ["실거래로", "다시 계산함"], "accent": "전년 동기 대비 +10.0%"},
+    {"start": 9, "duration": 5, "headline": ["평균도", "+3,800만"], "accent": "5.37억 → 5.75억"},
+    {"start": 14, "duration": 5, "headline": ["24개 구", "전부 상승"], "accent": "19개 구는 +5% 이상"},
+    {"start": 19, "duration": 6, "headline": ["금천 +19.9%", "서초 +17.8%"], "accent": "강남만의 문제가 아님"},
+    {"start": 25, "duration": 5, "headline": ["첫집러는", "어디로 가냐"], "accent": "매수도 전세도 막히는 중"}
+  ]
+}

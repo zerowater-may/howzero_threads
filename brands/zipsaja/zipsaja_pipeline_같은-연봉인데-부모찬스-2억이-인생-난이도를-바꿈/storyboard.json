@@ -1,53 +1,136 @@
 {
-  "topic": "같은 연봉인데 부모찬스 2억이 인생 난이도를 바꿈",
-  "hook": "네 연봉보다 부모 2억이 더 셌다.",
+  "topic": "같은 월급인데 집 보는 동네가 갈렸다",
+  "hook": "같은 월급인데, 집 보는 동네가 갈렸다.",
   "carousel": [
     {
       "slide": 1,
       "role": "cover",
-      "headline": "네 연봉보다 부모 2억이 더 셌다.",
+      "headline": "같은 월급인데 집 보는 동네가 갈렸다.",
       "body": [
-        "자기자본 3억 vs 5억, LTV 40% 단순 시뮬레이션"
+        "부모 2억 붙는 순간"
       ],
-      "visual": "zipsaja beige/orange cover"
+      "visual": "bright beige cover"
     },
     {
       "slide": 2,
-      "role": "data",
-      "headline": "핵심 숫자",
+      "role": "setup",
+      "headline": "둘 다 서울에서 첫집을 보러 다닌다",
       "body": [
-        "data.json rows"
+        "한 명은 혼자 모은 3억",
+        "다른 한 명은 부모 도움 후 5억"
       ],
-      "visual": "comparison table"
+      "visual": "two scenario cards"
     },
     {
       "slide": 3,
-      "role": "cta",
-      "headline": "부모찬스 없는 첫집, 노력으로 커버 가능하다고 봐?",
+      "role": "formula",
+      "headline": "15억 이하는 대출 최대 6억",
       "body": [
-        "댓글 유도"
+        "2025년 10월 정책 기준",
+        "수도권·규제지역 15억 이하 주담대 최대 6억"
       ],
-      "visual": "black CTA band"
+      "visual": "formula card"
+    },
+    {
+      "slide": 4,
+      "role": "scenario-a",
+      "headline": "혼자 모은 3억은 예산 최대 9억",
+      "body": [
+        "3억 + 대출 6억",
+        "서울 24평급 평균 기준 접근 가능 구 7개"
+      ],
+      "visual": "large number"
+    },
+    {
+      "slide": 5,
+      "role": "scenario-b",
+      "headline": "부모가 2억 보태면 예산 최대 11억",
+      "body": [
+        "5억 + 대출 6억",
+        "접근 가능 구가 12개로 늘어남"
+      ],
+      "visual": "large number"
+    },
+    {
+      "slide": 6,
+      "role": "table",
+      "headline": "9억이면 7개 구가 열린다",
+      "body": [
+        "중랑·도봉·금천·노원·강북·구로·관악"
+      ],
+      "visual": "price table"
+    },
+    {
+      "slide": 7,
+      "role": "amplify",
+      "headline": "11억이면 12개 구까지 열린다",
+      "body": [
+        "성북·양천·은평·강서·동대문이 추가로 열림"
+      ],
+      "visual": "impact card"
+    },
+    {
+      "slide": 8,
+      "role": "limit",
+      "headline": "부모 2억은 동네 5개를 더 열었다",
+      "body": [
+        "혼자 모은 3억은 7개 구",
+        "부모 도움 후 5억은 12개 구"
+      ],
+      "visual": "near miss table"
+    },
+    {
+      "slide": 9,
+      "role": "risk",
+      "headline": "부모 욕하자는 얘기가 아님",
+      "body": [
+        "첫집 시장에서 시작금이 얼마나 크게 작동하는지 보자는 거야"
+      ],
+      "visual": "quote card"
+    },
+    {
+      "slide": 10,
+      "role": "cta",
+      "headline": "이게 노력 차이야, 시작선 차이야?",
+      "body": [
+        "부모찬스 없는 첫집, 노력으로 커버 가능하다고 봐?"
+      ],
+      "visual": "dark CTA"
     }
   ],
   "reel": {
     "durationSec": 30,
-    "composition": "Remotion",
+    "composition": "ParentChanceReel",
     "beats": [
       {
         "start": 0,
-        "end": 3,
-        "message": "네 연봉보다 부모 2억이 더 셌다."
+        "end": 4,
+        "message": "같은 월급인데, 집 보는 동네가 갈렸다."
       },
       {
-        "start": 3,
+        "start": 4,
+        "end": 9,
+        "message": "혼자 모은 3억, 부모 도움 후 5억."
+      },
+      {
+        "start": 9,
+        "end": 14,
+        "message": "15억 이하 주담대 최대 6억."
+      },
+      {
+        "start": 14,
+        "end": 19,
+        "message": "3억은 9억까지, 7개 구."
+      },
+      {
+        "start": 19,
         "end": 25,
-        "message": "자기자본 3억 vs 5억, LTV 40% 단순 시뮬레이션"
+        "message": "5억은 11억까지, 12개 구."
       },
       {
         "start": 25,
         "end": 30,
-        "message": "부모찬스 없는 첫집, 노력으로 커버 가능하다고 봐?"
+        "message": "노력 차이야, 시작선 차이야?"
       }
     ]
   },

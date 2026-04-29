@@ -2,169 +2,162 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>같은 연봉인데 부모찬스 2억이 인생 난이도를 바꿈</title>
-<link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;700;900&family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+<title>같은 월급인데 집 보는 동네가 갈렸다</title>
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family: 'Noto Sans KR', sans-serif; color:#1a1a1a; background:#F0E7D6; }
-  .slide {
-    width:1080px; height:1350px; padding:70px 70px;
-    display:flex; flex-direction:column; position:relative;
-    page-break-after:always; background:#F0E7D6;
-  }
-  .cover h1 { font-family:'Jua'; font-size:96px; line-height:1.1; text-align:center; margin-top:100px; }
-  .cover .pill {
-    display:inline-block; background:#EA2E00; color:#fff;
-    padding:14px 36px; border-radius:999px; font-family:'Jua'; font-size:56px;
-  }
-  .cover .subtitle { text-align:center; font-size:32px; margin-top:48px; color:#555; font-weight:500; }
-  .cover .source { position:absolute; bottom:70px; left:0; right:0; text-align:center; font-family:'Gaegu'; font-size:28px; color:#EA2E00; }
-  .data h2 { font-family:'Jua'; font-size:56px; margin-bottom:16px; }
-  .data .meta { font-size:22px; color:#666; margin-bottom:28px; }
-  table { width:100%; border-collapse:collapse; background:#F5EDE0; border:3px solid #1a1a1a; border-radius:16px; overflow:hidden; }
-  th { background:#EA2E00; color:#fff; font-family:'Jua'; font-size:26px; padding:14px 12px; text-align:center; }
-  td { font-family:'Noto Sans KR'; font-weight:700; font-size:24px; padding:10px 12px; border-bottom:1px solid rgba(0,0,0,0.08); }
-  td.gu { color:#EA2E00; font-family:'Jua'; text-align:left; font-size:26px; }
-  td.price { text-align:right; }
-  td.pct { text-align:right; font-weight:900; }
-  .pct.pos { color:#EA2E00; }
-  .pct.neg { color:#1A4FA0; }
-  .bar-cell { position:relative; height:22px; background:transparent; }
-  .zero { position:absolute; left:50%; top:0; bottom:0; width:2px; background:#888; }
-  .bar { position:absolute; top:2px; height:18px; }
-  .bar.pos { left:50%; background:#EA2E00; }
-  .bar.neg { background:#1A4FA0; }
-  .footer-cta {
-    background:#1a1a1a; color:#fff; border-radius:20px;
-    padding:48px 40px; margin-top:auto; text-align:center;
-  }
-  .footer-cta .hook { font-family:'Gaegu'; font-size:36px; color:#EA2E00; margin-bottom:16px; }
-  .footer-cta h3 { font-family:'Jua'; font-size:52px; color:#fff; line-height:1.15; }
+  :root { --bg:#F0E7D6; --cream:#F5EDE0; --ink:#1a1a1a; --muted:#555; --orange:#EA2E00; --white:#fff; --blue:#1A4FA0; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--bg); color:var(--ink); font-family:"Noto Sans KR", sans-serif; }
+  .slide { position:relative; width:1080px; height:1350px; overflow:hidden; page-break-after:always; background:var(--bg); padding:60px 58px 72px; display:flex; flex-direction:column; }
+  .slide.dark { background:var(--ink); color:var(--white); }
+  .topline { display:flex; justify-content:space-between; align-items:center; font-family:"Gaegu", cursive; font-weight:700; font-size:34px; color:var(--orange); }
+  .page { width:68px; height:68px; border:3px solid var(--ink); border-radius:50%; background:var(--white); display:flex; align-items:center; justify-content:center; font-family:"Jua"; font-size:32px; color:var(--ink); }
+  .dark .page { border-color:var(--white); background:var(--orange); color:var(--white); }
+  h1,h2,.big,.pill,.stat,.value { font-family:"Jua", sans-serif; letter-spacing:0; }
+  h1 { font-size:108px; line-height:1.02; margin-top:44px; }
+  h2 { font-size:84px; line-height:1.04; margin-top:44px; }
+  .orange { color:var(--orange); } .muted { color:var(--muted); } .dark .muted { color:#d6d6d6; }
+  .pill { display:inline-block; background:var(--orange); color:var(--white); border:3px solid var(--ink); border-radius:999px; padding:16px 34px 18px; box-shadow:8px 8px 0 var(--ink); font-size:46px; }
+  .lede { margin-top:30px; font-size:40px; line-height:1.34; font-weight:900; }
+  .box,.white-box,.orange-box { border:3px solid var(--ink); border-radius:18px; padding:34px 36px; }
+  .box { background:var(--cream); } .white-box { background:var(--white); } .orange-box { background:var(--orange); color:var(--white); }
+  .stat { font-size:158px; line-height:.94; color:var(--orange); }
+  .stat.small { font-size:126px; }
+  .caption { font-size:38px; line-height:1.28; font-weight:900; }
+  .metric-grid { margin-top:40px; display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+  .metric { min-height:228px; border:3px solid var(--ink); border-radius:18px; background:var(--white); padding:30px; }
+  .metric .label { font-size:32px; font-weight:900; color:var(--muted); }
+  .metric .value { margin-top:16px; font-size:72px; line-height:1; color:var(--orange); }
+  .quote { margin-top:44px; border:4px solid var(--ink); border-radius:24px; background:var(--white); color:var(--ink); box-shadow:10px 10px 0 var(--ink); padding:34px 38px; font-family:"Gaegu"; font-size:52px; line-height:1.16; font-weight:700; }
+  .table { margin-top:34px; border:3px solid var(--ink); border-radius:18px; overflow:hidden; background:var(--white); }
+  .row { display:grid; grid-template-columns:1fr .8fr .8fr; align-items:center; min-height:84px; border-bottom:2px solid rgba(0,0,0,.1); }
+  .row:last-child { border-bottom:0; }
+  .row.head { min-height:72px; background:var(--orange); color:var(--white); font-family:"Jua"; font-size:31px; }
+  .cell { padding:14px 18px; font-size:31px; font-weight:900; line-height:1.12; }
+  .gu { color:var(--orange); font-family:"Jua"; font-size:40px; }
+  .price { text-align:right; font-family:"Jua"; font-size:42px; }
+  .badge { display:inline-flex; align-items:center; justify-content:center; background:var(--orange); color:var(--white); border:3px solid var(--ink); border-radius:18px; padding:18px 24px; font-family:"Jua"; font-size:48px; box-shadow:8px 8px 0 var(--ink); }
+  .stack { margin-top:38px; display:grid; gap:18px; }
+  .callout { border:3px solid var(--ink); border-radius:18px; background:var(--white); padding:26px 30px; font-size:38px; line-height:1.24; font-weight:900; }
+  .mascot { position:absolute; width:248px; height:auto; object-fit:contain; }
+  .dark .mascot { filter:invert(1); }
+  .source { position:absolute; left:58px; right:58px; bottom:32px; font-family:"Gaegu"; font-size:27px; line-height:1.2; color:var(--muted); text-align:center; }
+  .dark .source { color:#c9c9c9; }
 </style>
 </head>
 <body>
 
-<div class="slide cover">
-  <h1><span class="pill">같은 연봉인데 부모찬스</span></h1>
-  <h1 style="font-size:72px; margin-top:36px;">2억이 인생 난이도를 바꿈</h1>
-  <p class="subtitle">자기자본 3억 vs 5억, LTV 40% 단순 시뮬레이션<br>2026년 서울 24평급 평균 + 규제지역 LTV 40% 단순 계산</p>
-  <p class="source">proptech_db 실거래가, 금융위원회 10.15 대책 FAQ</p>
-</div>
+<section class="slide">
+  <div class="topline"><span>집사자 실거래 분노 리서치</span><span class="page">01</span></div>
+  <h1>같은 월급인데<br>집 보는 <span class="orange">동네</span>가<br>갈렸다</h1>
+  <div style="margin-top:38px;"><span class="pill">부모 2억 붙는 순간</span></div>
+  <p class="lede" style="max-width:820px;">15억 이하 최대 6억 대출 기준,<br>예산 9억과 11억은 완전히 다른 지도야.</p>
+  <img class="mascot" src="assets/mascot-angry.png" style="right:74px; bottom:118px; width:285px;">
+  <p class="source">서울 25개 구 · 300세대 이상 · 공급 76~85㎡ · 매매 실거래(A1) · 취소거래 제외</p>
+</section>
 
-
-<div class="slide data">
-  <h2>부모찬스 없음 ~ 관악 평균 접근</h2>
-  <p class="meta">서울 24평급 · 300세대 이상 · 매매 A1 기준</p>
-  <table>
-    <thead>
-      <tr>
-        <th style="width:20%;">시나리오</th>
-        <th style="width:25%;">자기자본</th>
-        <th style="width:25%;">매수가능가</th>
-        <th style="width:20%;">바 차트</th>
-        <th style="width:10%;">확장률</th>
-      </tr>
-    </thead>
-    <tbody>
-
-      <tr>
-        <td class="gu">부모찬스 없음</td>
-        <td class="price">3억</td>
-        <td class="price">5억</td>
-        <td class="bar-cell">
-          <div class="zero"></div>
-          <div class="bar pos"
-               style="width:35px; "></div>
-        </td>
-        <td class="pct pos">
-          +66.7%
-        </td>
-      </tr>
-
-      <tr>
-        <td class="gu">부모찬스 2억</td>
-        <td class="price">5억</td>
-        <td class="price">8억 3,300만원</td>
-        <td class="bar-cell">
-          <div class="zero"></div>
-          <div class="bar pos"
-               style="width:35px; "></div>
-        </td>
-        <td class="pct pos">
-          +66.6%
-        </td>
-      </tr>
-
-      <tr>
-        <td class="gu">선택지 차이</td>
-        <td class="price">2억</td>
-        <td class="price">3억 3,300만원</td>
-        <td class="bar-cell">
-          <div class="zero"></div>
-          <div class="bar pos"
-               style="width:35px; "></div>
-        </td>
-        <td class="pct pos">
-          +66.5%
-        </td>
-      </tr>
-
-      <tr>
-        <td class="gu">도봉 평균 접근</td>
-        <td class="price">3억</td>
-        <td class="price">5억 9,000만원</td>
-        <td class="bar-cell">
-          <div class="zero"></div>
-          <div class="bar pos"
-               style="width:51px; "></div>
-        </td>
-        <td class="pct pos">
-          +96.7%
-        </td>
-      </tr>
-
-      <tr>
-        <td class="gu">구로 평균 접근</td>
-        <td class="price">3억</td>
-        <td class="price">7억 5,000만원</td>
-        <td class="bar-cell">
-          <div class="zero"></div>
-          <div class="bar pos"
-               style="width:79px; "></div>
-        </td>
-        <td class="pct pos">
-          +150.0%
-        </td>
-      </tr>
-
-      <tr>
-        <td class="gu">관악 평균 접근</td>
-        <td class="price">3억</td>
-        <td class="price">8억 7,000만원</td>
-        <td class="bar-cell">
-          <div class="zero"></div>
-          <div class="bar pos"
-               style="width:100px; "></div>
-        </td>
-        <td class="pct pos">
-          +190.0%
-        </td>
-      </tr>
-
-    </tbody>
-  </table>
-</div>
-
-
-<div class="slide cover">
-  <h1 style="margin-top:160px;"><span class="pill">데이터 더</span></h1>
-  <h1 style="font-size:72px; margin-top:36px;">궁금하지?</h1>
-  <div class="footer-cta">
-    <p class="hook">댓글로 싸워보자</p>
-    <h3>부모찬스 없는 첫집, 노력으로 커버 가능하다고 봐?</h3>
+<section class="slide">
+  <div class="topline"><span>주말 부동산 투어</span><span class="page">02</span></div>
+  <h2>둘 다 서울에서<br><span class="orange">첫집</span>을<br>보러 다닌다</h2>
+  <div class="metric-grid">
+    <div class="metric"><div class="label">혼자 모은 돈</div><div class="value">3억</div><p class="caption" style="margin-top:18px;">대출 6억 붙이면 9억</p></div>
+    <div class="metric"><div class="label">부모 도움 후</div><div class="value">5억</div><p class="caption" style="margin-top:18px;">대출 6억 붙이면 11억</p></div>
   </div>
-  <p class="source">proptech_db 실거래가, 금융위원회 10.15 대책 FAQ</p>
-</div>
+  <div class="quote">월급은 비슷한데,<br>중개사가 보여주는 동네가 달라진다.</div>
+  <img class="mascot" src="assets/mascot-side.png" style="right:76px; bottom:124px;">
+  <p class="source">비교 목적 단순 시뮬레이션 · 실제 대출 가능액은 LTV/DSR/금리/부채에 따라 달라짐</p>
+</section>
+
+<section class="slide">
+  <div class="topline"><span>2025년 10월 정책 기준</span><span class="page">03</span></div>
+  <h2>15억 이하는<br><span class="orange">대출 최대 6억</span></h2>
+  <div class="box" style="margin-top:44px;">
+    <div class="caption muted">주택구입목적 주담대</div>
+    <div class="stat small" style="margin-top:22px;">6억</div>
+    <p class="caption" style="margin-top:24px;">수도권·규제지역,<br>시가 15억 이하 주택 기준.</p>
+  </div>
+  <p class="source">금융위 10.15 대출수요 관리 강화 방안 FAQ · 최대한도 기준, 실제 가능액은 심사 조건별로 달라짐</p>
+</section>
+
+<section class="slide">
+  <div class="topline"><span>혼자 모은 3억</span><span class="page">04</span></div>
+  <h2>예산은<br><span class="orange">최대 9억</span></h2>
+  <div class="orange-box" style="margin-top:42px;"><div class="caption">3억 + 대출 6억</div><div class="stat" style="color:var(--white); margin-top:10px;">9억</div></div>
+  <p class="lede">2026년 서울 24평급 평균 기준,<br>지도에 남는 구는 <span class="orange">7개</span>야.</p>
+  <img class="mascot" src="assets/mascot-worried.png" style="right:80px; bottom:116px; width:265px;">
+  <p class="source">최대한도 6억을 꽉 채운 단순 계산 · 9억 이하 평균 구는 7개</p>
+</section>
+
+<section class="slide">
+  <div class="topline"><span>부모가 2억 보태면</span><span class="page">05</span></div>
+  <h2>예산은<br><span class="orange">최대 11억</span></h2>
+  <div class="orange-box" style="margin-top:42px;"><div class="caption">5억 + 대출 6억</div><div class="stat" style="color:var(--white); margin-top:10px;">11억</div></div>
+  <p class="lede">같은 서울 첫집 검색인데,<br>지도에 뜨는 구가 <span class="orange">12개</span>까지 늘어난다.</p>
+  <img class="mascot" src="assets/mascot-shining.png" style="right:72px; bottom:112px; width:280px;">
+  <p class="source">최대한도 6억을 꽉 채운 단순 계산 · 11억 이하 평균 구는 12개</p>
+</section>
+
+<section class="slide">
+  <div class="topline"><span>9억 예산으로 보이는 곳</span><span class="page">06</span></div>
+  <h2>9억이면<br><span class="orange">7개 구</span>가 열린다</h2>
+  <div class="table">
+    <div class="row head"><div class="cell">구</div><div class="cell" style="text-align:right;">24평급 평균</div><div class="cell" style="text-align:right;">거래</div></div>
+    <div class="row"><div class="cell gu">중랑</div><div class="cell price">5.88억</div><div class="cell price">75건</div></div>
+    <div class="row"><div class="cell gu">도봉</div><div class="cell price">6.00억</div><div class="cell price">93건</div></div>
+    <div class="row"><div class="cell gu">금천</div><div class="cell price">6.67억</div><div class="cell price">70건</div></div>
+    <div class="row"><div class="cell gu">노원</div><div class="cell price">6.68억</div><div class="cell price">309건</div></div>
+    <div class="row"><div class="cell gu">강북</div><div class="cell price">6.86억</div><div class="cell price">74건</div></div>
+    <div class="row"><div class="cell gu">구로</div><div class="cell price">7.49억</div><div class="cell price">183건</div></div>
+    <div class="row"><div class="cell gu">관악</div><div class="cell price">8.88억</div><div class="cell price">183건</div></div>
+  </div>
+  <p class="source">2026.01.01~04.24 실거래 평균 · 필터 내 최신 거래일 2026-04-23</p>
+</section>
+
+<section class="slide">
+  <div class="topline"><span>11억 예산에서 추가로 보이는 곳</span><span class="page">07</span></div>
+  <h2>11억이면<br><span class="orange">12개 구</span>까지 열린다</h2>
+  <div class="table" style="margin-top:44px;">
+    <div class="row head"><div class="cell">추가로 열리는 구</div><div class="cell" style="text-align:right;">24평급 평균</div><div class="cell" style="text-align:right;">9억 대비</div></div>
+    <div class="row"><div class="cell gu">성북</div><div class="cell price">9.38억</div><div class="cell price">+0.38억</div></div>
+    <div class="row"><div class="cell gu">양천</div><div class="cell price">9.45억</div><div class="cell price">+0.45억</div></div>
+    <div class="row"><div class="cell gu">은평</div><div class="cell price">9.71억</div><div class="cell price">+0.71억</div></div>
+    <div class="row"><div class="cell gu">강서</div><div class="cell price">10.84억</div><div class="cell price">+1.84억</div></div>
+    <div class="row"><div class="cell gu">동대문</div><div class="cell price">10.97억</div><div class="cell price">+1.97억</div></div>
+  </div>
+  <p class="source">9억 초과~11억 이하 구별 평균 · 구별 평균은 단지/동/층에 따라 다름</p>
+</section>
+
+<section class="slide">
+  <div class="topline"><span>핵심은 여기다</span><span class="page">08</span></div>
+  <h2>부모 2억은<br><span class="orange">동네 5개</span>를<br>더 열었다</h2>
+  <div class="metric-grid">
+    <div class="metric"><div class="label">혼자 모은 3억</div><div class="value">7개 구</div></div>
+    <div class="metric"><div class="label">부모 도움 후 5억</div><div class="value">12개 구</div></div>
+  </div>
+  <div class="quote">문제는 사치가 아니라,<br>고를 수 있는 생활권이 달라진다는 거야.</div>
+  <p class="source">최대 6억 대출 동일 가정 · 9억 이하 7개 구, 11억 이하 12개 구</p>
+</section>
+
+<section class="slide">
+  <div class="topline"><span>선 넘지 말고 숫자만 보자</span><span class="page">09</span></div>
+  <h2>부모 욕하자는<br>얘기가 아님</h2>
+  <div class="stack">
+    <div class="callout">누가 잘못했다는 얘기가 아니야.</div>
+    <div class="callout">근데 이걸 전부 “노력 차이”로만 말하면 현실을 지우는 거지.</div>
+    <div class="callout">첫집 시장은 월급보다 처음 들고 들어가는 돈과 대출한도가 먼저 필터링해.</div>
+  </div>
+  <img class="mascot" src="assets/mascot-smile.png" style="right:78px; bottom:108px; width:250px;">
+  <p class="source">개인 비난이 아니라 초기자본 격차의 효과를 보는 콘텐츠</p>
+</section>
+
+<section class="slide dark">
+  <div class="topline"><span>댓글로 싸워보자</span><span class="page">10</span></div>
+  <h2>이게 노력 차이야,<br><span class="orange">시작선 차이야?</span></h2>
+  <div class="quote" style="font-size:58px; margin-top:72px;">부모찬스 없는 첫집,<br>노력으로 커버 가능하다고 봐?</div>
+  <div class="orange-box" style="margin-top:62px;"><div class="caption">3억+6억=9억<br>5억+6억=11억</div></div>
+  <img class="mascot" src="assets/mascot-angry.png" style="right:74px; bottom:112px; width:270px;">
+  <p class="source">15억 이하 최대 6억 대출 한도 기준 단순 계산 · 실제 가능액은 LTV/DSR/금리/부채에 따라 달라짐</p>
+</section>
 
 </body>
 </html>

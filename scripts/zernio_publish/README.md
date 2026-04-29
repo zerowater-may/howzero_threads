@@ -31,20 +31,42 @@ brands/zipsaja/zipsaja_pipeline_<slug>/
 
 ## 게시 명령
 
-Instagram Reels + Instagram Carousel:
+계정 확인:
 
 ```bash
-ZERNIO_API_KEY=... python3 -m scripts.zernio_publish \
+set -a; source .env; set +a
+python3 -m scripts.zernio_publish \
+  brands/zipsaja/zipsaja_pipeline_<slug> \
+  --list-accounts
+```
+
+Instagram Reels:
+
+```bash
+set -a; source .env; set +a
+python3 -m scripts.zernio_publish \
   brands/zipsaja/zipsaja_pipeline_<slug> \
   --platform instagram \
-  --instagram-media both \
+  --instagram-media reel \
+  --now
+```
+
+Instagram Carousel:
+
+```bash
+set -a; source .env; set +a
+python3 -m scripts.zernio_publish \
+  brands/zipsaja/zipsaja_pipeline_<slug> \
+  --platform instagram \
+  --instagram-media carousel \
   --now
 ```
 
 Threads 이미지 캐러셀:
 
 ```bash
-ZERNIO_API_KEY=... python3 -m scripts.zernio_publish \
+set -a; source .env; set +a
+python3 -m scripts.zernio_publish \
   brands/zipsaja/zipsaja_pipeline_<slug> \
   --platform threads \
   --threads-media carousel \
@@ -62,3 +84,40 @@ python3 -m scripts.zernio_publish \
 ```
 
 `--dry-run`은 API 키 없이 payload만 출력하며 `publish-state.json`을 변경하지 않는다.
+
+## 중복 보호 대응
+
+Zernio가 아래 409를 반환하면 같은 본문/미디어 조합이 이미 생성된 것이다.
+
+```text
+This exact content is already scheduled, publishing, or was posted to this account within the last 24 hours.
+```
+
+1. 응답의 `details.existingPostId`를 기록한다.
+2. 같은 payload를 반복 제출하지 않는다.
+3. `GET /posts/<existingPostId>`로 상태를 조회한다. `publishing/processing`이면 Zernio나 플랫폼 API가 처리 중인 상태다.
+4. 사용자가 재업로드를 지시하면 `captions/instagram.txt` 또는 `captions/threads.txt`를 먼저 바꾼다. 첫 문장, 문장 순서, CTA가 달라져야 한다.
+5. 재제출은 `reel`, `carousel`, `threads`를 개별 명령으로 실행한다. 하나가 막혀도 나머지 업로드를 계속 진행하기 위해서다.
+
+상태 조회 예시:
+
+```bash
+set -a; source .env; set +a
+python3 - <<'PY'
+import os
+from scripts.zernio_publish.client import ZernioClient
+
+client = ZernioClient(os.environ["ZERNIO_API_KEY"])
+for post_id in ["POST_ID_1", "POST_ID_2"]:
+    post = client._request("GET", f"/posts/{post_id}", timeout=60)["post"]
+    platform = post.get("platforms", [{}])[0]
+    print(post_id, post.get("status"), platform.get("status"), len(post.get("mediaItems") or []))
+PY
+```
+
+## 상태 기록 기준
+
+- `published/published`: 게시 완료.
+- `publishing/processing`: post record는 생성됐고 플랫폼 처리 중. 30-60초 후 다시 조회한다.
+- `publishedUrl`은 null일 수 있다. 공개 URL이 없어도 postId와 상태를 `publish-state.json`에 남긴다.
+- `publish-state.json`에는 platform별 `postId`, `status`, `platformStatus`, `mediaCount`, `scheduledFor`, `updatedAt`을 기록한다.

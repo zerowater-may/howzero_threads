@@ -1,69 +1,77 @@
 {
-  "pipeline_id": "zipsaja_20260428_같은-연봉인데-부모찬스-2억이-인생-난이도를-바꿈",
+  "version": 1,
   "brand": "zipsaja",
-  "topic": "같은 연봉인데 부모찬스 2억이 인생 난이도를 바꿈",
+  "topic": "같은 월급인데 집 보는 동네가 갈렸다",
   "slug": "같은-연봉인데-부모찬스-2억이-인생-난이도를-바꿈",
-  "created_at": "2026-04-28T21:48:14.479633+09:00",
   "status": "completed",
-  "failed_at": null,
-  "failed_reason": null,
+  "createdAt": "2026-04-28T21:45:00+09:00",
+  "updatedAt": "2026-04-29T19:16:12+09:00",
+  "workflow": "zipsaja-remotion-v1-manual-from-research",
+  "sourceResearch": "brands/zipsaja/zipsaja_misc_firsthome-rage-research/02-parent-chance-2eok.md",
   "data": {
-    "source": "research-md",
-    "dataset": {
-      "generatedAt": "2026-04-29T06:45:00+09:00",
-      "title": "같은 연봉인데 부모찬스 2억이 인생 난이도를 바꿈",
-      "subtitle": "자기자본 3억 vs 5억, LTV 40% 단순 시뮬레이션",
-      "periodLabel": "2026년 서울 24평급 평균 + 규제지역 LTV 40% 단순 계산",
-      "source": "proptech_db 실거래가, 금융위원회 10.15 대책 FAQ",
-      "sizeLabel": "서울 24평급 · 300세대 이상 · 매매 A1 기준",
-      "districtLabel": "시나리오",
-      "beforeLabel": "자기자본",
-      "afterLabel": "매수가능가",
-      "changeLabel": "확장률",
-      "sheetTitle": "비교 데이터",
-      "ctaHook": "댓글로 싸워보자",
-      "ctaText": "부모찬스 없는 첫집, 노력으로 커버 가능하다고 봐?",
-      "districts": [
-        {
-          "district": "부모찬스 없음",
-          "priceBefore": 30000,
-          "priceAfter": 50000,
-          "changePct": 66.7
-        },
-        {
-          "district": "부모찬스 2억",
-          "priceBefore": 50000,
-          "priceAfter": 83300,
-          "changePct": 66.6
-        },
-        {
-          "district": "선택지 차이",
-          "priceBefore": 20000,
-          "priceAfter": 33300,
-          "changePct": 66.5
-        },
-        {
-          "district": "도봉 평균 접근",
-          "priceBefore": 30000,
-          "priceAfter": 59000,
-          "changePct": 96.7
-        },
-        {
-          "district": "구로 평균 접근",
-          "priceBefore": 30000,
-          "priceAfter": 75000,
-          "changePct": 150.0
-        },
-        {
-          "district": "관악 평균 접근",
-          "priceBefore": 30000,
-          "priceAfter": 87000,
-          "changePct": 190.0
-        }
+    "source": "proptech_db 실거래가, 금융위원회 10.15 대책 FAQ",
+    "periodLabel": "2026.01.01~2026.04.24 서울 24평급 평균 + 15억 이하 최대 6억 대출 단순 계산",
+    "totalTrades": 2664,
+    "districtCount": 25,
+    "latestTradeDate": "2026-04-23",
+    "scenario": {
+      "withoutParentCapitalEok": 3.0,
+      "withParentCapitalEok": 5.0,
+      "parentSupportEok": 2.0,
+      "loanCapEok": 6.0,
+      "policyLoanCapLabel": "수도권·규제지역 15억원 이하 주택구입목적 주담대 최대 6억원",
+      "maxPriceWithoutEok": 9.0,
+      "maxPriceWithEok": 11.0,
+      "buyingPowerGapEok": 2.0,
+      "accessibleWithoutCount": 7,
+      "accessibleWithCount": 12,
+      "accessibleWithoutDistricts": [
+        "중랑구",
+        "도봉구",
+        "금천구",
+        "노원구",
+        "강북구",
+        "구로구",
+        "관악구"
+      ],
+      "accessibleWithDistricts": [
+        "중랑구",
+        "도봉구",
+        "금천구",
+        "노원구",
+        "강북구",
+        "구로구",
+        "관악구",
+        "성북구",
+        "양천구",
+        "은평구",
+        "강서구",
+        "동대문구"
+      ],
+      "incrementalDistricts": [
+        "성북구",
+        "양천구",
+        "은평구",
+        "강서구",
+        "동대문구"
+      ],
+      "nearMissDistricts": [
+        "서대문구",
+        "중구",
+        "영등포구"
       ]
     }
   },
-  "tone": null,
+  "steps": {
+    "brief": "done",
+    "data": "done",
+    "storyboard": "done",
+    "remotion": "done",
+    "carousel": "done",
+    "attachments": "done",
+    "captions": "done",
+    "package-qa": "done"
+  },
   "artifacts": {
     "brief": {
       "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_같은-연봉인데-부모찬스-2억이-인생-난이도를-바꿈/brief.md"
@@ -73,6 +81,9 @@
     },
     "storyboard": {
       "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_같은-연봉인데-부모찬스-2억이-인생-난이도를-바꿈/storyboard.json"
+    },
+    "research": {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_같은-연봉인데-부모찬스-2억이-인생-난이도를-바꿈/research.md"
     },
     "reels": {
       "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_같은-연봉인데-부모찬스-2억이-인생-난이도를-바꿈/reels"
@@ -89,19 +100,5 @@
     "publish-ready": {
       "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_같은-연봉인데-부모찬스-2억이-인생-난이도를-바꿈/publish-ready"
     }
-  },
-  "workflow_version": "zipsaja-remotion-v1",
-  "forbidden_tools": [
-    "hyperframes"
-  ],
-  "steps": {
-    "brief": "done",
-    "data": "done",
-    "storyboard": "done",
-    "remotion": "done",
-    "carousel": "done",
-    "attachments": "done",
-    "captions": "done",
-    "package-qa": "done"
   }
 }

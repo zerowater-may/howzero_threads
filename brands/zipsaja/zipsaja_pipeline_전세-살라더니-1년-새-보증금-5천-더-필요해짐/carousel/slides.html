@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>전세 살라더니 1년 새 보증금 5천 더 필요해짐</title>
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F0E7D6;
+    --cream: #F5EDE0;
+    --ink: #1a1a1a;
+    --muted: #555;
+    --orange: #EA2E00;
+    --orange-dark: #C42600;
+    --white: #fff;
+    --blue: #1A4FA0;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Noto Sans KR", sans-serif;
+  }
+
+  .slide {
+    position: relative;
+    width: 1080px;
+    height: 1350px;
+    overflow: hidden;
+    page-break-after: always;
+    background: var(--bg);
+    padding: 66px 66px 76px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .slide.dark {
+    background: var(--ink);
+    color: var(--white);
+  }
+
+  .topline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Gaegu", cursive;
+    font-weight: 700;
+    font-size: 30px;
+    color: var(--orange);
+  }
+
+  .page {
+    width: 62px;
+    height: 62px;
+    border: 3px solid var(--ink);
+    border-radius: 50%;
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Jua", sans-serif;
+    font-size: 28px;
+    color: var(--ink);
+  }
+
+  .dark .page {
+    border-color: var(--white);
+    background: var(--orange);
+    color: var(--white);
+  }
+
+  h1, h2, .big, .pill, .stat {
+    font-family: "Jua", sans-serif;
+    letter-spacing: 0;
+  }
+
+  h1 {
+    font-size: 96px;
+    line-height: 1.04;
+    margin-top: 48px;
+  }
+
+  h2 {
+    font-size: 76px;
+    line-height: 1.08;
+    margin-top: 46px;
+  }
+
+  .orange { color: var(--orange); }
+  .muted { color: var(--muted); }
+  .dark .muted { color: #d6d6d6; }
+
+  .pill {
+    display: inline-block;
+    background: var(--orange);
+    color: var(--white);
+    border: 3px solid var(--ink);
+    border-radius: 999px;
+    padding: 14px 32px 16px;
+    box-shadow: 8px 8px 0 var(--ink);
+  }
+
+  .dark .pill {
+    border-color: var(--white);
+    box-shadow: 8px 8px 0 var(--white);
+  }
+
+  .lede {
+    margin-top: 30px;
+    font-size: 36px;
+    line-height: 1.42;
+    font-weight: 900;
+  }
+
+  .box {
+    border: 3px solid var(--ink);
+    border-radius: 18px;
+    background: var(--cream);
+    padding: 34px 36px;
+  }
+
+  .white-box {
+    border: 3px solid var(--ink);
+    border-radius: 18px;
+    background: var(--white);
+    padding: 32px 34px;
+  }
+
+  .orange-box {
+    border: 3px solid var(--ink);
+    border-radius: 18px;
+    background: var(--orange);
+    color: var(--white);
+    padding: 32px 34px;
+  }
+
+  .stat {
+    font-size: 150px;
+    line-height: 0.96;
+    color: var(--orange);
+  }
+
+  .stat.small {
+    font-size: 118px;
+  }
+
+  .caption {
+    font-size: 34px;
+    line-height: 1.34;
+    font-weight: 900;
+  }
+
+  .table {
+    margin-top: 34px;
+    border: 3px solid var(--ink);
+    border-radius: 18px;
+    overflow: hidden;
+    background: var(--white);
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: 1.05fr 0.9fr 0.9fr 0.8fr;
+    align-items: center;
+    min-height: 92px;
+    border-bottom: 2px solid rgba(0,0,0,0.1);
+  }
+
+  .row:last-child { border-bottom: 0; }
+  .row.head {
+    min-height: 72px;
+    background: var(--orange);
+    color: var(--white);
+    font-family: "Jua", sans-serif;
+    font-size: 26px;
+  }
+
+  .cell {
+    padding: 16px 18px;
+    font-size: 28px;
+    font-weight: 900;
+    line-height: 1.2;
+  }
+
+  .gu {
+    color: var(--orange);
+    font-family: "Jua", sans-serif;
+    font-size: 34px;
+  }
+
+  .pct {
+    color: var(--orange);
+    font-family: "Jua", sans-serif;
+    font-size: 38px;
+    text-align: right;
+  }
+
+  .metric-grid {
+    margin-top: 46px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+  }
+
+  .metric {
+    min-height: 220px;
+    border: 3px solid var(--ink);
+    border-radius: 18px;
+    background: var(--white);
+    padding: 28px 28px;
+  }
+
+  .metric .label {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--muted);
+  }
+
+  .metric .value {
+    margin-top: 16px;
+    font-family: "Jua", sans-serif;
+    font-size: 62px;
+    line-height: 1;
+    color: var(--orange);
+  }
+
+  .quote {
+    margin-top: 44px;
+    border: 4px solid var(--ink);
+    border-radius: 24px;
+    background: var(--white);
+    color: var(--ink);
+    box-shadow: 10px 10px 0 var(--ink);
+    padding: 34px 38px;
+    font-family: "Gaegu", cursive;
+    font-size: 46px;
+    line-height: 1.2;
+    font-weight: 700;
+  }
+
+  .mascot {
+    position: absolute;
+    width: 248px;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .dark .mascot { filter: invert(1); }
+
+  .source {
+    position: absolute;
+    left: 66px;
+    right: 66px;
+    bottom: 34px;
+    font-family: "Gaegu", cursive;
+    font-size: 24px;
+    line-height: 1.25;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  .dark .source { color: #c9c9c9; }
+</style>
+</head>
+<body>
+
+<section class="slide">
+  <div class="topline">
+    <span>집사자 실거래 분노 리서치</span>
+    <span class="page">01</span>
+  </div>
+  <h1>전세<br>살라더니</h1>
+  <div style="margin-top: 40px;">
+    <span class="pill">1년 새 5천 더 필요</span>
+  </div>
+  <p class="lede" style="max-width: 690px;">
+    서울 24평급 전세 중위값,<br>
+    전년 동기 대비로 다시 계산했다.
+  </p>
+  <img class="mascot" src="assets/mascot-angry.png" style="right: 74px; bottom: 118px; width: 285px;">
+  <p class="source">서울 300세대 이상 · 공급 76~85㎡ · 전세 실거래(B1) · 취소거래 제외</p>
+</section>
+
+<section class="slide">
+  <div class="topline">
+    <span>연율 환산 아님</span>
+    <span class="page">02</span>
+  </div>
+  <h2>이번엔<br><span class="orange">실거래</span>로 계산함</h2>
+  <div class="metric-grid">
+    <div class="metric">
+      <div class="label">2025년 동기</div>
+      <div class="value">7,171건</div>
+      <p class="caption" style="margin-top: 18px;">2025.01.01~04.24</p>
+    </div>
+    <div class="metric">
+      <div class="label">2026년 동기</div>
+      <div class="value">5,218건</div>
+      <p class="caption" style="margin-top: 18px;">2026.01.01~04.24</p>
+    </div>
+  </div>
+  <div class="quote">"주간 상승률 뻥튀기 아니고,<br>같은 기간 실거래끼리 붙인 거야."</div>
+  <img class="mascot" src="assets/mascot-side.png" style="right: 76px; bottom: 124px;">
+  <p class="source">내부 proptech_db · 국토부 실거래가 ingest 기준 · 최신 거래일 2026-04-24</p>
+</section>
+
+<section class="slide">
+  <div class="topline">
+    <span>가장 세게 보이는 숫자</span>
+    <span class="page">03</span>
+  </div>
+  <h2>전세 중위값</h2>
+  <div class="box" style="margin-top: 44px;">
+    <div class="caption muted">서울 24평급 아파트</div>
+    <div style="display: flex; align-items: baseline; gap: 24px; margin-top: 24px;">
+      <span class="stat small">5.0억</span>
+      <span class="caption">에서</span>
+    </div>
+    <div style="display: flex; align-items: baseline; gap: 24px; margin-top: 8px;">
+      <span class="stat">5.5억</span>
+      <span class="caption">으로</span>
+    </div>
+  </div>
+  <div class="orange-box" style="margin-top: 34px;">
+    <div class="caption">전년 동기 대비 <span style="font-family:'Jua'; font-size: 78px;">+10.0%</span></div>
+  </div>
+  <p class="source">중위값 기준 · 2025년 동기 5.00억 → 2026년 동기 5.50억</p>
+</section>
+
+<section class="slide">
+  <div class="topline">
+    <span>평균으로 봐도 오른다</span>
+    <span class="page">04</span>
+  </div>
+  <h2>평균 전세도<br><span class="orange">3,800만</span> 더 필요</h2>
+  <div class="metric-grid">
+    <div class="metric">
+      <div class="label">2025년 동기 평균</div>
+      <div class="value">5.37억</div>
+    </div>
+    <div class="metric">
+      <div class="label">2026년 동기 평균</div>
+      <div class="value">5.75억</div>
+    </div>
+  </div>
+  <div class="quote">평균 기준도 +7.1%.<br>보증금 부담이 그냥 올라간 거야.</div>
+  <img class="mascot" src="assets/mascot-worried.png" style="right: 80px; bottom: 116px; width: 265px;">
+  <p class="source">평균 기준 5.37억 → 5.75억 · +0.38억 · +7.1%</p>
+</section>
+
+<section class="slide dark">
+  <div class="topline">
+    <span>한두 동네 얘기 아님</span>
+    <span class="page">05</span>
+  </div>
+  <h2>집계 가능한<br><span class="orange">24개 구 전부</span><br>올랐다</h2>
+  <div class="metric-grid">
+    <div class="metric">
+      <div class="label">+5% 이상</div>
+      <div class="value">19개 구</div>
+    </div>
+    <div class="metric">
+      <div class="label">+10% 이상</div>
+      <div class="value">8개 구</div>
+    </div>
+  </div>
+  <p class="lede">이건 강남만 오른 시장이 아니야.<br>전세 완충지대 자체가 비싸진 거야.</p>
+  <p class="source">표본 10건 이상 조건 충족 구 기준 · 24개 구 중 24개 구 상승</p>
+</section>
+
+<section class="slide">
+  <div class="topline">
+    <span>상승률 상위 6개 구</span>
+    <span class="page">06</span>
+  </div>
+  <h2>많이 오른 곳은<br><span class="orange">이미 10%대</span></h2>
+  <div class="table">
+    <div class="row head">
+      <div class="cell">구</div><div class="cell">2025</div><div class="cell">2026</div><div class="cell" style="text-align:right;">상승</div>
+    </div>
+    <div class="row"><div class="cell gu">금천</div><div class="cell">3.61억</div><div class="cell">4.33억</div><div class="cell pct">+19.9%</div></div>
+    <div class="row"><div class="cell gu">서초</div><div class="cell">8.47억</div><div class="cell">9.98억</div><div class="cell pct">+17.8%</div></div>
+    <div class="row"><div class="cell gu">동대문</div><div class="cell">4.70억</div><div class="cell">5.49억</div><div class="cell pct">+16.8%</div></div>
+    <div class="row"><div class="cell gu">은평</div><div class="cell">4.81억</div><div class="cell">5.47억</div><div class="cell pct">+13.8%</div></div>
+    <div class="row"><div class="cell gu">마포</div><div class="cell">6.26억</div><div class="cell">7.07억</div><div class="cell pct">+12.8%</div></div>
+    <div class="row"><div class="cell gu">성북</div><div class="cell">4.42억</div><div class="cell">4.96억</div><div class="cell pct">+12.2%</div></div>
+  </div>
+  <p class="source">각 구 평균 전세가 · 2025년 동기 vs 2026년 동기</p>
+</section>
+
+<section class="slide">
+  <div class="topline">
+    <span>금천 숫자가 제일 세다</span>
+    <span class="page">07</span>
+  </div>
+  <h2>금천 전세도<br><span class="orange">3.61억 → 4.33억</span></h2>
+  <div class="orange-box" style="margin-top: 42px;">
+    <div class="caption">전년 동기 대비</div>
+    <div class="stat" style="color: var(--white); margin-top: 10px;">+19.9%</div>
+  </div>
+  <p class="lede">"강남 고집하지 마"라고 하기 전에,<br>상대적으로 싼 구도 같이 오르는 중이야.</p>
+  <img class="mascot" src="assets/mascot-surprise.png" style="right: 70px; bottom: 108px; width: 280px;">
+  <p class="source">금천구 평균 전세가 · 2025년 동기 3.61억 → 2026년 동기 4.33억</p>
+</section>
+
+<section class="slide">
+  <div class="topline">
+    <span>전세 살면 된다?</span>
+    <span class="page">08</span>
+  </div>
+  <h2>그 말도<br><span class="orange">이제 비싸졌다</span></h2>
+  <div class="quote" style="font-size: 50px;">
+    "매수 힘들면 전세 살면 되잖아"
+  </div>
+  <p class="lede" style="margin-top: 56px;">
+    근데 전세 중위값이 1년 만에 5천 더 필요해졌으면,<br>
+    그게 진짜 쉬운 선택지냐?
+  </p>
+  <img class="mascot" src="assets/mascot-side.png" style="right: 76px; bottom: 112px;">
+  <p class="source">전세 중위값 +0.50억 · 전년 동기 대비 +10.0%</p>
+</section>
+
+<section class="slide">
+  <div class="topline">
+    <span>첫집러가 막히는 구조</span>
+    <span class="page">09</span>
+  </div>
+  <h2>매수는<br><span class="orange">대출</span>로 막히고</h2>
+  <h2 style="margin-top: 20px;">전세는<br><span class="orange">보증금</span>으로 막힌다</h2>
+  <div class="white-box" style="margin-top: 44px;">
+    <p class="caption">월급 모아서 따라가라는 말,<br>숫자로 보면 점점 잔인해지고 있어.</p>
+  </div>
+  <p class="source">이 콘텐츠는 투자 권유가 아니라 전세 실거래 부담 변화 비교다.</p>
+</section>
+
+<section class="slide dark">
+  <div class="topline">
+    <span>댓글로 싸워보자</span>
+    <span class="page">10</span>
+  </div>
+  <h1>첫집러는<br>대체 어디로<br>가야 하냐?</h1>
+  <div class="quote" style="margin-top: 64px;">
+    매수도 막히고,<br>
+    전세도 5천 더 필요하면?
+  </div>
+  <img class="mascot" src="assets/mascot-angry.png" style="right: 78px; bottom: 120px; width: 270px;">
+  <p class="source">댓글로 말해줘. 이게 주거 안정이야, 주거 압박이야?</p>
+</section>
+
+</body>
+</html>

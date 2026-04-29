@@ -1,53 +1,247 @@
 {
-  "generatedAt": "2026-04-29T06:45:00+09:00",
-  "title": "같은 연봉인데 부모찬스 2억이 인생 난이도를 바꿈",
-  "subtitle": "자기자본 3억 vs 5억, LTV 40% 단순 시뮬레이션",
-  "periodLabel": "2026년 서울 24평급 평균 + 규제지역 LTV 40% 단순 계산",
+  "generatedAt": "2026-04-29T18:23:23.995370+09:00",
+  "title": "같은 월급인데 집 보는 동네가 갈렸다",
+  "subtitle": "혼자 모은 3억과 부모 도움 후 5억, 15억 이하 최대 6억 대출 단순 시뮬레이션",
+  "periodLabel": "2026.01.01~2026.04.24 서울 24평급 평균 + 15억 이하 최대 6억 대출 단순 계산",
   "source": "proptech_db 실거래가, 금융위원회 10.15 대책 FAQ",
-  "sizeLabel": "서울 24평급 · 300세대 이상 · 매매 A1 기준",
-  "districtLabel": "시나리오",
-  "beforeLabel": "자기자본",
-  "afterLabel": "매수가능가",
-  "changeLabel": "확장률",
-  "sheetTitle": "비교 데이터",
-  "ctaHook": "댓글로 싸워보자",
-  "ctaText": "부모찬스 없는 첫집, 노력으로 커버 가능하다고 봐?",
+  "sizeLabel": "서울 300세대 이상 · 공급 76~85㎡ · 매매 A1 · 취소거래 제외",
+  "districtLabel": "구",
+  "beforeLabel": "혼자 모은 3억",
+  "afterLabel": "부모 도움 후 5억",
+  "changeLabel": "선택지",
+  "totalTrades": 2664,
+  "districtCount": 25,
+  "latestTradeDate": "2026-04-23",
+  "seoulAverageEok": 10.64,
+  "loanCapEok": 6.0,
+  "policyLoanCapLabel": "수도권·규제지역 15억원 이하 주택구입목적 주담대 최대 6억원",
+  "scenario": {
+    "withoutParentCapitalEok": 3.0,
+    "withParentCapitalEok": 5.0,
+    "parentSupportEok": 2.0,
+    "loanCapEok": 6.0,
+    "maxPriceWithoutEok": 9.0,
+    "maxPriceWithEok": 11.0,
+    "buyingPowerGapEok": 2.0,
+    "accessibleWithoutCount": 7,
+    "accessibleWithCount": 12,
+    "accessibleWithoutDistricts": [
+      "중랑구",
+      "도봉구",
+      "금천구",
+      "노원구",
+      "강북구",
+      "구로구",
+      "관악구"
+    ],
+    "accessibleWithDistricts": [
+      "중랑구",
+      "도봉구",
+      "금천구",
+      "노원구",
+      "강북구",
+      "구로구",
+      "관악구",
+      "성북구",
+      "양천구",
+      "은평구",
+      "강서구",
+      "동대문구"
+    ],
+    "incrementalDistricts": [
+      "성북구",
+      "양천구",
+      "은평구",
+      "강서구",
+      "동대문구"
+    ],
+    "nearMissDistricts": [
+      "서대문구",
+      "중구",
+      "영등포구"
+    ]
+  },
   "districts": [
     {
-      "district": "부모찬스 없음",
-      "priceBefore": 30000,
-      "priceAfter": 50000,
-      "changePct": 66.7
+      "district": "중랑구",
+      "trades": 75,
+      "avgManwon": 58780,
+      "avgEok": 5.88,
+      "access": "9억 가능"
     },
     {
-      "district": "부모찬스 2억",
-      "priceBefore": 50000,
-      "priceAfter": 83300,
-      "changePct": 66.6
+      "district": "도봉구",
+      "trades": 93,
+      "avgManwon": 59993,
+      "avgEok": 6.0,
+      "access": "9억 가능"
     },
     {
-      "district": "선택지 차이",
-      "priceBefore": 20000,
-      "priceAfter": 33300,
-      "changePct": 66.5
+      "district": "금천구",
+      "trades": 70,
+      "avgManwon": 66722,
+      "avgEok": 6.67,
+      "access": "9억 가능"
     },
     {
-      "district": "도봉 평균 접근",
-      "priceBefore": 30000,
-      "priceAfter": 59000,
-      "changePct": 96.7
+      "district": "노원구",
+      "trades": 309,
+      "avgManwon": 66820,
+      "avgEok": 6.68,
+      "access": "9억 가능"
     },
     {
-      "district": "구로 평균 접근",
-      "priceBefore": 30000,
-      "priceAfter": 75000,
-      "changePct": 150.0
+      "district": "강북구",
+      "trades": 74,
+      "avgManwon": 68568,
+      "avgEok": 6.86,
+      "access": "9억 가능"
     },
     {
-      "district": "관악 평균 접근",
-      "priceBefore": 30000,
-      "priceAfter": 87000,
-      "changePct": 190.0
+      "district": "구로구",
+      "trades": 183,
+      "avgManwon": 74915,
+      "avgEok": 7.49,
+      "access": "9억 가능"
+    },
+    {
+      "district": "관악구",
+      "trades": 183,
+      "avgManwon": 88767,
+      "avgEok": 8.88,
+      "access": "9억 가능"
+    },
+    {
+      "district": "성북구",
+      "trades": 339,
+      "avgManwon": 93764,
+      "avgEok": 9.38,
+      "access": "11억 가능"
+    },
+    {
+      "district": "양천구",
+      "trades": 89,
+      "avgManwon": 94478,
+      "avgEok": 9.45,
+      "access": "11억 가능"
+    },
+    {
+      "district": "은평구",
+      "trades": 181,
+      "avgManwon": 97071,
+      "avgEok": 9.71,
+      "access": "11억 가능"
+    },
+    {
+      "district": "강서구",
+      "trades": 144,
+      "avgManwon": 108384,
+      "avgEok": 10.84,
+      "access": "11억 가능"
+    },
+    {
+      "district": "동대문구",
+      "trades": 113,
+      "avgManwon": 109722,
+      "avgEok": 10.97,
+      "access": "11억 가능"
+    },
+    {
+      "district": "서대문구",
+      "trades": 129,
+      "avgManwon": 113255,
+      "avgEok": 11.33,
+      "access": "불가"
+    },
+    {
+      "district": "중구",
+      "trades": 62,
+      "avgManwon": 117734,
+      "avgEok": 11.77,
+      "access": "불가"
+    },
+    {
+      "district": "영등포구",
+      "trades": 76,
+      "avgManwon": 137139,
+      "avgEok": 13.71,
+      "access": "불가"
+    },
+    {
+      "district": "동작구",
+      "trades": 80,
+      "avgManwon": 141754,
+      "avgEok": 14.18,
+      "access": "불가"
+    },
+    {
+      "district": "강동구",
+      "trades": 101,
+      "avgManwon": 153298,
+      "avgEok": 15.33,
+      "access": "불가"
+    },
+    {
+      "district": "광진구",
+      "trades": 24,
+      "avgManwon": 158042,
+      "avgEok": 15.8,
+      "access": "불가"
+    },
+    {
+      "district": "성동구",
+      "trades": 80,
+      "avgManwon": 162412,
+      "avgEok": 16.24,
+      "access": "불가"
+    },
+    {
+      "district": "마포구",
+      "trades": 90,
+      "avgManwon": 163120,
+      "avgEok": 16.31,
+      "access": "불가"
+    },
+    {
+      "district": "종로구",
+      "trades": 5,
+      "avgManwon": 175100,
+      "avgEok": 17.51,
+      "access": "불가"
+    },
+    {
+      "district": "용산구",
+      "trades": 11,
+      "avgManwon": 178818,
+      "avgEok": 17.88,
+      "access": "불가"
+    },
+    {
+      "district": "송파구",
+      "trades": 96,
+      "avgManwon": 201297,
+      "avgEok": 20.13,
+      "access": "불가"
+    },
+    {
+      "district": "강남구",
+      "trades": 33,
+      "avgManwon": 236208,
+      "avgEok": 23.62,
+      "access": "불가"
+    },
+    {
+      "district": "서초구",
+      "trades": 24,
+      "avgManwon": 280313,
+      "avgEok": 28.03,
+      "access": "불가"
     }
+  ],
+  "notes": [
+    "15억원 이하 주택구입목적 주담대 최대 6억원 한도를 적용한 단순 산수",
+    "실제 대출 가능액은 LTV, DSR, 금리, 기존 부채, 정책대출, 세금 및 부대비용에 따라 달라질 수 있음",
+    "구별 평균은 2026년 1월 1일~4월 24일 실거래 평균 기준",
+    "종로구·용산구 등 일부 구는 표본 수가 적어 해석 주의"
   ]
 }

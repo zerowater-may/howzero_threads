@@ -26,18 +26,53 @@ Post a completed zipsaja bundle through Zernio. Publishing is explicit; do not r
 
 ```bash
 python3 -m scripts.zernio_publish <bundle> --list-accounts
-python3 -m scripts.zernio_publish <bundle> --platform instagram --instagram-media both --dry-run
+python3 -m scripts.zernio_publish <bundle> --platform instagram --instagram-media reel --dry-run
+python3 -m scripts.zernio_publish <bundle> --platform instagram --instagram-media carousel --dry-run
 python3 -m scripts.zernio_publish <bundle> --platform threads --threads-media carousel --dry-run
 ```
 
 Publish:
 
 ```bash
-python3 -m scripts.zernio_publish <bundle> --platform instagram --instagram-media both --now
+python3 -m scripts.zernio_publish <bundle> --platform instagram --instagram-media reel --now
+python3 -m scripts.zernio_publish <bundle> --platform instagram --instagram-media carousel --now
 python3 -m scripts.zernio_publish <bundle> --platform threads --threads-media carousel --now
+```
+
+Submit Instagram Reels, Instagram Carousel, and Threads as separate commands in production. `--instagram-media both` is acceptable for a dry run or a low-risk first attempt, but one Zernio error stops the combined command before later payloads run.
+
+## Duplicate Protection
+
+Zernio may reject a create request with `409` and:
+
+```text
+This exact content is already scheduled, publishing, or was posted to this account within the last 24 hours.
+```
+
+- Treat `details.existingPostId` as the canonical post to inspect; do not keep retrying the same payload.
+- Query the existing post and record its status. `publishing/processing` means the post exists and is still being handled by Zernio/platform APIs.
+- If the user explicitly wants another upload, rewrite `captions/instagram.txt` and/or `captions/threads.txt` before resubmitting. Change the opening hook, sentence order, and CTA; whitespace-only or punctuation-only edits are not enough.
+- Instagram Reel and Instagram Carousel both use `captions/instagram.txt`; update it before resubmitting either Instagram format.
+
+Status check snippet:
+
+```bash
+set -a; source .env; set +a
+python3 - <<'PY'
+import os
+from scripts.zernio_publish.client import ZernioClient
+
+client = ZernioClient(os.environ["ZERNIO_API_KEY"])
+for post_id in ["POST_ID"]:
+    post = client._request("GET", f"/posts/{post_id}", timeout=60)["post"]
+    platform = post.get("platforms", [{}])[0]
+    print(post_id, post.get("status"), platform.get("status"))
+PY
 ```
 
 ## After Publishing
 
-- Confirm `publish-state.json` contains the platform post IDs and URLs.
+- Confirm `publish-state.json` contains platform post IDs, statuses, media counts, and timestamps.
+- Report `published` only when Zernio returns post status and platform status as `published`.
+- If a post remains `publishing/processing`, say it is submitted and still processing; poll again after 30-60 seconds when the user is waiting on it.
 - Do not duplicate-post to fix media. If a live post is wrong, ask whether to delete/repost or leave it.

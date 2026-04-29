@@ -10,6 +10,7 @@
 | **10년간 서울 어디가 올랐을까** | [seoul-10y](./zipsaja_carousel_seoul-10y/) | [seoul-10y](./zipsaja_reels_seoul-10y/) (full 30s, 22s, raw) | 강남 11위 반전 |
 | **서울 24평 평균** | [seoul-avg-24py](./zipsaja_carousel_seoul-avg-24py/) | [seoul-price](./zipsaja_reels_seoul-price/) (main, 22s, v2, v3, check) | 25개 구 평균 |
 | **전세난 때문에 월세로 밀려나는 서울** | [pipeline bundle](./zipsaja_pipeline_전세난-때문에-월세로-밀려나는-서울-집값-잡으려면-대출-막아야-하나/carousel/) | [Remotion reel](./zipsaja_pipeline_전세난-때문에-월세로-밀려나는-서울-집값-잡으려면-대출-막아야-하나/reels/) | 대출규제 vs 전세공급 댓글 싸움 |
+| **전세 살라더니 1년 새 보증금 5천 더 필요해짐** | [pipeline bundle](./zipsaja_pipeline_전세-살라더니-1년-새-보증금-5천-더-필요해짐/carousel/) | [Remotion reel](./zipsaja_pipeline_전세-살라더니-1년-새-보증금-5천-더-필요해짐/reels/) | 전년 동기 전세 실거래 상승률 댓글 싸움 |
 | **신혼부부 3억 모았는데 대출 규제로 1억 더 필요해짐** | [pipeline bundle](./zipsaja_pipeline_신혼부부-3억-모았는데-대출-규제로-1억-더-필요해짐/carousel/) | [Remotion reel](./zipsaja_pipeline_신혼부부-3억-모았는데-대출-규제로-1억-더-필요해짐/reels/) | 신혼부부 대출규제 댓글 싸움 |
 | **같은 연봉인데 부모찬스 2억이 인생 난이도를 바꿈** | [pipeline bundle](./zipsaja_pipeline_같은-연봉인데-부모찬스-2억이-인생-난이도를-바꿈/carousel/) | [Remotion reel](./zipsaja_pipeline_같은-연봉인데-부모찬스-2억이-인생-난이도를-바꿈/reels/) | 부모찬스 vs 시작선 댓글 싸움 |
 | **전세 보증금 올려줬는데 집값 상승분은 집주인이 가져감** | [pipeline bundle](./zipsaja_pipeline_전세-보증금-올려줬는데-집값-상승분은-집주인이-가져감/carousel/) | [Remotion reel](./zipsaja_pipeline_전세-보증금-올려줬는데-집값-상승분은-집주인이-가져감/reels/) | 전세 안정 vs 기회비용 |

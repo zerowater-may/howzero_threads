@@ -4,78 +4,51 @@
   "topic": "신혼부부 3억 모았는데 대출 규제로 1억 더 필요해짐",
   "slug": "신혼부부-3억-모았는데-대출-규제로-1억-더-필요해짐",
   "created_at": "2026-04-28T21:47:19.274645+09:00",
+  "updated_at": "2026-04-28T22:52:03+09:00",
   "status": "completed",
   "failed_at": null,
   "failed_reason": null,
   "data": {
-    "source": "research-md",
-    "dataset": {
-      "generatedAt": "2026-04-29T06:45:00+09:00",
-      "title": "신혼부부 3억 모았는데 대출 규제로 1억 더 필요해짐",
-      "subtitle": "서울 평균가 12.3억 vs 신혼 평균 자산 3.3억",
-      "periodLabel": "서울시 주거실태조사 보도 + 금융위 대출규제 자료 기준",
-      "source": "서울시 주거실태조사 보도, 금융위원회 대출규제 자료",
-      "sizeLabel": "신혼부부 평균 자산 · 서울 평균 아파트 가격 비교",
-      "districtLabel": "쟁점",
-      "beforeLabel": "신혼 평균자산",
-      "afterLabel": "비교 금액",
-      "changeLabel": "격차율",
-      "sheetTitle": "비교 데이터",
-      "ctaHook": "댓글로 싸워보자",
-      "ctaText": "이건 집값 잡는 정책이야, 신혼부부 잡는 정책이야?",
-      "districts": [
-        {
-          "district": "신혼 평균 자산",
-          "priceBefore": 33000,
-          "priceAfter": 33000,
-          "changePct": 0.0
-        },
-        {
-          "district": "서울 평균 아파트",
-          "priceBefore": 33000,
-          "priceAfter": 123000,
-          "changePct": 272.7
-        },
-        {
-          "district": "단순 현금 격차",
-          "priceBefore": 33000,
-          "priceAfter": 90000,
-          "changePct": 172.7
-        },
-        {
-          "district": "규제 후 현금부담",
-          "priceBefore": 33000,
-          "priceAfter": 43000,
-          "changePct": 30.3
-        }
-      ]
+    "source": "firsthome-rage-research-md",
+    "source_path": "brands/zipsaja/zipsaja_misc_firsthome-rage-research/01-newlywed-3eok-loan-gap.md",
+    "dataset_path": "brands/zipsaja/zipsaja_pipeline_신혼부부-3억-모았는데-대출-규제로-1억-더-필요해짐/data.json",
+    "summary": {
+      "newlywed_asset_eok": 3.3,
+      "seoul_apartment_avg_eok": 12.3,
+      "simple_gap_eok": 9.0,
+      "loan_limit_drop_eok": 1.0,
+      "stable_living_pct": 86.6
     }
   },
-  "tone": null,
+  "tone": "zipsaja 반말, 댓글 싸움형, 숫자 기반, 개인 조롱 금지",
   "artifacts": {
     "brief": {
-      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_신혼부부-3억-모았는데-대출-규제로-1억-더-필요해짐/brief.md"
+      "path": "brands/zipsaja/zipsaja_pipeline_신혼부부-3억-모았는데-대출-규제로-1억-더-필요해짐/brief.md"
     },
     "data": {
-      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_신혼부부-3억-모았는데-대출-규제로-1억-더-필요해짐/data.json"
+      "path": "brands/zipsaja/zipsaja_pipeline_신혼부부-3억-모았는데-대출-규제로-1억-더-필요해짐/data.json"
     },
     "storyboard": {
-      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_신혼부부-3억-모았는데-대출-규제로-1억-더-필요해짐/storyboard.json"
+      "path": "brands/zipsaja/zipsaja_pipeline_신혼부부-3억-모았는데-대출-규제로-1억-더-필요해짐/storyboard.json"
     },
     "reels": {
-      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_신혼부부-3억-모았는데-대출-규제로-1억-더-필요해짐/reels"
+      "path": "brands/zipsaja/zipsaja_pipeline_신혼부부-3억-모았는데-대출-규제로-1억-더-필요해짐/reels",
+      "primary": "brands/zipsaja/zipsaja_pipeline_신혼부부-3억-모았는데-대출-규제로-1억-더-필요해짐/reels/zipsaja-reel-30s.mp4",
+      "remotion_entry": "brands/zipsaja/zipsaja_pipeline_신혼부부-3억-모았는데-대출-규제로-1억-더-필요해짐/reels/remotion/FirsthomeRageReel.tsx"
     },
     "carousel": {
-      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_신혼부부-3억-모았는데-대출-규제로-1억-더-필요해짐/carousel"
-    },
-    "attachments": {
-      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_신혼부부-3억-모았는데-대출-규제로-1억-더-필요해짐/attachments"
+      "path": "brands/zipsaja/zipsaja_pipeline_신혼부부-3억-모았는데-대출-규제로-1억-더-필요해짐/carousel",
+      "slides": 10
     },
     "captions": {
-      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_신혼부부-3억-모았는데-대출-규제로-1억-더-필요해짐/captions"
+      "path": "brands/zipsaja/zipsaja_pipeline_신혼부부-3억-모았는데-대출-규제로-1억-더-필요해짐/captions",
+      "threads": "brands/zipsaja/zipsaja_pipeline_신혼부부-3억-모았는데-대출-규제로-1억-더-필요해짐/captions/threads.txt"
     },
     "publish-ready": {
-      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_신혼부부-3억-모았는데-대출-규제로-1억-더-필요해짐/publish-ready"
+      "path": "brands/zipsaja/zipsaja_pipeline_신혼부부-3억-모았는데-대출-규제로-1억-더-필요해짐/publish-ready",
+      "instagram_carousel_slides": 10,
+      "threads_carousel_slides": 10,
+      "instagram_reel_cover": "brands/zipsaja/zipsaja_pipeline_신혼부부-3억-모았는데-대출-규제로-1억-더-필요해짐/publish-ready/instagram-reel-cover.png"
     }
   },
   "workflow_version": "zipsaja-remotion-v1",
@@ -88,7 +61,7 @@
     "storyboard": "done",
     "remotion": "done",
     "carousel": "done",
-    "attachments": "done",
+    "attachments": "skipped",
     "captions": "done",
     "package-qa": "done"
   }

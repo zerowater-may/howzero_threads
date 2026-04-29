@@ -1,0 +1,75 @@
+{
+  "generatedAt": "2026-04-29T10:05:00+09:00",
+  "workflow_version": "zipsaja-remotion-v1",
+  "brand": "zipsaja",
+  "slug": "전세-살라더니-1년-새-보증금-5천-더-필요해짐",
+  "title": "전세 살라더니 1년 새 보증금 5천 더 필요해짐",
+  "subtitle": "서울 24평급 아파트 전세 실거래 전년 동기 대비",
+  "periodLabel": "2025.01.01~04.24 vs 2026.01.01~04.24",
+  "source": "내부 proptech_db: 국토부 실거래가 ingest, real_prices(B1) × complexes × pyeongs",
+  "filters": {
+    "region": "서울",
+    "tradeType": "B1",
+    "tradeTypeLabel": "전세",
+    "isCancel": false,
+    "totalUnitsMin": 300,
+    "supplyAreaMinSqm": 76,
+    "supplyAreaMaxSqm": 85,
+    "latestTradeDate": "2026-04-24"
+  },
+  "periods": {
+    "before": {
+      "label": "2025년 동기",
+      "start": "2025-01-01",
+      "end": "2025-04-24",
+      "deals": 7171,
+      "avgEok": 5.37,
+      "medianEok": 5.0
+    },
+    "after": {
+      "label": "2026년 동기",
+      "start": "2026-01-01",
+      "end": "2026-04-24",
+      "deals": 5218,
+      "avgEok": 5.75,
+      "medianEok": 5.5
+    }
+  },
+  "summary": {
+    "medianYoyPct": 10.0,
+    "medianDiffEok": 0.5,
+    "avgYoyPct": 7.1,
+    "avgDiffEok": 0.38,
+    "districtsQualified": 24,
+    "districtsUp": 24,
+    "districtsUp5Pct": 19,
+    "districtsUp10Pct": 8,
+    "districtsUp15Pct": 3
+  },
+  "districts": [
+    {"district": "금천구", "n2025": 155, "priceBeforeEok": 3.61, "n2026": 73, "priceAfterEok": 4.33, "changePct": 19.9, "diffEok": 0.72},
+    {"district": "서초구", "n2025": 272, "priceBeforeEok": 8.47, "n2026": 171, "priceAfterEok": 9.98, "changePct": 17.8, "diffEok": 1.51},
+    {"district": "동대문구", "n2025": 265, "priceBeforeEok": 4.70, "n2026": 172, "priceAfterEok": 5.49, "changePct": 16.8, "diffEok": 0.79},
+    {"district": "은평구", "n2025": 305, "priceBeforeEok": 4.81, "n2026": 240, "priceAfterEok": 5.47, "changePct": 13.8, "diffEok": 0.66},
+    {"district": "마포구", "n2025": 654, "priceBeforeEok": 6.26, "n2026": 383, "priceAfterEok": 7.07, "changePct": 12.8, "diffEok": 0.80},
+    {"district": "성북구", "n2025": 668, "priceBeforeEok": 4.42, "n2026": 434, "priceAfterEok": 4.96, "changePct": 12.2, "diffEok": 0.54},
+    {"district": "서대문구", "n2025": 330, "priceBeforeEok": 5.25, "n2026": 236, "priceAfterEok": 5.82, "changePct": 10.9, "diffEok": 0.57},
+    {"district": "강동구", "n2025": 384, "priceBeforeEok": 5.23, "n2026": 370, "priceAfterEok": 5.80, "changePct": 10.9, "diffEok": 0.57},
+    {"district": "관악구", "n2025": 361, "priceBeforeEok": 4.41, "n2026": 227, "priceAfterEok": 4.83, "changePct": 9.5, "diffEok": 0.42},
+    {"district": "강남구", "n2025": 318, "priceBeforeEok": 9.07, "n2026": 176, "priceAfterEok": 9.92, "changePct": 9.4, "diffEok": 0.85},
+    {"district": "영등포구", "n2025": 242, "priceBeforeEok": 5.66, "n2026": 245, "priceAfterEok": 6.19, "changePct": 9.4, "diffEok": 0.53},
+    {"district": "동작구", "n2025": 335, "priceBeforeEok": 5.46, "n2026": 260, "priceAfterEok": 5.91, "changePct": 8.4, "diffEok": 0.46},
+    {"district": "광진구", "n2025": 154, "priceBeforeEok": 5.87, "n2026": 107, "priceAfterEok": 6.37, "changePct": 8.4, "diffEok": 0.49},
+    {"district": "중랑구", "n2025": 56, "priceBeforeEok": 3.35, "n2026": 49, "priceAfterEok": 3.60, "changePct": 7.4, "diffEok": 0.25},
+    {"district": "성동구", "n2025": 568, "priceBeforeEok": 6.16, "n2026": 362, "priceAfterEok": 6.60, "changePct": 7.2, "diffEok": 0.44},
+    {"district": "송파구", "n2025": 434, "priceBeforeEok": 6.92, "n2026": 317, "priceAfterEok": 7.38, "changePct": 6.6, "diffEok": 0.46},
+    {"district": "강북구", "n2025": 91, "priceBeforeEok": 3.71, "n2026": 49, "priceAfterEok": 3.94, "changePct": 6.2, "diffEok": 0.23},
+    {"district": "도봉구", "n2025": 128, "priceBeforeEok": 2.83, "n2026": 116, "priceAfterEok": 3.00, "changePct": 5.9, "diffEok": 0.17},
+    {"district": "중구", "n2025": 92, "priceBeforeEok": 5.32, "n2026": 47, "priceAfterEok": 5.58, "changePct": 5.0, "diffEok": 0.27},
+    {"district": "강서구", "n2025": 445, "priceBeforeEok": 4.59, "n2026": 329, "priceAfterEok": 4.80, "changePct": 4.5, "diffEok": 0.21},
+    {"district": "용산구", "n2025": 79, "priceBeforeEok": 5.89, "n2026": 53, "priceAfterEok": 6.15, "changePct": 4.3, "diffEok": 0.25},
+    {"district": "노원구", "n2025": 459, "priceBeforeEok": 3.25, "n2026": 431, "priceAfterEok": 3.39, "changePct": 4.2, "diffEok": 0.14},
+    {"district": "구로구", "n2025": 203, "priceBeforeEok": 3.89, "n2026": 158, "priceAfterEok": 4.04, "changePct": 3.8, "diffEok": 0.15},
+    {"district": "양천구", "n2025": 153, "priceBeforeEok": 4.94, "n2026": 204, "priceAfterEok": 4.97, "changePct": 0.6, "diffEok": 0.03}
+  ]
+}

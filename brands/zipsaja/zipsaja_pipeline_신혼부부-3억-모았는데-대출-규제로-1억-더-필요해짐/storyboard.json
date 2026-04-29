@@ -1,33 +1,77 @@
 {
   "topic": "신혼부부 3억 모았는데 대출 규제로 1억 더 필요해짐",
   "hook": "3억 모았는데, 어제보다 1억 더 필요해졌대.",
+  "tone": "zipsaja 반말, 숫자 기반, 정책 효과를 세게 비판",
   "carousel": [
     {
       "slide": 1,
       "role": "cover",
-      "headline": "3억 모았는데, 어제보다 1억 더 필요해졌대.",
-      "body": [
-        "서울 평균가 12.3억 vs 신혼 평균 자산 3.3억"
-      ],
-      "visual": "zipsaja beige/orange cover"
+      "headline": "3억 모았는데",
+      "body": ["어제보다 1억 더 필요?"],
+      "visual": "angry mascot, orange pill, beige cover"
     },
     {
       "slide": 2,
-      "role": "data",
-      "headline": "핵심 숫자",
-      "body": [
-        "data.json rows"
-      ],
-      "visual": "comparison table"
+      "role": "context",
+      "headline": "3억은 적게 모은 게 아니야",
+      "body": ["서울 신혼부부 평균 자산 3.3억"],
+      "visual": "asset receipt card"
     },
     {
       "slide": 3,
+      "role": "price",
+      "headline": "서울 평균 아파트 12.3억",
+      "body": ["평균 자산으로 평균가를 보면 시작선부터 멀다"],
+      "visual": "tower comparison"
+    },
+    {
+      "slide": 4,
+      "role": "math",
+      "headline": "12.3억 - 3.3억 = 9억",
+      "body": ["단순 격차만 봐도 9억이 빈다"],
+      "visual": "large formula"
+    },
+    {
+      "slide": 5,
+      "role": "policy",
+      "headline": "대출한도 약 1억 감소",
+      "body": ["투기 잡는다더니 신혼 현금부터 더 필요해짐"],
+      "visual": "red stamp"
+    },
+    {
+      "slide": 6,
+      "role": "choices",
+      "headline": "선택지는 셋",
+      "body": ["더 작게", "더 멀리", "더 오래 전세"],
+      "visual": "three doors"
+    },
+    {
+      "slide": 7,
+      "role": "counterframe",
+      "headline": "투기꾼 프레임은 빼자",
+      "body": ["안정적 실거주 목적 86.6%"],
+      "visual": "speech bubble rebuttal"
+    },
+    {
+      "slide": 8,
+      "role": "ladder",
+      "headline": "집값 누르다가 사다리도 눌렀다",
+      "body": ["정책의 비용이 첫집 수요자에게 간다"],
+      "visual": "compressed ladder"
+    },
+    {
+      "slide": 9,
+      "role": "caveat",
+      "headline": "개인 한도는 다 달라",
+      "body": ["그래도 평균 기준 현금 격차가 커진 건 핵심"],
+      "visual": "small print card"
+    },
+    {
+      "slide": 10,
       "role": "cta",
-      "headline": "이건 집값 잡는 정책이야, 신혼부부 잡는 정책이야?",
-      "body": [
-        "댓글 유도"
-      ],
-      "visual": "black CTA band"
+      "headline": "집값 잡기냐, 신혼 잡기냐",
+      "body": ["댓글로 말해봐"],
+      "visual": "black CTA, two choice buttons"
     }
   ],
   "reel": {
@@ -36,18 +80,33 @@
     "beats": [
       {
         "start": 0,
-        "end": 3,
-        "message": "3억 모았는데, 어제보다 1억 더 필요해졌대."
+        "end": 4,
+        "message": "3억 모았는데, 어제보다 1억 더 필요?"
       },
       {
-        "start": 3,
+        "start": 4,
+        "end": 9,
+        "message": "서울 신혼 평균 자산 3.3억, 서울 평균 아파트 12.3억"
+      },
+      {
+        "start": 9,
+        "end": 14,
+        "message": "단순 계산만 해도 9억이 빈다"
+      },
+      {
+        "start": 14,
+        "end": 20,
+        "message": "대출 규제로 한도 약 1억 감소 보도"
+      },
+      {
+        "start": 20,
         "end": 25,
-        "message": "서울 평균가 12.3억 vs 신혼 평균 자산 3.3억"
+        "message": "선택지는 더 작게, 더 멀리, 더 오래 전세"
       },
       {
         "start": 25,
         "end": 30,
-        "message": "이건 집값 잡는 정책이야, 신혼부부 잡는 정책이야?"
+        "message": "집값 잡기냐, 신혼 잡기냐"
       }
     ]
   },

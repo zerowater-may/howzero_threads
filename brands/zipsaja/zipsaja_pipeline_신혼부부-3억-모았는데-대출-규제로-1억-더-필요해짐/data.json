@@ -1,17 +1,28 @@
 {
-  "generatedAt": "2026-04-29T06:45:00+09:00",
+  "generatedAt": "2026-04-28T22:52:03+09:00",
   "title": "신혼부부 3억 모았는데 대출 규제로 1억 더 필요해짐",
   "subtitle": "서울 평균가 12.3억 vs 신혼 평균 자산 3.3억",
   "periodLabel": "서울시 주거실태조사 보도 + 금융위 대출규제 자료 기준",
   "source": "서울시 주거실태조사 보도, 금융위원회 대출규제 자료",
   "sizeLabel": "신혼부부 평균 자산 · 서울 평균 아파트 가격 비교",
   "districtLabel": "쟁점",
-  "beforeLabel": "신혼 평균자산",
-  "afterLabel": "비교 금액",
-  "changeLabel": "격차율",
-  "sheetTitle": "비교 데이터",
+  "beforeLabel": "기준",
+  "afterLabel": "비교",
+  "changeLabel": "격차",
+  "sheetTitle": "첫집 현금 격차 리서치",
   "ctaHook": "댓글로 싸워보자",
   "ctaText": "이건 집값 잡는 정책이야, 신혼부부 잡는 정책이야?",
+  "facts": {
+    "newlywedAssetEok": 3.3,
+    "seoulApartmentAvgEok": 12.3,
+    "simpleGapEok": 9.0,
+    "loanLimitDropEok": 1.0,
+    "stableLivingPct": 86.6,
+    "homelessHouseholdsMan": 216,
+    "needHomeHouseholdsMan": 165,
+    "youthDemandHouseholdsMan": 89,
+    "newlywedHouseholdsMan": 21
+  },
   "districts": [
     {
       "district": "신혼 평균 자산",
@@ -32,10 +43,112 @@
       "changePct": 172.7
     },
     {
-      "district": "규제 후 현금부담",
-      "priceBefore": 33000,
-      "priceAfter": 43000,
-      "changePct": 30.3
+      "district": "대출한도 감소",
+      "priceBefore": 0,
+      "priceAfter": 10000,
+      "changePct": 100.0
+    }
+  ],
+  "slides": [
+    {
+      "slide": 1,
+      "role": "cover",
+      "headline": "3억 모았는데",
+      "accent": "1억 더 필요?",
+      "body": "집값 잡는다더니, 신혼 현금부터 더 필요해졌대."
+    },
+    {
+      "slide": 2,
+      "role": "context",
+      "headline": "3억은 적게 모은 게 아니야",
+      "accent": "평균 자산 3.3억",
+      "body": "신혼부부 기준으로 이미 꽤 모은 돈이야. 문제는 서울의 시작선이 너무 멀다는 거지."
+    },
+    {
+      "slide": 3,
+      "role": "price",
+      "headline": "서울 평균 아파트",
+      "accent": "12.3억",
+      "body": "평균 자산 3.3억으로 평균가를 보면, 출발부터 벽이 9억이야."
+    },
+    {
+      "slide": 4,
+      "role": "math",
+      "headline": "계산은 잔인해",
+      "accent": "12.3 - 3.3 = 9.0",
+      "body": "이건 누가 게을렀다는 얘기가 아니라, 평균 숫자끼리 붙여도 격차가 너무 크다는 얘기야."
+    },
+    {
+      "slide": 5,
+      "role": "policy",
+      "headline": "여기서 한 번 더 때림",
+      "accent": "대출한도 약 1억 감소",
+      "body": "대출을 줄이면 투기는 눌릴 수 있어. 근데 실수요 현금 부담도 같이 커져."
+    },
+    {
+      "slide": 6,
+      "role": "choices",
+      "headline": "결국 선택지는 셋",
+      "accent": "작게 · 멀리 · 전세",
+      "body": "더 작은 집, 더 먼 지역, 더 오래 전세. 이게 정책이 만든 현실 선택지야."
+    },
+    {
+      "slide": 7,
+      "role": "counterframe",
+      "headline": "투기꾼 프레임은 빼자",
+      "accent": "86.6%",
+      "body": "서울시 조사 보도 기준, 신혼부부 주택 구매 이유 대부분은 안정적 실거주였어."
+    },
+    {
+      "slide": 8,
+      "role": "ladder",
+      "headline": "집값 누르다가",
+      "accent": "사다리도 눌렀다",
+      "body": "대출을 막으면 집값은 눌릴 수 있어. 근데 첫집 사다리도 같이 낮아져."
+    },
+    {
+      "slide": 9,
+      "role": "caveat",
+      "headline": "개인 한도는 다 달라",
+      "accent": "그래도 격차는 커졌다",
+      "body": "DSR, LTV, 금리, 부채, 정책대출 조건에 따라 달라져. 이 콘텐츠는 보도 기준 평균값 비교야."
+    },
+    {
+      "slide": 10,
+      "role": "cta",
+      "headline": "댓글로 말해봐",
+      "accent": "집값 잡기냐, 신혼 잡기냐",
+      "body": "3억 모은 신혼부부한테 눈 낮추라고만 하면 끝나는 문제야?"
+    }
+  ],
+  "reelNarration": [
+    "신혼부부가 3억 모으면 대단한 거 맞아.",
+    "근데 서울 평균 아파트가 12.3억이면, 단순 계산으로도 9억이 비어.",
+    "여기에 대출 규제로 한도가 평균 약 1억 줄었다는 보도까지 나왔어.",
+    "그럼 선택지는 뻔해진다. 더 작은 집, 더 먼 지역, 더 긴 전세.",
+    "이 사람들 대부분은 투기꾼이 아니라 안정적으로 살 집을 찾는 실수요자야.",
+    "집값 잡는 정책이야, 신혼부부 잡는 정책이야?"
+  ],
+  "sources": [
+    {
+      "name": "아시아투데이",
+      "date": "2026-02-22",
+      "url": "https://www.asiatoday.co.kr/kn/view.php?key=20260222010006221"
+    },
+    {
+      "name": "이투데이",
+      "date": "2026-02-22",
+      "url": "https://www.etoday.co.kr/news/view/2558042"
+    },
+    {
+      "name": "금융위원회",
+      "date": "2025-05-20",
+      "url": "https://www.fsc.go.kr/no010101/84617"
+    },
+    {
+      "name": "금융위원회",
+      "date": "2025-10-15",
+      "url": "https://www.fsc.go.kr/no010101/85432"
     }
   ]
 }

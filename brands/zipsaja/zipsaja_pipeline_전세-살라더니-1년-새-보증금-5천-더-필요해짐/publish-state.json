@@ -1,0 +1,163 @@
+{
+  "updatedAt": "2026-04-29T15:23:36.992260+09:00",
+  "mode": "publish-now",
+  "bundle": "brands/zipsaja/zipsaja_pipeline_전세-살라더니-1년-새-보증금-5천-더-필요해짐",
+  "platforms": {
+    "instagram_reel": {
+      "status": "published",
+      "postId": "69f1a28ea448f3c964402a88",
+      "url": null,
+      "mediaTypes": [
+        "video"
+      ],
+      "thumbnail": "publish-ready/instagram-reel-cover.png",
+      "duplicateHandled": false
+    },
+    "instagram_carousel": {
+      "status": "publishing",
+      "postId": "69f1a2ca6a8b3fb460ab9e3c",
+      "url": null,
+      "mediaTypes": [
+        "image",
+        "image",
+        "image",
+        "image",
+        "image",
+        "image",
+        "image",
+        "image",
+        "image",
+        "image"
+      ],
+      "firstSlide": "publish-ready/instagram-carousel/slide-01.png",
+      "duplicateHandled": true
+    },
+    "threads_carousel": {
+      "status": "published",
+      "postId": "69f1a3077fa8ec8532e9c65b",
+      "url": null,
+      "mediaTypes": [
+        "image",
+        "image",
+        "image",
+        "image",
+        "image",
+        "image",
+        "image",
+        "image",
+        "image",
+        "image"
+      ],
+      "firstSlide": "publish-ready/threads-carousel/slide-01.png",
+      "topicTag": "부동산",
+      "duplicateHandled": false
+    }
+  },
+  "previousPostsBeforeThumbnailFix": {
+    "instagram_reel": {
+      "status": "publishing",
+      "postId": "69f19de0625f851dfb3f2922",
+      "mediaTypes": [
+        "video"
+      ],
+      "url": null,
+      "note": "Zernio returned duplicate-content 409 on follow-up create; existing Reels post is publishing."
+    },
+    "instagram_carousel": {
+      "status": "published",
+      "postId": "69f19e60f691b3adcdec3e2a",
+      "mediaTypes": [
+        "image",
+        "image",
+        "image",
+        "image",
+        "image",
+        "image",
+        "image",
+        "image",
+        "image",
+        "image"
+      ],
+      "url": null,
+      "note": "Published with captions/instagram-carousel.txt to avoid exact-content duplicate blocking."
+    },
+    "threads_carousel": {
+      "status": "published",
+      "postId": "69f19ed6fb43b387ae25eb94",
+      "mediaTypes": [
+        "image",
+        "image",
+        "image",
+        "image",
+        "image",
+        "image",
+        "image",
+        "image",
+        "image",
+        "image"
+      ],
+      "url": null,
+      "topicTag": "부동산"
+    }
+  },
+  "thumbnailFix": {
+    "reason": "First carousel/reel thumbnail was dark; regenerated light first slide and Remotion cover.",
+    "updatedAt": "2026-04-29T15:20:46.503330+09:00",
+    "verified": {
+      "instagramCarouselFirstSlide": "publish-ready/instagram-carousel/slide-01.png",
+      "instagramReelCover": "publish-ready/instagram-reel-cover.png",
+      "reel": "reels/zipsaja-reel-30s.mp4"
+    }
+  },
+  "reposts": {
+    "instagram_reel": {
+      "status": "published",
+      "postId": "69f1a28ea448f3c964402a88",
+      "url": null,
+      "mediaTypes": [
+        "video"
+      ],
+      "thumbnail": "publish-ready/instagram-reel-cover.png",
+      "duplicateHandled": false
+    },
+    "instagram_carousel": {
+      "status": "publishing",
+      "postId": "69f1a2ca6a8b3fb460ab9e3c",
+      "url": null,
+      "mediaTypes": [
+        "image",
+        "image",
+        "image",
+        "image",
+        "image",
+        "image",
+        "image",
+        "image",
+        "image",
+        "image"
+      ],
+      "firstSlide": "publish-ready/instagram-carousel/slide-01.png",
+      "duplicateHandled": true
+    },
+    "threads_carousel": {
+      "status": "published",
+      "postId": "69f1a3077fa8ec8532e9c65b",
+      "url": null,
+      "mediaTypes": [
+        "image",
+        "image",
+        "image",
+        "image",
+        "image",
+        "image",
+        "image",
+        "image",
+        "image",
+        "image"
+      ],
+      "firstSlide": "publish-ready/threads-carousel/slide-01.png",
+      "topicTag": "부동산",
+      "duplicateHandled": false
+    }
+  }
+}

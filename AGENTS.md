@@ -257,8 +257,11 @@ Instagram 플랫폼 음악을 앱에서 직접 고를 수 있는 API는 없다. 
 3. Reels 커버는 `publish-ready/instagram-reel-cover.png` 1080x1920 파일을 Zernio `instagramThumbnail`로 업로드한다. 커버가 없으면 `--instagram-thumb-offset-ms` 프레임을 썸네일로 쓴다.
 4. Instagram Carousel — 이미지 캐러셀은 1080x1350, 4:5 기준이다. 오디오를 담을 수 없으므로 `publish-ready/instagram-carousel/slide-*.png`를 음악 없이 Feed carousel로 게시한다.
 5. Threads — 기본은 `publish-ready/threads-carousel/slide-*.png` 이미지 캐러셀 게시다. 본문은 `captions/threads.txt`의 2~3줄 훅만 사용한다. 해시태그/긴 설명 금지, topic tag는 Zernio `--topic-tag`로 처리한다.
-6. 모든 게시 결과는 번들 루트의 `publish-state.json`에 누적 기록한다.
-7. 명령은 `python3 -m scripts.zernio_publish <bundle> --platform instagram --instagram-media both --now` 또는 `--platform threads --threads-media carousel --now`를 사용한다.
+6. 운영 업로드는 Instagram Reel, Instagram Carousel, Threads Carousel을 개별 명령으로 제출한다. `--instagram-media both`는 dry-run 또는 저위험 1차 시도에만 사용한다. 한 payload에서 409가 나면 combined command가 멈춰 뒤 payload가 실행되지 않는다.
+7. Zernio가 `409 This exact content is already scheduled, publishing, or was posted...`를 반환하면 실패로만 보지 말고 `details.existingPostId`를 조회한다. 상태가 `publishing/processing`이면 이미 생성되어 플랫폼 처리 중인 것이다.
+8. 사용자가 같은 콘텐츠를 다시 올리라고 하면 `captions/instagram.txt`, `captions/threads.txt`의 첫 훅·문장 순서·CTA를 구조적으로 바꾼 뒤 재제출한다. 공백/문장부호만 바꾸는 것은 중복보호 회피로 보지 않는다.
+9. 모든 게시 결과는 번들 루트의 `publish-state.json`에 platform별 postId, status, platformStatus, mediaCount, timestamp로 누적 기록한다. 공개 URL은 Zernio 응답에서 null일 수 있으므로 postId와 상태를 우선 기록한다.
+10. 명령은 `python3 -m scripts.zernio_publish <bundle> --platform instagram --instagram-media reel --now`, `--instagram-media carousel --now`, `--platform threads --threads-media carousel --now` 순서로 실행한다.
 
 도식화: [docs/superpowers/plans/2026-04-28-zipsaja-remotion-zernio-workflow.excalidraw.md](docs/superpowers/plans/2026-04-28-zipsaja-remotion-zernio-workflow.excalidraw.md)
 
@@ -266,6 +269,7 @@ Instagram 플랫폼 음악을 앱에서 직접 고를 수 있는 API는 없다. 
 
 - `PG_PASSWORD` — proptech_db (데이터 수집)
 - `ANTHROPIC_API_KEY` — Claude API (캡션 생성)
+- `ZERNIO_API_KEY` — Zernio Instagram/Threads 게시
 
 ### 참고 문서
 

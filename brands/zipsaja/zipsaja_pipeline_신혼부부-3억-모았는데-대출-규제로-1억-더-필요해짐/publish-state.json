@@ -1,1 +1,25 @@
-{}
+{
+  "updatedAt": "2026-04-29T09:40:32+09:00",
+  "mode": "publish-now",
+  "bundle": "brands/zipsaja/zipsaja_pipeline_신혼부부-3억-모았는데-대출-규제로-1억-더-필요해짐",
+  "platforms": {
+    "instagram_reel": {
+      "status": "publishing",
+      "postId": "69f1515fc5c12da47e9d3e5d",
+      "mediaTypes": ["video"],
+      "note": "Created through Zernio Instagram Reels publish flow."
+    },
+    "instagram_carousel": {
+      "status": "publishing",
+      "postId": "69f152d712d75d96d08c2889",
+      "mediaTypes": ["image", "image", "image", "image", "image", "image", "image", "image", "image", "image"],
+      "note": "Created with a carousel-specific caption prefix to avoid Zernio exact-content duplicate blocking."
+    },
+    "threads_carousel": {
+      "status": "publishing",
+      "postId": "69f151977ca5f300519ee61c",
+      "mediaTypes": ["image", "image", "image", "image", "image", "image", "image", "image", "image", "image"],
+      "note": "Created through Zernio Threads carousel publish flow."
+    }
+  }
+}

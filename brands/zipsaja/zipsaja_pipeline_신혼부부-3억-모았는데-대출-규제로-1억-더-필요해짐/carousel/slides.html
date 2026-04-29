@@ -3,140 +3,597 @@
 <head>
 <meta charset="UTF-8">
 <title>신혼부부 3억 모았는데 대출 규제로 1억 더 필요해짐</title>
-<link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;700;900&family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family: 'Noto Sans KR', sans-serif; color:#1a1a1a; background:#F0E7D6; }
+  :root {
+    --bg: #F0E7D6;
+    --cream: #F5EDE0;
+    --ink: #1a1a1a;
+    --muted: #555;
+    --orange: #EA2E00;
+    --orange-dark: #C42600;
+    --white: #fff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Noto Sans KR", sans-serif;
+  }
+
   .slide {
-    width:1080px; height:1350px; padding:70px 70px;
-    display:flex; flex-direction:column; position:relative;
-    page-break-after:always; background:#F0E7D6;
+    position: relative;
+    width: 1080px;
+    height: 1350px;
+    overflow: hidden;
+    page-break-after: always;
+    background: var(--bg);
+    padding: 66px 66px 76px;
+    display: flex;
+    flex-direction: column;
   }
-  .cover h1 { font-family:'Jua'; font-size:96px; line-height:1.1; text-align:center; margin-top:100px; }
-  .cover .pill {
-    display:inline-block; background:#EA2E00; color:#fff;
-    padding:14px 36px; border-radius:999px; font-family:'Jua'; font-size:56px;
+
+  .slide.dark {
+    background: var(--ink);
+    color: var(--white);
   }
-  .cover .subtitle { text-align:center; font-size:32px; margin-top:48px; color:#555; font-weight:500; }
-  .cover .source { position:absolute; bottom:70px; left:0; right:0; text-align:center; font-family:'Gaegu'; font-size:28px; color:#EA2E00; }
-  .data h2 { font-family:'Jua'; font-size:56px; margin-bottom:16px; }
-  .data .meta { font-size:22px; color:#666; margin-bottom:28px; }
-  table { width:100%; border-collapse:collapse; background:#F5EDE0; border:3px solid #1a1a1a; border-radius:16px; overflow:hidden; }
-  th { background:#EA2E00; color:#fff; font-family:'Jua'; font-size:26px; padding:14px 12px; text-align:center; }
-  td { font-family:'Noto Sans KR'; font-weight:700; font-size:24px; padding:10px 12px; border-bottom:1px solid rgba(0,0,0,0.08); }
-  td.gu { color:#EA2E00; font-family:'Jua'; text-align:left; font-size:26px; }
-  td.price { text-align:right; }
-  td.pct { text-align:right; font-weight:900; }
-  .pct.pos { color:#EA2E00; }
-  .pct.neg { color:#1A4FA0; }
-  .bar-cell { position:relative; height:22px; background:transparent; }
-  .zero { position:absolute; left:50%; top:0; bottom:0; width:2px; background:#888; }
-  .bar { position:absolute; top:2px; height:18px; }
-  .bar.pos { left:50%; background:#EA2E00; }
-  .bar.neg { background:#1A4FA0; }
-  .footer-cta {
-    background:#1a1a1a; color:#fff; border-radius:20px;
-    padding:48px 40px; margin-top:auto; text-align:center;
+
+  .topline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Gaegu", cursive;
+    font-weight: 700;
+    font-size: 30px;
+    color: var(--orange);
   }
-  .footer-cta .hook { font-family:'Gaegu'; font-size:36px; color:#EA2E00; margin-bottom:16px; }
-  .footer-cta h3 { font-family:'Jua'; font-size:52px; color:#fff; line-height:1.15; }
+
+  .page {
+    width: 62px;
+    height: 62px;
+    border: 3px solid var(--ink);
+    border-radius: 50%;
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Jua", sans-serif;
+    font-size: 28px;
+    color: var(--ink);
+  }
+
+  .dark .page {
+    border-color: var(--white);
+    background: var(--orange);
+    color: var(--white);
+  }
+
+  h1, h2 {
+    font-family: "Jua", sans-serif;
+    letter-spacing: 0;
+  }
+
+  h1 {
+    font-size: 94px;
+    line-height: 1.05;
+    margin-top: 54px;
+  }
+
+  h2 {
+    font-size: 74px;
+    line-height: 1.08;
+    margin-top: 48px;
+  }
+
+  .pill {
+    display: inline-block;
+    background: var(--orange);
+    color: var(--white);
+    border: 3px solid var(--ink);
+    border-radius: 999px;
+    padding: 14px 32px 16px;
+    box-shadow: 8px 8px 0 var(--ink);
+    font-family: "Jua", sans-serif;
+    letter-spacing: 0;
+  }
+
+  .dark .pill {
+    border-color: var(--white);
+    box-shadow: 8px 8px 0 var(--white);
+  }
+
+  .lede {
+    margin-top: 30px;
+    font-size: 36px;
+    line-height: 1.42;
+    font-weight: 800;
+    color: var(--ink);
+  }
+
+  .dark .lede { color: var(--white); }
+
+  .box {
+    border: 3px solid var(--ink);
+    border-radius: 18px;
+    background: var(--cream);
+    padding: 34px 36px;
+  }
+
+  .white-box {
+    border: 3px solid var(--ink);
+    border-radius: 18px;
+    background: var(--white);
+    padding: 32px 34px;
+  }
+
+  .orange-box {
+    border: 3px solid var(--ink);
+    border-radius: 18px;
+    background: var(--orange);
+    color: var(--white);
+    padding: 32px 34px;
+  }
+
+  .small-note {
+    font-size: 24px;
+    line-height: 1.45;
+    color: var(--muted);
+    font-weight: 700;
+  }
+
+  .source {
+    position: absolute;
+    left: 66px;
+    right: 66px;
+    bottom: 34px;
+    font-family: "Gaegu", cursive;
+    font-size: 25px;
+    line-height: 1.25;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  .dark .source { color: #c9c9c9; }
+
+  .mascot {
+    position: absolute;
+    width: 255px;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .dark .mascot {
+    filter: invert(1);
+  }
+
+  .bubble {
+    position: absolute;
+    background: var(--white);
+    border: 3px solid var(--ink);
+    border-radius: 24px;
+    padding: 20px 26px;
+    font-family: "Gaegu", cursive;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.28;
+    color: var(--ink);
+  }
+
+  .bubble::after {
+    content: "";
+    position: absolute;
+    bottom: -16px;
+    left: 58px;
+    width: 24px;
+    height: 24px;
+    background: var(--white);
+    border-right: 3px solid var(--ink);
+    border-bottom: 3px solid var(--ink);
+    transform: rotate(45deg);
+  }
+
+  .number {
+    font-family: "Jua", sans-serif;
+    color: var(--orange);
+    font-size: 132px;
+    line-height: 1;
+  }
+
+  .number-label {
+    font-size: 31px;
+    font-weight: 900;
+    line-height: 1.35;
+    margin-top: 16px;
+  }
+
+  .fact-grid {
+    margin-top: 52px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+  }
+
+  .fact {
+    min-height: 244px;
+    border: 3px solid var(--ink);
+    border-radius: 18px;
+    background: var(--white);
+    padding: 28px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .fact.full { grid-column: 1 / -1; min-height: 178px; }
+  .fact strong {
+    font-family: "Jua", sans-serif;
+    font-size: 62px;
+    color: var(--orange);
+    line-height: 1;
+  }
+  .fact span {
+    margin-top: 14px;
+    font-size: 28px;
+    line-height: 1.35;
+    font-weight: 800;
+  }
+
+  .formula {
+    margin-top: 82px;
+    border: 4px solid var(--ink);
+    border-radius: 22px;
+    background: var(--white);
+    padding: 48px 36px;
+    text-align: center;
+  }
+
+  .formula .line {
+    font-family: "Jua", sans-serif;
+    font-size: 86px;
+    line-height: 1.12;
+  }
+
+  .formula .result {
+    margin-top: 24px;
+    display: inline-block;
+    background: var(--orange);
+    color: var(--white);
+    border: 3px solid var(--ink);
+    border-radius: 18px;
+    padding: 20px 34px;
+    font-family: "Jua", sans-serif;
+    font-size: 108px;
+    line-height: 1;
+  }
+
+  .stamp {
+    display: inline-block;
+    margin-top: 44px;
+    border: 5px solid var(--orange);
+    color: var(--orange);
+    background: var(--white);
+    border-radius: 20px;
+    padding: 18px 26px;
+    transform: rotate(-3deg);
+    font-family: "Jua", sans-serif;
+    font-size: 64px;
+    line-height: 1.08;
+  }
+
+  .choice-grid {
+    margin-top: 58px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+
+  .choice {
+    height: 380px;
+    border: 3px solid var(--ink);
+    border-radius: 20px;
+    background: var(--white);
+    padding: 34px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+  }
+
+  .choice .icon {
+    width: 120px;
+    height: 120px;
+    border: 3px solid var(--ink);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Jua", sans-serif;
+    font-size: 58px;
+    background: var(--cream);
+  }
+
+  .choice strong {
+    font-family: "Jua", sans-serif;
+    font-size: 52px;
+    line-height: 1.05;
+    color: var(--orange);
+  }
+
+  .choice span {
+    font-size: 24px;
+    line-height: 1.35;
+    font-weight: 800;
+  }
+
+  .bar-wrap {
+    margin-top: 56px;
+    border: 3px solid var(--ink);
+    border-radius: 20px;
+    background: var(--white);
+    padding: 34px;
+  }
+
+  .bar-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 28px;
+    font-weight: 900;
+    margin-bottom: 14px;
+  }
+
+  .bar-track {
+    width: 100%;
+    height: 70px;
+    background: var(--cream);
+    border: 3px solid var(--ink);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .bar-fill {
+    width: 86.6%;
+    height: 100%;
+    background: var(--orange);
+  }
+
+  .ladder {
+    margin: 70px auto 0;
+    width: 720px;
+    height: 430px;
+    position: relative;
+  }
+
+  .ladder .side {
+    position: absolute;
+    top: 10px;
+    width: 24px;
+    height: 410px;
+    background: var(--ink);
+    border-radius: 14px;
+  }
+
+  .ladder .left { left: 160px; transform: rotate(9deg); }
+  .ladder .right { right: 160px; transform: rotate(-9deg); }
+  .ladder .step {
+    position: absolute;
+    left: 180px;
+    width: 360px;
+    height: 24px;
+    background: var(--ink);
+    border-radius: 14px;
+  }
+
+  .ladder .s1 { top: 58px; }
+  .ladder .s2 { top: 150px; }
+  .ladder .s3 { top: 242px; }
+  .ladder .s4 { top: 334px; }
+
+  .press {
+    position: absolute;
+    left: 80px;
+    top: 0;
+    width: 560px;
+    height: 86px;
+    background: var(--orange);
+    border: 3px solid var(--ink);
+    border-radius: 18px;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Jua", sans-serif;
+    font-size: 46px;
+  }
+
+  .tiny-list {
+    margin-top: 46px;
+    display: grid;
+    gap: 18px;
+  }
+
+  .tiny-list div {
+    border: 3px solid var(--ink);
+    border-radius: 16px;
+    background: var(--white);
+    padding: 22px 28px;
+    font-size: 30px;
+    line-height: 1.34;
+    font-weight: 900;
+  }
+
+  .poll {
+    margin-top: 70px;
+    display: grid;
+    gap: 24px;
+  }
+
+  .poll .option {
+    border: 3px solid var(--white);
+    border-radius: 20px;
+    padding: 30px 34px;
+    font-family: "Jua", sans-serif;
+    font-size: 58px;
+    line-height: 1.08;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .poll .hot {
+    background: var(--orange);
+    color: var(--white);
+  }
+
+  .poll .cold {
+    background: var(--white);
+    color: var(--ink);
+  }
 </style>
 </head>
 <body>
 
-<div class="slide cover">
-  <h1><span class="pill">신혼부부 3억 모았는데</span></h1>
-  <h1 style="font-size:72px; margin-top:36px;">대출 규제로 1억 더 필요해짐</h1>
-  <p class="subtitle">서울 평균가 12.3억 vs 신혼 평균 자산 3.3억<br>서울시 주거실태조사 보도 + 금융위 대출규제 자료 기준</p>
-  <p class="source">서울시 주거실태조사 보도, 금융위원회 대출규제 자료</p>
-</div>
+<section class="slide">
+  <div class="topline"><span>집사자 첫집 분노 리서치</span><span class="page">1</span></div>
+  <h1><span class="pill">3억 모았는데</span><br>어제보다<br><span style="color: var(--orange);">1억 더 필요?</span></h1>
+  <p class="lede">집값 잡는다더니,<br>신혼 현금부터 더 필요해졌대.</p>
+  <img class="mascot" src="assets/mascot-angry.png" alt="" style="right: 92px; bottom: 120px; width: 300px;">
+  <div class="bubble" style="right: 310px; bottom: 250px;">이건 진짜<br>말이 되냐?</div>
+  <div class="source">서울시 주거실태조사 보도 + 금융위원회 대출규제 자료 기준</div>
+</section>
 
-
-<div class="slide data">
-  <h2>신혼 평균 자산 ~ 규제 후 현금부담</h2>
-  <p class="meta">신혼부부 평균 자산 · 서울 평균 아파트 가격 비교</p>
-  <table>
-    <thead>
-      <tr>
-        <th style="width:20%;">쟁점</th>
-        <th style="width:25%;">신혼 평균자산</th>
-        <th style="width:25%;">비교 금액</th>
-        <th style="width:20%;">바 차트</th>
-        <th style="width:10%;">격차율</th>
-      </tr>
-    </thead>
-    <tbody>
-
-      <tr>
-        <td class="gu">신혼 평균 자산</td>
-        <td class="price">3억 3,000만원</td>
-        <td class="price">3억 3,000만원</td>
-        <td class="bar-cell">
-          <div class="zero"></div>
-          <div class="bar pos"
-               style="width:0px; "></div>
-        </td>
-        <td class="pct pos">
-          +0.0%
-        </td>
-      </tr>
-
-      <tr>
-        <td class="gu">서울 평균 아파트</td>
-        <td class="price">3억 3,000만원</td>
-        <td class="price">12억 3,000만원</td>
-        <td class="bar-cell">
-          <div class="zero"></div>
-          <div class="bar pos"
-               style="width:100px; "></div>
-        </td>
-        <td class="pct pos">
-          +272.7%
-        </td>
-      </tr>
-
-      <tr>
-        <td class="gu">단순 현금 격차</td>
-        <td class="price">3억 3,000만원</td>
-        <td class="price">9억</td>
-        <td class="bar-cell">
-          <div class="zero"></div>
-          <div class="bar pos"
-               style="width:63px; "></div>
-        </td>
-        <td class="pct pos">
-          +172.7%
-        </td>
-      </tr>
-
-      <tr>
-        <td class="gu">규제 후 현금부담</td>
-        <td class="price">3억 3,000만원</td>
-        <td class="price">4억 3,000만원</td>
-        <td class="bar-cell">
-          <div class="zero"></div>
-          <div class="bar pos"
-               style="width:11px; "></div>
-        </td>
-        <td class="pct pos">
-          +30.3%
-        </td>
-      </tr>
-
-    </tbody>
-  </table>
-</div>
-
-
-<div class="slide cover">
-  <h1 style="margin-top:160px;"><span class="pill">데이터 더</span></h1>
-  <h1 style="font-size:72px; margin-top:36px;">궁금하지?</h1>
-  <div class="footer-cta">
-    <p class="hook">댓글로 싸워보자</p>
-    <h3>이건 집값 잡는 정책이야, 신혼부부 잡는 정책이야?</h3>
+<section class="slide">
+  <div class="topline"><span>먼저 이 말부터</span><span class="page">2</span></div>
+  <h2>3억은<br><span class="pill">적게 모은 게 아니야</span></h2>
+  <div class="fact-grid">
+    <div class="fact">
+      <strong>3.3억</strong>
+      <span>서울 신혼부부 평균 자산</span>
+    </div>
+    <div class="fact">
+      <strong>6,493만</strong>
+      <span>평균 연소득 보도 기준</span>
+    </div>
+    <div class="fact full">
+      <span>그러니까 "노력 안 했네"로 때릴 문제가 아니야. 이미 모았는데도 서울 시작선이 멀다는 얘기야.</span>
+    </div>
   </div>
-  <p class="source">서울시 주거실태조사 보도, 금융위원회 대출규제 자료</p>
-</div>
+  <img class="mascot" src="assets/mascot-worried.png" alt="" style="right: 68px; bottom: 88px; width: 185px;">
+  <div class="source">아시아투데이·이투데이 2026-02-22 보도 기준</div>
+</section>
+
+<section class="slide">
+  <div class="topline"><span>서울 평균가를 붙이면</span><span class="page">3</span></div>
+  <h2>서울 평균 아파트<br><span class="pill">12.3억</span></h2>
+  <div class="box" style="margin-top: 58px;">
+    <div class="number">12.3억</div>
+    <div class="number-label">서울 아파트 평균 매매가</div>
+  </div>
+  <p class="lede" style="margin-top: 34px;">평균 자산 3.3억으로 평균가를 보면,<br>첫 장부터 벽이 보여.</p>
+  <img class="mascot" src="assets/mascot-surprise.png" alt="" style="right: 90px; bottom: 90px; width: 210px;">
+  <div class="source">서울시 주거실태조사 마이크로데이터 분석 보도 기준</div>
+</section>
+
+<section class="slide">
+  <div class="topline"><span>계산은 잔인해</span><span class="page">4</span></div>
+  <h2>평균끼리만<br>붙여도</h2>
+  <div class="formula">
+    <div class="line">12.3억 - 3.3억</div>
+    <div class="result">= 9억</div>
+  </div>
+  <p class="lede" style="text-align: center;">누가 게을렀다는 얘기가 아니야.<br>숫자 자체가 너무 벌어졌다는 얘기야.</p>
+  <div class="source">단순 격차 계산. 실제 매수 가능성은 개인 조건에 따라 다름.</div>
+</section>
+
+<section class="slide">
+  <div class="topline"><span>여기서 한 번 더</span><span class="page">5</span></div>
+  <h2>대출 규제로<br><span class="pill">약 1억 더 현금</span></h2>
+  <div class="stamp">대출한도<br>약 1억 감소</div>
+  <div class="white-box" style="margin-top: 46px;">
+    <p class="lede" style="margin-top: 0;">투기 잡는다고 했는데,<br>실수요자 현금 부담도 같이 커졌어.</p>
+  </div>
+  <img class="mascot" src="assets/mascot-angry.png" alt="" style="right: 78px; bottom: 88px; width: 205px;">
+  <div class="source">신혼부부 대출 가능액 평균 약 1억원 감소 보도 기준</div>
+</section>
+
+<section class="slide">
+  <div class="topline"><span>현실 선택지</span><span class="page">6</span></div>
+  <h2>그러면 결국<br><span class="pill">셋 중 하나야</span></h2>
+  <div class="choice-grid">
+    <div class="choice">
+      <div class="icon">1</div>
+      <strong>더 작게</strong>
+      <span>면적 낮추고<br>조건 포기</span>
+    </div>
+    <div class="choice">
+      <div class="icon">2</div>
+      <strong>더 멀리</strong>
+      <span>출퇴근 시간<br>더 길어짐</span>
+    </div>
+    <div class="choice">
+      <div class="icon">3</div>
+      <strong>더 오래<br>전세</strong>
+      <span>내 집 마련<br>뒤로 밀림</span>
+    </div>
+  </div>
+  <p class="lede" style="text-align: center;">이게 신혼부부한테 남는 선택지야.</p>
+  <div class="source">정책 효과 해석. 개별 상황별 선택지는 달라질 수 있음.</div>
+</section>
+
+<section class="slide">
+  <div class="topline"><span>프레임부터 정리</span><span class="page">7</span></div>
+  <h2>투기꾼 프레임은<br><span class="pill">빼자</span></h2>
+  <div class="bar-wrap">
+    <div class="bar-label"><span>안정적 실거주 목적</span><span>86.6%</span></div>
+    <div class="bar-track"><div class="bar-fill"></div></div>
+  </div>
+  <p class="lede">서울시 조사 보도 기준, 신혼부부 주택 구매 이유 대부분은 안정적 실거주였어.</p>
+  <img class="mascot" src="assets/mascot-side.png" alt="" style="right: 76px; bottom: 92px; width: 210px;">
+  <div class="source">서울시 주거실태조사 분석 보도 기준</div>
+</section>
+
+<section class="slide">
+  <div class="topline"><span>정책의 비용</span><span class="page">8</span></div>
+  <h2>집값 누르다가<br><span class="pill">사다리도 눌렀다</span></h2>
+  <div class="ladder">
+    <div class="press">대출 규제 압박</div>
+    <div class="side left"></div>
+    <div class="side right"></div>
+    <div class="step s1"></div>
+    <div class="step s2"></div>
+    <div class="step s3"></div>
+    <div class="step s4"></div>
+  </div>
+  <p class="lede" style="text-align: center;">집값은 눌릴 수 있어.<br>근데 첫집 사다리도 같이 낮아져.</p>
+  <div class="source">정책 효과에 대한 콘텐츠 해석</div>
+</section>
+
+<section class="slide">
+  <div class="topline"><span>중요한 주의점</span><span class="page">9</span></div>
+  <h2>개인 한도는<br><span class="pill">다 달라</span></h2>
+  <div class="tiny-list">
+    <div>DSR, LTV, 금리, 기존 부채에 따라 달라져.</div>
+    <div>정책대출 가능 여부도 사람마다 달라.</div>
+    <div>그래도 평균 기준 현금 격차가 커진 건 핵심이야.</div>
+  </div>
+  <div class="orange-box" style="margin-top: 42px;">
+    <p class="lede" style="margin-top: 0; color: var(--white);">이 콘텐츠는 보도 기준 평균값 비교야. 투자 권유 아니야.</p>
+  </div>
+  <div class="source">금융위원회 스트레스 DSR·주담대 한도 조정 자료 기준</div>
+</section>
+
+<section class="slide dark">
+  <div class="topline"><span>댓글로 싸워보자</span><span class="page">10</span></div>
+  <h2>이건<br><span class="pill">집값 잡기냐</span><br>신혼 잡기냐</h2>
+  <div class="poll">
+    <div class="option hot"><span>집값 잡는 정책</span><span>A</span></div>
+    <div class="option cold"><span>실수요 잡는 정책</span><span>B</span></div>
+  </div>
+  <p class="lede" style="font-size: 32px;">3억 모은 신혼부부한테<br>"눈 낮춰"라고만 하면 끝나는 문제야?</p>
+  <img class="mascot" src="assets/mascot-shining.png" alt="" style="right: 80px; bottom: 76px; width: 210px;">
+  <div class="source">출처: 아시아투데이·이투데이 보도, 금융위원회 자료</div>
+</section>
 
 </body>
 </html>

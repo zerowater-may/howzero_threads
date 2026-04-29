@@ -1,0 +1,57 @@
+{
+  "workflow_version": "zipsaja-remotion-v1",
+  "brand": "zipsaja",
+  "slug": "전세-살라더니-1년-새-보증금-5천-더-필요해짐",
+  "status": "completed",
+  "createdAt": "2026-04-29T10:05:00+09:00",
+  "updatedAt": "2026-04-29T14:56:00+09:00",
+  "steps": {
+    "brief": "done",
+    "data": "done",
+    "storyboard": "done",
+    "remotion": "done",
+    "carousel": "done",
+    "attachments": "skipped",
+    "captions": "done",
+    "package-qa": "done"
+  },
+  "artifacts": {
+    "brief": {
+      "path": "brands/zipsaja/zipsaja_pipeline_전세-살라더니-1년-새-보증금-5천-더-필요해짐/brief.md"
+    },
+    "data": {
+      "path": "brands/zipsaja/zipsaja_pipeline_전세-살라더니-1년-새-보증금-5천-더-필요해짐/data.json"
+    },
+    "storyboard": {
+      "path": "brands/zipsaja/zipsaja_pipeline_전세-살라더니-1년-새-보증금-5천-더-필요해짐/storyboard.json"
+    },
+    "reels": {
+      "path": "brands/zipsaja/zipsaja_pipeline_전세-살라더니-1년-새-보증금-5천-더-필요해짐/reels",
+      "primary": "brands/zipsaja/zipsaja_pipeline_전세-살라더니-1년-새-보증금-5천-더-필요해짐/reels/zipsaja-reel-30s.mp4",
+      "remotion_entry": "brands/zipsaja/zipsaja_pipeline_전세-살라더니-1년-새-보증금-5천-더-필요해짐/reels/remotion/JeonseYoyRageReel.tsx"
+    },
+    "carousel": {
+      "path": "brands/zipsaja/zipsaja_pipeline_전세-살라더니-1년-새-보증금-5천-더-필요해짐/carousel",
+      "slides": 10
+    },
+    "captions": {
+      "path": "brands/zipsaja/zipsaja_pipeline_전세-살라더니-1년-새-보증금-5천-더-필요해짐/captions",
+      "threads": "brands/zipsaja/zipsaja_pipeline_전세-살라더니-1년-새-보증금-5천-더-필요해짐/captions/threads.txt",
+      "instagram": "brands/zipsaja/zipsaja_pipeline_전세-살라더니-1년-새-보증금-5천-더-필요해짐/captions/instagram.txt",
+      "instagram_carousel": "brands/zipsaja/zipsaja_pipeline_전세-살라더니-1년-새-보증금-5천-더-필요해짐/captions/instagram-carousel.txt"
+    },
+    "publish-ready": {
+      "path": "brands/zipsaja/zipsaja_pipeline_전세-살라더니-1년-새-보증금-5천-더-필요해짐/publish-ready",
+      "instagram_carousel_slides": 10,
+      "threads_carousel_slides": 10,
+      "instagram_reel_cover": "brands/zipsaja/zipsaja_pipeline_전세-살라더니-1년-새-보증금-5천-더-필요해짐/publish-ready/instagram-reel-cover.png"
+    }
+  },
+  "qa": {
+    "carousel_dimensions": "1080x1350",
+    "reel_dimensions": "1080x1920",
+    "reel_duration_seconds": 30,
+    "reel_fps": "30/1",
+    "hyperframes_created": false
+  }
+}

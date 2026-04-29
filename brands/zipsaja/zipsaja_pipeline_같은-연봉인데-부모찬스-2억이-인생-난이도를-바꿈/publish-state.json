@@ -1,1 +1,33 @@
-{}
+{
+  "updatedAt": "2026-04-29T20:12:34+09:00",
+  "status": "submitted",
+  "mode": "publish-now",
+  "bundle": "brands/zipsaja/zipsaja_pipeline_같은-연봉인데-부모찬스-2억이-인생-난이도를-바꿈",
+  "note": "Captions were rewritten to avoid Zernio duplicate protection, then Instagram Reel, Instagram Carousel, and Threads Carousel were submitted separately.",
+  "platforms": {
+    "instagram_reel": {
+      "status": "published",
+      "platformStatus": "published",
+      "postId": "69f1e621b30eb982b61687b5",
+      "mediaCount": 1,
+      "scheduledFor": "2026-04-29T11:06:08.543Z",
+      "updatedAt": "2026-04-29T11:06:43.748Z"
+    },
+    "instagram_carousel": {
+      "status": "publishing",
+      "platformStatus": "processing",
+      "postId": "69f1e66a550a8d843533b41f",
+      "mediaCount": 10,
+      "scheduledFor": "2026-04-29T11:07:17.116Z",
+      "updatedAt": "2026-04-29T11:07:55.399Z"
+    },
+    "threads": {
+      "status": "published",
+      "platformStatus": "published",
+      "postId": "69f1e6d806895a146a63f37b",
+      "mediaCount": 10,
+      "scheduledFor": "2026-04-29T11:09:08.953Z",
+      "updatedAt": "2026-04-29T11:11:09.847Z"
+    }
+  }
+}
