@@ -98,8 +98,7 @@ def _is_active_or_published(post: dict[str, Any]) -> bool:
     platform = _post_platform(post)
     status = str(post.get("status") or "").lower()
     platform_status = str(platform.get("status") or "").lower()
-    failed_statuses = {"failed", "deleted", "cancelled", "canceled"}
-    if status in failed_statuses or platform_status in failed_statuses:
+    if _is_failed_or_deleted(post):
         return False
     active_statuses = {
         "draft",
@@ -111,6 +110,14 @@ def _is_active_or_published(post: dict[str, Any]) -> bool:
         "pending",
     }
     return status in active_statuses or platform_status in active_statuses
+
+
+def _is_failed_or_deleted(post: dict[str, Any]) -> bool:
+    platform = _post_platform(post)
+    status = str(post.get("status") or "").lower()
+    platform_status = str(platform.get("status") or "").lower()
+    failed_statuses = {"failed", "deleted", "cancelled", "canceled"}
+    return status in failed_statuses or platform_status in failed_statuses
 
 
 def _post_record(post: dict[str, Any], *, duplicate_guard: str) -> dict[str, Any]:
@@ -133,6 +140,7 @@ def _publish_state_record(
     platform_name: str,
     media_count: int,
     content_type: str | None,
+    duplicate_guard: str,
 ) -> dict[str, Any]:
     return {
         "status": state_record.get("status"),
@@ -141,7 +149,7 @@ def _publish_state_record(
         "platformStatus": state_record.get("platformStatus"),
         "contentType": state_record.get("contentType", content_type),
         "mediaCount": state_record.get("mediaCount", media_count),
-        "duplicateGuard": "publish-state",
+        "duplicateGuard": duplicate_guard,
     }
 
 
@@ -200,16 +208,26 @@ def find_existing_publish_record(
     failed_statuses = {"failed", "deleted", "cancelled", "canceled"}
     state_status = str(state_record.get("status") or "").lower()
     state_platform_status = str(state_record.get("platformStatus") or "").lower()
-    if (
-        state_post_id
-        and state_status not in failed_statuses
-        and state_platform_status not in failed_statuses
-    ):
+    if state_post_id:
+        post = _fetch_post(client, str(state_post_id))
+        if post and _is_active_or_published(post):
+            return _post_record(post, duplicate_guard="publish-state")
+        if post and _is_failed_or_deleted(post):
+            return _post_record(post, duplicate_guard="publish-state-failed")
+        if state_status not in failed_statuses and state_platform_status not in failed_statuses:
+            return _publish_state_record(
+                state_record,
+                platform_name=platform_name,
+                media_count=media_count,
+                content_type=content_type,
+                duplicate_guard="publish-state-unverified",
+            )
         return _publish_state_record(
             state_record,
             platform_name=platform_name,
             media_count=media_count,
             content_type=content_type,
+            duplicate_guard="publish-state-failed",
         )
 
     try:
@@ -220,8 +238,6 @@ def find_existing_publish_record(
 
     posts = payload.get("posts") or payload.get("data") or []
     for post in posts:
-        if not _is_active_or_published(post):
-            continue
         if _post_matches_target(
             post,
             platform_name=platform_name,
@@ -230,7 +246,10 @@ def find_existing_publish_record(
             media_count=media_count,
             content_type=content_type,
         ):
-            return _post_record(post, duplicate_guard="recent-posts")
+            if _is_active_or_published(post):
+                return _post_record(post, duplicate_guard="recent-posts")
+            if _is_failed_or_deleted(post):
+                return _post_record(post, duplicate_guard="recent-posts-failed")
     return None
 
 

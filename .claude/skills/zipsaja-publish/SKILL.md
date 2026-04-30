@@ -45,10 +45,12 @@ Submit Instagram Reels, Instagram Carousel, and Threads as separate commands in 
 
 The CLI now runs duplicate preflight before media upload or post creation:
 
-- First read the bundle's `publish-state.json`. If the target platform key already has a non-failed `postId`, skip immediately before any Zernio lookup or media upload.
-- Only when `publish-state.json` has no active `postId`, query Zernio recent posts with `GET /posts?limit=20` and match by account, platform, caption body, media count, and content type.
-- If a matching `draft/scheduled/publishing/processing/published` post exists, skip media upload and skip `POST /posts`. Record the existing post in `publish-state.json` with `duplicateGuard`.
-- Only run media upload when no active duplicate is found.
+- First read the bundle's `publish-state.json`. If the target platform key already has a `postId`, inspect it with `GET /posts/<postId>`.
+- If that post is `draft/scheduled/publishing/processing/published`, skip media upload and skip `POST /posts`. Record it with `duplicateGuard="publish-state"`.
+- If that post is `failed/deleted/cancelled`, still skip the exact same upload and record the live failed status with `duplicateGuard="publish-state-failed"`. Do not hide stale local `publishing` state.
+- If there is no state `postId`, query Zernio recent posts with `GET /posts?limit=20` and match by account, platform, caption body, media count, and content type.
+- Matching failed recent posts also block blind retry with `duplicateGuard="recent-posts-failed"`; rewrite caption/media before resubmitting.
+- Only run media upload when no matching active or failed duplicate is found.
 
 Zernio can still reject a create request with `409` in a race condition:
 

@@ -89,10 +89,11 @@ python3 -m scripts.zernio_publish \
 
 CLI는 미디어 업로드와 `POST /posts` 전에 중복 사전 점검을 먼저 실행한다.
 
-1. 번들의 `publish-state.json`에서 대상 platform key의 기존 non-failed `postId`를 읽으면 Zernio 조회나 미디어 업로드 없이 즉시 건너뛴다.
-2. `publish-state.json`에 active `postId`가 없을 때만 Zernio 최근 게시물 `GET /posts?limit=20`을 조회해 계정, 플랫폼, 본문, 미디어 개수, content type이 같은 게시물을 찾는다.
-3. `draft/scheduled/publishing/processing/published` 상태의 같은 게시물이 있으면 미디어 업로드와 게시 생성 요청을 모두 건너뛴다.
-4. 건너뛴 게시물은 `publish-state.json`에 `duplicateGuard` 값과 함께 기록한다.
+1. 번들의 `publish-state.json`에서 대상 platform key의 기존 `postId`를 읽고 `GET /posts/<postId>`로 live 상태를 조회한다.
+2. 해당 게시물이 `draft/scheduled/publishing/processing/published`이면 미디어 업로드와 게시 생성 요청을 모두 건너뛴다.
+3. 해당 게시물이 `failed/deleted/cancelled`여도 같은 payload 재업로드는 건너뛰고 live 실패 상태를 `duplicateGuard="publish-state-failed"`로 기록한다.
+4. `publish-state.json`에 `postId`가 없을 때만 Zernio 최근 게시물 `GET /posts?limit=20`을 조회해 계정, 플랫폼, 본문, 미디어 개수, content type이 같은 게시물을 찾는다.
+5. 최근 게시물에서 실패한 같은 payload가 발견돼도 `duplicateGuard="recent-posts-failed"`로 막는다. 재제출하려면 캡션이나 미디어를 먼저 바꾼다.
 
 Zernio가 아래 409를 반환하면 사전 점검 이후 race condition으로 같은 본문/미디어 조합이 이미 생성된 것이다.
 

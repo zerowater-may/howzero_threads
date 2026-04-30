@@ -229,7 +229,16 @@ def test_publish_skips_create_when_publish_state_has_active_post(monkeypatch, tm
             return [{"_id": "acc_ig", "platform": "instagram", "username": "zipsaja_"}]
 
         def _request(self, method, path, *, timeout=60, **kwargs):
-            raise AssertionError("publish-state duplicate guard must not require a network lookup")
+            assert method == "GET"
+            assert path == "/posts/existing_carousel"
+            return {
+                "post": {
+                    "_id": "existing_carousel",
+                    "status": "publishing",
+                    "mediaItems": [{"type": "image"} for _ in range(10)],
+                    "platforms": [{"platform": "instagram", "status": "processing"}],
+                }
+            }
 
         def upload_media(self, path):
             raise AssertionError("duplicate preflight must skip media upload")
@@ -253,6 +262,57 @@ def test_publish_skips_create_when_publish_state_has_active_post(monkeypatch, tm
     assert rc == 0
     state = (root / "publish-state.json").read_text(encoding="utf-8")
     assert '"duplicateGuard": "publish-state"' in state
+
+
+def test_publish_skips_failed_state_post_without_retrying_upload(monkeypatch, tmp_path):
+    root = _completed_bundle(tmp_path)
+    (root / "publish-state.json").write_text(
+        '{"platforms": {"instagram_carousel": {"postId": "failed_carousel", "status": "publishing"}}}',
+        encoding="utf-8",
+    )
+
+    class FakeClient:
+        def __init__(self, api_key):
+            self.api_key = api_key
+
+        def list_accounts(self):
+            return [{"_id": "acc_ig", "platform": "instagram", "username": "zipsaja_"}]
+
+        def _request(self, method, path, *, timeout=60, **kwargs):
+            assert method == "GET"
+            assert path == "/posts/failed_carousel"
+            return {
+                "post": {
+                    "_id": "failed_carousel",
+                    "status": "failed",
+                    "mediaItems": [{"type": "image"} for _ in range(10)],
+                    "platforms": [{"platform": "instagram", "status": "failed"}],
+                }
+            }
+
+        def upload_media(self, path):
+            raise AssertionError("failed duplicate guard must skip media upload")
+
+        def create_post(self, body):
+            raise AssertionError("failed duplicate guard must skip create_post")
+
+    monkeypatch.setenv("ZERNIO_API_KEY", "test")
+    monkeypatch.setattr(zernio_publish_cli, "ZernioClient", FakeClient)
+
+    rc = zernio_publish_cli.main([
+        str(root),
+        "--platform",
+        "instagram",
+        "--instagram-media",
+        "carousel",
+        "--now",
+        "--allow-instagram-api-publish",
+    ])
+
+    assert rc == 0
+    state = (root / "publish-state.json").read_text(encoding="utf-8")
+    assert '"status": "failed"' in state
+    assert '"duplicateGuard": "publish-state-failed"' in state
 
 
 def test_duplicate_preflight_finds_matching_recent_post():
@@ -286,3 +346,36 @@ def test_duplicate_preflight_finds_matching_recent_post():
     assert record is not None
     assert record["postId"] == "recent_threads"
     assert record["duplicateGuard"] == "recent-posts"
+
+
+def test_duplicate_preflight_finds_matching_recent_failed_post():
+    class FakeClient:
+        def _request(self, method, path, *, timeout=60, **kwargs):
+            assert method == "GET"
+            assert path == "/posts?limit=20"
+            return {
+                "posts": [
+                    {
+                        "_id": "failed_threads",
+                        "content": "same thread",
+                        "status": "failed",
+                        "mediaItems": [{"type": "image"} for _ in range(10)],
+                        "platforms": [{"platform": "threads", "status": "failed", "accountId": "acc_threads"}],
+                    }
+                ]
+            }
+
+    record = zernio_publish_cli.find_existing_publish_record(
+        client=FakeClient(),
+        existing_state={},
+        platform_key="threads",
+        platform_name="threads",
+        account_id="acc_threads",
+        content="same thread",
+        media_count=10,
+        content_type=None,
+    )
+
+    assert record is not None
+    assert record["postId"] == "failed_threads"
+    assert record["duplicateGuard"] == "recent-posts-failed"
