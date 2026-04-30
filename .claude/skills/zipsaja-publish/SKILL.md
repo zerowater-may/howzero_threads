@@ -43,13 +43,20 @@ Submit Instagram Reels, Instagram Carousel, and Threads as separate commands in 
 
 ## Duplicate Protection
 
-Zernio may reject a create request with `409` and:
+The CLI now runs duplicate preflight before media upload or post creation:
+
+- First read the bundle's `publish-state.json`. If the target platform key already has a non-failed `postId`, skip immediately before any Zernio lookup or media upload.
+- Only when `publish-state.json` has no active `postId`, query Zernio recent posts with `GET /posts?limit=20` and match by account, platform, caption body, media count, and content type.
+- If a matching `draft/scheduled/publishing/processing/published` post exists, skip media upload and skip `POST /posts`. Record the existing post in `publish-state.json` with `duplicateGuard`.
+- Only run media upload when no active duplicate is found.
+
+Zernio can still reject a create request with `409` in a race condition:
 
 ```text
 This exact content is already scheduled, publishing, or was posted to this account within the last 24 hours.
 ```
 
-- Treat `details.existingPostId` as the canonical post to inspect; do not keep retrying the same payload.
+- Treat `details.existingPostId` as the canonical post to inspect; record it as `duplicateGuard="zernio-409"` and do not keep retrying the same payload.
 - Query the existing post and record its status. `publishing/processing` means the post exists and is still being handled by Zernio/platform APIs.
 - If the user explicitly wants another upload, rewrite `captions/instagram.txt` and/or `captions/threads.txt` before resubmitting. Change the opening hook, sentence order, and CTA; whitespace-only or punctuation-only edits are not enough.
 - Instagram Reel and Instagram Carousel both use `captions/instagram.txt`; update it before resubmitting either Instagram format.

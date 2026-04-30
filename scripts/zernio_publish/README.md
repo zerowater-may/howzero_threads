@@ -87,13 +87,20 @@ python3 -m scripts.zernio_publish \
 
 ## 중복 보호 대응
 
-Zernio가 아래 409를 반환하면 같은 본문/미디어 조합이 이미 생성된 것이다.
+CLI는 미디어 업로드와 `POST /posts` 전에 중복 사전 점검을 먼저 실행한다.
+
+1. 번들의 `publish-state.json`에서 대상 platform key의 기존 non-failed `postId`를 읽으면 Zernio 조회나 미디어 업로드 없이 즉시 건너뛴다.
+2. `publish-state.json`에 active `postId`가 없을 때만 Zernio 최근 게시물 `GET /posts?limit=20`을 조회해 계정, 플랫폼, 본문, 미디어 개수, content type이 같은 게시물을 찾는다.
+3. `draft/scheduled/publishing/processing/published` 상태의 같은 게시물이 있으면 미디어 업로드와 게시 생성 요청을 모두 건너뛴다.
+4. 건너뛴 게시물은 `publish-state.json`에 `duplicateGuard` 값과 함께 기록한다.
+
+Zernio가 아래 409를 반환하면 사전 점검 이후 race condition으로 같은 본문/미디어 조합이 이미 생성된 것이다.
 
 ```text
 This exact content is already scheduled, publishing, or was posted to this account within the last 24 hours.
 ```
 
-1. 응답의 `details.existingPostId`를 기록한다.
+1. 응답의 `details.existingPostId`를 `duplicateGuard="zernio-409"`로 기록한다.
 2. 같은 payload를 반복 제출하지 않는다.
 3. `GET /posts/<existingPostId>`로 상태를 조회한다. `publishing/processing`이면 Zernio나 플랫폼 API가 처리 중인 상태다.
 4. 사용자가 재업로드를 지시하면 `captions/instagram.txt` 또는 `captions/threads.txt`를 먼저 바꾼다. 첫 문장, 문장 순서, CTA가 달라져야 한다.

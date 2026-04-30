@@ -11,6 +11,7 @@ from scripts.zernio_publish.payloads import (
     threads_media_payload,
     threads_video_payload,
 )
+from scripts.zernio_publish import __main__ as zernio_publish_cli
 
 
 def test_detect_content_type_for_supported_media():
@@ -197,3 +198,91 @@ def test_bundle_does_not_prefer_legacy_audio_when_30s_reel_exists(tmp_path):
     )
 
     assert bundle.audio_mapped_reel_path == reel
+
+
+def _completed_bundle(tmp_path: Path) -> Path:
+    root = tmp_path / "bundle"
+    (root / "reels").mkdir(parents=True)
+    (root / "captions").mkdir()
+    (root / "carousel").mkdir()
+    (root / "reels" / "zipsaja-reel-30s.mp4").write_bytes(b"mp4")
+    (root / "captions" / "instagram.txt").write_text("same caption", encoding="utf-8")
+    (root / "captions" / "threads.txt").write_text("same thread", encoding="utf-8")
+    (root / "pipeline-state.json").write_text('{"status": "completed"}', encoding="utf-8")
+    for index in range(1, 11):
+        (root / "carousel" / f"slide-{index:02d}.png").write_bytes(b"png")
+    return root
+
+
+def test_publish_skips_create_when_publish_state_has_active_post(monkeypatch, tmp_path):
+    root = _completed_bundle(tmp_path)
+    (root / "publish-state.json").write_text(
+        '{"platforms": {"instagram_carousel": {"postId": "existing_carousel", "status": "publishing"}}}',
+        encoding="utf-8",
+    )
+
+    class FakeClient:
+        def __init__(self, api_key):
+            self.api_key = api_key
+
+        def list_accounts(self):
+            return [{"_id": "acc_ig", "platform": "instagram", "username": "zipsaja_"}]
+
+        def _request(self, method, path, *, timeout=60, **kwargs):
+            raise AssertionError("publish-state duplicate guard must not require a network lookup")
+
+        def upload_media(self, path):
+            raise AssertionError("duplicate preflight must skip media upload")
+
+        def create_post(self, body):
+            raise AssertionError("duplicate preflight must skip create_post")
+
+    monkeypatch.setenv("ZERNIO_API_KEY", "test")
+    monkeypatch.setattr(zernio_publish_cli, "ZernioClient", FakeClient)
+
+    rc = zernio_publish_cli.main([
+        str(root),
+        "--platform",
+        "instagram",
+        "--instagram-media",
+        "carousel",
+        "--now",
+        "--allow-instagram-api-publish",
+    ])
+
+    assert rc == 0
+    state = (root / "publish-state.json").read_text(encoding="utf-8")
+    assert '"duplicateGuard": "publish-state"' in state
+
+
+def test_duplicate_preflight_finds_matching_recent_post():
+    class FakeClient:
+        def _request(self, method, path, *, timeout=60, **kwargs):
+            assert method == "GET"
+            assert path == "/posts?limit=20"
+            return {
+                "posts": [
+                    {
+                        "_id": "recent_threads",
+                        "content": "same thread",
+                        "status": "publishing",
+                        "mediaItems": [{"type": "image"} for _ in range(10)],
+                        "platforms": [{"platform": "threads", "status": "processing", "accountId": "acc_threads"}],
+                    }
+                ]
+            }
+
+    record = zernio_publish_cli.find_existing_publish_record(
+        client=FakeClient(),
+        existing_state={},
+        platform_key="threads",
+        platform_name="threads",
+        account_id="acc_threads",
+        content="same thread",
+        media_count=10,
+        content_type=None,
+    )
+
+    assert record is not None
+    assert record["postId"] == "recent_threads"
+    assert record["duplicateGuard"] == "recent-posts"
