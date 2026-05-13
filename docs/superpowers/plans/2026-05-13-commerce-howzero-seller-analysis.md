@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** 불사자(커머스) 채널을 우선으로 커머스 하우제로 셀러 페르소나의 페인·니즈를 기존 9개 커머스 콘텐츠 자산 + 3개 페르소나/전략 문서에서 추출해 분석 리포트(.md) 1편으로 정리한다.
+**Goal:** 불사자(커머스) 채널을 우선으로 커머스 하우제로 셀러 페르소나의 페인·니즈를 기존 8개 커머스 콘텐츠 자산 + 3개 페르소나/전략 문서에서 추출해 분석 리포트(.md) 1편으로 정리한다.
 
 **Architecture:** 6개 task로 분할. (1) 입력 인벤토리·페르소나 ground truth 확정 → (2) raw 페인 포인트 인용 추출 → (3) 매출 단계 × 니즈 매트릭스 작성 → (4) 불사자 채널 콘텐츠 갭 분석 → (5) 통합 리포트 1편으로 합치기 → (6) 페르소나 톤 검수(금지 표현 grep + 호칭 일관성). 중간 산출물 4개는 `docs/marketing/2026-05-13-commerce-howzero-seller-analysis/`에 두고, 최종 리포트는 그 폴더 옆 `docs/marketing/2026-05-13-commerce-howzero-seller-analysis.md`로 둔다. TDD가 아닌 "검증 가능한 산출 기준"(개수·grep 결과·표 컬럼)으로 각 task를 자기 검증한다.
 
@@ -24,7 +24,7 @@
 수정:
 - `docs/superpowers/plans/2026-05-13-commerce-howzero-seller-analysis.md` (이 파일, 진행 시 체크박스만)
 
-읽기 전용 입력 (9개 콘텐츠 + 3개 페르소나/전략):
+읽기 전용 입력 (8개 콘텐츠 + 3개 페르소나/전략):
 - `brands/howzero/howzero_script/S-001-commerce-intro-ai-detail-page.md`
 - `brands/howzero/howzero_script/S-001-commerce-intro-ai-detail-page-READ.md`
 - `brands/howzero/howzero_script/S-001-commerce-intro-ai-detail-page-DESIGN.md`
@@ -405,7 +405,7 @@ git commit -m "docs(분석): 불사자 채널 콘텐츠 갭 + 다음 콘텐츠 �
 
 목적: 4개 중간 산출물을 한 문서로 합치되, raw 인용은 부록으로 빼고 본문은 "결론 → 매트릭스 → 콘텐츠 후보" 순서로 의사결정 가능한 형태로 정리.
 
-- [ ] **Step 1: 최종 문서 구조 확정**
+- [x] **Step 1: 최종 문서 구조 확정**
 
 ```markdown
 # 커머스 하우제로 셀러 페르소나·니즈 분석
@@ -451,11 +451,11 @@ git commit -m "docs(분석): 불사자 채널 콘텐츠 갭 + 다음 콘텐츠 �
 (00-inputs.md §3, §4 발췌)
 ```
 
-- [ ] **Step 2: 위 구조 그대로 작성. 중간 산출물 4개 본문을 인용·발췌 형식으로 그대로 옮긴다**
+- [x] **Step 2: 위 구조 그대로 작성. 중간 산출물 4개 본문을 인용·발췌 형식으로 그대로 옮긴다**
 
 복붙 + 단락 해석 추가. 새로 만드는 부분은 §0 한 장 요약과 §5 다음 액션과 §2/§3의 해석 단락(각 3~5줄)만.
 
-- [ ] **Step 3: 검증 — 모든 섹션 존재**
+- [x] **Step 3: 검증 — 모든 섹션 존재**
 
 ```bash
 for h in "## 0. 한 장 요약" "## 1. 페르소나 ground truth" "## 2. 셀러 매출 단계 × 니즈 매트릭스" "## 3. 콘텐츠 자산 커버리지 & 갭" "## 4. 불사자 채널 다음 콘텐츠 후보 TOP 5" "## 5. 다음 액션" "## 부록 A. raw 페인 포인트 인용" "## 부록 B. 입력 자산 인벤토리"; do
@@ -465,7 +465,7 @@ done
 
 Expected: 8줄 모두 `OK ...`.
 
-- [ ] **Step 4: 검증 — 한 장 요약(§0)이 3개 불릿 모두 채워짐**
+- [x] **Step 4: 검증 — 한 장 요약(§0)이 3개 불릿 모두 채워짐**
 
 ```bash
 awk '/^## 0\./,/^## 1\./' docs/marketing/2026-05-13-commerce-howzero-seller-analysis.md | grep -cE "^- "
@@ -473,7 +473,7 @@ awk '/^## 0\./,/^## 1\./' docs/marketing/2026-05-13-commerce-howzero-seller-anal
 
 Expected: `3` 이상.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add docs/marketing/2026-05-13-commerce-howzero-seller-analysis.md
@@ -490,7 +490,7 @@ git commit -m "docs(분석): 커머스 하우제로 셀러 페르소나·니즈 
 
 목적: 최종 리포트와 콘텐츠 후보가 커머스 하우제로 페르소나 톤 규칙을 위반하지 않는지 grep 기반으로 자동 검수. 위반 발견 시 해당 줄만 수정 후 재검수.
 
-- [ ] **Step 1: 금지 표현 7종 grep**
+- [x] **Step 1: 금지 표현 7종 grep**
 
 ```bash
 grep -nE "운 좋게|찍어봤다|GPT-3 SaaS 연 10억|지금도 셀링 중|B2B AX 컨설턴트|셀러님" \
@@ -506,7 +506,7 @@ Expected: 부록 A의 raw 인용을 제외하면 hit 0건. 본문(§0~§5, §4 �
 
 raw 인용(부록 A)은 출처 보존을 위해 수정 금지. 본문 해석 단락에서만 치환.
 
-- [ ] **Step 2: "매장" 단어 사용 검사 (스마트스토어/매대 같은 합성어 제외)**
+- [x] **Step 2: "매장" 단어 사용 검사 (스마트스토어/매대 같은 합성어 제외)**
 
 ```bash
 grep -nE "(^|[^스마])(매장)([^스]|$)" \
@@ -516,7 +516,7 @@ grep -nE "(^|[^스마])(매장)([^스]|$)" \
 
 Expected: 부록 A raw 인용 제외 hit 0건. 본문 hit 있으면 "스마트스토어" 또는 "쿠팡" 또는 "스스든 쿠팡이든"으로 치환.
 
-- [ ] **Step 3: 가격 라인 노출 확인**
+- [x] **Step 3: 가격 라인 노출 확인**
 
 ```bash
 grep -nE "1장 30원|30원" docs/marketing/2026-05-13-commerce-howzero-seller-analysis.md
@@ -524,7 +524,7 @@ grep -nE "1장 30원|30원" docs/marketing/2026-05-13-commerce-howzero-seller-an
 
 Expected: 최소 1건 hit (§1 페르소나 ground truth 또는 §4 콘텐츠 후보 중 1장 30원 라인 노출). 0건이면 §1에 ground truth 가격 포인트를 한 줄 추가.
 
-- [ ] **Step 4: 호칭 "대표님" 노출 확인**
+- [x] **Step 4: 호칭 "대표님" 노출 확인**
 
 ```bash
 grep -cE "대표님" docs/marketing/2026-05-13-commerce-howzero-seller-analysis.md
@@ -532,7 +532,7 @@ grep -cE "대표님" docs/marketing/2026-05-13-commerce-howzero-seller-analysis.
 
 Expected: 최소 2건 (§1 + §4 후보 중 hook에서 1회 이상). 미달이면 §4 후보의 hook을 "대표님"이 들어가도록 수정.
 
-- [ ] **Step 5: 4개 매출 단계 모두 등장 확인**
+- [x] **Step 5: 4개 매출 단계 모두 등장 확인**
 
 ```bash
 for s in "S0 입문" "S1 단발" "S2 구조화" "S3 시스템"; do
@@ -542,7 +542,7 @@ done
 
 Expected: 4줄 모두 `OK ...`.
 
-- [ ] **Step 6: 위반 수정이 있었으면 Commit**
+- [x] **Step 6: 위반 수정이 있었으면 Commit**
 
 ```bash
 git status --short docs/marketing/2026-05-13-commerce-howzero-seller-analysis.md docs/marketing/2026-05-13-commerce-howzero-seller-analysis/
@@ -557,7 +557,7 @@ git commit -m "docs(분석): 페르소나 톤 위반 grep 결과 본문 치환"
 
 수정이 없으면 commit 생략 ("clean. no changes"라고 본문에 보고).
 
-- [ ] **Step 7: 최종 보고**
+- [x] **Step 7: 최종 보고**
 
 `docs/marketing/2026-05-13-commerce-howzero-seller-analysis.md` 경로와 §0 한 장 요약 본문을 stdout에 그대로 출력 + 사용자에게 다음 액션 후보(§5 첫 줄) 1개 제안.
 
