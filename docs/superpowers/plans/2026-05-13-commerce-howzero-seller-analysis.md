@@ -238,7 +238,7 @@ git commit -m "docs(분석): 9개 커머스 자산에서 페인 포인트 원문
 
 목적: raw 인용을 4개 매출 단계 × 5개 니즈 컬럼 매트릭스(20셀)로 정리. 셀이 비면 "근거 부족"이라고 명시.
 
-- [ ] **Step 1: 매출 단계 4구간 확정**
+- [x] **Step 1: 매출 단계 4구간 확정**
 
 페르소나 자료를 기준으로 다음 4구간만 사용:
 
@@ -249,7 +249,7 @@ git commit -m "docs(분석): 9개 커머스 자산에서 페인 포인트 원문
 | S2 구조화 | 3,000만 ~ 1억 | 메모리 페르소나가 "구조"라 부르는 진입 구간 |
 | S3 시스템 | 1억 이상 | 메모리 페르소나 본인 ("1억 구조 완성") |
 
-- [ ] **Step 2: 니즈 컬럼 5개 확정**
+- [x] **Step 2: 니즈 컬럼 5개 확정**
 
 1. **핵심 페인** (가장 큰 1~2개)
 2. **시간 누수 구간** (어디서 시간이 빠지는가)
@@ -257,7 +257,7 @@ git commit -m "docs(분석): 9개 커머스 자산에서 페인 포인트 원문
 4. **AI/자동화 도입 후보** (구체 워크플로 1~2개)
 5. **불사자 솔루션 매칭** (1장 30원 상세페이지 등 — 매칭 없으면 "현재 없음")
 
-- [ ] **Step 3: `02-stage-needs-matrix.md` 작성**
+- [x] **Step 3: `02-stage-needs-matrix.md` 작성**
 
 ```markdown
 # 02 · 셀러 매출 단계 × 니즈 매트릭스
@@ -287,7 +287,7 @@ git commit -m "docs(분석): 9개 커머스 자산에서 페인 포인트 원문
 
 20셀 모두 채우되 인용 출처가 없는 셀은 `_근거 부족_`만 적고 셀별 근거 섹션은 생략.
 
-- [ ] **Step 4: 검증 — 매트릭스 row 수**
+- [x] **Step 4: 검증 — 매트릭스 row 수**
 
 ```bash
 grep -cE "^\| S[0-3] " docs/marketing/2026-05-13-commerce-howzero-seller-analysis/02-stage-needs-matrix.md
@@ -295,7 +295,7 @@ grep -cE "^\| S[0-3] " docs/marketing/2026-05-13-commerce-howzero-seller-analysi
 
 Expected: `4`
 
-- [ ] **Step 5: 검증 — 셀별 근거 또는 "근거 부족" 표기 합계**
+- [x] **Step 5: 검증 — 셀별 근거 또는 "근거 부족" 표기 합계**
 
 ```bash
 근거=$(grep -cE "^### S[0-3] " docs/marketing/2026-05-13-commerce-howzero-seller-analysis/02-stage-needs-matrix.md)
@@ -306,7 +306,7 @@ test $((근거+부족)) -ge 20 && echo OK || echo FAIL
 
 Expected: `OK` (4단계 × 5컬럼 = 20셀이 모두 분류됨).
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add docs/marketing/2026-05-13-commerce-howzero-seller-analysis/02-stage-needs-matrix.md
