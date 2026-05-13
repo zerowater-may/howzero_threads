@@ -323,7 +323,7 @@ git commit -m "docs(분석): 셀러 매출 4단계 × 5니즈 매트릭스 작�
 
 목적: 매트릭스의 20셀 vs 9개 기존 콘텐츠 자산이 다루는 셀을 비교해 **이미 다룬 셀 / 비어 있는 셀** 두 분류로 갈라 불사자 채널에서 다음에 만들 콘텐츠 후보 5개를 우선순위 매겨 제안.
 
-- [ ] **Step 1: 9개 자산의 매트릭스 매핑**
+- [x] **Step 1: 9개 자산의 매트릭스 매핑**
 
 각 자산이 어느 단계(S0~S3)와 어느 니즈 컬럼(핵심 페인/시간 누수/돈 누수/AI 도입 후보/불사자 매칭)을 다루는지 1~3개 셀로 라벨링.
 
@@ -334,7 +334,7 @@ git commit -m "docs(분석): 셀러 매출 4단계 × 5니즈 매트릭스 작�
 | ... | ... | ... |
 ```
 
-- [ ] **Step 2: 갭 표 만들기**
+- [x] **Step 2: 갭 표 만들기**
 
 20셀에 대해 다음을 표시:
 
@@ -347,7 +347,7 @@ git commit -m "docs(분석): 셀러 매출 4단계 × 5니즈 매트릭스 작�
 
 다룬 자산 수가 0이면 `갭`, 1~2이면 `보강 필요`, 3+이면 `충분`.
 
-- [ ] **Step 3: 불사자 채널 콘텐츠 후보 5개 작성**
+- [x] **Step 3: 불사자 채널 콘텐츠 후보 5개 작성**
 
 `갭` 또는 `보강 필요` 셀 중에서, 불사자 페르소나 톤("셀러를 위해 AI 자동화", 1장 30원 상세페이지)과 가장 잘 맞는 5개 후보를 다음 형식으로:
 
@@ -364,7 +364,7 @@ git commit -m "docs(분석): 셀러 매출 4단계 × 5니즈 매트릭스 작�
 
 5개 모두 동일 형식. 후보 제목 중 어떤 것도 다음 금지 표현 포함 금지: "운 좋게", "찍어봤다", "GPT-3 SaaS 연 10억", "지금도 셀링 중", "B2B AX 컨설턴트", "셀러님", "매장".
 
-- [ ] **Step 4: 검증 — 갭 표가 20행인지**
+- [x] **Step 4: 검증 — 갭 표가 20행인지**
 
 ```bash
 grep -cE "^\| S[0-3] [^|]+ \|" docs/marketing/2026-05-13-commerce-howzero-seller-analysis/03-content-gaps.md
@@ -372,7 +372,7 @@ grep -cE "^\| S[0-3] [^|]+ \|" docs/marketing/2026-05-13-commerce-howzero-seller
 
 Expected: `20`
 
-- [ ] **Step 5: 검증 — 콘텐츠 후보 5개**
+- [x] **Step 5: 검증 — 콘텐츠 후보 5개**
 
 ```bash
 grep -cE "^### [0-9]+\. " docs/marketing/2026-05-13-commerce-howzero-seller-analysis/03-content-gaps.md
@@ -380,7 +380,7 @@ grep -cE "^### [0-9]+\. " docs/marketing/2026-05-13-commerce-howzero-seller-anal
 
 Expected: `5`
 
-- [ ] **Step 6: 검증 — 금지 표현 grep 0 hit**
+- [x] **Step 6: 검증 — 금지 표현 grep 0 hit**
 
 ```bash
 grep -nE "운 좋게|찍어봤다|GPT-3 SaaS 연 10억|지금도 셀링 중|B2B AX 컨설턴트|셀러님|(^|[^스])매장" docs/marketing/2026-05-13-commerce-howzero-seller-analysis/03-content-gaps.md
@@ -388,7 +388,7 @@ grep -nE "운 좋게|찍어봤다|GPT-3 SaaS 연 10억|지금도 셀링 중|B2B 
 
 Expected: 결과 없음 (스마트스토어의 "매"는 제외하는 패턴). 하나라도 걸리면 해당 줄 수정 후 재실행.
 
-- [ ] **Step 7: Commit**
+- [x] **Step 7: Commit**
 
 ```bash
 git add docs/marketing/2026-05-13-commerce-howzero-seller-analysis/03-content-gaps.md
