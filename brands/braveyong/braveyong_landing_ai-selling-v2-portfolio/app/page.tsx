@@ -17,7 +17,7 @@ import { Apply } from "@/components/apply"
 import { FAQ } from "@/components/faq"
 import { FinalCTA } from "@/components/final-cta"
 import { Footer } from "@/components/footer"
-import { ThemeToggle } from "@/components/theme-toggle"
+import { GlassNav } from "@/components/glass-nav"
 import { StickyCTA } from "@/components/sticky-cta"
 import { RevealObserver } from "@/components/reveal-observer"
 
@@ -30,7 +30,7 @@ import { RevealObserver } from "@/components/reveal-observer"
 export default function Page() {
   return (
     <>
-      <ThemeToggle />
+      <GlassNav />
       <main className="min-h-screen bg-background text-foreground">
         <Hero />              {/* 01 */}
         <Strip />             {/* 02 */}

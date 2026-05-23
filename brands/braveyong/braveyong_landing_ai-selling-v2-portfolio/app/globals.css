@@ -126,6 +126,9 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-ko), var(--font-geist-sans), system-ui, sans-serif;
@@ -133,6 +136,14 @@
     overflow-wrap: break-word;
   }
   /* 영문 키워드는 Geist Sans 우선, 한글은 Pretendard로 자연 폴백 */
+
+  /* 섹션 점프 시 글래스 nav에 안 가리게 (h-14 sm:h-16 + 여유) */
+  section[id] {
+    scroll-margin-top: 80px;
+  }
+  @media (min-width: 640px) {
+    section[id] { scroll-margin-top: 96px; }
+  }
 }
 
 @layer utilities {

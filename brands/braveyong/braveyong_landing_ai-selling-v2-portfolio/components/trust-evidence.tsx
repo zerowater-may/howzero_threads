@@ -34,30 +34,42 @@ export function TrustEvidence() {
         ))}
       </div>
 
-      {/* 사진 2장 — '실제로 모임하고 강의하는 사람' 증거 (사기꾼 의심 시점 차단) */}
-      <div className="mt-6 grid gap-3 md:grid-cols-[1fr_1.4fr]">
+      {/* 사진 3장 갤러리 — 실제로 모이고 강의하는 사람 (사기꾼 의심 시점 차단) */}
+      <div className="mt-6 grid gap-3 sm:grid-cols-3">
+        <figure className="relative aspect-square overflow-hidden border-2 border-foreground bg-background">
+          <Image
+            src={photos.classroom}
+            alt="용팀장 오프라인 강의실 — 서울 강남 현장"
+            fill
+            sizes="(min-width:768px) 33vw, 100vw"
+            className="object-cover"
+          />
+          <figcaption className="absolute bottom-0 left-0 right-0 bg-foreground/85 px-3 py-2 text-[11px] font-bold text-background">
+            서울 강남 오프라인 강의 현장
+          </figcaption>
+        </figure>
+        <figure className="relative aspect-square overflow-hidden border-2 border-foreground bg-background">
+          <Image
+            src={photos.groupMeetup}
+            alt="용팀장 스터디 단체 사진 — 모임 직후"
+            fill
+            sizes="(min-width:768px) 33vw, 100vw"
+            className="object-cover"
+          />
+          <figcaption className="absolute bottom-0 left-0 right-0 bg-foreground/85 px-3 py-2 text-[11px] font-bold text-background">
+            실제 모임 후 단체 한 컷
+          </figcaption>
+        </figure>
         <figure className="relative aspect-square overflow-hidden border-2 border-foreground bg-background">
           <Image
             src={photos.groupHands}
-            alt="용팀장 스터디 수강생들의 손모음 — 같이 시작하는 결속의 V사인"
+            alt="용팀장 스터디 수강생들의 손모음 V사인"
             fill
-            sizes="(min-width:768px) 40vw, 100vw"
+            sizes="(min-width:768px) 33vw, 100vw"
             className="object-cover"
           />
-          <figcaption className="absolute bottom-0 left-0 right-0 bg-foreground/85 px-3 py-2 text-xs font-bold text-background">
-            실제로 모이는 사람들 — 같이 시작
-          </figcaption>
-        </figure>
-        <figure className="relative aspect-[4/3] overflow-hidden border-2 border-foreground bg-background">
-          <Image
-            src={photos.classroom}
-            alt="용팀장 오프라인 강의실 — 강남 현장에서 진행 중인 모습"
-            fill
-            sizes="(min-width:768px) 55vw, 100vw"
-            className="object-cover"
-          />
-          <figcaption className="absolute bottom-0 left-0 right-0 bg-foreground/85 px-3 py-2 text-xs font-bold text-background">
-            서울 강남 오프라인 강의 현장 — 가짜 카피가 아닙니다
+          <figcaption className="absolute bottom-0 left-0 right-0 bg-foreground/85 px-3 py-2 text-[11px] font-bold text-background">
+            같이 시작 — 가짜 카피가 아닙니다
           </figcaption>
         </figure>
       </div>

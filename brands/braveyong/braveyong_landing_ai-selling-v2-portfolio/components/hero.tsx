@@ -13,7 +13,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen items-center justify-center px-4 py-20 sm:px-6 sm:py-24"
+      className="relative flex min-h-screen items-center justify-center px-4 pt-24 pb-20 sm:px-6 sm:pt-28 sm:pb-24"
     >
       <div className="w-full max-w-2xl">
         <div className="space-y-6 text-center sm:space-y-8">

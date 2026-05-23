@@ -25,33 +25,19 @@ export function Study() {
         </p>
       </div>
 
-      {/* 실제 스터디·모임 사진 — 강의가 아니라 매월 모이는 모임이라는 증거 */}
-      <div className="mb-6 grid gap-3 md:grid-cols-2">
-        <figure className="relative aspect-[4/3] overflow-hidden border-2 border-foreground bg-background">
-          <Image
-            src={photos.studyDesk}
-            alt="용팀장 오프라인 스터디 모임 — 노트북을 둘러앉아 실습"
-            fill
-            sizes="(min-width:768px) 50vw, 100vw"
-            className="object-cover"
-          />
-          <figcaption className="absolute bottom-0 left-0 right-0 bg-foreground/85 px-3 py-2 text-xs font-bold text-background">
-            매월 오프라인 정기 모임 — 노트북 가져와 함께 실습
-          </figcaption>
-        </figure>
-        <figure className="relative aspect-[4/3] overflow-hidden border-2 border-foreground bg-background">
-          <Image
-            src={photos.groupMeetup}
-            alt="용팀장 스터디 단체 사진 — 서울 강남 모임 직후"
-            fill
-            sizes="(min-width:768px) 50vw, 100vw"
-            className="object-cover"
-          />
-          <figcaption className="absolute bottom-0 left-0 right-0 bg-foreground/85 px-3 py-2 text-xs font-bold text-background">
-            서울 강남 — 실제 매월 모이는 분들
-          </figcaption>
-        </figure>
-      </div>
+      {/* 실제 스터디 사진 — 노트북 가져와 매월 모인다는 증거 */}
+      <figure className="relative mb-6 aspect-[16/9] overflow-hidden border-2 border-foreground bg-background">
+        <Image
+          src={photos.studyDesk}
+          alt="용팀장 오프라인 스터디 모임 — 노트북을 둘러앉아 실습하는 매월 모임"
+          fill
+          sizes="(min-width:768px) 900px, 100vw"
+          className="object-cover"
+        />
+        <figcaption className="absolute bottom-0 left-0 right-0 bg-foreground/85 px-4 py-2.5 text-sm font-bold text-background">
+          매월 오프라인 정기 모임 — 노트북 가져와 함께 실습
+        </figcaption>
+      </figure>
 
       <div className="grid gap-3 md:grid-cols-2">
         <div className="border-2 border-foreground bg-background p-6">

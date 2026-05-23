@@ -24,8 +24,8 @@ export function AIDefinition() {
             <Marker>빠르게 반복하는 구조</Marker>를 만드는 겁니다.
           </p>
           <p className="mt-4 font-memo text-base leading-relaxed text-foreground/70 sm:text-lg">
-            물고기를 받지 말고, <Marker>고기 잡는 방법</Marker>을 배워야 합니다.<br />
-            6주 동안 같이 잡는 법을 만듭니다.
+            <Marker>받는 셀러</Marker>가 아니라, <Marker>잡는 셀러</Marker>로.<br />
+            물고기 한 마리가 아니라, 잡는 법을 6주 동안 같이.
           </p>
         </div>
 
