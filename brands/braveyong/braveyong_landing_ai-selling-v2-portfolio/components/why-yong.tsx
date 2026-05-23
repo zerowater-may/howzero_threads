@@ -2,12 +2,14 @@ import { Section } from "./section"
 import { Signature } from "./handwriting"
 import { Check } from "lucide-react"
 
-/** 10 왜 용팀장인가 — 인용 + 펜글씨 서명 + 핵심 방향 */
+/** 10 왜 용팀장인가 — 인용 + 펜글씨 서명 + 인터뷰 scene 4개 */
 const directions = [
-  "직장인이자 육아아빠",
-  "지금도 직접 상품을 올리는 현업셀러",
-  "대량등록의 한계와 막힘을 직접 겪어본 사람",
-  <>강의 쇼핑보다 <span className="font-bold">실행 구조</span>를 강조하는 사람</>,
+  "대기업 다니던 직장인 · 지금도 현업 셀러",
+  "아이 학교 보내고 공유오피스로 출근",
+  "타오바오에서 직접 찾은 모니터 받침이 첫 효자상품",
+  "상품명 하루씩 만들고, 순위로 검증",
+  <>오후 4시 이후 CS는 일부러 보지 않습니다 — <span className="font-bold">가족 시간을 지키는 시스템</span></>,
+  <>강의보다 <span className="font-bold">실행과 졸업 후 스터디</span>를 더 중요하게 생각합니다</>,
 ]
 
 export function WhyYong() {
@@ -24,11 +26,15 @@ export function WhyYong() {
       <div className="grid gap-6 md:grid-cols-2">
         <div className="border-l-4 border-foreground bg-background p-6">
           <p className="text-lg font-bold leading-snug sm:text-xl">
-            저도 직장 다니고, 애 재우고 나서 상품 올렸습니다.<br />
+            저도 대기업 다니면서, 애 재우고 새벽에 상품 올렸습니다.<br />
             그래서 <span className="text-foreground">시간이 부족한 셀러가 왜 무작정 많이 올리면 안 되는지</span> 압니다.
           </p>
+          <p className="font-memo mt-4 text-sm leading-relaxed text-foreground/70 sm:text-base">
+            쉽게 돈 버는 건 아닙니다.<br />
+            그런데 되는 방향은 맞습니다.
+          </p>
           <div className="mt-6 text-right">
-            <Signature small="현업 셀러 · 직장인 · 육아 아빠">— 용감한 용팀장 드림</Signature>
+            <Signature small="현업 셀러 · 전 대기업 직장인 · 육아 아빠">— 용감한 용팀장 드림</Signature>
           </div>
         </div>
 

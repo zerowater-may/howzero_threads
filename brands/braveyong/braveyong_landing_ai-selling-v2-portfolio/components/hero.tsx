@@ -39,17 +39,24 @@ export function Hero() {
             </p>
           </div>
 
-          {/* 한 단락 카피 — Hero 카피 (spec v1에서 승계) */}
-          <p className="hz-fade-up hz-delay-2 mx-auto max-w-xl px-2 text-base leading-relaxed text-foreground/80 sm:px-0 md:text-lg">
-            1000개를 무작정 올리는 셀러에서<br className="hidden sm:block" />
-            효자상품 10개를 만드는 셀러로.
-            <br />
-            6주 오프라인 + 줌 보강으로 같이 만듭니다.
-          </p>
+          {/* 큰 임팩트 카피 — 1만 개 vs 진짜 팔리는 10개 대비 */}
+          <div className="hz-fade-up hz-delay-2 mx-auto max-w-2xl space-y-3 px-2 sm:px-0">
+            <p className="text-base leading-relaxed text-foreground/60 sm:text-lg">
+              <s className="decoration-foreground/40">1만 개를 무작정 올리는 셀러</s>에서
+            </p>
+            <p className="text-2xl font-bold leading-tight tracking-tight text-foreground sm:text-3xl md:text-4xl">
+              진짜 팔리는<br className="sm:hidden" />
+              <span className="marker"> 효자상품 10개 </span>를<br />
+              만드는 셀러로.
+            </p>
+            <p className="text-sm leading-relaxed text-foreground/65 sm:text-base">
+              6주 오프라인 + 줌 보강으로 같이 만듭니다.
+            </p>
+          </div>
 
           {/* 손글씨 한 줄 — Gowun Dodum, 진정성 */}
           <p className="hz-fade-up hz-delay-3 font-memo text-base text-foreground/70 sm:text-lg">
-            저도 직장 다니고, 애 재우고 나서 상품 올렸습니다.
+            저도 대기업 다니면서, 애 재우고 상품 올렸습니다.
           </p>
 
           {/* CTA — pill 버튼, hover 반전 */}

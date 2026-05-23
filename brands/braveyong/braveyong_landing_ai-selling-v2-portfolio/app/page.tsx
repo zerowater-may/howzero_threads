@@ -20,6 +20,7 @@ import { Footer } from "@/components/footer"
 import { GlassNav } from "@/components/glass-nav"
 import { StickyCTA } from "@/components/sticky-cta"
 import { RevealObserver } from "@/components/reveal-observer"
+import { OriginStory } from "@/components/origin-story"
 
 /**
  * 용감한 용팀장 — 6주 오프라인 AI 셀링 실전반 (1기) 랜딩 v2
@@ -34,6 +35,7 @@ export default function Page() {
       <main className="min-h-screen bg-background text-foreground">
         <Hero />              {/* 01 */}
         <Strip />             {/* 02 */}
+        <OriginStory />       {/* 02-B Origin Story — 감정 진입 */}
         <TrustEvidence />     {/* 03 */}
         <TestimonialWall />   {/* 04 */}
         <Problem />           {/* 05 */}
