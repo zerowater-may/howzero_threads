@@ -33,6 +33,12 @@ export function Scarcity() {
           </div>
         ))}
       </div>
+
+      {/* 인터뷰 톤 — 강의 쇼핑 굴레에서 빠져나오자는 정직한 한 줄 */}
+      <p className="font-memo mt-6 text-base leading-relaxed text-foreground/80 sm:text-lg">
+        매번 다른 강의를 또 결제하고, 또 혼자 막히는 자리에 돌아오지 마세요.<br />
+        한 번 제대로, 같이 끝까지 갑니다.
+      </p>
     </Section>
   )
 }
