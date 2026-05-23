@@ -10,16 +10,15 @@ export function Strip() {
     { k: `${course.capacityMin}~${course.capacityMax}명`, v: "소수정예" },
     { k: course.location, v: "오프라인" },
     { k: course.startDate, v: "본강의 시작" },
-    { k: `${course.priceFirst.toLocaleString()}원`, v: `1기 특별가 · 정가 ${course.priceRegular.toLocaleString()}원` },
   ]
 
   return (
     <section className="border-y border-foreground bg-foreground text-background">
-      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-px sm:grid-cols-3 lg:grid-cols-5">
+      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-px sm:grid-cols-4">
         {items.map((it) => (
           <div
             key={it.k}
-            className="border-r border-background/15 px-4 py-5 sm:py-6 last:border-r-0 [&:nth-child(2n)]:border-r-0 sm:[&:nth-child(2n)]:border-r sm:[&:nth-child(3n)]:border-r-0 lg:[&:nth-child(3n)]:border-r lg:[&:nth-child(5n)]:border-r-0"
+            className="border-r border-background/15 px-4 py-5 sm:py-6 last:border-r-0 [&:nth-child(2n)]:border-r-0 sm:[&:nth-child(2n)]:border-r sm:[&:nth-child(4n)]:border-r-0"
           >
             <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-background/55">
               {it.v}

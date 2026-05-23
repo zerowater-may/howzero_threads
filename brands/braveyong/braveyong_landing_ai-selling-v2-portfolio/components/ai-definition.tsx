@@ -23,6 +23,10 @@ export function AIDefinition() {
             AI로 상품 선정, SEO, 상품명, 상세페이지, 등록 전 체크를<br />
             <Marker>빠르게 반복하는 구조</Marker>를 만드는 겁니다.
           </p>
+          <p className="mt-4 font-memo text-base leading-relaxed text-foreground/70 sm:text-lg">
+            물고기를 받지 말고, <Marker>고기 잡는 방법</Marker>을 배워야 합니다.<br />
+            6주 동안 같이 잡는 법을 만듭니다.
+          </p>
         </div>
 
         <div className="border-2 border-foreground bg-background">

@@ -1,8 +1,9 @@
+import Image from "next/image"
 import { Section } from "./section"
+import { photos } from "@/lib/testimonials"
 
 /**
- * 03 신뢰 증거 — 현업 사실 지표 4카드 + "1기 모집 중" 후기 자리.
- * 운영 입력 placeholder: 4카드의 b 값을 운영자가 실제 값으로 교체.
+ * 03 신뢰 증거 — 현업 사실 지표 4카드 + 실제 현장 사진 2장(사기꾼 의심 차단).
  */
 const facts = [
   { b: "운영 중", k: "직접 운영 스토어", note: "운영 입력" },
@@ -16,7 +17,7 @@ export function TrustEvidence() {
     <Section
       label="왜 믿어도 되나"
       title={<>강사이기 전에, 지금도 직접 올리는 셀러입니다.</>}
-      lead="화려한 수익 자랑 대신, 확인 가능한 사실만 둡니다. 아래 값은 운영자가 실제 숫자로 채웁니다."
+      lead="화려한 수익 자랑 대신, 확인 가능한 사실만 둡니다. 아래 숫자는 운영자가 실제 값으로 채웁니다."
     >
       <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
         {facts.map((f) => (
@@ -33,13 +34,41 @@ export function TrustEvidence() {
         ))}
       </div>
 
-      {/* 1기 후기 자리 — 정직 placeholder */}
+      {/* 사진 2장 — '실제로 모임하고 강의하는 사람' 증거 (사기꾼 의심 시점 차단) */}
+      <div className="mt-6 grid gap-3 md:grid-cols-[1fr_1.4fr]">
+        <figure className="relative aspect-square overflow-hidden border-2 border-foreground bg-background">
+          <Image
+            src={photos.groupHands}
+            alt="용팀장 스터디 수강생들의 손모음 — 같이 시작하는 결속의 V사인"
+            fill
+            sizes="(min-width:768px) 40vw, 100vw"
+            className="object-cover"
+          />
+          <figcaption className="absolute bottom-0 left-0 right-0 bg-foreground/85 px-3 py-2 text-xs font-bold text-background">
+            실제로 모이는 사람들 — 같이 시작
+          </figcaption>
+        </figure>
+        <figure className="relative aspect-[4/3] overflow-hidden border-2 border-foreground bg-background">
+          <Image
+            src={photos.classroom}
+            alt="용팀장 오프라인 강의실 — 강남 현장에서 진행 중인 모습"
+            fill
+            sizes="(min-width:768px) 55vw, 100vw"
+            className="object-cover"
+          />
+          <figcaption className="absolute bottom-0 left-0 right-0 bg-foreground/85 px-3 py-2 text-xs font-bold text-background">
+            서울 강남 오프라인 강의 현장 — 가짜 카피가 아닙니다
+          </figcaption>
+        </figure>
+      </div>
+
+      {/* 1기 후기 자리 — 정직 안내 */}
       <div className="mt-6 border-l-4 border-foreground bg-background p-6">
         <p className="text-sm leading-relaxed text-foreground/75">
-          <span className="font-bold text-foreground">후기 자리 — 1기 모집 중.</span>{" "}
-          이 자리에는 1기 수강생의 실제 후기가 들어갑니다. 첫 후기를 함께 만들 분을 찾습니다.
-          가짜 후기나 부풀린 숫자는 넣지 않습니다.{" "}
-          <span className="text-foreground/45">(운영 입력 — 1기 종료 후 교체)</span>
+          <span className="font-bold text-foreground">1기 모집 중.</span>{" "}
+          아래 후기는 그동안 진행한 스터디·라이브 클래스 카페에 실제로 남은 글입니다.
+          이번 6주 오프라인 실전반 1기는 첫 후기를 같이 만들 분들과 합니다.{" "}
+          가짜 후기나 부풀린 숫자는 넣지 않습니다.
         </p>
       </div>
     </Section>

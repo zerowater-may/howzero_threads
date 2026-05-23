@@ -27,7 +27,7 @@ export function Section({
 
   return (
     <section id={id} className={`relative px-4 py-20 sm:px-6 sm:py-24 ${toneClass} ${className}`}>
-      <div className="mx-auto max-w-5xl">
+      <div className="mx-auto max-w-5xl" data-reveal>
         {label && (
           <div className="font-mono mb-4 text-[11px] font-bold uppercase tracking-[0.22em] opacity-55">
             {label}

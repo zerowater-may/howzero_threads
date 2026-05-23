@@ -143,7 +143,7 @@
   .font-hand { font-family: var(--font-hand); letter-spacing: 0; }
   .font-memo { font-family: var(--font-memo); letter-spacing: -0.01em; }
 
-  /* 노란 형광펜 — 손으로 그은 듯 살짝 비뚤 */
+  /* 노란 형광펜 — 손으로 그은 듯 살짝 비뚤. 글씨가 marker 위에 자연스럽게 얹힘 */
   .marker {
     background-image: linear-gradient(
       180deg,
@@ -156,6 +156,14 @@
     background-size: 100% 100%;
     background-position: left 0.2em;
     padding: 0 4px;
+  }
+
+  /* 다크 섹션에서는 글씨가 검정이라 다크 배경에서 안 보이므로,
+     marker 자체를 노란 블록으로 채우고 글씨 색을 강제로 검정으로 둔다. */
+  .bg-foreground .marker {
+    background-image: linear-gradient(180deg, var(--marker) 0%, var(--marker) 100%);
+    color: oklch(0.1 0 0);
+    padding: 2px 6px;
   }
 
   /* 손글씨 서명 — 약간 회전 */
@@ -179,4 +187,61 @@ body::before {
   mix-blend-mode: multiply;
 }
 .dark body::before { opacity: 0.04; }
+
+/* === 모션 — 절제. Hero stagger + 스크롤 reveal. 모두 transform·opacity만 사용. === */
+@keyframes hzFadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hz-fade-up {
+  animation: hzFadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.hz-delay-1 { animation-delay: 80ms; }
+.hz-delay-2 { animation-delay: 160ms; }
+.hz-delay-3 { animation-delay: 240ms; }
+.hz-delay-4 { animation-delay: 320ms; }
+.hz-delay-5 { animation-delay: 400ms; }
+.hz-delay-6 { animation-delay: 480ms; }
+
+/* IntersectionObserver 기반 — 컴포넌트는 data-reveal 속성만 두면 됨 */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1), transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* === 접근성 — 모션 줄이기 환경설정 존중 === */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* === 포커스 ring — 모든 인터랙티브에 일관 === */
+@layer base {
+  a:focus-visible,
+  button:focus-visible,
+  [role="button"]:focus-visible,
+  summary:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid var(--foreground);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
 

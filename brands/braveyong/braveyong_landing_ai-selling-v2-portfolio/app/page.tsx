@@ -19,6 +19,7 @@ import { FinalCTA } from "@/components/final-cta"
 import { Footer } from "@/components/footer"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { StickyCTA } from "@/components/sticky-cta"
+import { RevealObserver } from "@/components/reveal-observer"
 
 /**
  * 용감한 용팀장 — 6주 오프라인 AI 셀링 실전반 (1기) 랜딩 v2
@@ -52,6 +53,7 @@ export default function Page() {
         <Footer />            {/* 19 */}
       </main>
       <StickyCTA />
+      <RevealObserver />
     </>
   )
 }

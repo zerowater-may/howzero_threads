@@ -20,10 +20,10 @@ export function TestimonialWall() {
     <Section
       id="testimonials"
       label="early voices"
-      title={<>실제 카페·DM·블로그에 남은 후기들.</>}
-      lead="텍스트는 운영자가 직접 정리한 하이라이트 8장, 캡처는 원본 그대로 54장입니다. 가공 없습니다."
+      title={<>실제 카페에 남은 후기들.</>}
+      lead="아래 8장은 그동안 진행한 스터디·라이브 클래스에 직접 남은 후기에서 발췌. 원본 캡처는 ▼ 더 보기로 50장 전부 확인할 수 있습니다."
     >
-      {/* 하이라이트 8장 카드 그리드 */}
+      {/* 하이라이트 8장 카드 그리드 — 실제 후기 텍스트 (펼치기 전에도 노출) */}
       <div className="grid gap-3 md:grid-cols-2">
         {highlights.map((h, i) => {
           const placeholder = !h.body
@@ -35,9 +35,10 @@ export function TestimonialWall() {
                   ? "border-dashed border-foreground/30 text-foreground/55"
                   : "border-foreground bg-background"
               }`}
+              aria-label={placeholder ? `후기 슬롯 ${i + 1}` : `${h.initial} 후기`}
             >
               <header className="font-mono mb-3 flex items-center justify-between text-[10px] font-bold uppercase tracking-[0.08em]">
-                <span>{placeholder ? `슬롯 ${i + 1}` : `${h.initial}님`}</span>
+                <span>{placeholder ? `슬롯 ${i + 1}` : h.initial}</span>
                 <span className="opacity-55">{placeholder ? "운영 입력" : `${h.source}${h.date ? ` · ${h.date}` : ""}`}</span>
               </header>
               <p className="text-sm leading-relaxed">
