@@ -17,6 +17,9 @@ export function FinalCTA() {
         <h2 className="text-3xl font-bold uppercase leading-tight tracking-tight sm:text-4xl md:text-5xl">
           1기 실행자로<br className="sm:hidden" /> 지원하기
         </h2>
+        <p className="font-mono mt-2 text-[11px] uppercase tracking-[0.18em] text-background/55">
+          신청서 검토 후 개별 안내
+        </p>
         <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-background/70 sm:text-lg">
           상품만 계속 올리던 방식을 정말 바꾸고 싶다면,<br className="hidden sm:block" />
           지금 신청서를 작성하세요.
@@ -29,7 +32,7 @@ export function FinalCTA() {
             rel="noopener noreferrer"
             className="group inline-flex items-center gap-2 rounded-full border-2 border-background bg-background px-8 py-4 text-base font-bold uppercase tracking-[0.1em] text-foreground transition-all hover:bg-foreground hover:text-background sm:text-lg"
           >
-            1기 실행자 특별가로 지원하기
+            1기 실행자로 지원하기
             <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Link>
         </div>

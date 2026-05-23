@@ -11,8 +11,8 @@ const items = [
   },
   {
     Icon: Coins,
-    title: `1기 특별가 ${(course.priceFirst / 10000).toLocaleString()}만원`,
-    body: `1기에만 적용됩니다. 2기 이후는 정가 ${(course.priceRegular / 10000).toLocaleString()}만원입니다.`,
+    title: "1기 실행자 특별가",
+    body: "1기에만 적용되는 가격이 있습니다. 2기 이후는 상향됩니다. 정확한 금액은 신청서 검토 후 개별 안내드립니다.",
   },
   {
     Icon: Check,

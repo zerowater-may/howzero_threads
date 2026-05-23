@@ -50,6 +50,13 @@ export function Price() {
             발송됩니다.
           </p>
 
+          {/* CTA 직전 감정 정당화 — 결제 결심을 도와주는 한 줄 */}
+          <p className="font-memo mt-4 rounded border-l-2 border-foreground bg-background/60 px-3 py-2 text-sm leading-relaxed text-foreground">
+            받는 건 6주가 아니라,<br />
+            <span className="font-bold">내가 직접 만든 효자상품 10개</span>
+            와, 졸업 후에도 같이 가는 사람들입니다.
+          </p>
+
           <Link
             href={config.googleFormUrl}
             target="_blank"
