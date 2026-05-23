@@ -86,11 +86,24 @@ export function Apply() {
         </Link>
       </div>
 
-      {/* 강한 문구 */}
-      <div className="mt-6 bg-foreground p-6 text-background">
-        <div className="text-lg font-bold tracking-tight sm:text-xl">실행할 분만 받습니다.</div>
-        <div className="mt-1.5 text-sm text-background/65">
-          상품만 계속 올리던 방식을 정말 바꾸고 싶은 분만 신청해주세요.
+      {/* 강한 문구 — 인터뷰 언어 패턴 */}
+      <div className="mt-6 bg-foreground p-6 text-background sm:p-8">
+        <div className="text-lg font-bold tracking-tight sm:text-2xl">
+          실행할 분만 받습니다.
+        </div>
+        <div className="mt-2 text-sm leading-relaxed text-background/75 sm:text-base">
+          상품만 계속 올리던 방식을 정말 바꾸고 싶은 분만 신청해주세요.<br />
+          쉽게 돈 버는 강의 찾으시는 분은 다른 곳이 더 맞습니다.
+        </div>
+        <div className="mt-5 grid gap-3 border-t border-background/15 pt-5 text-sm text-background/85 sm:grid-cols-2">
+          <p>
+            <span className="font-mono mr-2 text-[10px] uppercase tracking-[0.15em] text-background/55">받습니다</span>
+            직장·육아 병행해도 6주 동안 실제로 상품을 같이 고치고 싶은 분
+          </p>
+          <p>
+            <span className="font-mono mr-2 text-[10px] uppercase tracking-[0.15em] text-background/55">정중히 사양</span>
+            카운트다운·딸깍 자동화·하루 1시간이면 누구나 류의 강의를 찾는 분
+          </p>
         </div>
       </div>
 

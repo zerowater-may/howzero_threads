@@ -23,6 +23,10 @@ export function Study() {
           정책이 바뀌고, 네이버 로직이 바뀌고, 시장이 바뀌어도{" "}
           <span className="text-foreground">혼자 다시 막히지 않도록 계속 업데이트</span>합니다.
         </p>
+        <p className="font-memo mt-4 text-base leading-relaxed text-foreground/75 sm:text-lg">
+          강의의 <span className="marker">진짜 가치는 졸업 후</span>에 있습니다.<br />
+          한 번 듣고 끝나는 시장이 아니니까.
+        </p>
       </div>
 
       {/* 실제 스터디 사진 — 노트북 가져와 매월 모인다는 증거 */}

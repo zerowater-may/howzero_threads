@@ -76,11 +76,25 @@ export function Price() {
             </p>
           </div>
           <div className="border-l-4 border-foreground bg-background p-5 text-sm leading-relaxed">
-            <p className="whitespace-pre-line text-foreground/75">
-              {`이 과정은 듣기만 하는 온라인 강의가 아닙니다.
-6주 동안 현장에서 각자 상품과 스토어를 가져와 고치고,
-중간 줌 보강으로 과제를 점검하는 `}
+            <p className="text-base font-bold leading-snug text-foreground sm:text-lg">
+              이건 <span className="marker">녹화강의가 아닙니다.</span>
+            </p>
+            <p className="mt-3 whitespace-pre-line text-foreground/75">
+              {`6주 동안 각자의 상품을 같이 보고,
+용팀장 기준으로 효자상품 10개를 직접 완성하는 `}
               <span className="font-bold text-foreground">오프라인 실전반</span>입니다.
+              <br />
+              지식 PDF·녹화 한 묶음이 아니라, 같이 만드는 과정에 대한 비용입니다.
+            </p>
+          </div>
+          <div className="border-l-4 border-[var(--warm-border)] bg-[var(--warm)] p-5 text-sm leading-relaxed">
+            <p className="font-memo text-foreground">
+              <span className="font-bold">쉽게 돈 버는 건 아닙니다.</span>
+              <br />
+              그런데 되는 방향은 맞습니다.
+              <span className="font-mono ml-2 text-[10px] uppercase tracking-[0.12em] text-foreground/55">
+                — 용팀장 인터뷰 中
+              </span>
             </p>
           </div>
         </div>

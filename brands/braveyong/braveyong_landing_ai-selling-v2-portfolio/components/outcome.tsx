@@ -65,6 +65,23 @@ export function Outcome() {
         이 페이지에서 효자상품 10개는{" "}
         <span className="font-bold">용팀장 기준으로 팔릴 구조를 갖춘 상품 10개를 6주 동안 직접 완성한다</span>는 의미입니다.
       </div>
+
+      {/* 인터뷰 scene: 타오바오 모니터 받침 — 첫 효자상품 발견 스토리 */}
+      <div className="mt-8 border-l-4 border-foreground bg-background p-6 sm:p-8">
+        <div className="font-mono mb-3 text-[10px] font-bold uppercase tracking-[0.15em] text-foreground/55">
+          용팀장의 첫 효자상품 — 실제 장면
+        </div>
+        <p className="text-base leading-relaxed text-foreground/85 sm:text-lg">
+          공유오피스에서 일하다 모니터를 좀 더 올리고 싶어서
+          타오바오에서 <span className="font-bold text-foreground">‘높은 모니터 받침대’</span>를 찾았습니다.<br />
+          마침 안 보이길래 직접 올렸습니다.<br />
+          그 상품 하나가 <span className="marker">매월 들어오는 효자상품</span>이 됐습니다.
+        </p>
+        <p className="font-memo mt-4 text-sm leading-relaxed text-foreground/70 sm:text-base">
+          그때 알았습니다 — 1만 개를 따라 올릴 게 아니라,<br />
+          <span className="font-bold text-foreground">잘 만든 10개</span>가 답이라는 걸.
+        </p>
+      </div>
     </Section>
   )
 }
