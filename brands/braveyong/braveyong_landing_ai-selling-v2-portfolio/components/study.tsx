@@ -53,16 +53,26 @@ export function Study() {
         </div>
 
         <div className="border-2 border-foreground bg-background p-6">
-          <h3 className="mb-3 text-lg font-bold tracking-tight">비용</h3>
-          <div className="text-3xl font-bold tracking-tight">
-            15<span className="ml-1 text-base font-bold text-foreground/65">만원 / 3개월</span>
-          </div>
-          <p className="mt-2 text-sm text-foreground/65">월 5만원 꼴입니다.</p>
-          <hr className="my-4 border-foreground/10" />
-          <p className="flex items-start gap-2.5 text-sm">
-            <Check className="mt-0.5 h-4 w-4 flex-none" />
-            강제 참여 아님 — 의지 있는 분만 참여
+          <h3 className="mb-3 text-lg font-bold tracking-tight">참여 안내</h3>
+          <p className="text-sm leading-relaxed text-foreground/75">
+            <span className="font-bold text-foreground">강제 참여 아닙니다.</span> 의지 있는 분만 참여하는 선택 과정입니다.
+            비용·일정·장소는 1기 졸업 시점에 개별 안내드립니다.
           </p>
+          <hr className="my-4 border-foreground/10" />
+          <ul className="space-y-2.5">
+            <li className="flex items-start gap-2.5 text-sm">
+              <Check className="mt-0.5 h-4 w-4 flex-none" />
+              본강의 졸업자 한정
+            </li>
+            <li className="flex items-start gap-2.5 text-sm">
+              <Check className="mt-0.5 h-4 w-4 flex-none" />
+              매월 1회 오프라인 정기 모임
+            </li>
+            <li className="flex items-start gap-2.5 text-sm">
+              <Check className="mt-0.5 h-4 w-4 flex-none" />
+              상세 비용·일정은 졸업 시점에 안내
+            </li>
+          </ul>
           <div className="mt-4 border border-[var(--warm-border)] bg-[var(--warm)] p-4 text-sm font-bold">
             1기 수강생은 졸업 후 스터디 우선 참여권을 드립니다.
           </div>
