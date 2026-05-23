@@ -8,8 +8,14 @@ export function FinalCTA() {
   return (
     <section className="bg-foreground px-4 py-24 text-background sm:px-6 sm:py-28">
       <div className="mx-auto max-w-3xl text-center">
+        {/* 인터뷰 기반 한국인 정서 카피 — 자산형 vs 현금흐름형 */}
+        <p className="font-memo mb-4 text-sm leading-relaxed text-background/65 sm:text-base">
+          자산은 있어도 매월 들어오는 돈은 별도입니다.<br />
+          현금흐름은 따로 만들어야 합니다.
+        </p>
+
         <h2 className="text-3xl font-bold uppercase leading-tight tracking-tight sm:text-4xl md:text-5xl">
-          1기 실행자 특별가로<br className="sm:hidden" /> 지원하기
+          1기 실행자로<br className="sm:hidden" /> 지원하기
         </h2>
         <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-background/70 sm:text-lg">
           상품만 계속 올리던 방식을 정말 바꾸고 싶다면,<br className="hidden sm:block" />

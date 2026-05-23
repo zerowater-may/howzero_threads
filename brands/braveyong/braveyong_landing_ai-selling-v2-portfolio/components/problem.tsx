@@ -43,6 +43,39 @@ export function Problem() {
           입니다.
         </p>
       </div>
+
+      {/* 인터뷰 기반: 자녀·노후 vs 부업 시간 trade-off — 한국인 정서 */}
+      <div className="mt-8 grid gap-6 md:grid-cols-[1fr_1fr]">
+        <div className="border-2 border-background/30 p-6">
+          <div className="font-mono mb-3 text-[10px] font-bold uppercase tracking-[0.15em] text-background/55">
+            진짜 비용
+          </div>
+          <h3 className="mb-3 text-lg font-bold leading-snug tracking-tight sm:text-xl">
+            1만 개를 올리는 데 들어간 시간,<br />
+            누가 돌려주나요?
+          </h3>
+          <p className="text-sm leading-relaxed text-background/75">
+            아이가 큰 만큼 학원비도 늘고, 노후는 가까워집니다.
+            그런데 매일 밤 의미 없는 상품 등록에 새벽을 쓰면,
+            <span className="font-bold text-background"> 돈도 시간도 둘 다 잃습니다.</span>
+          </p>
+        </div>
+        <div className="border-2 border-background/30 p-6">
+          <div className="font-mono mb-3 text-[10px] font-bold uppercase tracking-[0.15em] text-background/55">
+            그래서 바꿨습니다
+          </div>
+          <h3 className="mb-3 text-lg font-bold leading-snug tracking-tight sm:text-xl">
+            상품 1만 개가 아니라,<br />
+            <span className="text-background">잘 만든 10개.</span>
+          </h3>
+          <p className="text-sm leading-relaxed text-background/75">
+            매일 밤 새 상품을 찍어내지 않아도, 한 번 공들여 만든 효자상품은
+            <span className="font-bold text-background"> 자는 동안에도 검색됩니다.</span>
+            <br />
+            그제서야 가족과 노후가 다시 보이기 시작합니다.
+          </p>
+        </div>
+      </div>
     </Section>
   )
 }
