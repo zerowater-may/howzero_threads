@@ -156,3 +156,28 @@
 - 검증: Playwright 데스크톱(1280) 풀페이지 + 라이트·다크 hero + 후기 그리드 펼침 캡처. 콘솔 에러 0.
 - v1(`braveyong_landing_ai-selling/`)은 그대로 보존, v2와 동시 운영 가능.
 - 기획서 spec: `docs/superpowers/specs/2026-05-23-braveyong-ai-selling-landing-v2-portfolio-style-design.md`.
+
+## [2026-05-24] ingest | BraveYong persona interview asset
+
+- 요청: 용팀장님 인터뷰 전사를 BraveYong 페르소나 asset으로 wiki화.
+- 원문 보관/합성 asset: `brands/braveyong/braveyong_misc_persona-interview-family-seo-seller.md` — 직장인 현금흐름, 육아아빠 생활 장면, 부동산/자산 대비 현금흐름, 대량등록 탈출, 상품명/SEO/효자상품, 시스템화, 강의 과장 경계, 월 1회 스터디를 정리.
+- 생성 페이지: [[BraveYong Persona Asset Interview]].
+- 변경 페이지: `brands/braveyong/INDEX.md`, `brands/braveyong/braveyong_persona.md`, [[BraveYong Index]], [[BraveYong Brain]], [[BraveYong Persona]], [[BraveYong AI Selling Bootcamp]], [[BraveYong Source Map]], [[BraveYong Open Questions]], `wiki/index.md`.
+- 핵심 합성: 용팀장은 단순 고수 셀러가 아니라 직장·육아·현금흐름·SEO 검증·시스템화를 연결하는 생활형 현업 셀러다. 랜딩/대본에서는 큰 수익 숫자보다 등원, 공유오피스, 순위 모니터링, CS 분리, 월 1회 스터디 같은 장면을 신뢰 증거로 우선 사용한다.
+- 가드: 전사에 포함된 수익, 매출, 부동산, 직장 관련 숫자는 공개 사용 전 본인 확인과 최신 기준 확인이 필요하다.
+
+## [2026-05-24] storytelling | BraveYong AI Selling Landing v2 — 인터뷰 asset 풀 적용 6사이클
+
+- 요청: 페르소나 인터뷰 asset 기반 스토리텔링·감동 카피로 결제 유도. "1000개 → 1만개", "진짜 팔리는 효자상품 10개", 대기업 직장인 → 부업 스토리. /loop 30분.
+- asset 소스: `brands/braveyong/braveyong_misc_persona-interview-family-seo-seller.md`, [[BraveYong Persona Asset Interview]].
+- 가드: 매출/부동산 수치 단정 금지, 가격 숫자 노출 금지.
+- 6 사이클 누적 결과 (커밋 `ab2b9740 → 42cab22b`):
+  - 사이클 1: Hero 임팩트(1만개 strikethrough → 효자상품 10개 형광펜), Origin Story 5단계 타임라인(대기업 직장인 → 부업 → 모니터 받침 효자상품 → SEO·시스템화 → 6주 강의), 왜 용팀장 인터뷰 scene 6개.
+  - 사이클 2: 효자상품에 타오바오 모니터 받침 실제 장면, 졸업 "강의 진짜 가치는 졸업 후", 가격 "녹화강의가 아니라 6주 동안 같이" + "쉽게 돈 버는 건 아닙니다 그런데 되는 방향은 맞습니다" 인터뷰 인용, 신청 받습니다/정중히 사양 매트릭스.
+  - 사이클 3: 문제 trade-off("1만 개 시간 누가 돌려주나요" / "자는 동안에도 검색되는 효자상품"), 반론 4→6종(SEO 한 줄 공식·하루 1시간 누구나 회의), 커리큘럼 각 주차에 "현장 장면" 워밍 박스, 최종 CTA "자산은 있어도 매월 들어오는 돈은 별도".
+  - 사이클 4: 비교표 6→7행(SEO 검증 행 신규, 인터뷰 톤), 소수정예 굴레 호소, FAQ 답변 인터뷰 톤.
+  - 사이클 5: **critical fix** — scarcity 카드에 가격 180만원 템플릿 잔존 발견 즉시 수정, sticky/final CTA 라벨 일관성("특별가" 가격 단어 제거), 가격 카드에 결제 정당화 한 줄 "받는 건 6주가 아니라 효자상품 10개와 사람들".
+  - 사이클 6: 일관성 grep audit 통과(가격 숫자 0, 톤 충돌 위반 0, CTA 라벨 일관), Footer 인터뷰 클로징 "강의 한 번 듣고 끝나는 시장이 아닙니다. 계속 같이 공부하는 사람이 남습니다."
+- 변경 페이지: [[BraveYong AI Selling Bootcamp]](v2 실제 적용 표 + 가격 노출 정책 섹션), `brands/braveyong/braveyong_landing_ai-selling-v2-portfolio/README.md`(19블록 + GlassNav/StickyCTA 반영 + 가격 정책 명시).
+- 산출물: 16개 컴포넌트, 5개 검증 캡처, 19블록 구조, 데스크톱·모바일 풀페이지 캡처.
+- 핵심 합성: 6 사이클로 인터뷰 asset이 페이지 전 섹션에 자연스럽게 분포됨. "강의를 사세요"가 아니라 "당신의 시간과 가족을 지킬 구조를 같이 만들자"라는 스토리텔링으로 고액 강의 결제를 정당화. 가격은 페이지 어디에도 숫자로 노출되지 않으며, "신청서 검토 후 개별 안내"가 디자인 자체로 선별을 표현한다.
