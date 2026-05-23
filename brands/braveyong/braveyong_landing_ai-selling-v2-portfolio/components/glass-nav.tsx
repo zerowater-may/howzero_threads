@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { ArrowUpRight, Moon, Sun } from "lucide-react"
+import { ArrowRight, ArrowUpRight, Moon, Sun } from "lucide-react"
 import { useEffect, useState } from "react"
 import { useTheme } from "next-themes"
 import { config } from "@/lib/config"
@@ -13,10 +13,15 @@ import { config } from "@/lib/config"
  * - 가운데: 섹션 점프 링크 (모바일 hidden)
  * - 우측: 다크 토글 + APPLY 버튼
  */
+/**
+ * 가운데 점프 링크.
+ * `cta: true` 가 붙으면 가격 자리에 미니 설득 버튼(검정 박스 + 화살표)으로 렌더.
+ * 가격은 페이지에 숫자가 없으니 메뉴를 행동 유도로 전환했다.
+ */
 const links = [
   { href: "#testimonials", label: "후기" },
   { href: "#curriculum", label: "커리큘럼" },
-  { href: "#price", label: "가격" },
+  { href: "#apply", label: "1기 지원", cta: true },
   { href: "#faq", label: "FAQ" },
 ]
 
@@ -64,17 +69,28 @@ export function GlassNav() {
           </span>
         </Link>
 
-        {/* 섹션 점프 링크 — 모바일 hidden */}
+        {/* 섹션 점프 링크 — 모바일 hidden. 가격 자리는 미니 설득 버튼(cta) */}
         <nav className="hidden items-center gap-1 md:flex" aria-label="섹션 이동">
-          {links.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className="rounded-full px-3 py-1.5 text-sm font-medium text-foreground/70 transition-colors hover:bg-foreground/5 hover:text-foreground"
-            >
-              {l.label}
-            </Link>
-          ))}
+          {links.map((l) =>
+            l.cta ? (
+              <Link
+                key={l.href}
+                href={l.href}
+                className="group ml-1 inline-flex items-center gap-1.5 rounded-full border border-foreground bg-foreground px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.06em] text-background transition-all hover:bg-background hover:text-foreground"
+              >
+                {l.label}
+                <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
+              </Link>
+            ) : (
+              <Link
+                key={l.href}
+                href={l.href}
+                className="rounded-full px-3 py-1.5 text-sm font-medium text-foreground/70 transition-colors hover:bg-foreground/5 hover:text-foreground"
+              >
+                {l.label}
+              </Link>
+            )
+          )}
         </nav>
 
         {/* 다크 토글 + APPLY */}
