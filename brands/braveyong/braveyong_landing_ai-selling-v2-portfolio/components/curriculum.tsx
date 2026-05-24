@@ -85,7 +85,7 @@ export function Curriculum() {
       id="curriculum"
       label="6주 커리큘럼"
       title={<>오프라인 6회 + 줌 보강 5회</>}
-      lead="오프라인은 현장 작업과 피드백, 줌 보강은 중간 과제 점검. 매주 작업물이 쌓이는 구조입니다."
+      lead="오프라인에서는 현장에서 같이 작업하고 피드백 드리고요. 줌 보강에선 중간 과제를 점검합니다. 매주 손에 작업물이 쌓이는 식이에요."
     >
       <Accordion type="single" defaultValue="w1" collapsible className="border-2 border-foreground bg-background">
         {weeks.map((w) => (

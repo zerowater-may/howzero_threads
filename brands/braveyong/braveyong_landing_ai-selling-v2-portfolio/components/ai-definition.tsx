@@ -14,7 +14,7 @@ export function AIDefinition() {
   return (
     <Section
       label="AI 셀링이란"
-      title={<>AI 셀링은 툴 사용법이 아니라 판매 운영 구조입니다.</>}
+      title={<>AI 셀링은 툴 쓰는 법이 아니에요. 매일 돌리는 판매 운영 구조입니다.</>}
     >
       <div className="grid gap-6 md:grid-cols-2">
         <div className="border-l-4 border-foreground bg-background p-6">
