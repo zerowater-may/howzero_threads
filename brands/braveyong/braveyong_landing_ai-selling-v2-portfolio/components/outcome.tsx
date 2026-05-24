@@ -5,10 +5,10 @@ import { Check } from "lucide-react"
 /** 07 핵심 결과물 — 효자상품 10개 + 손그림 동그라미 + 7요소 + 가드 */
 const elements = ["키워드 · 카테고리", "상품명 · 대표이미지", "상세페이지 · 가격", "등록 전 체크까지 맞춰진 상품"]
 const howto = [
-  ["용팀장이 상품 선정 프레임", "을 제공합니다."],
-  ["매주 과제로 1~2개씩", " 만듭니다."],
-  ["기존 상품 개선과 새 상품 소싱", "을 모두 허용합니다."],
-  ["6주 동안 총 10개", "를 완성합니다."],
+  ["상품 선정 프레임은 제가 직접", " 드려요."],
+  ["매주 과제로 1~2개씩", " 같이 만들어요."],
+  ["기존 상품 개선·새 상품 소싱", " 어디부터 시작하셔도 됩니다."],
+  ["6주 동안 총 10개", " 본인 손으로 완성해요."],
 ]
 
 export function Outcome() {
@@ -23,8 +23,8 @@ export function Outcome() {
     >
       <div className="mb-6 border-l-4 border-foreground bg-background p-6">
         <p className="text-lg font-bold leading-snug sm:text-xl">
-          처음부터 1000개 효자상품을 만드는 건 불가능합니다.<br />
-          그래서 6주 동안 먼저 효자상품 10개를 함께 만듭니다.
+          처음부터 1000개를 효자상품으로 만드는 건 사실상 불가능해요.<br />
+          그래서 6주 동안 먼저 10개부터 같이 만들어 갑니다.
         </p>
       </div>
 
@@ -32,7 +32,7 @@ export function Outcome() {
         <div className="border-2 border-foreground bg-background p-6">
           <h3 className="mb-3 text-lg font-bold tracking-tight">효자상품의 정의</h3>
           <p className="mb-4 text-sm leading-relaxed text-foreground/70">
-            여기서 말하는 효자상품은 무작정 올린 상품이 아닙니다. 아래 7가지가 맞춰진 상품입니다.
+            여기서 말하는 효자상품은 무작정 올린 상품이 아니에요. 아래 7가지가 다 맞춰진 상품을 말합니다.
           </p>
           <ul className="space-y-2.5">
             {elements.map((e) => (
