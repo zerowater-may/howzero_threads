@@ -66,15 +66,15 @@ export function Study() {
           <ul className="space-y-2.5">
             <li className="flex items-start gap-2.5 text-sm">
               <Check className="mt-0.5 h-4 w-4 flex-none" />
-              본강의 졸업자 한정
+              6주 본강의를 끝낸 분만 참여하실 수 있어요.
             </li>
             <li className="flex items-start gap-2.5 text-sm">
               <Check className="mt-0.5 h-4 w-4 flex-none" />
-              매월 1회 오프라인 정기 모임
+              매월 한 번, 강남에서 오프라인으로 모입니다.
             </li>
             <li className="flex items-start gap-2.5 text-sm">
               <Check className="mt-0.5 h-4 w-4 flex-none" />
-              상세 비용·일정은 졸업 시점에 안내
+              비용·일정은 졸업하실 때 따로 안내드려요.
             </li>
           </ul>
           <div className="mt-4 border border-[var(--warm-border)] bg-[var(--warm)] p-4 text-sm font-bold">

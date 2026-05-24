@@ -3,13 +3,14 @@ import { Section } from "./section"
 import { photos } from "@/lib/testimonials"
 
 /**
- * 03 신뢰 증거 — 현업 사실 지표 4카드 + 실제 현장 사진 2장(사기꾼 의심 차단).
+ * 03 신뢰 증거 — 사람 말투 한 줄 카드 4장 + 실제 현장 사진 3장(사기꾼 의심 차단).
+ * 내부 placeholder("운영 입력") 노출은 결제 직전 신뢰를 깨므로 제거.
  */
 const facts = [
-  { b: "운영 중", k: "직접 운영 스토어", note: "운영 입력" },
-  { b: "직접 등록", k: "직접 올린 상품 수", note: "운영 입력" },
-  { b: "현업 + 강의", k: "현업 셀러 + 강의·상담", note: "운영 입력" },
-  { b: "육아 병행", k: "직장인·육아아빠 셀러", note: "사실" },
+  { head: "지금도", body: "직접 올리는 셀러예요." },
+  { head: "혼자", body: "1만 개를 올려봤습니다." },
+  { head: "강의 전에", body: "현업이 먼저입니다." },
+  { head: "회사 다니며", body: "애 재우고 올렸습니다." },
 ]
 
 export function TrustEvidence() {
@@ -22,13 +23,14 @@ export function TrustEvidence() {
       <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
         {facts.map((f) => (
           <div
-            key={f.k}
+            key={f.head}
             className="border-2 border-foreground bg-background p-5 transition-transform duration-300 hover:-translate-y-1"
           >
-            <div className="text-xl font-bold tracking-tight">{f.b}</div>
-            <div className="mt-2 text-sm text-foreground/65">{f.k}</div>
-            <div className="font-mono mt-3 text-[10px] uppercase tracking-[0.1em] text-foreground/40">
-              {f.note}
+            <div className="text-xs font-bold uppercase tracking-[0.12em] text-foreground/55">
+              {f.head}
+            </div>
+            <div className="mt-2 text-base font-bold leading-snug tracking-tight sm:text-lg">
+              {f.body}
             </div>
           </div>
         ))}

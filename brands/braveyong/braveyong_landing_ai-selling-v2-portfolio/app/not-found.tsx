@@ -1,5 +1,9 @@
 import Link from "next/link"
 
+// Next 15.5 회귀: 빈 _document fallback이 prerender 시 <Html> 오류 발생.
+// force-dynamic으로 prerender 단계 자체를 우회.
+export const dynamic = "force-dynamic"
+
 /**
  * 404 페이지 — Next 자동 _document 생성 버그 회피 + 단순한 한국어 안내.
  */

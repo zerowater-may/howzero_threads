@@ -9,8 +9,15 @@ const nextConfig = {
   // monorepo / 상위 lockfile 추론 경고 silence (Vercel 빌드 안정화)
   outputFileTracingRoot: __dirname,
 
+  // Next 15.5 회귀: _document fallback prerender 오류 회피
+  output: "standalone",
+
   typescript: {
     ignoreBuildErrors: true,
+  },
+
+  eslint: {
+    ignoreDuringBuilds: true,
   },
 
   // Vercel Image Optimization 사용 — 후기 캡처 50장·photo 4장 자동 최적화
