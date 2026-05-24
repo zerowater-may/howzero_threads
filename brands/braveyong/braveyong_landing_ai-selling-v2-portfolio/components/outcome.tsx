@@ -73,11 +73,12 @@ export function Outcome() {
         </div>
         <p className="text-base leading-relaxed text-foreground/85 sm:text-lg">
           저도 처음엔 1만 개를 따라 올렸습니다. 그게 다 효자상품이 되진 않았습니다.<br />
-          다만 그중 <span className="font-bold text-foreground">검색에 잡히기 시작한 몇 개</span>가 보이기 시작했습니다.
+          다만 그중 <span className="font-bold text-foreground">검색에 잡히기 시작한 몇 개</span>가 데이터로 보이기 시작했어요.
         </p>
         <p className="mt-4 text-base leading-relaxed text-foreground/85 sm:text-lg">
-          거기서부터가 진짜였어요. 잡힌 상품의 키워드 의도·경쟁·카테고리를 다시 보고,
-          상품명·대표이미지·상세페이지·등록 전 체크를 처음부터 다시 가공해서{" "}
+          감이나 우연으로 '필요한 상품을 찾아서'가 아니에요.{" "}
+          <span className="font-bold text-foreground">이미 올린 데이터 중에서 검색에 잡힌 상품</span>을 골라,
+          키워드 의도·경쟁·카테고리를 다시 보고, 상품명·대표이미지·상세페이지·등록 전 체크를 처음부터 다시 가공해서{" "}
           <span className="marker">키워드별 1페이지</span>까지 올렸습니다.
         </p>
         <p className="font-memo mt-5 text-sm leading-relaxed text-foreground/70 sm:text-base">
