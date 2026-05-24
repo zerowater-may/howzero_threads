@@ -19,9 +19,9 @@ export function AIDefinition() {
       <div className="grid gap-6 md:grid-cols-2">
         <div className="border-l-4 border-foreground bg-background p-6">
           <p className="text-lg font-bold leading-snug sm:text-xl">
-            AI가 대신 팔아주는 게 아닙니다.<br />
-            AI로 상품 선정, SEO, 상품명, 상세페이지, 등록 전 체크를<br />
-            <Marker>빠르게 반복하는 구조</Marker>를 만드는 겁니다.
+            AI가 대신 팔아주는 거 아닙니다.<br />
+            제가 매일 하던 상품 선정·SEO·상품명·상세페이지·등록 전 체크를<br />
+            AI로 더 빠르게 돌리는 — 그 <Marker>반복 구조</Marker>를 같이 만드는 거예요.
           </p>
           <p className="mt-4 font-memo text-base leading-relaxed text-foreground/70 sm:text-lg">
             <Marker>받는 셀러</Marker>가 아니라, <Marker>잡는 셀러</Marker>로.<br />
