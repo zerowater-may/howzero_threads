@@ -135,6 +135,9 @@ export function Apply() {
             카운트다운·딸깍 자동화·하루 1시간이면 누구나 류의 강의를 찾는 분
           </p>
         </div>
+        <p className="font-memo mt-5 border-t border-background/15 pt-4 text-sm leading-relaxed text-background/85 sm:text-base">
+          💳 한 번에 부담되시면, <span className="font-bold text-background">카드 무이자 할부</span>로 시작하셔도 됩니다. 월 30만원대부터.
+        </p>
       </div>
 
       {/* 구글폼 iframe — URL 있으면 임베드, 없으면 안내 */}
