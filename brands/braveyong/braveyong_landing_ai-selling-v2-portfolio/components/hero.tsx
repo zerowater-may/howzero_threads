@@ -50,7 +50,7 @@ export function Hero() {
               만드는 셀러로.
             </p>
             <p className="text-sm leading-relaxed text-foreground/65 sm:text-base">
-              6주 오프라인 + 줌 보강으로 같이 만듭니다.
+              6주 동안 매주 만나서, 줌 보강도 하면서 같이 만들어 갈게요.
             </p>
           </div>
 
@@ -83,11 +83,11 @@ export function Hero() {
             </Link>
           </div>
 
-          {/* 보조 안내 — Pretendard 작게 */}
+          {/* 보조 안내 — Pretendard 작게, 사람 말투 */}
           <p className="hz-fade-up hz-delay-5 text-xs leading-relaxed text-foreground/55 sm:text-sm">
-            {course.cohort} 모집 중 · {course.capacityMin}~{course.capacityMax}명 소수정예
+            {course.cohort} {course.capacityMin}~{course.capacityMax}명만 받아요.
             <span className="mx-2 text-foreground/25">·</span>
-            신청서 검토 후 안내
+            신청서 보고 한 분씩 따로 연락드립니다.
           </p>
         </div>
       </div>
