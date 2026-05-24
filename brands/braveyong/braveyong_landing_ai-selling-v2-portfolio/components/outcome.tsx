@@ -82,9 +82,9 @@ export function Outcome() {
           <span className="marker">키워드별 1페이지</span>까지 올렸습니다.
         </p>
         <p className="font-memo mt-5 text-sm leading-relaxed text-foreground/70 sm:text-base">
-          한 상품을 효자상품으로 키우는 패턴이 손에 잡히니,<br />
-          <span className="font-bold text-foreground">같은 방식으로 다음 후보를 계속 늘려가는 중</span>입니다.<br />
-          이걸 6주 동안 같이 합니다.
+          한 상품을 효자상품으로 키우는 패턴이 손에 잡히니까,<br />
+          <span className="font-bold text-foreground">같은 방식으로 다음 후보를 계속 늘려가는 중</span>이에요.<br />
+          이걸 6주 동안 같이 해보는 게 이번 강의입니다.
         </p>
       </div>
     </Section>
