@@ -154,11 +154,11 @@ export function Apply() {
         <div className="mt-5 grid gap-3 border-t border-background/15 pt-5 text-sm text-background/85 sm:grid-cols-2">
           <p>
             <span className="font-mono mr-2 text-[10px] uppercase tracking-[0.15em] text-background/55">받습니다</span>
-            직장·육아 병행해도 6주 동안 실제로 상품을 같이 고치고 싶은 분
+            직장·육아 병행하면서도 6주 동안 직접 상품을 같이 고쳐 가실 분
           </p>
           <p>
             <span className="font-mono mr-2 text-[10px] uppercase tracking-[0.15em] text-background/55">정중히 사양</span>
-            카운트다운·딸깍 자동화·하루 1시간이면 누구나 류의 강의를 찾는 분
+            카운트다운으로 압박하거나 ‘딸깍 자동화·하루 1시간이면 누구나’ 같은 강의를 찾으시는 분
           </p>
         </div>
         <p className="font-memo mt-5 border-t border-background/15 pt-4 text-sm leading-relaxed text-background/85 sm:text-base">
