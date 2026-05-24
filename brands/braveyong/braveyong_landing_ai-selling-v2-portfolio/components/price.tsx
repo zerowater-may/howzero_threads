@@ -86,14 +86,12 @@ export function Price() {
           </div>
           <div className="border-l-4 border-foreground bg-background p-5 text-sm leading-relaxed">
             <p className="text-base font-bold leading-snug text-foreground sm:text-lg">
-              이건 <span className="marker">녹화강의가 아닙니다.</span>
+              <span className="marker">녹화강의가 아니에요.</span>
             </p>
-            <p className="mt-3 whitespace-pre-line text-foreground/75">
-              {`6주 동안 각자의 상품을 같이 보고,
-용팀장 기준으로 효자상품 10개를 직접 완성하는 `}
-              <span className="font-bold text-foreground">오프라인 실전반</span>입니다.
-              <br />
-              지식 PDF·녹화 한 묶음이 아니라, 같이 만드는 과정에 대한 비용입니다.
+            <p className="mt-3 text-foreground/75">
+              6주 동안 각자의 상품을 같이 보고, 효자상품 10개를 손으로 직접 완성하는{" "}
+              <span className="font-bold text-foreground">오프라인 실전반</span>이에요.<br />
+              PDF·녹화 한 묶음이 아니라, 같이 만드는 6주 자체에 대한 비용입니다.
             </p>
           </div>
           <div className="border-l-4 border-[var(--warm-border)] bg-[var(--warm)] p-5 text-sm leading-relaxed">

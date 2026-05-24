@@ -23,6 +23,7 @@ export function Operation() {
       tone="dark"
       label="운영 방식"
       title={<>현장에서 직접 고치는 오프라인 실전반</>}
+      lead="매주 오프라인에서 직접 만나서 상품·스토어를 같이 고치고, 중간엔 줌으로 보강합니다."
     >
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-5">
         {stats.map((s) => (
