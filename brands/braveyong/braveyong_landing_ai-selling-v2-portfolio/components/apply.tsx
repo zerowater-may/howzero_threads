@@ -27,13 +27,13 @@ export function Apply() {
     <Section
       id="apply"
       label="신청 & 선별"
-      title={<>신청서 검토 후, 맞는 분에게만 안내드립니다.</>}
+      title={<>신청서 보고, 한 분씩 따로 보고 안내드려요.</>}
     >
       <div className="mb-6 border-l-4 border-foreground bg-background p-6 text-sm leading-relaxed text-foreground/75">
         <p className="whitespace-pre-line">
-          {`본 과정은 신청서 검토 후 참여 안내를 드립니다.
-오프라인 실전반 특성상, 6주 동안 직접 상품을 고치고
-과제를 실행할 수 있는 분들과 함께하기 위함입니다.`}
+          {`신청서를 한 분 한 분 직접 읽고 참여 안내를 따로 보내드립니다.
+오프라인 실전반이라, 6주 동안 직접 오셔서 상품을 같이 고치고
+과제를 매주 해주실 분들과 가고 싶거든요.`}
         </p>
       </div>
 

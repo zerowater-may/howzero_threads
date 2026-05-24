@@ -51,8 +51,8 @@ export function Price() {
           <hr className="my-5 border-foreground/10" />
           <p className="text-sm leading-relaxed text-foreground/70">
             결제 링크와 입금 안내는{" "}
-            <span className="font-bold text-foreground">신청서 검토 후 참여 확정자에게만</span>{" "}
-            발송됩니다.
+            <span className="font-bold text-foreground">신청서 보고 참여 확정된 분에게만</span>{" "}
+            보내드립니다.
           </p>
 
           {/* CTA 직전 감정 정당화 — 결제 결심을 도와주는 한 줄 */}
@@ -81,7 +81,7 @@ export function Price() {
               <br />
               <span className="font-bold text-foreground">대신 아무나 받지는 않습니다.</span>
               <br />
-              6주 동안 오프라인에 오시고, 줌 보강 듣고, 매주 과제 같이 해주실 분만 신청서 검토 후 안내드립니다.
+              6주 동안 오프라인에 직접 오시고, 줌 보강 들으시고, 매주 과제 같이 해주실 분, 신청서 보고 따로 연락드릴게요.
             </p>
           </div>
           <div className="border-l-4 border-foreground bg-background p-5 text-sm leading-relaxed">

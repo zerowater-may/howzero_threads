@@ -10,19 +10,19 @@ export function FinalCTA() {
       <div className="mx-auto max-w-3xl text-center">
         {/* 인터뷰 기반 한국인 정서 카피 — 자산형 vs 현금흐름형 */}
         <p className="font-memo mb-4 text-sm leading-relaxed text-background/65 sm:text-base">
-          자산은 있어도 매월 들어오는 돈은 별도입니다.<br />
-          현금흐름은 따로 만들어야 합니다.
+          월급도, 모아둔 자산도 있는데<br />
+          매월 들어오는 돈은 또 따로 필요하더라고요.
         </p>
 
         <h2 className="text-3xl font-bold uppercase leading-tight tracking-tight sm:text-4xl md:text-5xl">
           1기 실행자로<br className="sm:hidden" /> 지원하기
         </h2>
         <p className="font-mono mt-2 text-[11px] uppercase tracking-[0.18em] text-background/55">
-          신청서 검토 후 개별 안내
+          신청서 보고 한 분씩 따로 연락드려요
         </p>
         <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-background/70 sm:text-lg">
-          상품만 계속 올리던 방식을 정말 바꾸고 싶다면,<br className="hidden sm:block" />
-          지금 신청서를 작성하세요.
+          1만 개 올리는 방식, 정말로 한번 바꿔보고 싶으시면<br className="hidden sm:block" />
+          신청서부터 한번 적어주세요.
         </p>
 
         <div className="mt-8">
@@ -38,8 +38,8 @@ export function FinalCTA() {
         </div>
 
         <p className="mt-6 text-xs leading-relaxed text-background/55 sm:text-sm">
-          신청서 검토 후 참여 안내와 결제 안내를 드립니다.<br />
-          6월 10일 유튜브 무료강의 안내도 함께 보내드립니다.
+          신청서 보고 참여·결제 안내 따로 보내드릴게요.<br />
+          6월 10일 유튜브 무료강의 안내도 같이 보내드립니다.
         </p>
 
         <div className="mt-10 text-background">

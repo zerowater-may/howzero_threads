@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://braveyong.example.com"),
   title: "6주 오프라인 AI 셀링 실전반 — 용감한 용팀장",
   description:
-    "1000개를 무작정 올리는 셀러에서 효자상품 10개를 만드는 셀러로. 서울 강남 오프라인 6회 + 줌 보강 5회. 1기 모집 중 · 신청서 검토 후 안내.",
+    "1만 개를 무작정 올리는 셀러에서 효자상품 10개를 만드는 셀러로. 서울 강남 오프라인 6회 + 줌 보강 5회. 1기 모집 중 · 신청서 보고 한 분씩 따로 안내.",
   keywords: [
     "용감한 용팀장",
     "AI 셀링",
