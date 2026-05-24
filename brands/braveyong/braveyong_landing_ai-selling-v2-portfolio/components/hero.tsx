@@ -56,7 +56,7 @@ export function Hero() {
 
           {/* 손글씨 한 줄 — Gowun Dodum, 진정성 */}
           <p className="hz-fade-up hz-delay-3 font-memo text-base text-foreground/70 sm:text-lg">
-            저도 대기업 다니면서, 애 재우고 상품 올렸습니다.
+            저도 회사 다니면서, 애 재우고 상품 올렸습니다.
           </p>
 
           {/* CTA — pill 버튼, hover 반전 */}

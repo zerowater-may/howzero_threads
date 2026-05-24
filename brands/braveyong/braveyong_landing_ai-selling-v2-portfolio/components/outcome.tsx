@@ -66,20 +66,25 @@ export function Outcome() {
         <span className="font-bold">용팀장 기준으로 팔릴 구조를 갖춘 상품 10개를 6주 동안 직접 완성한다</span>는 의미입니다.
       </div>
 
-      {/* 인터뷰 scene: 타오바오 모니터 받침 — 첫 효자상품 발견 스토리 */}
+      {/* 인터뷰 scene: 모니터 받침 — 효자상품을 발견하는 사고방식 (개연성 보강) */}
       <div className="mt-8 border-l-4 border-foreground bg-background p-6 sm:p-8">
         <div className="font-mono mb-3 text-[10px] font-bold uppercase tracking-[0.15em] text-foreground/55">
-          용팀장의 첫 효자상품 — 실제 장면
+          제가 찾은 첫 효자상품 — 실제 사고 과정
         </div>
         <p className="text-base leading-relaxed text-foreground/85 sm:text-lg">
-          공유오피스에서 일하다 모니터를 좀 더 올리고 싶어서
-          타오바오에서 <span className="font-bold text-foreground">‘높은 모니터 받침대’</span>를 찾았습니다.<br />
-          마침 안 보이길래 직접 올렸습니다.<br />
-          그 상품 하나가 <span className="marker">매월 들어오는 효자상품</span>이 됐습니다.
+          공유오피스에서 모니터가 자꾸 낮아서, 한참 동안{" "}
+          <span className="font-bold text-foreground">‘높은 모니터 받침대’</span>를 검색했습니다.<br />
+          ‘나처럼 검색하는 사람이 분명 더 있겠다’ — 그게 시작이었습니다.
         </p>
-        <p className="font-memo mt-4 text-sm leading-relaxed text-foreground/70 sm:text-base">
-          그때 알았습니다 — 1만 개를 따라 올릴 게 아니라,<br />
-          <span className="font-bold text-foreground">잘 만든 10개</span>가 답이라는 걸.
+        <p className="mt-4 text-base leading-relaxed text-foreground/85 sm:text-lg">
+          그 다음은 단순했습니다. 키워드 의도·경쟁 상품·카테고리를 매일 확인했고,
+          상품명·대표이미지·상세페이지를 계속 다듬어 가며{" "}
+          <span className="marker">키워드별 1페이지</span>에 올렸습니다.
+        </p>
+        <p className="font-memo mt-5 text-sm leading-relaxed text-foreground/70 sm:text-base">
+          그때 처음 알았습니다 — 1만 개를 무작정 올리는 게 아니라,<br />
+          <span className="font-bold text-foreground">‘내가 진짜 필요해서 찾은 상품’</span>을<br />
+          꾸준히 다듬어 올리는 게 답이라는 걸.
         </p>
       </div>
     </Section>
