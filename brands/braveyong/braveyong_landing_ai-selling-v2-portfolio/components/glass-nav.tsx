@@ -111,10 +111,10 @@ export function GlassNav() {
             href={config.googleFormUrl}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="실전반 지원하기 — 신청서 새 창에서 열림"
-            className="group inline-flex items-center gap-1 rounded-full bg-foreground px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.05em] text-background transition-all hover:bg-background hover:text-foreground hover:ring-2 hover:ring-foreground sm:px-4 sm:py-2 sm:text-sm"
+            aria-label="신청서 작성하기 — 새 창에서 열림"
+            className="group inline-flex items-center gap-1 rounded-full bg-foreground px-3.5 py-1.5 text-xs font-bold tracking-tight text-background transition-all hover:bg-background hover:text-foreground hover:ring-2 hover:ring-foreground sm:px-4 sm:py-2 sm:text-sm"
           >
-            지원하기
+            신청서 작성
             <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Link>
         </div>
