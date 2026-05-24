@@ -19,13 +19,13 @@ export function Study() {
     >
       <div className="mb-6 border-l-4 border-foreground bg-background p-6">
         <p className="text-lg font-bold leading-snug sm:text-xl">
-          졸업 후에는 매월 1회 오프라인 스터디로 계속 만나서 함께 성장합니다.<br />
-          정책이 바뀌고, 네이버 로직이 바뀌고, 시장이 바뀌어도{" "}
-          <span className="text-foreground">혼자 다시 막히지 않도록 계속 업데이트</span>합니다.
+          6주가 끝나면 강의는 끝나도, 같이 가는 사람들은 그때부터입니다.<br />
+          매월 한 번 강남에서 만나서, 정책이 바뀌고 네이버 로직이 바뀌고 시장이 바뀌어도{" "}
+          <span className="text-foreground">혼자 다시 막히지 않게 같이 업데이트</span>합니다.
         </p>
         <p className="font-memo mt-4 text-base leading-relaxed text-foreground/75 sm:text-lg">
           강의의 <span className="marker">진짜 가치는 졸업 후</span>에 있습니다.<br />
-          한 번 듣고 끝나는 시장이 아니니까.
+          한 번 듣고 끝나는 시장이 아니니까요.
         </p>
       </div>
 
