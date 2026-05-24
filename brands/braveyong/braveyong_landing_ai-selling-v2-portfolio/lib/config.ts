@@ -3,7 +3,8 @@
  * 환경변수가 비면 placeholder로 폴백 — 페이지가 깨지지 않고 "운영 입력 필요" 상태가 자연 노출.
  */
 export const config = {
-  googleFormUrl: process.env.NEXT_PUBLIC_GOOGLE_FORM_URL || "#",
+  // 폼 URL 미설정 시 페이지 top 튀는 것 방지 — 신청 섹션(#apply)으로 부드러운 스크롤
+  googleFormUrl: process.env.NEXT_PUBLIC_GOOGLE_FORM_URL || "#apply",
   youtubeFreeUrl: process.env.NEXT_PUBLIC_YOUTUBE_FREE_URL || "#",
   contactEmail: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "braveyong@example.com",
   ga4Id: process.env.NEXT_PUBLIC_GA4_ID || "",
