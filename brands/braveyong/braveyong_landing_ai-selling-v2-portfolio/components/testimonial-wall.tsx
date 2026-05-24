@@ -21,7 +21,7 @@ export function TestimonialWall() {
       id="testimonials"
       label="early voices"
       title={<>실제 카페에 남은 후기들.</>}
-      lead="아래 8장은 그동안 진행한 스터디·라이브 클래스에 직접 남은 후기에서 발췌. 원본 캡처는 ▼ 더 보기로 50장 전부 확인할 수 있습니다."
+      lead="아래 8장은 그동안 스터디·라이브 클래스에 실제로 달린 후기에서 발췌한 글이에요. 원본 캡처는 ▼ 더 보기로 50장 전부 보실 수 있습니다."
     >
       {/* 하이라이트 8장 카드 그리드 — 실제 후기 텍스트 (펼치기 전에도 노출) */}
       <div className="grid gap-3 md:grid-cols-2">
