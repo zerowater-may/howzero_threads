@@ -7,7 +7,7 @@ const items = [
   {
     Icon: Users,
     title: `${course.capacityMin}~${course.capacityMax}명 소수정예`,
-    body: "현장에서 직접 봐주려면 인원이 물리적으로 한정됩니다.",
+    body: "현장에서 직접 한 분 한 분 봐드리려면, 인원이 어쩔 수 없이 한정돼요.",
   },
   {
     Icon: Coins,
@@ -23,7 +23,7 @@ const items = [
 
 export function Scarcity() {
   return (
-    <Section tone="warm" label="1기 한정" title={<>왜 아무나 못 받는지.</>} lead="압박을 위한 가짜 마감이 아니라, 오프라인 실전반이라서 생기는 진짜 제약입니다.">
+    <Section tone="warm" label="1기 한정" title={<>왜 아무나 못 받는지.</>} lead="압박하려고 만든 가짜 마감이 아니에요. 오프라인 실전반이라서 생기는, 어쩔 수 없는 진짜 제약입니다.">
       <div className="grid gap-3 md:grid-cols-3">
         {items.map(({ Icon, title, body }) => (
           <div key={title} className="border-2 border-[var(--warm-border)] bg-background p-5">

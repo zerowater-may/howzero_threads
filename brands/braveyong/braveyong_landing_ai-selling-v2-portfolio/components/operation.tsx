@@ -14,7 +14,7 @@ const info = [
   { lbl: "무료 전환강의", val: course.freeLectureDate, sub: "유튜브 진행" },
   { lbl: "본강의 시작", val: course.startDate, sub: `오프라인 ${course.offlineCount} + 줌 ${course.zoomCount}` },
   { lbl: "장소", val: course.location, sub: course.detailAddress },
-  { lbl: "시간", val: course.scheduleTime, sub: "확정 후 참여자에게 안내" },
+  { lbl: "시간", val: course.scheduleTime, sub: "확정되면 참여자분께 따로 안내드려요" },
 ]
 
 export function Operation() {
@@ -23,7 +23,7 @@ export function Operation() {
       tone="dark"
       label="운영 방식"
       title={<>현장에서 직접 고치는 오프라인 실전반</>}
-      lead="매주 오프라인에서 직접 만나서 상품·스토어를 같이 고치고, 중간엔 줌으로 보강합니다."
+      lead="매주 오프라인에서 직접 만나서 상품·스토어를 같이 고쳐 가고요. 중간에 막히면 줌으로 보강합니다."
     >
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-5">
         {stats.map((s) => (
