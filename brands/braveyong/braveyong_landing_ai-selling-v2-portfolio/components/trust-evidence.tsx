@@ -34,42 +34,42 @@ export function TrustEvidence() {
         ))}
       </div>
 
-      {/* 사진 3장 갤러리 — 실제로 모이고 강의하는 사람 (사기꾼 의심 시점 차단) */}
+      {/* 사진 3장 갤러리 — 페이지 핵심 메시지와 연결되는 감동 톤 캡션 */}
       <div className="mt-6 grid gap-3 sm:grid-cols-3">
         <figure className="relative aspect-square overflow-hidden border-2 border-foreground bg-background">
           <Image
             src={photos.classroom}
-            alt="용팀장 오프라인 강의실 — 서울 강남 현장"
+            alt="용팀장 오프라인 강의실 — 각자의 상품을 가져와 같이 고치는 자리"
             fill
             sizes="(min-width:768px) 33vw, 100vw"
             className="object-cover"
           />
-          <figcaption className="absolute bottom-0 left-0 right-0 bg-foreground/85 px-3 py-2 text-[11px] font-bold text-background">
-            서울 강남 오프라인 강의 현장
+          <figcaption className="absolute bottom-0 left-0 right-0 bg-foreground/85 px-3 py-2.5 text-[11px] font-bold leading-snug text-background">
+            혼자 1만 개 올리던 사람이,<br />같이 10개를 만드는 자리
           </figcaption>
         </figure>
         <figure className="relative aspect-square overflow-hidden border-2 border-foreground bg-background">
           <Image
             src={photos.groupMeetup}
-            alt="용팀장 스터디 단체 사진 — 모임 직후"
+            alt="용팀장 스터디 단체 사진 — 강의가 끝난 후 같이 가는 사람들"
             fill
             sizes="(min-width:768px) 33vw, 100vw"
             className="object-cover"
           />
-          <figcaption className="absolute bottom-0 left-0 right-0 bg-foreground/85 px-3 py-2 text-[11px] font-bold text-background">
-            실제 모임 후 단체 한 컷
+          <figcaption className="absolute bottom-0 left-0 right-0 bg-foreground/85 px-3 py-2.5 text-[11px] font-bold leading-snug text-background">
+            강의는 6주지만,<br />같이 가는 건 6주 뒤부터
           </figcaption>
         </figure>
         <figure className="relative aspect-square overflow-hidden border-2 border-foreground bg-background">
           <Image
             src={photos.groupHands}
-            alt="용팀장 스터디 수강생들의 손모음 V사인"
+            alt="용팀장 스터디 수강생들의 손모음 — 혼자 끙끙 앓던 사람들이 같이 시작하는 순간"
             fill
             sizes="(min-width:768px) 33vw, 100vw"
             className="object-cover"
           />
-          <figcaption className="absolute bottom-0 left-0 right-0 bg-foreground/85 px-3 py-2 text-[11px] font-bold text-background">
-            같이 시작 — 가짜 카피가 아닙니다
+          <figcaption className="absolute bottom-0 left-0 right-0 bg-foreground/85 px-3 py-2.5 text-[11px] font-bold leading-snug text-background">
+            ‘나만 이런 게 아니었구나’<br />— 같이 시작하는 손
           </figcaption>
         </figure>
       </div>
