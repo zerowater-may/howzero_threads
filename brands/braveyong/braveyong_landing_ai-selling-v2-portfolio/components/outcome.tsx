@@ -66,25 +66,24 @@ export function Outcome() {
         <span className="font-bold">용팀장 기준으로 팔릴 구조를 갖춘 상품 10개를 6주 동안 직접 완성한다</span>는 의미입니다.
       </div>
 
-      {/* 인터뷰 scene: 모니터 받침 — 효자상품을 발견하는 사고방식 (개연성 보강) */}
+      {/* 인터뷰 scene: 효자상품은 발견이 아니라 가공 — Origin Story 03과 톤 통일 */}
       <div className="mt-8 border-l-4 border-foreground bg-background p-6 sm:p-8">
         <div className="font-mono mb-3 text-[10px] font-bold uppercase tracking-[0.15em] text-foreground/55">
-          제가 찾은 첫 효자상품 — 실제 사고 과정
+          제가 효자상품을 만드는 방식
         </div>
         <p className="text-base leading-relaxed text-foreground/85 sm:text-lg">
-          공유오피스에서 모니터가 자꾸 낮아서, 한참 동안{" "}
-          <span className="font-bold text-foreground">‘높은 모니터 받침대’</span>를 검색했습니다.<br />
-          ‘나처럼 검색하는 사람이 분명 더 있겠다’ — 그게 시작이었습니다.
+          저도 처음엔 1만 개를 따라 올렸습니다. 그게 다 효자상품이 되진 않았습니다.<br />
+          다만 그중 <span className="font-bold text-foreground">검색에 잡히기 시작한 몇 개</span>가 보이기 시작했습니다.
         </p>
         <p className="mt-4 text-base leading-relaxed text-foreground/85 sm:text-lg">
-          그 다음은 단순했습니다. 키워드 의도·경쟁 상품·카테고리를 매일 확인했고,
-          상품명·대표이미지·상세페이지를 계속 다듬어 가며{" "}
-          <span className="marker">키워드별 1페이지</span>에 올렸습니다.
+          거기서부터가 진짜였어요. 잡힌 상품의 키워드 의도·경쟁·카테고리를 다시 보고,
+          상품명·대표이미지·상세페이지·등록 전 체크를 처음부터 다시 가공해서{" "}
+          <span className="marker">키워드별 1페이지</span>까지 올렸습니다.
         </p>
         <p className="font-memo mt-5 text-sm leading-relaxed text-foreground/70 sm:text-base">
-          그때 처음 알았습니다 — 1만 개를 무작정 올리는 게 아니라,<br />
-          <span className="font-bold text-foreground">‘내가 진짜 필요해서 찾은 상품’</span>을<br />
-          꾸준히 다듬어 올리는 게 답이라는 걸.
+          한 상품을 효자상품으로 키우는 패턴이 손에 잡히니,<br />
+          <span className="font-bold text-foreground">같은 방식으로 다음 후보를 계속 늘려가는 중</span>입니다.<br />
+          이걸 6주 동안 같이 합니다.
         </p>
       </div>
     </Section>

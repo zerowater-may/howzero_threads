@@ -64,6 +64,36 @@ export function Apply() {
         </div>
       </div>
 
+      {/* 결제 전 부담 없이 물어보는 두 통로 — 단톡방 / 1:1 (검수 필수) */}
+      <div className="mb-5 border-2 border-foreground/15 bg-background p-5 sm:p-6">
+        <p className="text-sm leading-relaxed text-foreground/80 sm:text-base">
+          결제 전에 궁금한 점이 있으면, 먼저 물어보셔도 됩니다.<br />
+          단톡방에서 분위기를 보고, 1:1로 지금 상황을 남겨주셔도 좋습니다.
+        </p>
+        <div className="mt-4 flex flex-wrap gap-2.5">
+          <Link
+            href={config.kakaoOpenChatUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="용팀장 단톡방 입장 — 카카오톡 오픈채팅 새 창"
+            className="group inline-flex items-center gap-1.5 rounded-full border border-foreground/30 px-4 py-2 text-xs font-bold text-foreground transition-all hover:border-foreground hover:bg-foreground hover:text-background sm:text-sm"
+          >
+            💬 단톡방 들어가서 분위기 보기
+            <ExternalLink className="h-3 w-3" />
+          </Link>
+          <Link
+            href={config.kakao1to1Url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="용팀장 1:1 카카오톡 — 새 창"
+            className="group inline-flex items-center gap-1.5 rounded-full border border-foreground/30 px-4 py-2 text-xs font-bold text-foreground transition-all hover:border-foreground hover:bg-foreground hover:text-background sm:text-sm"
+          >
+            🙋 용팀장한테 1:1로 물어보기
+            <ExternalLink className="h-3 w-3" />
+          </Link>
+        </div>
+      </div>
+
       {/* CTA + 구글폼 iframe */}
       <div className="flex flex-wrap items-center gap-3">
         <Link

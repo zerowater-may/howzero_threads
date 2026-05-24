@@ -17,7 +17,7 @@ export function TrustEvidence() {
     <Section
       label="왜 믿어도 되나"
       title={<>강사이기 전에, 지금도 직접 올리는 셀러입니다.</>}
-      lead="화려한 수익 자랑 대신, 확인 가능한 사실만 둡니다. 아래 숫자는 운영자가 실제 값으로 채웁니다."
+      lead="수익 자랑하려고 만든 페이지가 아닙니다. 확인할 수 있는 사실만 둡니다."
     >
       <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
         {facts.map((f) => (

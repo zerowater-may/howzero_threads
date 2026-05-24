@@ -8,6 +8,10 @@ export const config = {
   contactEmail: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "braveyong@example.com",
   ga4Id: process.env.NEXT_PUBLIC_GA4_ID || "",
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://braveyong.example.com",
+  /** 결제 전 분위기 보러 오는 단톡방 (공개) */
+  kakaoOpenChatUrl: process.env.NEXT_PUBLIC_KAKAO_OPENCHAT_URL || "https://open.kakao.com/o/gcjQ8Hpi",
+  /** 결제 전 1:1로 상황 남기는 곳 (용팀장 직통) */
+  kakao1to1Url: process.env.NEXT_PUBLIC_KAKAO_1TO1_URL || "https://open.kakao.com/o/srD2ziBe",
   /** 신청서 URL이 비었는가 → CTA에 안내문 노출 */
   isFormUrlMissing: !process.env.NEXT_PUBLIC_GOOGLE_FORM_URL,
 } as const
