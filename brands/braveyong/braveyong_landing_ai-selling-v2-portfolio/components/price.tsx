@@ -76,15 +76,12 @@ export function Price() {
 
         <div className="space-y-3">
           <div className="border-l-4 border-foreground bg-background p-5 text-sm leading-relaxed">
-            <p className="whitespace-pre-line text-foreground/75">
-              {`첫 기수는 실행 사례와 후기를 함께 만들 분들을 위해
-가격 장벽을 낮췄습니다.
-
-`}
-              <span className="font-bold text-foreground">대신 아무나 받지 않습니다.</span>
+            <p className="text-foreground/75">
+              1기는 첫 기수예요. 실행 사례·후기를 같이 만들 분들이라, 그만큼 가격을 낮췄습니다.<br />
               <br />
-              6주 동안 오프라인 참석, 줌 보강, 과제 실행이 가능한 분만
-              신청서 검토 후 참여 안내를 드립니다.
+              <span className="font-bold text-foreground">대신 아무나 받지는 않습니다.</span>
+              <br />
+              6주 동안 오프라인에 오시고, 줌 보강 듣고, 매주 과제 같이 해주실 분만 신청서 검토 후 안내드립니다.
             </p>
           </div>
           <div className="border-l-4 border-foreground bg-background p-5 text-sm leading-relaxed">
