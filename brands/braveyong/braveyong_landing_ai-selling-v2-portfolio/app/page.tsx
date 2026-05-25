@@ -7,6 +7,7 @@ import { AIDefinition } from "@/components/ai-definition"
 import { Outcome } from "@/components/outcome"
 import { Curriculum } from "@/components/curriculum"
 import { Operation } from "@/components/operation"
+import { Calendar } from "@/components/calendar"
 import { WhyYong } from "@/components/why-yong"
 import { Study } from "@/components/study"
 import { Objections } from "@/components/objections"
@@ -43,6 +44,7 @@ export default function Page() {
         <Outcome />           {/* 07 */}
         <Curriculum />        {/* 08 */}
         <Operation />         {/* 09 */}
+        <Calendar />          {/* 09-B 1기 강의일정 캘린더 */}
         <WhyYong />           {/* 10 */}
         <Study />             {/* 11 */}
         <Objections />        {/* 12 */}
