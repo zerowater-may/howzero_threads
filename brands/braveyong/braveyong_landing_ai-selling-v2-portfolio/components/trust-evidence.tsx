@@ -73,15 +73,6 @@ export function TrustEvidence() {
         </figure>
       </div>
 
-      {/* 1기 후기 자리 — 정직 안내 (사람 말투) */}
-      <div className="mt-6 border-l-4 border-foreground bg-background p-6">
-        <p className="text-sm leading-relaxed text-foreground/75 sm:text-base">
-          <span className="font-bold text-foreground">1기 모집 중이에요.</span>{" "}
-          아래 후기는 그동안 진행한 스터디·라이브 클래스 카페에 실제로 달린 글이고요.
-          이번 6주 오프라인 실전반 1기는 <span className="font-bold text-foreground">‘첫 후기를 같이 만들 분들’</span>과 합니다.
-          가짜 후기·부풀린 숫자는 안 넣습니다.
-        </p>
-      </div>
     </Section>
   )
 }

@@ -26,5 +26,5 @@
 - [x] alias HTTP 200 (deploy `5he99qs7v` 라이브)
 - [x] 새 문구 alias 노출 검증 ("새벽에 상품 올렸습니다" 4건 / "100개, 1000개를 효자상품으로" 2건 / "같이 만들어 가는 식이에요" 1건 / "부동산 투자자" 8건 / "부동산 자산은 있었습니다" 2건 / "자산이 있어도 매월 흐르는 돈은 따로" 2건)
 - [x] 페르소나 라인 일관성: Hero subline + face alt + why-yong Signature + final-cta Signature 모두 부동산 투자자 포함
-- [ ] **#4 "이부분 삭제??" 의도 명확화 필요** — PDF 페이지 2 상단 빈 영역이 Hero 또는 OriginStory의 어느 부분을 가리키는지 사용자 확인
+- [x] **#4 "이부분 삭제??"** — trust-evidence 마지막 "1기 후기 자리 — 정직 안내" 박스 제거. 다음 섹션 testimonial-wall lead("이 8장은 그동안 진행한 스터디·라이브 클래스 카페에 실제로 달린 후기에서 따왔어요")와 내용 중복이라 깔끔 정리.
 - [ ] 사용자 강제 새로고침 (Cmd+Shift+R) — #1·#2 PDF 노출은 옛 캐시였을 가능성, 새 alias에선 이미 사람말투 placeholder + head 라벨 제거됨
