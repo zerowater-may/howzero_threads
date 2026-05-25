@@ -100,7 +100,7 @@ export function Price() {
               <br />
               그런데 되는 방향은 맞습니다.
               <span className="font-mono ml-2 text-[10px] uppercase tracking-[0.12em] text-foreground/55">
-                — 용팀장 인터뷰 中
+                — 용팀장 인터뷰 중에서
               </span>
             </p>
           </div>

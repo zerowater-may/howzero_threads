@@ -24,8 +24,9 @@ export function AIDefinition() {
             AI로 더 빠르게 돌리는 — 그 <Marker>반복 구조</Marker>를 같이 만드는 거예요.
           </p>
           <p className="mt-4 font-memo text-base leading-relaxed text-foreground/70 sm:text-lg">
-            <Marker>받는 셀러</Marker>가 아니라, <Marker>잡는 셀러</Marker>로.<br />
-            물고기 한 마리가 아니라, 잡는 법을 6주 동안 같이.
+            강의 한 번 <Marker>듣고 끝나는 셀러</Marker>가 아니라,<br />
+            매주 직접 <Marker>손에 잡는 셀러</Marker>로.<br />
+            물고기 한 마리가 아니라, 잡는 법을 6주 동안 같이 익혀 갑니다.
           </p>
         </div>
 
