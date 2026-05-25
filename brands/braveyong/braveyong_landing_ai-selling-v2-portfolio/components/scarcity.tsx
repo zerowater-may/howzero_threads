@@ -12,7 +12,7 @@ const items = [
   {
     Icon: Coins,
     title: `1기 ${(course.priceFirst / 10000).toLocaleString()}만원 · 정가 ${(course.priceRegular / 10000).toLocaleString()}만원`,
-    body: "1기 실행자에게만 적용됩니다. 카드 무이자 할부 가능 — 부담 없이 시작하실 수 있어요.",
+    body: "1기 실행자에게만 적용되는 가격이에요. 카드 무이자 할부도 되니까, 한 번에 부담되시면 나눠 결제하셔도 됩니다.",
   },
   {
     Icon: Check,
