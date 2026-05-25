@@ -23,7 +23,7 @@ export function Outcome() {
     >
       <div className="mb-6 border-l-4 border-foreground bg-background p-6">
         <p className="text-lg font-bold leading-snug sm:text-xl">
-          처음부터 1000개를 효자상품으로 만드는 건 사실상 불가능해요.<br />
+          처음부터 100개, 1000개를 효자상품으로 만드는 건 사실상 불가능해요.<br />
           그래서 6주 동안 먼저 10개부터 같이 만들어 갑니다.
         </p>
       </div>

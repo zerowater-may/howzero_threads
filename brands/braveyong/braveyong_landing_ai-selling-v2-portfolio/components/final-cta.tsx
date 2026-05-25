@@ -43,7 +43,7 @@ export function FinalCTA() {
         </p>
 
         <div className="mt-10 text-background">
-          <Signature small={<span className="text-background/55">현업 셀러 · 직장인 · 육아 아빠</span>}>
+          <Signature small={<span className="text-background/55">현업 셀러 · 부동산 투자자 · 직장인 · 육아 아빠</span>}>
             — 용감한 용팀장 드림
           </Signature>
         </div>

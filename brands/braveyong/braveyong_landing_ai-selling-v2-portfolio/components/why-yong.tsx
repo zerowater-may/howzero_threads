@@ -34,7 +34,7 @@ export function WhyYong() {
             그런데 되는 방향은 맞습니다.
           </p>
           <div className="mt-6 text-right">
-            <Signature small="현업 셀러 · 회사 다니던 직장인 · 육아 아빠">— 용감한 용팀장 드림</Signature>
+            <Signature small="현업 셀러 · 부동산 투자자 · 회사 다니던 직장인 · 육아 아빠">— 용감한 용팀장 드림</Signature>
           </div>
         </div>
 

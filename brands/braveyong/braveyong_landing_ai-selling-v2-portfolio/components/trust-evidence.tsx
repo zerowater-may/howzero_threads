@@ -7,10 +7,10 @@ import { photos } from "@/lib/testimonials"
  * 내부 placeholder("운영 입력") 노출은 결제 직전 신뢰를 깨므로 제거.
  */
 const facts = [
-  { head: "지금도", body: "직접 올리는 셀러예요." },
-  { head: "혼자", body: "1만 개를 올려봤습니다." },
-  { head: "강의 전에", body: "현업이 먼저입니다." },
-  { head: "회사 다니며", body: "애 재우고 올렸습니다." },
+  { body: "지금도 직접 올리는 셀러예요." },
+  { body: "혼자 1만 개를 올려봤습니다." },
+  { body: "강의 전에, 현업이 먼저입니다." },
+  { body: "회사 다니며 애 재우고 올렸습니다." },
 ]
 
 export function TrustEvidence() {
@@ -23,13 +23,10 @@ export function TrustEvidence() {
       <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
         {facts.map((f) => (
           <div
-            key={f.head}
-            className="border-2 border-foreground bg-background p-5 transition-transform duration-300 hover:-translate-y-1"
+            key={f.body}
+            className="flex border-2 border-foreground bg-background p-5 transition-transform duration-300 hover:-translate-y-1"
           >
-            <div className="text-xs font-bold uppercase tracking-[0.12em] text-foreground/55">
-              {f.head}
-            </div>
-            <div className="mt-2 text-base font-bold leading-snug tracking-tight sm:text-lg">
+            <div className="text-base font-bold leading-snug tracking-tight sm:text-lg">
               {f.body}
             </div>
           </div>

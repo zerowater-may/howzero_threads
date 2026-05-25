@@ -24,10 +24,10 @@ export function Strip() {
             key={it.k}
             className="border-r border-background/15 px-4 py-5 sm:py-6 last:border-r-0 [&:nth-child(2n)]:border-r-0 sm:[&:nth-child(2n)]:border-r sm:[&:nth-child(3n)]:border-r-0 lg:[&:nth-child(3n)]:border-r lg:[&:nth-child(5n)]:border-r-0"
           >
-            <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-background/55">
+            <div className="font-mono text-[11px] uppercase tracking-[0.14em] text-background/75 sm:text-xs">
               {it.v}
             </div>
-            <div className="mt-1 text-base font-bold tracking-tight sm:text-lg">{it.k}</div>
+            <div className="mt-1.5 text-base font-bold tracking-tight sm:text-lg">{it.k}</div>
           </div>
         ))}
       </div>

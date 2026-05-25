@@ -21,7 +21,7 @@ export function Hero() {
           <div className="hz-fade-up mx-auto h-40 w-40 overflow-hidden rounded-full border-2 border-foreground transition-colors duration-500 sm:h-48 sm:w-48 md:h-56 md:w-56">
             <Image
               src="/assets/face.jpg"
-              alt="용감한 용팀장 — 현업 셀러 · 직장인 · 육아아빠"
+              alt="용감한 용팀장 — 현업 셀러 · 부동산 투자자 · 직장인 · 육아아빠"
               width={256}
               height={256}
               className="h-full w-full object-cover grayscale transition-all duration-500 hover:grayscale-0"
@@ -35,7 +35,7 @@ export function Hero() {
               용감한 용팀장
             </h1>
             <p className="text-sm uppercase tracking-[0.18em] text-foreground/60 sm:text-base">
-              현업 셀러 · 직장인 · 육아 아빠
+              현업 셀러 · 부동산 투자자 · 직장인 · 육아 아빠
             </p>
           </div>
 
@@ -56,7 +56,7 @@ export function Hero() {
 
           {/* 손글씨 한 줄 — Gowun Dodum, 진정성 */}
           <p className="hz-fade-up hz-delay-3 font-memo text-base text-foreground/70 sm:text-lg">
-            저도 회사 다니면서, 애 재우고 상품 올렸습니다.
+            저도 회사 다니면서, 애 재우고 새벽에 상품 올렸습니다.
           </p>
 
           {/* CTA — pill 버튼, hover 반전 */}
