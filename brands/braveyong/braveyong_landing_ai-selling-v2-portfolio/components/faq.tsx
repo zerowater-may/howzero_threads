@@ -55,10 +55,10 @@ const faqs = [
 
 export function FAQ() {
   return (
-    <Section id="faq" label="자주 묻는 질문" title="FAQ">
-      <Accordion type="single" collapsible className="space-y-2">
+    <Section id="faq" label="자주 묻는 질문" title="FAQ" className="pb-28 sm:pb-32">
+      <Accordion type="single" collapsible className="space-y-2 pb-4">
         {faqs.map((f, i) => (
-          <AccordionItem key={i} value={`q${i}`} className="border-2 border-foreground bg-background">
+          <AccordionItem key={i} value={`q${i}`} className="border-2 border-foreground bg-background last:mb-2">
             <AccordionTrigger className="px-5 py-4 text-left hover:no-underline">
               <span className="flex items-start gap-3 text-sm font-bold sm:text-base">
                 <span className="font-mono mt-0.5 text-xs font-bold text-foreground/55">
