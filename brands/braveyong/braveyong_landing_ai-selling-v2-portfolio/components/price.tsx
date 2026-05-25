@@ -91,7 +91,7 @@ export function Price() {
             <p className="mt-3 text-foreground/75">
               6주 동안 각자의 상품을 같이 보고, 효자상품 10개를 손으로 직접 완성하는{" "}
               <span className="font-bold text-foreground">오프라인 실전반</span>이에요.<br />
-              PDF·녹화 한 묶음이 아니라, 같이 만드는 6주 자체에 대한 비용입니다.
+              PDF·녹화 한 묶음에 매기는 값이 아니라, 같이 만드는 6주 자체에 대한 값입니다.
             </p>
           </div>
           <div className="border-l-4 border-[var(--warm-border)] bg-[var(--warm)] p-5 text-sm leading-relaxed">
