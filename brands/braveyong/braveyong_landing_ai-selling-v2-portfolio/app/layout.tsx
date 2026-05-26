@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { Toaster } from "@/components/ui/toaster"
 import { ThemeProvider } from "@/components/theme-provider"
+import { ClarityProvider } from "@/components/clarity"
 import { Suspense } from "react"
 import "./globals.css"
 
@@ -142,6 +143,7 @@ export default function RootLayout({
           </Suspense>
         </ThemeProvider>
         <Analytics />
+        <ClarityProvider />
       </body>
     </html>
   )
