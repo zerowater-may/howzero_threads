@@ -256,3 +256,21 @@ body::before {
   }
 }
 
+
+/* === YouTube carousel — left→right marquee auto scroll === */
+@keyframes ytMarquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.yt-marquee-track {
+  animation: ytMarquee 40s linear infinite;
+  will-change: transform;
+}
+.yt-marquee-track:hover {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .yt-marquee-track {
+    animation: none;
+  }
+}

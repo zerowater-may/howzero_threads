@@ -10,7 +10,6 @@ const stats = [
 ]
 
 const info = [
-  { lbl: "무료 전환강의", val: course.freeLectureDate, sub: "유튜브 진행" },
   { lbl: "본강의 시작", val: course.startDate, sub: `오프라인 ${course.offlineCount}회 + 줌 ${course.zoomCount}회` },
   { lbl: "장소", val: course.location, sub: course.detailAddress },
   { lbl: "시간", val: course.scheduleTime, sub: "확정되면 참여자분께 따로 안내드려요" },
