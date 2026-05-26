@@ -105,12 +105,20 @@ export function PaymentDialog({
               이름과 휴대폰 번호를 입력하면, <span className="font-bold text-foreground">카톡으로 결제 청구서 링크</span>가 바로 발송됩니다.
               결제 후에는 <span className="font-bold text-brand">5주 시작 전까지 신청서 작성</span>이 필수입니다.
             </p>
+            <p className="mt-2 rounded border-l-2 border-brand bg-brand/5 px-3 py-2 text-xs leading-relaxed text-foreground/80 sm:text-sm">
+              ⚠️ <span className="font-bold text-brand">신청서와 결제정보(이름·휴대폰)는 꼭 동일하게</span> 작성해 주세요. 일치해야 본인 확인이 가능합니다.
+            </p>
 
             <div className="mt-4 rounded border border-foreground/15 bg-foreground/[0.03] px-4 py-3 text-sm">
               <div className="flex items-center justify-between gap-3">
                 <span className="text-foreground/60">결제 금액</span>
-                <span className="font-mono text-base font-bold tabular-nums">
-                  {amount.toLocaleString()}원
+                <span className="text-right">
+                  <span className="font-mono text-base font-bold tabular-nums">
+                    {amount.toLocaleString()}원
+                  </span>
+                  <span className="ml-1 text-[11px] font-normal text-foreground/45">
+                    (부가세 포함)
+                  </span>
                 </span>
               </div>
             </div>

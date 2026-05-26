@@ -23,12 +23,13 @@ export async function POST(request: Request) {
       )
     }
 
+    const productName = `용감한용팀장 AI셀링 실전반 오프라인 ${course.cohort}`
     const result = await sendBill({
       memberName: body.memberName,
       phoneNumber,
       amount: course.priceFirst,
-      productName: `${course.name} ${course.cohort}`,
-      message: `${course.name} ${course.cohort} 결제 청구서입니다. 신청/상담 후 결제 안내를 받으신 분만 진행해주세요.`,
+      productName,
+      message: `${productName} 결제 청구서입니다. 결제 후 5주 시작 전까지 신청서 작성이 필수입니다. 신청서·결제정보는 동일한 이름·연락처로 작성해 주세요.`,
     })
 
     return NextResponse.json({

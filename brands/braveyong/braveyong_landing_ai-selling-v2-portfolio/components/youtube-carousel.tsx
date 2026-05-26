@@ -23,9 +23,9 @@ export function YouTubeCarousel() {
   return (
     <Section
       id="youtube"
-      label="용팀장 작업 영상"
-      title={<>결제 전에, 어떻게 일하는지 직접 보세요.</>}
-      lead="용팀장이 매일 돌리는 셀링 작업법을 영상으로도 짧게 풀어뒀어요. 글보다 빠르게 느낌이 옵니다."
+      label="용팀장 영상 노트"
+      title={<>글로 다 못 풀어서, 영상으로 풀어두고 있어요.</>}
+      lead="매일 돌리는 작업법을 짧게 담아둔 영상이에요. 글보다 빠르게 느낌이 옵니다."
     >
       {/* fade-mask 양쪽 가장자리로 카드 끊김 자연스럽게 */}
       <div
