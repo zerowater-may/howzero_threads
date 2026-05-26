@@ -1,5 +1,5 @@
 import { Section } from "./section"
-import { Gift, Calendar as CalendarIcon, Video, Target } from "lucide-react"
+import { Gift, Calendar as CalendarIcon, Video } from "lucide-react"
 
 /**
  * 09-B 1기 강의일정 캘린더 — Operation 다음, WhyYong 직전.
@@ -26,11 +26,11 @@ const months: {
     startWeekday: 0, // 2026-06-01 = Mon
     events: {
       10: { type: "free", label: "유튜브 무료 라이브 강의" },
-      13: { type: "off", n: 1, title: "대량등록 탈출 진단" },
+      13: { type: "off", n: 1, title: "소싱" },
       17: { type: "zoom", week: 2 },
-      20: { type: "off", n: 2, title: "상품 선정 · 키워드 · 카테고리" },
+      20: { type: "off", n: 2, title: "가공" },
       24: { type: "zoom", week: 3 },
-      27: { type: "off", n: 3, title: "AI 상세페이지 설계" },
+      27: { type: "off", n: 3, title: "판매" },
     },
   },
   {
@@ -39,26 +39,27 @@ const months: {
     startWeekday: 2, // 2026-07-01 = Wed
     events: {
       1: { type: "zoom", week: 4 },
-      4: { type: "off", n: 4, title: "등록 · 대표이미지 · 전환 체크" },
+      4: { type: "off", n: 4, title: "광고" },
       8: { type: "zoom", week: 5 },
-      11: { type: "off", n: 5, title: "AI 반복 루틴 + 효자상품 10개 점검 · 다음 30일" },
+      11: { type: "off", n: 5, title: "시스템화" },
     },
   },
 ]
 
+// curriculum.tsx의 5블럭과 동일 frame — 상세 강의 내용은 노출 X (수강생 보호)
 const weeks: {
   n: number
   month: number
   off: string
-  title: string
-  output: string
+  label: string
+  sub: string
   zoom: string | null
 }[] = [
-  { n: 1, month: 6, off: "6.13 (토)", title: "대량등록 탈출 진단",          output: "내 스토어 진단표",      zoom: null },
-  { n: 2, month: 6, off: "6.20 (토)", title: "상품 선정 · 키워드 · 카테고리", output: "후보 상품 + 키워드 맵", zoom: "6.17 (수)" },
-  { n: 3, month: 6, off: "6.27 (토)", title: "AI 상세페이지 설계",          output: "상세페이지 스토리보드", zoom: "6.24 (수)" },
-  { n: 4, month: 7, off: "7.4 (토)",  title: "등록 · 대표이미지 · 전환 체크", output: "등록 가능한 상품 세트", zoom: "7.1 (수)" },
-  { n: 5, month: 7, off: "7.11 (토)", title: "AI 반복 루틴 + 효자상품 10개 점검 · 다음 30일", output: "효자상품 10개 + 30일 실행 계획", zoom: "7.8 (수)" },
+  { n: 1, month: 6, off: "6.13 (토)", label: "소싱",     sub: "현재 상태 진단 + 후보 발굴",       zoom: null },
+  { n: 2, month: 6, off: "6.20 (토)", label: "가공",     sub: "상품명 · 카테고리 · AI 상세",      zoom: "6.17 (수)" },
+  { n: 3, month: 6, off: "6.27 (토)", label: "판매",     sub: "등록 + 대표이미지 + 전환 체크",    zoom: "6.24 (수)" },
+  { n: 4, month: 7, off: "7.4 (토)",  label: "광고",     sub: "검색·쇼핑 광고 운영 기초",         zoom: "7.1 (수)" },
+  { n: 5, month: 7, off: "7.11 (토)", label: "시스템화", sub: "AI 반복 루틴 + 효자상품 10개 점검", zoom: "7.8 (수)" },
 ]
 
 const weekdayLabels = ["월", "화", "수", "목", "금", "토", "일"]
@@ -330,24 +331,14 @@ export function Calendar() {
                   <div className="flex-1">
                     <div className="text-base font-bold leading-snug tracking-tight sm:text-lg">
                       <span className="tabular-nums">{w.off}</span>{" "}
-                      <span className="text-foreground/40">·</span> 오프라인 {w.n}주차
+                      <span className="text-foreground/40">·</span> 오프라인 {w.n}주차 — <span className="text-foreground">{w.label}</span>
                     </div>
-                    <div className="mt-1 text-sm text-foreground/75 sm:text-base">{w.title}</div>
-                  </div>
-                </div>
-
-                <div className="mt-3 flex items-start gap-3 border-t border-foreground/10 pt-3 text-sm">
-                  <Target className="mt-0.5 h-4 w-4 flex-none text-foreground/60" aria-hidden />
-                  <div className="text-foreground/70">
-                    <span className="font-mono mr-2 text-[10px] font-bold uppercase tracking-[0.12em] text-foreground/55">
-                      산출물
-                    </span>
-                    <span className="font-bold text-foreground">{w.output}</span>
+                    <div className="mt-1 text-sm text-foreground/65 sm:text-base">{w.sub}</div>
                   </div>
                 </div>
 
                 {w.zoom && (
-                  <div className="mt-2 flex items-start gap-3 text-sm text-foreground/70">
+                  <div className="mt-3 flex items-start gap-3 border-t border-foreground/10 pt-3 text-sm text-foreground/70">
                     <Video className="mt-0.5 h-4 w-4 flex-none text-foreground/60" aria-hidden />
                     <div>
                       <span className="font-mono mr-2 text-[10px] font-bold uppercase tracking-[0.12em] text-foreground/55">
