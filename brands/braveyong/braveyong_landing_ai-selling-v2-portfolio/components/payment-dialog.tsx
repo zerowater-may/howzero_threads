@@ -3,6 +3,7 @@
 import { FormEvent, useEffect, useState } from "react"
 import { createPortal } from "react-dom"
 import { CreditCard, ExternalLink, Loader2, X } from "lucide-react"
+import { config } from "@/lib/config"
 
 type PaymentDialogProps = {
   label?: string
@@ -29,6 +30,7 @@ export function PaymentDialog({
   const [open, setOpen] = useState(false)
   const [memberName, setMemberName] = useState("")
   const [phoneNumber, setPhoneNumber] = useState("")
+  const [applyAgreed, setApplyAgreed] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [result, setResult] = useState<PaymentResult | null>(null)
@@ -44,6 +46,10 @@ export function PaymentDialog({
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
+    if (!applyAgreed) {
+      setError("결제 후 신청서 작성 동의가 필요합니다.")
+      return
+    }
     setLoading(true)
     setError(null)
     setResult(null)
@@ -96,8 +102,8 @@ export function PaymentDialog({
             </div>
 
             <p className="mt-3 text-sm leading-relaxed text-foreground/70">
-              이름과 휴대폰 번호를 입력하면 결제선생 청구서가 발송됩니다.
-              신청서/상담 후 안내받은 분만 결제를 진행해주세요.
+              이름과 휴대폰 번호를 입력하면, <span className="font-bold text-foreground">카톡으로 결제 청구서 링크</span>가 바로 발송됩니다.
+              결제 후에는 <span className="font-bold text-brand">5주 시작 전까지 신청서 작성</span>이 필수입니다.
             </p>
 
             <div className="mt-4 rounded border border-foreground/15 bg-foreground/[0.03] px-4 py-3 text-sm">
@@ -134,6 +140,37 @@ export function PaymentDialog({
                 />
               </label>
 
+              {/* 신청서 동의 — 필수. 미동의 시 결제 청구서 발송 안 됨 */}
+              <div className="border-2 border-brand bg-brand/5 p-4">
+                <label className="flex cursor-pointer items-start gap-3 text-sm">
+                  <input
+                    type="checkbox"
+                    checked={applyAgreed}
+                    onChange={(event) => setApplyAgreed(event.target.checked)}
+                    className="mt-1 h-5 w-5 flex-none accent-brand"
+                    required
+                  />
+                  <span className="leading-relaxed">
+                    <span className="font-bold text-foreground">
+                      결제 후 5주 시작 전까지 신청서를 꼭 작성하겠습니다.
+                    </span>
+                    <br />
+                    <span className="text-foreground/70">
+                      신청서 미작성 시 환불·참여 진행이 어려울 수 있어요.
+                    </span>
+                    <a
+                      href={config.googleFormUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-2 inline-flex items-center gap-1 font-bold text-brand underline underline-offset-4"
+                    >
+                      📝 신청서 미리 작성 (약 1분)
+                      <ExternalLink className="h-3 w-3" />
+                    </a>
+                  </span>
+                </label>
+              </div>
+
               {error && (
                 <div className="border-l-4 border-red-500 bg-red-50 px-4 py-3 text-sm text-red-700 dark:bg-red-950/30 dark:text-red-200">
                   {error}
@@ -162,11 +199,11 @@ export function PaymentDialog({
 
               <button
                 type="submit"
-                disabled={loading}
-                className="inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-foreground bg-foreground px-6 py-3.5 text-base font-bold text-background transition-all hover:bg-background hover:text-foreground disabled:cursor-not-allowed disabled:opacity-60"
+                disabled={loading || !applyAgreed}
+                className="inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-brand bg-brand px-6 py-4 text-base font-bold text-brand-foreground transition-all hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40"
               >
-                {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <CreditCard className="h-4 w-4" />}
-                청구서 발송 요청
+                {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : <CreditCard className="h-5 w-5" />}
+                {applyAgreed ? "카톡으로 결제 청구서 받기" : "신청서 동의 후 진행"}
               </button>
             </form>
 

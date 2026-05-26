@@ -61,16 +61,15 @@ export function Price() {
             결제만 따로 받는 페이지는 없어요 — 신청서가 결제의 유일한 시작입니다.
           </p>
 
-          {/* 조바심 — 시중 강의 대비 가격 + 1기 한정 */}
+          {/* 1기 한정 — 진심·집중 톤 (테스터 느낌 X) */}
           <div className="mt-4 border-2 border-brand bg-brand/5 px-4 py-3">
             <div className="font-mono text-[10px] font-bold uppercase tracking-[0.15em] text-brand">
               왜 1기만 이 가격?
             </div>
             <p className="mt-1 text-sm leading-relaxed text-foreground/85 sm:text-base">
-              시중 AI 셀링·이커머스 강의는 보통 <span className="font-bold text-foreground">400~600만원대</span>예요.
-              1기만 <span className="font-bold text-brand">실행 사례·후기 같이 만들 분</span>을 모으는 거라
-              <span className="font-bold text-brand"> 절반 이하</span>로 받습니다.
-              2기부터는 정가 250만원으로 갑니다.
+              <span className="font-bold text-foreground">1기는 용팀장이 한 분 한 분 직접 챙기는 첫 기수</span>예요. 가장 가까이서 같이 가는 5주입니다.{" "}
+              시중 AI 셀링·이커머스 강의는 보통 <span className="font-bold text-foreground">400~600만원대</span>인데,
+              1기는 <span className="font-bold text-brand">절반 이하</span>로 시작해요. 2기부터는 정가 250만원입니다.
             </p>
           </div>
 

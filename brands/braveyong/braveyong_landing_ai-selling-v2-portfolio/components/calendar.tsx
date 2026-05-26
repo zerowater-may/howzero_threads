@@ -226,12 +226,12 @@ export function Calendar() {
         </div>
         <div className="sm:text-right">
           <span className="font-mono mr-2 text-[10px] font-bold uppercase tracking-[0.12em] text-foreground/55">장소</span>
-          <span className="font-bold">서울 강남 (확정 후 안내)</span>
+          <span className="font-bold">선릉역 or 강남역 주변</span>
         </div>
       </div>
 
       <p className="font-memo mt-6 text-sm leading-relaxed text-foreground/70 sm:text-base">
-        ※ 위 일정은 예정이에요. 실제 시간·장소는 1기 확정 후 참여자분께 따로 안내드립니다. 주차별 상세는 1기 신청 후 공개합니다.
+        ※ 위 일정은 예정이에요. 정확한 시간·장소(선릉역 or 강남역 주변)는 1기 확정 후 참여자분께 따로 안내드립니다. 주차별 상세는 1기 신청 후 공개합니다.
       </p>
     </Section>
   )

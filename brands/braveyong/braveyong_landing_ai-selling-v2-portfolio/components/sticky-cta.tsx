@@ -1,10 +1,10 @@
 "use client"
 
 import Link from "next/link"
-import { ArrowUpRight } from "lucide-react"
 import { useEffect, useState } from "react"
 import { config, course } from "@/lib/config"
 import { CountdownTimer } from "./countdown-timer"
+import { PaymentDialog } from "./payment-dialog"
 
 /**
  * Sticky CTA — Hero 통과 후 등장. 데스크탑에도 노출 (이전 모바일 only).
@@ -51,7 +51,7 @@ export function StickyCTA() {
           </span>
         </div>
 
-        {/* CTA — 신청서(메인) + 바로 결제하기(카톡 1:1로 결제 의향 직행) */}
+        {/* CTA — 신청서(보조) + 바로 결제하기(PaymentDialog 모달: 이름·전화 입력 → 카톡 청구서 발송 + 신청서 동의) */}
         <div className="flex w-full gap-2 sm:w-auto sm:gap-2">
           <Link
             href={config.googleFormUrl}
@@ -62,16 +62,11 @@ export function StickyCTA() {
           >
             신청서부터 적기 (약 1분)
           </Link>
-          <Link
-            href={config.kakao1to1Url}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="바로 결제하기 — 용팀장 1:1 카톡으로 결제 의향 보내기, 새 창에서 열림"
+          <PaymentDialog
+            amount={course.priceFirst}
+            label="바로 결제하기"
             className="group flex flex-1 items-center justify-center gap-2 rounded-full border-2 border-brand bg-brand px-5 py-4 text-base font-bold tracking-tight text-brand-foreground transition-all hover:opacity-90 sm:flex-none sm:px-7 sm:py-4"
-          >
-            💳 바로 결제하기
-            <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5" />
-          </Link>
+          />
         </div>
       </div>
     </div>
