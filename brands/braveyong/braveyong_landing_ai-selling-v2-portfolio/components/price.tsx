@@ -57,9 +57,8 @@ export function Price() {
 
           <hr className="my-5 border-foreground/10" />
           <p className="text-sm leading-relaxed text-foreground/70">
-            결제 링크·할부 옵션은{" "}
-            <span className="font-bold text-foreground">신청서 보낸 분들에게만 카톡으로</span>{" "}
-            안내드려요. 결제만 따로 받는 페이지는 없습니다 — 신청서가 결제의 시작이에요.
+            <span className="font-bold text-foreground">신청서 작성하시면 결제 링크가 즉시 발송됩니다.</span>{" "}
+            결제만 따로 받는 페이지는 없어요 — 신청서가 결제의 유일한 시작입니다.
           </p>
 
           {/* 조바심 — 시중 강의 대비 가격 + 1기 한정 */}

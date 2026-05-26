@@ -15,6 +15,13 @@ export const config = {
   kakaoOpenChatUrl: process.env.NEXT_PUBLIC_KAKAO_OPENCHAT_URL || "https://open.kakao.com/o/gcjQ8Hpi",
   /** 결제 전 1:1로 상황 남기는 곳 (용팀장 직통) */
   kakao1to1Url: process.env.NEXT_PUBLIC_KAKAO_1TO1_URL || "https://open.kakao.com/o/srD2ziBe",
+  /**
+   * 결제 페이지 URL (Toss Payments Link / Stripe Payment Link / Kakao Pay 등).
+   * 운영자가 실제 결제 link 만들면 NEXT_PUBLIC_PAYMENT_URL에 주입.
+   * 미설정 시 kakao1to1로 fallback → 1:1 카톡으로 결제 안내 받는 경로.
+   * 가드: 사용자가 "신청서 작성 → 결제 link 자동 발송" 흐름 원함. 신청 후 응답 메시지에 이 URL 노출.
+   */
+  paymentUrl: process.env.NEXT_PUBLIC_PAYMENT_URL || process.env.NEXT_PUBLIC_KAKAO_1TO1_URL || "https://open.kakao.com/o/srD2ziBe",
   /** 신청서 URL이 비었는가 → CTA에 안내문 노출 */
   isFormUrlMissing: !process.env.NEXT_PUBLIC_GOOGLE_FORM_URL,
 } as const

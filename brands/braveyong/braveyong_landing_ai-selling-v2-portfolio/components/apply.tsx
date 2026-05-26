@@ -16,11 +16,17 @@ export function Apply() {
       label="신청 & 선별"
       title={<>신청서 보고, 한 분씩 따로 보고 안내드려요.</>}
     >
-      <div className="mb-6 border-l-4 border-foreground bg-background p-6 text-base leading-relaxed text-foreground/80 sm:text-lg">
-        <p className="whitespace-pre-line">
-          {`신청서를 한 분 한 분 직접 읽고 참여 안내를 따로 보내드립니다.
-오프라인 실전반이라, 5주 동안 직접 오셔서 상품을 같이 고치고
-과제를 매주 해주실 분들과 가고 싶거든요.`}
+      {/* 핵심 안내 — 신청서 작성 → 결제 link 즉시 발송 */}
+      <div className="mb-6 border-2 border-brand bg-brand/5 p-6 sm:p-7">
+        <div className="font-mono mb-2 text-[10px] font-bold uppercase tracking-[0.18em] text-brand">
+          결제 흐름
+        </div>
+        <p className="text-lg font-bold leading-snug tracking-tight text-foreground sm:text-xl">
+          신청서를 먼저 작성하셔야 <span className="text-brand">결제 링크</span>가 발송됩니다.
+        </p>
+        <p className="mt-2 text-sm leading-relaxed text-foreground/75 sm:text-base">
+          신청서 제출 직후 <span className="font-bold text-foreground">결제 페이지 안내</span>가 자동으로 노출되고,{" "}
+          용팀장이 한 번 더 카톡으로 확인 메시지 보내드려요. 결제만 따로 받는 페이지는 없습니다.
         </p>
       </div>
 
@@ -31,10 +37,10 @@ export function Apply() {
         </div>
         <ol className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {[
-            { n: "01", h: "신청서 작성", b: "10문항 약 1분. 이름·연락처·상황을 솔직히 적어주세요." },
-            { n: "02", h: "용팀장이 직접 읽어요", b: "한 분씩 따로 읽어보고, 카톡으로 먼저 인사드릴게요." },
-            { n: "03", h: "결제 안내 카톡", b: "같이 가도 될 것 같다 싶으면 결제 링크·할부 옵션을 카톡으로 따로 보내드려요." },
-            { n: "04", h: "5주 시작", b: "오프라인 1주차 일정·장소까지 챙겨서 보내드립니다." },
+            { n: "01", h: "신청서 작성", b: "8문항 약 1분. 이름·연락처·상황을 솔직히 적어주세요." },
+            { n: "02", h: "결제 링크 즉시 발송", b: "제출 직후 응답 페이지에 결제 링크가 자동으로 뜹니다. 카드·이체·무이자 할부 가능." },
+            { n: "03", h: "용팀장 확인 카톡", b: "신청서 보고 한 분씩 따로 읽고, 카톡으로 한 번 더 확인 메시지 드려요." },
+            { n: "04", h: "5주 시작", b: "결제 확정되면 오프라인 1주차 일정·장소까지 챙겨서 보내드립니다." },
           ].map((s) => (
             <li key={s.n} className="relative border-l-2 border-brand/40 pl-4">
               <div className="font-mono mb-1 text-[10px] font-bold text-brand">STEP {s.n}</div>
@@ -44,8 +50,7 @@ export function Apply() {
           ))}
         </ol>
         <p className="font-memo mt-4 border-t border-foreground/10 pt-3 text-sm leading-relaxed text-foreground/70 sm:text-base">
-          ※ <span className="font-bold text-foreground">결제는 신청서를 보낸 분들에게만 카톡으로 안내드립니다.</span>{" "}
-          결제만 따로 받지 않아요. 신청서 = 결제의 유일한 시작점이에요.
+          ※ <span className="font-bold text-foreground">신청서 = 결제의 유일한 시작점</span>입니다. 결제만 따로 받지 않아요. 신청서 작성하시면 곧바로 결제 링크가 안내됩니다.
         </p>
       </div>
 
