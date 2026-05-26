@@ -37,7 +37,7 @@ export const config = {
 export const course = {
   name: "5주 오프라인 AI 셀링 실전반",
   cohort: "1기",
-  priceFirst: 1_800_000,           // 1기 실행자 특별가
+  priceFirst: 1_980_000,           // 1기 실행자 특별가 (부가세 포함)
   priceRegular: 2_500_000,         // 2기 이후 정가
   capacityMin: 10,                 // 페이지 노출 X (내부 운영 기준)
   capacityMax: 15,                 // 페이지 노출 X
