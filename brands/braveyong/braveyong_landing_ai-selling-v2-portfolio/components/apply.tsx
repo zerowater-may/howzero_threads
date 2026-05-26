@@ -121,8 +121,8 @@ export function Apply() {
         </div>
       </div>
 
-      {/* CTA — 40~50대 시인성: 큼지막한 버튼 + 신청서 링크 복사 옵션 */}
-      <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+      {/* CTA — 단순화: 메인 + 링크 복사 2개만 (1:1은 위 단톡방 박스에 이미 있음) */}
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
         <Link
           href={config.googleFormUrl}
           target="_blank"
@@ -134,16 +134,6 @@ export function Apply() {
           <ArrowUpRight className="h-6 w-6 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 sm:h-7 sm:w-7" />
         </Link>
         <CopyFormUrlButton />
-        <Link
-          href={config.kakao1to1Url}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="용팀장 1:1 카카오톡 — 새 창에서 열림"
-          className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-foreground/40 px-6 py-4 text-base font-bold tracking-tight text-foreground transition-all hover:border-foreground hover:bg-foreground hover:text-background sm:px-6 sm:py-3.5"
-        >
-          🙋 먼저 1:1로 물어볼게요
-          <ExternalLink className="h-4 w-4" />
-        </Link>
       </div>
 
       {/* 강한 문구 — 인터뷰 언어 패턴 */}

@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowUpRight, ExternalLink } from "lucide-react"
+import { ArrowUpRight } from "lucide-react"
 import { config, course } from "@/lib/config"
 
 /**
@@ -59,27 +59,17 @@ export function Hero() {
             저도 회사 다니면서, 애 재우고 새벽에 상품 올렸습니다.
           </p>
 
-          {/* CTA — 40~50대 타겟 시인성 키움 (브랜드에셋 타겟층 데이터 반영) */}
-          <div className="hz-fade-up hz-delay-4 flex flex-col items-stretch gap-3 border-t border-foreground/10 pt-6 sm:flex-row sm:items-center sm:justify-center sm:gap-4 sm:pt-8">
+          {/* CTA — 메인 1개 (40~50대 시인성, 결제는 신청서 작성 후 카톡으로) */}
+          <div className="hz-fade-up hz-delay-4 flex flex-col items-stretch gap-3 border-t border-foreground/10 pt-6 sm:items-center sm:pt-8">
             <Link
               href={config.googleFormUrl}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="신청서 작성하기 — 약 1분, 새 창에서 열림"
-              className="group inline-flex items-center justify-center gap-2.5 rounded-full border-2 border-foreground bg-foreground px-8 py-4 text-base font-bold tracking-tight text-background transition-all duration-300 hover:bg-background hover:text-foreground sm:px-9 sm:py-5 sm:text-lg"
+              className="group inline-flex items-center justify-center gap-2.5 rounded-full border-2 border-foreground bg-foreground px-8 py-4 text-base font-bold tracking-tight text-background transition-all duration-300 hover:bg-background hover:text-foreground sm:px-10 sm:py-5 sm:text-lg"
             >
               신청서 작성하기 (약 1분)
               <ArrowUpRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 sm:h-6 sm:w-6" />
-            </Link>
-            <Link
-              href={config.youtubeFreeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="6월 10일 유튜브 무료 라이브 강의 — 새 창에서 열림"
-              className="group inline-flex items-center justify-center gap-2 rounded-full border-2 border-foreground px-7 py-4 text-base font-bold tracking-tight text-foreground transition-all duration-300 hover:bg-foreground hover:text-background sm:px-8 sm:py-5 sm:text-lg"
-            >
-              6/10 무료 라이브 (유튜브)
-              <ExternalLink className="h-4 w-4" />
             </Link>
           </div>
 

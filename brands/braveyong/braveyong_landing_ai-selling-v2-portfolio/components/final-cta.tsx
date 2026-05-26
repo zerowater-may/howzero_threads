@@ -38,8 +38,7 @@ export function FinalCTA() {
         </div>
 
         <p className="mt-6 text-xs leading-relaxed text-background/55 sm:text-sm">
-          신청서 보고 참여·결제 안내 따로 보내드릴게요.<br />
-          6월 10일 유튜브 무료강의 안내도 같이 보내드립니다.
+          신청서 보고 참여·결제 안내 따로 보내드릴게요.
         </p>
 
         <div className="mt-10 text-background">

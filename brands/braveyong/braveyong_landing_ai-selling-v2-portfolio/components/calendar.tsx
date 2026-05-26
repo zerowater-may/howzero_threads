@@ -1,5 +1,5 @@
 import { Section } from "./section"
-import { Gift, Calendar as CalendarIcon, Video } from "lucide-react"
+import { Calendar as CalendarIcon, Video } from "lucide-react"
 
 /**
  * 09-B 1기 강의일정 캘린더 — Operation 다음, WhyYong 직전.
@@ -7,12 +7,9 @@ import { Gift, Calendar as CalendarIcon, Video } from "lucide-react"
  * 데이터: course.startDate 2026-06-13(토) 기준 매주 토요일 오프라인 5회, 줌은 2~5주차 직전 수요일 4회.
  * grid 각 셀 hover 시 그 날 일정 detail tooltip 표시.
  */
-const free = { date: "6.10 (수)", label: "유튜브 무료 라이브 강의" }
-
-type FreeEvent = { type: "free"; label: string }
 type OffEvent = { type: "off"; n: number; title: string }
 type ZoomEvent = { type: "zoom"; week: number }
-type DayEvent = FreeEvent | OffEvent | ZoomEvent
+type DayEvent = OffEvent | ZoomEvent
 
 const months: {
   label: string
@@ -25,7 +22,6 @@ const months: {
     daysInMonth: 30,
     startWeekday: 0, // 2026-06-01 = Mon
     events: {
-      10: { type: "free", label: "유튜브 무료 라이브 강의" },
       13: { type: "off", n: 1, title: "소싱" },
       17: { type: "zoom", week: 2 },
       20: { type: "off", n: 2, title: "가공" },
@@ -65,16 +61,9 @@ const weeks: {
 const weekdayLabels = ["월", "화", "수", "목", "금", "토", "일"]
 
 /** Tooltip 한 줄 정보 생성 */
-function eventTip(ev: DayEvent, monthLabel: string, day: number): { head: string; body: string; tone: "warm" | "dark" | "outline" } {
+function eventTip(ev: DayEvent, monthLabel: string, day: number): { head: string; body: string; tone: "dark" | "outline" } {
   const m = parseInt(monthLabel.split(".")[1], 10) // "2026.06" → 6
   const dateStr = `${m}.${day}`
-  if (ev.type === "free") {
-    return {
-      head: `${dateStr} (수) · 무료강의`,
-      body: `${ev.label} · 본강의 결제 전, 누구나 참여`,
-      tone: "warm",
-    }
-  }
   if (ev.type === "off") {
     return {
       head: `${dateStr} (토) · 오프라인 ${ev.n}주차`,
@@ -170,22 +159,6 @@ function MonthGrid({ m, idx }: { m: (typeof months)[number]; idx: number }) {
           const tip = eventTip(ev, m.label, c.day)
           const baseCell = "group relative flex aspect-square max-h-12 items-center justify-center rounded text-xs font-bold tabular-nums transition-transform hover:scale-110 hover:z-10"
 
-          if (ev.type === "free") {
-            return (
-              <div
-                key={i}
-                className={`${baseCell} border-2 border-foreground bg-[var(--warm)] text-foreground`}
-                tabIndex={0}
-                title={`${c.day}일 ${ev.label}`}
-                aria-label={`${c.day}일 ${ev.label}`}
-              >
-                {c.day}
-                <span className="absolute -top-1 -right-1 text-[10px]" aria-hidden>🎁</span>
-                <Tooltip tip={tip} />
-              </div>
-            )
-          }
-
           if (ev.type === "off") {
             return (
               <div
@@ -232,29 +205,6 @@ export function Calendar() {
       title={<>1기, 같이 가는 5주 일정.</>}
       lead="오프라인 5회 + 줌 보강 4회. 매주 토요일 오프라인으로 같이 작업하고, 사이 주중에 줌으로 보강합니다."
     >
-      {/* 유튜브 무료 라이브 highlight */}
-      <div className="mb-8 grid gap-4 border-2 border-foreground bg-background p-6 sm:grid-cols-[auto_1fr_auto] sm:items-center sm:p-7">
-        <div className="flex h-14 w-14 flex-none items-center justify-center rounded-full border-2 border-foreground bg-[var(--warm)] shadow-[0_3px_0_var(--foreground)]">
-          <Gift className="h-6 w-6" aria-hidden />
-        </div>
-        <div>
-          <div className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-foreground/55">
-            본강의 전 · 누구나
-          </div>
-          <div className="mt-1 text-xl font-bold leading-tight tracking-tight sm:text-2xl">
-            <span className="tabular-nums">{free.date}</span>{" "}
-            <span className="text-foreground/40">·</span>{" "}
-            {free.label}
-          </div>
-          <p className="font-memo mt-2 text-sm leading-relaxed text-foreground/70 sm:text-base">
-            유튜브 라이브로 가볍게 먼저 만나봐요. 5주 강의 결제 전에, 분위기·방향·내가 맞는지 직접 보세요.
-          </p>
-        </div>
-        <span className="font-mono justify-self-start rounded-full border-2 border-foreground bg-foreground px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.15em] text-background sm:justify-self-end">
-          무료
-        </span>
-      </div>
-
       {/* 월간 grid 보기 — 6월 + 7월. mx-auto + max-w로 셀 비대 방지 */}
       <div className="mb-4 grid gap-4 lg:grid-cols-2">
         {months.map((m, i) => (
@@ -266,10 +216,6 @@ export function Calendar() {
       <div className="mb-12 flex flex-wrap items-center gap-x-5 gap-y-2 border-l-4 border-foreground bg-background px-5 py-3 text-xs text-foreground/75 sm:text-sm">
         <span className="font-mono mr-1 text-[10px] font-bold uppercase tracking-[0.15em] text-foreground/55">
           범례
-        </span>
-        <span className="inline-flex items-center gap-2">
-          <span className="flex h-5 w-5 items-center justify-center rounded border-2 border-foreground bg-[var(--warm)] text-[10px] font-bold">10</span>
-          무료강의
         </span>
         <span className="inline-flex items-center gap-2">
           <span className="flex h-5 w-5 items-center justify-center rounded bg-foreground text-[10px] font-bold text-background">●</span>

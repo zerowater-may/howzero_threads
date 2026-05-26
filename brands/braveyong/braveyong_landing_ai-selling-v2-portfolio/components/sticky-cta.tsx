@@ -51,17 +51,28 @@ export function StickyCTA() {
           </span>
         </div>
 
-        {/* CTA — 40~50대 시인성 키움 */}
-        <Link
-          href={config.googleFormUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="신청서 작성하기 — 약 1분, 새 창에서 열림"
-          className="group flex w-full items-center justify-center gap-2 rounded-full border-2 border-foreground bg-foreground px-6 py-4 text-base font-bold tracking-tight text-background transition-all hover:bg-background hover:text-foreground sm:w-auto sm:px-8 sm:py-4 sm:text-base"
-        >
-          신청서부터 적기 (약 1분)
-          <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5" />
-        </Link>
+        {/* CTA — 신청서(메인) + 바로 결제하기(카톡 1:1로 결제 의향 직행) */}
+        <div className="flex w-full gap-2 sm:w-auto sm:gap-2">
+          <Link
+            href={config.googleFormUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="신청서 작성하기 — 약 1분, 새 창에서 열림"
+            className="group flex flex-1 items-center justify-center gap-2 rounded-full border-2 border-foreground bg-background px-5 py-4 text-base font-bold tracking-tight text-foreground transition-all hover:bg-foreground hover:text-background sm:flex-none sm:px-7 sm:py-4"
+          >
+            신청서부터 적기 (약 1분)
+          </Link>
+          <Link
+            href={config.kakao1to1Url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="바로 결제하기 — 용팀장 1:1 카톡으로 결제 의향 보내기, 새 창에서 열림"
+            className="group flex flex-1 items-center justify-center gap-2 rounded-full border-2 border-foreground bg-foreground px-5 py-4 text-base font-bold tracking-tight text-background transition-all hover:bg-background hover:text-foreground sm:flex-none sm:px-7 sm:py-4"
+          >
+            💳 바로 결제하기
+            <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5" />
+          </Link>
+        </div>
       </div>
     </div>
   )
