@@ -84,6 +84,7 @@ export function Price() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="신청서 작성하기 — 약 1분, 새 창에서 열림"
+            data-track="price_apply"
             className="group mt-5 inline-flex w-full items-center justify-center gap-2.5 rounded-full border-2 border-brand bg-brand px-6 py-4 text-base font-bold tracking-tight text-brand-foreground shadow-[0_5px_0_oklch(0.22_0.1_18)] transition-all hover:translate-y-0.5 hover:shadow-[0_2px_0_oklch(0.22_0.1_18)] sm:py-5 sm:text-lg"
           >
             신청서 작성하기 (약 1분)

@@ -112,6 +112,7 @@ export function GlassNav() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="신청서 작성하기 — 새 창에서 열림"
+            data-track="nav_apply"
             className="group inline-flex items-center gap-1 rounded-full bg-foreground px-3.5 py-1.5 text-xs font-bold tracking-tight text-background transition-all hover:bg-background hover:text-foreground hover:ring-2 hover:ring-foreground sm:px-4 sm:py-2 sm:text-sm"
           >
             신청서 작성

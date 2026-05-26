@@ -170,6 +170,7 @@ export function PaymentDialog({
                       href={config.googleFormUrl}
                       target="_blank"
                       rel="noopener noreferrer"
+                      data-track="payment_modal_apply_link"
                       className="mt-2 inline-flex items-center gap-1 font-bold text-brand underline underline-offset-4"
                     >
                       📝 신청서 미리 작성 (약 1분)
@@ -208,6 +209,7 @@ export function PaymentDialog({
               <button
                 type="submit"
                 disabled={loading || !applyAgreed}
+                data-track="payment_submit"
                 className="inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-brand bg-brand px-6 py-4 text-base font-bold text-brand-foreground transition-all hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40"
               >
                 {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : <CreditCard className="h-5 w-5" />}
@@ -224,7 +226,7 @@ export function PaymentDialog({
 
   return (
     <>
-      <button type="button" className={triggerClassName} onClick={() => setOpen(true)}>
+      <button type="button" data-track="payment_dialog_open" className={triggerClassName} onClick={() => setOpen(true)}>
         <CreditCard className="h-4 w-4" />
         {label}
       </button>

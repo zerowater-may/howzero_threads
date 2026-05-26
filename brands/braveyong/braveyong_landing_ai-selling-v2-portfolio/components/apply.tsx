@@ -61,6 +61,7 @@ export function Apply() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="5주 오프라인 실전반 신청서 작성 — 새 창에서 열림"
+          data-track="apply_apply"
           className="group inline-flex items-center justify-center gap-2.5 rounded-full border-2 border-brand bg-brand px-9 py-5 text-lg font-bold tracking-tight text-brand-foreground shadow-[0_6px_0_oklch(0.22_0.1_18)] transition-all hover:translate-y-0.5 hover:shadow-[0_3px_0_oklch(0.22_0.1_18)] sm:px-12 sm:py-6 sm:text-xl"
         >
           신청서 작성하기 (약 1분)
@@ -72,6 +73,7 @@ export function Apply() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="용팀장 1:1 카카오톡 — 새 창"
+          data-track="apply_kakao"
           className="group inline-flex items-center justify-center gap-2 rounded-full border-2 border-foreground/40 px-6 py-4 text-base font-bold tracking-tight text-foreground transition-all hover:border-foreground hover:bg-foreground hover:text-background sm:text-base"
         >
           🙋 용팀장님께 1:1 물어보기

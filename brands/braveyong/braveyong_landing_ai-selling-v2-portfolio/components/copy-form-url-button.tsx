@@ -34,6 +34,7 @@ export function CopyFormUrlButton({ className = "" }: { className?: string }) {
       type="button"
       onClick={handleCopy}
       aria-label="신청서 링크 클립보드에 복사"
+      data-track="apply_copy_link"
       className={`inline-flex items-center gap-2 rounded-full border-2 border-foreground/40 px-5 py-3 text-sm font-bold tracking-tight text-foreground transition-all hover:border-foreground hover:bg-foreground hover:text-background sm:px-6 sm:py-3.5 sm:text-base ${className}`}
     >
       {copied ? (

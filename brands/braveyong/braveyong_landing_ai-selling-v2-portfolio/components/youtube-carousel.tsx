@@ -45,6 +45,7 @@ export function YouTubeCarousel() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={v.title}
+              data-track={`youtube_card_${i + 1}`}
               className="group relative flex-none w-[280px] overflow-hidden border-2 border-foreground bg-background transition-transform hover:-translate-y-0.5 sm:w-[360px] md:w-[420px]"
             >
               <div className="relative aspect-video overflow-hidden bg-foreground/5">

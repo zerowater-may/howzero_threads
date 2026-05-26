@@ -58,15 +58,18 @@ export function StickyCTA() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="신청서 작성하기 — 약 1분, 새 창에서 열림"
+            data-track="sticky_apply"
             className="group flex flex-1 items-center justify-center gap-2 rounded-full border-2 border-foreground bg-background px-5 py-4 text-base font-bold tracking-tight text-foreground transition-all hover:bg-foreground hover:text-background sm:flex-none sm:px-7 sm:py-4"
           >
             신청서부터 적기 (약 1분)
           </Link>
-          <PaymentDialog
-            amount={course.priceFirst}
-            label="바로 결제하기"
-            className="group flex flex-1 items-center justify-center gap-2 rounded-full border-2 border-brand bg-brand px-5 py-4 text-base font-bold tracking-tight text-brand-foreground transition-all hover:opacity-90 sm:flex-none sm:px-7 sm:py-4"
-          />
+          <div data-track="sticky_pay_open" className="contents">
+            <PaymentDialog
+              amount={course.priceFirst}
+              label="바로 결제하기"
+              className="group flex flex-1 items-center justify-center gap-2 rounded-full border-2 border-brand bg-brand px-5 py-4 text-base font-bold tracking-tight text-brand-foreground transition-all hover:opacity-90 sm:flex-none sm:px-7 sm:py-4"
+            />
+          </div>
         </div>
       </div>
     </div>
