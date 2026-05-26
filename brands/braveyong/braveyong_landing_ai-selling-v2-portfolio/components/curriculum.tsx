@@ -96,9 +96,9 @@ export function Curriculum() {
         </div>
       </div>
 
-      {/* 안내 한 줄 */}
+      {/* 안내 한 줄 — 진심 감성 */}
       <p className="font-memo mt-6 text-sm leading-relaxed text-foreground/70 sm:text-base">
-        ※ 다른 강사·플랫폼에 전략이 그대로 복제되지 않도록, 상세는 1기 신청자에게만 공개합니다.
+        ※ 제 1기 수강생분들에게 진심이고 싶어서요. 손에 잡히는 자료·체크리스트는 결제하신 분들께만 직접 보내드립니다.
       </p>
     </Section>
   )
