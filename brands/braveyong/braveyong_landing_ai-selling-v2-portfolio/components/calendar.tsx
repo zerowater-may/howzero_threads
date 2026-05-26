@@ -284,9 +284,12 @@ export function Calendar() {
       </div>
 
       {/* 5주 vertical timeline — 상세 보기 (블록 구분 명확화) */}
-      <div className="font-mono mb-4 inline-flex items-center gap-2 rounded-full border border-foreground/30 bg-background px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-foreground/70">
-        <span className="inline-block h-1.5 w-1.5 rounded-full bg-foreground" />
-        상세 보기
+      <div className="mb-6 flex items-center gap-3">
+        <div className="font-mono inline-flex items-center gap-2 rounded-full border border-foreground/30 bg-background px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-foreground/70">
+          <span className="inline-block h-1.5 w-1.5 rounded-full bg-foreground" />
+          상세 보기
+        </div>
+        <span className="h-px flex-1 bg-foreground/15" aria-hidden />
       </div>
       <ol className="relative border-l-2 border-foreground/20 pl-5 sm:pl-7">
         {weeks.map((w, i) => {
@@ -296,17 +299,19 @@ export function Calendar() {
               key={w.n}
               data-reveal
               style={{ transitionDelay: `${i * 80}ms` }}
-              className="relative mb-4 last:mb-0"
+              className={`relative mb-4 last:mb-0 ${showMonthHeader ? "pt-7" : ""}`}
             >
               {showMonthHeader && (
-                <div className="font-mono absolute -left-[34px] -top-7 text-[10px] font-bold uppercase tracking-[0.18em] text-foreground/55 sm:-left-[42px]">
+                <div className="font-mono absolute -left-[34px] top-0 text-[10px] font-bold uppercase tracking-[0.18em] text-foreground/55 sm:-left-[42px]">
                   {`2026.0${w.month}`}
                 </div>
               )}
 
               <span
                 aria-hidden
-                className={`absolute -left-[27px] top-1 flex h-5 w-5 items-center justify-center rounded-full border-2 border-foreground text-[10px] font-bold sm:-left-[35px] ${
+                className={`absolute -left-[27px] flex h-5 w-5 items-center justify-center rounded-full border-2 border-foreground text-[10px] font-bold sm:-left-[35px] ${
+                  showMonthHeader ? "top-8" : "top-1"
+                } ${
                   w.n === 1 || w.n === 5 ? "bg-foreground text-background" : "bg-background"
                 }`}
               >
