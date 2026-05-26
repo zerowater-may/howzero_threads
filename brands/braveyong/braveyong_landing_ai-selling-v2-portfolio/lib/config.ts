@@ -1,10 +1,17 @@
 /**
  * 운영 입력 통합 설정.
- * 환경변수가 비면 placeholder로 폴백 — 페이지가 깨지지 않고 "운영 입력 필요" 상태가 자연 노출.
+ * 환경변수가 비거나 placeholder면 페이지가 깨지지 않고 "운영 입력 필요" 상태가 자연 노출.
  */
+const rawGoogleFormUrl = process.env.NEXT_PUBLIC_GOOGLE_FORM_URL || ""
+const isGoogleFormUrlMissing =
+  !rawGoogleFormUrl ||
+  rawGoogleFormUrl === "#" ||
+  rawGoogleFormUrl.includes("XXXX") ||
+  rawGoogleFormUrl.includes("forms.gle/XXXX")
+
 export const config = {
   // 폼 URL 미설정 시 페이지 top 튀는 것 방지 — 신청 섹션(#apply)으로 부드러운 스크롤
-  googleFormUrl: process.env.NEXT_PUBLIC_GOOGLE_FORM_URL || "#apply",
+  googleFormUrl: isGoogleFormUrlMissing ? "#apply" : rawGoogleFormUrl,
   /** 1기 신청 마감 ISO datetime — 카운트다운 종료 후 자동 숨김 */
   cohort1Deadline: process.env.NEXT_PUBLIC_COHORT1_DEADLINE || "2026-06-08T23:59:59+09:00",
   youtubeFreeUrl: process.env.NEXT_PUBLIC_YOUTUBE_FREE_URL || "#",
@@ -23,7 +30,7 @@ export const config = {
    */
   paymentUrl: process.env.NEXT_PUBLIC_PAYMENT_URL || process.env.NEXT_PUBLIC_KAKAO_1TO1_URL || "https://open.kakao.com/o/srD2ziBe",
   /** 신청서 URL이 비었는가 → CTA에 안내문 노출 */
-  isFormUrlMissing: !process.env.NEXT_PUBLIC_GOOGLE_FORM_URL,
+  isFormUrlMissing: isGoogleFormUrlMissing,
 } as const
 
 /** 강의·상품 고정값 (운영자가 변경할 때만 여기 수정) */

@@ -1,7 +1,8 @@
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import { Signature } from "./handwriting"
-import { config } from "@/lib/config"
+import { config, course } from "@/lib/config"
+import { PaymentDialog } from "./payment-dialog"
 
 /** 18 최종 CTA (다크) — 큰 CTA + 흰 펜글씨 서명 */
 export function FinalCTA() {
@@ -25,7 +26,7 @@ export function FinalCTA() {
           신청서부터 한번 적어주세요.
         </p>
 
-        <div className="mt-8">
+        <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Link
             href={config.googleFormUrl}
             target="_blank"
@@ -35,6 +36,12 @@ export function FinalCTA() {
             1기 실행자로 지원하기
             <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Link>
+          <PaymentDialog
+            amount={course.priceFirst}
+            label="결제 청구서 받기"
+            dark
+            className="inline-flex items-center gap-2 rounded-full border-2 border-background/55 px-8 py-4 text-base font-bold uppercase tracking-[0.1em] text-background transition-all hover:border-background hover:bg-background hover:text-foreground sm:text-lg"
+          />
         </div>
 
         <p className="mt-6 text-xs leading-relaxed text-background/55 sm:text-sm">
