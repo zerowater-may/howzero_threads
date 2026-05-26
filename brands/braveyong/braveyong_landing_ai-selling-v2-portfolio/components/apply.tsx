@@ -44,9 +44,9 @@ export function Apply() {
         </div>
         <ol className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {[
-            { n: "01", h: "신청서 작성", b: "11문항 약 3분이에요. 지금 상황을 솔직하게 적어주세요." },
+            { n: "01", h: "신청서 작성", b: "10문항 약 3~4분. 이름·연락처·상황을 솔직히 적어주세요." },
             { n: "02", h: "용팀장이 직접 읽어요", b: "한 분씩 따로 읽어보고, 카톡으로 먼저 인사드릴게요." },
-            { n: "03", h: "결제 안내", b: "같이 가도 될 것 같다 싶으면 결제 링크 따로 보내드려요. 카드·이체·무이자 할부 가능." },
+            { n: "03", h: "결제 안내 카톡", b: "같이 가도 될 것 같다 싶으면 결제 링크·할부 옵션을 카톡으로 따로 보내드려요." },
             { n: "04", h: "5주 시작", b: "오프라인 1주차 일정·장소까지 챙겨서 보내드립니다." },
           ].map((s) => (
             <li key={s.n} className="relative border-l-2 border-foreground/15 pl-4">
@@ -57,7 +57,8 @@ export function Apply() {
           ))}
         </ol>
         <p className="font-memo mt-4 border-t border-foreground/10 pt-3 text-xs leading-relaxed text-foreground/60 sm:text-sm">
-          결제를 먼저 받지 않습니다. 신청서부터, 통화 한 번부터 시작해요.
+          ※ <span className="font-bold text-foreground">결제는 신청서를 보낸 분들에게만 카톡으로 안내드립니다.</span>{" "}
+          결제만 따로 받지 않아요. 신청서 = 결제의 유일한 시작점이에요.
         </p>
       </div>
 

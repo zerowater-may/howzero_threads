@@ -57,9 +57,9 @@ export function Price() {
 
           <hr className="my-5 border-foreground/10" />
           <p className="text-sm leading-relaxed text-foreground/70">
-            결제 링크와 입금 안내는{" "}
-            <span className="font-bold text-foreground">신청서 보고 참여 확정된 분에게만</span>{" "}
-            보내드립니다.
+            결제 링크·할부 옵션은{" "}
+            <span className="font-bold text-foreground">신청서 보낸 분들에게만 카톡으로</span>{" "}
+            안내드려요. 결제만 따로 받는 페이지는 없습니다 — 신청서가 결제의 시작이에요.
           </p>
 
           {/* CTA 직전 감정 정당화 — 결제 결심을 도와주는 한 줄 */}
