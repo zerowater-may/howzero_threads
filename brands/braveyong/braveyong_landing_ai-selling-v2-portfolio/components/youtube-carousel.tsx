@@ -21,7 +21,12 @@ export function YouTubeCarousel() {
   const looped = [...videos, ...videos]
 
   return (
-    <Section id="youtube" label="유튜브" title={<>유튜브</>}>
+    <Section
+      id="youtube"
+      label="용팀장 작업 영상"
+      title={<>결제 전에, 어떻게 일하는지 직접 보세요.</>}
+      lead="용팀장이 매일 돌리는 셀링 작업법을 영상으로도 짧게 풀어뒀어요. 글보다 빠르게 느낌이 옵니다."
+    >
       {/* fade-mask 양쪽 가장자리로 카드 끊김 자연스럽게 */}
       <div
         className="relative -mx-4 overflow-hidden sm:-mx-6"

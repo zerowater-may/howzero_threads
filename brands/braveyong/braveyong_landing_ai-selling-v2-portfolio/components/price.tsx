@@ -67,9 +67,8 @@ export function Price() {
               왜 1기만 이 가격?
             </div>
             <p className="mt-1 text-sm leading-relaxed text-foreground/85 sm:text-base">
-              <span className="font-bold text-foreground">1기는 용팀장이 한 분 한 분 직접 챙기는 첫 기수</span>예요. 가장 가까이서 같이 가는 5주입니다.{" "}
-              시중 AI 셀링·이커머스 강의는 보통 <span className="font-bold text-foreground">400~600만원대</span>인데,
-              1기는 <span className="font-bold text-brand">절반 이하</span>로 시작해요. 2기부터는 정가 250만원입니다.
+              <span className="font-bold text-foreground">1기는 용팀장이 한 분 한 분 직접 챙기는 첫 기수</span>예요. 가장 가까이서 같이 가는 5주이고요.{" "}
+              그래서 1기만 <span className="font-bold text-brand">정가의 절반 이하</span>로 시작합니다. 2기부터는 정가 250만원이에요.
             </p>
           </div>
 

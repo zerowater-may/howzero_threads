@@ -74,7 +74,7 @@ export function Apply() {
           aria-label="용팀장 1:1 카카오톡 — 새 창"
           className="group inline-flex items-center justify-center gap-2 rounded-full border-2 border-foreground/40 px-6 py-4 text-base font-bold tracking-tight text-foreground transition-all hover:border-foreground hover:bg-foreground hover:text-background sm:text-base"
         >
-          🙋 용팀장한테 1:1로 물어보기
+          🙋 용팀장님께 1:1 물어보기
           <ExternalLink className="h-4 w-4" />
         </Link>
       </div>
@@ -95,7 +95,7 @@ export function Apply() {
           </p>
           <p>
             <span className="font-mono mr-2 text-[10px] uppercase tracking-[0.15em] text-background/55">정중히 사양</span>
-            카운트다운으로 압박하거나 ‘딸깍 자동화·하루 1시간이면 누구나’ 같은 강의를 찾으시는 분
+            ‘딸깍 자동화·하루 1시간이면 누구나’ 같은 강의를 찾으시는 분
           </p>
         </div>
         <p className="font-memo mt-5 border-t border-background/15 pt-4 text-sm leading-relaxed text-background/85 sm:text-base">
