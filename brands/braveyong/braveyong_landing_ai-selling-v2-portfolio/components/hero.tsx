@@ -50,7 +50,7 @@ export function Hero() {
               만드는 셀러로.
             </p>
             <p className="text-sm leading-relaxed text-foreground/65 sm:text-base">
-              6주 동안 매주 만나서, 줌 보강도 하면서 같이 만들어 갈게요.
+              5주 동안 매주 만나서, 줌 보강도 하면서 같이 만들어 갈게요.
             </p>
           </div>
 
@@ -65,7 +65,7 @@ export function Hero() {
               href={config.googleFormUrl}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="6주 오프라인 실전반 지원하기 — 신청서 새 창에서 열림"
+              aria-label="5주 오프라인 실전반 지원하기 — 신청서 새 창에서 열림"
               className="group inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-foreground px-6 py-3 text-sm font-bold uppercase tracking-[0.1em] text-background transition-all duration-300 hover:bg-background hover:text-foreground sm:text-base"
             >
               실전반 지원하기
@@ -85,9 +85,7 @@ export function Hero() {
 
           {/* 보조 안내 — Pretendard 작게, 사람 말투 */}
           <p className="hz-fade-up hz-delay-5 text-xs leading-relaxed text-foreground/55 sm:text-sm">
-            {course.cohort} {course.capacityMin}~{course.capacityMax}명만 받아요.
-            <span className="mx-2 text-foreground/25">·</span>
-            신청서 보고 한 분씩 따로 연락드립니다.
+            {course.cohort} 모집 중 · 신청서 보고 한 분씩 따로 연락드립니다.
           </p>
         </div>
       </div>

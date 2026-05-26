@@ -6,8 +6,8 @@ import { course } from "@/lib/config"
 const items = [
   {
     Icon: Users,
-    title: `${course.capacityMin}~${course.capacityMax}명 소수정예`,
-    body: "현장에서 직접 한 분 한 분 봐드리려면, 인원이 어쩔 수 없이 한정돼요.",
+    title: "소수정예 운영",
+    body: "현장에서 직접 한 분 한 분 봐드리려면, 인원이 어쩔 수 없이 한정돼요. 정확한 모집 인원은 신청서 보고 따로 안내드립니다.",
   },
   {
     Icon: Coins,

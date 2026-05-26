@@ -3,8 +3,8 @@ import { Gift, Calendar as CalendarIcon, Video, Target } from "lucide-react"
 
 /**
  * 09-B 1기 강의일정 캘린더 — Operation 다음, WhyYong 직전.
- * 월간 grid 보기(6월·7월) + 6주 timeline 카드 (origin-story 패턴).
- * 데이터: course.startDate 2026-06-13(토) 기준 매주 토요일 오프라인, 줌은 2~6주차 직전 수요일.
+ * 월간 grid 보기(6월·7월) + 5주 timeline 카드 (origin-story 패턴).
+ * 데이터: course.startDate 2026-06-13(토) 기준 매주 토요일 오프라인 5회, 줌은 2~5주차 직전 수요일 4회.
  */
 const free = { date: "6.10 (수)", label: "유튜브 무료 전환강의" }
 
@@ -38,8 +38,6 @@ const months: {
       4: { type: "off", n: 4 },
       8: { type: "zoom" },
       11: { type: "off", n: 5 },
-      15: { type: "zoom" },
-      18: { type: "off", n: 6 },
     },
   },
 ]
@@ -56,8 +54,7 @@ const weeks: {
   { n: 2, month: 6, off: "6.20 (토)", title: "상품 선정 · 키워드 · 카테고리", output: "후보 상품 + 키워드 맵", zoom: "6.17 (수)" },
   { n: 3, month: 6, off: "6.27 (토)", title: "AI 상세페이지 설계",          output: "상세페이지 스토리보드", zoom: "6.24 (수)" },
   { n: 4, month: 7, off: "7.4 (토)",  title: "등록 · 대표이미지 · 전환 체크", output: "등록 가능한 상품 세트", zoom: "7.1 (수)" },
-  { n: 5, month: 7, off: "7.11 (토)", title: "AI 반복 작업 루틴",           output: "개인 AI 셀링 템플릿",   zoom: "7.8 (수)" },
-  { n: 6, month: 7, off: "7.18 (토)", title: "효자상품 10개 점검 · 다음 30일 운영", output: "효자상품 10개 + 30일 실행 계획", zoom: "7.15 (수)" },
+  { n: 5, month: 7, off: "7.11 (토)", title: "AI 반복 루틴 + 효자상품 10개 점검 · 다음 30일", output: "효자상품 10개 + 30일 실행 계획", zoom: "7.8 (수)" },
 ]
 
 const weekdayLabels = ["월", "화", "수", "목", "금", "토", "일"]
@@ -173,8 +170,8 @@ export function Calendar() {
       tone="warm"
       id="calendar"
       label="Calendar"
-      title={<>1기, 같이 가는 6주 일정.</>}
-      lead="오프라인 6회 + 줌 보강 5회. 매주 토요일 오프라인으로 같이 작업하고, 사이 주중에 줌으로 보강합니다."
+      title={<>1기, 같이 가는 5주 일정.</>}
+      lead="오프라인 5회 + 줌 보강 4회. 매주 토요일 오프라인으로 같이 작업하고, 사이 주중에 줌으로 보강합니다."
     >
       {/* 무료 전환강의 highlight */}
       <div className="mb-8 grid gap-4 border-2 border-foreground bg-background p-6 sm:grid-cols-[auto_1fr_auto] sm:items-center sm:p-7">
@@ -191,7 +188,7 @@ export function Calendar() {
             {free.label}
           </div>
           <p className="font-memo mt-2 text-sm leading-relaxed text-foreground/70 sm:text-base">
-            유튜브 라이브로 가볍게 먼저 만나봐요. 6주 강의 결제 전에, 분위기·방향·내가 맞는지 직접 보세요.
+            유튜브 라이브로 가볍게 먼저 만나봐요. 5주 강의 결제 전에, 분위기·방향·내가 맞는지 직접 보세요.
           </p>
         </div>
         <span className="font-mono justify-self-start rounded-full border-2 border-foreground bg-foreground px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.15em] text-background sm:justify-self-end">
@@ -225,7 +222,7 @@ export function Calendar() {
         </span>
       </div>
 
-      {/* 6주 vertical timeline — 상세 보기 */}
+      {/* 5주 vertical timeline — 상세 보기 */}
       <div className="font-mono mb-4 text-[10px] font-bold uppercase tracking-[0.18em] text-foreground/55">
         상세 보기
       </div>
@@ -248,7 +245,7 @@ export function Calendar() {
               <span
                 aria-hidden
                 className={`absolute -left-[27px] top-1 flex h-5 w-5 items-center justify-center rounded-full border-2 border-foreground text-[10px] font-bold sm:-left-[35px] ${
-                  w.n === 1 || w.n === 6 ? "bg-foreground text-background" : "bg-background"
+                  w.n === 1 || w.n === 5 ? "bg-foreground text-background" : "bg-background"
                 }`}
               >
                 {w.n}
@@ -258,7 +255,7 @@ export function Calendar() {
                 <div className="font-mono mb-2 flex items-center justify-between text-[10px] font-bold uppercase tracking-[0.15em] text-foreground/55">
                   <span>WEEK {String(w.n).padStart(2, "0")}</span>
                   {w.n === 1 && <span className="text-foreground">▶ 시작</span>}
-                  {w.n === 6 && <span className="text-foreground">▣ 마무리</span>}
+                  {w.n === 5 && <span className="text-foreground">▣ 마무리</span>}
                 </div>
 
                 <div className="flex items-start gap-3">

@@ -17,8 +17,8 @@ const role = [
 const questions = [
   "이름", "연락처", "현재 판매 플랫폼", "현재 상품 등록 수",
   "월매출 / 순수익 구간", "가장 막히는 지점",
-  "기존 상품 개선 / 새 상품 제작", "오프라인 6회 참석 가능 여부",
-  "줌 보강 5회 참여 가능 여부", "매주 과제 실행 가능 여부",
+  "기존 상품 개선 / 새 상품 제작", "오프라인 5회 참석 가능 여부",
+  "줌 보강 4회 참여 가능 여부", "매주 과제 실행 가능 여부",
   "2026-06-13 시작 본강의 참여 의향",
 ]
 
@@ -32,7 +32,7 @@ export function Apply() {
       <div className="mb-6 border-l-4 border-foreground bg-background p-6 text-sm leading-relaxed text-foreground/75">
         <p className="whitespace-pre-line">
           {`신청서를 한 분 한 분 직접 읽고 참여 안내를 따로 보내드립니다.
-오프라인 실전반이라, 6주 동안 직접 오셔서 상품을 같이 고치고
+오프라인 실전반이라, 5주 동안 직접 오셔서 상품을 같이 고치고
 과제를 매주 해주실 분들과 가고 싶거든요.`}
         </p>
       </div>
@@ -47,7 +47,7 @@ export function Apply() {
             { n: "01", h: "신청서 작성", b: "11문항 약 3분이에요. 지금 상황을 솔직하게 적어주세요." },
             { n: "02", h: "용팀장이 직접 읽어요", b: "한 분씩 따로 읽어보고, 카톡으로 먼저 인사드릴게요." },
             { n: "03", h: "결제 안내", b: "같이 가도 될 것 같다 싶으면 결제 링크 따로 보내드려요. 카드·이체·무이자 할부 가능." },
-            { n: "04", h: "6주 시작", b: "오프라인 1주차 일정·장소까지 챙겨서 보내드립니다." },
+            { n: "04", h: "5주 시작", b: "오프라인 1주차 일정·장소까지 챙겨서 보내드립니다." },
           ].map((s) => (
             <li key={s.n} className="relative border-l-2 border-foreground/15 pl-4">
               <div className="font-mono mb-1 text-[10px] font-bold text-foreground/55">STEP {s.n}</div>
@@ -124,7 +124,7 @@ export function Apply() {
           href={config.googleFormUrl}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="6주 오프라인 실전반 신청서 작성 — 새 창에서 열림"
+          aria-label="5주 오프라인 실전반 신청서 작성 — 새 창에서 열림"
           className="group inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-foreground px-7 py-3.5 text-base font-bold uppercase tracking-[0.1em] text-background transition-all hover:bg-background hover:text-foreground"
         >
           신청서 작성하기 (약 3분)
@@ -154,7 +154,7 @@ export function Apply() {
         <div className="mt-5 grid gap-3 border-t border-background/15 pt-5 text-sm text-background/85 sm:grid-cols-2">
           <p>
             <span className="font-mono mr-2 text-[10px] uppercase tracking-[0.15em] text-background/55">받습니다</span>
-            직장·육아 병행하면서도 6주 동안 직접 상품을 같이 고쳐 가실 분
+            직장·육아 병행하면서도 5주 동안 직접 상품을 같이 고쳐 가실 분
           </p>
           <p>
             <span className="font-mono mr-2 text-[10px] uppercase tracking-[0.15em] text-background/55">정중히 사양</span>

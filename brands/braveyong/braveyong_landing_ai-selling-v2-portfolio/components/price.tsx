@@ -17,17 +17,24 @@ export function Price() {
             1기 실행자 특별가
           </span>
           <div className="text-sm font-bold text-foreground/70">
-            6주 오프라인 AI 셀링 실전반 · {course.cohort}
+            5주 오프라인 AI 셀링 실전반 · {course.cohort}
           </div>
 
-          {/* 가격 숫자 부활 */}
-          <div className="mt-2 text-5xl font-bold tracking-tight tabular-nums">
+          {/* 가격 앵커링 — 정가 strike 위쪽 + 1기 특별가 큰 숫자 */}
+          <div className="mt-2 flex items-baseline gap-3">
+            <s className="text-2xl font-bold text-foreground/40 tabular-nums">
+              {(course.priceRegular / 10000).toLocaleString()}만원
+            </s>
+            <span className="font-mono rounded-full bg-[var(--warm)] px-2 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--warm-border)]">
+              2기 이후 정가
+            </span>
+          </div>
+          <div className="mt-1 text-5xl font-bold tracking-tight tabular-nums">
             {(course.priceFirst / 10000).toLocaleString()}
             <span className="ml-1 text-lg font-bold text-foreground/65">만원</span>
           </div>
-          <div className="mt-2 text-sm text-foreground/55">
-            2기 이후 정가{" "}
-            <s className="tabular-nums">{(course.priceRegular / 10000).toLocaleString()}만원</s>
+          <div className="font-mono mt-1 text-xs font-bold uppercase tracking-[0.12em] text-[var(--warm-border)]">
+            1기 실행자 한정 · {(((course.priceRegular - course.priceFirst) / course.priceRegular) * 100).toFixed(0)}% off
           </div>
 
           <div className="mt-3">
@@ -57,7 +64,7 @@ export function Price() {
 
           {/* CTA 직전 감정 정당화 — 결제 결심을 도와주는 한 줄 */}
           <p className="font-memo mt-4 rounded border-l-2 border-foreground bg-background/60 px-3 py-2 text-sm leading-relaxed text-foreground">
-            받는 건 6주가 아니라,<br />
+            받는 건 5주가 아니라,<br />
             <span className="font-bold">내가 직접 만든 효자상품 10개</span>
             와, 졸업 후에도 같이 가는 사람들입니다.
           </p>
@@ -81,7 +88,7 @@ export function Price() {
               <br />
               <span className="font-bold text-foreground">대신 아무나 받지는 않습니다.</span>
               <br />
-              6주 동안 오프라인에 직접 오시고, 줌 보강 들으시고, 매주 과제 같이 해주실 분, 신청서 보고 따로 연락드릴게요.
+              5주 동안 오프라인에 직접 오시고, 줌 보강 들으시고, 매주 과제 같이 해주실 분, 신청서 보고 따로 연락드릴게요.
             </p>
           </div>
           <div className="border-l-4 border-foreground bg-background p-5 text-sm leading-relaxed">
@@ -89,9 +96,9 @@ export function Price() {
               <span className="marker">녹화강의가 아니에요.</span>
             </p>
             <p className="mt-3 text-foreground/75">
-              6주 동안 각자의 상품을 같이 보고, 효자상품 10개를 손으로 직접 완성하는{" "}
+              5주 동안 각자의 상품을 같이 보고, 효자상품 10개를 손으로 직접 완성하는{" "}
               <span className="font-bold text-foreground">오프라인 실전반</span>이에요.<br />
-              PDF·녹화 한 묶음에 매기는 값이 아니라, 같이 만드는 6주 자체에 대한 값입니다.
+              PDF·녹화 한 묶음에 매기는 값이 아니라, 같이 만드는 5주 자체에 대한 값입니다.
             </p>
           </div>
           <div className="border-l-4 border-[var(--warm-border)] bg-[var(--warm)] p-5 text-sm leading-relaxed">

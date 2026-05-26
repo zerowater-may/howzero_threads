@@ -14,7 +14,7 @@ export function AIDefinition() {
   return (
     <Section
       label="AI 셀링이란"
-      title={<>AI 셀링은 툴 쓰는 법이 아니에요. 매일 돌리는 판매 운영 구조입니다.</>}
+      title={<>AI는 대신 팔아주지 않아요. 제가 매일 하던 판단을, 더 빠르게 반복하게 만드는 거예요.</>}
     >
       <div className="grid gap-6 md:grid-cols-2">
         <div className="border-l-4 border-foreground bg-background p-6">
@@ -26,7 +26,7 @@ export function AIDefinition() {
           <p className="mt-4 font-memo text-base leading-relaxed text-foreground/70 sm:text-lg">
             강의 한 번 <Marker>듣고 끝나는 셀러</Marker>가 아니라,<br />
             매주 직접 <Marker>손에 잡는 셀러</Marker>로.<br />
-            물고기 한 마리가 아니라, 잡는 법을 6주 동안 같이 익혀 갑니다.
+            물고기 한 마리가 아니라, 잡는 법을 5주 동안 같이 익혀 갑니다.
           </p>
         </div>
 

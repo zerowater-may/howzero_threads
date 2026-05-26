@@ -15,17 +15,15 @@ export function Study() {
   return (
     <Section
       label="졸업 후에도 이어집니다"
-      title={<>6주 강의는 시작일 뿐입니다.</>}
+      title={<>보통 강의는 끝나면 거기서 끝나죠.</>}
     >
       <div className="mb-6 border-l-4 border-foreground bg-background p-6">
         <p className="text-lg font-bold leading-snug sm:text-xl">
-          6주가 끝나면 강의는 끝나도, 같이 가는 사람들은 그때부터입니다.<br />
-          매월 한 번 강남에서 만나서, 정책이 바뀌고 네이버 로직이 바뀌고 시장이 바뀌어도{" "}
-          <span className="text-foreground">혼자 다시 막히지 않게 같이 업데이트</span>합니다.
+          저는 <span className="text-foreground">끝나고 나서가 더 중요하다</span>고 생각해요.<br />
+          5주가 끝나도 매월 한 번 강남에서 같이 모여요. 정책이 바뀌고, 네이버 로직이 바뀌고, 시장이 바뀌어도 — 천천히 같이 따라갑니다.
         </p>
         <p className="font-memo mt-4 text-base leading-relaxed text-foreground/75 sm:text-lg">
-          강의의 <span className="marker">진짜 가치는 졸업 후</span>에 있습니다.<br />
-          한 번 듣고 끝나는 시장이 아니니까요.
+          <span className="marker">같이 한다는 게,</span> 5주짜리 약속이 아니어서요.
         </p>
       </div>
 
@@ -66,7 +64,7 @@ export function Study() {
           <ul className="space-y-2.5">
             <li className="flex items-start gap-2.5 text-sm">
               <Check className="mt-0.5 h-4 w-4 flex-none" />
-              6주 본강의를 끝낸 분만 참여하실 수 있어요.
+              5주 본강의를 끝낸 분만 참여하실 수 있어요.
             </li>
             <li className="flex items-start gap-2.5 text-sm">
               <Check className="mt-0.5 h-4 w-4 flex-none" />

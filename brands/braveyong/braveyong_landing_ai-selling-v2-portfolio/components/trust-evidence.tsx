@@ -9,7 +9,7 @@ import { photos } from "@/lib/testimonials"
 const facts = [
   { body: "지금도 직접 올리는 셀러예요." },
   { body: "혼자 1만 개를 올려봤습니다." },
-  { body: "강의 전에, 현업이 먼저입니다." },
+  { body: "지금도 매일 직접 운영 중인 셀러입니다." },
   { body: "회사 다니며 애 재우고 올렸습니다." },
 ]
 
@@ -56,7 +56,7 @@ export function TrustEvidence() {
             className="object-cover"
           />
           <figcaption className="absolute bottom-0 left-0 right-0 bg-foreground/85 px-3 py-2.5 text-[11px] font-bold leading-snug text-background">
-            강의는 6주지만,<br />같이 가는 건 6주 뒤부터
+            강의는 5주지만,<br />같이 가는 건 그 뒤부터
           </figcaption>
         </figure>
         <figure className="relative aspect-square overflow-hidden border-2 border-foreground bg-background">

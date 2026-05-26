@@ -2,8 +2,9 @@
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Section } from "./section"
+import { course } from "@/lib/config"
 
-/** 08 6주 커리큘럼 — Accordion */
+/** 08 5주 커리큘럼 — Accordion */
 const weeks = [
   {
     n: 1,
@@ -12,9 +13,9 @@ const weeks = [
     topics: [
       "현재 방식, 시간, 마진, 노출 상태 진단",
       "살릴 상품과 버릴 상품 기준 정리",
-      "6주 실행 목표 설정",
+      "5주 실행 목표 설정",
     ],
-    outputs: ["내 스토어 진단표", "효자상품 기준표 초안", "6주 개인 실행 목표"],
+    outputs: ["내 스토어 진단표", "효자상품 기준표 초안", "5주 개인 실행 목표"],
     scene:
       "강의실 모니터에 각자 스토어를 띄워 놓고, 1만 개 중 살릴 상품과 버릴 상품을 같이 골라냅니다.",
   },
@@ -54,28 +55,18 @@ const weeks = [
   },
   {
     n: 5,
-    title: "AI 반복 작업 루틴",
-    sub: "다음 상품도 같은 기준으로",
+    title: "AI 반복 루틴 + 효자상품 10개 점검 · 다음 30일",
+    sub: "마무리 + 졸업 후 계획 (5+6주차 통합)",
     topics: [
       "상품 분석·상품명 개선·상세페이지 초안·CS 답변·체크리스트 템플릿화",
       "다음 상품도 같은 기준으로 만들 수 있는 작업 루틴 정리",
-    ],
-    outputs: ["개인 AI 셀링 템플릿", "주간 작업 루틴표", "효자상품 추가 제작"],
-    scene:
-      "오후 4시 이후 CS 알림을 끄는 시스템처럼, 부업이 부업으로 남도록 루틴을 같이 짜 드립니다.",
-  },
-  {
-    n: 6,
-    title: "효자상품 10개 점검 · 다음 30일 운영",
-    sub: "마무리 + 졸업 후 계획",
-    topics: [
       "효자상품 10개 최종 점검",
       "노출·클릭·문의·주문·순수익 관점의 개선 기준 정리",
       "졸업 후 30일 실행 계획 수립",
     ],
-    outputs: ["효자상품 10개", "30일 실행 계획", "개선 우선순위", "개인별 피드백"],
+    outputs: ["개인 AI 셀링 템플릿", "효자상품 10개", "30일 실행 계획", "개선 우선순위"],
     scene:
-      "졸업이 끝이 아닙니다. 매월 1회 오프라인 스터디로 정책·시장 변화에 맞춰 같이 업데이트합니다.",
+      "오후 4시 이후 CS 알림을 끄는 시스템처럼 루틴을 같이 짜고, 마지막으로 효자상품 10개를 한 줄씩 같이 점검합니다. 졸업이 끝이 아니에요. 매월 오프라인 스터디로 정책·시장 변화에 맞춰 같이 업데이트합니다.",
   },
 ]
 
@@ -83,8 +74,8 @@ export function Curriculum() {
   return (
     <Section
       id="curriculum"
-      label="6주 커리큘럼"
-      title={<>오프라인 6회 + 줌 보강 5회</>}
+      label="5주 커리큘럼"
+      title={<>오프라인 {course.offlineCount}회 + 줌 보강 {course.zoomCount}회</>}
       lead="오프라인에서는 현장에서 같이 작업하고 피드백 드리고요. 줌 보강에선 중간 과제를 점검합니다. 매주 손에 작업물이 쌓이는 식이에요."
     >
       <Accordion type="single" defaultValue="w1" collapsible className="border-2 border-foreground bg-background">
