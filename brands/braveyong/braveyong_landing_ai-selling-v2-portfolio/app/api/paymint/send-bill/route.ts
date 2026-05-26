@@ -29,7 +29,7 @@ export async function POST(request: Request) {
       phoneNumber,
       amount: course.priceFirst,
       productName,
-      message: `${productName} 결제 청구서입니다. 결제 후 5주 시작 전까지 신청서 작성이 필수입니다. 신청서·결제정보는 동일한 이름·연락처로 작성해 주세요.`,
+      message: `${productName} 결제 청구서입니다. 신청서·결제정보는 동일한 이름·연락처로 작성해 주세요.`,
     })
 
     return NextResponse.json({
