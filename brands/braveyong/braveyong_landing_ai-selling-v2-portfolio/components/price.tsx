@@ -73,11 +73,11 @@ export function Price() {
             href={config.googleFormUrl}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="신청서 작성하기 — 약 3분, 새 창에서 열림"
-            className="group mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-foreground bg-foreground px-6 py-3.5 text-base font-bold tracking-tight text-background transition-all hover:bg-background hover:text-foreground"
+            aria-label="신청서 작성하기 — 약 1분, 새 창에서 열림"
+            className="group mt-5 inline-flex w-full items-center justify-center gap-2.5 rounded-full border-2 border-foreground bg-foreground px-6 py-4 text-base font-bold tracking-tight text-background transition-all hover:bg-background hover:text-foreground sm:py-5 sm:text-lg"
           >
-            신청서 작성하기 (약 3분)
-            <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            신청서 작성하기 (약 1분)
+            <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 sm:h-6 sm:w-6" />
           </Link>
         </div>
 

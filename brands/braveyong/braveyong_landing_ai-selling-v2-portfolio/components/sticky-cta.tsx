@@ -51,16 +51,16 @@ export function StickyCTA() {
           </span>
         </div>
 
-        {/* CTA */}
+        {/* CTA — 40~50대 시인성 키움 */}
         <Link
           href={config.googleFormUrl}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="신청서 작성하기 — 약 3분, 새 창에서 열림"
-          className="group flex w-full items-center justify-center gap-2 rounded-full border-2 border-foreground bg-foreground px-5 py-3 text-sm font-bold tracking-tight text-background transition-all hover:bg-background hover:text-foreground sm:w-auto sm:px-7"
+          aria-label="신청서 작성하기 — 약 1분, 새 창에서 열림"
+          className="group flex w-full items-center justify-center gap-2 rounded-full border-2 border-foreground bg-foreground px-6 py-4 text-base font-bold tracking-tight text-background transition-all hover:bg-background hover:text-foreground sm:w-auto sm:px-8 sm:py-4 sm:text-base"
         >
-          신청서부터 적기 (약 3분)
-          <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+          신청서부터 적기 (약 1분)
+          <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5" />
         </Link>
       </div>
     </div>

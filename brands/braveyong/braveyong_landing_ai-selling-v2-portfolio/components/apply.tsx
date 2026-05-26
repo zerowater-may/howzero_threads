@@ -3,23 +3,25 @@ import { ArrowUpRight, ExternalLink } from "lucide-react"
 import { Section } from "./section"
 import { Check } from "lucide-react"
 import { config } from "@/lib/config"
+import { CopyFormUrlButton } from "./copy-form-url-button"
 
 /**
  * 16 신청 — 같은 페이지 안 구글폼 iframe 임베드 (별도 라우트 없음)
  * 폼 URL이 없으면 placeholder 메시지 + CTA만 노출.
+ * 진짜 폼(10문항)과 일치시킴. 신청서 = 결제의 유일한 시작점.
  */
 const role = [
-  "6월 10일 유튜브 무료강의 신청",
-  "현재 셀러 상태 진단",
-  "실행 의지 확인",
-  "본강의 결제 후보 분리",
+  "셀러 경험·매출 상황을 짧게 파악",
+  "5주 일정 시간 확보 가능성 확인",
+  "용팀장 1:1 카톡 매칭",
+  "결제 안내 카톡 동의 (결제의 유일한 시작점)",
 ]
 const questions = [
-  "이름", "연락처", "현재 판매 플랫폼", "현재 상품 등록 수",
-  "월매출 / 순수익 구간", "가장 막히는 지점",
-  "기존 상품 개선 / 새 상품 제작", "오프라인 5회 참석 가능 여부",
-  "줌 보강 4회 참여 가능 여부", "매주 과제 실행 가능 여부",
-  "2026-06-13 시작 본강의 참여 의향",
+  "이름", "휴대폰 번호", "카톡 ID",
+  "셀러 경험", "월 매출 구간",
+  "가장 답답한 점", "5주 일정 가능 여부",
+  "결제 의향", "묻고 싶은 점 (선택)",
+  "결제 안내 카톡 동의",
 ]
 
 export function Apply() {
@@ -44,7 +46,7 @@ export function Apply() {
         </div>
         <ol className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {[
-            { n: "01", h: "신청서 작성", b: "10문항 약 3~4분. 이름·연락처·상황을 솔직히 적어주세요." },
+            { n: "01", h: "신청서 작성", b: "10문항 약 1분. 이름·연락처·상황을 솔직히 적어주세요." },
             { n: "02", h: "용팀장이 직접 읽어요", b: "한 분씩 따로 읽어보고, 카톡으로 먼저 인사드릴게요." },
             { n: "03", h: "결제 안내 카톡", b: "같이 가도 될 것 같다 싶으면 결제 링크·할부 옵션을 카톡으로 따로 보내드려요." },
             { n: "04", h: "5주 시작", b: "오프라인 1주차 일정·장소까지 챙겨서 보내드립니다." },
@@ -75,7 +77,7 @@ export function Apply() {
           </ul>
         </div>
         <div className="border-2 border-foreground bg-background p-6">
-          <h3 className="mb-3 text-lg font-bold tracking-tight">신청서 질문 (11문항)</h3>
+          <h3 className="mb-3 text-lg font-bold tracking-tight">신청서 질문 (10문항)</h3>
           <ol className="grid grid-cols-1 gap-1.5 text-sm sm:grid-cols-2">
             {questions.map((q, i) => (
               <li key={q} className="flex items-center gap-2 border border-foreground/10 px-3 py-2">
@@ -89,57 +91,58 @@ export function Apply() {
         </div>
       </div>
 
-      {/* 결제 전 부담 없이 물어보는 두 통로 — 단톡방 / 1:1 (검수 필수) */}
+      {/* 결제 전 부담 없이 물어보는 두 통로 — 단톡방 / 1:1 (시인성·터치 영역 키움: 40~50대 타겟) */}
       <div className="mb-5 border-2 border-foreground/15 bg-background p-5 sm:p-6">
-        <p className="text-sm leading-relaxed text-foreground/80 sm:text-base">
+        <p className="text-base leading-relaxed text-foreground/80 sm:text-lg">
           결제 전에 궁금한 점이 있으면, 먼저 물어보셔도 됩니다.<br />
           단톡방에서 분위기를 보고, 1:1로 지금 상황을 남겨주셔도 좋습니다.
         </p>
-        <div className="mt-4 flex flex-wrap gap-2.5">
+        <div className="mt-4 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap">
           <Link
             href={config.kakaoOpenChatUrl}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="용팀장 단톡방 입장 — 카카오톡 오픈채팅 새 창"
-            className="group inline-flex items-center gap-1.5 rounded-full border border-foreground/30 px-4 py-2 text-xs font-bold text-foreground transition-all hover:border-foreground hover:bg-foreground hover:text-background sm:text-sm"
+            className="group inline-flex items-center justify-center gap-2 rounded-full border-2 border-foreground/40 px-6 py-4 text-base font-bold text-foreground transition-all hover:border-foreground hover:bg-foreground hover:text-background sm:text-base"
           >
             💬 단톡방 들어가서 분위기 보기
-            <ExternalLink className="h-3 w-3" />
+            <ExternalLink className="h-4 w-4" />
           </Link>
           <Link
             href={config.kakao1to1Url}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="용팀장 1:1 카카오톡 — 새 창"
-            className="group inline-flex items-center gap-1.5 rounded-full border border-foreground/30 px-4 py-2 text-xs font-bold text-foreground transition-all hover:border-foreground hover:bg-foreground hover:text-background sm:text-sm"
+            className="group inline-flex items-center justify-center gap-2 rounded-full border-2 border-foreground/40 px-6 py-4 text-base font-bold text-foreground transition-all hover:border-foreground hover:bg-foreground hover:text-background sm:text-base"
           >
             🙋 용팀장한테 1:1로 물어보기
-            <ExternalLink className="h-3 w-3" />
+            <ExternalLink className="h-4 w-4" />
           </Link>
         </div>
       </div>
 
-      {/* CTA — 메인 1개 + 부담스러우면 1:1 카톡 */}
-      <div className="flex flex-wrap items-center gap-3">
+      {/* CTA — 40~50대 시인성: 큼지막한 버튼 + 신청서 링크 복사 옵션 */}
+      <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
         <Link
           href={config.googleFormUrl}
           target="_blank"
           rel="noopener noreferrer"
           aria-label="5주 오프라인 실전반 신청서 작성 — 새 창에서 열림"
-          className="group inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-foreground px-7 py-3.5 text-base font-bold uppercase tracking-[0.1em] text-background transition-all hover:bg-background hover:text-foreground"
+          className="group inline-flex items-center justify-center gap-2.5 rounded-full border-2 border-foreground bg-foreground px-8 py-5 text-lg font-bold tracking-tight text-background transition-all hover:bg-background hover:text-foreground sm:px-10 sm:py-5 sm:text-xl"
         >
-          신청서 작성하기 (약 3분)
-          <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          신청서 작성하기 (약 1분)
+          <ArrowUpRight className="h-6 w-6 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 sm:h-7 sm:w-7" />
         </Link>
+        <CopyFormUrlButton />
         <Link
           href={config.kakao1to1Url}
           target="_blank"
           rel="noopener noreferrer"
           aria-label="용팀장 1:1 카카오톡 — 새 창에서 열림"
-          className="inline-flex items-center gap-2 rounded-full border-2 border-foreground/40 px-5 py-3 text-sm font-bold text-foreground transition-all hover:border-foreground hover:bg-foreground hover:text-background"
+          className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-foreground/40 px-6 py-4 text-base font-bold tracking-tight text-foreground transition-all hover:border-foreground hover:bg-foreground hover:text-background sm:px-6 sm:py-3.5"
         >
           🙋 먼저 1:1로 물어볼게요
-          <ExternalLink className="h-3.5 w-3.5" />
+          <ExternalLink className="h-4 w-4" />
         </Link>
       </div>
 
