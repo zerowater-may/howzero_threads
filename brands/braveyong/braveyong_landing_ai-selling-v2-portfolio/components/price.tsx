@@ -62,6 +62,19 @@ export function Price() {
             안내드려요. 결제만 따로 받는 페이지는 없습니다 — 신청서가 결제의 시작이에요.
           </p>
 
+          {/* 조바심 — 시중 강의 대비 가격 + 1기 한정 */}
+          <div className="mt-4 border-2 border-brand bg-brand/5 px-4 py-3">
+            <div className="font-mono text-[10px] font-bold uppercase tracking-[0.15em] text-brand">
+              왜 1기만 이 가격?
+            </div>
+            <p className="mt-1 text-sm leading-relaxed text-foreground/85 sm:text-base">
+              시중 AI 셀링·이커머스 강의는 보통 <span className="font-bold text-foreground">400~600만원대</span>예요.
+              1기만 <span className="font-bold text-brand">실행 사례·후기 같이 만들 분</span>을 모으는 거라
+              <span className="font-bold text-brand"> 절반 이하</span>로 받습니다.
+              2기부터는 정가 250만원으로 갑니다.
+            </p>
+          </div>
+
           {/* CTA 직전 감정 정당화 — 결제 결심을 도와주는 한 줄 */}
           <p className="font-memo mt-4 rounded border-l-2 border-foreground bg-background/60 px-3 py-2 text-sm leading-relaxed text-foreground">
             받는 건 5주가 아니라,<br />
@@ -74,7 +87,7 @@ export function Price() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="신청서 작성하기 — 약 1분, 새 창에서 열림"
-            className="group mt-5 inline-flex w-full items-center justify-center gap-2.5 rounded-full border-2 border-foreground bg-foreground px-6 py-4 text-base font-bold tracking-tight text-background transition-all hover:bg-background hover:text-foreground sm:py-5 sm:text-lg"
+            className="group mt-5 inline-flex w-full items-center justify-center gap-2.5 rounded-full border-2 border-brand bg-brand px-6 py-4 text-base font-bold tracking-tight text-brand-foreground shadow-[0_5px_0_oklch(0.22_0.1_18)] transition-all hover:translate-y-0.5 hover:shadow-[0_2px_0_oklch(0.22_0.1_18)] sm:py-5 sm:text-lg"
           >
             신청서 작성하기 (약 1분)
             <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 sm:h-6 sm:w-6" />

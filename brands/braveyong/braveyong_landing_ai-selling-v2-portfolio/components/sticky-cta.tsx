@@ -67,7 +67,7 @@ export function StickyCTA() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="바로 결제하기 — 용팀장 1:1 카톡으로 결제 의향 보내기, 새 창에서 열림"
-            className="group flex flex-1 items-center justify-center gap-2 rounded-full border-2 border-foreground bg-foreground px-5 py-4 text-base font-bold tracking-tight text-background transition-all hover:bg-background hover:text-foreground sm:flex-none sm:px-7 sm:py-4"
+            className="group flex flex-1 items-center justify-center gap-2 rounded-full border-2 border-brand bg-brand px-5 py-4 text-base font-bold tracking-tight text-brand-foreground transition-all hover:opacity-90 sm:flex-none sm:px-7 sm:py-4"
           >
             💳 바로 결제하기
             <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5" />

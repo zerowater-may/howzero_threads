@@ -37,6 +37,8 @@
   --marker: oklch(0.92 0.16 92);          /* 노란 형광펜 (유일 강조색) */
   --warm: oklch(0.96 0.05 80);            /* 소수정예 섹션 배경 */
   --warm-border: oklch(0.55 0.13 60);     /* 소수정예 보더/액센트 */
+  --brand: oklch(0.32 0.13 18);           /* 용팀장 버건디 — 주요 CTA·결제 액센트 */
+  --brand-foreground: oklch(0.99 0 0);    /* 버건디 위 텍스트 (off-white) */
   --font-hand: "Nanum Pen Script", "Gowun Dodum", cursive;
   --font-memo: "Gowun Dodum", "Gaegu", sans-serif;
   --font-ko: "Pretendard Variable", system-ui, sans-serif;
@@ -80,12 +82,16 @@
   --marker: oklch(0.85 0.18 92);
   --warm: oklch(0.22 0.04 70);
   --warm-border: oklch(0.62 0.14 60);
+  --brand: oklch(0.5 0.15 18);            /* 다크 모드에선 약간 밝게 — 가독성 */
+  --brand-foreground: oklch(0.99 0 0);
 }
 
 @theme inline {
   /* optional: --font-sans, --font-serif, --font-mono if they are applied in the layout.tsx */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
   --color-popover: var(--popover);

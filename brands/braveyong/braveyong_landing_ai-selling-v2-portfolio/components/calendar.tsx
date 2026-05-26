@@ -1,5 +1,5 @@
 import { Section } from "./section"
-import { Calendar as CalendarIcon, Video } from "lucide-react"
+// calendar timeline 제거로 unused imports 정리 — 필요 시 부활
 
 /**
  * 09-B 1기 강의일정 캘린더 — Operation 다음, WhyYong 직전.
@@ -40,22 +40,6 @@ const months: {
       11: { type: "off", n: 5, title: "시스템화" },
     },
   },
-]
-
-// curriculum.tsx의 5블럭과 동일 frame — 상세 강의 내용은 노출 X (수강생 보호)
-const weeks: {
-  n: number
-  month: number
-  off: string
-  label: string
-  sub: string
-  zoom: string | null
-}[] = [
-  { n: 1, month: 6, off: "6.13 (토)", label: "소싱",     sub: "현재 상태 진단 + 후보 발굴",       zoom: null },
-  { n: 2, month: 6, off: "6.20 (토)", label: "가공",     sub: "상품명 · 카테고리 · AI 상세",      zoom: "6.17 (수)" },
-  { n: 3, month: 6, off: "6.27 (토)", label: "판매",     sub: "등록 + 대표이미지 + 전환 체크",    zoom: "6.24 (수)" },
-  { n: 4, month: 7, off: "7.4 (토)",  label: "광고",     sub: "검색·쇼핑 광고 운영 기초",         zoom: "7.1 (수)" },
-  { n: 5, month: 7, off: "7.11 (토)", label: "시스템화", sub: "AI 반복 루틴 + 효자상품 10개 점검", zoom: "7.8 (수)" },
 ]
 
 const weekdayLabels = ["월", "화", "수", "목", "금", "토", "일"]
@@ -230,78 +214,24 @@ export function Calendar() {
         </span>
       </div>
 
-      {/* 5주 vertical timeline — 상세 보기 (블록 구분 명확화) */}
-      <div className="mb-6 flex items-center gap-3">
-        <div className="font-mono inline-flex items-center gap-2 rounded-full border border-foreground/30 bg-background px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-foreground/70">
-          <span className="inline-block h-1.5 w-1.5 rounded-full bg-foreground" />
-          상세 보기
+      {/* 일정 요약 — 날짜만 한 줄 (상세 강의 내용은 위 grid hover + 커리큘럼 섹션 잠금카드에 위임) */}
+      <div className="grid gap-2 border-2 border-foreground bg-background p-5 text-sm sm:grid-cols-3 sm:text-base">
+        <div>
+          <span className="font-mono mr-2 text-[10px] font-bold uppercase tracking-[0.12em] text-foreground/55">오프라인 (토)</span>
+          <span className="font-bold tabular-nums">6.13 · 6.20 · 6.27 · 7.4 · 7.11</span>
         </div>
-        <span className="h-px flex-1 bg-foreground/15" aria-hidden />
+        <div>
+          <span className="font-mono mr-2 text-[10px] font-bold uppercase tracking-[0.12em] text-foreground/55">줌 보강 (수)</span>
+          <span className="font-bold tabular-nums">6.17 · 6.24 · 7.1 · 7.8</span>
+        </div>
+        <div className="sm:text-right">
+          <span className="font-mono mr-2 text-[10px] font-bold uppercase tracking-[0.12em] text-foreground/55">장소</span>
+          <span className="font-bold">서울 강남 (확정 후 안내)</span>
+        </div>
       </div>
-      <ol className="relative border-l-2 border-foreground/20 pl-5 sm:pl-7">
-        {weeks.map((w, i) => {
-          const showMonthHeader = i === 0 || w.month !== weeks[i - 1].month
-          return (
-            <li
-              key={w.n}
-              data-reveal
-              style={{ transitionDelay: `${i * 80}ms` }}
-              className={`relative mb-4 last:mb-0 ${showMonthHeader ? "pt-7" : ""}`}
-            >
-              {showMonthHeader && (
-                <div className="font-mono absolute -left-[34px] top-0 text-[10px] font-bold uppercase tracking-[0.18em] text-foreground/55 sm:-left-[42px]">
-                  {`2026.0${w.month}`}
-                </div>
-              )}
 
-              <span
-                aria-hidden
-                className={`absolute -left-[27px] flex h-5 w-5 items-center justify-center rounded-full border-2 border-foreground text-[10px] font-bold sm:-left-[35px] ${
-                  showMonthHeader ? "top-8" : "top-1"
-                } ${
-                  w.n === 1 || w.n === 5 ? "bg-foreground text-background" : "bg-background"
-                }`}
-              >
-                {w.n}
-              </span>
-
-              <div className="group border-2 border-foreground bg-background p-5 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_6px_0_var(--foreground)] sm:p-6">
-                <div className="font-mono mb-2 flex items-center justify-between text-[10px] font-bold uppercase tracking-[0.15em] text-foreground/55">
-                  <span>WEEK {String(w.n).padStart(2, "0")}</span>
-                  {w.n === 1 && <span className="text-foreground">▶ 시작</span>}
-                  {w.n === 5 && <span className="text-foreground">▣ 마무리</span>}
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <CalendarIcon className="mt-1 h-4 w-4 flex-none text-foreground" aria-hidden />
-                  <div className="flex-1">
-                    <div className="text-base font-bold leading-snug tracking-tight sm:text-lg">
-                      <span className="tabular-nums">{w.off}</span>{" "}
-                      <span className="text-foreground/40">·</span> 오프라인 {w.n}주차 — <span className="text-foreground">{w.label}</span>
-                    </div>
-                    <div className="mt-1 text-sm text-foreground/65 sm:text-base">{w.sub}</div>
-                  </div>
-                </div>
-
-                {w.zoom && (
-                  <div className="mt-3 flex items-start gap-3 border-t border-foreground/10 pt-3 text-sm text-foreground/70">
-                    <Video className="mt-0.5 h-4 w-4 flex-none text-foreground/60" aria-hidden />
-                    <div>
-                      <span className="font-mono mr-2 text-[10px] font-bold uppercase tracking-[0.12em] text-foreground/55">
-                        줌 보강
-                      </span>
-                      <span className="tabular-nums font-bold text-foreground">{w.zoom}</span>
-                    </div>
-                  </div>
-                )}
-              </div>
-            </li>
-          )
-        })}
-      </ol>
-
-      <p className="font-memo mt-8 text-sm leading-relaxed text-foreground/70 sm:text-base">
-        ※ 위 일정은 예정이에요. 실제 날짜·시간은 1기 확정 후 참여자분께 따로 안내드립니다.
+      <p className="font-memo mt-6 text-sm leading-relaxed text-foreground/70 sm:text-base">
+        ※ 위 일정은 예정이에요. 실제 시간·장소는 1기 확정 후 참여자분께 따로 안내드립니다. 주차별 상세는 1기 신청 후 공개합니다.
       </p>
     </Section>
   )
