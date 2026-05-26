@@ -62,13 +62,13 @@ export function Price() {
           </p>
 
           {/* 1기 한정 — 진심·집중 톤 (테스터 느낌 X) */}
-          <div className="mt-4 border-2 border-brand bg-brand/5 px-4 py-3">
-            <div className="font-mono text-[10px] font-bold uppercase tracking-[0.15em] text-brand">
+          <div className="mt-4 border-l-2 border-foreground bg-foreground/[0.04] px-4 py-3">
+            <div className="font-mono text-[10px] font-bold uppercase tracking-[0.15em] text-foreground/55">
               왜 1기만 이 가격?
             </div>
             <p className="mt-1 text-sm leading-relaxed text-foreground/85 sm:text-base">
               <span className="font-bold text-foreground">1기는 인원이 가장 적은 첫 기수</span>예요. 한 분 한 분과 가장 가까이서 같이 가는 5주이고요.{" "}
-              그래서 1기만 <span className="font-bold text-brand">정가의 절반 이하</span>로 시작합니다. 2기부터는 정가 250만원이에요.
+              그래서 1기만 <span className="font-bold text-foreground">정가의 절반 이하</span>로 시작합니다. 2기부터는 정가 250만원이에요.
             </p>
           </div>
 
@@ -85,7 +85,7 @@ export function Price() {
             rel="noopener noreferrer"
             aria-label="신청서 작성하기 — 약 1분, 새 창에서 열림"
             data-track="price_apply"
-            className="group mt-5 inline-flex w-full items-center justify-center gap-2.5 rounded-full border-2 border-brand bg-brand px-6 py-4 text-base font-bold tracking-tight text-brand-foreground shadow-[0_5px_0_oklch(0.22_0.1_18)] transition-all hover:translate-y-0.5 hover:shadow-[0_2px_0_oklch(0.22_0.1_18)] sm:py-5 sm:text-lg"
+            className="group mt-5 inline-flex w-full items-center justify-center gap-2.5 rounded-full border-2 border-foreground bg-foreground px-6 py-4 text-base font-bold tracking-tight text-background transition-all hover:bg-background hover:text-foreground sm:py-5 sm:text-lg"
           >
             신청서 작성하기 (약 1분)
             <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 sm:h-6 sm:w-6" />

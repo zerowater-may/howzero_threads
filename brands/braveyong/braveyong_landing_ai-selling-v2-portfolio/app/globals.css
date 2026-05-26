@@ -140,8 +140,15 @@
     font-family: var(--font-ko), var(--font-geist-sans), system-ui, sans-serif;
     word-break: keep-all;
     overflow-wrap: break-word;
+    /* 한글 본문 자간 -0.5% — AI 기본값 "벙벙한" 느낌 제거 */
+    letter-spacing: -0.005em;
   }
   /* 영문 키워드는 Geist Sans 우선, 한글은 Pretendard로 자연 폴백 */
+
+  /* 한글 헤딩 자간 -2% — 제목·서브헤딩이 한 덩어리로 읽히도록 */
+  h1, h2, h3, h4 {
+    letter-spacing: -0.02em;
+  }
 
   /* 섹션 점프 시 글래스 nav에 안 가리게 (h-14 sm:h-16 + 여유) */
   section[id] {

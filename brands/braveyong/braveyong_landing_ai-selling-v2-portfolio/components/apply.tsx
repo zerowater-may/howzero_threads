@@ -17,12 +17,12 @@ export function Apply() {
       title={<>신청서 보고, 한 분씩 따로 보고 안내드려요.</>}
     >
       {/* 핵심 안내 — 신청서 작성 → 결제 link 즉시 발송 */}
-      <div className="mb-6 border-2 border-brand bg-brand/5 p-6 sm:p-7">
-        <div className="font-mono mb-2 text-[10px] font-bold uppercase tracking-[0.18em] text-brand">
+      <div className="mb-6 border-l-4 border-foreground bg-foreground/[0.04] p-6 sm:p-7">
+        <div className="font-mono mb-2 text-[10px] font-bold uppercase tracking-[0.18em] text-foreground/55">
           결제 흐름
         </div>
         <p className="text-lg font-bold leading-snug tracking-tight text-foreground sm:text-xl">
-          신청서를 먼저 작성하셔야 <span className="text-brand">결제 링크</span>가 발송됩니다.
+          신청서를 먼저 작성하셔야 <span className="underline decoration-foreground/30 decoration-2 underline-offset-4">결제 링크</span>가 발송됩니다.
         </p>
         <p className="mt-2 text-sm leading-relaxed text-foreground/75 sm:text-base">
           신청서 제출 직후 <span className="font-bold text-foreground">결제 페이지 안내</span>가 자동으로 노출되고,{" "}
@@ -42,8 +42,8 @@ export function Apply() {
             { n: "03", h: "용팀장 확인 카톡", b: "신청서 보고 한 분씩 따로 읽고, 카톡으로 한 번 더 확인 메시지 드려요." },
             { n: "04", h: "5주 시작", b: "결제 확정되면 오프라인 1주차 일정·장소까지 챙겨서 보내드립니다." },
           ].map((s) => (
-            <li key={s.n} className="relative border-l-2 border-brand/40 pl-4">
-              <div className="font-mono mb-1 text-[10px] font-bold text-brand">STEP {s.n}</div>
+            <li key={s.n} className="relative border-l-2 border-foreground/30 pl-4">
+              <div className="font-mono mb-1 text-[10px] font-bold text-foreground/55">STEP {s.n}</div>
               <div className="text-sm font-bold tracking-tight sm:text-base">{s.h}</div>
               <p className="mt-1 text-xs leading-relaxed text-foreground/65 sm:text-sm">{s.b}</p>
             </li>

@@ -67,7 +67,7 @@ export function Hero() {
               rel="noopener noreferrer"
               aria-label="신청서 작성하기 — 약 1분, 새 창에서 열림"
               data-track="hero_apply"
-              className="group inline-flex items-center justify-center gap-2.5 rounded-full border-2 border-brand bg-brand px-8 py-4 text-base font-bold tracking-tight text-brand-foreground shadow-[0_6px_0_oklch(0.22_0.1_18)] transition-all duration-300 hover:translate-y-0.5 hover:shadow-[0_3px_0_oklch(0.22_0.1_18)] sm:px-10 sm:py-5 sm:text-lg"
+              className="group inline-flex items-center justify-center gap-2.5 rounded-full border-2 border-foreground bg-foreground px-8 py-4 text-base font-bold tracking-tight text-background transition-all duration-300 hover:bg-background hover:text-foreground sm:px-10 sm:py-5 sm:text-lg"
             >
               신청서 작성하기 (약 1분)
               <ArrowUpRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 sm:h-6 sm:w-6" />
