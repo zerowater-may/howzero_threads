@@ -7,7 +7,7 @@ import { Gift, Calendar as CalendarIcon, Video, Target } from "lucide-react"
  * 데이터: course.startDate 2026-06-13(토) 기준 매주 토요일 오프라인 5회, 줌은 2~5주차 직전 수요일 4회.
  * grid 각 셀 hover 시 그 날 일정 detail tooltip 표시.
  */
-const free = { date: "6.10 (수)", label: "유튜브 무료 전환강의" }
+const free = { date: "6.10 (수)", label: "유튜브 무료 라이브 강의" }
 
 type FreeEvent = { type: "free"; label: string }
 type OffEvent = { type: "off"; n: number; title: string }
@@ -25,7 +25,7 @@ const months: {
     daysInMonth: 30,
     startWeekday: 0, // 2026-06-01 = Mon
     events: {
-      10: { type: "free", label: "유튜브 무료 전환강의" },
+      10: { type: "free", label: "유튜브 무료 라이브 강의" },
       13: { type: "off", n: 1, title: "대량등록 탈출 진단" },
       17: { type: "zoom", week: 2 },
       20: { type: "off", n: 2, title: "상품 선정 · 키워드 · 카테고리" },
@@ -231,7 +231,7 @@ export function Calendar() {
       title={<>1기, 같이 가는 5주 일정.</>}
       lead="오프라인 5회 + 줌 보강 4회. 매주 토요일 오프라인으로 같이 작업하고, 사이 주중에 줌으로 보강합니다."
     >
-      {/* 무료 전환강의 highlight */}
+      {/* 유튜브 무료 라이브 highlight */}
       <div className="mb-8 grid gap-4 border-2 border-foreground bg-background p-6 sm:grid-cols-[auto_1fr_auto] sm:items-center sm:p-7">
         <div className="flex h-14 w-14 flex-none items-center justify-center rounded-full border-2 border-foreground bg-[var(--warm)] shadow-[0_3px_0_var(--foreground)]">
           <Gift className="h-6 w-6" aria-hidden />
