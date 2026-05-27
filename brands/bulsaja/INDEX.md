@@ -4,7 +4,7 @@
 
 ## 브랜드 자산 / 시스템
 
-- 디자인 시스템: `.claude/skills/bulsaja-design/SKILL.md` (글로벌 스킬)
+- 디자인 시스템: `~/.claude/skills/bulsaja-design/SKILL.md` (글로벌 user-level skill — 이 repo 외부)
 - 코드베이스 (별도 repo): `~/Dropbox/zerowater/firelion/bulsaja/bulsaja-issue/`
 - 홈페이지: https://bulsaja.com
 - 채널톡: https://www.bulsaja.channel.io
