@@ -8,7 +8,8 @@
 |---|---|---|---|---|
 | [zipsaja](./zipsaja/) | 6개 시리즈 | 7개 시리즈 (mp4 모음) | comments xlsx | — |
 | [howzero](./howzero/) | 2개 시리즈 + raw 1,721개 | cover-demo | — | script 1,729 / shorts 1,731 / newsletter 1,729 / linkedin 1,720 / misc 3 |
-| [braveyong](./braveyong/) | 1개 시리즈 | cover-demo | captions txt | — |
+| [braveyong](./braveyong/) | 1개 시리즈 + raw 폴더 세팅 | cover-demo | captions txt | 통합 브랜드 에셋 |
+| [bulsaja](./bulsaja/) | — | — | — | naver-cafe-banner |
 | [mkt](./mkt/) | 5개 시리즈 (한글 콘텐츠) | — | — | — |
 | [etc](./etc/) | nanob 5 + test 6 | — | — | 실험/잡종 |
 
