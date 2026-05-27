@@ -1,0 +1,84 @@
+<!--
+  불사자 네이버 카페 대문 — 2026-05-27 리뉴얼 (final, cdn.bulsaja.com 호스팅 완료)
+
+  이미지는 이미 https://cdn.bulsaja.com/naver-cafe-banner/2026-05-27/{braveyong,bulsaja}.png 에 업로드 완료.
+  URL swap 없이 본 HTML 그대로 카페에 붙여넣으면 된다.
+
+  사용:
+    카페 관리 → 메뉴 관리 → 대문 관리 → HTML 편집 모드 → 본 파일 내용 전체 붙여넣기 → 미리보기 → 저장
+
+  재업로드(이미지 수정 시):
+    scripts/naver_cafe_banner/banner-*.html 수정 → `npm run render:all` → `python3 scripts/naver_cafe_banner/upload_to_b2.py`
+    (같은 B2 key 에 덮어쓰므로 URL 변동 없음. Cloudflare CDN cache 는 max-age 1년이라 강제 purge 필요할 수 있음)
+
+  주의: 네이버 카페 에디터는 <style> 태그/class 를 strip 한다. 모든 스타일은 inline 으로만 작성됨.
+-->
+
+<table cellpadding="0" cellspacing="0" border="0" align="center" style="width:960px;margin:0 auto;font-family:'Pretendard',-apple-system,BlinkMacSystemFont,sans-serif">
+
+  <!-- ===== 용팀장 배너 ===== -->
+  <tr>
+    <td style="padding:0">
+      <a href="https://gigclass.kr" target="_blank" rel="noopener noreferrer" style="display:block;text-decoration:none">
+        <img src="https://cdn.bulsaja.com/naver-cafe-banner/2026-05-27/braveyong.png" alt="용감한 용팀장 — 강의 보러가기" width="960" height="360" style="display:block;width:960px;height:360px;border:0">
+      </a>
+    </td>
+  </tr>
+  <tr><td style="height:12px;line-height:12px;font-size:0">&nbsp;</td></tr>
+  <tr>
+    <td style="text-align:right;padding:0 8px">
+      <a href="https://open.kakao.com/o/gcjQ8Hpi" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:10px 20px;border:1.5px solid #0A0A0A;border-radius:8px;color:#0A0A0A;font-size:14px;font-weight:700;text-decoration:none">
+        용팀장 단톡 입장 →
+      </a>
+    </td>
+  </tr>
+
+  <!-- ===== 디바이더 ===== -->
+  <tr><td style="height:32px;line-height:32px;font-size:0">&nbsp;</td></tr>
+  <tr><td style="height:1px;line-height:1px;font-size:0;background-color:#E5E5E5">&nbsp;</td></tr>
+  <tr><td style="height:32px;line-height:32px;font-size:0">&nbsp;</td></tr>
+
+  <!-- ===== 불사자 배너 ===== -->
+  <tr>
+    <td style="padding:0">
+      <a href="https://www.bulsaja.com" target="_blank" rel="noopener noreferrer" style="display:block;text-decoration:none">
+        <img src="https://cdn.bulsaja.com/naver-cafe-banner/2026-05-27/bulsaja.png" alt="불사자 — 지금 사용해보기" width="960" height="360" style="display:block;width:960px;height:360px;border:0">
+      </a>
+    </td>
+  </tr>
+  <tr><td style="height:12px;line-height:12px;font-size:0">&nbsp;</td></tr>
+  <tr>
+    <td style="text-align:right;padding:0 8px">
+      <a href="https://open.kakao.com/o/g6v6tKlg" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:10px 20px;border:1.5px solid #8B7E6E;border-radius:8px;color:#2A2520;font-size:14px;font-weight:700;text-decoration:none">
+        불사자 단톡 입장 →
+      </a>
+    </td>
+  </tr>
+
+  <!-- ===== 기능 버튼 3개 ===== -->
+  <tr><td style="height:32px;line-height:32px;font-size:0">&nbsp;</td></tr>
+  <tr>
+    <td style="padding:0">
+      <table cellpadding="0" cellspacing="0" border="0" width="960" style="width:960px;border-collapse:separate">
+        <tr>
+          <td width="310" style="width:310px;padding:0 8px 0 0">
+            <a href="https://www.youtube.com/channel/UCMi-D1REn7qLeJv8JftwgdA" target="_blank" rel="noopener noreferrer" style="display:block;text-align:center;padding:22px 0;background:#FFFFFF;border:1px solid #E5E5E5;border-radius:12px;color:#0A0A0A;font-size:16px;font-weight:700;text-decoration:none;letter-spacing:-0.01em">
+              유튜브 채널
+            </a>
+          </td>
+          <td width="310" style="width:310px;padding:0 8px">
+            <a href="https://www.bulsaja.channel.io" target="_blank" rel="noopener noreferrer" style="display:block;text-align:center;padding:22px 0;background:#FFFFFF;border:1px solid #E5E5E5;border-radius:12px;color:#0A0A0A;font-size:16px;font-weight:700;text-decoration:none;letter-spacing:-0.01em">
+              채널톡 문의
+            </a>
+          </td>
+          <td width="310" style="width:310px;padding:0 0 0 8px">
+            <a href="https://www.bulsaja.com" target="_blank" rel="noopener noreferrer" style="display:block;text-align:center;padding:22px 0;background:#FFFFFF;border:1px solid #E5E5E5;border-radius:12px;color:#0A0A0A;font-size:16px;font-weight:700;text-decoration:none;letter-spacing:-0.01em">
+              홈페이지 bulsaja.com
+            </a>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+</table>
