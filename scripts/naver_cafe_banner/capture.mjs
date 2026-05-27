@@ -2,6 +2,7 @@
 // content_carousel/capture.mjs 패턴 단순화 버전.
 // Usage: node capture.mjs <html-path> <out-png-path>
 import path from "path";
+import fs from "fs";
 import puppeteer from "puppeteer";
 
 async function main() {
@@ -20,6 +21,7 @@ async function main() {
     await page.setViewport({ width: 960, height: 360, deviceScaleFactor: 2 });
     await page.goto(url, { waitUntil: "networkidle0" });
     await page.evaluateHandle("document.fonts.ready");
+    fs.mkdirSync(path.dirname(path.resolve(outPath)), { recursive: true });
     await page.screenshot({
       path: path.resolve(outPath),
       type: "png",
