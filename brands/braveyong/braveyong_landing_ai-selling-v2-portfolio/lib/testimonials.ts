@@ -65,9 +65,10 @@ export const captures: string[] = Array.from({ length: 50 }, (_, i) => {
 })
 
 /** 현장 사진 — 사기꾼 의심 차단·졸업 스터디 섹션에 분산 배치 */
+/** PNG → JPG 변환 (사진 압축 효율, 모바일 성능 최적화) — 디자인은 동일, 픽셀만 압축. */
 export const photos = {
-  groupHands: "/assets/photos/group-hands.png",    // V사인 손모음 — 일체감·진정성
-  groupMeetup: "/assets/photos/group-meetup.png",  // 강남역 단체사진
-  studyDesk: "/assets/photos/study-desk.png",      // 노트북 둘러앉은 스터디
-  classroom: "/assets/photos/classroom.png",       // 강의실
+  groupHands: "/assets/photos/group-hands.jpg",    // V사인 손모음 — 일체감·진정성
+  groupMeetup: "/assets/photos/group-meetup.jpg",  // 강남역 단체사진
+  studyDesk: "/assets/photos/study-desk.jpg",      // 노트북 둘러앉은 스터디
+  classroom: "/assets/photos/classroom.jpg",       // 강의실
 } as const

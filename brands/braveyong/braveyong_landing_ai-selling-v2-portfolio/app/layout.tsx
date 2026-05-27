@@ -1,6 +1,7 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
-import { Geist, Geist_Mono } from "next/font/google"
+import { Geist, Geist_Mono, Nanum_Pen_Script, Gowun_Dodum, Gaegu } from "next/font/google"
+import localFont from "next/font/local"
 import { Analytics } from "@vercel/analytics/next"
 import { Toaster } from "@/components/ui/toaster"
 import { ThemeProvider } from "@/components/theme-provider"
@@ -28,6 +29,51 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
   variable: "--font-geist-mono",
   display: "swap",
+})
+
+/**
+ * Pretendard Variable — self-host (jsdelivr CDN 의존 제거).
+ * variable font 1개로 weight 45~920 전부 커버 (약 2MB).
+ *
+ * preload=false 의도: LCP 후보가 텍스트인데 2MB woff2를 preload하면 LCP를 늦춘다.
+ * display=swap으로 fallback paint 후 폰트 도착 시 교체. fallback은 system-ui라 CLS 거의 0.
+ */
+const pretendard = localFont({
+  src: "../public/fonts/PretendardVariable.woff2",
+  display: "swap",
+  variable: "--font-pretendard",
+  weight: "45 920",
+  preload: false,
+  fallback: ["system-ui", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
+  adjustFontFallback: false,
+})
+
+/**
+ * 손글씨 액센트 — next/font/google로 self-host (render-block 제거 + CDN 핸드셰이크 0).
+ * 본문 가시 영역엔 안 쓰여 preload 끔(LCP에 영향 없음, 손글씨는 swap으로 충분).
+ */
+const nanumPenScript = Nanum_Pen_Script({
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
+  variable: "--font-nanum-pen",
+  preload: false,
+})
+
+const gowunDodum = Gowun_Dodum({
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
+  variable: "--font-gowun-dodum",
+  preload: false,
+})
+
+const gaegu = Gaegu({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  display: "swap",
+  variable: "--font-gaegu",
+  preload: false,
 })
 
 export const metadata: Metadata = {
@@ -100,20 +146,8 @@ export default function RootLayout({
   return (
     <html lang="ko" suppressHydrationWarning>
       <head>
-        {/* 한글 본문: Pretendard Variable */}
-        <link
-          rel="stylesheet"
-          as="style"
-          crossOrigin="anonymous"
-          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css"
-        />
-        {/* 손글씨 액센트: Nanum Pen Script(서명·강조) + Gowun Dodum(메모) + Gaegu(보조) */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Gowun+Dodum&family=Gaegu:wght@400;700&display=swap"
-        />
+        {/* 폰트는 next/font로 self-host (render-blocking CDN 폰트 제거).
+            Pretendard/Geist/손글씨 4종 모두 _next/static/media/*.woff2 로 서빙. */}
         {/* JSON-LD: 한국어 강의 상품 */}
         <script
           type="application/ld+json"
@@ -134,7 +168,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${pretendard.variable} ${nanumPenScript.variable} ${gowunDodum.variable} ${gaegu.variable} font-sans antialiased`}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange={false}>
           <Suspense fallback={null}>

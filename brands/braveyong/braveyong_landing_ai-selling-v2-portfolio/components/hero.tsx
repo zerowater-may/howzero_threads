@@ -24,8 +24,10 @@ export function Hero() {
               alt="용감한 용팀장 — 현업 셀러 · 부동산 투자자 · 직장인 · 육아아빠"
               width={256}
               height={256}
+              sizes="(min-width:768px) 224px, (min-width:640px) 192px, 160px"
               className="h-full w-full object-cover grayscale transition-all duration-500 hover:grayscale-0"
               priority
+              fetchPriority="high"
             />
           </div>
 

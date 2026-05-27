@@ -3,6 +3,7 @@ import { ArrowUpRight, ExternalLink } from "lucide-react"
 import { Section } from "./section"
 import { config } from "@/lib/config"
 import { CopyFormUrlButton } from "./copy-form-url-button"
+import { ApplyFormFrame } from "./apply-form-frame"
 
 /**
  * 16 신청 — 결제까지 4단계 + 메인 CTA (중앙정렬, 버건디).
@@ -105,16 +106,10 @@ export function Apply() {
         </p>
       </div>
 
-      {/* 구글폼 iframe — URL 있으면 임베드, 없으면 안내 */}
+      {/* 구글폼 iframe — IntersectionObserver 기반 진짜 lazy.
+          iframe = Google 도메인 전체 JS+CSS 로드라 모바일 부담 큼. user가 도달했을 때만 mount. */}
       {!config.isFormUrlMissing ? (
-        <div className="mt-6 overflow-hidden border-2 border-foreground bg-background">
-          <iframe
-            src={config.googleFormUrl}
-            title="신청서"
-            className="block h-[820px] w-full"
-            loading="lazy"
-          />
-        </div>
+        <ApplyFormFrame src={config.googleFormUrl} />
       ) : (
         <div className="mt-6 border-2 border-foreground/20 bg-background p-8 text-center text-sm leading-relaxed text-foreground/70">
           <p className="text-base font-bold text-foreground sm:text-lg">

@@ -39,9 +39,10 @@
   --warm-border: oklch(0.55 0.13 60);     /* 소수정예 보더/액센트 */
   --brand: oklch(0.32 0.13 18);           /* 용팀장 버건디 — 주요 CTA·결제 액센트 */
   --brand-foreground: oklch(0.99 0 0);    /* 버건디 위 텍스트 (off-white) */
-  --font-hand: "Nanum Pen Script", "Gowun Dodum", cursive;
-  --font-memo: "Gowun Dodum", "Gaegu", sans-serif;
-  --font-ko: "Pretendard Variable", system-ui, sans-serif;
+  /* next/font 변수와 폴백을 합성. globals.css에서 직접 참조하지 말고 layout.tsx에서 주입된 --font-* 변수를 우선 사용한다. */
+  --font-hand: var(--font-nanum-pen, "Nanum Pen Script"), var(--font-gowun-dodum, "Gowun Dodum"), cursive;
+  --font-memo: var(--font-gowun-dodum, "Gowun Dodum"), var(--font-gaegu, "Gaegu"), sans-serif;
+  --font-ko: var(--font-pretendard, "Pretendard Variable"), system-ui, sans-serif;
 }
 
 .dark {

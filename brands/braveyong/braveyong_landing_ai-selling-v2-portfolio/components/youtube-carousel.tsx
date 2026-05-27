@@ -14,7 +14,8 @@ const videos: { id: string; url: string; title: string }[] = [
   { id: "_dXN6UhhdEc", url: "https://youtu.be/_dXN6UhhdEc?si=kvEXbMjhWZynSsOC", title: "용팀장 영상 3" },
 ]
 
-const thumb = (id: string) => `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`
+// hqdefault: 480x360, ~25-50KB. maxresdefault (1280x720, ~80-150KB)은 모바일 카드(280-420px)에 과한 사이즈.
+const thumb = (id: string) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`
 
 export function YouTubeCarousel() {
   // seamless 무한 루프를 위해 두 세트 복제. translateX(-50%)면 정확히 한 세트 길이 이동.
@@ -55,6 +56,7 @@ export function YouTubeCarousel() {
                   fill
                   sizes="(min-width:768px) 420px, (min-width:640px) 360px, 280px"
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  loading="lazy"
                   unoptimized
                 />
                 {/* play overlay */}
