@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: 960px; height: 360px; overflow: hidden; }
@@ -15,99 +15,158 @@
     background: #FFFFFF;
     font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
     color: #0A0A0A;
+    -webkit-font-smoothing: antialiased;
   }
   .banner {
     width: 960px;
     height: 360px;
-    padding: 44px 56px;
-    position: relative;
+    padding: 40px 48px;
     display: grid;
-    grid-template-columns: 1fr auto;
-    grid-template-rows: auto 1fr auto;
-    column-gap: 32px;
-    row-gap: 0;
+    grid-template-columns: 220px 1fr;
+    column-gap: 40px;
+    align-items: center;
   }
-  .label {
-    grid-column: 1 / -1;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.22em;
-    color: #8A8A8A;
-    text-transform: uppercase;
+
+  /* 좌측: 원형 인물 + 이름 + 정체 */
+  .left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 14px;
   }
-  .headline {
-    grid-column: 1 / -1;
-    align-self: center;
-    font-size: 58px;
-    font-weight: 900;
-    line-height: 1.12;
-    letter-spacing: -0.025em;
-    margin-top: 4px;
-  }
-  .headline .marker {
-    font-family: 'Gaegu', 'Pretendard', cursive;
-    color: #E0301E;
-    font-weight: 700;
-    display: inline-block;
-    transform: rotate(-1.2deg);
-    border-bottom: 4px solid #E0301E;
-    padding: 0 2px;
-  }
-  .right-stamp {
-    grid-row: 2;
-    grid-column: 2;
-    align-self: center;
-    font-family: 'Gaegu', cursive;
-    color: #E0301E;
-    font-size: 22px;
-    transform: rotate(6deg);
-    border: 2px solid #E0301E;
+  .portrait {
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
-    width: 110px;
-    height: 110px;
+    border: 2px solid #0A0A0A;
+    overflow: hidden;
+    background: #F4F4F4;
+  }
+  .portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+  }
+  .name {
+    font-size: 24px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: #0A0A0A;
+  }
+  .role {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: rgba(10,10,10,0.55);
+    line-height: 1.5;
+  }
+
+  /* 우측: 비교 카피 + 손글씨 + CTA */
+  .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 18px;
+  }
+  .compare-line {
+    font-size: 17px;
+    font-weight: 500;
+    color: rgba(10,10,10,0.55);
+    line-height: 1.4;
+  }
+  .compare-line s {
+    text-decoration-color: rgba(10,10,10,0.4);
+    text-decoration-thickness: 1.5px;
+  }
+  .punch {
+    font-size: 36px;
+    font-weight: 900;
+    line-height: 1.18;
+    letter-spacing: -0.03em;
+    color: #0A0A0A;
+  }
+  .marker {
+    background-image: linear-gradient(
+      180deg,
+      transparent 58%,
+      #FFD84A 58%,
+      #FFD84A 92%,
+      transparent 92%
+    );
+    background-repeat: no-repeat;
+    padding: 0 4px;
+  }
+  .memo {
+    font-family: 'Gowun Dodum', 'Pretendard', sans-serif;
+    font-size: 16px;
+    color: rgba(10,10,10,0.7);
+    letter-spacing: -0.01em;
+    line-height: 1.4;
+  }
+  .cta-row {
     display: flex;
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    line-height: 1.1;
-    padding: 6px;
+    gap: 12px;
+    margin-top: 4px;
   }
-  .footer {
-    grid-column: 1 / -1;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-  }
-  .sub {
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 1.5;
-    color: #404040;
-  }
-  .sub b { color: #0A0A0A; font-weight: 700; }
   .cta {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     background: #0A0A0A;
     color: #FFFFFF;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 800;
-    padding: 16px 26px;
-    border-radius: 10px;
+    padding: 12px 22px;
+    border-radius: 999px;
     letter-spacing: -0.01em;
+    border: 2px solid #0A0A0A;
+  }
+  .cta .arrow {
+    display: inline-block;
+    font-size: 16px;
+    transform: translate(0, -1px);
+  }
+  .cohort {
+    font-size: 12px;
+    color: rgba(10,10,10,0.5);
+    letter-spacing: -0.005em;
   }
 </style>
 </head>
 <body>
 <div class="banner">
-  <div class="label">용감한 용팀장 · GIGCLASS</div>
-  <div class="headline">감으로 올리지 마세요.<br><span class="marker">데이터로 파세요.</span></div>
-  <div class="right-stamp">팩폭<br>주의</div>
-  <div class="footer">
-    <div class="sub"><b>스마트스토어 · 쿠팡 · 구매대행</b><br>SEO부터 상세페이지까지</div>
-    <div class="cta">강의 보러가기 →</div>
+
+  <!-- 좌측: 인물 + 이름 -->
+  <div class="left">
+    <div class="portrait">
+      <img src="face.jpg" alt="용감한 용팀장">
+    </div>
+    <div class="name">용감한<br>용팀장</div>
+    <div class="role">현업 셀러 · 부동산 투자자<br>직장인 · 육아 아빠</div>
   </div>
+
+  <!-- 우측: 카피 + CTA -->
+  <div class="right">
+    <div class="compare-line">
+      <s>1만 개를 무작정 올리는 셀러</s>에서
+    </div>
+    <div class="punch">
+      진짜 팔리는 <span class="marker">효자상품 10개</span>를<br>
+      만드는 셀러로.
+    </div>
+    <div class="memo">저도 회사 다니면서, 애 재우고 새벽에 상품 올렸습니다.</div>
+    <div class="cta-row">
+      <div class="cta">강의 보러가기 <span class="arrow">↗</span></div>
+      <div class="cohort">5주 · 줌 보강 포함</div>
+    </div>
+  </div>
+
 </div>
 </body>
 </html>
