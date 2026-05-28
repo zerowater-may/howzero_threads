@@ -12,6 +12,7 @@ const items = [
 export function Problem() {
   return (
     <Section
+      id="problem"
       tone="dark"
       label="문제 제기"
       title={

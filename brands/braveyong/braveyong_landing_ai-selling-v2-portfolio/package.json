@@ -6,6 +6,7 @@
     "build": "next build",
     "dev": "next dev --port 3200",
     "lint": "next lint",
+    "test:landing": "node scripts/check-landing-structure.mjs",
     "start": "next start --port 3200"
   },
   "dependencies": {

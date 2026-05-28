@@ -94,6 +94,7 @@ export function PaymentDialog({
               <button
                 type="button"
                 aria-label="결제 청구서 모달 닫기"
+                data-track="payment_dialog_close"
                 className="rounded-full border border-foreground/20 p-2 transition-colors hover:border-foreground hover:bg-foreground hover:text-background"
                 onClick={() => setOpen(false)}
               >
@@ -216,10 +217,6 @@ export function PaymentDialog({
                 {applyAgreed ? "카톡으로 결제 청구서 받기" : "신청서 동의 후 진행"}
               </button>
             </form>
-
-            <p className={`mt-4 text-xs leading-relaxed ${dark ? "text-foreground/55" : "text-foreground/50"}`}>
-              로컬 테스트는 dry-run 상태일 수 있습니다. 실제 발송 전에는 신청자 정보와 결제 안내 여부를 확인하세요.
-            </p>
           </div>
         </div>
   ) : null

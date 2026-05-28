@@ -19,10 +19,10 @@ import { config } from "@/lib/config"
  * 가격은 페이지에 숫자가 없으니 메뉴를 행동 유도로 전환했다.
  */
 const links = [
-  { href: "#testimonials", label: "후기" },
+  { href: "#problem", label: "막힌 지점" },
+  { href: "#choice", label: "내 상황" },
   { href: "#curriculum", label: "커리큘럼" },
   { href: "#apply", label: "1기 지원", cta: true },
-  { href: "#faq", label: "FAQ" },
 ]
 
 export function GlassNav() {
@@ -60,6 +60,7 @@ export function GlassNav() {
           href="#hero"
           className="group flex shrink-0 items-center gap-2 text-sm font-bold tracking-tight"
           aria-label="페이지 최상단으로"
+          data-track="nav_brand_home"
         >
           <span className="inline-block h-2 w-2 rounded-full bg-foreground transition-transform group-hover:scale-125" />
           <span className="hidden sm:inline">용감한 용팀장</span>
@@ -76,6 +77,7 @@ export function GlassNav() {
               <Link
                 key={l.href}
                 href={l.href}
+                data-track={`nav_jump_${l.href.replace("#", "")}_cta`}
                 className="group ml-1 inline-flex items-center gap-1.5 rounded-full border border-foreground bg-foreground px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.06em] text-background transition-all hover:bg-background hover:text-foreground"
               >
                 {l.label}
@@ -85,6 +87,7 @@ export function GlassNav() {
               <Link
                 key={l.href}
                 href={l.href}
+                data-track={`nav_jump_${l.href.replace("#", "")}`}
                 className="rounded-full px-3 py-1.5 text-sm font-medium text-foreground/70 transition-colors hover:bg-foreground/5 hover:text-foreground"
               >
                 {l.label}
@@ -99,6 +102,7 @@ export function GlassNav() {
             type="button"
             onClick={() => setTheme(isDark ? "light" : "dark")}
             aria-label={isDark ? "라이트 모드로 전환" : "다크 모드로 전환"}
+            data-track="nav_theme_toggle"
             className="rounded-full p-2 text-foreground transition-all hover:bg-foreground/10"
           >
             {mounted ? (

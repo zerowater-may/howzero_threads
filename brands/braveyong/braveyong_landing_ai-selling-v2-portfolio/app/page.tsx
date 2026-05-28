@@ -5,6 +5,7 @@ import { TestimonialWall } from "@/components/testimonial-wall"
 import { Problem } from "@/components/problem"
 import { AIDefinition } from "@/components/ai-definition"
 import { Outcome } from "@/components/outcome"
+import { SituationChoice } from "@/components/situation-choice"
 import { Curriculum } from "@/components/curriculum"
 import { Operation } from "@/components/operation"
 import { Calendar } from "@/components/calendar"
@@ -37,26 +38,27 @@ export default function Page() {
       <main className="min-h-screen bg-background text-foreground">
         <Hero />              {/* 01 */}
         <Strip />             {/* 02 */}
-        <OriginStory />       {/* 02-B Origin Story — 감정 진입 */}
-        <TrustEvidence />     {/* 03 */}
-        <TestimonialWall />   {/* 04 */}
-        <Problem />           {/* 05 */}
-        <AIDefinition />      {/* 06 */}
-        <Outcome />           {/* 07 */}
-        <Curriculum />        {/* 08 */}
-        <Operation />         {/* 09 */}
-        <Calendar />          {/* 09-B 1기 강의일정 캘린더 */}
-        <YouTubeCarousel />   {/* 09-C 용팀장 노하우 (유튜브) */}
-        <WhyYong />           {/* 10 */}
-        <Study />             {/* 11 */}
-        <Objections />        {/* 12 */}
-        <Comparison />        {/* 13 */}
-        <Price />             {/* 14 */}
-        <Scarcity />          {/* 15 */}
-        <Apply />             {/* 16 */}
-        <FAQ />               {/* 17 */}
-        <FinalCTA />          {/* 18 */}
-        <Footer />            {/* 19 */}
+        <Problem />           {/* 03 */}
+        <AIDefinition />      {/* 04 */}
+        <Outcome />           {/* 05 */}
+        <SituationChoice />   {/* 06 */}
+        <TrustEvidence />     {/* 07 */}
+        <TestimonialWall />   {/* 08 */}
+        <OriginStory />       {/* 09 Origin Story — 증거 이후 감정 보강 */}
+        <Curriculum />        {/* 10 */}
+        <Operation />         {/* 11 */}
+        <Calendar />          {/* 12 1기 강의일정 캘린더 */}
+        <YouTubeCarousel />   {/* 13 용팀장 노하우 (유튜브) */}
+        <WhyYong />           {/* 14 */}
+        <Study />             {/* 15 */}
+        <Objections />        {/* 16 */}
+        <Comparison />        {/* 17 */}
+        <Price />             {/* 18 */}
+        <Scarcity />          {/* 19 */}
+        <Apply />             {/* 20 */}
+        <FAQ />               {/* 21 */}
+        <FinalCTA />          {/* 22 */}
+        <Footer />            {/* 23 */}
       </main>
       <StickyCTA />
       <RevealObserver />

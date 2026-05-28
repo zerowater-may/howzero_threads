@@ -57,6 +57,7 @@ export function TestimonialWall() {
           type="button"
           onClick={() => setExpanded((v) => !v)}
           aria-expanded={expanded}
+          data-track={expanded ? "testimonials_collapse" : "testimonials_expand"}
           className="group inline-flex items-center gap-2 rounded-full border-2 border-foreground px-5 py-2.5 text-xs font-bold uppercase tracking-[0.12em] transition-all hover:bg-foreground hover:text-background"
         >
           {expanded ? "캡처 접기" : `▼ 더 많은 후기 ${captures.length}장 보기`}
@@ -75,6 +76,7 @@ export function TestimonialWall() {
               type="button"
               onClick={() => setLightboxIdx(i)}
               aria-label={`후기 캡처 ${i + 1} 확대보기`}
+              data-track={`testimonials_capture_${String(i + 1).padStart(2, "0")}`}
               className="group relative aspect-[3/4] overflow-hidden border border-foreground/15 bg-background transition-transform hover:-translate-y-0.5 hover:border-foreground"
             >
               <Image
@@ -110,6 +112,7 @@ export function TestimonialWall() {
               setLightboxIdx(null)
             }}
             aria-label="닫기"
+            data-track="testimonials_lightbox_close"
             className="absolute right-4 top-4 rounded-full border-2 border-background p-2 text-background transition-colors hover:bg-background hover:text-foreground"
           >
             <X className="h-5 w-5" />

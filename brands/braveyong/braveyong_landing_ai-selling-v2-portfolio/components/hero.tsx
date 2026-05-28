@@ -44,7 +44,7 @@ export function Hero() {
           {/* 큰 임팩트 카피 — 1만 개 vs 진짜 팔리는 10개 대비 */}
           <div className="hz-fade-up hz-delay-2 mx-auto max-w-2xl space-y-3 px-2 sm:px-0">
             <p className="text-base leading-relaxed text-foreground/60 sm:text-lg">
-              <s className="decoration-foreground/40">1만 개를 무작정 올리는 셀러</s>에서
+              상품은 올리는데 검색도 매출도 안 잡히는 셀러에서
             </p>
             <p className="text-2xl font-bold leading-tight tracking-tight text-foreground sm:text-3xl md:text-4xl">
               진짜 팔리는<br className="sm:hidden" />
@@ -52,7 +52,7 @@ export function Hero() {
               만드는 셀러로.
             </p>
             <p className="text-sm leading-relaxed text-foreground/65 sm:text-base">
-              5주 동안 매주 만나서, 줌 보강도 하면서 같이 만들어 갈게요.
+              5주 동안 내 상황에 맞는 시작점부터 잡고, 매주 2개씩 같이 고쳐갑니다.
             </p>
           </div>
 
