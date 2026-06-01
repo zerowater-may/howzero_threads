@@ -39,6 +39,8 @@ export async function POST(request: Request) {
     const data = result.data || {}
     const billId = readString(data.billId) || readString(result.billId) || readString(result.bill_id)
     const shortUrl = readString(data.shortUrl) || readString(result.shortUrl) || readString(result.shortURL)
+    const deliveryType = readString(data.deliveryType) || readString(result.deliveryType) || (shortUrl ? "URL" : "TALK")
+    const fallbackReason = readString(data.fallbackReason) || readString(result.fallbackReason)
     const message = result.message || result.msg
 
     return NextResponse.json({
@@ -48,6 +50,8 @@ export async function POST(request: Request) {
         shortUrl,
         code: result.code,
         message,
+        deliveryType,
+        fallbackReason,
         dryRun: Boolean(result.dryRun),
         amount: course.priceFirst,
       },

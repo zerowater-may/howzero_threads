@@ -25,6 +25,7 @@ export function getPaymintConfig() {
   return {
     dryRun,
     apiUrl,
+    apiVersion: process.env.PAYMINT_API_VERSION,
     apiKey: dryRun ? process.env.PAYMINT_API_KEY || "DRY_RUN_API_KEY" : requireEnv("PAYMINT_API_KEY"),
     memberId: dryRun ? process.env.PAYMINT_MEMBER_ID || "DRY_RUN_MEMBER" : requireEnv("PAYMINT_MEMBER_ID"),
     merchantId: dryRun ? process.env.PAYMINT_MERCHANT_ID || "DRY_RUN_MERCHANT" : requireEnv("PAYMINT_MERCHANT_ID"),
@@ -40,4 +41,9 @@ export const paymintEndpoints = {
   cancelBill: "/bill/cancel",
   destroyBill: "/bill/destroy",
   readBill: "/bill/read",
+  legacySendBill: "/if/bill/send",
+  legacyResendBill: "/if/bill/resend",
+  legacyCancelBill: "/if/bill/cancel",
+  legacyDestroyBill: "/if/bill/destroy",
+  legacyReadBill: "/if/bill/read",
 } as const

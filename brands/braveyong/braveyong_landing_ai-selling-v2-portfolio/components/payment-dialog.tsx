@@ -17,6 +17,8 @@ type PaymentResult = {
   shortUrl?: string
   code?: string
   message?: string
+  deliveryType?: "URL" | "TALK"
+  fallbackReason?: string
   dryRun?: boolean
   amount?: number
 }
@@ -177,6 +179,7 @@ export function PaymentDialog({
 
             <p className="mt-3 text-sm leading-relaxed text-foreground/70">
               이름과 휴대폰 번호를 입력하면, <span className="font-bold text-foreground">결제 페이지가 바로 열립니다.</span>
+              바로 열 수 없는 결제선생 환경에서는 카톡 청구서로 자동 전환됩니다.
               결제 후에는 <span className="font-bold text-brand">5주 시작 전까지 신청서 작성</span>이 필수입니다.
             </p>
             <p className="mt-2 rounded border-l-2 border-foreground bg-foreground/[0.04] px-3 py-2 text-xs leading-relaxed text-foreground/80 sm:text-sm">
@@ -263,9 +266,18 @@ export function PaymentDialog({
               {result && (
                 <div className="border-l-4 border-foreground bg-foreground/[0.04] px-4 py-3 text-sm leading-relaxed">
                   <p className="font-bold">
-                    {result.dryRun ? "테스트 모드로 결제 URL 요청이 성공했습니다." : "결제창이 열렸습니다."}
+                    {result.dryRun
+                      ? "테스트 모드로 결제 URL 요청이 성공했습니다."
+                      : result.shortUrl
+                        ? "결제창이 열렸습니다."
+                        : "카톡으로 결제 청구서를 보냈습니다."}
                   </p>
                   <p className="mt-1 text-foreground/65">Bill ID: {result.billId}</p>
+                  {!result.shortUrl && !result.dryRun && (
+                    <p className="mt-2 text-foreground/70">
+                      결제창을 바로 열 수 없어 같은 결제 청구서를 카톡으로 보냈습니다.
+                    </p>
+                  )}
                   {result.shortUrl && (
                     <div className="mt-3 flex flex-col gap-2">
                       <p className="text-foreground/70">

@@ -47,6 +47,8 @@ export type SendBillResponse = PaymintApiResponse & {
   hash?: string
   shortUrl?: string
   shortURL?: string
+  deliveryType?: "URL" | "TALK"
+  fallbackReason?: string
   dryRun?: boolean
 }
 
