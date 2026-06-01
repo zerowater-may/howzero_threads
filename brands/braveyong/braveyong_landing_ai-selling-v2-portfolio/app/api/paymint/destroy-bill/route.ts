@@ -17,7 +17,7 @@ export async function POST(request: Request) {
     return NextResponse.json({
       success: result.code === "0000",
       data: result,
-      error: result.code === "0000" ? undefined : result.msg,
+      error: result.code === "0000" ? undefined : result.message || result.msg,
     })
   } catch (error) {
     if (error instanceof z.ZodError) {

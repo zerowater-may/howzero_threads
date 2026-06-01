@@ -29,13 +29,15 @@ export function getPaymintConfig() {
     memberId: dryRun ? process.env.PAYMINT_MEMBER_ID || "DRY_RUN_MEMBER" : requireEnv("PAYMINT_MEMBER_ID"),
     merchantId: dryRun ? process.env.PAYMINT_MERCHANT_ID || "DRY_RUN_MERCHANT" : requireEnv("PAYMINT_MERCHANT_ID"),
     callbackUrl: process.env.PAYMINT_CALLBACK_URL || `${baseUrl}/api/paymint/callback`,
+    paymentRedirectUrl: process.env.PAYMINT_PAYMENT_REDIRECT_URL || `${baseUrl}/#apply`,
     defaultExpireDays: Number(process.env.PAYMINT_BILL_EXPIRE_DAYS || 3),
   }
 }
 
 export const paymintEndpoints = {
-  sendBill: "/if/bill/send",
-  cancelBill: "/if/bill/cancel",
-  destroyBill: "/if/bill/destroy",
-  readBill: "/if/bill/read",
+  sendBill: "/bill",
+  resendBill: "/bill/resend",
+  cancelBill: "/bill/cancel",
+  destroyBill: "/bill/destroy",
+  readBill: "/bill/read",
 } as const

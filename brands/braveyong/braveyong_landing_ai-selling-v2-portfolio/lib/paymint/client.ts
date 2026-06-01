@@ -5,6 +5,7 @@ import type {
   DestroyBillInput,
   PaymintApiResponse,
   ReadBillInput,
+  ResendBillInput,
   SendBillInput,
   SendBillResponse,
 } from "./types"
@@ -41,7 +42,7 @@ async function callPaymintApi<T = PaymintApiResponse>(endpoint: string, body: ob
 function baseAuthPayload() {
   const config = getPaymintConfig()
   return {
-    apikey: config.apiKey,
+    apiKey: config.apiKey,
     member: config.memberId,
     merchant: config.merchantId,
   }
@@ -54,50 +55,89 @@ export async function sendBill(params: SendBillInput): Promise<SendBillResponse>
   const billId = generateBillId()
   const hash = generateHash({ billId, phone: cleanPhone, price: amount })
   const expireDate = getExpireDate(params.expireDays ?? config.defaultExpireDays)
+  const sendType = params.sendType ?? "URL"
 
   const requestBody = {
     ...baseAuthPayload(),
     bill: {
-      bill_id: billId,
-      product_nm: params.productName,
+      billId,
+      sendType,
+      productName: params.productName,
       message: params.message || params.productName,
-      member_nm: params.memberName,
+      memberName: params.memberName,
       phone: cleanPhone,
       price: amount,
       hash,
-      expire_dt: expireDate,
-      callbackURL: config.callbackUrl,
+      expireDt: expireDate,
+      callbackUrl: config.callbackUrl,
+      pageRedirectUrl: params.pageRedirectUrl || config.paymentRedirectUrl,
     },
   }
 
   if (config.dryRun) {
     return {
       code: "0000",
-      msg: "DRY_RUN: 청구서 발송 요청이 정상 구성되었습니다.",
-      bill_id: billId,
-      hash,
-      shortURL: `https://bill.payssam.kr/dry-run/${billId}`,
+      message: "DRY_RUN: 결제 URL 생성 요청이 정상 구성되었습니다.",
+      data: {
+        billId,
+        hash,
+        shortUrl: `https://bill.payssam.kr/dry-run/${billId}`,
+      },
       dryRun: true,
     }
   }
 
   const response = await callPaymintApi<SendBillResponse>(paymintEndpoints.sendBill, requestBody)
-  return { ...response, bill_id: response.bill_id || billId, dryRun: false }
+  return {
+    ...response,
+    data: {
+      ...(response.data || {}),
+      billId: response.data?.billId || response.billId || response.bill_id || billId,
+    },
+    dryRun: false,
+  }
+}
+
+export async function resendBill(params: ResendBillInput): Promise<PaymintApiResponse> {
+  const config = getPaymintConfig()
+  const requestBody = {
+    ...baseAuthPayload(),
+    bill: {
+      billId: params.billId,
+    },
+  }
+
+  if (config.dryRun) {
+    return {
+      code: "0000",
+      message: "DRY_RUN: 카카오톡 청구서 재발송 요청이 정상 구성되었습니다.",
+      data: {
+        billId: params.billId,
+      },
+      dryRun: true,
+    }
+  }
+
+  return callPaymintApi(paymintEndpoints.resendBill, requestBody)
 }
 
 export async function readBill(params: ReadBillInput): Promise<PaymintApiResponse> {
   const config = getPaymintConfig()
   const requestBody = {
     ...baseAuthPayload(),
-    bill_id: params.billId,
+    bill: {
+      billId: params.billId,
+    },
   }
 
   if (config.dryRun) {
     return {
       code: "0000",
-      msg: "DRY_RUN: 청구서 조회 요청이 정상 구성되었습니다.",
-      bill_id: params.billId,
-      appr_state: "W",
+      message: "DRY_RUN: 청구서 조회 요청이 정상 구성되었습니다.",
+      data: {
+        billId: params.billId,
+        apprState: "W",
+      },
       dryRun: true,
     }
   }
@@ -110,16 +150,20 @@ export async function destroyBill(params: DestroyBillInput): Promise<PaymintApiR
   const amount = String(params.amount)
   const requestBody = {
     ...baseAuthPayload(),
-    bill_id: params.billId,
-    price: amount,
-    hash: generateHash({ billId: params.billId, price: amount }),
+    bill: {
+      billId: params.billId,
+      price: amount,
+      hash: generateHash({ billId: params.billId, price: amount }),
+    },
   }
 
   if (config.dryRun) {
     return {
       code: "0000",
-      msg: "DRY_RUN: 청구서 파기 요청이 정상 구성되었습니다.",
-      bill_id: params.billId,
+      message: "DRY_RUN: 청구서 파기 요청이 정상 구성되었습니다.",
+      data: {
+        billId: params.billId,
+      },
       dryRun: true,
     }
   }
@@ -132,16 +176,20 @@ export async function cancelBill(params: CancelBillInput): Promise<PaymintApiRes
   const amount = String(params.amount)
   const requestBody = {
     ...baseAuthPayload(),
-    bill_id: params.billId,
-    price: amount,
-    hash: generateHash({ billId: params.billId, price: amount }),
+    bill: {
+      billId: params.billId,
+      price: amount,
+      hash: generateHash({ billId: params.billId, price: amount }),
+    },
   }
 
   if (config.dryRun) {
     return {
       code: "0000",
-      msg: "DRY_RUN: 결제 취소 요청이 정상 구성되었습니다.",
-      bill_id: params.billId,
+      message: "DRY_RUN: 결제 취소 요청이 정상 구성되었습니다.",
+      data: {
+        billId: params.billId,
+      },
       dryRun: true,
     }
   }

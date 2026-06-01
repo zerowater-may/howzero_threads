@@ -11,6 +11,10 @@ const SendBillSchema = z.object({
   phoneNumber: z.string().trim().min(10, "연락처를 입력해주세요.").max(20, "연락처가 너무 깁니다."),
 })
 
+function readString(value: unknown): string | undefined {
+  return typeof value === "string" && value.length > 0 ? value : undefined
+}
+
 export async function POST(request: Request) {
   try {
     const body = SendBillSchema.parse(await request.json())
@@ -30,19 +34,24 @@ export async function POST(request: Request) {
       amount: course.priceFirst,
       productName,
       message: `${productName} 결제 청구서입니다. 신청서·결제정보는 동일한 이름·연락처로 작성해 주세요.`,
+      sendType: "URL",
     })
+    const data = result.data || {}
+    const billId = readString(data.billId) || readString(result.billId) || readString(result.bill_id)
+    const shortUrl = readString(data.shortUrl) || readString(result.shortUrl) || readString(result.shortURL)
+    const message = result.message || result.msg
 
     return NextResponse.json({
       success: result.code === "0000",
       data: {
-        billId: result.bill_id,
-        shortURL: result.shortURL,
+        billId,
+        shortUrl,
         code: result.code,
-        message: result.msg,
+        message,
         dryRun: Boolean(result.dryRun),
         amount: course.priceFirst,
       },
-      error: result.code === "0000" ? undefined : result.msg,
+      error: result.code === "0000" ? undefined : message,
     })
   } catch (error) {
     if (error instanceof z.ZodError) {

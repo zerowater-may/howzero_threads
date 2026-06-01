@@ -14,7 +14,7 @@ type PaymentDialogProps = {
 
 type PaymentResult = {
   billId?: string
-  shortURL?: string
+  shortUrl?: string
   code?: string
   message?: string
   dryRun?: boolean
@@ -22,7 +22,7 @@ type PaymentResult = {
 }
 
 export function PaymentDialog({
-  label = "결제 청구서 받기",
+  label = "지금 바로 결제하기",
   amount,
   className,
   dark = false,
@@ -32,7 +32,9 @@ export function PaymentDialog({
   const [phoneNumber, setPhoneNumber] = useState("")
   const [applyAgreed, setApplyAgreed] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [resendLoading, setResendLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [resendMessage, setResendMessage] = useState<string | null>(null)
   const [result, setResult] = useState<PaymentResult | null>(null)
   const [mounted, setMounted] = useState(false)
 
@@ -44,14 +46,47 @@ export function PaymentDialog({
     className ||
     "inline-flex items-center justify-center gap-2 rounded-full border-2 border-foreground bg-foreground px-6 py-3.5 text-sm font-bold tracking-tight text-background transition-all hover:bg-background hover:text-foreground"
 
+  function preparePaymentWindow() {
+    try {
+      const opened = window.open("", "_blank")
+      if (!opened) return null
+      opened.opener = null
+      opened.document.write(
+        "<!doctype html><html><head><title>결제창 준비 중</title></head><body style=\"font-family:system-ui,sans-serif;padding:24px\"><strong>결제창을 준비하고 있습니다.</strong><p>잠시만 기다려주세요.</p></body></html>",
+      )
+      return opened
+    } catch {
+      return null
+    }
+  }
+
+  function openPaymentPage(shortUrl: string, preparedWindow?: Window | null) {
+    try {
+      if (preparedWindow && !preparedWindow.closed) {
+        preparedWindow.location.href = shortUrl
+        return true
+      }
+
+      const opened = window.open(shortUrl, "_blank", "noopener,noreferrer")
+      if (opened) return true
+    } catch {
+      // fall through to same-window navigation
+    }
+
+    window.location.href = shortUrl
+    return false
+  }
+
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     if (!applyAgreed) {
       setError("결제 후 신청서 작성 동의가 필요합니다.")
       return
     }
+    const preparedWindow = preparePaymentWindow()
     setLoading(true)
     setError(null)
+    setResendMessage(null)
     setResult(null)
 
     try {
@@ -67,10 +102,48 @@ export function PaymentDialog({
       }
 
       setResult(payload.data)
+      if (payload.data?.shortUrl) {
+        openPaymentPage(payload.data.shortUrl, preparedWindow)
+      } else if (preparedWindow && !preparedWindow.closed) {
+        preparedWindow.close()
+      }
     } catch (err) {
+      if (preparedWindow && !preparedWindow.closed) {
+        preparedWindow.close()
+      }
       setError(err instanceof Error ? err.message : "청구서 발송 중 오류가 발생했습니다.")
     } finally {
       setLoading(false)
+    }
+  }
+
+  async function resendKakao() {
+    if (!result?.billId) {
+      setResendMessage("먼저 결제창을 열어 청구서를 생성해주세요.")
+      return
+    }
+
+    setResendLoading(true)
+    setError(null)
+    setResendMessage(null)
+
+    try {
+      const response = await fetch("/api/paymint/resend-bill", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ billId: result.billId }),
+      })
+      const payload = await response.json()
+
+      if (!response.ok || !payload.success) {
+        throw new Error(payload.error || "카톡 재발송에 실패했습니다.")
+      }
+
+      setResendMessage("같은 결제 청구서를 카톡으로 다시 보냈습니다.")
+    } catch (err) {
+      setResendMessage(err instanceof Error ? err.message : "카톡 재발송 중 오류가 발생했습니다.")
+    } finally {
+      setResendLoading(false)
     }
   }
 
@@ -88,7 +161,7 @@ export function PaymentDialog({
                   Paymint / 결제선생
                 </p>
                 <h3 id="paymint-dialog-title" className="mt-1 text-xl font-bold tracking-tight">
-                  결제 청구서 받기
+                  바로 결제하기
                 </h3>
               </div>
               <button
@@ -103,7 +176,7 @@ export function PaymentDialog({
             </div>
 
             <p className="mt-3 text-sm leading-relaxed text-foreground/70">
-              이름과 휴대폰 번호를 입력하면, <span className="font-bold text-foreground">카톡으로 결제 청구서 링크</span>가 바로 발송됩니다.
+              이름과 휴대폰 번호를 입력하면, <span className="font-bold text-foreground">결제 페이지가 바로 열립니다.</span>
               결제 후에는 <span className="font-bold text-brand">5주 시작 전까지 신청서 작성</span>이 필수입니다.
             </p>
             <p className="mt-2 rounded border-l-2 border-foreground bg-foreground/[0.04] px-3 py-2 text-xs leading-relaxed text-foreground/80 sm:text-sm">
@@ -190,19 +263,46 @@ export function PaymentDialog({
               {result && (
                 <div className="border-l-4 border-foreground bg-foreground/[0.04] px-4 py-3 text-sm leading-relaxed">
                   <p className="font-bold">
-                    {result.dryRun ? "테스트 모드로 청구서 요청이 성공했습니다." : "청구서가 발송되었습니다."}
+                    {result.dryRun ? "테스트 모드로 결제 URL 요청이 성공했습니다." : "결제창이 열렸습니다."}
                   </p>
                   <p className="mt-1 text-foreground/65">Bill ID: {result.billId}</p>
-                  {result.shortURL && !result.dryRun && (
-                    <a
-                      href={result.shortURL}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-3 inline-flex items-center gap-1.5 font-bold underline underline-offset-4"
-                    >
-                      결제 페이지 열기
-                      <ExternalLink className="h-3.5 w-3.5" />
-                    </a>
+                  {result.shortUrl && (
+                    <div className="mt-3 flex flex-col gap-2">
+                      <p className="text-foreground/70">
+                        결제창이 열렸습니다. 안 열렸다면 아래 버튼으로 다시 열 수 있습니다.
+                      </p>
+                      <button
+                        type="button"
+                        data-track="payment_reopen"
+                        onClick={() => result.shortUrl && openPaymentPage(result.shortUrl)}
+                        className="inline-flex items-center justify-center gap-1.5 rounded-full border-2 border-foreground px-4 py-2 font-bold transition-colors hover:bg-foreground hover:text-background"
+                      >
+                        결제창 다시 열기
+                        <ExternalLink className="h-3.5 w-3.5" />
+                      </button>
+                    </div>
+                  )}
+                  {result.billId && !result.dryRun && (
+                    <div className="mt-3 border-t border-foreground/15 pt-3">
+                      <p className="text-foreground/65">
+                        결제창을 닫았거나 나중에 결제해야 하면 같은 청구서를 카톡으로 다시 받을 수 있습니다.
+                      </p>
+                      <button
+                        type="button"
+                        data-track="payment_resend_kakao"
+                        disabled={resendLoading}
+                        onClick={resendKakao}
+                        className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-foreground bg-background px-4 py-2.5 font-bold text-foreground transition-colors hover:bg-foreground hover:text-background disabled:cursor-not-allowed disabled:opacity-50"
+                      >
+                        {resendLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
+                        카톡으로 다시 받기
+                      </button>
+                    </div>
+                  )}
+                  {resendMessage && (
+                    <p className="mt-3 text-xs font-bold text-foreground/70">
+                      {resendMessage}
+                    </p>
                   )}
                 </div>
               )}
@@ -214,7 +314,7 @@ export function PaymentDialog({
                 className="inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-brand bg-brand px-6 py-4 text-base font-bold text-brand-foreground transition-all hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40"
               >
                 {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : <CreditCard className="h-5 w-5" />}
-                {applyAgreed ? "카톡으로 결제 청구서 받기" : "신청서 동의 후 진행"}
+                {applyAgreed ? "지금 바로 결제하기" : "신청서 동의 후 진행"}
               </button>
             </form>
           </div>

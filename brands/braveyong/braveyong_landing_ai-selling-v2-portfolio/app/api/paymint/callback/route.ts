@@ -8,8 +8,9 @@ export async function POST(request: Request) {
   try {
     const callbackData = (await request.json()) as PaymentCallbackData
     const config = getPaymintConfig()
+    const callbackApiKey = callbackData.apikey || callbackData.apiKey
 
-    if (!config.dryRun && callbackData.apikey !== config.apiKey) {
+    if (!config.dryRun && callbackApiKey !== config.apiKey) {
       return NextResponse.json({ code: "9999", msg: "인증 정보가 올바르지 않습니다." }, { status: 401 })
     }
 

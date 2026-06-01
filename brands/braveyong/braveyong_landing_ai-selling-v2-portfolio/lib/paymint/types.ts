@@ -7,6 +7,12 @@ export type SendBillInput = {
   productName: string
   message?: string
   expireDays?: number
+  sendType?: "TALK" | "URL"
+  pageRedirectUrl?: string
+}
+
+export type ResendBillInput = {
+  billId: string
 }
 
 export type ReadBillInput = {
@@ -25,22 +31,28 @@ export type CancelBillInput = {
 
 export type PaymintApiResponse = {
   code: string
-  msg: string
+  msg?: string
+  message?: string
+  data?: Record<string, unknown>
   [key: string]: unknown
 }
 
 export type SendBillResponse = PaymintApiResponse & {
+  apiKey?: string
   apikey?: string
   member?: string
   merchant?: string
+  billId?: string
   bill_id?: string
   hash?: string
+  shortUrl?: string
   shortURL?: string
   dryRun?: boolean
 }
 
 export type PaymentCallbackData = {
-  apikey: string
+  apikey?: string
+  apiKey?: string
   member?: string
   bill_id: string
   appr_pay_type?: string
