@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { RevealObserver } from "@/components/reveal-observer"
+import { GlassNav815 } from "@/components/tonggwan/glass-nav-815"
 import { Hero815 } from "@/components/tonggwan/hero-815"
 import { WhyNow815 } from "@/components/tonggwan/why-now-815"
 import { Cost815 } from "@/components/tonggwan/cost-815"
@@ -34,6 +35,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <>
+      <GlassNav815 />
       <main className="min-h-screen bg-background text-foreground">
         <Hero815 />          {/* 01 */}
         <WhyNow815 />        {/* 02 병목 체인 */}
