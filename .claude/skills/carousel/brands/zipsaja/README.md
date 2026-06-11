@@ -1,5 +1,10 @@
 # 집사자 (Zipsaja) 브랜드 프리셋
 
+> ⚠️ **LEGACY 프리셋.** 신규 zipsaja 콘텐츠의 canonical 디자인 시스템은 `.claude/skills/zipsaja-design/` 다. 충돌 시 zipsaja-design 우선.
+> - **폰트**: canonical = **Gmarket Sans**(Headline/Body, 로컬 TTF) + Gaegu(말풍선). 이 문서의 `Jua`(Headline)는 legacy 값이다.
+> - **게시 규격**: canonical = **캐러셀 1080×1350(4:5)** / **릴스 1080×1920(9:16, 30fps, 30s)**. 이 문서의 `1080×1440`은 legacy 값이며 게시 전 4:5로 마이그레이션한다.
+> - 이 프리셋과 `reels/` Remotion 소스(Jua·1440)는 기존 산출물 보관·참조용으로만 둔다.
+
 인스타 `@go.nyangee` 계열 **친근한 부동산/내집마련 큐레이터** 스타일을 재현한 프리셋.
 손그림 마스코트(**집사자** — 집을 지키는 사자)가 반말로 정보를 정리해주는 톤.
 

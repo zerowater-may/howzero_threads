@@ -1,5 +1,47 @@
 # HowZero Wiki Log
 
+## 2026-06-11 · update | zipsaja 위키화 충돌 5종 정리
+
+- 요청: 위키화 중 발견한 정리 필요 5종을 "충돌 안 나게" 반영하고, 게시 규격은 최신 릴스 폼을 보고 확정.
+- ground truth 수집(실측): 빈 번들 4개 모두 `.DS_Store`만, 완성 번들 실측 **15개**. 캐러셀 PNG 전부 **1080×1350**(1개 번들 raw만 2160×2880=2x 3:4, publish-ready는 1080×1350). 릴스 mp4 전부 **1080×1920·9:16·30fps·30s**(publish 파일 `-audio-mapped-ig-safe.mp4`). zipsaja-design `colors_and_type.css`는 **Gmarket Sans**(로컬 TTF, substitution flag 없음) 확정. E2E 기록은 `docs/superpowers/plans/2026-04-24-pipeline-full-orchestration.md` Task 14에 존재.
+- 해소: ① 폰트 → Gmarket Sans canonical(legacy Jua 표시). ② 규격 → 캐러셀 1080×1350·릴스 1080×1920 canonical(legacy 1440 표시). ③ E2E → 기록 부재 아님(plan Task 14). ④ 완성 수 → 15개. ⑤ (A) dataset 5개 번들 재사용은 독립 데이터로 세지 않도록 명시.
+- 원천 충돌 차단: `.claude/skills/carousel/brands/zipsaja/README.md` 상단에 superseded 배너 추가(폰트·규격 canonical = zipsaja-design).
+- 변경 페이지: [[Zipsaja Persona]](폰트 canonical), [[Zipsaja Index]](완성 15개·dataset 재사용 경고·E2E 재구성), [[Zipsaja Data Findings]](E2E 기록 위치), [[HowZero Open Questions]](해소 항목 정리 + 해소 footnote), `wiki/log.md`.
+- 후속(삭제 실행, 2026-06-11): 빈 스캐폴드 3개(`부동산-유튜브-성과-TOP-핫영상`, `강남은-숨고르는데-동북권이-달린다-부린이-찬스`, `강남-끝났나-이재명-1년-동북권이-5배-더-올랐다`) 삭제(모두 untracked·`.DS_Store`만). E2E 스캐폴드 보존(plan 출력 경로). pipeline 번들 19→**16**(완성 15 + E2E 1). 소스 `brands/zipsaja/INDEX.md`에 전체 파이프라인 인벤토리 섹션 + wiki 포인터 + canonical 디자인 규격 추가.
+- 잔여 open: legacy 1440/Jua 자산 실제 리렌더 시점, (A) dataset 재사용 정책, 게시 성과 데이터 누적 여부.
+
+
+## 2026-06-11 · ingest | zipsaja(집사자) 브랜드 브레인 위키화
+
+- 요청: "zipsaja도 다 위키화해줘". 기존엔 [[HowZero Content Pipeline]] 안에 파이프라인 구조 4줄로만 언급됐고 전용 페이지·log 기록이 0건이었다.
+- 소스: `brands/zipsaja/INDEX.md`, `zipsaja_pipeline_*`(19개 번들의 data.json·brief·storyboard·captions), `zipsaja_misc_firsthome-rage-research/`(분노형 리서치 4종), `.claude/skills/zipsaja-design/`(SKILL/README/colors_and_type.css/AGENTS), `.claude/skills/carousel/brands/zipsaja/`, `.claude/skills/zipsaja-*`, 루트 `AGENTS.md` 8절. 4개 병렬 서브에이전트로 페르소나·콘텐츠구조·데이터·자산지도 채굴.
+- 생성 페이지: [[Zipsaja Index]], [[Zipsaja Persona]], [[Zipsaja Content Playbook]], [[Zipsaja Data Findings]].
+- 변경 페이지: `wiki/index.md`(별도 브랜드 브레인 표에 zipsaja 추가 + 빠른 탐색), [[HowZero Open Questions]](Zipsaja 섹션 신설), [[HowZero Content Pipeline]](교차링크), `wiki/log.md`.
+- 핵심 합성: zipsaja는 [[BraveYong Index]]처럼 **별도 브랜드 브레인**. 정체성 = 20–30대 부린이·신혼부부 대상 부동산 큐레이션 인스타, 노란 사자 마스코트 "집사자", 반말 친구 톤, 자체 `proptech_db` 실거래 데이터 기반. 콘텐츠 공식 = **댓글싸움형**(공감→데이터 충격→격차 산수→규제 원인→면책→양자택일 질문). 거시 인사이트 = 강남 둔화/동북권 급등, 대출규제에도 상승, 하락장 통계 착시(같은집 +22.9%), 첫집 현금격차 확대, 매수·전세 동시 봉쇄.
+- 가드: zipsaja 톤은 [[BraveYong Persona]]의 자극형 훅("끝났다/망한다/90%가 모르는")과 정반대. 존댓말·이모지·그라디언트·2인칭 "당신"·투자 권유·개인 조롱·단정 금지. 분노는 키우되 개인 비난과 단정은 회피.
+- 발견/정리 필요: pipeline 19개 중 완성 ~12개(빈 폴더 3 + HyperFrames-only 1), (A) 25개 구 dataset이 5개 번들에 재사용(독립 데이터로 세지 말 것), 폰트 충돌(현행 Gmarket Sans vs 레거시 Jua), E2E 검증 번들 산출물 부재 → 모두 [[HowZero Open Questions]] Zipsaja 섹션에 기록.
+
+
+## 2026-06-04 · ingest | 백만장자 앤더슨 쿠팡 3가지 리스크 → S-004 하우제로 커머스 대본
+
+- 요청: vidIQ MCP로 `https://youtu.be/ZYbKUUrbatI`를 읽고, 하우제로 커머스 페르소나로 구조 분석·벤치마킹·좌/우 Playground를 제작.
+- 소스: vidIQ `vidiq_get_videos_by_ids`, `vidiq_video_transcript`, `vidiq_score_title`(메인 제목 후보 83점).
+- 생성 산출물: `brands/howzero/howzero_script/S-004-commerce-coupang-3-loss-holes.md`, `brands/howzero/howzero_misc_coupang-3-loss-holes-playground/index.html`.
+- 변경 페이지: [[YouTube Reference Library]], [[Commerce Hook Library]], [[Commerce Script Rules]], `wiki/index.md`, `brands/howzero/INDEX.md`, `wiki/log.md`.
+- 핵심 합성: 원본의 “쿠팡 초보가 손해 보는 3가지”를 느슨하게 재해석하지 않고, `미비한 시장 분석 → 전략 없는 광고비 → 상품과 사랑에 빠짐 → 초보 소싱 기준 → 실제 상품 예시 → 프로그램 데모` 순서를 거의 그대로 유지한다. 치환 지점은 앤더슨 팀 프로그램이 아니라 불사자에서 운영하는 신규 `쿠팡스카우터`(쿠팡 상품 화면에서 판매량·조회수·매출·전환율 확인)다.
+- 사용자 피드백 반영: 이전 버전의 “하우제로식 기준표/자동화” 중심 해석은 과하게 달랐으므로, 대본과 Playground를 원본 구조·내용 밀착형으로 재작성하고 사용자 제공 스크린샷 2장을 `howzero_misc_coupang-3-loss-holes-playground/assets/`에 반영했다.
+- 가드: 수익·노출·순위 보장, AI 만능론, 레퍼런스 제작자 비판 금지. 판매량·조회수·매출·전환율은 판단 보조 데이터로 설명한다.
+
+
+## 2026-06-02 · ingest | Nate Herk AI Automation AX 레퍼런스
+
+- 요청: `https://www.youtube.com/@nateherk` 채널을 분석해 HowZero wiki에 레퍼런스로 정리.
+- 소스: vidIQ MCP `vidiq_channel_stats`, `vidiq_channel_videos`, `vidiq_get_videos_by_ids`; YouTube RSS `UC2ojq-nuP8ceeHqiroeKhBA`; 영상 설명란 공개 링크(Skool, Uppit AI, podcast application).
+- 생성 페이지: [[AX Reference Library]], [[Nate Herk Reference]].
+- 변경 페이지: [[HowZero AX Index]], [[HowZero AX Content Strategy]], `wiki/index.md`, `wiki/log.md`.
+- 핵심 합성: Nate Herk는 `AI 툴 출시 대응 → 실습형 워크플로우 → AI OS → 무료 Skool → 유료 Plus/구축/제휴` 퍼널이 강하다. HowZero는 이 구조를 가져오되 Claude Code 중심 제목을 그대로 쓰지 않고, 대표의 리드, 리포트, 콘텐츠, 제안서, 팔로업 자동화로 번역해야 한다.
+- 주의: 투자/트레이딩 자동화 소재는 수익 약속이 아니라 대표 브리핑, 시장 모니터링, 리스크 알림으로 제한한다.
+
 ## [2026-05-20] ingest | HowZero initial project brain
 
 - `howzero` 저장소를 Obsidian에서 바로 열 수 있는 vault로 보고 `wiki/` 합성 레이어를 생성했다.
@@ -181,3 +223,42 @@
 - 변경 페이지: [[BraveYong AI Selling Bootcamp]](v2 실제 적용 표 + 가격 노출 정책 섹션), `brands/braveyong/braveyong_landing_ai-selling-v2-portfolio/README.md`(19블록 + GlassNav/StickyCTA 반영 + 가격 정책 명시).
 - 산출물: 16개 컴포넌트, 5개 검증 캡처, 19블록 구조, 데스크톱·모바일 풀페이지 캡처.
 - 핵심 합성: 6 사이클로 인터뷰 asset이 페이지 전 섹션에 자연스럽게 분포됨. "강의를 사세요"가 아니라 "당신의 시간과 가족을 지킬 구조를 같이 만들자"라는 스토리텔링으로 고액 강의 결제를 정당화. 가격은 페이지 어디에도 숫자로 노출되지 않으며, "신청서 검토 후 개별 안내"가 디자인 자체로 선별을 표현한다.
+
+## 2026-05-29 · S-003 계절 선점 소싱 대본 기획 (커머스 / 불사자 무료 CTA)
+
+- 작업: 하우제로 커머스 페르소나로 "AI 키워드 소싱 + 계절성" 주제의 유튜브 롱폼(8~12분) 대본 기획서 생성.
+- vidIQ MCP 활용: keyword_research(스마트스토어 95.5K, 쿠팡소싱 33.5K, 상품소싱 11.4K / "AI 상품 소싱"·"계절상품" = 검색량 0 확인), score_title(후보 5개 비교 → 84점 1위 선정). outliers/trending은 한국 비즈 니치 semantic 매칭이 약해 keyword 데이터 중심으로 판단.
+- 핵심 제약: 무료 키워드 프로그램(= 불사자 AI 키워드 소싱/분석 기능, 1개월 무료 체험)이 영상의 목적. "프로그램 목적 vs 불사자 후반부 등장 원칙" 긴장을 가치선행 하이브리드 + 데모 클라이맥스 + 3중 CTA 배치(예고→데모→CTA)로 해소.
+- 산출물: `brands/howzero/howzero_script/S-003-commerce-seasonal-sourcing.md` (7챕터 10분 연출 + vidIQ 근거 + 팩트체크 + 톤 체크리스트).
+- 변경 페이지: [[Commerce Hook Library]](S-003 제목/썸네일·검색량 0 학습 추가), `brands/howzero/INDEX.md`(S-002·S-003 표 추가).
+
+## 2026-06-01 · ingest | BraveYong 6/8 무료강의 → 200만원 전환 퍼널
+
+- 작업: 용팀장 무료강의 초안(120분 큐시트, 4단 후크, 200만원 유료 전환 오퍼)을 BraveYong 커머스 브레인에 인제스트.
+- 원문 보관: Downloads에만 있던 초안을 `brands/braveyong/braveyong_misc_free-webinar-2026-06-08-funnel-draft.md`로 복사(tracked).
+- 생성 페이지: [[BraveYong Free Webinar Funnel]] — 사실(큐시트/매출산식) / 페르소나 변환 멘트 / 4단 후크 구조 / 금지·조심 표현 4분리.
+- 변경 페이지: [[BraveYong Index]], `wiki/index.md`(BraveYong 표 + 빠른 탐색), [[BraveYong Open Questions]](6/8 퍼널 섹션 신규).
+- 핵심 합성: 초안에 [[BraveYong Persona]] 톤 가드 위반 후보 다수 식별 — 상위노출 보장("등록 순간 1페이지"), 리스크 제로(구매대행 "위험 없음"), 허위 마감/희소성("오늘만 1,000만원 상당"), 검증 안 된 자산·수익 단정(부동산 20채 등), "1,000개 1달"이 효자상품 10개 철학과 충돌. 강의 확정 전 점검 필요로 명시.
+- 열린 질문: 6/8 무료강의의 200만원 오퍼가 [[BraveYong AI Selling Bootcamp]](5주 오프라인, 6/13)와 같은 상품인지 별개 온라인/불사자 상품인지 미확정 → 사용자 확인 필요.
+
+## 2026-06-01 · update | BraveYong 6/8 무료강의 = 부트캠프 같은 상품 확정
+
+- 사용자 확인: 6/8 무료강의의 200만원 오퍼는 [[BraveYong AI Selling Bootcamp]]와 **같은 상품**, 무료강의 초안이 최신, 일정은 **6/8**(구 6/13 폐기).
+- 변경 페이지: [[BraveYong AI Selling Bootcamp]](역할에 최신 기준 노트 + 운영 기준 표를 6/8 전환 입구·200만원·불사자 풀버전·평생 스터디·평생 VOD로 갱신, 6/13 폐기), [[BraveYong Free Webinar Funnel]](상품 관계 확정 노트 + Open Question 1번 해소), [[BraveYong Open Questions]](퍼널 항목 해소 표시).
+- 보존 원칙: 형식(오프라인 5주 vs 온라인 피벗)은 미명시라 기존 오프라인 구조를 삭제하지 않고 무료강의 입구로 연결만 함. 피벗 확정 시 부트캠프 형식 갱신 필요로 남김.
+
+## 2026-06-01 · update | BraveYong 유료강의 형식 = 오프라인 5회만 확정
+
+- 사용자 확인: 200만원 본강의는 **토요일 오프라인 5회(강남/선릉)만**. 오히려 온라인이 없어짐 — 수요일 줌 보강·온라인 VOD 제거.
+- 변경 페이지: [[BraveYong AI Selling Bootcamp]](형식 확정 노트 + 구성 행을 오프라인 5회만으로, 최대 차별점에서 평생 VOD 제거), [[BraveYong Free Webinar Funnel]](상품 관계 노트·오퍼 C·Open Question 형식 확정 반영), [[BraveYong Open Questions]](형식 항목 해소), `wiki/index.md`(BraveYong 표 "6주 오프라인"→"토요일 오프라인 5회, 온라인 없음").
+- 메모: 무료강의 초안의 "평생 VOD" 당일 혜택은 초안 아이디어로 표시. 실제 상품을 온라인 강의처럼 표현하지 않도록 가드 추가.
+
+## 2026-06-01 · ingest | BraveYong 무료강의 벤치마크 — 빌리브로 임찬 세일즈 웨비나
+
+- 작업: 용팀장 6/8 무료강의 벤치마크용으로 잘된 무료강의→유료전환 웨비나(빌리브로 임찬, 영상 `aXuFaCEkQ58`)를 vidIQ 트랜스크립트로 분석.
+- 소스: vidIQ `vidiq_video_transcript`(79K자, 타임스탬프 없음). `vidiq_video_watch`는 영상 길이로 타임아웃 → 트랜스크립트 1차 소스. PPT 원본 `~/Downloads/26_05_28 [유튜브] 무료세마나.key`(슬라이드 ~50, .iwa Snappy-protobuf라 본문 자동추출 보류).
+- 생성: `brands/braveyong/braveyong_misc_ref-billiebro-free-webinar/`(SCRIPT.md 정제 대본 + STRUCTURE.md 구조분석 + README.md), `wiki/BraveYong Webinar Benchmark.md`.
+- 변경: [[BraveYong Index]], `wiki/index.md`(BraveYong 표 + 빠른 탐색).
+- 핵심 합성: 골격 = 권위 선점 → 참여형 고통 공감 → 사례 고조 → 오픈북 본론 실연 → 영웅서사 인간화 → 수강생 라이브 인터뷰 → "Q&A" 빙자 세일즈(72%) → 좌석 카운트다운 클로징. 감정 아크 공감→고조→확신→세일즈→만족. 추정 2~2.5시간.
+- 톤 가드 경고: 상위노출 보장 떡밥/가구매 산식, 전액환불·순익 보장, 좌석 카운트다운 허위 긴급성, 거액 가격 앵커는 [[BraveYong Persona]]·[[BraveYong AI Selling Bootcamp]] 금지선과 충돌 → 골격만 차용, 표현은 순화. 변환 타깃은 [[BraveYong Free Webinar Funnel]].
+- 다음 단계: 사용자 지시 후 용팀장 포맷(6/8 무료강의, 오프라인 5회 200만원)으로 변환.
