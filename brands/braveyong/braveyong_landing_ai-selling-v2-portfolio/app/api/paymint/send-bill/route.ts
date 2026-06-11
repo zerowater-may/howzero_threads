@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server"
 import { z } from "zod"
-import { course } from "@/lib/config"
+import { resolveProduct } from "@/lib/products"
 import { sendBill } from "@/lib/paymint/client"
 import { sanitizePhone } from "@/lib/paymint/hash"
 
@@ -9,6 +9,7 @@ export const runtime = "nodejs"
 const SendBillSchema = z.object({
   memberName: z.string().trim().min(2, "이름을 입력해주세요.").max(30, "이름은 30자 이하로 입력해주세요."),
   phoneNumber: z.string().trim().min(10, "연락처를 입력해주세요.").max(20, "연락처가 너무 깁니다."),
+  productKey: z.string().trim().optional(), // 미지정 시 기존 강의(course)로 fallback
 })
 
 function readString(value: unknown): string | undefined {
@@ -27,13 +28,13 @@ export async function POST(request: Request) {
       )
     }
 
-    const productName = `용감한용팀장 AI셀링 실전반 오프라인 ${course.cohort}`
+    const product = resolveProduct(body.productKey)
     const result = await sendBill({
       memberName: body.memberName,
       phoneNumber,
-      amount: course.priceFirst,
-      productName,
-      message: `${productName} 결제 청구서입니다. 신청서·결제정보는 동일한 이름·연락처로 작성해 주세요.`,
+      amount: product.amount,
+      productName: product.name,
+      message: `${product.name} 결제 청구서입니다. 신청서·결제정보는 동일한 이름·연락처로 작성해 주세요.`,
       sendType: "URL",
     })
     const data = result.data || {}
@@ -53,7 +54,8 @@ export async function POST(request: Request) {
         deliveryType,
         fallbackReason,
         dryRun: Boolean(result.dryRun),
-        amount: course.priceFirst,
+        amount: product.amount,
+        productKey: product.key,
       },
       error: result.code === "0000" ? undefined : message,
     })
