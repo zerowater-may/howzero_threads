@@ -32,6 +32,12 @@ export function Hero815() {
             deadline={tonggwan815.payDeadlineISO}
             deadlineLabel={tonggwan815.deadlineLabel}
             completePathPrefix="/815/complete"
+            noticeCopy={
+              <>
+                이름과 휴대폰 번호를 입력하면 <span className="font-bold text-foreground">결제 페이지가 바로 열립니다.</span>{" "}
+                결제 후 화면의 <span className="font-bold text-brand">‘입장 링크 받기’</span>로 카톡 오픈채팅방에 입장하세요. 6/21까지 방에서 챙겨드립니다.
+              </>
+            }
           />
           <CountdownTimer deadline={tonggwan815.payDeadlineISO} label={tonggwan815.deadlineLabel} />
           <p className="font-mono text-[11px] text-foreground/45">
