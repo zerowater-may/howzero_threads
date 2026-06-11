@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import { useState } from "react"
+import { useState, type ReactNode } from "react"
 import { ChevronDown, X } from "lucide-react"
 import { Section } from "./section"
 import { highlights, captures } from "@/lib/testimonials"
@@ -11,17 +11,29 @@ import { highlights, captures } from "@/lib/testimonials"
  * 하이라이트 8장 텍스트 카드 → ▼ 더 보기 → 캡처 46장 그리드 + Dialog lightbox.
  *
  * 하이라이트 슬롯은 운영 입력 — body 비면 "1기 모집 중" placeholder가 표시된다.
+ * label/title/lead는 optional — 미지정 시 기존 강의 랜딩(/) 카피 그대로 (course 무손상).
  */
-export function TestimonialWall() {
+export function TestimonialWall({
+  label = "early voices",
+  title,
+  lead,
+}: {
+  label?: string
+  title?: ReactNode
+  lead?: ReactNode
+}) {
   const [expanded, setExpanded] = useState(false)
   const [lightboxIdx, setLightboxIdx] = useState<number | null>(null)
 
   return (
     <Section
       id="testimonials"
-      label="early voices"
-      title={<>실제 카페에 남은 후기들.</>}
-      lead="이 8장은 그동안 진행한 스터디·라이브 클래스 카페에 실제로 달린 후기에서 따왔어요. 원본 캡처는 아래 ▼ 더 보기로 50장 전부 보실 수 있습니다."
+      label={label}
+      title={title ?? <>실제 카페에 남은 후기들.</>}
+      lead={
+        lead ??
+        "이 8장은 그동안 진행한 스터디·라이브 클래스 카페에 실제로 달린 후기에서 따왔어요. 원본 캡처는 아래 ▼ 더 보기로 50장 전부 보실 수 있습니다."
+      }
     >
       {/* 하이라이트 8장 카드 그리드 — 실제 후기 텍스트 (펼치기 전에도 노출) */}
       <div className="grid gap-3 md:grid-cols-2">

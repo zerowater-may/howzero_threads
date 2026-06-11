@@ -1,12 +1,25 @@
 import { Section } from "@/components/section"
 
-const OUTCOMES: [string, string][] = [
-  ["내가 등록 대상인지 3초 판별", "구매대행·배대지·판매중개·재등록 — 어디에 걸리는지 바로 확인"],
-  ["통장 0개로 기업뱅킹 가입 → 무료 인증서 발급", "은행 고객센터·지점에 그대로 읽는 문의 멘트까지"],
-  ["막혔을 때 빠지는 3가지 우회로", "금융인증서 / 세관 직접 제출 / 유료 최후수단 — 어떤 은행에서 막혀도 등록 완료"],
-  ["UNI-PASS 부호 등록 5단계", "회원가입 → 신청서 작성 → 서류 첨부 → 처리현황 확인 → 부호 발급"],
-  ["사업자 수십 개, 하루에 끝내는 대량 처리", "한 은행 통일 · 서류 일괄 세팅 · 비대면 우선 처리 전략"],
-  ["사업자별 처리현황 체크리스트", "누락 0으로 8.15 전 전 사업자 부호 발급 확인"],
+/** 6가지 산출물 — 체크리스트 프레임. gloss는 회색 용어풀이 (필요한 카드만). */
+const OUTCOMES: { title: string; gloss?: string }[] = [
+  { title: "내 사업자가 8.15 대상인지 1분 판별 기준" },
+  {
+    title: "통장 0개 기업뱅킹 + 무료 인증서 경로",
+    gloss: "은행에 그대로 읽는 문의 멘트 포함",
+  },
+  {
+    title: "막혔을 때 우회로 3가지",
+    gloss: "금융인증서 · 세관 직접 제출 · 최후수단",
+  },
+  {
+    title: "UNI-PASS 부호 발급 5단계",
+    gloss: "관세청 사이트 화면 그대로 따라하기",
+  },
+  {
+    title: "사업자 여러 개 대량 처리 순서",
+    gloss: "수십 개도 하루에 끝내는 동선",
+  },
+  { title: "8.15 전 최종 점검 체크리스트" },
 ]
 
 export function Curriculum815() {
@@ -14,18 +27,29 @@ export function Curriculum815() {
     <Section
       id="curriculum"
       label="WHAT YOU GET"
-      title={<>6/21 이후, 당신이 할 수 있게 되는 것</>}
-      lead="원본 스텝바이스텝을 라이브로, 막히는 지점마다 바로 풀면서 진행합니다."
+      title={<>6월 21일 밤 10시, 당신 손에 남는 6가지.</>}
+      lead="강의 ‘시청’이 아니라, 8.15 전에 끝내는 ‘준비 상태’를 가져가는 자리입니다."
     >
       <div className="grid gap-px overflow-hidden border-2 border-foreground sm:grid-cols-2">
-        {OUTCOMES.map(([t, d], i) => (
-          <div key={i} className="bg-background p-5">
-            <div className="font-mono text-sm font-bold text-brand">{String(i + 1).padStart(2, "0")}</div>
-            <h3 className="mt-2 text-base font-bold leading-snug">{t}</h3>
-            <p className="mt-1.5 text-sm leading-relaxed text-foreground/70">{d}</p>
+        {OUTCOMES.map((o, i) => (
+          <div key={i} className="flex items-start gap-3 bg-background p-5">
+            <span aria-hidden className="mt-0.5 shrink-0 text-lg font-bold leading-none text-brand">
+              ☑
+            </span>
+            <div>
+              <h3 className="text-base font-bold leading-snug">{o.title}</h3>
+              {o.gloss && (
+                <p className="mt-1.5 text-xs leading-relaxed text-foreground/55">{o.gloss}</p>
+              )}
+            </div>
           </div>
         ))}
       </div>
+
+      <p className="mt-8 max-w-2xl text-sm leading-relaxed text-foreground/75 sm:text-base">
+        용어 몰라도 됩니다. 부호·UNI-PASS·공동인증서, 나올 때마다 한 줄씩 풀고 갑니다. 막히면 그
+        자리에서 질문하세요 — 그게 라이브로 하는 이유입니다.
+      </p>
     </Section>
   )
 }

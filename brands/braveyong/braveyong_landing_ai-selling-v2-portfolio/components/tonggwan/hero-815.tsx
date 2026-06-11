@@ -1,7 +1,11 @@
+import Image from "next/image"
 import { PaymentDialog } from "@/components/payment-dialog"
 import { CountdownTimer } from "@/components/countdown-timer"
 import { Marker } from "@/components/handwriting"
 import { tonggwan815 } from "@/lib/products"
+
+/** 히어로 신뢰 스트립 팩트칩 — 검증된 사실만 (성과 보장 문구 금지) */
+const TRUST_CHIPS = ["지금도 직접 올리는 현직 셀러", "혼자 1만 개 등록", "AI셀링 실전반 1기 운영"]
 
 export function Hero815() {
   return (
@@ -18,14 +22,18 @@ export function Hero815() {
           당신 구매대행은 <Marker>통관에서 멈춥니다.</Marker>
         </h1>
 
-        <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-foreground/75 sm:text-lg">
-          통장 한 개도 더 안 만들고, 인증서 비용 <span className="font-bold text-foreground">0원</span>으로
-          전자상거래업자 부호를 끝내는 법. <br className="hidden sm:block" />
-          6월 21일(일) 단 한 번의 라이브 특강.
+        <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-foreground/55">
+          부호(통관고유부호) = 세관이 ‘이 물건 주인이 누구인지’ 확인하는 등록번호입니다.{" "}
+          8월 15일부터 이게 없으면 수입신고 자체가 안 됩니다.
         </p>
 
-        <p className="mx-auto mt-4 max-w-xl text-sm font-bold text-foreground sm:text-base">
-          사업자가 몇 개든 — 새 통장 0개, <Marker>‘사업자 통장’도 필요 없습니다.</Marker>
+        <p className="mx-auto mt-4 max-w-xl text-base font-bold leading-relaxed text-foreground sm:text-lg">
+          준비하라니까 다들 통장부터 걱정합니다. 결론부터 — 통장, 새로 만들 필요{" "}
+          <Marker>0개</Marker>. ‘사업자 통장’도 필요 없습니다.
+        </p>
+
+        <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-foreground/75 sm:text-lg">
+          6월 21일(일) 밤 8시, 라이브 단 1회. 이 한 번으로 8.15 전 준비를 끝냅니다.
         </p>
 
         <div className="mt-8 flex flex-col items-center gap-4">
@@ -49,6 +57,38 @@ export function Hero815() {
             {tonggwan815.price.toLocaleString()}원 (부가세 포함) · 결제선생 안전결제
           </p>
         </div>
+
+        {/* 신뢰 스트립 — 당사자성 팩트칩 */}
+        <div className="mt-10 flex flex-col items-center gap-3">
+          <div className="flex flex-col items-center gap-3 sm:flex-row">
+            <Image
+              src="/assets/face.jpg"
+              alt="용감한 용팀장 — 현직 구매대행 셀러"
+              width={48}
+              height={48}
+              className="h-12 w-12 shrink-0 rounded-full object-cover grayscale"
+            />
+            <div className="flex flex-wrap items-center justify-center gap-1.5">
+              {TRUST_CHIPS.map((chip) => (
+                <span
+                  key={chip}
+                  className="rounded-full border border-foreground/20 px-3 py-1 text-[11px] font-bold"
+                >
+                  {chip}
+                </span>
+              ))}
+            </div>
+          </div>
+          <p className="text-sm text-foreground/70">
+            겁주려고 만든 페이지가 아닙니다.{" "}
+            <span className="font-bold text-foreground">저도 막히는 당사자</span>라서 만들었습니다.
+          </p>
+        </div>
+
+        {/* 스크롤 갈고리 → D+1 시뮬레이션 */}
+        <p className="font-hand mt-8 -rotate-1 text-lg text-foreground/60">
+          준비 안 하면 8월 16일 아침이 어떻게 시작되는지, 30초만 보세요 ↓
+        </p>
       </div>
     </header>
   )
