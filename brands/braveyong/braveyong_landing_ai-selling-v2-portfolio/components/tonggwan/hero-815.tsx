@@ -24,6 +24,10 @@ export function Hero815() {
           6월 21일(일) 단 한 번의 라이브 특강.
         </p>
 
+        <p className="mx-auto mt-4 max-w-xl text-sm font-bold text-foreground sm:text-base">
+          사업자가 몇 개든 — 새 통장 0개, <Marker>‘사업자 통장’도 필요 없습니다.</Marker>
+        </p>
+
         <div className="mt-8 flex flex-col items-center gap-4">
           <PaymentDialog
             label="6/21 라이브 자리 잡기"

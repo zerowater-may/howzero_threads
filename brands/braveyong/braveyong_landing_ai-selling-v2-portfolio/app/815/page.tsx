@@ -4,6 +4,7 @@ import { GlassNav815 } from "@/components/tonggwan/glass-nav-815"
 import { Hero815 } from "@/components/tonggwan/hero-815"
 import { WhyNow815 } from "@/components/tonggwan/why-now-815"
 import { Cost815 } from "@/components/tonggwan/cost-815"
+import { MythBuster815 } from "@/components/tonggwan/myth-buster-815"
 import { SolutionTeaser815 } from "@/components/tonggwan/solution-teaser-815"
 import { Curriculum815 } from "@/components/tonggwan/curriculum-815"
 import { WhyYong815 } from "@/components/tonggwan/why-yong-815"
@@ -41,6 +42,7 @@ export default function Page() {
         <Hero815 />          {/* 01 */}
         <WhyNow815 />        {/* 02 병목 체인 */}
         <Cost815 />          {/* 03 손실 */}
+        <MythBuster815 />    {/* 03b 통장 공포 해소 (오해 vs 진실) */}
         <SolutionTeaser815 />{/* 04 반전 티저 */}
         <Curriculum815 />    {/* 05 얻는 것 */}
         <WhyYong815 />       {/* 06 권위 */}
