@@ -8,6 +8,7 @@ import { SolutionTeaser815 } from "@/components/tonggwan/solution-teaser-815"
 import { Curriculum815 } from "@/components/tonggwan/curriculum-815"
 import { WhyYong815 } from "@/components/tonggwan/why-yong-815"
 import { Scarcity815 } from "@/components/tonggwan/scarcity-815"
+import { DelayCost815 } from "@/components/tonggwan/delay-cost-815"
 import { Price815 } from "@/components/tonggwan/price-815"
 import { Flow815 } from "@/components/tonggwan/flow-815"
 import { Faq815 } from "@/components/tonggwan/faq-815"
@@ -44,6 +45,7 @@ export default function Page() {
         <Curriculum815 />    {/* 05 얻는 것 */}
         <WhyYong815 />       {/* 06 권위 */}
         <Scarcity815 />      {/* 07 희소성 */}
+        <DelayCost815 />     {/* 07b 미룰수록 손해 타임라인 */}
         <Price815 />         {/* 08 가격 */}
         <Flow815 />          {/* 09 결제→입장 흐름 */}
         <Faq815 />           {/* 10 FAQ */}
