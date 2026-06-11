@@ -1,28 +1,30 @@
 "use client"
 
 import Link from "next/link"
-import { ArrowRight, ArrowUpRight, Moon, Sun } from "lucide-react"
+import { ArrowRight, Moon, Sun } from "lucide-react"
 import { useEffect, useState } from "react"
 import { useTheme } from "next-themes"
-import { config } from "@/lib/config"
+import { PaymentDialog } from "@/components/payment-dialog"
+import { ProductTabs } from "@/components/product-tabs"
+import { course } from "@/lib/config"
 
 /**
  * 00 NAV — iOS 26 식 글래스 상단 바.
  * - bg-background/55 + backdrop-blur-2xl + saturate-150 (vibrancy)
  * - 미세한 하단 보더, 스크롤하면 살짝 진해짐
  * - 가운데: 섹션 점프 링크 (모바일 hidden)
- * - 우측: 다크 토글 + APPLY 버튼
+ * - 우측: 다크 토글 + 결제 버튼
  */
 /**
  * 가운데 점프 링크.
- * `cta: true` 가 붙으면 가격 자리에 미니 설득 버튼(검정 박스 + 화살표)으로 렌더.
- * 가격은 페이지에 숫자가 없으니 메뉴를 행동 유도로 전환했다.
+ * `cta: true` 가 붙으면 오퍼 자리(#price)로 점프하는 미니 설득 버튼(검정 박스 + 화살표)으로 렌더.
+ * 우측 영구 CTA는 결제 모달을 바로 여는 PaymentDialog.
  */
 const links = [
   { href: "#problem", label: "막힌 지점" },
   { href: "#choice", label: "내 상황" },
   { href: "#curriculum", label: "커리큘럼" },
-  { href: "#apply", label: "1기 지원", cta: true },
+  { href: "#price", label: "지금 결제", cta: true },
 ]
 
 export function GlassNav() {
@@ -55,20 +57,20 @@ export function GlassNav() {
       }}
     >
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-3 px-3 sm:h-16 sm:px-5">
-        {/* 브랜드 */}
-        <Link
-          href="#hero"
-          className="group flex shrink-0 items-center gap-2 text-sm font-bold tracking-tight"
-          aria-label="페이지 최상단으로"
-          data-track="nav_brand_home"
-        >
-          <span className="inline-block h-2 w-2 rounded-full bg-foreground transition-transform group-hover:scale-125" />
-          <span className="hidden sm:inline">용감한 용팀장</span>
-          <span className="sm:hidden">용팀장</span>
-          <span className="font-mono ml-1 hidden text-[10px] uppercase tracking-[0.18em] text-foreground/45 md:inline">
-            AI Selling 실전반
-          </span>
-        </Link>
+        {/* 브랜드 + 플랫폼 product 탭 */}
+        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+          <Link
+            href="#hero"
+            className="group flex shrink-0 items-center gap-2 text-sm font-bold tracking-tight"
+            aria-label="페이지 최상단으로"
+            data-track="nav_brand_home"
+          >
+            <span className="inline-block h-2 w-2 rounded-full bg-foreground transition-transform group-hover:scale-125" />
+            <span className="hidden sm:inline">용감한 용팀장</span>
+            <span className="sm:hidden">용팀장</span>
+          </Link>
+          <ProductTabs className="hidden md:flex" />
+        </div>
 
         {/* 섹션 점프 링크 — 모바일 hidden. 가격 자리는 미니 설득 버튼(cta) */}
         <nav className="hidden items-center gap-1 md:flex" aria-label="섹션 이동">
@@ -77,8 +79,8 @@ export function GlassNav() {
               <Link
                 key={l.href}
                 href={l.href}
-                data-track={`nav_jump_${l.href.replace("#", "")}_cta`}
-                className="group ml-1 inline-flex items-center gap-1.5 rounded-full border border-foreground bg-foreground px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.06em] text-background transition-all hover:bg-background hover:text-foreground"
+                data-track="nav_jump_price_pay"
+                className="group ml-1 inline-flex items-center gap-1.5 rounded-full border border-brand bg-brand px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.06em] text-brand-foreground transition-all hover:opacity-90"
               >
                 {l.label}
                 <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
@@ -96,7 +98,7 @@ export function GlassNav() {
           )}
         </nav>
 
-        {/* 다크 토글 + APPLY */}
+        {/* 다크 토글 + 지금 결제 */}
         <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
           <button
             type="button"
@@ -111,17 +113,11 @@ export function GlassNav() {
               <span className="block h-4 w-4" aria-hidden />
             )}
           </button>
-          <Link
-            href={config.googleFormUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="신청서 작성하기 — 새 창에서 열림"
-            data-track="nav_apply"
-            className="group inline-flex items-center gap-1 rounded-full bg-foreground px-3.5 py-1.5 text-xs font-bold tracking-tight text-background transition-all hover:bg-background hover:text-foreground hover:ring-2 hover:ring-foreground sm:px-4 sm:py-2 sm:text-sm"
-          >
-            신청서 작성
-            <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </Link>
+          <PaymentDialog
+            amount={course.priceFirst}
+            label="지금 결제"
+            className="group inline-flex items-center gap-1.5 rounded-full bg-brand px-3.5 py-1.5 text-xs font-bold tracking-tight text-brand-foreground transition-all hover:opacity-90 hover:ring-2 hover:ring-brand/40 sm:px-4 sm:py-2 sm:text-sm"
+          />
         </div>
       </div>
     </header>

@@ -1,25 +1,18 @@
 "use client"
 
-import Link from "next/link"
-import { usePathname } from "next/navigation"
 import { Moon, Sun } from "lucide-react"
 import { useEffect, useState } from "react"
 import { useTheme } from "next-themes"
 import { PaymentDialog } from "@/components/payment-dialog"
+import { ProductTabs } from "@/components/product-tabs"
 import { tonggwan815 } from "@/lib/products"
 
 /**
  * 00 NAV (815) — 통관 특강 글래스 상단 바.
- * 가운데: 플랫폼 product 탭(용팀장 랜딩 전환) — AI 셀링 강의 ↔ 8.15 통관 특강, 현재 페이지 active 강조.
+ * 가운데: 플랫폼 product 탭(ProductTabs, 현재 페이지 active).
  * 우측: 다크 토글 + 815 결제(productKey/deadline/완료링크/프로모배지 비노출).
  */
-const products = [
-  { href: "/", label: "AI 셀링 강의" },
-  { href: "/815", label: "8.15 통관 특강" },
-]
-
 export function GlassNav815() {
-  const pathname = usePathname()
   const { resolvedTheme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
   const [scrolled, setScrolled] = useState(false)
@@ -61,30 +54,8 @@ export function GlassNav815() {
           <span className="sm:hidden">용팀장</span>
         </button>
 
-        {/* 플랫폼 product 탭 — 강의 ↔ 통관 특강 전환 (active 강조). 모바일 hidden */}
-        <nav
-          className="hidden items-center rounded-full border border-foreground/15 bg-foreground/[0.04] p-1 md:flex"
-          aria-label="용팀장 랜딩 전환"
-        >
-          {products.map((p) => {
-            const active = pathname === p.href
-            return (
-              <Link
-                key={p.href}
-                href={p.href}
-                aria-current={active ? "page" : undefined}
-                data-track={`nav815_product_${p.href === "/" ? "course" : "tonggwan"}`}
-                className={
-                  active
-                    ? "rounded-full bg-foreground px-4 py-1.5 text-sm font-bold tracking-tight text-background"
-                    : "rounded-full px-4 py-1.5 text-sm font-medium text-foreground/60 transition-colors hover:text-foreground"
-                }
-              >
-                {p.label}
-              </Link>
-            )
-          })}
-        </nav>
+        {/* 플랫폼 product 탭 — 강의 ↔ 통관 특강 (모바일 hidden) */}
+        <ProductTabs className="hidden md:flex" />
 
         {/* 다크 토글 + 지금 신청(815 결제) */}
         <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
