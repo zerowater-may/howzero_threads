@@ -24,12 +24,18 @@ function calc(deadlineMs: number, nowMs: number): Remaining {
 export function CountdownTimer({
   className = "",
   compact = false,
+  deadline,
+  label = "1기 마감까지",
 }: {
   className?: string
   /** 모바일/sticky용 단일 줄 압축 표기 */
   compact?: boolean
+  /** ISO datetime(KST). 미지정 시 config.cohort1Deadline */
+  deadline?: string
+  /** 비-compact 라벨 텍스트 */
+  label?: string
 }) {
-  const deadlineMs = new Date(config.cohort1Deadline).getTime()
+  const deadlineMs = new Date(deadline ?? config.cohort1Deadline).getTime()
   const [r, setR] = useState<Remaining | null>(null)
 
   useEffect(() => {
@@ -58,7 +64,7 @@ export function CountdownTimer({
 
   return (
     <div className={`font-mono inline-flex items-baseline gap-2 tabular-nums ${className}`}>
-      <span className="text-xs uppercase tracking-[0.18em] opacity-60">1기 마감까지</span>
+      <span className="text-xs uppercase tracking-[0.18em] opacity-60">{label}</span>
       <span className="text-lg font-bold">D-{r.d}</span>
       <span className="opacity-50">·</span>
       <span className="text-base font-bold">
