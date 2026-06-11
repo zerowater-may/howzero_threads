@@ -20,6 +20,8 @@ type PaymentDialogProps = {
   noticeCopy?: ReactNode
   /** 설정 시 결제 후 `${completePathPrefix}?bill_id=...` 입장확인 링크 노출 */
   completePathPrefix?: string
+  /** true 시 6개월 할부 힌트 행 + 3개월 환불 보장 배지 숨김 (815 특강 전용) */
+  hidePromoBadges?: boolean
 }
 
 type PaymentResult = {
@@ -43,6 +45,7 @@ export function PaymentDialog({
   deadlineLabel,
   noticeCopy,
   completePathPrefix,
+  hidePromoBadges,
 }: PaymentDialogProps) {
   const [open, setOpen] = useState(false)
   const [memberName, setMemberName] = useState("")
@@ -214,10 +217,12 @@ export function PaymentDialog({
                   </span>
                 </span>
               </div>
-              <div className="mt-2 flex items-center justify-between gap-3 border-t border-foreground/10 pt-2 text-xs text-foreground/60">
-                <span>한 번에 부담되면</span>
-                <span className="font-bold text-foreground">카드 6개월 무이자 · 월 {monthly6}만원대</span>
-              </div>
+              {!hidePromoBadges && (
+                <div className="mt-2 flex items-center justify-between gap-3 border-t border-foreground/10 pt-2 text-xs text-foreground/60">
+                  <span>한 번에 부담되면</span>
+                  <span className="font-bold text-foreground">카드 6개월 무이자 · 월 {monthly6}만원대</span>
+                </div>
+              )}
               <div className="mt-2 border-t border-foreground/10 pt-2 text-center">
                 <CountdownTimer className="text-brand" deadline={deadline} label={deadlineLabel} />
               </div>
@@ -232,8 +237,12 @@ export function PaymentDialog({
               <span>무이자 할부</span>
             </div>
             <div className="mt-2 flex flex-wrap items-center justify-center gap-x-2.5 gap-y-1 text-[11px] font-bold text-foreground/60">
-              <span className="inline-flex items-center gap-1 text-brand"><ShieldCheck className="h-3.5 w-3.5" /> 3개월 환불 보장</span>
-              <span className="text-foreground/25">·</span>
+              {!hidePromoBadges && (
+                <>
+                  <span className="inline-flex items-center gap-1 text-brand"><ShieldCheck className="h-3.5 w-3.5" /> 3개월 환불 보장</span>
+                  <span className="text-foreground/25">·</span>
+                </>
+              )}
               <span>결제 후 용팀장 직접 확인</span>
               <span className="text-foreground/25">·</span>
               <span>안전결제(결제선생)</span>

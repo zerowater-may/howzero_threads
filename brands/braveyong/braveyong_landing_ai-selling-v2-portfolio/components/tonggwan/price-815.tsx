@@ -26,6 +26,7 @@ export function Price815() {
             deadline={tonggwan815.payDeadlineISO}
             deadlineLabel={tonggwan815.deadlineLabel}
             completePathPrefix="/815/complete"
+            hidePromoBadges
             noticeCopy={
               <>
                 이름과 휴대폰 번호를 입력하면 <span className="font-bold text-foreground">결제 페이지가 바로 열립니다.</span>{" "}
