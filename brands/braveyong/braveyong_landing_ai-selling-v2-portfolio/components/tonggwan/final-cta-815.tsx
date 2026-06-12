@@ -12,7 +12,7 @@ export function FinalCta815() {
       tone="dark"
       title={
         <>
-          8월 16일 아침 알림이 ‘통관 보류’일지{" "}
+          8월, 그 아침 알림이 ‘통관 보류’일지{" "}
           {/* 버건디 손글씨 톤 — bg-foreground 위에선 기본 --brand가 너무 어두워 밝은 버건디로 보정 */}
           <span className="font-hand text-[oklch(0.62_0.16_18)]">‘발송 완료’</span>일지는, 6월의 당신이 정합니다.
         </>

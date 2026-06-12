@@ -27,7 +27,7 @@ export function SelfCheck815() {
       id="self-check"
       tone="light"
       label="SELF CHECK"
-      title={<>하나라도 해당되면, 8월 15일은 당신 차례입니다.</>}
+      title={<>하나라도 해당되면, 8월, 당신 차례입니다.</>}
     >
       <div className="grid gap-4 sm:grid-cols-2">
         {ITEMS.map((item) => (

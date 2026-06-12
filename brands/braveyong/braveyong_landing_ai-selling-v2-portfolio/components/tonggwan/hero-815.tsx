@@ -27,7 +27,7 @@ export function Hero815() {
         </h1>
 
         <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-foreground/55">
-          8월 15일부터는 관세청 유니패스에 업체 등록(통관고유부호)이 안 된 사업자는 수입신고 자체가 안 됩니다.{" "}
+          8월부터는 관세청 유니패스에 업체 등록(통관고유부호)이 안 된 사업자는 수입신고 자체가 안 됩니다.{" "}
           그 등록에 꼭 필요한 게 사업자 인증서 — 없으면 구매대행을 못 합니다.
         </p>
 
@@ -100,7 +100,7 @@ export function Hero815() {
 
         {/* 스크롤 갈고리 → D+1 시뮬레이션 */}
         <p className="font-hand mt-8 -rotate-1 text-lg text-foreground/60">
-          준비 안 하면 8월 16일 아침이 어떻게 시작되는지, 30초만 보세요 ↓
+          준비 안 하면 8월의 아침이 어떻게 시작되는지, 30초만 보세요 ↓
         </p>
       </div>
     </header>

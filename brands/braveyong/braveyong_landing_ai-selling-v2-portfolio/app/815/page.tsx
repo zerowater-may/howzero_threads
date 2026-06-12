@@ -9,6 +9,7 @@ import { Principle815 } from "@/components/tonggwan/principle-815"
 import { WhyYong815 } from "@/components/tonggwan/why-yong-815"
 import { Curriculum815 } from "@/components/tonggwan/curriculum-815"
 import { Scarcity815 } from "@/components/tonggwan/scarcity-815"
+import { PolicyWindow815 } from "@/components/tonggwan/policy-window-815"
 import { Price815 } from "@/components/tonggwan/price-815"
 import { Faq815 } from "@/components/tonggwan/faq-815"
 import { FinalCta815 } from "@/components/tonggwan/final-cta-815"
@@ -32,7 +33,7 @@ export const metadata: Metadata = {
 /**
  * 용감한 용팀장 — 8.15 통관대응 라이브 특강 랜딩 (재설계 v2)
  * spec: docs/superpowers/specs/2026-06-11-braveyong-tonggwan-815-special-lecture-landing-design.md
- * 재설계: 20% 이탈 방어 — 섹션 3까지 (화자 신원 + 8/16 아침 장면 + 자기판별) 전부 노출.
+ * 재설계: 20% 이탈 방어 — 섹션 3까지 (화자 신원 + 8월 아침 장면 + 자기판별) 전부 노출.
  */
 export default function Page() {
   return (
@@ -40,16 +41,17 @@ export default function Page() {
       <GlassNav815 />
       <main className="min-h-screen bg-background text-foreground">
         <Hero815 />          {/* 01 인증서 통증 + 후킹 + 신뢰 스트립 */}
-        <DdayScene815 />     {/* 02 8월 16일 아침 시뮬레이션 + 무료 오늘 할 일 */}
+        <DdayScene815 />     {/* 02 8월 아침 시뮬레이션 + 무료 오늘 할 일 */}
         <SelfCheck815 />     {/* 03 자기판별 — 하나라도 해당하면 대상 */}
         <MythBuster815 />    {/* 04 통장 공포 3대 오해 해소 */}
         <Principle815 />     {/* 05 4칸 원리 다이어그램 + 비용 0원 */}
         <WhyYong815 />       {/* 06 용팀장 신뢰 본진 — 얼굴+팩트+현장사진 */}
-        <Curriculum815 />    {/* 07 6/21 밤 손에 남는 6가지 */}
+        <Curriculum815 />    {/* 07 6/21 밤 손에 남는 9가지 */}
         <Scarcity815 />      {/* 08 데드라인 — 결제 마감 + 미룰수록 손해 게이지 */}
-        <Price815 />         {/* 09 가격 재프레임 + 결제→입장 4스텝 */}
-        <Faq815 />           {/* 10 결제 전 질문 7 */}
-        <FinalCta815 />      {/* 11 수미상관 + 서명 + 면책 */}
+        <PolicyWindow815 />  {/* 09 정책 윈도우 — 되는 지금 끝내라 (단정 금지) */}
+        <Price815 />         {/* 10 가격 재프레임 + 결제→입장 4스텝 */}
+        <Faq815 />           {/* 11 결제 전 질문 7 */}
+        <FinalCta815 />      {/* 12 수미상관 + 서명 + 면책 */}
         <Footer />
       </main>
       <StickyCta815 />

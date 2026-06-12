@@ -15,6 +15,7 @@ const ordered = [
   "<WhyYong815",
   "<Curriculum815",
   "<Scarcity815",
+  "<PolicyWindow815",
   "<Price815",
   "<Faq815",
   "<FinalCta815",

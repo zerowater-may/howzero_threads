@@ -27,7 +27,7 @@ const STOPS: Stop[] = [
     level: 3,
     note: "여기부터 도박",
   },
-  { when: "8/15", desc: "통관 정지 = 매출 정지", level: 4 },
+  { when: "8월", desc: "통관 정지 = 매출 정지", level: 4 },
 ]
 
 /** level별 농도 — 좌(옅은 background/20) → 우(bg-brand 짙게). delay-cost 게이지의 dark 톤 버전. */
@@ -40,7 +40,7 @@ export function Scarcity815() {
       id="deadline"
       tone="dark"
       label="DEADLINE"
-      title={<>8.15에서 거꾸로 세면, 오늘이 제일 싼 날입니다.</>}
+      title={<>8월에서 거꾸로 세면, 오늘이 제일 싼 날입니다.</>}
       lead="라이브 단 1회 — 같은 자리는 다시 없습니다. 6/20 결제 마감이 지나면 신청 자체가 닫힙니다."
     >
       {/* 상단 — 결제 마감 카운트다운 */}
@@ -58,7 +58,7 @@ export function Scarcity815() {
       {/* 좌(안전) → 우(위험) 안내 */}
       <div className="mb-5 flex items-center justify-between text-[11px] font-bold uppercase tracking-[0.14em] text-background/45">
         <span>← 오늘 (잃는 것 없음)</span>
-        <span>8.15 (매출 정지) →</span>
+        <span>8월 (매출 정지) →</span>
       </div>
 
       {/* 손해 게이지 타임라인 — 데스크톱 가로 5칸 / 모바일 세로 스택 */}
@@ -86,7 +86,7 @@ export function Scarcity815() {
       {/* 하단 멘트 */}
       <div className="mx-auto mt-12 max-w-2xl border-t border-background/15 pt-6">
         <p className="text-sm leading-relaxed text-background/85 sm:text-base">
-          7월에 혼자 시작하면 은행 한 번만 꼬여도 8.15를 넘깁니다. 오늘 할 일은 둘 중 하나 —{" "}
+          7월에 혼자 시작하면 은행 한 번만 꼬여도 데드라인을 넘깁니다. 오늘 할 일은 둘 중 하나 —{" "}
           <span className="font-bold text-background">
             결제하거나, 최소한 6/20 알람이라도 맞추세요.
           </span>{" "}

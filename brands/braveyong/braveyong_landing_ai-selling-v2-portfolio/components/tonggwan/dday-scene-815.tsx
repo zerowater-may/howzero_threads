@@ -1,7 +1,7 @@
 import { Section } from "@/components/section"
 
 /**
- * D+1 시뮬레이션 — 준비 안 한 8월 16일 아침을 스마트폰 알림 4장으로 재현.
+ * D+1 시뮬레이션 — 준비 안 한 8월의 아침을 스마트폰 알림 4장으로 재현.
  * 정직성 가드: 지어낸 건 시각뿐임을 본문에서 명시. 마무리는 무료 UNI-PASS 조회 행동 지시.
  */
 type Alert = {
@@ -42,7 +42,7 @@ export function DdayScene815() {
       id="dday"
       tone="dark"
       label="D+1 SIMULATION"
-      title={<>준비 안 하면, 8월 16일 아침은 이렇게 시작됩니다.</>}
+      title={<>준비 안 하면, 8월, 당신의 아침은 이렇게 시작됩니다.</>}
     >
       {/* 스마트폰 알림 카드 4장 — 세로 스택 */}
       <div className="mx-auto flex max-w-md flex-col gap-3">
