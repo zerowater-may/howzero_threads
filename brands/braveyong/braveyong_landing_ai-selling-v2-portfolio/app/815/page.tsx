@@ -42,9 +42,9 @@ export default function Page() {
       <GlassNav815 />
       <main className="min-h-screen bg-background text-foreground">
         <Hero815 />          {/* 01 인증서 통증 + 후킹 + 신뢰 스트립 */}
-        <DdayScene815 />     {/* 02 8월 아침 시뮬레이션 + 무료 오늘 할 일 */}
+        <ChatFear815 />      {/* 02 가상 시나리오 — 셀러 공포 말풍선 → 6/21 전환 */}
         <SelfCheck815 />     {/* 03 자기판별 — 하나라도 해당하면 대상 */}
-        <ChatFear815 />      {/* 04 단톡방 실황 — 익명 공포 말풍선 → 6/21 전환 */}
+        <DdayScene815 />     {/* 04 8월 아침 시뮬레이션 + 무료 오늘 할 일 */}
         <MythBuster815 />    {/* 05 통장 공포 3대 오해 해소 */}
         <Principle815 />     {/* 05 4칸 원리 다이어그램 + 비용 0원 */}
         <WhyYong815 />       {/* 06 용팀장 신뢰 본진 — 얼굴+팩트+현장사진 */}

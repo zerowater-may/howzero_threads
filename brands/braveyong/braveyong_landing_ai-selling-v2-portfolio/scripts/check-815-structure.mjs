@@ -8,9 +8,9 @@ const page = read("app/815/page.tsx")
 // 재설계 v2 — 11섹션 순서 (20% 이탈 방어: 섹션 3까지 신원+장면+자기판별. 후기 섹션은 2026-06-12 용팀장 지시로 제거)
 const ordered = [
   "<Hero815",
-  "<DdayScene815",
-  "<SelfCheck815",
   "<ChatFear815",
+  "<SelfCheck815",
+  "<DdayScene815",
   "<MythBuster815",
   "<Principle815",
   "<WhyYong815",

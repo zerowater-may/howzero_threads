@@ -99,9 +99,9 @@ export function Hero815() {
           </p>
         </div>
 
-        {/* 스크롤 갈고리 → D+1 시뮬레이션 */}
+        {/* 스크롤 갈고리 → 가상 시나리오 (셀러 공기) */}
         <p className="font-hand mt-8 -rotate-1 text-lg text-foreground/60">
-          준비 안 하면 8월의 아침이 어떻게 시작되는지, 30초만 보세요 ↓
+          지금 다른 셀러들이 어떤 상황인지, 30초만 보세요 ↓
         </p>
       </div>
     </header>
