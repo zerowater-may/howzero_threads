@@ -18,7 +18,7 @@ export async function registerPendingBill(billId: string, phone: string): Promis
     await put(
       `${PENDING_PREFIX}${billId}.json`,
       JSON.stringify({ billId, phone, createdAt: new Date().toISOString() }),
-      { access: "public", addRandomSuffix: false, allowOverwrite: true, contentType: "application/json" },
+      { access: "private", addRandomSuffix: false, allowOverwrite: true, contentType: "application/json" },
     )
     return true
   } catch (error) {
@@ -63,13 +63,16 @@ export async function sendEntrySmsOnce(
 
   try {
     await put(lockPath, JSON.stringify({ billId, phone, via, lockedAt: new Date().toISOString() }), {
-      access: "public",
+      access: "private",
       addRandomSuffix: false,
       allowOverwrite: false, // 이미 존재하면 throw — 중복 발송 차단 락
       contentType: "application/json",
     })
-  } catch {
-    return "already-sent"
+  } catch (error) {
+    // 락 존재(=이미 발송)와 Blob 장애를 구분 — 장애를 already-sent로 오인하면 영구 누락된다
+    if (String(error).includes("already exists")) return "already-sent"
+    console.error("[bill-registry] 락 획득 실패 (Blob 장애?) — 크론 재시도 대상", { billId, via, error: String(error) })
+    return "failed"
   }
 
   const result = await sendSms({

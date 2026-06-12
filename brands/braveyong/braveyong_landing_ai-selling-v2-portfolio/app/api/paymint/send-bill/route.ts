@@ -42,8 +42,9 @@ export async function POST(request: Request) {
     const billId = readString(data.billId) || readString(result.billId) || readString(result.bill_id)
 
     // 통관 특강 청구서만 리컨사일 레지스트리에 등록 (course는 등록 안 함 — 문자 대상 아님)
+    // await 필수 — 서버리스는 응답 후 미완 Promise를 죽인다 (fire-and-forget 유실 확인됨)
     if (billId && result.code === "0000" && !result.dryRun && decodeBillId(billId)?.isTonggwan) {
-      registerPendingBill(billId, phoneNumber).catch(() => {})
+      await registerPendingBill(billId, phoneNumber)
     }
     const shortUrl = readString(data.shortUrl) || readString(result.shortUrl) || readString(result.shortURL)
     const deliveryType = readString(data.deliveryType) || readString(result.deliveryType) || (shortUrl ? "URL" : "TALK")
