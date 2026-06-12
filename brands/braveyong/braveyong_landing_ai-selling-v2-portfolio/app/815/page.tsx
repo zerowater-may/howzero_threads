@@ -17,13 +17,13 @@ import { StickyCta815 } from "@/components/tonggwan/sticky-cta-815"
 import { Footer } from "@/components/footer"
 
 export const metadata: Metadata = {
-  title: "8.15 통관대응 라이브 특강 — 용감한 용팀장",
+  title: "8월 통관대응 라이브 특강 — 용감한 용팀장",
   description:
     "구매대행 셀러 계속 하려면 ‘사업자 인증서’가 필요합니다 — 그게 지금 안 만들어집니다. 전직 공인인증서 담당자가 통장 한 개도 더 안 만들고 인증서까지 만드는 법을 알려드립니다. 6/21(일) 라이브 단 1회.",
   openGraph: {
     type: "website",
     locale: "ko_KR",
-    title: "8.15 통관대응 라이브 특강 — 용감한 용팀장",
+    title: "8월 통관대응 라이브 특강 — 용감한 용팀장",
     description: "전직 공인인증서 담당자가 알려드립니다 — 사업자 인증서, 통장 추가 없이 만드는 법. 6/21(일) 단 한 번의 라이브.",
     siteName: "용감한 용팀장",
   },
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 }
 
 /**
- * 용감한 용팀장 — 8.15 통관대응 라이브 특강 랜딩 (재설계 v2)
+ * 용감한 용팀장 — 8월 통관대응 라이브 특강 랜딩 (재설계 v2)
  * spec: docs/superpowers/specs/2026-06-11-braveyong-tonggwan-815-special-lecture-landing-design.md
  * 재설계: 20% 이탈 방어 — 섹션 3까지 (화자 신원 + 8월 아침 장면 + 자기판별) 전부 노출.
  */

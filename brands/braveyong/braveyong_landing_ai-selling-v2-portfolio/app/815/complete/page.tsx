@@ -46,7 +46,7 @@ export default function CompletePage() {
     <main className="flex min-h-screen items-center justify-center bg-background px-4 py-20 text-foreground">
       <div className="w-full max-w-md border-2 border-foreground bg-background p-6 text-center">
         <p className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-foreground/50">
-          8.15 통관대응 라이브 특강
+          8월 통관대응 라이브 특강
         </p>
 
         {phase === "loading" && (

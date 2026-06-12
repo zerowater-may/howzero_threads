@@ -28,7 +28,7 @@ const signature = createHmac("sha256", secretKey)
   .digest("base64")
 
 const content = [
-  "[용감한 용팀장] 8.15 통관특강 결제가 확인됐습니다. 감사합니다.",
+  "[용감한 용팀장] 8월 통관특강 결제가 확인됐습니다. 감사합니다.",
   "",
   "카톡 오픈채팅방 입장:",
   openchatUrl || "(NEXT_PUBLIC_TONGGWAN_OPENCHAT_URL 미설정)",
@@ -49,9 +49,9 @@ const response = await fetch(`https://sens.apigw.ntruss.com${uri}`, {
     contentType: "COMM",
     countryCode: "82",
     from: callNumber,
-    subject: "8.15 통관특강 입장 안내",
+    subject: "8월 통관특강 입장 안내",
     content,
-    messages: [{ to, subject: "8.15 통관특강 입장 안내", content }],
+    messages: [{ to, subject: "8월 통관특강 입장 안내", content }],
   }),
 })
 

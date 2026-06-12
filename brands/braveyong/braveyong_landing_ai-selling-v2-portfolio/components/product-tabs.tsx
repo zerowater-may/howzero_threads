@@ -4,12 +4,12 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 /**
- * 플랫폼 product 탭 — 용팀장 랜딩 전환(AI 셀링 강의 ↔ 8.15 통관 특강).
+ * 플랫폼 product 탭 — 용팀장 랜딩 전환(AI 셀링 강의 ↔ 8월 통관 특강).
  * 현재 경로를 active로 강조. 두 상단 바(GlassNav / GlassNav815)에서 공용.
  */
 const products = [
   { href: "/", label: "AI 셀링 강의" },
-  { href: "/815", label: "8.15 통관 특강" },
+  { href: "/815", label: "8월 통관 특강" },
 ]
 
 export function ProductTabs({ className = "" }: { className?: string }) {

@@ -17,7 +17,7 @@ export const products: Record<ProductKey, Product> = {
   },
   "tonggwan-815": {
     key: "tonggwan-815",
-    name: "용감한용팀장 8.15 통관대응 라이브 특강",
+    name: "용감한용팀장 8월 통관대응 라이브 특강",
     amount: 209_000,
   },
 }
@@ -28,7 +28,7 @@ export function resolveProduct(key: string | undefined | null): Product {
   return products.course
 }
 
-/** 8.15 통관 특강 운영 상수 — 운영입력(추후 env로 교체). */
+/** 8월 통관 특강 운영 상수 — 운영입력(추후 env로 교체). */
 export const tonggwan815 = {
   productKey: "tonggwan-815" as const,
   price: products["tonggwan-815"].amount, // 209,000

@@ -59,9 +59,9 @@ async function sendTonggwanEntrySms(callbackData: PaymentCallbackData): Promise<
   const smsResult = await sendSms({
     to: phone,
     type: "LMS",
-    title: "8.15 통관특강 입장 안내",
+    title: "8월 통관특강 입장 안내",
     content: [
-      "[용감한 용팀장] 8.15 통관특강 결제가 확인됐습니다. 감사합니다.",
+      "[용감한 용팀장] 8월 통관특강 결제가 확인됐습니다. 감사합니다.",
       "",
       "카톡 오픈채팅방 입장:",
       tonggwan815.openchatUrl,
