@@ -8,6 +8,11 @@ bulsaja Vercel 팀(`team_TJbZrrxEedAkxKUVSniHrdlr`)에 신규 프로젝트로 �
 
 ## 배포 기록
 
+### 2026-06-12 (4차) — `/815` 선착순 제거, 무제한 접수 (commit `81e1fbb7`)
+- `vercel deploy --prod --yes` → deployment `...qhna3b8vo` **READY (production)**
+- 라이브 검증: `https://www.gigclass.kr/815` HTTP 200 — `선착순`·`정원` **0건**, "단 1회 진행" 배지 + "6/20(토) 결제 마감 — 단 1회 라이브, 지나면 신청이 닫힙니다" 스트립 노출
+- `NEXT_PUBLIC_TONGGWAN_CAPACITY`·`NEXT_PUBLIC_TONGGWAN_SEATS_LEFT` env 불용 처리 (Vercel dashboard에 남아 있어도 무해)
+
 ### 2026-06-12 (3차) — `/815` 후기 섹션 제거 + 잔여석 긴박감 스트립 (commit `4018266f`)
 - `vercel deploy --prod --yes` → deployment `...jtn9lzsah` **READY (production)**
 - 라이브 검증: `https://www.gigclass.kr/815` HTTP 200 — 잔여석 스트립("선착순 50명 — 정원 차면 예고 없이 마감됩니다") 노출, 후기 섹션 카피("이 특강 후기는 아직 없습니다"/"실전반 1기 후기") **0건**
