@@ -17,7 +17,7 @@ const OUTCOMES: { title: string; gloss?: string }[] = [
   },
   {
     title: "신청부터 발급까지 업무 순서 그대로",
-    gloss: "전직 공인인증서 담당이 일하던 순서",
+    gloss: "대기업 공인인증서 담당이 일하던 순서",
   },
   {
     title: "UNI-PASS 통관고유부호 발급 5단계",

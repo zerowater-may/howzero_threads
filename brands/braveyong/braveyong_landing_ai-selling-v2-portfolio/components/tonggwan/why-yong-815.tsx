@@ -8,7 +8,7 @@ import { photos } from "@/lib/testimonials"
  * 얼굴 사진 + 1인칭 4문단 + 팩트카드 4장 + 현장사진 4장(trust-evidence figure 패턴 차용).
  */
 const FACTS = [
-  "전직 공인인증서 담당",
+  "대기업 공인인증서 담당 출신",
   "지금도 직접 올리는 현직 셀러",
   "혼자 1만 개 등록",
   "실전반 1기 + 스터디 운영",
@@ -43,7 +43,7 @@ export function WhyYong815() {
       id="why-yong"
       tone="light"
       label="WHO"
-      title={<>전직 공인인증서 담당, 현직 구매대행 셀러입니다.</>}
+      title={<>대기업 공인인증서 담당 출신, 현직 구매대행 셀러입니다.</>}
     >
       <div className="grid gap-8 md:grid-cols-[auto_1fr] md:gap-10">
         {/* 좌측 — 얼굴 + 서명 */}
@@ -55,15 +55,15 @@ export function WhyYong815() {
             height={220}
             className="h-[220px] w-[220px] border-2 border-foreground object-cover grayscale"
           />
-          <Signature small="전직 공인인증서 담당 · 현직 구매대행·글로벌위탁 셀러">용감한 용팀장</Signature>
+          <Signature small="대기업 공인인증서 담당 출신 · 현직 구매대행·글로벌위탁 셀러">용감한 용팀장</Signature>
         </div>
 
         {/* 우측 — 1인칭 멘트 3문단 + 팩트카드 4장 */}
         <div className="flex flex-col gap-6">
           <div className="space-y-4 text-base leading-relaxed text-foreground/80 sm:text-lg">
             <p>
-              <span className="font-bold text-foreground">공인인증서를 일로 다루던 사람</span>입니다. 인증서가 어떤
-              순서로 나오고, 어디서 막히는지 업무로 겪어봤습니다.
+              <span className="font-bold text-foreground">대기업에서 공인인증서를 일로 다루던 사람</span>입니다.
+              인증서가 어떤 순서로 나오고, 어디서 막히는지 업무로 겪어봤습니다.
             </p>
             <p>
               강의가 본업이 아닙니다. 지금도 <span className="font-bold text-foreground">구매대행·글로벌위탁을 직접</span>{" "}

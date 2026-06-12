@@ -5,7 +5,7 @@ import { Marker } from "@/components/handwriting"
 import { tonggwan815 } from "@/lib/products"
 
 /** 히어로 신뢰 스트립 팩트칩 — 검증된 사실만 (성과 보장 문구 금지) */
-const TRUST_CHIPS = ["전직 공인인증서 담당", "지금도 직접 올리는 현직 셀러"]
+const TRUST_CHIPS = ["대기업 공인인증서 담당 출신", "지금도 직접 올리는 현직 셀러"]
 
 export function Hero815() {
   return (
@@ -17,8 +17,8 @@ export function Hero815() {
           <span className="rounded-full bg-brand px-3 py-1 text-brand-foreground">8월 데드라인</span>
         </div>
 
-        <p className="mb-3 text-sm font-bold tracking-tight text-brand sm:text-base">
-          전직 공인인증서 담당자가 알려드립니다
+        <p className="mb-3 text-base font-bold tracking-tight text-brand sm:text-lg">
+          대기업 공인인증서 담당 출신이 알려드립니다
         </p>
 
         <h1 className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl md:text-5xl">
