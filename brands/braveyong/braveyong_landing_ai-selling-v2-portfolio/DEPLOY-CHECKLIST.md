@@ -8,6 +8,12 @@ bulsaja Vercel 팀(`team_TJbZrrxEedAkxKUVSniHrdlr`)에 신규 프로젝트로 �
 
 ## 배포 기록
 
+### 2026-06-12 (10차) — `/815` 결제→문자 플로우 수리 + 대기업 강조 + 단톡방 섹션 (commits `6a12b0f0`~`현재`)
+- **플로우 단절 3건 수리 후 E2E 검증 완료**: ① `PAYMINT_CALLBACK_URL` env 부재로 청구서에 localhost 콜백이 박히던 문제 → env 등록 ② V1 read-bill에 전화번호가 없어 자동문자 불가 → billId에 번호+상품마커 base36 인코딩(20자 제한 준수) ③ V1 read 응답 code 부재로 결제완료자가 완료 페이지에서 에러를 보던 버그 + 응답에 echo되던 apikey 유출 차단
+- E2E 증거: 실청구서 발송(`BT1AG016C4MQAMELWDC2`) → read-bill success:true → 콜백 시뮬레이션 → 함수 로그 `[paymint.callback.sms] 발송 완료` + 010-9950-1140 수신. 테스트 청구서 2건 파기 완료
+- ⚠️ 주의: 이 수리 이전(6/12 저녁 전)에 발송된 미결제 청구서는 콜백 URL이 localhost라 결제해도 자동문자가 안 감 — 해당 결제는 결제선생 대시보드 보고 수동 발송
+- 카피: '대기업 공인인증서 담당 출신' 강조(히어로 상단 확대), ChatFear815 단톡방 섹션(익명 재구성 — 실대화 모사 1차본을 재작성), 히어로·최종CTA '지금 되는 방법, 언제 막힐지 모릅니다' 긴급성, FAQ '은행 거절' 항목 제거
+
 ### 2026-06-12 (9차) — `/815` 특강 명칭 '8.15'→'8월' 전면 전환 (commit `4282e5a3`)
 - `vercel deploy --prod --yes` → deployment `...j37xtn0bu` **READY (production)**
 - 메타 title·og·상단 탭·결제확인 페이지·결제선생 상품명·자동 입장문자·카톡 템플릿까지 전부 "8월 통관(대응) 특강"으로 통일
