@@ -8,6 +8,13 @@ bulsaja Vercel 팀(`team_TJbZrrxEedAkxKUVSniHrdlr`)에 신규 프로젝트로 �
 
 ## 배포 기록
 
+### 2026-06-12 (3차) — `/815` 후기 섹션 제거 + 잔여석 긴박감 스트립 (commit `4018266f`)
+- `vercel deploy --prod --yes` → deployment `...jtn9lzsah` **READY (production)**
+- 라이브 검증: `https://www.gigclass.kr/815` HTTP 200 — 잔여석 스트립("선착순 50명 — 정원 차면 예고 없이 마감됩니다") 노출, 후기 섹션 카피("이 특강 후기는 아직 없습니다"/"실전반 1기 후기") **0건**
+- course(/) 회귀: HTTP 200, 메인 랜딩 후기 섹션 무손상
+- 운영 입력: 결제가 차기 시작하면 Vercel env `NEXT_PUBLIC_TONGGWAN_SEATS_LEFT`에 실제 잔여석 입력 → 히어로가 "정원 50석 중 남은 자리 N석" + 게이지로 자동 전환 (재배포 필요)
+- Playwright 캡처: [`screenshots/2026-06-12-815-seats-strip-live.jpeg`](screenshots/2026-06-12-815-seats-strip-live.jpeg) (히어로)
+
 ### 2026-06-12 (2차) — `/815` 용팀장 통화 피드백 + 크레덴셜 어필 (commits `b18481d7`·`5b2b5d42`·`f37ac77a`)
 - `vercel deploy --prod --yes` → deployment `...a3myy9qeo` **READY (production)**
 - 라이브 검증: `https://gigclass.kr/815` → 308 → `https://www.gigclass.kr/815` HTTP 200 (apex→www 정상 리다이렉트)
