@@ -55,7 +55,7 @@ export function WhyYong815() {
             height={220}
             className="h-[220px] w-[220px] border-2 border-foreground object-cover grayscale"
           />
-          <Signature small="현직 구매대행·글로벌위탁 셀러">용감한 용팀장</Signature>
+          <Signature small="전직 공인인증서 담당 · 현직 구매대행·글로벌위탁 셀러">용감한 용팀장</Signature>
         </div>
 
         {/* 우측 — 1인칭 멘트 3문단 + 팩트카드 4장 */}

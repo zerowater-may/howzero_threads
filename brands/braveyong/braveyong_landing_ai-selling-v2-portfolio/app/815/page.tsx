@@ -19,12 +19,12 @@ import { Footer } from "@/components/footer"
 export const metadata: Metadata = {
   title: "8.15 통관대응 라이브 특강 — 용감한 용팀장",
   description:
-    "구매대행 셀러 계속 하려면 ‘사업자 인증서’가 필요합니다 — 그게 지금 안 만들어집니다. 통장 한 개도 더 안 만들고 인증서까지 만드는 법, 6/21(일) 라이브 단 1회.",
+    "구매대행 셀러 계속 하려면 ‘사업자 인증서’가 필요합니다 — 그게 지금 안 만들어집니다. 전직 공인인증서 담당자가 통장 한 개도 더 안 만들고 인증서까지 만드는 법을 알려드립니다. 6/21(일) 라이브 단 1회.",
   openGraph: {
     type: "website",
     locale: "ko_KR",
     title: "8.15 통관대응 라이브 특강 — 용감한 용팀장",
-    description: "사업자 인증서, 통장 추가 없이 만드는 법. 6/21(일) 단 한 번의 라이브.",
+    description: "전직 공인인증서 담당자가 알려드립니다 — 사업자 인증서, 통장 추가 없이 만드는 법. 6/21(일) 단 한 번의 라이브.",
     siteName: "용감한 용팀장",
   },
   robots: { index: true, follow: true },

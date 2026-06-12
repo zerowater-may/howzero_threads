@@ -96,7 +96,7 @@ export function Price815() {
             height={24}
             className="h-6 w-6 rounded-full border border-foreground/20 object-cover"
           />
-          실전반 1기 운영자 · 현직 셀러가 직접 진행
+          전직 공인인증서 담당 · 현직 셀러가 직접 진행
         </p>
         <CountdownTimer className="text-brand" deadline={tonggwan815.payDeadlineISO} label={tonggwan815.deadlineLabel} />
         <p className="text-xs text-foreground/50">환불 정책은 결제 전 카톡으로 안내드립니다.</p>

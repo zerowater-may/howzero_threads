@@ -83,7 +83,7 @@ export function Principle815() {
       {/* 본문 — 긴장만, 방법은 6/21로 */}
       <p className="mx-auto mt-10 max-w-2xl text-base leading-relaxed sm:text-lg">
         남들은 이 한 칸에서 새 통장을 만들려다 <span className="font-bold">한 달을 날립니다.</span>{" "}
-        우리는 이 칸을 ‘다른 순서’로 통과합니다 —{" "}
+        우리는 이 칸을 ‘다른 순서’로 통과합니다 — 공인인증서를 일로 다루던 사람이라 아는 순서고,{" "}
         <span className="font-bold">그 순서가 6/21의 전부입니다.</span>
       </p>
 

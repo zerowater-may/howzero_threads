@@ -5,7 +5,7 @@ import { Marker } from "@/components/handwriting"
 import { tonggwan815 } from "@/lib/products"
 
 /** 히어로 신뢰 스트립 팩트칩 — 검증된 사실만 (성과 보장 문구 금지) */
-const TRUST_CHIPS = ["지금도 직접 올리는 현직 셀러", "혼자 1만 개 등록", "AI셀링 실전반 1기 운영"]
+const TRUST_CHIPS = ["전직 공인인증서 담당", "지금도 직접 올리는 현직 셀러", "혼자 1만 개 등록", "AI셀링 실전반 1기 운영"]
 
 export function Hero815() {
   return (
