@@ -1,3 +1,18 @@
+import { redirect } from "next/navigation"
+
+/**
+ * 8월 통관대응 라이브 특강 — 일시 중단 (2026-06-12).
+ * /815 접근 시 메인 강의 랜딩(/)으로 리다이렉트한다.
+ * 결제 완료자 입장 페이지(/815/complete)와 결제·문자 API는 그대로 유지 —
+ * 이미 결제한 분들의 입장 링크·자동 문자가 끊기지 않도록 한다.
+ *
+ * 강의 재개 시: 아래 주석 처리된 원본 페이지를 복구하고 이 redirect를 제거한다.
+ */
+export default function Page() {
+  redirect("/")
+}
+
+/* ───────────────────────── 원본 (강의 재개 시 복구) ─────────────────────────
 import type { Metadata } from "next"
 import { RevealObserver } from "@/components/reveal-observer"
 import { GlassNav815 } from "@/components/tonggwan/glass-nav-815"
@@ -31,29 +46,24 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 }
 
-/**
- * 용감한 용팀장 — 8월 통관대응 라이브 특강 랜딩 (재설계 v2)
- * spec: docs/superpowers/specs/2026-06-11-braveyong-tonggwan-815-special-lecture-landing-design.md
- * 재설계: 20% 이탈 방어 — 섹션 3까지 (화자 신원 + 8월 아침 장면 + 자기판별) 전부 노출.
- */
 export default function Page() {
   return (
     <>
       <GlassNav815 />
       <main className="min-h-screen bg-background text-foreground">
-        <Hero815 />          {/* 01 인증서 통증 + 후킹 + 신뢰 스트립 */}
-        <ChatFear815 />      {/* 02 가상 시나리오 — 셀러 공포 말풍선 → 6/21 전환 */}
-        <SelfCheck815 />     {/* 03 자기판별 — 하나라도 해당하면 대상 */}
-        <DdayScene815 />     {/* 04 8월 아침 시뮬레이션 + 무료 오늘 할 일 */}
-        <MythBuster815 />    {/* 05 통장 공포 3대 오해 해소 */}
-        <Principle815 />     {/* 05 4칸 원리 다이어그램 + 비용 0원 */}
-        <WhyYong815 />       {/* 06 용팀장 신뢰 본진 — 얼굴+팩트+현장사진 */}
-        <Curriculum815 />    {/* 07 6/21 밤 손에 남는 9가지 */}
-        <Scarcity815 />      {/* 08 데드라인 — 결제 마감 + 미룰수록 손해 게이지 */}
-        <PolicyWindow815 />  {/* 09 정책 윈도우 — 되는 지금 끝내라 (단정 금지) */}
-        <Price815 />         {/* 10 가격 재프레임 + 결제→입장 4스텝 */}
-        <Faq815 />           {/* 11 결제 전 질문 7 */}
-        <FinalCta815 />      {/* 12 수미상관 + 서명 + 면책 */}
+        <Hero815 />
+        <ChatFear815 />
+        <SelfCheck815 />
+        <DdayScene815 />
+        <MythBuster815 />
+        <Principle815 />
+        <WhyYong815 />
+        <Curriculum815 />
+        <Scarcity815 />
+        <PolicyWindow815 />
+        <Price815 />
+        <Faq815 />
+        <FinalCta815 />
         <Footer />
       </main>
       <StickyCta815 />
@@ -61,3 +71,4 @@ export default function Page() {
     </>
   )
 }
+───────────────────────────────────────────────────────────────────────────── */

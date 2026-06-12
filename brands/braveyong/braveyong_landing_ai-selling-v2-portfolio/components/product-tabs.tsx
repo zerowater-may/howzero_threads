@@ -9,7 +9,8 @@ import { usePathname } from "next/navigation"
  */
 const products = [
   { href: "/", label: "AI 셀링 강의" },
-  { href: "/815", label: "8월 통관 특강" },
+  // 8월 통관 특강 일시 중단 — 재개 시 아래 항목 주석 해제
+  // { href: "/815", label: "8월 통관 특강" },
 ]
 
 export function ProductTabs({ className = "" }: { className?: string }) {
