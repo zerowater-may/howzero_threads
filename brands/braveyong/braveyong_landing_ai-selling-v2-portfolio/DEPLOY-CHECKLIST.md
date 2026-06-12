@@ -8,6 +8,13 @@ bulsaja Vercel 팀(`team_TJbZrrxEedAkxKUVSniHrdlr`)에 신규 프로젝트로 �
 
 ## 배포 기록
 
+### 2026-06-12 (5차) — `/815` 오픈채팅 입장 링크 자동 전달 활성화
+- Vercel production env `NEXT_PUBLIC_TONGGWAN_OPENCHAT_URL=https://open.kakao.com/o/gxFiuezi` 등록 (링크 유효성 확인: "[8.15 통관특강] 용감한용팀장" 방)
+- `vercel deploy --prod --yes` → deployment `...oeqvd3sq1` **READY (production)** — NEXT_PUBLIC은 빌드 타임 주입이라 재배포 필수
+- 검증: 라이브 `/815/complete` 청크(`page-5bb3488f....js`)에 링크 포함 확인 → 결제 확인자(apprState C)에게 '카톡 오픈채팅방 입장하기' 버튼 자동 노출
+- 보완 운영: 완료 화면을 안 거친 수납자는 결제선생 대시보드 명단 확인 후 수동 발송 — 템플릿 `kakao_notice_messages.txt` '결제 확인자 수동 안내용' 추가
+- 잔여 운영입력 해소: 2026-06-12 1차 기록의 `NEXT_PUBLIC_TONGGWAN_OPENCHAT_URL` 대기 항목 완료
+
 ### 2026-06-12 (4차) — `/815` 선착순 제거, 무제한 접수 (commit `81e1fbb7`)
 - `vercel deploy --prod --yes` → deployment `...qhna3b8vo` **READY (production)**
 - 라이브 검증: `https://www.gigclass.kr/815` HTTP 200 — `선착순`·`정원` **0건**, "단 1회 진행" 배지 + "6/20(토) 결제 마감 — 단 1회 라이브, 지나면 신청이 닫힙니다" 스트립 노출
