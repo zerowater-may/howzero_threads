@@ -2,7 +2,7 @@ import { Section } from "@/components/section"
 
 /** 9가지 산출물 — 발급 전·중·후 전 과정 커버 (방법은 비공개, 범위만 노출). gloss는 회색 용어풀이. */
 const OUTCOMES: { title: string; gloss?: string }[] = [
-  { title: "내 사업자가 8.15 대상인지 1분 판별 기준" },
+  { title: "내 사업자가 8월 등록 대상인지 1분 판별 기준" },
   {
     title: "발급 전 준비서류, 사업자별로 빠짐없이 체크",
     gloss: "신청 전에 갖춰야 할 것부터",
@@ -31,7 +31,7 @@ const OUTCOMES: { title: string; gloss?: string }[] = [
     title: "발급 후 매년 갱신·사후관리 루틴까지",
     gloss: "한 번 배우면 매년 당신 것",
   },
-  { title: "8.15 전 최종 점검 체크리스트" },
+  { title: "8월 전 최종 점검 체크리스트" },
 ]
 
 export function Curriculum815() {
@@ -40,7 +40,7 @@ export function Curriculum815() {
       id="curriculum"
       label="WHAT YOU GET"
       title={<>6월 21일 밤 10시, 당신 손에 남는 9가지.</>}
-      lead="발급 전 서류 준비부터 발급 후 매년 갱신까지 — 강의 ‘시청’이 아니라, 8.15 전에 끝내는 ‘준비 상태’를 가져가는 자리입니다."
+      lead="발급 전 서류 준비부터 발급 후 매년 갱신까지 — 강의 ‘시청’이 아니라, 8월 전에 끝내는 ‘준비 상태’를 가져가는 자리입니다."
     >
       <div className="grid gap-px overflow-hidden border-2 border-foreground sm:grid-cols-2">
         {OUTCOMES.map((o, i) => (

@@ -14,7 +14,7 @@ export function Hero815() {
         <div className="font-mono mb-5 flex flex-wrap items-center justify-center gap-2 text-[11px] font-bold uppercase tracking-[0.18em]">
           <span className="rounded-full border border-foreground/20 px-3 py-1">6/21(일) 온라인 라이브</span>
           <span className="rounded-full border border-foreground/20 px-3 py-1">단 1회 진행</span>
-          <span className="rounded-full bg-brand px-3 py-1 text-brand-foreground">8.15 데드라인</span>
+          <span className="rounded-full bg-brand px-3 py-1 text-brand-foreground">8월 데드라인</span>
         </div>
 
         <p className="mb-3 text-sm font-bold tracking-tight text-brand sm:text-base">

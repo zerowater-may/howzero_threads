@@ -31,7 +31,7 @@ export function MythBuster815() {
       id="myth"
       tone="dark"
       label="풀리지 않는 세 가지"
-      title={<>당신을 멈추게 한 건 8.15가 아니라, 풀리지 않는 이 세 가지입니다.</>}
+      title={<>당신을 멈추게 한 건 8월이 아니라, 풀리지 않는 이 세 가지입니다.</>}
       lead="구매대행 사장님들 단톡방이 멈춘 이유가 이 셋입니다. 하나씩 보세요 — 지금 당신도 여기 막혀 있을 겁니다."
     >
       <div className="grid gap-4 md:grid-cols-3">

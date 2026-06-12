@@ -67,7 +67,7 @@ export function WhyYong815() {
             </p>
             <p>
               강의가 본업이 아닙니다. 지금도 <span className="font-bold text-foreground">구매대행·글로벌위탁을 직접</span>{" "}
-              돌립니다. 8.15는 남 일이 아니라 제 일이고, 제 사업자부터 이 방법으로 등록합니다.
+              돌립니다. 8월은 남 일이 아니라 제 일이고, 제 사업자부터 이 방법으로 등록합니다.
             </p>
             <p>
               혼자 상품 <span className="font-bold text-foreground">1만 개를 직접</span> 올려봤습니다. 직장 다니면서,
