@@ -5,9 +5,39 @@ import { CountdownTimer } from "@/components/countdown-timer"
 import { tonggwan815 } from "@/lib/products"
 
 /**
- * 가격 섹션 — 유료 인증서 반복 비용 vs 특강 1회 비용 프레이밍.
+ * 가격 섹션 — '20만 원 비싸다' 반박: 안 들었을 때 치르는 값을 나열해 비교.
+ * 정직 가드: 손해 항목은 전부 페이지가 이미 주장한 사실만 재사용 (새 수치 지어내기 금지).
  * 결제→입장 4스텝(구 flow-815 흡수) + 마이크로 신뢰 1줄 포함.
  */
+const LOSSES: { main: string; sub: string }[] = [
+  {
+    main: "유료 인증서로 매년 — 사업자 20개면 연 400,000원",
+    sub: "한 번이 아니라 매년 반복됩니다 ↻",
+  },
+  {
+    main: "혼자 헤매는 한 달",
+    sub: "은행 왔다갔다, 급하면 창구에서 “20영업일 뒤에 오세요”",
+  },
+  {
+    main: "8월, 통관 정지 = 매출 정지",
+    sub: "등록 없이는 수입신고 자체가 안 됩니다",
+  },
+  {
+    main: "환불은 곧 내 돈",
+    sub: "구매대행은 현지 결제가 이미 끝난 구조입니다",
+  },
+  {
+    main: "배송지연 누적 → 판매자 점수 하락",
+    sub: "노출이 줄고, 최악은 판매 제한입니다",
+  },
+]
+
+const GAINS: string[] = [
+  "통장 추가 없이 인증서까지 끝내는 경로",
+  "막히면 그 자리에서 바로 Q&A",
+  "발급 후 매년 갱신 루틴까지 — 한 번 배우면 계속 당신 것",
+]
+
 const STEPS: string[] = [
   "결제선생으로 결제",
   "결제 확인",
@@ -29,19 +59,28 @@ export function Price815() {
       id="price"
       tone="light"
       label="PRICE"
-      title={<>{tonggwan815.price.toLocaleString()}원. 비싼지 아닌지는 당신 사업자 개수가 정합니다.</>}
+      title={<>‘20만 원, 비싸다’ — 좋습니다. 안 들었을 때 값과 비교해 보죠.</>}
     >
-      {/* 좌우 비교 — 매년 반복되는 인증서 비용 vs 특강 1회 */}
+      {/* 손해 원장 — 안 듣고 혼자 하면 치르는 값 vs 특강 1회 */}
       <div className="mx-auto grid max-w-3xl gap-4 md:grid-cols-2">
-        {/* 좌 — 유료 인증서 (회색/취소 톤) */}
-        <div className="border-2 border-foreground/25 bg-foreground/[0.03] p-6 text-foreground/55">
-          <p className="font-mono text-[11px] font-bold uppercase tracking-[0.18em]">유료 인증서로 매년</p>
-          <p className="mt-3 text-2xl font-bold tracking-tight sm:text-3xl">
-            <s className="decoration-2">연 400,000원</s>
+        {/* 좌 — 안 듣고 혼자 하면 (회색/취소 톤) */}
+        <div className="border-2 border-foreground/25 bg-foreground/[0.03] p-6 text-foreground/70">
+          <p className="font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-foreground/50">
+            안 듣고 혼자 하면
           </p>
-          <p className="mt-2 text-sm leading-relaxed">
-            사업자 20개 기준 · 매년 반복 <span aria-hidden>↻</span>
-          </p>
+          <ul className="mt-4 space-y-3.5">
+            {LOSSES.map((l) => (
+              <li key={l.main} className="flex items-start gap-2.5">
+                <span aria-hidden className="mt-0.5 shrink-0 text-base font-bold leading-none text-foreground/40">
+                  ✕
+                </span>
+                <div>
+                  <p className="text-sm font-bold leading-snug text-foreground/80">{l.main}</p>
+                  <p className="mt-0.5 text-xs leading-relaxed text-foreground/50">{l.sub}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
 
         {/* 우 — 이 특강 1회 (버건디) */}
@@ -67,12 +106,22 @@ export function Price815() {
             </span>
             <span className="ml-2 text-sm font-normal opacity-80">(부가세 포함)</span>
           </p>
-          <p className="mt-3 text-sm leading-relaxed">경로는 한 번 배우면 계속 당신 것</p>
+          <ul className="mt-5 space-y-3">
+            {GAINS.map((g) => (
+              <li key={g} className="flex items-start gap-2.5">
+                <span aria-hidden className="mt-0.5 shrink-0 text-base font-bold leading-none">
+                  ✓
+                </span>
+                <p className="text-sm font-bold leading-snug">{g}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
 
       <p className="mx-auto mt-6 max-w-3xl text-center text-sm font-bold text-foreground/70 sm:text-base">
-        8월에 멈출 매출과 환불은 이 계산에 넣지도 않았습니다.
+        왼쪽 다섯 줄 중 <span className="text-brand">하나만 겪어도</span> {tonggwan815.price.toLocaleString()}원보다
+        비쌉니다. 특강이 비싼 게 아니라, 안 듣고 치르는 값이 비쌉니다.
       </p>
 
       {/* 대형 CTA + 마이크로 신뢰 + 카운트다운 */}
