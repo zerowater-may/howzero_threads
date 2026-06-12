@@ -24,6 +24,13 @@ const nextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
   },
+
+  // 8월 통관 특강 일시 중단 — /815를 HTTP 307로 메인(/)에 리다이렉트.
+  // /815/complete(결제 완료자 입장)·/api/*는 source 정확매칭이라 영향 없음.
+  // permanent:false(307) — 강의 재개 가능성 유지(308 영구 캐시 회피).
+  async redirects() {
+    return [{ source: "/815", destination: "/", permanent: false }]
+  },
 }
 
 export default nextConfig
