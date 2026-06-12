@@ -12,7 +12,7 @@ const OUTCOMES: { title: string; gloss?: string }[] = [
     gloss: "정체는 라이브에서",
   },
   {
-    title: "UNI-PASS 부호 발급 5단계",
+    title: "UNI-PASS 통관고유부호 발급 5단계",
     gloss: "관세청 사이트 화면 그대로 따라하기",
   },
   {
@@ -47,7 +47,7 @@ export function Curriculum815() {
       </div>
 
       <p className="mt-8 max-w-2xl text-sm leading-relaxed text-foreground/75 sm:text-base">
-        용어 몰라도 됩니다. 부호·UNI-PASS·공동인증서, 나올 때마다 한 줄씩 풀고 갑니다. 막히면 그
+        용어 몰라도 됩니다. 통관고유부호·UNI-PASS·공동인증서, 나올 때마다 한 줄씩 풀고 갑니다. 막히면 그
         자리에서 질문하세요 — 그게 라이브로 하는 이유입니다.
       </p>
     </Section>

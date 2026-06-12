@@ -17,14 +17,18 @@ export function Hero815() {
           <span className="rounded-full bg-brand px-3 py-1 text-brand-foreground">8.15 데드라인</span>
         </div>
 
+        <p className="mb-3 text-sm font-bold tracking-tight text-brand sm:text-base">
+          전직 공인인증서 담당자가 알려드립니다
+        </p>
+
         <h1 className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl md:text-5xl">
-          부호 받으려면 ‘사업자 인증서’.<br />
+          구매대행 셀러 계속 하려면 ‘사업자 인증서’.<br />
           그거, 지금 <Marker>못 만드시잖아요.</Marker>
         </h1>
 
         <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-foreground/55">
-          부호(통관고유부호) = 세관이 ‘이 물건 주인이 누구인지’ 확인하는 등록번호입니다.{" "}
-          8월 15일부터 이게 없으면 수입신고 자체가 안 됩니다.
+          8월 15일부터는 관세청 유니패스에 업체 등록(통관고유부호)이 안 된 사업자는 수입신고 자체가 안 됩니다.{" "}
+          그 등록에 꼭 필요한 게 사업자 인증서 — 없으면 구매대행을 못 합니다.
         </p>
 
         <p className="mx-auto mt-4 max-w-xl text-base font-bold leading-relaxed text-foreground sm:text-lg">
@@ -82,7 +86,7 @@ export function Hero815() {
           </div>
           <p className="text-sm text-foreground/70">
             겁주려고 만든 페이지가 아닙니다.{" "}
-            <span className="font-bold text-foreground">저도 막히는 당사자</span>라서 만들었습니다.
+            <span className="font-bold text-foreground">현직 셀러가 제 사업자 등록하면서</span> 만든 페이지입니다.
           </p>
         </div>
 

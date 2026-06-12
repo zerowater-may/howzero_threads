@@ -19,7 +19,7 @@ import { Footer } from "@/components/footer"
 export const metadata: Metadata = {
   title: "8.15 통관대응 라이브 특강 — 용감한 용팀장",
   description:
-    "부호 받으려면 ‘사업자 인증서’ — 그게 지금 안 만들어집니다. 통장 한 개도 더 안 만들고 인증서까지 만드는 법, 6/21(일) 라이브 단 1회.",
+    "구매대행 셀러 계속 하려면 ‘사업자 인증서’가 필요합니다 — 그게 지금 안 만들어집니다. 통장 한 개도 더 안 만들고 인증서까지 만드는 법, 6/21(일) 라이브 단 1회.",
   openGraph: {
     type: "website",
     locale: "ko_KR",

@@ -15,14 +15,14 @@ const ALERTS: Alert[] = [
   {
     time: "07:32",
     source: "배대지 알림",
-    title: "통관 보류 — 수입자 부호 미기재",
+    title: "통관 보류 — 통관고유부호 미기재",
     sub: "배대지: 해외 물건을 받아 한국으로 부쳐주는 대행 창고. 멈추는 곳이 여기입니다.",
   },
   {
     time: "09:10",
     source: "스토어 문의 7건",
     title: "“배송 언제 되나요?”",
-    sub: "답할 말이 없습니다. 부호는 하루 만에 안 나옵니다.",
+    sub: "답할 말이 없습니다. 통관고유부호는 하루 만에 안 나옵니다.",
   },
   {
     time: "13:00",
@@ -78,7 +78,7 @@ export function DdayScene815() {
         <p className="text-sm leading-relaxed text-background/90 sm:text-base">
           그래서 오늘 할 일 — 지금{" "}
           <span className="font-bold text-background">UNI-PASS(관세청 전자통관 사이트)</span>에서 내
-          부호가 있는지 조회하세요. 무료고, 1분입니다. 없다면, 아래를 계속 읽으셔야 합니다.
+          통관고유부호가 있는지 조회하세요. 무료고, 1분입니다. 없다면, 아래를 계속 읽으셔야 합니다.
         </p>
         <a
           href="https://unipass.customs.go.kr"

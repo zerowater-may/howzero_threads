@@ -4,14 +4,14 @@ import { Signature } from "@/components/handwriting"
 import { photos } from "@/lib/testimonials"
 
 /**
- * 권위 섹션 — '책상 강사'가 아니라 자기 통관이 먼저 걸린 현직 셀러임을 증명.
- * 얼굴 사진 + 1인칭 3문단 + 팩트카드 4장 + 현장사진 4장(trust-evidence figure 패턴 차용).
+ * 권위 섹션 — 전직 공인인증서 담당 + 현직 셀러라는 이중 당사자성을 증명.
+ * 얼굴 사진 + 1인칭 4문단 + 팩트카드 4장 + 현장사진 4장(trust-evidence figure 패턴 차용).
  */
 const FACTS = [
+  "전직 공인인증서 담당",
   "지금도 직접 올리는 현직 셀러",
   "혼자 1만 개 등록",
   "실전반 1기 + 스터디 운영",
-  "직장인·육아아빠 출신",
 ]
 
 const FIELD_PHOTOS = [
@@ -43,7 +43,7 @@ export function WhyYong815() {
       id="why-yong"
       tone="light"
       label="WHO"
-      title={<>이 방법, 책상에서 나온 게 아닙니다. 제 통관이 먼저 걸려봤습니다.</>}
+      title={<>전직 공인인증서 담당, 현직 구매대행 셀러입니다.</>}
     >
       <div className="grid gap-8 md:grid-cols-[auto_1fr] md:gap-10">
         {/* 좌측 — 얼굴 + 서명 */}
@@ -61,6 +61,10 @@ export function WhyYong815() {
         {/* 우측 — 1인칭 멘트 3문단 + 팩트카드 4장 */}
         <div className="flex flex-col gap-6">
           <div className="space-y-4 text-base leading-relaxed text-foreground/80 sm:text-lg">
+            <p>
+              <span className="font-bold text-foreground">공인인증서를 일로 다루던 사람</span>입니다. 인증서가 어떤
+              순서로 나오고, 어디서 막히는지 업무로 겪어봤습니다.
+            </p>
             <p>
               강의가 본업이 아닙니다. 지금도 <span className="font-bold text-foreground">구매대행·글로벌위탁을 직접</span>{" "}
               돌립니다. 8.15는 남 일이 아니라 제 일이고, 제 사업자부터 이 방법으로 등록합니다.

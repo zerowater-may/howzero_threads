@@ -25,7 +25,7 @@ export function Principle815() {
       id="principle"
       tone="warm"
       label="HOW IT WORKS"
-      title={<>부호까지 가는 길은 4칸. 막히는 칸은 하나뿐입니다.</>}
+      title={<>8.15 등록까지 가는 길은 4칸. 막히는 칸은 하나뿐입니다.</>}
     >
       {/* 4칸 가로 플로우 — 내용은 비공개, 구조와 병목만 공개 */}
       <div className="grid gap-8 sm:grid-cols-4 sm:gap-5">
