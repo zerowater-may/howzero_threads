@@ -53,16 +53,20 @@ export async function listPendingBills(limit = 100): Promise<PendingBill[]> {
 /**
  * 입장문자 1회 발송 보장. 흐름: done 락 선점(put, 이미 있으면 실패=이미 발송) →
  * SMS 발송 → 실패 시 락 해제(크론 재시도 가능). 성공 시 pending 제거.
+ *
+ * 락 키는 전화번호 — 같은 사람이 청구서를 여러 번 받아 둘 다 결제(C)해도 문자는 1번만.
+ * (실사고: 한 번호가 2건 결제 → billId 락이라 2번 발송됨. phone 락으로 수정.)
  */
 export async function sendEntrySmsOnce(
   billId: string,
   phone: string,
   via: string,
 ): Promise<"sent" | "already-sent" | "failed"> {
-  const lockPath = `${DONE_PREFIX}${billId}.json`
+  const phoneKey = phone.replace(/[^0-9]/g, "")
+  const lockPath = `${DONE_PREFIX}${phoneKey}.json`
 
   try {
-    await put(lockPath, JSON.stringify({ billId, phone, via, lockedAt: new Date().toISOString() }), {
+    await put(lockPath, JSON.stringify({ billId, phone: phoneKey, via, lockedAt: new Date().toISOString() }), {
       access: "private",
       addRandomSuffix: false,
       allowOverwrite: false, // 이미 존재하면 throw — 중복 발송 차단 락
