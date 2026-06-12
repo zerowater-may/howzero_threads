@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "next build",
+    "build": "NODE_ENV=production next build",
     "dev": "next dev --port 3200",
     "lint": "next lint",
     "test:landing": "node scripts/check-landing-structure.mjs",
