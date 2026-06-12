@@ -2,7 +2,7 @@ import { NextResponse } from "next/server"
 import { getPaymintConfig } from "@/lib/paymint/config"
 import { readBill } from "@/lib/paymint/client"
 import { decodeBillId } from "@/lib/paymint/hash"
-import { sendSms } from "@/lib/sens"
+import { sendEntrySmsOnce } from "@/lib/bill-registry"
 import { tonggwan815 } from "@/lib/products"
 import type { PaymentCallbackData } from "@/lib/paymint/types"
 
@@ -22,68 +22,41 @@ function pickField(sources: Array<Record<string, unknown> | undefined>, keys: st
 }
 
 /**
- * 결제완료(C) 콜백 → 815 통관 특강 결제 건이면 결제자에게 오픈채팅 입장 문자(LMS) 자동 발송.
- * - 815 판별: readBill 상품명에 '통관'이 있거나, 결제 금액이 특강가와 일치
+ * 결제 콜백 → 통관 특강(T 마커) 결제 건이면 입장 문자 1회 발송.
+ * - 통관 전용: billId의 T 마커가 유일한 판별 기준 — course 결제(C 마커)·구형식은 절대 발송 안 함
+ * - 콜백의 state 글자는 신뢰하지 않는다(실결제에서 승인 전 'F' 콜백만 오는 사례 확인) —
+ *   readBill로 현재 수납 상태를 직접 조회해 'C'일 때만 발송
+ * - 중복 차단: sendEntrySmsOnce의 Blob 락 — 콜백 재시도·크론과 겹쳐도 1건만 나간다
  * - 실패해도 결제선생 응답(0000)은 항상 정상 반환 — 문자는 부가 기능, 결제 흐름을 막지 않는다
- * - 결제선생이 콜백을 재시도하면 문자가 중복 발송될 수 있다(저장소 없는 구조의 트레이드오프, 빈도 낮음)
  */
 async function sendTonggwanEntrySms(callbackData: PaymentCallbackData): Promise<void> {
-  if (callbackData.appr_state !== "C") return
+  const decoded = decodeBillId(callbackData.bill_id)
+  if (!decoded?.isTonggwan) {
+    console.info("[paymint.callback.sms] skip — 통관 특강 청구서 아님", { billId: callbackData.bill_id })
+    return
+  }
   if (!tonggwan815.openchatUrl) {
     console.info("[paymint.callback.sms] skip — NEXT_PUBLIC_TONGGWAN_OPENCHAT_URL 미설정")
     return
   }
 
-  // 1순위: billId에 인코딩된 번호·상품 마커 (V1 read-bill은 전화번호를 돌려주지 않는다)
-  const decoded = decodeBillId(callbackData.bill_id)
-  let phone = decoded?.phone ?? ""
-  let isTonggwan = decoded?.isTonggwan ?? false
+  // 현재 수납 상태를 직접 조회 — 콜백 state 글자 불신
+  const result = await readBill({ billId: callbackData.bill_id })
+  const outer = (result ?? {}) as Record<string, unknown>
+  const inner = (outer.data ?? {}) as Record<string, unknown>
+  const deep = (inner.data ?? {}) as Record<string, unknown>
+  const state = pickField([deep, inner, outer], ["appr_state", "apprState"])
 
-  // 2순위(구형식 billId 폴백): readBill + 콜백 금액으로 추정
-  if (!decoded) {
-    const result = await readBill({ billId: callbackData.bill_id })
-    const outer = (result ?? {}) as Record<string, unknown>
-    const inner = (outer.data ?? {}) as Record<string, unknown>
-    const deep = (inner.data ?? {}) as Record<string, unknown>
-    const sources = [deep, inner, outer]
-
-    const productName = pickField(sources, ["productName", "product_nm", "productNm"])
-    const billPrice = pickField(sources, ["price", "appr_price", "apprPrice"]) || callbackData.appr_price || ""
-    isTonggwan = productName.includes("통관") || String(billPrice).replace(/[^0-9]/g, "") === String(tonggwan815.price)
-    phone = pickField(sources, ["phone", "member_phone", "memberPhone", "phoneNumber", "hp", "tel"])
-  }
-
-  if (!isTonggwan) {
-    console.info("[paymint.callback.sms] skip — 815 특강 결제 아님", { billId: callbackData.bill_id })
-    return
-  }
-  if (!phone) {
-    console.error("[paymint.callback.sms] 전화번호 추출 실패 — 수동 발송 필요", { billId: callbackData.bill_id })
-    return
-  }
-
-  const smsResult = await sendSms({
-    to: phone,
-    type: "LMS",
-    title: "8월 통관특강 입장 안내",
-    content: [
-      "[용감한 용팀장] 8월 통관특강 결제가 확인됐습니다. 감사합니다.",
-      "",
-      "카톡 오픈채팅방 입장:",
-      tonggwan815.openchatUrl,
-      "",
-      "6/21(일) 저녁 8시 라이브 안내를 방에서 드립니다.",
-    ].join("\n"),
-  })
-
-  if (smsResult.ok) {
-    console.info("[paymint.callback.sms] 발송 완료", { billId: callbackData.bill_id })
-  } else {
-    console.error("[paymint.callback.sms] 발송 실패 — 수동 발송 필요", {
+  if (state !== "C") {
+    console.info("[paymint.callback.sms] skip — 아직 수납 미완료, 크론이 재확인", {
       billId: callbackData.bill_id,
-      error: smsResult.error,
+      state,
     })
+    return
   }
+
+  const outcome = await sendEntrySmsOnce(callbackData.bill_id, decoded.phone, "callback")
+  console.info("[paymint.callback.sms]", { billId: callbackData.bill_id, outcome })
 }
 
 export async function POST(request: Request) {

@@ -2,10 +2,10 @@ import { Section } from "@/components/section"
 import { ArrowNote } from "@/components/handwriting"
 
 /**
- * 단톡방 실황 — 셀러 커뮤니티에 돌고 있는 공포·혼란을 대표 질문으로 재구성한 익명 말풍선.
- * 정직 가드: 실제 대화의 인용이 아니라 '요즘 도는 질문들'의 재구성임을 lead에 명시.
- * 특정 발언·닉네임·수치를 그대로 옮기지 않는다 (발화자 특정 방지).
- * 전환 설계: 공포 나열 → '기다려보자'가 제일 위험한 답 → 6/21에 전부 답이 나온다.
+ * 가상 시나리오 — 8월 등록 앞둔 셀러들의 막막함을 가상의 대화 장면으로 표현.
+ * 정직 가드: 특정 단톡방·실대화의 인용이 아님을 lead와 주석에 명시 (가상 재구성).
+ * 실제 커뮤니티에서 오간 문장·수치·말투를 그대로 쓰지 않는다.
+ * 전환 설계: 막막함 나열 → '상황 보고 움직이자'가 제일 위험한 답 → 6/21에 전부 답이 나온다.
  */
 type Bubble = {
   who: string
@@ -15,13 +15,13 @@ type Bubble = {
 }
 
 const BUBBLES: Bubble[] = [
-  { who: "셀러 A", text: "등록 안 하면 8월부터 스토어 판매가 막힌다던데, 진짜인가요?" },
-  { who: "셀러 B", text: "사업자가 5개면 인증서도 5개 전부 따로 만들어야 한다는 게 맞나요…?" },
-  { who: "셀러 C", text: "은행 갔더니 사업자마다 통장이 따로 있어야 한다는데, 신규 개설은 또 안 해준다네요" },
-  { who: "셀러 D", text: "통장 만든 지 한 달 안 지나면 새 통장이 안 나오잖아요. 이러다 8월 전에 못 끝낼 것 같은데" },
-  { who: "셀러 E", text: "유료 인증서 알아보니 사업자당 몇만 원씩, 그것도 매년이래요. 사업자 많으면 이게 다 돈인데…" },
-  { who: "셀러 F", text: "발급 대행 견적도 받아봤는데 생각보다 세네요. 다들 그냥 돈 내고 하시는 건가요?" },
-  { who: "셀러 G", text: "일단 다른 방법 나올 때까지 기다려보는 게 낫지 않을까요?", dangerous: true },
+  { who: "사장님 1", text: "8월 전에 등록 못 끝내면 수입이 멈춘다는데, 어디서부터 손대야 할지 모르겠네요" },
+  { who: "사장님 2", text: "사업자 수만큼 인증서가 필요하다는 얘길 오늘 처음 들었어요. 저 사업자 여러 개인데…" },
+  { who: "사장님 3", text: "주거래 은행 다녀왔는데 요즘은 신규 계좌 자체를 잘 안 내준다고 하더라고요" },
+  { who: "사장님 4", text: "어떤 분은 된다고 하고 어떤 분은 안 된다고 하고… 정확히 아는 사람이 없어요" },
+  { who: "사장님 5", text: "인증서 비용 알아봤더니 사업자 수만큼 곱해지고, 내년에 또 내야 한다네요" },
+  { who: "사장님 6", text: "다음 달에 물량 들어올 게 있어서 더 불안합니다. 시간이 부족해요" },
+  { who: "사장님 7", text: "좀 더 상황 보고 움직여도 되지 않을까요?", dangerous: true },
 ]
 
 export function ChatFear815() {
@@ -29,9 +29,9 @@ export function ChatFear815() {
     <Section
       id="chat-fear"
       tone="light"
-      label="단톡방 실황"
-      title={<>지금 구매대행 단톡방, 이렇게 돌아갑니다.</>}
-      lead="요즘 구매대행 단톡방마다 도는 질문들을 재구성했습니다. 어딘가 익숙하다면 — 당신 방도 지금 이럴 겁니다."
+      label="가상 시나리오"
+      title={<>지금 셀러들 사이 공기, 대충 이렇습니다.</>}
+      lead="특정 대화를 옮긴 게 아니라, 8월 등록을 앞둔 셀러들이 겪는 상황을 가상의 대화로 재구성한 장면입니다. 그런데 어딘가 익숙할 겁니다."
     >
       {/* 익명 말풍선 — 메신저 톤 */}
       <div className="mx-auto flex max-w-xl flex-col gap-3">
@@ -63,12 +63,12 @@ export function ChatFear815() {
       {/* 전환 — 이 방엔 답이 없다, 답은 6/21에 */}
       <div className="mx-auto mt-10 max-w-xl border-l-2 border-brand bg-brand/[0.05] px-5 py-4">
         <p className="text-base leading-relaxed text-foreground/85 sm:text-lg">
-          이 방에 <span className="font-bold text-foreground">답을 아는 사람이 없습니다.</span> 그래서
-          ‘기다려보자’는 말만 돕니다 — 기다리는 동안 마감은 옵니다.
+          공통점이 하나 있죠 — <span className="font-bold text-foreground">정확히 아는 사람이 없다</span>는 것.
+          그래서 다들 멈춰 있습니다. 멈춰 있는 동안 8월은 옵니다.
         </p>
         <p className="mt-3 text-base font-bold leading-relaxed text-foreground sm:text-lg">
-          6/21 밤, 위 질문 전부에 답을 드립니다. 유료 인증서에 매년 돈을 써야 하나 고민할 필요도
-          없게요 — <span className="text-brand">대기업에서 공인인증서를 만들던 사람</span>이 순서대로 보여드립니다.
+          6/21 밤, 이 막막함 전부에 답을 드립니다. 인증서에 매년 돈 쓸 필요가 없는 경로까지 —{" "}
+          <span className="text-brand">대기업에서 공인인증서를 만들던 사람</span>이 순서대로 보여드립니다.
         </p>
       </div>
     </Section>

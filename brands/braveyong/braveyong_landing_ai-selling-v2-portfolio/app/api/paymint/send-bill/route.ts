@@ -2,7 +2,8 @@ import { NextResponse } from "next/server"
 import { z } from "zod"
 import { resolveProduct } from "@/lib/products"
 import { sendBill } from "@/lib/paymint/client"
-import { sanitizePhone } from "@/lib/paymint/hash"
+import { decodeBillId, sanitizePhone } from "@/lib/paymint/hash"
+import { registerPendingBill } from "@/lib/bill-registry"
 
 export const runtime = "nodejs"
 
@@ -39,6 +40,11 @@ export async function POST(request: Request) {
     })
     const data = result.data || {}
     const billId = readString(data.billId) || readString(result.billId) || readString(result.bill_id)
+
+    // 통관 특강 청구서만 리컨사일 레지스트리에 등록 (course는 등록 안 함 — 문자 대상 아님)
+    if (billId && result.code === "0000" && !result.dryRun && decodeBillId(billId)?.isTonggwan) {
+      registerPendingBill(billId, phoneNumber).catch(() => {})
+    }
     const shortUrl = readString(data.shortUrl) || readString(result.shortUrl) || readString(result.shortURL)
     const deliveryType = readString(data.deliveryType) || readString(result.deliveryType) || (shortUrl ? "URL" : "TALK")
     const fallbackReason = readString(data.fallbackReason) || readString(result.fallbackReason)
