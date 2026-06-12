@@ -153,7 +153,8 @@ export async function sendBill(params: SendBillInput): Promise<SendBillResponse>
   const config = getPaymintConfig()
   const cleanPhone = sanitizePhone(params.phoneNumber)
   const amount = String(params.amount)
-  const billId = generateBillId()
+  // billId에 번호·상품 인코딩 — 결제완료 콜백의 자동 입장문자가 여기서 번호를 복원한다
+  const billId = generateBillId({ phone: cleanPhone, tonggwan: params.productName.includes("통관") })
   const hash = generateHash({ billId, phone: cleanPhone, price: amount })
   const expireDate = getExpireDate(params.expireDays ?? config.defaultExpireDays)
   const sendType = params.sendType ?? "URL"

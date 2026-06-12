@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server"
 import { getPaymintConfig } from "@/lib/paymint/config"
 import { readBill } from "@/lib/paymint/client"
+import { decodeBillId } from "@/lib/paymint/hash"
 import { sendSms } from "@/lib/sens"
 import { tonggwan815 } from "@/lib/products"
 import type { PaymentCallbackData } from "@/lib/paymint/types"
@@ -33,26 +34,31 @@ async function sendTonggwanEntrySms(callbackData: PaymentCallbackData): Promise<
     return
   }
 
-  const result = await readBill({ billId: callbackData.bill_id })
-  const outer = (result ?? {}) as Record<string, unknown>
-  const inner = (outer.data ?? {}) as Record<string, unknown>
-  const deep = (inner.data ?? {}) as Record<string, unknown>
-  const sources = [deep, inner, outer]
+  // 1순위: billId에 인코딩된 번호·상품 마커 (V1 read-bill은 전화번호를 돌려주지 않는다)
+  const decoded = decodeBillId(callbackData.bill_id)
+  let phone = decoded?.phone ?? ""
+  let isTonggwan = decoded?.isTonggwan ?? false
 
-  const productName = pickField(sources, ["productName", "product_nm", "productNm"])
-  const billPrice = pickField(sources, ["price", "appr_price", "apprPrice"]) || callbackData.appr_price || ""
-  const isTonggwan = productName.includes("통관") || String(billPrice) === String(tonggwan815.price)
-  if (!isTonggwan) {
-    console.info("[paymint.callback.sms] skip — 815 특강 결제 아님", { billId: callbackData.bill_id, productName, billPrice })
-    return
+  // 2순위(구형식 billId 폴백): readBill + 콜백 금액으로 추정
+  if (!decoded) {
+    const result = await readBill({ billId: callbackData.bill_id })
+    const outer = (result ?? {}) as Record<string, unknown>
+    const inner = (outer.data ?? {}) as Record<string, unknown>
+    const deep = (inner.data ?? {}) as Record<string, unknown>
+    const sources = [deep, inner, outer]
+
+    const productName = pickField(sources, ["productName", "product_nm", "productNm"])
+    const billPrice = pickField(sources, ["price", "appr_price", "apprPrice"]) || callbackData.appr_price || ""
+    isTonggwan = productName.includes("통관") || String(billPrice).replace(/[^0-9]/g, "") === String(tonggwan815.price)
+    phone = pickField(sources, ["phone", "member_phone", "memberPhone", "phoneNumber", "hp", "tel"])
   }
 
-  const phone = pickField(sources, ["phone", "member_phone", "memberPhone", "phoneNumber", "hp", "tel"])
+  if (!isTonggwan) {
+    console.info("[paymint.callback.sms] skip — 815 특강 결제 아님", { billId: callbackData.bill_id })
+    return
+  }
   if (!phone) {
-    console.error("[paymint.callback.sms] 전화번호 추출 실패 — 수동 발송 필요", {
-      billId: callbackData.bill_id,
-      availableKeys: { outer: Object.keys(outer), inner: Object.keys(inner), deep: Object.keys(deep) },
-    })
+    console.error("[paymint.callback.sms] 전화번호 추출 실패 — 수동 발송 필요", { billId: callbackData.bill_id })
     return
   }
 

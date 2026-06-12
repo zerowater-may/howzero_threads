@@ -13,10 +13,19 @@ export async function POST(request: Request) {
     const body = ReadBillSchema.parse(await request.json())
     const result = await readBill({ billId: body.billId })
 
+    // V1(legacy) read 응답은 code 없이 bill 객체를 그대로 반환한다 — appr_state 존재 = 조회 성공
+    const raw = result as Record<string, unknown>
+    const isLegacyBill = "appr_state" in raw || "bill_id" in raw
+    const success = result.code === "0000" || Boolean(result.dryRun) || isLegacyBill
+
+    // 콜백 인증키 유출 방지 — 결제선생이 echo하는 apikey는 클라이언트에 내리지 않는다
+    delete raw.apikey
+    delete raw.apiKey
+
     return NextResponse.json({
-      success: result.code === "0000",
+      success,
       data: result,
-      error: result.code === "0000" ? undefined : result.message || result.msg,
+      error: success ? undefined : result.message || result.msg,
     })
   } catch (error) {
     if (error instanceof z.ZodError) {
