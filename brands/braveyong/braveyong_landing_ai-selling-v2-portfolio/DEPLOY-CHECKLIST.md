@@ -8,6 +8,13 @@ bulsaja Vercel 팀(`team_TJbZrrxEedAkxKUVSniHrdlr`)에 신규 프로젝트로 �
 
 ## 배포 기록
 
+### 2026-06-12 (6차) — `/815` 결제완료 자동 입장문자 (commit `784acebc`)
+- NCP SENS 연동(bulsa_server 모듈 이식) — 결제완료 콜백 → 815 결제 건 판별 → 결제자 번호로 오픈채팅 입장 LMS 자동 발송
+- Vercel production env `NCP_SENS_ACCESS/SECRET/ID/NUMBER` 등록 (발신번호 070-8064-1808, bulsaja 계정 공유)
+- `vercel deploy --prod --yes` → deployment `...69jrgkbn3` **READY (production)**
+- 운영 메모: 첫 실결제 시 Vercel Functions 로그 `[paymint.callback.sms]`로 발송 성공 확인 권장. 전화번호 추출 실패 시 로그에 readBill 키 목록이 남으니 그걸로 필드명 보정
+- 수동 점검: `node --env-file=.env.local scripts/test-sms.mjs 010XXXXXXXX`
+
 ### 2026-06-12 (5차) — `/815` 오픈채팅 입장 링크 자동 전달 활성화
 - Vercel production env `NEXT_PUBLIC_TONGGWAN_OPENCHAT_URL=https://open.kakao.com/o/gxFiuezi` 등록 (링크 유효성 확인: "[8.15 통관특강] 용감한용팀장" 방)
 - `vercel deploy --prod --yes` → deployment `...oeqvd3sq1` **READY (production)** — NEXT_PUBLIC은 빌드 타임 주입이라 재배포 필수
