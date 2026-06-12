@@ -8,6 +8,16 @@ bulsaja Vercel 팀(`team_TJbZrrxEedAkxKUVSniHrdlr`)에 신규 프로젝트로 �
 
 ## 배포 기록
 
+### 2026-06-12 (11차) — `/815` 입장문자 누락 근본수리: 리컨사일 크론 + 중복차단 락
+- **사고**: 실결제(17:19, 신한 209,000원) 문자 누락. 원인 — 결제선생 콜백이 승인 전 `F` 상태로만 오고 최종 승인(C) 콜백 미수신 → 'C' 가정 코드 스킵. 결제자(010-6356-6838)에게 수동 발송 완료(202)
+- **수리 구조** (commit `a3596b95` + 후속):
+  - 콜백: state 글자 불신 → readBill로 현재 수납 상태 직접 조회, C일 때만 발송
+  - 안전망: 통관 청구서(T 마커)만 Vercel Blob `gigclass-bills`(private) pending 등록 → `/api/paymint/reconcile`(RECONCILE_SECRET)이 미발송 수납건 발송. **howzero 서버 crontab `*/15분` 호출** (`/etc/howzero/gigclass-reconcile.env`, 로그 `/var/log/gigclass-reconcile.log`)
+  - 중복·오발송 차단: 통관 전용 = billId T 마커만(course 절대 발송 안 함), 1회 보장 = Blob `allowOverwrite:false` 원자 락 (콜백·크론 동시 도착에도 1건)
+- **E2E 검증**: 발송→pending 등록→미수납 콜백 스킵(waiting)→course 콜백 비발송→리컨사일 응답 정상→테스트 청구서 파기·pending 정리. 401 인증도 확인
+- 함정 기록: private 스토어에 `access:"public"` put 거부 / 서버리스 fire-and-forget Promise 유실 → await 필수 / `vercel env pull`이 `.env.local` 덮어씀(복구 완료)
+- 단톡방 섹션 v3: "가상 시나리오" 라벨 + 가상 재구성 명시 + 문구 전면 재작성
+
 ### 2026-06-12 (10차) — `/815` 결제→문자 플로우 수리 + 대기업 강조 + 단톡방 섹션 (commits `6a12b0f0`~`현재`)
 - **플로우 단절 3건 수리 후 E2E 검증 완료**: ① `PAYMINT_CALLBACK_URL` env 부재로 청구서에 localhost 콜백이 박히던 문제 → env 등록 ② V1 read-bill에 전화번호가 없어 자동문자 불가 → billId에 번호+상품마커 base36 인코딩(20자 제한 준수) ③ V1 read 응답 code 부재로 결제완료자가 완료 페이지에서 에러를 보던 버그 + 응답에 echo되던 apikey 유출 차단
 - E2E 증거: 실청구서 발송(`BT1AG016C4MQAMELWDC2`) → read-bill success:true → 콜백 시뮬레이션 → 함수 로그 `[paymint.callback.sms] 발송 완료` + 010-9950-1140 수신. 테스트 청구서 2건 파기 완료
