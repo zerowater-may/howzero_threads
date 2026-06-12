@@ -4,6 +4,7 @@ import { GlassNav815 } from "@/components/tonggwan/glass-nav-815"
 import { Hero815 } from "@/components/tonggwan/hero-815"
 import { DdayScene815 } from "@/components/tonggwan/dday-scene-815"
 import { SelfCheck815 } from "@/components/tonggwan/self-check-815"
+import { ChatFear815 } from "@/components/tonggwan/chat-fear-815"
 import { MythBuster815 } from "@/components/tonggwan/myth-buster-815"
 import { Principle815 } from "@/components/tonggwan/principle-815"
 import { WhyYong815 } from "@/components/tonggwan/why-yong-815"
@@ -43,7 +44,8 @@ export default function Page() {
         <Hero815 />          {/* 01 인증서 통증 + 후킹 + 신뢰 스트립 */}
         <DdayScene815 />     {/* 02 8월 아침 시뮬레이션 + 무료 오늘 할 일 */}
         <SelfCheck815 />     {/* 03 자기판별 — 하나라도 해당하면 대상 */}
-        <MythBuster815 />    {/* 04 통장 공포 3대 오해 해소 */}
+        <ChatFear815 />      {/* 04 단톡방 실황 — 익명 공포 말풍선 → 6/21 전환 */}
+        <MythBuster815 />    {/* 05 통장 공포 3대 오해 해소 */}
         <Principle815 />     {/* 05 4칸 원리 다이어그램 + 비용 0원 */}
         <WhyYong815 />       {/* 06 용팀장 신뢰 본진 — 얼굴+팩트+현장사진 */}
         <Curriculum815 />    {/* 07 6/21 밤 손에 남는 9가지 */}

@@ -10,6 +10,7 @@ const ordered = [
   "<Hero815",
   "<DdayScene815",
   "<SelfCheck815",
+  "<ChatFear815",
   "<MythBuster815",
   "<Principle815",
   "<WhyYong815",

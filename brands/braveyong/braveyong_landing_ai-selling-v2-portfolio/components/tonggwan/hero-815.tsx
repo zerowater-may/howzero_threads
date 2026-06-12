@@ -37,8 +37,9 @@ export function Hero815() {
         </p>
 
         <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-foreground/75 sm:text-lg">
-          통장 한 개도 더 안 만들고 인증서까지 만드는 법 —{" "}
-          <span className="font-bold text-foreground">6/21 라이브 단 1회</span>로 끝냅니다.
+          통장 한 개도 더 안 만들고 인증서까지 만드는, <span className="font-bold text-foreground">지금 되는 방법</span>입니다.{" "}
+          언제 막힐지 모릅니다 — <span className="font-bold text-foreground">6/21 라이브 단 1회</span>로 배우고,
+          다음 날 바로 발급받으세요.
         </p>
 
         <div className="mt-8 flex flex-col items-center gap-4">
