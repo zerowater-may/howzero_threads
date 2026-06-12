@@ -21,10 +21,11 @@ export function generateBillId(opts?: { phone?: string; tonggwan?: boolean }): s
   const phoneDigits = opts?.phone ? sanitizePhone(opts.phone) : ""
 
   if (phoneDigits && phoneDigits.length <= 11) {
+    // 결제선생 V1 제약: bill_id 20자 이하 — 2(B+마커) + 8(번호) + 8(시간) + 2(랜덤) = 20
     const marker = opts?.tonggwan ? "T" : "C"
     const packed = Number(`1${phoneDigits}`).toString(36).toUpperCase().padStart(8, "0")
-    const randomPart = randomBytes(3).toString("hex").toUpperCase()
-    return `B${marker}${packed}${timePart}${randomPart}`.replace(/[^A-Z0-9]/g, "").slice(0, 28)
+    const randomPart = randomBytes(1).toString("hex").toUpperCase()
+    return `B${marker}${packed}${timePart}${randomPart}`.replace(/[^A-Z0-9]/g, "").slice(0, 20)
   }
 
   const randomPart = randomBytes(8).toString("hex").toUpperCase()
