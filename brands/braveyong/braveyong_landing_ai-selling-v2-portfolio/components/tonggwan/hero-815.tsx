@@ -18,8 +18,8 @@ export function Hero815() {
         </div>
 
         <h1 className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl md:text-5xl">
-          8월 15일, 부호 없으면<br />
-          당신 구매대행은 <Marker>통관에서 멈춥니다.</Marker>
+          부호 받으려면 ‘사업자 인증서’.<br />
+          그거, 지금 <Marker>못 만드시잖아요.</Marker>
         </h1>
 
         <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-foreground/55">
@@ -28,12 +28,13 @@ export function Hero815() {
         </p>
 
         <p className="mx-auto mt-4 max-w-xl text-base font-bold leading-relaxed text-foreground sm:text-lg">
-          준비하라니까 다들 통장부터 걱정합니다. 결론부터 — 통장, 새로 만들 필요{" "}
-          <Marker>0개</Marker>. ‘사업자 통장’도 필요 없습니다.
+          사업자 인증서는 통장이 있어야 나옵니다. 그런데 통장은 한 달에 하나, 사업자는 여러 개죠.{" "}
+          사업자 10개, 어떻게 만드시겠어요?
         </p>
 
         <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-foreground/75 sm:text-lg">
-          6월 21일(일) 밤 8시, 라이브 단 1회. 이 한 번으로 8.15 전 준비를 끝냅니다.
+          통장 한 개도 더 안 만들고 인증서까지 만드는 법 —{" "}
+          <span className="font-bold text-foreground">6/21 라이브 단 1회</span>로 끝냅니다.
         </p>
 
         <div className="mt-8 flex flex-col items-center gap-4">

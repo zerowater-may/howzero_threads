@@ -4,12 +4,12 @@ import { Section } from "@/components/section"
 const OUTCOMES: { title: string; gloss?: string }[] = [
   { title: "내 사업자가 8.15 대상인지 1분 판별 기준" },
   {
-    title: "통장 0개 기업뱅킹 + 무료 인증서 경로",
-    gloss: "은행에 그대로 읽는 문의 멘트 포함",
+    title: "사업자 10개도 통장 추가 없이 인증서까지 끝내는 ‘경로’",
+    gloss: "은행 문의 멘트 포함",
   },
   {
-    title: "막혔을 때 우회로 3가지",
-    gloss: "금융인증서 · 세관 직접 제출 · 최후수단",
+    title: "은행에서 막혀도 빠져나가는 우회로 3종",
+    gloss: "정체는 라이브에서",
   },
   {
     title: "UNI-PASS 부호 발급 5단계",

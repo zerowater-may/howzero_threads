@@ -19,12 +19,12 @@ import { Footer } from "@/components/footer"
 export const metadata: Metadata = {
   title: "8.15 통관대응 라이브 특강 — 용감한 용팀장",
   description:
-    "8월 15일부터 부호 없으면 구매대행 통관이 막힙니다. 통장 0개·인증서 0원으로 전자상거래업자 부호를 끝내는 6/21(일) 라이브 특강.",
+    "부호 받으려면 ‘사업자 인증서’ — 그게 지금 안 만들어집니다. 통장 한 개도 더 안 만들고 인증서까지 만드는 법, 6/21(일) 라이브 단 1회.",
   openGraph: {
     type: "website",
     locale: "ko_KR",
     title: "8.15 통관대응 라이브 특강 — 용감한 용팀장",
-    description: "통장 0개·인증서 0원으로 전자상거래업자 부호 끝내기. 6/21(일) 단 한 번의 라이브.",
+    description: "사업자 인증서, 통장 추가 없이 만드는 법. 6/21(일) 단 한 번의 라이브.",
     siteName: "용감한 용팀장",
   },
   robots: { index: true, follow: true },
@@ -40,7 +40,7 @@ export default function Page() {
     <>
       <GlassNav815 />
       <main className="min-h-screen bg-background text-foreground">
-        <Hero815 />          {/* 01 데드라인 + 통장 0개 선제 + 신뢰 스트립 */}
+        <Hero815 />          {/* 01 인증서 통증 + 후킹 + 신뢰 스트립 */}
         <DdayScene815 />     {/* 02 8월 16일 아침 시뮬레이션 + 무료 오늘 할 일 */}
         <SelfCheck815 />     {/* 03 자기판별 — 하나라도 해당하면 대상 */}
         <MythBuster815 />    {/* 04 통장 공포 3대 오해 해소 */}

@@ -49,10 +49,10 @@ export function SelfCheck815() {
         ))}
       </div>
 
-      {/* 갈고리 → 통장 공포 해소 섹션 */}
+      {/* 갈고리 → 다음 섹션 (답은 흘리지 않는다) */}
       <p className="mt-8 max-w-2xl text-base leading-relaxed text-foreground/75 sm:text-lg">
         체크했다면 다음 질문은 하나죠 — ‘그럼 통장 또 만들어야 하나?’{" "}
-        <span className="font-bold text-foreground">아닙니다. 바로 아래에서 깨드립니다.</span>
+        <span className="font-bold text-foreground">그 질문의 답이 오늘 페이지의 전부입니다. 계속 내려보세요.</span>
       </p>
     </Section>
   )

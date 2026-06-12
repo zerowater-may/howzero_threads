@@ -30,8 +30,23 @@ for (const c of ordered) {
 if (!page.includes("<StickyCta815")) throw new Error("<StickyCta815 누락 (모바일 스티키 CTA)")
 
 const hero = read("components/tonggwan/hero-815.tsx")
-for (const copy of ["8월 15일", "통관에서 멈춥니다", "6/21"]) {
+// 잠금판 히어로 — 인증서 통증 + 후킹 (How는 페이지 어디에도 안 푼다)
+for (const copy of ["사업자 인증서", "못 만드시잖아요", "6/21"]) {
   if (!hero.includes(copy)) throw new Error(`hero 카피 누락: ${copy}`)
+}
+
+// How(방법) 유출 가드 — 잠금 원칙: 개인계좌 연결·우회로 정체는 렌더 표면에 금지
+// (허용 예외: FAQ 질문 "법인사업자도 개인계좌로 되나요?"는 수정안 ⑪이 질문 유지 지시)
+const LEAK_PATTERNS = ["기업인터넷뱅킹", "기업뱅킹", "금융인증서", "세관 직접"]
+const surface = ["app/815/page.tsx"]
+for (const f of readdirSync(resolve(root, "components/tonggwan"))) {
+  if (f.endsWith(".tsx")) surface.push(`components/tonggwan/${f}`)
+}
+for (const f of surface) {
+  const src = read(f)
+  for (const p of LEAK_PATTERNS) {
+    if (src.includes(p)) throw new Error(`How 유출 금지: "${p}" in ${f}`)
+  }
 }
 
 // 마지막 섹션에 면책(성과 비보장) 보존
