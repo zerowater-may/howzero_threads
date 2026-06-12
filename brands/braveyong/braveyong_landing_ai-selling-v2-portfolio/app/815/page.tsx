@@ -7,7 +7,6 @@ import { SelfCheck815 } from "@/components/tonggwan/self-check-815"
 import { MythBuster815 } from "@/components/tonggwan/myth-buster-815"
 import { Principle815 } from "@/components/tonggwan/principle-815"
 import { WhyYong815 } from "@/components/tonggwan/why-yong-815"
-import { TestimonialWall } from "@/components/testimonial-wall"
 import { Curriculum815 } from "@/components/tonggwan/curriculum-815"
 import { Scarcity815 } from "@/components/tonggwan/scarcity-815"
 import { Price815 } from "@/components/tonggwan/price-815"
@@ -46,16 +45,11 @@ export default function Page() {
         <MythBuster815 />    {/* 04 통장 공포 3대 오해 해소 */}
         <Principle815 />     {/* 05 4칸 원리 다이어그램 + 비용 0원 */}
         <WhyYong815 />       {/* 06 용팀장 신뢰 본진 — 얼굴+팩트+현장사진 */}
-        <TestimonialWall     /* 07 실전반 1기 후기 — 정직 라벨 */
-          label="실전반 1기 후기"
-          title={<>이 특강 후기는 아직 없습니다. 대신 실전반 1기 후기를 그대로 둡니다.</>}
-          lead="6/21은 처음 여는 자리라 특강 후기는 없습니다. 그걸 숨기지 않겠습니다. 아래는 AI셀링 실전반 수강생들이 실제로 남긴 후기입니다 — 광고 문구가 아니라서 원본 캡처 그대로 둡니다. 이 사람이 어떻게 가르치는지는 여기서 직접 판단하세요."
-        />
-        <Curriculum815 />    {/* 08 6/21 밤 손에 남는 6가지 */}
-        <Scarcity815 />      {/* 09 데드라인 — 정원/마감 + 미룰수록 손해 게이지 */}
-        <Price815 />         {/* 10 가격 재프레임 + 결제→입장 4스텝 */}
-        <Faq815 />           {/* 11 결제 전 질문 7 */}
-        <FinalCta815 />      {/* 12 수미상관 + 서명 + 면책 */}
+        <Curriculum815 />    {/* 07 6/21 밤 손에 남는 6가지 */}
+        <Scarcity815 />      {/* 08 데드라인 — 정원/마감 + 미룰수록 손해 게이지 */}
+        <Price815 />         {/* 09 가격 재프레임 + 결제→입장 4스텝 */}
+        <Faq815 />           {/* 10 결제 전 질문 7 */}
+        <FinalCta815 />      {/* 11 수미상관 + 서명 + 면책 */}
         <Footer />
       </main>
       <StickyCta815 />

@@ -39,6 +39,10 @@ export const tonggwan815 = {
   payDeadlineISO: process.env.NEXT_PUBLIC_TONGGWAN_PAY_DEADLINE || "2026-06-20T23:59:59+09:00",
   deadlineLabel: "결제 마감까지",
   capacity: Number(process.env.NEXT_PUBLIC_TONGGWAN_CAPACITY || 50),
+  /** 실제 잔여석 — 운영자가 결제 현황 보고 env로 갱신. 미설정이면 숫자 없이 마감 경고만 노출(지어내기 금지). */
+  seatsLeft: process.env.NEXT_PUBLIC_TONGGWAN_SEATS_LEFT
+    ? Number(process.env.NEXT_PUBLIC_TONGGWAN_SEATS_LEFT)
+    : null,
   /** 결제 완료자에게만 노출. 미설정이면 complete 페이지가 "안내 준비 중" 표기. */
   openchatUrl: process.env.NEXT_PUBLIC_TONGGWAN_OPENCHAT_URL || "",
 } as const
