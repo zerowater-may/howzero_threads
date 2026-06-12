@@ -8,6 +8,12 @@ bulsaja Vercel 팀(`team_TJbZrrxEedAkxKUVSniHrdlr`)에 신규 프로젝트로 �
 
 ## 배포 기록
 
+### 2026-06-12 (9차) — `/815` 특강 명칭 '8.15'→'8월' 전면 전환 (commit `4282e5a3`)
+- `vercel deploy --prod --yes` → deployment `...j37xtn0bu` **READY (production)**
+- 메타 title·og·상단 탭·결제확인 페이지·결제선생 상품명·자동 입장문자·카톡 템플릿까지 전부 "8월 통관(대응) 특강"으로 통일
+- 라이브 검증: `<title>8월 통관대응 라이브 특강</title>`, 페이지 전체 `8.15` **0건** (식별자 productKey `tonggwan-815`·경로 `/815`는 유지)
+- 운영 메모: 카톡 오픈채팅방 이름 "[8.15 통관특강] 용감한용팀장"은 방장이 카톡 앱에서 직접 변경 필요
+
 ### 2026-06-12 (8차) — `/815` 가격 반박 원장 + 본문 '8.15' 제거 (commits `72582c5b`·`eafecaee`)
 - `vercel deploy --prod --yes` → deployment `...5x047f60b` **READY (production)**
 - 가격 섹션: '20만 원 비싸다' 반박 — "안 듣고 혼자 하면" 손해 5줄(✕) vs 특강 1회 209,000원(✓) 원장 비교. 손해 항목은 페이지 기존 주장 사실만 재사용
