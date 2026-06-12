@@ -13,7 +13,7 @@ export function Hero815() {
       <div className="mx-auto max-w-3xl text-center" data-reveal>
         <div className="font-mono mb-5 flex flex-wrap items-center justify-center gap-2 text-[11px] font-bold uppercase tracking-[0.18em]">
           <span className="rounded-full border border-foreground/20 px-3 py-1">6/21(일) 온라인 라이브</span>
-          <span className="rounded-full border border-foreground/20 px-3 py-1">선착순 {tonggwan815.capacity}명</span>
+          <span className="rounded-full border border-foreground/20 px-3 py-1">단 1회 진행</span>
           <span className="rounded-full bg-brand px-3 py-1 text-brand-foreground">8.15 데드라인</span>
         </div>
 
@@ -57,29 +57,13 @@ export function Hero815() {
               </>
             }
           />
-          {/* 잔여석 긴박감 — 실제 숫자는 운영 env(NEXT_PUBLIC_TONGGWAN_SEATS_LEFT)로만, 지어내지 않는다 */}
-          <div className="flex flex-col items-center gap-2">
-            <div className="flex items-center gap-2 rounded-full border border-brand/30 bg-brand/[0.07] px-4 py-1.5 text-xs font-bold text-brand sm:text-sm">
-              <span aria-hidden className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-60" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-brand" />
-              </span>
-              {tonggwan815.seatsLeft != null ? (
-                <>정원 {tonggwan815.capacity}석 중 남은 자리 {tonggwan815.seatsLeft}석</>
-              ) : (
-                <>선착순 {tonggwan815.capacity}명 — 정원 차면 예고 없이 마감됩니다</>
-              )}
-            </div>
-            {tonggwan815.seatsLeft != null && (
-              <div className="h-1.5 w-48 overflow-hidden rounded-full bg-foreground/10">
-                <div
-                  className="h-full rounded-full bg-brand"
-                  style={{
-                    width: `${Math.min(100, Math.max(0, 100 - (tonggwan815.seatsLeft / tonggwan815.capacity) * 100))}%`,
-                  }}
-                />
-              </div>
-            )}
+          {/* 마감 긴박감 — 자리 수 대신 시간(6/20 결제 마감·단 1회)으로만 조인다 */}
+          <div className="flex items-center gap-2 rounded-full border border-brand/30 bg-brand/[0.07] px-4 py-1.5 text-xs font-bold text-brand sm:text-sm">
+            <span aria-hidden className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-60" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-brand" />
+            </span>
+            6/20(토) 결제 마감 — 단 1회 라이브, 지나면 신청이 닫힙니다
           </div>
           <CountdownTimer deadline={tonggwan815.payDeadlineISO} label={tonggwan815.deadlineLabel} />
           <p className="font-mono text-[11px] text-foreground/45">

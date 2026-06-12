@@ -41,7 +41,7 @@ export function Scarcity815() {
       tone="dark"
       label="DEADLINE"
       title={<>8.15에서 거꾸로 세면, 오늘이 제일 싼 날입니다.</>}
-      lead={`정원 ${tonggwan815.capacity}명 — Q&A를 전부 받으려고 자른 숫자입니다. 라이브 단 1회, 같은 자리는 다시 없습니다.`}
+      lead="라이브 단 1회 — 같은 자리는 다시 없습니다. 6/20 결제 마감이 지나면 신청 자체가 닫힙니다."
     >
       {/* 상단 — 결제 마감 카운트다운 */}
       <div className="mx-auto mb-12 flex max-w-2xl flex-col items-center gap-2 border border-background/15 bg-background/[0.05] p-5 text-center">
