@@ -1,7 +1,20 @@
 # Vercel 배포 체크리스트 — braveyong-landing-v2
 
 bulsaja Vercel 팀(`team_TJbZrrxEedAkxKUVSniHrdlr`)에 신규 프로젝트로 배포.
-도메인 없이 기본 `*.vercel.app` URL만 사용.
+
+> **2026-06 현행화**: 커스텀 도메인 **`gigclass.kr`** 연결 완료 — 공개 접근은 이 도메인 기준.
+> `*.vercel.app` 배포 URL의 HTTP 401은 팀 Deployment Protection이 의도적으로 켜진 것(프리뷰 보호)이며,
+> 프로덕션 공개 경로(gigclass.kr)와 무관하다. 아래 최초 배포 체크리스트의 7·9·10번은 해소됨 — "배포 기록" 참조.
+
+## 배포 기록
+
+### 2026-06-12 — `/815` How 잠금판 (commit `ece2ed20`)
+- `vercel deploy --prod --yes` → deployment `...jq5dkiv7b` **READY (production)**
+- 라이브 검증: `https://gigclass.kr/815` HTTP 200 — 새 카피("못 만드시잖아요"/"풀리지 않는 이 세 가지"/"여기서 전부 막힘"/"정체는 라이브에서") 노출 확인
+- How 유출 grep (라이브 HTML): `기업뱅킹`·`금융인증서`·`세관 직접`·`개인계좌 연결`·`open.kakao.com` 전부 **0건**
+- course(/) 회귀: HTTP 200 정상
+- Playwright 캡처: [`screenshots/2026-06-12-815-how-lock-live.jpeg`](screenshots/2026-06-12-815-how-lock-live.jpeg) (풀페이지), [`screenshots/2026-06-12-815-principle-locked.jpeg`](screenshots/2026-06-12-815-principle-locked.jpeg) (자물쇠 4칸)
+- 환경변수: Vercel Dashboard production env 등록 운영 중 (`PAYMINT_*` 포함). 잔여 운영입력: `NEXT_PUBLIC_TONGGWAN_OPENCHAT_URL`(카톡 오픈채팅방 개설 대기)
 
 ## 사전 확인
 - [x] `~/Library/Application Support/com.vercel.cli/auth.json`에 토큰 발견 (`vca_47jo3D...`)
