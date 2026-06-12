@@ -8,6 +8,13 @@ bulsaja Vercel 팀(`team_TJbZrrxEedAkxKUVSniHrdlr`)에 신규 프로젝트로 �
 
 ## 배포 기록
 
+### 2026-06-12 (7차) — `/815` 용팀장 피드백 3건 (commit `994c2922`)
+- `vercel deploy --prod --yes` → deployment `...dzel2qw9k` **READY (production)**
+- ① 8월 구체 일자 → "8월" 통일 (라이브 grep: `8월 15일`·`8월 16일`·`8/15`·`8/16` **0건**, 6/21·6/20·D-카운트·'8.15' 명칭 유지)
+- ② 커리큘럼 6→9가지 (발급 전 서류 / 신청~발급 순서 / 발급 후 갱신·사후관리) — "남는 9가지" 노출 확인
+- ③ PolicyWindow815 신설 (마감↔가격 사이) — "지금은 됩니다. 언제까지 될지 아무도 모른다는 겁니다" 단정 금지 톤
+- 6차 보강: NCP SENS 실발송 테스트 성공 (010-9950-1140 수신 확인, requestId RSLA-1781247247067)
+
 ### 2026-06-12 (6차) — `/815` 결제완료 자동 입장문자 (commit `784acebc`)
 - NCP SENS 연동(bulsa_server 모듈 이식) — 결제완료 콜백 → 815 결제 건 판별 → 결제자 번호로 오픈채팅 입장 LMS 자동 발송
 - Vercel production env `NCP_SENS_ACCESS/SECRET/ID/NUMBER` 등록 (발신번호 070-8064-1808, bulsaja 계정 공유)
