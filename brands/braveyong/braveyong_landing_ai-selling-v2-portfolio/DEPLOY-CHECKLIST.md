@@ -8,6 +8,16 @@ bulsaja Vercel 팀(`team_TJbZrrxEedAkxKUVSniHrdlr`)에 신규 프로젝트로 �
 
 ## 배포 기록
 
+### 2026-06-12 (2차) — `/815` 용팀장 통화 피드백 + 크레덴셜 어필 (commits `b18481d7`·`5b2b5d42`·`f37ac77a`)
+- `vercel deploy --prod --yes` → deployment `...a3myy9qeo` **READY (production)**
+- 라이브 검증: `https://gigclass.kr/815` → 308 → `https://www.gigclass.kr/815` HTTP 200 (apex→www 정상 리다이렉트)
+- 새 카피 노출: "구매대행 셀러 계속 하려면" ×4 · "전직 공인인증서 담당" ×14 · 히어로 상단 "전직 공인인증서 담당자가 알려드립니다"
+- 금지 표현 grep (라이브 HTML): `부호 받으려면`·`걸려봤습니다`·`전직 은행원` 전부 **0건**
+- How 유출 grep: `기업뱅킹`·`금융인증서`·`세관 직접`·`개인계좌 연결`·`open.kakao.com` 전부 **0건**
+- course(/) 회귀: HTTP 200 정상
+- build 스크립트 `NODE_ENV=production` 고정 적용 — Vercel 빌드 로그에서 `NODE_ENV=production next build` 실행 확인
+- Playwright 캡처: [`screenshots/2026-06-12-815-credential-live.jpeg`](screenshots/2026-06-12-815-credential-live.jpeg) (풀페이지, 12섹션 reveal 강제 후)
+
 ### 2026-06-12 — `/815` How 잠금판 (commit `ece2ed20`)
 - `vercel deploy --prod --yes` → deployment `...jq5dkiv7b` **READY (production)**
 - 라이브 검증: `https://gigclass.kr/815` HTTP 200 — 새 카피("못 만드시잖아요"/"풀리지 않는 이 세 가지"/"여기서 전부 막힘"/"정체는 라이브에서") 노출 확인
