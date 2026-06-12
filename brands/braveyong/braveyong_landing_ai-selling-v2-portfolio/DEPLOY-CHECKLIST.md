@@ -8,6 +8,14 @@ bulsaja Vercel 팀(`team_TJbZrrxEedAkxKUVSniHrdlr`)에 신규 프로젝트로 �
 
 ## 배포 기록
 
+### 2026-06-12 (12차) — `/815` 중복발송 차단을 전화번호 단위로 (commit `현재`)
+- **사고**: 실결제자(010-6356-6838)가 청구서 2건을 각각 결제(C, 17:20·17:51) → billId 단위 락이라 문자 2통 발송(1차 수동, 2차 크론). 같은 사람에게 중복
+- **수리**: `sendEntrySmsOnce` 락 키를 billId → **전화번호**로 (`bills/done/<phone>.json`). 통관 특강은 1인 1회면 충분하므로 같은 번호는 몇 건을 결제하든 입장문자 1통
+- 마이그레이션: 이미 발송된 번호에 phone 락 생성, 기존 billId 락 정리
+- **중복 차단 결정 검증**: 같은 번호 3회 연속 호출 → `sent` 1 + `already-sent` 2 (실 문자 1통). 리컨사일 2·3차 재실행 `sent:0`
+- **크론 가동 확인**: howzero 서버 crontab `*/15분` 실행 로그 `/var/log/gigclass-reconcile.log`에 `sent:1` 기록. 401 인증·waiting 분기 정상
+- **Clarity**: 815 라이브 로드 확인(`window.clarity` 함수, `clarity.js`) — 루트 layout `ClarityProvider` 상속. 히트맵·세션 + 결제 퍼널 추적(`payment_dialog_open`/`payment_submit`/`payment_complete_link`) 작동 중
+
 ### 2026-06-12 (11차) — `/815` 입장문자 누락 근본수리: 리컨사일 크론 + 중복차단 락
 - **사고**: 실결제(17:19, 신한 209,000원) 문자 누락. 원인 — 결제선생 콜백이 승인 전 `F` 상태로만 오고 최종 승인(C) 콜백 미수신 → 'C' 가정 코드 스킵. 결제자(010-6356-6838)에게 수동 발송 완료(202)
 - **수리 구조** (commit `a3596b95` + 후속):
