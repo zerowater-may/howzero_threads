@@ -2,8 +2,9 @@ from pathlib import Path
 
 from scripts.content_carousel.render import (
     build_context,
-    format_price_display,
     chunk_districts,
+    chunk_districts_by_slide_count,
+    format_price_display,
     render_html,
 )
 
@@ -37,6 +38,17 @@ def test_chunk_districts_headers():
     chunks = chunk_districts(rows, per_slide=2)
     assert chunks[0]["header"] == "서초구 ~ 강남구"
     assert chunks[1]["header"] == "도봉구"
+
+
+def test_chunk_districts_by_slide_count_spreads_25_gu_over_8_slides():
+    rows = [{"district": f"{i}구"} for i in range(25)]
+
+    chunks = chunk_districts_by_slide_count(rows, slide_count=8)
+
+    assert len(chunks) == 8
+    assert [len(chunk["rows"]) for chunk in chunks] == [4, 3, 3, 3, 3, 3, 3, 3]
+    assert chunks[0]["header"] == "0구 ~ 3구"
+    assert chunks[-1]["header"] == "22구 ~ 24구"
 
 
 def test_build_context_adds_bar_widths():
@@ -83,6 +95,29 @@ def test_render_html_uses_instagram_portrait_canvas():
         "districts": [],
     }
 
-    html = render_html(dataset, per_slide=8)
+    html = render_html(dataset)
 
     assert "width:1080px; height:1350px;" in html
+
+
+def test_render_html_defaults_to_10_total_slides_for_25_gu():
+    dataset = {
+        "title": "강남만 빼고 서울 집값 다 올랐다",
+        "subtitle": "",
+        "periodLabel": "",
+        "source": "",
+        "sizeLabel": "",
+        "districts": [
+            {
+                "district": f"{i}구",
+                "priceBefore": 10000 + i,
+                "priceAfter": 11000 + i,
+                "changePct": float(i + 1),
+            }
+            for i in range(25)
+        ],
+    }
+
+    html = render_html(dataset)
+
+    assert html.count('class="slide') == 10

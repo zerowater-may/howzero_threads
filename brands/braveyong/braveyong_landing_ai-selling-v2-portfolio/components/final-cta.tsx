@@ -1,10 +1,9 @@
-import Link from "next/link"
-import { ArrowUpRight } from "lucide-react"
 import { Signature } from "./handwriting"
 import { config, course } from "@/lib/config"
 import { PaymentDialog } from "./payment-dialog"
+import { CountdownTimer } from "./countdown-timer"
 
-/** 18 최종 CTA (다크) — 큰 CTA + 흰 펜글씨 서명 */
+/** 18 최종 CTA (다크) — 결제 단일 CTA + 타임어택 + 흰 펜글씨 서명 */
 export function FinalCTA() {
   return (
     <section className="bg-foreground px-4 py-24 text-background sm:px-6 sm:py-28">
@@ -16,39 +15,59 @@ export function FinalCTA() {
         </p>
 
         <h2 className="text-3xl font-bold uppercase leading-tight tracking-tight sm:text-4xl md:text-5xl">
-          1기 실행자로<br className="sm:hidden" /> 지원하기
+          1기 마감 전까지만<br className="sm:hidden" /> 특별가
         </h2>
-        <p className="font-mono mt-2 text-[11px] uppercase tracking-[0.18em] text-background/55">
-          신청서 보고 한 분씩 따로 연락드려요
-        </p>
         <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-background/70 sm:text-lg">
           1만 개 올리는 방식, 정말로 한번 바꿔보고 싶으시면<br className="hidden sm:block" />
-          신청서부터 한번 적어주세요.
+          그때 하신 그 결심, 지금 바로 잡으세요.
         </p>
 
-        <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <Link
-            href={config.googleFormUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            data-track="final_apply"
-            className="group inline-flex items-center gap-2 rounded-full border-2 border-background bg-background px-8 py-4 text-base font-bold uppercase tracking-[0.1em] text-foreground transition-all hover:bg-foreground hover:text-background sm:text-lg"
-          >
-            1기 실행자로 지원하기
-            <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </Link>
-          <div data-track="final_pay_open" className="contents">
+        {/* 가격 앵커링 + 1기 마감 urgency */}
+        <div className="mx-auto mt-8 inline-flex flex-col items-center gap-1">
+          <span className="text-sm text-background/50">
+            <s>정가 250만원</s>
+          </span>
+          <span className="text-4xl font-bold tabular-nums sm:text-5xl">
+            지금 198만원
+          </span>
+          <span className="font-mono mt-1 text-[11px] uppercase tracking-[0.14em] text-background/55">
+            부가세 포함
+          </span>
+        </div>
+
+        <div className="mt-6 flex flex-col items-center gap-3">
+          <p className="text-sm font-bold text-background sm:text-base">
+            1기 마감 임박 · 마감되면 정가 250만원
+          </p>
+          <CountdownTimer className="text-background" />
+        </div>
+
+        <div className="mt-8 flex justify-center">
+          <div data-track="final_pay" className="contents">
             <PaymentDialog
               amount={course.priceFirst}
-              label="결제 청구서 받기"
+              label="1기 특별가 — 지금 결제 198만원"
               dark
-              className="inline-flex items-center gap-2 rounded-full border-2 border-background/55 px-8 py-4 text-base font-bold uppercase tracking-[0.1em] text-background transition-all hover:border-background hover:bg-background hover:text-foreground sm:text-lg"
+              className="inline-flex w-full max-w-md items-center justify-center gap-2 rounded-full border-2 border-brand bg-brand px-8 py-5 text-base font-bold uppercase tracking-[0.08em] text-brand-foreground transition-all hover:opacity-90 sm:text-lg"
             />
           </div>
         </div>
 
+        <div className="mt-4 flex justify-center">
+          <a
+            href={config.googleFormUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="신청서 작성하기 — 약 1분, 새 창에서 열림"
+            data-track="final_apply_form"
+            className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-background bg-transparent px-6 py-3.5 text-sm font-bold text-background transition-all hover:bg-background hover:text-foreground"
+          >
+            신청서부터 작성하기 (약 1분)
+          </a>
+        </div>
+
         <p className="mt-6 text-xs leading-relaxed text-background/55 sm:text-sm">
-          신청서 보고 참여·결제 안내 따로 보내드릴게요.
+          결제하시면 용팀장이 카톡으로 1주차 일정·장소를 직접 챙겨 드릴게요.
         </p>
 
         <div className="mt-10 text-background">

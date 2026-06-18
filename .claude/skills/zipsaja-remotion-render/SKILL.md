@@ -39,10 +39,16 @@ This wrapper uses Remotion only through `scripts.content_reels` and the existing
 ```bash
 test -f brands/zipsaja/zipsaja_pipeline_<slug>/reels/full.mp4
 test -f brands/zipsaja/zipsaja_pipeline_<slug>/reels/zipsaja-reel-30s.mp4
+test -f brands/zipsaja/zipsaja_pipeline_<slug>/reels/zipsaja-reel-30s-audio-mapped.mp4
+test -f brands/zipsaja/zipsaja_pipeline_<slug>/reels/zipsaja-reel-30s-audio-mapped-ig-safe.mp4
 ffprobe -v error -select_streams v:0 \
   -show_entries stream=width,height,r_frame_rate:format=duration \
   -of default=nokey=1:noprint_wrappers=1 \
-  brands/zipsaja/zipsaja_pipeline_<slug>/reels/zipsaja-reel-30s.mp4
+  brands/zipsaja/zipsaja_pipeline_<slug>/reels/zipsaja-reel-30s-audio-mapped-ig-safe.mp4
+ffprobe -v error -select_streams a:0 \
+  -show_entries stream=codec_name,channels:format=duration \
+  -of default=nokey=1:noprint_wrappers=1 \
+  brands/zipsaja/zipsaja_pipeline_<slug>/reels/zipsaja-reel-30s-audio-mapped-ig-safe.mp4
 ```
 
 Expected video stream values:
@@ -51,6 +57,8 @@ Expected video stream values:
 - height: `1920`
 - frame rate: `30/1`
 - duration: about `30` seconds
+- audio codec: `aac`
+- audio channels: `2`
 
 ## State Update
 

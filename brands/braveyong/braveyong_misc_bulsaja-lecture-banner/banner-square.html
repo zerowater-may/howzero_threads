@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<title>불사자 무료강의 대기방 공지</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nanum+Pen+Script&family=Pretendard:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --foreground:#0a0a0a;
+    --background:#ffffff;
+    --mute:rgba(10,10,10,.6);
+    --mute-2:rgba(10,10,10,.45);
+    --marker:#ffe14d;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#f5f5f4;}
+  body{
+    font-family:'Pretendard',system-ui,-apple-system,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    color:var(--foreground);
+  }
+
+  /* === 1000x1000 정사각 — 콘텐츠가 꽉 채워지도록 padding/사이즈 조정 === */
+  .banner-sq{
+    width:1000px;height:1000px;
+    background:var(--background);
+    display:flex;flex-direction:column;align-items:center;justify-content:space-between;
+    padding:48px 80px;
+    text-align:center;
+    color:var(--foreground);
+  }
+
+  /* 원형 grayscale 얼굴 — 더 크게 */
+  .face{
+    width:240px;height:240px;border-radius:50%;
+    border:2px solid var(--foreground);
+    overflow:hidden;
+    flex-shrink:0;
+  }
+  .face img{
+    width:100%;height:100%;object-fit:cover;
+    filter:grayscale(1);
+    display:block;
+  }
+
+  /* 이름 UPPERCASE + 서브라인 — 더 크게 */
+  .name-block{
+    display:flex;flex-direction:column;gap:10px;
+    margin-top:8px;
+  }
+  .name-block h1{
+    font-family:'Pretendard',sans-serif;
+    font-weight:700;
+    font-size:64px;line-height:1.05;
+    letter-spacing:-0.02em;
+    text-transform:uppercase;
+    color:var(--foreground);
+  }
+  .name-block p{
+    font:500 16px/1 'Pretendard',sans-serif;
+    text-transform:uppercase;
+    letter-spacing:0.18em;
+    color:var(--mute);
+  }
+
+  /* 임팩트 — 1만 개 → 효자상품 10개 → 월 순익 800만 원 */
+  .impact-block{
+    display:flex;flex-direction:column;gap:16px;
+    max-width:720px;
+  }
+  .lead{
+    font:500 20px/1.5 'Pretendard',sans-serif;
+    color:var(--mute);
+  }
+  .lead s{
+    text-decoration-color:var(--mute-2);
+    text-decoration-thickness:1.5px;
+  }
+  .impact{
+    font-family:'Pretendard',sans-serif;
+    font-weight:700;
+    font-size:42px;
+    line-height:1.3;
+    letter-spacing:-0.025em;
+    color:var(--foreground);
+  }
+  .impact strong{
+    font-weight:900;
+    color:var(--foreground);
+    text-decoration:underline;
+    text-decoration-color:var(--marker);
+    text-decoration-thickness:6px;
+    text-underline-offset:5px;
+  }
+  /* 랜딩 globals.css 의 .marker — 노란 형광펜 (글자 아래 깔림) */
+  .marker{
+    background-image:linear-gradient(
+      180deg,
+      transparent 58%,
+      var(--marker) 58%,
+      var(--marker) 92%,
+      transparent 92%
+    );
+    background-repeat:no-repeat;
+    background-size:100% 100%;
+    background-position:left 0.2em;
+    padding:0 6px;
+  }
+  .note{
+    font:500 17px/1.5 'Pretendard',sans-serif;
+    color:rgba(10,10,10,.65);
+  }
+
+  /* 손글씨 — 더 크게 */
+  .hand{
+    font-family:'Gowun Dodum','Nanum Pen Script',cursive;
+    font-weight:400;
+    font-size:21px;line-height:1.5;
+    color:rgba(10,10,10,.72);
+    letter-spacing:-0.005em;
+  }
+
+  /* CTA — 더 크게 */
+  .cta-wrap{
+    display:flex;flex-direction:column;align-items:center;gap:14px;
+    border-top:1px solid rgba(10,10,10,.10);
+    padding-top:24px;
+    width:100%;max-width:620px;
+  }
+  .cta{
+    display:inline-flex;align-items:center;gap:14px;
+    background:var(--foreground);color:var(--background);
+    padding:24px 48px;
+    border-radius:9999px;
+    border:2px solid var(--foreground);
+    font:800 22px/1 'Pretendard',sans-serif;
+    letter-spacing:-0.015em;
+    text-decoration:none;
+    cursor:pointer;
+  }
+  .cta .arrow{
+    font-size:24px;line-height:1;
+    display:inline-flex;align-items:center;
+  }
+  .cta-sub{
+    font:500 14px/1.4 'Pretendard',sans-serif;
+    color:rgba(10,10,10,.55);
+  }
+  .cta-sub .live-dot{
+    display:inline-block;width:7px;height:7px;border-radius:50%;
+    background:#dc2626;margin-right:6px;
+    box-shadow:0 0 8px rgba(220,38,38,.5);vertical-align:middle;
+  }
+  .cta-sub strong{color:var(--foreground);font-weight:700;}
+</style>
+</head>
+<body>
+  <div class="banner-sq">
+    <!-- ① 원형 grayscale 얼굴 -->
+    <div class="face">
+      <img src="./face.jpg" alt="용감한 용팀장 — 현업 셀러 · 부동산 투자자 · 직장인 · 육아아빠" />
+    </div>
+
+    <!-- ② 이름 UPPERCASE + 서브라인 -->
+    <div class="name-block">
+      <h1>용감한 용팀장</h1>
+      <p>현업 셀러 · 부동산 투자자 · 직장인 · 육아 아빠</p>
+    </div>
+
+    <!-- ③ 임팩트 — 1만 개 → 효자상품 10개 → 월 순익 800만 원 -->
+    <div class="impact-block">
+      <p class="lead"><s>1만 개를 무작정 올리는 셀러</s>에서</p>
+      <h2 class="impact">
+        진짜 팔리는 <span class="marker">효자상품 10개</span>로<br />
+        월 순익 <strong>800만 원</strong> 만들기.
+      </h2>
+      <p class="note">5주 동안 매주 만나서, 줌 보강도 하면서 같이 만들어 갈게요.</p>
+    </div>
+
+    <!-- ④ 손글씨 -->
+    <p class="hand">저도 회사 다니면서, 애 재우고 새벽에 상품 올렸습니다.</p>
+
+    <!-- ⑤ CTA — 무료강의 버튼 (랜딩 신청서 버튼 → 무료강의로 교체) -->
+    <div class="cta-wrap">
+      <a class="cta" href="https://open.kakao.com/o/gcjQ8Hpi" target="_blank" rel="noopener noreferrer">
+        무료강의 대기방 입장하기
+        <span class="arrow">↗</span>
+      </a>
+      <p class="cta-sub">
+        <span class="live-dot"></span>
+        <strong>6월 8일(월) 19:00</strong> · 버튼을 누르면 카카오 오픈채팅으로 바로 입장합니다.
+      </p>
+    </div>
+  </div>
+</body>
+</html>

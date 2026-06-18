@@ -1,0 +1,38 @@
+{
+  "updatedAt": "2026-04-30T00:46:54.333567+00:00",
+  "mode": "publish-now",
+  "bundle": "brands/zipsaja/zipsaja_pipeline_강남은빠지고용산광진이오른이유",
+  "media": {
+    "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_강남은빠지고용산광진이오른이유/reels/zipsaja-reel-30s-audio-mapped-ig-safe.mp4",
+    "publicUrl": "https://media.zernio.com/temp/1777509480076_mrgfkbup_zipsaja-reel-30s-audio-mapped-ig-safe.mp4",
+    "type": "video",
+    "contentType": "video/mp4"
+  },
+  "platforms": {
+    "instagram_reel": {
+      "status": "published",
+      "postId": "69f2a46b310414ac25447928",
+      "platform": "instagram",
+      "platformStatus": "published",
+      "contentType": "reels",
+      "mediaCount": 1
+    },
+    "instagram_carousel": {
+      "status": "publishing",
+      "postId": "69f2a4ad075c6ca694c741f0",
+      "platform": "instagram",
+      "platformStatus": "processing",
+      "contentType": null,
+      "mediaCount": 10
+    },
+    "threads": {
+      "status": "publishing",
+      "postId": "69f2a50b91a9d15cf3685dff",
+      "platform": "threads",
+      "platformStatus": "processing",
+      "contentType": null,
+      "mediaCount": 10
+    }
+  },
+  "createdAt": "2026-04-30T00:38:02.444304+00:00"
+}

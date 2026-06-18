@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<title>용팀장 배너 — Higgsfield 배경 컨셉 스케치 (CSS mock)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Inter:wght@400;500;600;700;800&family=Nanum+Pen+Script&family=Pretendard:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#fafaf9;
+    --mute:rgba(250,250,249,.60);
+    --marker:#ffe14d;
+    --foreground:#fafaf9;
+    --background:#0a0a0a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#111;}
+  body{
+    font-family:'Pretendard',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    color:var(--ink);
+  }
+
+  /* === Container for all 3 sketches === */
+  .sketches{
+    width:2000px;
+    background:#1a1a1a;
+    padding:0;
+  }
+  .sketch-row{
+    position:relative;
+    padding:0;
+    border-bottom:1px solid #2a2a2a;
+  }
+  .sketch-row:last-child{border-bottom:none}
+  .row-label{
+    display:flex;align-items:baseline;justify-content:space-between;
+    padding:18px 32px 12px;
+    background:#0d0d0d;
+  }
+  .row-label .left{display:flex;align-items:baseline;gap:14px;}
+  .row-label .tag{
+    font:800 14px/1 'Inter',sans-serif;
+    letter-spacing:.18em;
+    color:#1a0f00;
+    background:var(--marker);
+    padding:6px 10px;border-radius:4px;
+  }
+  .row-label .name{
+    font:700 18px/1 'Pretendard',sans-serif;
+    color:var(--ink);
+    letter-spacing:-0.01em;
+  }
+  .row-label .desc{
+    font:500 13px/1.4 'Pretendard',sans-serif;
+    color:var(--mute);
+    letter-spacing:-0.005em;
+    max-width:60%;text-align:right;
+  }
+
+  /* === Common banner inner (same as banner.html) === */
+  .banner{
+    width:2000px;height:400px;
+    position:relative;overflow:hidden;
+    display:grid;
+    grid-template-columns: 460px 1fr 540px;
+    align-items:center;
+    gap:0;
+    padding:0 64px;
+    color:var(--ink);
+  }
+
+  /* === BG VARIANT A — Cinematic studio backdrop (rim light + smoke) === */
+  .banner.a{
+    background:
+      radial-gradient(70% 130% at 100% 35%, rgba(255,180,80,.30) 0%, transparent 50%),
+      radial-gradient(50% 100% at 85% 20%, rgba(255,220,120,.18) 0%, transparent 55%),
+      radial-gradient(80% 100% at 10% 100%, rgba(0,0,0,.85) 30%, transparent 75%),
+      radial-gradient(120% 80% at 50% 50%, rgba(80,40,15,.4) 0%, rgba(0,0,0,.95) 80%),
+      linear-gradient(180deg, #0b0805 0%, #1a0f08 60%, #0a0705 100%);
+  }
+  .banner.a::after{
+    /* volumetric smoke */
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:
+      radial-gradient(80% 120% at 90% 50%, rgba(255,200,100,.08), transparent 60%),
+      radial-gradient(60% 80% at 30% 70%, rgba(255,180,80,.05), transparent 65%);
+    filter:blur(20px);
+    mix-blend-mode:screen;
+  }
+
+  /* === BG VARIANT B — Abstract light beams / gold particles === */
+  .banner.b{
+    background:
+      linear-gradient(115deg, transparent 0%, transparent 28%,
+                              rgba(255,180,60,.20) 30%, rgba(255,210,90,.10) 36%, transparent 42%,
+                              transparent 50%,
+                              rgba(255,200,80,.12) 55%, transparent 62%,
+                              transparent 72%,
+                              rgba(255,160,40,.22) 76%, rgba(255,190,70,.10) 82%, transparent 88%),
+      radial-gradient(60% 100% at 70% 50%, rgba(255,180,70,.08) 0%, transparent 65%),
+      linear-gradient(180deg, #050505 0%, #0a0a0a 100%);
+  }
+  .banner.b::after{
+    /* gold particles */
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:
+      radial-gradient(circle at 12% 30%, rgba(255,220,140,.6) 0, transparent 2px),
+      radial-gradient(circle at 28% 75%, rgba(255,200,100,.4) 0, transparent 2px),
+      radial-gradient(circle at 45% 18%, rgba(255,220,140,.5) 0, transparent 2px),
+      radial-gradient(circle at 62% 60%, rgba(255,180,80,.4) 0, transparent 2px),
+      radial-gradient(circle at 78% 25%, rgba(255,220,140,.6) 0, transparent 2px),
+      radial-gradient(circle at 88% 70%, rgba(255,200,100,.5) 0, transparent 2px),
+      radial-gradient(circle at 36% 50%, rgba(255,220,140,.3) 0, transparent 1.5px),
+      radial-gradient(circle at 72% 88%, rgba(255,200,100,.4) 0, transparent 1.5px);
+    background-size:100% 100%;
+  }
+
+  /* === BG VARIANT C — Concrete wall + gold spotlight (랜딩 v2 톤) === */
+  .banner.c{
+    background:
+      radial-gradient(50% 130% at 88% 25%, rgba(255,200,100,.20) 0%, transparent 55%),
+      radial-gradient(30% 80% at 50% 100%, rgba(60,30,15,.5) 0%, transparent 60%),
+      linear-gradient(180deg, #1c1a18 0%, #131110 50%, #0a0908 100%);
+  }
+  .banner.c::after{
+    /* concrete subtle noise */
+    content:"";position:absolute;inset:0;pointer-events:none;opacity:.35;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(255,255,255,.04) 0, transparent 60px),
+      radial-gradient(circle at 70% 60%, rgba(0,0,0,.3) 0, transparent 80px),
+      radial-gradient(circle at 50% 90%, rgba(255,255,255,.03) 0, transparent 70px),
+      radial-gradient(circle at 85% 15%, rgba(0,0,0,.25) 0, transparent 90px);
+    mix-blend-mode:overlay;
+  }
+
+  /* === Foreground dimming layer for text legibility — applied to all === */
+  .banner::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:
+      linear-gradient(90deg, rgba(10,10,10,.55) 0%, rgba(10,10,10,.40) 35%, rgba(10,10,10,.62) 100%);
+    z-index:1;
+  }
+
+  /* foreground above bg + dim */
+  .face-wrap,.copy,.cta-wrap{position:relative;z-index:2}
+
+  /* === LEFT : face === */
+  .face-wrap{display:flex;align-items:center;justify-content:center;height:100%;}
+  .face{
+    width:280px;height:280px;border-radius:50%;
+    overflow:hidden;
+    border:2px solid var(--foreground);
+    box-shadow:0 20px 50px -20px rgba(0,0,0,.7);
+  }
+  .face img{width:100%;height:100%;object-fit:cover;filter:grayscale(1);}
+
+  /* === CENTER : copy === */
+  .copy{display:flex;flex-direction:column;gap:18px;padding-right:24px;}
+  .name{
+    font-family:'Pretendard',sans-serif;font-weight:800;
+    font-size:34px;line-height:1;letter-spacing:-0.02em;
+    color:var(--ink);text-transform:uppercase;
+  }
+  .subline{
+    margin-top:8px;
+    font:500 14px/1 'Pretendard',sans-serif;
+    text-transform:uppercase;letter-spacing:0.18em;color:var(--mute);
+  }
+  .lead{
+    margin-top:6px;
+    font:500 20px/1.4 'Pretendard',sans-serif;
+    color:rgba(250,250,249,.62);letter-spacing:-0.005em;
+  }
+  .lead s{text-decoration-color:rgba(250,250,249,.45);text-decoration-thickness:1.5px;}
+
+  .impact{
+    font-family:'Pretendard',sans-serif;font-weight:800;
+    font-size:46px;line-height:1.15;letter-spacing:-0.025em;
+    color:var(--ink);
+  }
+  .marker{
+    background-image:linear-gradient(180deg, var(--marker) 0%, var(--marker) 100%);
+    color:#0a0a0a;
+    padding:2px 8px;
+    border-radius:2px;
+    box-decoration-break:clone;-webkit-box-decoration-break:clone;
+  }
+
+  .hand{
+    margin-top:4px;
+    font-family:'Gowun Dodum','Nanum Pen Script',cursive;font-weight:400;
+    font-size:22px;line-height:1.4;color:rgba(250,250,249,.82);letter-spacing:-0.005em;
+  }
+  .hand .sign{color:var(--marker);margin-left:4px;}
+
+  /* === RIGHT : cta === */
+  .cta-wrap{display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:14px;height:100%;}
+  .cta{
+    display:inline-flex;align-items:center;gap:14px;
+    background:var(--foreground);color:var(--background);
+    font:800 22px/1 'Pretendard',sans-serif;letter-spacing:-0.01em;
+    padding:22px 32px;border-radius:9999px;border:2px solid var(--foreground);
+    box-shadow:0 14px 30px -14px rgba(255,255,255,.18);
+  }
+  .cta .arrow{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:24px;height:24px;font-size:22px;font-weight:800;transform:translateY(-1px);
+  }
+  .cta-note{
+    font:500 13px/1.3 'Pretendard',sans-serif;color:var(--mute);
+    text-align:right;letter-spacing:0.04em;
+  }
+  .cta-note .accent{color:var(--ink);font-weight:700;margin-right:4px;}
+</style>
+</head>
+<body>
+  <div class="sketches">
+
+    <!-- ROW A : Cinematic studio backdrop -->
+    <div class="sketch-row">
+      <div class="row-label">
+        <div class="left">
+          <span class="tag">A</span>
+          <span class="name">CINEMATIC STUDIO BACKDROP</span>
+        </div>
+        <div class="desc">검정 + 골드 림 라이트(뒤) + 우측 amber 하이라이트 + 볼륨 스모크. 강사 인터뷰 세트 톤.</div>
+      </div>
+      <div class="banner a">
+        <div class="face-wrap"><div class="face"><img src="./face.jpg" alt="용감한 용팀장" /></div></div>
+        <div class="copy">
+          <div>
+            <div class="name">용감한 용팀장</div>
+            <div class="subline">현업 셀러 · 부동산 투자자 · 직장인 · 육아 아빠</div>
+          </div>
+          <p class="lead"><s>1만 개를 무작정 올리는 셀러</s>에서</p>
+          <h1 class="impact">월 순수익 <span class="marker">800만 원</span> 셀러로.</h1>
+          <p class="hand">그 방법, 그대로 풀어드립니다 <span class="sign">— 용팀장</span></p>
+        </div>
+        <div class="cta-wrap">
+          <div class="cta">6월 8일(월) 무료강의 신청<span class="arrow">↗</span></div>
+          <div class="cta-note"><span class="accent">100% 무료</span>· 사장님 전용 공개</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW B : Light beams / particles -->
+    <div class="sketch-row">
+      <div class="row-label">
+        <div class="left">
+          <span class="tag">B</span>
+          <span class="name">LIGHT BEAMS / GOLD PARTICLES</span>
+        </div>
+        <div class="desc">대각선 골드/오렌지 빛줄기 + 입자. 더 추상적·이벤트성. 모션 영상 felt.</div>
+      </div>
+      <div class="banner b">
+        <div class="face-wrap"><div class="face"><img src="./face.jpg" alt="용감한 용팀장" /></div></div>
+        <div class="copy">
+          <div>
+            <div class="name">용감한 용팀장</div>
+            <div class="subline">현업 셀러 · 부동산 투자자 · 직장인 · 육아 아빠</div>
+          </div>
+          <p class="lead"><s>1만 개를 무작정 올리는 셀러</s>에서</p>
+          <h1 class="impact">월 순수익 <span class="marker">800만 원</span> 셀러로.</h1>
+          <p class="hand">그 방법, 그대로 풀어드립니다 <span class="sign">— 용팀장</span></p>
+        </div>
+        <div class="cta-wrap">
+          <div class="cta">6월 8일(월) 무료강의 신청<span class="arrow">↗</span></div>
+          <div class="cta-note"><span class="accent">100% 무료</span>· 사장님 전용 공개</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW C : Concrete + spotlight -->
+    <div class="sketch-row">
+      <div class="row-label">
+        <div class="left">
+          <span class="tag">C</span>
+          <span class="name">CONCRETE WALL + GOLD SPOTLIGHT</span>
+        </div>
+        <div class="desc">미세 콘크리트 텍스처 + 우상단 골드 스폿. face.jpg 원본 배경과 톤 매칭. 가장 차분.</div>
+      </div>
+      <div class="banner c">
+        <div class="face-wrap"><div class="face"><img src="./face.jpg" alt="용감한 용팀장" /></div></div>
+        <div class="copy">
+          <div>
+            <div class="name">용감한 용팀장</div>
+            <div class="subline">현업 셀러 · 부동산 투자자 · 직장인 · 육아 아빠</div>
+          </div>
+          <p class="lead"><s>1만 개를 무작정 올리는 셀러</s>에서</p>
+          <h1 class="impact">월 순수익 <span class="marker">800만 원</span> 셀러로.</h1>
+          <p class="hand">그 방법, 그대로 풀어드립니다 <span class="sign">— 용팀장</span></p>
+        </div>
+        <div class="cta-wrap">
+          <div class="cta">6월 8일(월) 무료강의 신청<span class="arrow">↗</span></div>
+          <div class="cta-note"><span class="accent">100% 무료</span>· 사장님 전용 공개</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

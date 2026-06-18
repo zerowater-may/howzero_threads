@@ -119,7 +119,7 @@
 - **명령 순서(개별 제출)**: IG Reel → IG Carousel → Threads Carousel. `--instagram-media both`는 dry-run/저위험 1차에만(한 payload 409 시 combined가 멈춤).
 - **IG Reel**: `reels/zipsaja-reel-30s-audio-mapped-ig-safe.mp4` 우선(1080×1920, 9:16, H.264, 30fps, 30s). 커버는 `publish-ready/instagram-reel-cover.png`. 핵심 텍스트는 중앙 4:5 안쪽.
 - **IG Carousel**: 음악 불가 → `publish-ready/instagram-carousel/slide-*.png`(1080×1350, 4:5) Feed.
-- **Threads Carousel**: `publish-ready/threads-carousel/slide-*.png`, 본문은 `captions/threads.txt` 2~3줄 훅만, 해시태그·긴 설명 금지, topic은 `--topic-tag`.
+- **Threads Carousel**: `publish-ready/threads-carousel/slide-*.png`, 본문은 `captions/threads.txt` **2줄 자극적 훅만**(첫 줄=충격/반전 숫자, 둘째 줄=양자택일·도발+댓글 유도). 3줄 이상·긴 설명·해시태그 금지, topic은 `--topic-tag`. (사용자 피드백 2026-06-12)
 - **409 중복 보호**: `details.existingPostId` 조회 — `publishing/processing`이면 이미 생성된 것. 재게시 요청 시 첫 훅·문장 순서·CTA를 구조적으로 변경(공백/문장부호만 변경은 무효).
 - **기록**: 결과는 번들 루트 `publish-state.json`에 platform별 postId·status·platformStatus·mediaCount·timestamp 누적.
 

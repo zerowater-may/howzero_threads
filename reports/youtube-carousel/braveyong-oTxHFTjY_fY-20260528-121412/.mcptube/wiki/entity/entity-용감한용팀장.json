@@ -1,0 +1,27 @@
+{
+  "slug": "entity-용감한용팀장",
+  "page_type": "entity",
+  "title": "용감한용팀장",
+  "tags": [
+    "person"
+  ],
+  "related_pages": [
+    "video-oTxHFTjY_fY"
+  ],
+  "created_at": "2026-05-28T03:14:39.045266Z",
+  "updated_at": "2026-05-28T03:14:39.048514Z",
+  "category": "person",
+  "overview": "The host of the YouTube channel. He interviews a real estate investor turned online seller and discusses AI usage for sellers.",
+  "video_references": [
+    {
+      "video_id": "oTxHFTjY_fY",
+      "title": "직장인 부동산 투자자가 온라인 셀링을 시작한 이유",
+      "channel": "용감한용팀장 - 셀러를 위한 AI 사용법",
+      "content": "The host of the YouTube channel. He interviews a real estate investor turned online seller and discusses AI usage for sellers.",
+      "timestamps": [
+        "00:00"
+      ],
+      "added_at": "2026-05-28T03:14:39.045266Z"
+    }
+  ]
+}

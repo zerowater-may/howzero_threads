@@ -45,6 +45,17 @@
 - **실질 독립 dataset은 5종**: ① (A) 2025평균 vs 2026현재, ② 취임 90일 매칭, ③ 같은집 YoY 매매/전세, ④ 24평급 전세 B1, ⑤ 노도강 시뮬.
 - **E2E 검증 기록 위치**: `이재명-대통령-당선후-서울-실거래-E2E-검증` 번들은 빈 폴더지만 누락이 아니다 — 파이프라인 **E2E 스모크 테스트**의 출력 경로이고 출력물은 gitignore된다. 검증 절차·합격 기준 기록은 `docs/superpowers/plans/2026-04-24-pipeline-full-orchestration.md` Task 14("E2E integration smoke test")에 있다. 데이터 신뢰성 통제 자체는 위 methodNote·동일단지 매칭 설계로 담보.
 
+## 5. 경기/외부 데이터 — 네이버 부동산 스크래핑 (proptech 밖)
+
+proptech_db는 **서울 25개 구만** 보유. 경기(동탄·용인·이천·평택 등) 실거래가 필요한 콘텐츠(예: 하이닉스 셔세권)는 **네이버 부동산 API**로 수집한다(국토부 키 없음, proptech도 네이버 스크래핑 기반).
+
+- **토큰**: `new.land.naver.com/complexes/{id}` 페이지 HTML의 `"token":"eyJ..."` 추출 → `authorization: Bearer <token>`. JWT 단기 만료라 페이지 로드 시마다 재추출(Playwright/chrome).
+- **검색**: `GET /api/search?keyword=` → `complexNo`, `cortarAddress`, `useApproveYmd`(준공), `totalHouseholdCount`.
+- **단지 상세**: `GET /api/complexes/{cn}?sameAddressGroup=false` → `complexPyeongDetailList[].{pyeongNo, exclusiveArea, supplyArea}`. ⚠️ 평형 필드는 **`pyeongNo`** (pyeongTypeNo 아님).
+- **실거래(핵심)**: `GET /api/complexes/{cn}/prices/real?complexNo={cn}&tradeType=A1&year=1&areaNo={pyeongNo}&type=table` → `realPriceOnMonthList[].realPriceList[].{tradeYear,tradeMonth,dealPrice(만원),floor}`. **same-origin이라 new.land 페이지에서 호출**(fin.land는 CORS 차단). A1=매매, B1=전세.
+- **평형 표기**: 사용자 체감은 **공급면적**(supplyArea/3.3)로 표기. 전용 84㎡=공급 34평(국평).
+- 출처 표기: "네이버 부동산 실거래(국토부 신고가) 기준". 사례: `zipsaja_pipeline_하이닉스-성과급-11억-셔세권-vs-이천본진-4억`.
+
 ## 관련 페이지
 
 - [[Zipsaja Index]]

@@ -29,6 +29,8 @@ def test_extract_frame_calls_ffmpeg_with_correct_args(tmp_path):
     assert "-ss" in args and "12.5" in args
     assert str(video) in args
     assert str(out) in args
+    vf = args[args.index("-vf") + 1]
+    assert "scale=2160:-2" in vf
     assert result == out
 
 

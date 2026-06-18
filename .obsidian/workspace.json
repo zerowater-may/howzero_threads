@@ -4,24 +4,53 @@
     "type": "split",
     "children": [
       {
-        "id": "616e05ec7f6617f4",
+        "id": "8bd4fc2f6c755752",
         "type": "tabs",
         "children": [
           {
-            "id": "7985b31cba5b20c2",
+            "id": "ecc7cf12392bcf2d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "insight.md",
+                "file": "brands/howzero/howzero_script/S-003-commerce-seasonal-sourcing.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "insight"
+              "title": "S-003-commerce-seasonal-sourcing"
+            }
+          },
+          {
+            "id": "5d9cfe2cab478985",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "wiki/BraveYong Free Webinar Funnel.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "BraveYong Free Webinar Funnel"
+            }
+          },
+          {
+            "id": "34d92167d13b871b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/자막-자동화-워크플로우.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "자막-자동화-워크플로우"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -53,7 +82,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "STRUCTURE.md",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -78,7 +107,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 551.5
   },
   "right": {
     "id": "a7f466279d7f7d2f",
@@ -94,7 +123,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "무제.canvas",
+                "file": "docs/superpowers/specs/2026-04-28-content-card-stage-collaboration-flow.excalidraw.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +133,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "무제 의 백링크"
+              "title": "2026-04-28-content-card-stage-collaboration-flow.excalidraw 의 백링크"
             }
           },
           {
@@ -180,57 +209,58 @@
       "daily-notes:오늘의 일일 노트 열기": false,
       "templates:템플릿 삽입": false,
       "command-palette:명령어 팔레트 열기": false,
-      "bases:새 베이스 생성하기": false
+      "bases:새 베이스 생성하기": false,
+      "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "7985b31cba5b20c2",
+  "active": "34d92167d13b871b",
   "lastOpenFiles": [
-    "docs/content/carousel-zipsaja-10y-ago-20260422/template_04.png",
-    "docs/content/carousel-zipsaja-10y-ago-20260422/template_08.png",
-    "docs/content/carousel-zipsaja-10y-ago-20260422/template_05.png",
-    "docs/content/carousel-zipsaja-10y-ago-20260422/template_10.png",
-    "docs/content/carousel-zipsaja-10y-ago-20260422/template_09.png",
-    "docs/content/carousel-zipsaja-10y-ago-20260422/template_07.png",
-    "docs/content/carousel-zipsaja-10y-ago-20260422/nano-slide-10.png",
-    "docs/content/carousel-zipsaja-10y-ago-20260422/nano-slide-9.png",
-    "docs/content/carousel-zipsaja-10y-ago-20260422/nano-slide-8.png",
-    "docs/content/carousel-zipsaja-10y-ago-20260422/nano-slide-7.png",
-    "docs/content/carousel-zipsaja-10y-ago-20260422/nano-slide-6.png",
-    "docs/content/carousel-zipsaja-10y-ago-20260422/capture_nano.mjs",
-    "docs/content/carousel-zipsaja-10y-ago-20260422/nano_slides.html",
-    "docs/content/carousel-zipsaja-10y-ago-20260422/specs.json",
-    "docs/content/carousel-zipsaja-10y-ago-20260422/package.json",
-    "docs/content/carousel-zipsaja-10y-ago-20260422/assets",
-    "docs/content/carousel-zipsaja-10y-ago-20260422",
-    "docs/content/carousel-zipsaja-seoul-avg-24py-20260422/~$seoul_24py_avg_20260422.xlsx",
-    "docs/content/carousel-zipsaja-seoul-avg-24py-20260422/seoul_24py_avg_20260422.xlsx",
-    "docs/content/carousel-zipsaja-seoul-avg-24py-20260422/html",
-    "docs/content/carousel-zipsaja-seoul-avg-24py-20260422/capture.mjs",
-    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/puppeteer-core/README.md",
-    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/chromium-bidi/README.md",
-    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/puppeteer-core/src/bidi/core/README.md",
-    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/puppeteer-core/src/templates/README.md",
-    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/puppeteer-core/src/injected/README.md",
-    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/zod/README.md",
-    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/@puppeteer/browsers/README.md",
-    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/@tootallnate/quickjs-emscripten/README.md",
-    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/bare-url/README.md",
-    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/bare-fs/README.md",
-    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/bare-os/README.md",
-    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/devtools-protocol/README.md",
-    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/yargs/README.md",
-    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/puppeteer/README.md",
-    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/semver/README.md",
-    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/js-yaml/README.md",
-    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/socks/README.md",
-    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/pac-resolver/README.md",
-    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/ast-types/README.md",
-    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/ip-address/README.md",
-    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/get-uri/README.md",
-    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/ws/README.md",
-    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/basic-ftp/README.md",
-    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/source-map/CHANGELOG.md",
-    "docs/content/carousel-zipsaja-gayang-20260420/node_modules/socks/docs/examples/javascript/bindExample.md",
+    "brands/zipsaja/zipsaja_misc_인테리어-업체선정/README.md.tmp.2907.31f993d9413a",
+    "brands/zipsaja/zipsaja_misc_인테리어-업체선정/통화_전사/홈루덴스_방문상담_요약.pdf",
+    "brands/zipsaja/zipsaja_misc_인테리어-업체선정/통화_전사/홈루덴스_방문상담_요약.md",
+    "brands/zipsaja/zipsaja_misc_인테리어-업체선정/통화_전사/홈루덴스_방문상담_요약.md.tmp.2907.d8df12c254a8",
+    "brands/zipsaja/zipsaja_misc_인테리어-업체선정/인테리어_업체선정_playground.html",
+    "brands/zipsaja/zipsaja_misc_인테리어-업체선정/인테리어_업체선정_playground.html.tmp.2907.09ff375d742e",
+    "brands/zipsaja/zipsaja_misc_인테리어-업체선정/통화_전사/홈루덴스_방문상담록.pdf",
+    "brands/zipsaja/zipsaja_misc_인테리어-업체선정/통화_녹음/홈루덴스_방문상담_1312.m4a",
+    "brands/zipsaja/zipsaja_misc_인테리어-업체선정/통화_전사/홈루덴스_방문상담_전사원문.md",
+    "brands/zipsaja/zipsaja_misc_인테리어-업체선정/통화_전사/홈루덴스_방문상담록.md",
+    "brands/zipsaja/zipsaja_misc_인테리어-업체선정/~$인테리어_업체비교.xlsx",
+    "brands/braveyong/남해.txt.sb-c5d0e205-PmtGXw",
+    "brands/braveyong/남해.txt",
+    "brands/braveyong/braveyong_landing_ai-selling-v2-portfolio/app/api/paymint/reconcile/route.ts",
+    "brands/braveyong/braveyong_landing_ai-selling-v2-portfolio/node_modules/@vercel/blob/license.md",
+    "brands/braveyong/braveyong_landing_ai-selling-v2-portfolio/node_modules/@vercel/blob/README.md",
+    "brands/braveyong/braveyong_landing_ai-selling-v2-portfolio/node_modules/retry/README.md",
+    "brands/braveyong/braveyong_landing_ai-selling-v2-portfolio/node_modules/undici/docs/docs/api/api-lifecycle.md",
+    "brands/braveyong/braveyong_landing_ai-selling-v2-portfolio/node_modules/undici/docs/docs/api/WebSocket.md",
+    "brands/braveyong/braveyong_landing_ai-selling-v2-portfolio/node_modules/undici/docs/docs/api/Util.md",
+    "brands/braveyong/braveyong_landing_ai-selling-v2-portfolio/node_modules/undici/docs/docs/api/RetryHandler.md",
+    "brands/braveyong/braveyong_landing_ai-selling-v2-portfolio/node_modules/undici/docs/docs/api/RetryAgent.md",
+    "brands/braveyong/braveyong_landing_ai-selling-v2-portfolio/node_modules/undici/docs/docs/api/RedirectHandler.md",
+    "brands/braveyong/braveyong_landing_ai-selling-v2-portfolio/node_modules/undici/docs/docs/api/ProxyAgent.md",
+    "brands/braveyong/braveyong_landing_ai-selling-v2-portfolio/node_modules/undici/docs/docs/api/PoolStats.md",
+    "brands/braveyong/braveyong_landing_ai-selling-v2-portfolio/node_modules/undici/docs/docs/api/Pool.md",
+    "brands/braveyong/braveyong_landing_ai-selling-v2-portfolio/node_modules/undici/docs/docs/api/MockPool.md",
+    "brands/braveyong/braveyong_landing_ai-selling-v2-portfolio/node_modules/undici/docs/docs/api/MockErrors.md",
+    "brands/braveyong/braveyong_landing_ai-selling-v2-portfolio/node_modules/undici/docs/docs/api/MockClient.md",
+    "brands/braveyong/braveyong_landing_ai-selling-v2-portfolio/node_modules/undici/docs/docs/api/MockAgent.md",
+    "brands/braveyong/braveyong_landing_ai-selling-v2-portfolio/node_modules/undici/docs/docs/api/Fetch.md",
+    "brands/braveyong/braveyong_landing_ai-selling-v2-portfolio/node_modules/undici/docs/docs/api/EventSource.md",
+    "brands/braveyong/braveyong_landing_ai-selling-v2-portfolio/node_modules/undici/docs/docs/api/Errors.md",
+    "brands/braveyong/braveyong_landing_ai-selling-v2-portfolio/node_modules/undici/docs/docs/api/EnvHttpProxyAgent.md",
+    "brands/braveyong/braveyong_landing_ai-selling-v2-portfolio/node_modules/undici/docs/docs/api/Dispatcher.md",
+    "brands/braveyong/braveyong_landing_ai-selling-v2-portfolio/node_modules/undici/docs/docs/api/DispatchInterceptor.md",
+    "brands/braveyong/braveyong_landing_ai-selling-v2-portfolio/screenshots/2026-06-12-815-seats-strip-live.jpeg",
+    "2026-06-12-815-seats-strip-live.jpeg",
+    "815-hero-seats.png",
+    "brands/braveyong/braveyong_landing_ai-selling-v2-portfolio/screenshots/2026-06-12-815-credential-live.jpeg",
+    "2026-06-12-815-credential-live.jpeg",
+    "815-hero-appeal.png",
+    "815-whyyong-after.png",
+    "815-hero-after.png",
+    "brands/braveyong/braveyong_landing_ai-selling-v2-portfolio/screenshots/21-final-cta.png",
+    "brands/braveyong/braveyong_landing_ai-selling-v2-portfolio/screenshots/20-faq.png",
     "무제.canvas"
   ]
 }

@@ -44,14 +44,15 @@ export async function POST(request: Request) {
     const passwordHash = await bcrypt.hash(password, BCRYPT_ROUNDS);
     const userId = cuid();
 
-    await sql.begin(async (tx: any) => {
-      await tx`
-        INSERT INTO users (id, email, password_hash, name)
-        VALUES (${userId}, ${email}, ${passwordHash}, ${name || null})
-      `;
-      await tx`
-        UPDATE invite_codes SET used_count = used_count + 1 WHERE code = ${inviteCode}
-      `;
+    await sql.begin(async (tx) => {
+      await tx.unsafe(
+        "INSERT INTO users (id, email, password_hash, name) VALUES ($1, $2, $3, $4)",
+        [userId, email, passwordHash, name || null]
+      );
+      await tx.unsafe(
+        "UPDATE invite_codes SET used_count = used_count + 1 WHERE code = $1",
+        [inviteCode]
+      );
     });
 
     return NextResponse.json({ id: userId, email }, { status: 201 });

@@ -16,7 +16,9 @@ python3 -m scripts.content_carousel \
 ```
 
 옵션:
-- `--per-slide N` — 슬라이드당 행 개수 (default 8). 25개 구 / 8 → 4 데이터 슬라이드 + 커버 + CTA.
+- 기본값 — 커버 1장 + 데이터 8장 + CTA 1장 = 총 10장. 25개 구는 8개 데이터 슬라이드에 4/3/3/3/3/3/3/3개씩 균등 배치.
+- `--data-slides N` — 데이터 표 슬라이드 개수 (default 8). 총 장수는 `N + 2`.
+- `--per-slide N` — legacy override. 슬라이드당 행 개수를 직접 지정할 때만 사용하며 `--data-slides`보다 우선.
 - `--no-capture` — HTML만 생성, PNG 캡처 스킵.
 
 ## 산출물
@@ -27,7 +29,7 @@ python3 -m scripts.content_carousel \
 ├── slide-01.png   # 커버
 ├── slide-02.png   # 데이터 1
 ├── ...
-└── slide-06.png   # 다크 CTA (댓글 리드매그넷)
+└── slide-10.png   # 다크 CTA (댓글 리드매그넷)
 ```
 
 - 1080×1350, 4:5 Instagram Feed/Carousel 표준 픽셀.

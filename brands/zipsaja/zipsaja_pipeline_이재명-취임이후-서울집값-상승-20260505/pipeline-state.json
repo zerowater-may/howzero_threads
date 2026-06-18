@@ -1,0 +1,61 @@
+{
+  "workflow_version": "zipsaja-remotion-v1",
+  "brand": "zipsaja",
+  "slug": "이재명-취임이후-서울집값-상승-20260505",
+  "topic": "2025년 6월 이재명 취임 이후 서울 집값 상승 데이터",
+  "created_at": "2026-05-05T11:42:11.087528+09:00",
+  "steps": {
+    "brief": "done",
+    "data": "done",
+    "storyboard": "done",
+    "carousel": "done",
+    "remotion": "done",
+    "attachments": "done",
+    "captions": "done",
+    "package-qa": "done"
+  },
+  "artifacts": {
+    "data": {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_이재명-취임이후-서울집값-상승-20260505/data.json"
+    },
+    "brief": {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_이재명-취임이후-서울집값-상승-20260505/brief.md"
+    },
+    "carousel_html": {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_이재명-취임이후-서울집값-상승-20260505/carousel/slides.html"
+    },
+    "captions": {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_이재명-취임이후-서울집값-상승-20260505/captions"
+    },
+    "carousel": {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_이재명-취임이후-서울집값-상승-20260505/carousel",
+      "renderer": "remotion still LeeAfterCarousel"
+    },
+    "reels": {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_이재명-취임이후-서울집값-상승-20260505/reels/zipsaja-reel-30s-audio-mapped-ig-safe.mp4",
+      "renderer": "remotion render LeeAfterReel"
+    },
+    "attachments": {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_이재명-취임이후-서울집값-상승-20260505/attachments"
+    },
+    "publish_ready": {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_이재명-취임이후-서울집값-상승-20260505/publish-ready"
+    },
+    "remotion_entry": {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_이재명-취임이후-서울집값-상승-20260505/remotion/LeeAfterContent.tsx"
+    }
+  },
+  "qa": {
+    "carousel_slide_count": 10,
+    "instagram_carousel_count": 10,
+    "threads_carousel_count": 10,
+    "reel_files": [
+      "full.mp4",
+      "zipsaja-reel-30s-audio-mapped-ig-safe.mp4",
+      "zipsaja-reel-30s-audio-mapped.mp4",
+      "zipsaja-reel-30s.mp4"
+    ],
+    "cover_exists": true,
+    "remotion_only_visuals": true
+  }
+}

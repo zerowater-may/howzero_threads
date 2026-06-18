@@ -1,10 +1,10 @@
 {
   "name": "naver_cafe_banner",
   "version": "1.0.0",
-  "description": "HTML 템플릿을 960x360 PNG로 렌더해서 네이버 카페 대문 배너로 쓴다.",
+  "description": "HTML 템플릿을 PNG로 렌더해서 네이버 카페 대문 배너로 쓴다.",
   "type": "module",
   "scripts": {
-    "render:braveyong": "node capture.mjs banner-braveyong.html ../../brands/braveyong/braveyong_misc_naver-cafe-banner.png",
+    "render:braveyong": "node capture.mjs banner-braveyong.html ../../brands/braveyong/braveyong_misc_naver-cafe-banner.png 1440 240 1",
     "render:bulsaja": "node capture.mjs banner-bulsaja.html ../../brands/bulsaja/bulsaja_misc_naver-cafe-banner.png",
     "render:all": "npm run render:braveyong && npm run render:bulsaja"
   },

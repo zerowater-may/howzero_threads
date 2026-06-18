@@ -62,6 +62,8 @@ def test_resolve_caption_provider_prefers_explicit_env(monkeypatch):
 def test_resolve_caption_provider_supports_kimi_and_deepseek_without_anthropic(monkeypatch):
     monkeypatch.delenv("CONTENT_CAPTIONS_PROVIDER", raising=False)
     monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    monkeypatch.delenv("CONTENT_CAPTIONS_BASE_URL", raising=False)
+    monkeypatch.delenv("KIMI_CODE_API_KEY", raising=False)
     monkeypatch.setenv("MOONSHOT_API_KEY", "moonshot-key")
     monkeypatch.setenv("DEEPSEEK_API_KEY", "deepseek-key")
 
@@ -69,3 +71,12 @@ def test_resolve_caption_provider_supports_kimi_and_deepseek_without_anthropic(m
 
     monkeypatch.delenv("MOONSHOT_API_KEY", raising=False)
     assert resolve_caption_provider() == "deepseek"
+
+
+def test_resolve_caption_provider_detects_kimi_code_base_url(monkeypatch):
+    monkeypatch.delenv("CONTENT_CAPTIONS_PROVIDER", raising=False)
+    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    monkeypatch.setenv("CONTENT_CAPTIONS_BASE_URL", "https://api.kimi.com/coding/v1")
+    monkeypatch.setenv("KIMI_API_KEY", "kimi-code-key")
+
+    assert resolve_caption_provider() == "kimi_code"

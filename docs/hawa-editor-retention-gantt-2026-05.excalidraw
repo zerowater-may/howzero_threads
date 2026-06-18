@@ -1,0 +1,78 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "howzero-claude-code",
+  "elements": [
+    {"type":"text","id":"title","x":40,"y":40,"width":1320,"height":40,"text":"하와 영상 기획·편집자 retention 로드맵 — 5월 시작 6개월 Gantt","fontSize":24,"fontFamily":1,"strokeColor":"#1e1e1e","seed":1001,"autoResize":true},
+    {"type":"text","id":"subtitle","x":40,"y":85,"width":1320,"height":24,"text":"같은 5% 인센티브 · 다른 매출 곡선 — 시스템화 속도가 인센티브 규모를 결정한다","fontSize":15,"fontFamily":1,"strokeColor":"#555555","seed":1002,"autoResize":true},
+
+    {"type":"rectangle","id":"msg-box","x":40,"y":130,"width":1320,"height":70,"roundness":{"type":3},"backgroundColor":"#fff3bf","fillStyle":"solid","roughness":0,"strokeColor":"#f59e0b","strokeWidth":2,"seed":1010,"boundElements":[{"type":"text","id":"msg-text"}]},
+    {"type":"text","id":"msg-text","x":40,"y":143,"width":1320,"height":44,"text":"외부 회사도 매출 5%, 하와도 매출 5%. → 핵심 변수는 매출 규모.\n매출 규모 = 강사 수 × 강사당 매출 → 둘 다 시스템화 속도가 결정한다.","fontSize":15,"fontFamily":1,"strokeColor":"#92400e","textAlign":"center","verticalAlign":"middle","containerId":"msg-box","seed":1011,"autoResize":false,"lineHeight":1.5},
+
+    {"type":"rectangle","id":"hdr-stage","x":40,"y":230,"width":240,"height":40,"roundness":{"type":3},"backgroundColor":"#e9ecef","fillStyle":"solid","roughness":0,"strokeColor":"#868e96","strokeWidth":1,"seed":2000,"boundElements":[{"type":"text","id":"hdr-stage-text"}]},
+    {"type":"text","id":"hdr-stage-text","x":40,"y":240,"width":240,"height":20,"text":"단계","fontSize":14,"fontFamily":1,"strokeColor":"#1e1e1e","textAlign":"center","verticalAlign":"middle","containerId":"hdr-stage","seed":2001,"autoResize":false},
+
+    {"type":"rectangle","id":"hdr-may","x":280,"y":230,"width":180,"height":40,"roundness":{"type":3},"backgroundColor":"#e9ecef","fillStyle":"solid","roughness":0,"strokeColor":"#868e96","strokeWidth":1,"seed":2010,"boundElements":[{"type":"text","id":"hdr-may-text"}]},
+    {"type":"text","id":"hdr-may-text","x":280,"y":240,"width":180,"height":20,"text":"5월","fontSize":14,"fontFamily":1,"strokeColor":"#1e1e1e","textAlign":"center","verticalAlign":"middle","containerId":"hdr-may","seed":2011,"autoResize":false},
+
+    {"type":"rectangle","id":"hdr-jun","x":460,"y":230,"width":180,"height":40,"roundness":{"type":3},"backgroundColor":"#e9ecef","fillStyle":"solid","roughness":0,"strokeColor":"#868e96","strokeWidth":1,"seed":2020,"boundElements":[{"type":"text","id":"hdr-jun-text"}]},
+    {"type":"text","id":"hdr-jun-text","x":460,"y":240,"width":180,"height":20,"text":"6월","fontSize":14,"fontFamily":1,"strokeColor":"#1e1e1e","textAlign":"center","verticalAlign":"middle","containerId":"hdr-jun","seed":2021,"autoResize":false},
+
+    {"type":"rectangle","id":"hdr-jul","x":640,"y":230,"width":180,"height":40,"roundness":{"type":3},"backgroundColor":"#e9ecef","fillStyle":"solid","roughness":0,"strokeColor":"#868e96","strokeWidth":1,"seed":2030,"boundElements":[{"type":"text","id":"hdr-jul-text"}]},
+    {"type":"text","id":"hdr-jul-text","x":640,"y":240,"width":180,"height":20,"text":"7월","fontSize":14,"fontFamily":1,"strokeColor":"#1e1e1e","textAlign":"center","verticalAlign":"middle","containerId":"hdr-jul","seed":2031,"autoResize":false},
+
+    {"type":"rectangle","id":"hdr-aug","x":820,"y":230,"width":180,"height":40,"roundness":{"type":3},"backgroundColor":"#e9ecef","fillStyle":"solid","roughness":0,"strokeColor":"#868e96","strokeWidth":1,"seed":2040,"boundElements":[{"type":"text","id":"hdr-aug-text"}]},
+    {"type":"text","id":"hdr-aug-text","x":820,"y":240,"width":180,"height":20,"text":"8월","fontSize":14,"fontFamily":1,"strokeColor":"#1e1e1e","textAlign":"center","verticalAlign":"middle","containerId":"hdr-aug","seed":2041,"autoResize":false},
+
+    {"type":"rectangle","id":"hdr-sep","x":1000,"y":230,"width":180,"height":40,"roundness":{"type":3},"backgroundColor":"#e9ecef","fillStyle":"solid","roughness":0,"strokeColor":"#868e96","strokeWidth":1,"seed":2050,"boundElements":[{"type":"text","id":"hdr-sep-text"}]},
+    {"type":"text","id":"hdr-sep-text","x":1000,"y":240,"width":180,"height":20,"text":"9월","fontSize":14,"fontFamily":1,"strokeColor":"#1e1e1e","textAlign":"center","verticalAlign":"middle","containerId":"hdr-sep","seed":2051,"autoResize":false},
+
+    {"type":"rectangle","id":"hdr-oct","x":1180,"y":230,"width":180,"height":40,"roundness":{"type":3},"backgroundColor":"#e9ecef","fillStyle":"solid","roughness":0,"strokeColor":"#868e96","strokeWidth":1,"seed":2060,"boundElements":[{"type":"text","id":"hdr-oct-text"}]},
+    {"type":"text","id":"hdr-oct-text","x":1180,"y":240,"width":180,"height":20,"text":"10월","fontSize":14,"fontFamily":1,"strokeColor":"#1e1e1e","textAlign":"center","verticalAlign":"middle","containerId":"hdr-oct","seed":2061,"autoResize":false},
+
+    {"type":"line","id":"grid-1","x":460,"y":230,"width":0,"height":380,"points":[[0,0],[0,380]],"strokeColor":"#dee2e6","strokeStyle":"dashed","strokeWidth":1,"roughness":0,"seed":2100},
+    {"type":"line","id":"grid-2","x":640,"y":230,"width":0,"height":380,"points":[[0,0],[0,380]],"strokeColor":"#dee2e6","strokeStyle":"dashed","strokeWidth":1,"roughness":0,"seed":2101},
+    {"type":"line","id":"grid-3","x":820,"y":230,"width":0,"height":380,"points":[[0,0],[0,380]],"strokeColor":"#dee2e6","strokeStyle":"dashed","strokeWidth":1,"roughness":0,"seed":2102},
+    {"type":"line","id":"grid-4","x":1000,"y":230,"width":0,"height":380,"points":[[0,0],[0,380]],"strokeColor":"#dee2e6","strokeStyle":"dashed","strokeWidth":1,"roughness":0,"seed":2103},
+    {"type":"line","id":"grid-5","x":1180,"y":230,"width":0,"height":380,"points":[[0,0],[0,380]],"strokeColor":"#dee2e6","strokeStyle":"dashed","strokeWidth":1,"roughness":0,"seed":2104},
+
+    {"type":"rectangle","id":"p1-label","x":40,"y":290,"width":240,"height":60,"roundness":{"type":3},"backgroundColor":"#a5d8ff","fillStyle":"solid","roughness":0,"strokeColor":"#4a9eed","strokeWidth":2,"seed":3010,"boundElements":[{"type":"text","id":"p1-label-text"}]},
+    {"type":"text","id":"p1-label-text","x":40,"y":300,"width":240,"height":40,"text":"Phase 1\n시스템화 기반","fontSize":15,"fontFamily":1,"strokeColor":"#1e3a8a","textAlign":"center","verticalAlign":"middle","containerId":"p1-label","seed":3011,"autoResize":false,"lineHeight":1.4},
+
+    {"type":"rectangle","id":"p1-bar","x":280,"y":305,"width":270,"height":30,"roundness":{"type":3},"backgroundColor":"#a5d8ff","fillStyle":"solid","roughness":0,"strokeColor":"#4a9eed","strokeWidth":2,"seed":3020,"boundElements":[{"type":"text","id":"p1-bar-text"}]},
+    {"type":"text","id":"p1-bar-text","x":280,"y":313,"width":270,"height":14,"text":"콘텐츠 SOP · 강사 onboarding · 단톡방 표준화","fontSize":12,"fontFamily":1,"strokeColor":"#1e3a8a","textAlign":"center","verticalAlign":"middle","containerId":"p1-bar","seed":3021,"autoResize":false},
+
+    {"type":"rectangle","id":"p2-label","x":40,"y":370,"width":240,"height":60,"roundness":{"type":3},"backgroundColor":"#ffd8a8","fillStyle":"solid","roughness":0,"strokeColor":"#f59e0b","strokeWidth":2,"seed":3030,"boundElements":[{"type":"text","id":"p2-label-text"}]},
+    {"type":"text","id":"p2-label-text","x":40,"y":380,"width":240,"height":40,"text":"Phase 2\n강사 확장","fontSize":15,"fontFamily":1,"strokeColor":"#92400e","textAlign":"center","verticalAlign":"middle","containerId":"p2-label","seed":3031,"autoResize":false,"lineHeight":1.4},
+
+    {"type":"rectangle","id":"p2-bar","x":550,"y":385,"width":450,"height":30,"roundness":{"type":3},"backgroundColor":"#ffd8a8","fillStyle":"solid","roughness":0,"strokeColor":"#f59e0b","strokeWidth":2,"seed":3040,"boundElements":[{"type":"text","id":"p2-bar-text"}]},
+    {"type":"text","id":"p2-bar-text","x":550,"y":393,"width":450,"height":14,"text":"강사 1호 (정재무·용감한용팀장) → 2호 → 3호 → 5호 onboarding","fontSize":12,"fontFamily":1,"strokeColor":"#92400e","textAlign":"center","verticalAlign":"middle","containerId":"p2-bar","seed":3041,"autoResize":false},
+
+    {"type":"rectangle","id":"p3-label","x":40,"y":450,"width":240,"height":60,"roundness":{"type":3},"backgroundColor":"#b2f2bb","fillStyle":"solid","roughness":0,"strokeColor":"#22c55e","strokeWidth":2,"seed":3050,"boundElements":[{"type":"text","id":"p3-label-text"}]},
+    {"type":"text","id":"p3-label-text","x":40,"y":460,"width":240,"height":40,"text":"Phase 3\n인센티브 누적","fontSize":15,"fontFamily":1,"strokeColor":"#15803d","textAlign":"center","verticalAlign":"middle","containerId":"p3-label","seed":3051,"autoResize":false,"lineHeight":1.4},
+
+    {"type":"rectangle","id":"p3-bar","x":640,"y":465,"width":720,"height":30,"roundness":{"type":3},"backgroundColor":"#b2f2bb","fillStyle":"solid","roughness":0,"strokeColor":"#22c55e","strokeWidth":2,"seed":3060,"boundElements":[{"type":"text","id":"p3-bar-text"}]},
+    {"type":"text","id":"p3-bar-text","x":640,"y":473,"width":720,"height":14,"text":"결제 share 시작 → 강사 5명 × 매출 5% = 누적 복리 인센티브","fontSize":12,"fontFamily":1,"strokeColor":"#15803d","textAlign":"center","verticalAlign":"middle","containerId":"p3-bar","seed":3061,"autoResize":false},
+
+    {"type":"rectangle","id":"p4-label","x":40,"y":530,"width":240,"height":60,"roundness":{"type":3},"backgroundColor":"#d0bfff","fillStyle":"solid","roughness":0,"strokeColor":"#8b5cf6","strokeWidth":2,"seed":3070,"boundElements":[{"type":"text","id":"p4-label-text"}]},
+    {"type":"text","id":"p4-label-text","x":40,"y":540,"width":240,"height":40,"text":"Phase 4\n시장 압도","fontSize":15,"fontFamily":1,"strokeColor":"#5b21b6","textAlign":"center","verticalAlign":"middle","containerId":"p4-label","seed":3071,"autoResize":false,"lineHeight":1.4},
+
+    {"type":"rectangle","id":"p4-bar","x":1000,"y":545,"width":360,"height":30,"roundness":{"type":3},"backgroundColor":"#d0bfff","fillStyle":"solid","roughness":0,"strokeColor":"#8b5cf6","strokeWidth":2,"seed":3080,"boundElements":[{"type":"text","id":"p4-bar-text"}]},
+    {"type":"text","id":"p4-bar-text","x":1000,"y":553,"width":360,"height":14,"text":"케이스 publish · 시장 reference 확보 · 외부 회사 능가","fontSize":12,"fontFamily":1,"strokeColor":"#5b21b6","textAlign":"center","verticalAlign":"middle","containerId":"p4-bar","seed":3081,"autoResize":false},
+
+    {"type":"text","id":"compare-header","x":40,"y":640,"width":1320,"height":24,"text":"6개월 후 결과 비교 — 같은 5% 인센티브, 다른 매출","fontSize":18,"fontFamily":1,"strokeColor":"#1e1e1e","seed":4000,"autoResize":true},
+
+    {"type":"rectangle","id":"compare-other","x":40,"y":680,"width":640,"height":200,"roundness":{"type":3},"backgroundColor":"#ffe5e5","fillStyle":"solid","roughness":0,"strokeColor":"#ef4444","strokeWidth":2,"seed":4010,"boundElements":[{"type":"text","id":"compare-other-text"}]},
+    {"type":"text","id":"compare-other-text","x":40,"y":700,"width":640,"height":160,"text":"이직 시 (외부 회사)\n\n· 강사 1~2명 단위 진행\n· 시스템화 늦음 → 매번 처음부터\n· 매출 곡선 평탄\n· 5% × 작은 매출 = 작은 인센티브\n· 본인 인센티브 정체","fontSize":14,"fontFamily":1,"strokeColor":"#991b1b","textAlign":"center","verticalAlign":"middle","containerId":"compare-other","seed":4011,"autoResize":false,"lineHeight":1.5},
+
+    {"type":"rectangle","id":"compare-hawa","x":720,"y":680,"width":640,"height":200,"roundness":{"type":3},"backgroundColor":"#d3f9d8","fillStyle":"solid","roughness":0,"strokeColor":"#22c55e","strokeWidth":2,"seed":4020,"boundElements":[{"type":"text","id":"compare-hawa-text"}]},
+    {"type":"text","id":"compare-hawa-text","x":720,"y":700,"width":640,"height":160,"text":"하와에 남으면\n\n· 강사 5명까지 빠른 확장\n· SOP 한 번 만들면 모든 강사에 적용\n· 매출 곡선 복리 성장\n· 5% × 5명 매출 = 압도적 인센티브\n· 본인이 시장 reference의 일부","fontSize":14,"fontFamily":1,"strokeColor":"#15803d","textAlign":"center","verticalAlign":"middle","containerId":"compare-hawa","seed":4021,"autoResize":false,"lineHeight":1.5},
+
+    {"type":"text","id":"closing","x":40,"y":910,"width":1320,"height":24,"text":"5% 고정 → 매출 규모가 모든 것 → 시스템화 속도 = 인센티브 속도 → 같이 시스템화하면 같이 시장을 압도","fontSize":15,"fontFamily":1,"strokeColor":"#b45309","textAlign":"center","seed":5000,"autoResize":false}
+  ],
+  "appState": {
+    "viewBackgroundColor": "#ffffff",
+    "gridSize": null
+  },
+  "files": {}
+}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
@@ -25,9 +25,12 @@ import { X, User, Plus } from "lucide-react";
 
 export default function LoginPage() {
   const login = useLogin();
-  const [savedAccounts, setSavedAccounts] = useState<SavedAccount[]>([]);
+  const [savedAccounts, setSavedAccounts] =
+    useState<SavedAccount[]>(getSavedAccounts);
   const [selectedEmail, setSelectedEmail] = useState<string | null>(null);
-  const [showForm, setShowForm] = useState(false);
+  const [showForm, setShowForm] = useState(
+    () => getSavedAccounts().length === 0
+  );
 
   const {
     register,
@@ -37,14 +40,6 @@ export default function LoginPage() {
   } = useForm<LoginInput>({
     resolver: zodResolver(loginSchema),
   });
-
-  useEffect(() => {
-    const accounts = getSavedAccounts();
-    setSavedAccounts(accounts);
-    if (accounts.length === 0) {
-      setShowForm(true);
-    }
-  }, []);
 
   const handleSelectAccount = (account: SavedAccount) => {
     setSelectedEmail(account.email);

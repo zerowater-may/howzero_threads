@@ -1,16 +1,74 @@
 {% extends "_base.html.j2" %}
 {% block style %}
 <style>
-  .cover-hero { padding: 200px 80px 0; }
-  .cover-hero h1 { font-family: var(--ff-headline); font-size: 120px; line-height: 1.05; margin: 0 0 24px; letter-spacing: -2px; }
-  .cover-hero .sub { font-family: var(--ff-body); font-weight: 700; font-size: 44px; color: var(--fg-2); }
-  .cover-mascot { position: absolute; right: 60px; bottom: 220px; width: 280px; }
+  /* Cover — 옛 손작업 톤: 손글씨 eyebrow + 인라인 pill + 크림 box stamp + 마스코트 정착 */
+  .cv-wrap { padding: 60px 80px 0; }
+
+  .cv-eyebrow {
+    font-family: var(--ff-hand); font-weight: 700;
+    font-size: 40px; color: var(--fg-3);
+    margin: 60px 0 18px;
+  }
+
+  .cv-headline {
+    font-family: var(--ff-headline);
+    font-size: 110px; line-height: 1.1;
+    letter-spacing: -2px;
+    margin: 0 0 32px;
+    max-width: 720px;
+  }
+  .cv-headline .zs-pill {
+    font-size: 110px;
+    padding: 4px 28px 12px;
+    line-height: 1.1;
+    white-space: nowrap;
+  }
+
+  .cv-arrow {
+    font-family: var(--ff-headline);
+    font-size: 64px; line-height: 1.1;
+    margin: 0 0 40px;
+  }
+
+  .cv-subnote {
+    display: inline-block;
+    background: var(--zs-cream);
+    border: 3px solid var(--zs-ink);
+    border-radius: 16px;
+    box-shadow: 4px 4px 0 0 var(--zs-ink);
+    padding: 18px 32px;
+    font-family: var(--ff-headline);
+    font-size: 34px;
+  }
+
+  .cv-mascot {
+    position: absolute;
+    right: 50px; bottom: 180px;
+    width: 320px; height: 320px;
+  }
 </style>
 {% endblock %}
 {% block content %}
-<div class="cover-hero">
-  <h1>{{ headline }}</h1>
-  <p class="sub">{{ sub }}</p>
+<div class="cv-wrap">
+  {% if eyebrow %}<div class="cv-eyebrow">{{ eyebrow }}</div>{% endif %}
+
+  <h1 class="cv-headline">
+    {%- if headline_top -%}
+      {{ headline_top }}
+      {%- if headline_pill %}<br><span class="zs-pill">{{ headline_pill }}</span>{% endif -%}
+    {%- else -%}
+      {{ headline }}
+    {%- endif -%}
+  </h1>
+
+  {% if arrow %}<div class="cv-arrow">{{ arrow }}</div>{% endif %}
+
+  {% if subnote %}
+    <div class="cv-subnote">{{ subnote }}</div>
+  {% elif sub %}
+    <div class="cv-subnote">{{ sub }}</div>
+  {% endif %}
 </div>
-{% if mascot %}<img src="{{ mascot_path }}" class="cover-mascot" alt="">{% endif %}
+
+{% if mascot %}<img src="{{ mascot_path }}" class="cv-mascot" alt="">{% endif %}
 {% endblock %}

@@ -1,8 +1,11 @@
 from pathlib import Path
 
 from scripts.content_reels.render import (
+    REEL_AUDIO_MAPPED_IG_SAFE_OUTPUT_NAME,
+    REEL_AUDIO_MAPPED_OUTPUT_NAME,
     REEL_DURATION_SECONDS,
     REEL_OUTPUT_NAME,
+    ffmpeg_add_background_music,
     map_to_remotion_schema,
 )
 
@@ -50,6 +53,8 @@ def test_map_preserves_generated_at_and_source():
 def test_reels_standard_output_is_30_seconds():
     assert REEL_DURATION_SECONDS == 30
     assert REEL_OUTPUT_NAME == "zipsaja-reel-30s.mp4"
+    assert REEL_AUDIO_MAPPED_OUTPUT_NAME == "zipsaja-reel-30s-audio-mapped.mp4"
+    assert REEL_AUDIO_MAPPED_IG_SAFE_OUTPUT_NAME == "zipsaja-reel-30s-audio-mapped-ig-safe.mp4"
 
 
 def test_seoul_price_reel_composition_duration_is_30_seconds():
@@ -58,3 +63,42 @@ def test_seoul_price_reel_composition_duration_is_30_seconds():
     )
 
     assert "export const SEOUL_PRICE_TOTAL_FRAMES = FPS * 30" in source
+
+
+def test_background_music_command_uses_generated_bgm_when_no_music_file(monkeypatch, tmp_path):
+    calls = []
+
+    def fake_run(cmd, check):
+        calls.append(cmd)
+        return type("Result", (), {"returncode": 0})()
+
+    monkeypatch.setattr("scripts.content_reels.render.subprocess.run", fake_run)
+
+    rc = ffmpeg_add_background_music(tmp_path / "src.mp4", tmp_path / "dst.mp4")
+
+    assert rc == 0
+    cmd = calls[0]
+    assert "lavfi" in cmd
+    assert any("sine=frequency=110" in part for part in cmd)
+    assert "[bgm]" in cmd
+    assert str(tmp_path / "dst.mp4") == cmd[-1]
+
+
+def test_background_music_command_loops_configured_music_file(monkeypatch, tmp_path):
+    calls = []
+    music = tmp_path / "bgm.mp3"
+    music.write_bytes(b"fake")
+
+    def fake_run(cmd, check):
+        calls.append(cmd)
+        return type("Result", (), {"returncode": 0})()
+
+    monkeypatch.setattr("scripts.content_reels.render.subprocess.run", fake_run)
+
+    rc = ffmpeg_add_background_music(tmp_path / "src.mp4", tmp_path / "dst.mp4", music_path=music)
+
+    assert rc == 0
+    cmd = calls[0]
+    assert "-stream_loop" in cmd
+    assert str(music) in cmd
+    assert "[bgm]" in cmd

@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>승무원 영양제 하루 루틴표</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 12mm;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #eee8df;
+      color: #191512;
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+      line-height: 1.42;
+    }
+
+    .sheet {
+      width: 100%;
+      min-height: 100vh;
+      background: #fffdf8;
+      padding: 24px 24px 20px;
+    }
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      border-bottom: 3px solid #251b16;
+      padding-bottom: 14px;
+      margin-bottom: 18px;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .12em;
+      color: #8a251f;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 32px;
+      line-height: 1.15;
+      letter-spacing: -0.045em;
+    }
+
+    .subtitle {
+      margin-top: 8px;
+      font-size: 13px;
+      color: #51463f;
+    }
+
+    .date-box {
+      width: 172px;
+      border: 2px solid #251b16;
+      border-radius: 12px;
+      padding: 10px 12px;
+      background: #fff7e8;
+      flex-shrink: 0;
+    }
+
+    .date-box strong {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .date-line {
+      height: 24px;
+      border-bottom: 1px solid #8d8177;
+      color: #9a9087;
+      font-size: 12px;
+    }
+
+    .quick-check {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .check-card {
+      border: 1.5px solid #d5cabe;
+      border-radius: 12px;
+      background: #fff;
+      padding: 9px 10px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .box {
+      display: inline-flex;
+      width: 14px;
+      height: 14px;
+      border: 2px solid #251b16;
+      border-radius: 3px;
+      margin-right: 6px;
+      vertical-align: -2px;
+      background: #fff;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .routine {
+      display: grid;
+      grid-template-columns: 112px 1fr;
+      gap: 14px;
+      border: 2px solid #d8cec2;
+      border-radius: 16px;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .time {
+      background: #2b211c;
+      color: #fff;
+      padding: 14px 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .time small {
+      font-size: 11px;
+      color: #e7d4c0;
+      margin-bottom: 4px;
+    }
+
+    .time strong {
+      font-size: 17px;
+      line-height: 1.18;
+      letter-spacing: -0.04em;
+    }
+
+    .routine-body {
+      padding: 13px 14px 13px 0;
+    }
+
+    .product-line {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 5px;
+    }
+
+    .product {
+      font-size: 17px;
+      font-weight: 900;
+      letter-spacing: -0.035em;
+    }
+
+    .dose {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: #8a251f;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .why {
+      font-size: 13px;
+      color: #312a25;
+      margin-bottom: 6px;
+    }
+
+    .tip {
+      font-size: 11.5px;
+      color: #675d55;
+      background: #fff7e8;
+      border-left: 4px solid #d5a14a;
+      padding: 6px 8px;
+      border-radius: 7px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .panel {
+      border: 1.5px solid #d8cec2;
+      border-radius: 14px;
+      background: #fffaf2;
+      padding: 12px 13px;
+    }
+
+    .panel h2 {
+      margin: 0 0 8px;
+      font-size: 15px;
+      letter-spacing: -0.035em;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 17px;
+    }
+
+    li {
+      margin: 0 0 5px;
+      font-size: 11.8px;
+      color: #3c342e;
+    }
+
+    .nutri {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11.2px;
+      background: #fff;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    .nutri th {
+      background: #4a3930;
+      color: #fff;
+      text-align: left;
+      padding: 6px 7px;
+      font-size: 10.8px;
+    }
+
+    .nutri td {
+      padding: 6px 7px;
+      border-top: 1px solid #e2d8cc;
+      vertical-align: top;
+    }
+
+    .red {
+      color: #8a251f;
+      font-weight: 900;
+    }
+
+    .foot {
+      margin-top: 12px;
+      padding-top: 9px;
+      border-top: 1px solid #d8cec2;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      font-size: 10px;
+      color: #70665d;
+    }
+  </style>
+</head>
+<body>
+  <main class="sheet">
+    <section class="top">
+      <div>
+        <div class="eyebrow">Flight Crew Daily Routine</div>
+        <h1>승무원 영양제 하루 루틴표</h1>
+        <div class="subtitle">이미 구매한 제품 기준으로, 하루에 언제 먹을지만 바로 보이게 정리했습니다.</div>
+      </div>
+      <div class="date-box">
+        <strong>오늘 날짜</strong>
+        <div class="date-line">　　　년　　　월　　　일</div>
+      </div>
+    </section>
+
+    <section class="quick-check">
+      <div class="check-card"><span class="box"></span>기상 직후</div>
+      <div class="check-card"><span class="box"></span>아침 식사 후</div>
+      <div class="check-card"><span class="box"></span>점심 식사 후</div>
+      <div class="check-card"><span class="box"></span>자기 전</div>
+    </section>
+
+    <section class="timeline">
+      <article class="routine">
+        <div class="time"><small>STEP 01</small><strong>기상 직후<br>공복</strong></div>
+        <div class="routine-body">
+          <div class="product-line">
+            <div class="product">California Gold Nutrition LactoBif 30 Probiotics</div>
+            <span class="dose">1캡슐</span>
+          </div>
+          <div class="why">아침에 물 한 컵이랑 먼저 챙깁니다. 장 컨디션이 흔들리기 쉬운 비행 일정용 기본 루틴입니다.</div>
+          <div class="tip">속이 예민한 날은 공복 고집하지 말고 아침 식사 후로 옮겨도 됩니다.</div>
+        </div>
+      </article>
+
+      <article class="routine">
+        <div class="time"><small>STEP 02</small><strong>아침<br>식사 직후</strong></div>
+        <div class="routine-body">
+          <div class="product-line">
+            <div class="product">Nature Made Multi For Her + NOW Foods Grape Seed Extract</div>
+            <span class="dose">멀티 1정 + 포도씨 1캡슐</span>
+          </div>
+          <div class="why">기본 비타민·미네랄은 아침 식사 후에 묶어서 챙깁니다. 포도씨 추출물도 같은 타이밍에 먹으면 덜 까먹습니다.</div>
+          <div class="tip">멀티에는 철분이 들어 있습니다. 철분제를 따로 먹고 있다면 중복 복용은 확인하세요.</div>
+        </div>
+      </article>
+
+      <article class="routine">
+        <div class="time"><small>STEP 03</small><strong>점심<br>식사 직후</strong></div>
+        <div class="routine-body">
+          <div class="product-line">
+            <div class="product">Vitauthority Phytoceramides +</div>
+            <span class="dose">2캡슐</span>
+          </div>
+          <div class="why">기내처럼 건조한 환경을 자주 겪는 날에 피부 보습과 장벽 컨디션을 챙기는 루틴입니다.</div>
+          <div class="tip">물 충분히 마시고, 밀 알레르기가 있으면 복용 전 확인이 필요합니다.</div>
+        </div>
+      </article>
+
+      <article class="routine">
+        <div class="time"><small>STEP 04</small><strong>취침<br>30분 전</strong></div>
+        <div class="routine-body">
+          <div class="product-line">
+            <div class="product">Doctor's Best High Absorption Magnesium</div>
+            <span class="dose">2정</span>
+          </div>
+          <div class="why">시차, 교대근무, 다리 뭉침이 있는 날 자기 전 루틴으로 넣습니다.</div>
+          <div class="tip">처음부터 부담되면 1정으로 시작해서 몸 반응을 보고 2정으로 올리세요.</div>
+        </div>
+      </article>
+    </section>
+
+    <section class="two-col">
+      <div class="panel">
+        <h2>비행 있는 날에는 이렇게만 기억하세요</h2>
+        <ul>
+          <li>출근 전 정신없으면 <strong>아침 식사 후 세트</strong>만 먼저 챙기세요.</li>
+          <li>밤비행 후에는 마그네슘을 “시계 시간”이 아니라 <strong>내가 잘 시간 기준</strong>으로 먹습니다.</li>
+          <li>커피는 멀티비타민 바로 앞뒤로 몰아 마시지 않는 편이 좋습니다.</li>
+          <li>컨디션이 안 좋은 날, 약을 먹는 날은 새 영양제를 무리해서 추가하지 마세요.</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h2>주요 충족 영양소 메모</h2>
+        <table class="nutri">
+          <tr>
+            <th>제품</th>
+            <th>주요 성분</th>
+          </tr>
+          <tr>
+            <td>Multi For Her</td>
+            <td>철분 <span class="red">100%</span>, 엽산 <span class="red">250%</span>, 비타민 D3 <span class="red">250%</span>, B12 <span class="red">250%</span>, 아연 <span class="red">214%</span></td>
+          </tr>
+          <tr>
+            <td>Magnesium</td>
+            <td>마그네슘 200mg, 제품 기준 <span class="red">48%</span></td>
+          </tr>
+          <tr>
+            <td>나머지 3종</td>
+            <td>피토세라마이드, 포도씨 추출물, 유산균은 일일 기준치가 없어 함량 기준으로 관리</td>
+          </tr>
+        </table>
+      </div>
+    </section>
+
+    <div class="foot">
+      <div>출력용 A4 세로 일정표 · 2026-05-27</div>
+      <div>건강 정보 정리용입니다. 질병의 진단·치료·예방 목적이 아니며, 복용 중인 약이 있으면 전문가에게 확인하세요.</div>
+    </div>
+  </main>
+</body>
+</html>

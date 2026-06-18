@@ -362,10 +362,10 @@ const ColumnHeader: React.FC<{ frame: number; data: SeoulPriceDataset }> = ({ fr
     >
       <div style={{ width: 140 }}>{data.districtLabel || "지역"}</div>
       <div style={{ width: 220, textAlign: "right", paddingRight: 16 }}>
-        {data.beforeLabel || "취임 전"}
+        {data.beforeLabel || "이전"}
       </div>
       <div style={{ width: 220, textAlign: "right", paddingRight: 16 }}>
-        {data.afterLabel || "취임 후"}
+        {data.afterLabel || "이후"}
       </div>
       <div style={{ flex: 1, marginLeft: 10 }}>{data.changeLabel || "변동률"}</div>
     </div>

@@ -6,6 +6,7 @@ row shaping without needing a live DB.
 from __future__ import annotations
 
 from datetime import datetime, timezone
+import re
 from typing import Any
 
 import psycopg2
@@ -28,6 +29,26 @@ def compute_change_pct(price_before: int, price_after: int) -> float:
 def _won_to_manwon(won: int) -> int:
     """Convert won → 만원 (truncated). 100,000,000원 (1억) → 10,000만원."""
     return won // 10_000
+
+
+def _shorten_period_part(part: str) -> str:
+    value = re.sub(r"\s+", "", part.strip())
+    full_year = re.fullmatch(r"(20\d{2})\.0?1~\1\.12", value)
+    if full_year:
+        return f"{full_year.group(1)} 평균"
+
+    current_year = re.fullmatch(r"(20\d{2})\.0?1~현재", value)
+    if current_year:
+        return f"{current_year.group(1)} 현재"
+
+    return value or part.strip()
+
+
+def derive_period_labels(period_label: str) -> tuple[str, str]:
+    parts = period_label.split(" vs ", 1)
+    if len(parts) != 2:
+        return "이전", "이후"
+    return _shorten_period_part(parts[0]), _shorten_period_part(parts[1])
 
 
 def rows_to_dataset(
@@ -55,12 +76,16 @@ def rows_to_dataset(
             "changePct": compute_change_pct(price_before, price_after),
         })
 
+    before_label, after_label = derive_period_labels(period_label)
+
     return {
         "generatedAt": datetime.now(timezone.utc).astimezone().isoformat(),
         "title": title,
         "subtitle": subtitle,
         "periodLabel": period_label,
         "source": source,
+        "beforeLabel": before_label,
+        "afterLabel": after_label,
         "districts": districts,
     }
 

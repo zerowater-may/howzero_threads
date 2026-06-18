@@ -10,6 +10,7 @@ from .prompts import instagram_prompt, linkedin_prompt, threads_prompt
 _DEFAULT_MODEL = "claude-sonnet-4-6"
 _DEFAULT_DEEPSEEK_MODEL = "deepseek-v4-flash"
 _DEFAULT_KIMI_MODEL = "kimi-k2.6"
+_DEFAULT_KIMI_CODE_MODEL = "kimi-for-coding"
 _MAX_TOKENS = 2048
 _THREADS_MAX_LINES = 3
 
@@ -46,6 +47,11 @@ def resolve_caption_provider() -> CaptionProvider:
         return explicit.lower().replace("-", "_")
     if _read_env("ANTHROPIC_API_KEY"):
         return "anthropic"
+    kimi_base_url = _read_env("CONTENT_CAPTIONS_BASE_URL", "KIMI_CODE_BASE_URL", "KIMI_BASE_URL")
+    if _read_env("KIMI_CODE_API_KEY") or (
+        kimi_base_url and "api.kimi.com/coding" in kimi_base_url
+    ):
+        return "kimi_code"
     if _read_env("KIMI_API_KEY", "MOONSHOT_API_KEY"):
         return "kimi"
     if _read_env("DEEPSEEK_API_KEY"):
@@ -63,6 +69,24 @@ def _call_claude(prompt: str) -> str:
     client = anthropic.Anthropic(api_key=api_key)
     message = client.messages.create(
         model=_read_env("CONTENT_CAPTIONS_MODEL", "ANTHROPIC_MODEL") or _DEFAULT_MODEL,
+        max_tokens=_MAX_TOKENS,
+        messages=[{"role": "user", "content": prompt}],
+    )
+    return "".join(block.text for block in message.content if hasattr(block, "text")).strip()
+
+
+def _call_anthropic_compatible(
+    *,
+    prompt: str,
+    auth_token: str,
+    base_url: str,
+    model: str,
+) -> str:
+    import anthropic
+
+    client = anthropic.Anthropic(auth_token=auth_token, base_url=base_url)
+    message = client.messages.create(
+        model=model,
         max_tokens=_MAX_TOKENS,
         messages=[{"role": "user", "content": prompt}],
     )
@@ -122,8 +146,28 @@ def _call_model(provider: CaptionProvider, prompt: str) -> str:
             or "https://api.moonshot.ai/v1",
             model=_read_env("CONTENT_CAPTIONS_MODEL", "KIMI_MODEL", "MOONSHOT_MODEL") or _DEFAULT_KIMI_MODEL,
         )
+    if provider in {"kimi_code", "kimi_for_coding"}:
+        api_key = _read_env("KIMI_CODE_API_KEY", "KIMI_API_KEY", "MOONSHOT_API_KEY", "ANTHROPIC_AUTH_TOKEN")
+        if not api_key:
+            raise RuntimeError(
+                "KIMI_CODE_API_KEY, KIMI_API_KEY, or MOONSHOT_API_KEY is required "
+                "when CONTENT_CAPTIONS_PROVIDER=kimi_code"
+            )
+        base_url = (
+            _read_env("CONTENT_CAPTIONS_BASE_URL", "KIMI_CODE_BASE_URL")
+            or "https://api.kimi.com/coding/"
+        )
+        if base_url.rstrip("/").endswith("/v1"):
+            base_url = base_url.rstrip("/")[:-2]
+        return _call_anthropic_compatible(
+            prompt=prompt,
+            auth_token=api_key,
+            base_url=base_url,
+            model=_read_env("CONTENT_CAPTIONS_MODEL", "KIMI_CODE_MODEL", "KIMI_MODEL")
+            or _DEFAULT_KIMI_CODE_MODEL,
+        )
     raise RuntimeError(
-        "Unsupported CONTENT_CAPTIONS_PROVIDER. Use anthropic, deepseek, or kimi."
+        "Unsupported CONTENT_CAPTIONS_PROVIDER. Use anthropic, deepseek, kimi, or kimi_code."
     )
 
 

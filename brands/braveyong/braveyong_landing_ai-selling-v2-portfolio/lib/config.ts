@@ -13,7 +13,7 @@ export const config = {
   // 폼 URL 미설정 시 페이지 top 튀는 것 방지 — 신청 섹션(#apply)으로 부드러운 스크롤
   googleFormUrl: isGoogleFormUrlMissing ? "#apply" : rawGoogleFormUrl,
   /** 1기 신청 마감 ISO datetime — 카운트다운 종료 후 자동 숨김 */
-  cohort1Deadline: process.env.NEXT_PUBLIC_COHORT1_DEADLINE || "2026-06-08T23:59:59+09:00",
+  cohort1Deadline: process.env.NEXT_PUBLIC_COHORT1_DEADLINE || "2026-06-14T23:59:59+09:00",
   youtubeFreeUrl: process.env.NEXT_PUBLIC_YOUTUBE_FREE_URL || "#",
   contactEmail: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "braveyong@example.com",
   ga4Id: process.env.NEXT_PUBLIC_GA4_ID || "",
@@ -41,7 +41,7 @@ export const course = {
   priceRegular: 2_500_000,         // 2기 이후 정가
   capacityMin: 10,                 // 페이지 노출 X (내부 운영 기준)
   capacityMax: 15,                 // 페이지 노출 X
-  freeLectureDate: "2026-06-10 (수)",
+  freeLectureDate: "2026-06-08 (월) 19:00",
   startDate: "2026-06-13 (토)",
   endDate: "2026-07-11 (토)",
   weeks: 5,

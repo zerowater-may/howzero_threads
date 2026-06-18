@@ -4,6 +4,9 @@ import { Slide1Cover } from "./slides/Slide1Cover";
 import { NowonSanggyeReel, NOWON_SANGGYE_TOTAL_FRAMES } from "./NowonSanggyeReel";
 import { NowonSanggyeCarousel, NOWON_SANGGYE_CAROUSEL_TOTAL_FRAMES } from "./NowonSanggyeCarousel";
 import { SeoulPriceReel, SEOUL_PRICE_TOTAL_FRAMES } from "./SeoulPriceReel";
+import { FiveEokReel, FIVE_EOK_TOTAL_FRAMES } from "./FiveEokReel";
+import { ShuttleReel, SHUTTLE_TOTAL_FRAMES } from "./ShuttleReel";
+import { PresReel, PRES_TOTAL_FRAMES } from "./PresReel";
 import {
   SeoulWeeklyRateReel,
   SEOUL_WEEKLY_RATE_TOTAL_FRAMES,
@@ -71,6 +74,30 @@ export const Root: React.FC = () => {
         width={1080}
         height={1920}
         defaultProps={{ data: seoulWeeklyData as SeoulWeeklyRateDataset }}
+      />
+      <Composition
+        id="FiveEokReel"
+        component={FiveEokReel}
+        durationInFrames={FIVE_EOK_TOTAL_FRAMES}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="ShuttleReel"
+        component={ShuttleReel}
+        durationInFrames={SHUTTLE_TOTAL_FRAMES}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="PresReel"
+        component={PresReel}
+        durationInFrames={PRES_TOTAL_FRAMES}
+        fps={FPS}
+        width={1080}
+        height={1920}
       />
     </>
   );

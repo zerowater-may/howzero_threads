@@ -1,0 +1,57 @@
+{
+  "slug": "5억-서울-신축은-단-4곳-나머지는-다-구축",
+  "title": "5억으로 살 수 있는 서울 신축, 딱 4곳",
+  "subtitle": "5억대 서울 아파트 매매의 99%가 구축",
+  "angle": "공간/선택 트레이드오프 — 같은 5억, 신축 존버(영끌) vs 구축 현실 입성",
+  "periodLabel": "2025.09~2026.06 · 서울 300세대↑ · 매매(A1) · 4.5~5.5억 · 취소거래 제외",
+  "source": "국토부 실거래가 (proptech_db, 서울 25개 구)",
+  "note": "원안 #3은 '서울 vs 경기'였으나 proptech_db가 서울 25개 구만 보유 → 서울 내 신축 vs 구축 같은-예산 트레이드오프로 조정.",
+  "band": { "min_eok": 4.5, "max_eok": 5.5, "total_trades": 2115 },
+  "new": {
+    "label": "신축(2018년~)",
+    "trades": 17,
+    "share_pct": 0.8,
+    "complexes": 4,
+    "avg_pyeong": 16.7,
+    "avg_build_year": 2019,
+    "avg_eok": 5.11,
+    "examples": [
+      { "name": "현대6차", "gu": "노원구", "year": 2018, "eok": 5.10 },
+      { "name": "백련산해모로", "gu": "은평구", "year": 2020, "eok": 5.33 },
+      { "name": "영등포중흥S-클래스", "gu": "영등포구", "year": 2021, "eok": 4.86 },
+      { "name": "e편한세상서대문", "gu": "서대문구", "year": 2023, "eok": 5.20 }
+    ]
+  },
+  "old": {
+    "label": "구축(2003년 이전)",
+    "trades": 1929,
+    "share_pct": 91.2,
+    "complexes": 204,
+    "avg_pyeong": 16.5,
+    "avg_build_year": 1993,
+    "avg_eok": 5.08,
+    "gu_top": [
+      { "gu": "노원구", "trades": 740, "complexes": 52 },
+      { "gu": "도봉구", "trades": 289, "complexes": 30 },
+      { "gu": "구로구", "trades": 185, "complexes": 22 },
+      { "gu": "중랑구", "trades": 177, "complexes": 16 },
+      { "gu": "강서구", "trades": 139, "complexes": 16 }
+    ],
+    "examples": [
+      { "name": "상계주공9단지", "gu": "노원구", "year": 1988, "eok": 4.97, "pyeong": 14.0 },
+      { "name": "상계주공16단지", "gu": "노원구", "year": 1988, "eok": 5.10, "pyeong": 17.9 },
+      { "name": "상계주공7단지", "gu": "노원구", "year": 1988, "eok": 5.21, "pyeong": 14.0 },
+      { "name": "창동주공3단지", "gu": "도봉구", "year": 1990, "eok": 5.05, "pyeong": 14.2 },
+      { "name": "중계주공5단지", "gu": "노원구", "year": 1992, "eok": 4.86, "pyeong": 13.7 },
+      { "name": "구로두산", "gu": "구로구", "year": 1998, "eok": 5.11, "pyeong": 13.8 }
+    ]
+  },
+  "new_reality_median_eok": 13.5,
+  "new_reality_avg_eok": 16.2,
+  "gap_eok": 8.5,
+  "age_gap_years": 26,
+  "comment_fight": {
+    "axis": "영끌해서 신축 13.5억 vs 5억 구축 현실 입성",
+    "secondary": ["새집 삶의 질 vs 입지/넓이", "결국 노도강 지역 논쟁"]
+  }
+}

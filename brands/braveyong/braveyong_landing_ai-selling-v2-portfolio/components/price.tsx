@@ -1,47 +1,61 @@
-import Link from "next/link"
-import { ArrowUpRight } from "lucide-react"
 import { Section } from "./section"
 import { ArrowNote } from "./handwriting"
+import { CountdownTimer } from "./countdown-timer"
+import { PaymentDialog } from "@/components/payment-dialog"
 import { config, course } from "@/lib/config"
 
 /**
- * 14 가격 — 가격 공개 + 할부 가능 명시.
- * 1기 실행자 특별가와 정가, 카드 할부 가능 메시지로 결제 부담 완화.
+ * 14 가격 — 1기 마감 전까지 타임어택 오퍼.
+ * 정가 250만원 strike + 1기 특별가 198만원 강조 + 카운트다운 + 즉시 결제.
+ * 신청서/구글폼 흐름 제거 — 결제 단일 CTA.
  */
 export function Price() {
   return (
     <Section id="price" label="가격" title={<>가격은 공개합니다.</>}>
       <div className="grid gap-5 lg:grid-cols-[1.15fr_0.85fr]">
         <div className="relative border-2 border-[var(--warm-border)] bg-background p-7 shadow-[0_18px_50px_rgba(0,0,0,0.06)]">
-          <span className="font-mono absolute -top-3 left-6 inline-block bg-[var(--warm-border)] px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.12em] text-background">
-            1기 실행자 특별가
+          <span className="font-mono absolute -top-3 left-6 inline-block bg-brand px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.12em] text-brand-foreground">
+            1기 마감 임박 · 1기 특별가
           </span>
           <div className="text-sm font-bold text-foreground/70">
             5주 오프라인 AI 셀링 실전반 · {course.cohort}
           </div>
 
-          {/* 가격 앵커링 — 정가 strike 위쪽 + 1기 특별가 큰 숫자 */}
-          <div className="mt-2 flex items-baseline gap-3">
+          {/* 타임어택 카운트다운 — 1기 마감 (마감 후 자동 숨김) */}
+          <div className="mt-3">
+            <CountdownTimer className="text-brand" />
+          </div>
+
+          {/* 가격 앵커링 — 정가 250만 strike + 1기 특별가 198만 큰 숫자 */}
+          <div className="mt-3 flex items-baseline gap-3">
             <s className="text-2xl font-bold text-foreground/40 tabular-nums">
               {(course.priceRegular / 10000).toLocaleString()}만원
             </s>
             <span className="font-mono rounded-full bg-[var(--warm)] px-2 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--warm-border)]">
-              2기 이후 정가
+              마감되면 정가
             </span>
           </div>
           <div className="mt-1 text-5xl font-bold tracking-tight tabular-nums">
             {(course.priceFirst / 10000).toLocaleString()}
             <span className="ml-1 text-lg font-bold text-foreground/65">만원</span>
+            <span className="ml-2 text-sm font-bold text-foreground/55">(부가세 포함)</span>
           </div>
-          <div className="font-mono mt-1 text-xs font-bold uppercase tracking-[0.12em] text-[var(--warm-border)]">
-            1기 실행자 한정 · {(((course.priceRegular - course.priceFirst) / course.priceRegular) * 100).toFixed(0)}% off
+          <div className="font-mono mt-1 text-xs font-bold uppercase tracking-[0.12em] text-brand">
+            1기 마감 전까지만 · {(((course.priceRegular - course.priceFirst) / course.priceRegular) * 100).toFixed(0)}% off
           </div>
 
           <div className="mt-3">
-            <ArrowNote>1기에만 적용되는 가격이에요</ArrowNote>
+            <ArrowNote>1기 얼리버드 특별가예요</ArrowNote>
           </div>
 
-          <div className="font-mono mt-5 flex flex-wrap gap-1.5 text-[10px] uppercase tracking-wider">
+          {/* 타임어택 큰 결제 버튼 — 위쪽·강조 (Clarity: 거의 안 내림) */}
+          <PaymentDialog
+            amount={course.priceFirst}
+            label={`1기 특별가 — 지금 결제 ${(course.priceFirst / 10000).toLocaleString()}만원`}
+            className="group mt-5 inline-flex w-full items-center justify-center gap-2.5 rounded-full border-2 border-brand bg-brand px-6 py-4 text-base font-bold tracking-tight text-brand-foreground transition-all hover:opacity-90 sm:py-5 sm:text-lg"
+          />
+
+          <div className="font-mono mt-4 flex flex-wrap gap-1.5 text-[10px] uppercase tracking-wider">
             <span className="rounded-full border border-foreground/30 px-2.5 py-1">카드 결제</span>
             <span className="rounded-full border border-foreground/30 px-2.5 py-1">계좌이체</span>
             <span className="rounded-full border border-[var(--warm-border)] bg-[var(--warm)] px-2.5 py-1 font-bold text-[var(--warm-border)]">
@@ -52,23 +66,20 @@ export function Price() {
           {/* 할부 부담 완화 한 줄 — 사람 말투 */}
           <p className="font-memo mt-3 text-sm leading-relaxed text-foreground/75 sm:text-base">
             한 번에 부담되시면, <span className="font-bold text-foreground">카드 3·6개월 무이자 할부</span>로 나눠 결제하실 수 있습니다.<br />
-            월 30만원대부터 시작이에요.
+            6개월 무이자면 <span className="font-bold text-foreground">월 33만원</span>대부터예요.
           </p>
 
           <hr className="my-5 border-foreground/10" />
-          <p className="text-sm leading-relaxed text-foreground/70">
-            <span className="font-bold text-foreground">신청서 작성하시면 결제 링크가 즉시 발송됩니다.</span>{" "}
-            결제만 따로 받는 페이지는 없어요 — 신청서가 결제의 유일한 시작입니다.
-          </p>
 
-          {/* 1기 한정 — 진심·집중 톤 (테스터 느낌 X) */}
-          <div className="mt-4 border-l-2 border-foreground bg-foreground/[0.04] px-4 py-3">
+          {/* 타임어택 — 진짜 이유 (가짜 긴급 X) */}
+          <div className="border-l-2 border-brand bg-brand/[0.06] px-4 py-3">
             <div className="font-mono text-[10px] font-bold uppercase tracking-[0.15em] text-foreground/55">
-              왜 1기만 이 가격?
+              왜 1기 마감 전까지?
             </div>
             <p className="mt-1 text-sm leading-relaxed text-foreground/85 sm:text-base">
-              <span className="font-bold text-foreground">1기는 인원이 가장 적은 첫 기수</span>예요. 한 분 한 분과 가장 가까이서 같이 가는 5주이고요.{" "}
-              그래서 1기만 <span className="font-bold text-foreground">정가의 절반 이하</span>로 시작합니다. 2기부터는 정가 250만원이에요.
+              지금 1기 모집 중 — 곧 마감됩니다. <span className="font-bold text-foreground">실행 사례를 같이 만들 1기 분들 가격</span>이라,{" "}
+              <span className="font-bold text-foreground">선착순 마감 전까지만</span> 198만원입니다.{" "}
+              정원이 차거나 마감일이 지나면 2기 정가 <span className="font-bold text-foreground">250만원</span>으로 돌아가요.
             </p>
           </div>
 
@@ -79,17 +90,20 @@ export function Price() {
             와, 졸업 후에도 같이 가는 사람들입니다.
           </p>
 
-          <Link
-            href={config.googleFormUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="신청서 작성하기 — 약 1분, 새 창에서 열림"
-            data-track="price_apply"
-            className="group mt-5 inline-flex w-full items-center justify-center gap-2.5 rounded-full border-2 border-foreground bg-foreground px-6 py-4 text-base font-bold tracking-tight text-background transition-all hover:bg-background hover:text-foreground sm:py-5 sm:text-lg"
-          >
-            신청서 작성하기 (약 1분)
-            <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 sm:h-6 sm:w-6" />
-          </Link>
+          {/* 결제 전 궁금하면 — 보조 채널(1:1 카톡)만 */}
+          <p className="mt-4 text-sm leading-relaxed text-foreground/65">
+            결제 전에 궁금한 게 있으면,{" "}
+            <a
+              href={config.kakao1to1Url}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-track="price_ask_1to1"
+              className="font-bold text-foreground underline underline-offset-4 hover:text-brand"
+            >
+              1:1 카톡으로 용팀장에게 직접
+            </a>{" "}
+            물어보셔도 돼요.
+          </p>
         </div>
 
         <div className="space-y-3">
@@ -97,9 +111,9 @@ export function Price() {
             <p className="text-foreground/75">
               1기는 첫 기수예요. 실행 사례·후기를 같이 만들 분들이라, 그만큼 가격을 낮췄습니다.<br />
               <br />
-              <span className="font-bold text-foreground">대신 아무나 받지는 않습니다.</span>
+              <span className="font-bold text-foreground">대신 5주 진심으로 함께할 분만 오세요.</span>
               <br />
-              5주 동안 오프라인에 직접 오시고, 줌 보강 들으시고, 매주 과제 같이 해주실 분, 신청서 보고 따로 연락드릴게요.
+              오프라인에 직접 오시고, 줌 보강 들으시고, 매주 과제 같이 해주실 분. 결제하시면 용팀장이 카톡으로 1주차 일정·장소를 바로 챙겨 드릴게요.
             </p>
           </div>
           <div className="border-l-4 border-foreground bg-background p-5 text-sm leading-relaxed">

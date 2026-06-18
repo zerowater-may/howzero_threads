@@ -18,6 +18,8 @@ test -f "$BUNDLE/data.json"
 test -f "$BUNDLE/carousel/slides.html"
 test -f "$BUNDLE/reels/full.mp4"
 test -f "$BUNDLE/reels/zipsaja-reel-30s.mp4"
+test -f "$BUNDLE/reels/zipsaja-reel-30s-audio-mapped.mp4"
+test -f "$BUNDLE/reels/zipsaja-reel-30s-audio-mapped-ig-safe.mp4"
 ```
 
 Check carousel metadata:
@@ -34,7 +36,11 @@ Check video metadata:
 ffprobe -v error -select_streams v:0 \
   -show_entries stream=width,height,sample_aspect_ratio,display_aspect_ratio,r_frame_rate:format=duration \
   -of default=nokey=1:noprint_wrappers=1 \
-  "$BUNDLE/reels/zipsaja-reel-30s.mp4"
+  "$BUNDLE/reels/zipsaja-reel-30s-audio-mapped-ig-safe.mp4"
+ffprobe -v error -select_streams a:0 \
+  -show_entries stream=codec_name,channels:format=duration \
+  -of default=nokey=1:noprint_wrappers=1 \
+  "$BUNDLE/reels/zipsaja-reel-30s-audio-mapped-ig-safe.mp4"
 ```
 
 Expected stream values:
@@ -46,12 +52,14 @@ Expected stream values:
 9:16
 30/1
 30.000000
+aac
+2
+30.000000
 ```
 
 If the bundle will be published through Zernio, also check:
 
 ```bash
-test -f "$BUNDLE/reels/zipsaja-reel-30s-audio-mapped-ig-safe.mp4"
 test -f "$BUNDLE/publish-ready/instagram-reel-cover.png"
 sips -g pixelWidth -g pixelHeight "$BUNDLE/publish-ready/instagram-reel-cover.png"
 find "$BUNDLE/publish-ready/instagram-carousel" -name 'slide-*.png' | sort | head -1 | xargs sips -g pixelWidth -g pixelHeight

@@ -65,7 +65,7 @@ export class ThreadsClient {
 
   async getComments(mediaId: string) {
     const allComments: Record<string, unknown>[] = [];
-    let endpoint = `${mediaId}/conversation`;
+    const endpoint = `${mediaId}/conversation`;
     let params: Record<string, string> = {
       fields: "id,permalink,username,timestamp,text,hidden",
     };

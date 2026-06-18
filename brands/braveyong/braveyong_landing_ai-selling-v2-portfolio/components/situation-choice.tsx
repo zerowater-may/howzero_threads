@@ -1,7 +1,7 @@
-import Link from "next/link"
-import { ArrowUpRight, CheckCircle2 } from "lucide-react"
+import { CheckCircle2 } from "lucide-react"
 import { Section } from "./section"
-import { config } from "@/lib/config"
+import { config, course } from "@/lib/config"
+import { PaymentDialog } from "./payment-dialog"
 
 const paths = [
   {
@@ -73,24 +73,29 @@ export function SituationChoice() {
         <div className="grid gap-5 md:grid-cols-[1fr_auto] md:items-center">
           <div>
             <h3 className="text-xl font-bold tracking-tight sm:text-2xl">
-              내 상황에 맞는 시작점은 신청서에서 먼저 봅니다.
+              어디서 시작하든, 5주 안에 효자상품 하나는 같이 만듭니다.
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-background/75 sm:text-base">
-              그래서 바로 결제 페이지로 밀지 않습니다. 지금 상품 수, 판매 경험, 막힌 지점을 먼저 보고
-              5주 안에 같이 만들 수 있는지 확인합니다.
+              초보든, 대량등록만 해봤든 상관없어요. 지금 1기 모집 중 — 곧 마감됩니다. 1기 마감 전까지만 특별가로 시작하세요.
+              결제하시면 용팀장이 카톡으로 1주차 일정·장소를 직접 챙겨 드립니다.
             </p>
           </div>
-          <Link
-            href={config.googleFormUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="내 상황 적고 1기 안내받기 — 새 창에서 열림"
-            data-track="choice_apply"
-            className="group inline-flex items-center justify-center gap-2 rounded-full border-2 border-background bg-background px-6 py-3 text-sm font-bold text-foreground transition-all hover:bg-foreground hover:text-background sm:text-base"
-          >
-            내 상황 적고 안내받기
-            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </Link>
+          <div className="flex flex-col items-stretch gap-2">
+            <PaymentDialog
+              amount={course.priceFirst}
+              label="1기 특별가 — 지금 결제 198만원"
+              className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-background bg-background px-6 py-3.5 text-sm font-bold text-foreground transition-all hover:opacity-90 sm:text-base"
+            />
+            <a
+              href={config.kakao1to1Url}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-track="choice_ask_1to1"
+              className="text-center text-xs font-bold text-background/70 underline underline-offset-4 hover:text-background"
+            >
+              결제 전에 궁금하면 1:1 카톡
+            </a>
+          </div>
         </div>
       </div>
     </Section>

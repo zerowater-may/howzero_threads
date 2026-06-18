@@ -1,0 +1,151 @@
+{
+  "updatedAt": "2026-05-01T04:29:16.383658+00:00",
+  "mode": "publish-now",
+  "bundle": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_집주인-1만2천건-만기폭탄-첫집러-기회냐-함정이냐",
+  "media": {
+    "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_집주인-1만2천건-만기폭탄-첫집러-기회냐-함정이냐/reels/zipsaja-reel-30s.mp4",
+    "type": "video"
+  },
+  "platforms": {
+    "instagram_reel": {
+      "status": "published",
+      "platformStatus": "published",
+      "postId": "69f42b81bdcaa4fe106b20bd",
+      "platform": "instagram",
+      "platformPostId": "18079406054154705",
+      "platformPostUrl": "https://www.instagram.com/reel/DXyFfdPAScK/",
+      "errorMessage": null,
+      "mediaCount": 1,
+      "contentType": "reels"
+    },
+    "instagram_carousel": {
+      "status": "failed",
+      "platformStatus": "failed",
+      "postId": "69f42bb93404fd49e05865fd",
+      "platform": "instagram",
+      "platformPostId": null,
+      "platformPostUrl": null,
+      "errorMessage": "Publishing timed out during platform API call. The post may have been published externally. Check the platform before retrying.",
+      "mediaCount": 10,
+      "contentType": null,
+      "duplicateGuard": "zernio-409"
+    },
+    "threads": {
+      "status": "failed",
+      "platformStatus": "failed",
+      "postId": "69f42c208349c3fee3ab9702",
+      "platform": "threads",
+      "platformPostId": null,
+      "platformPostUrl": null,
+      "errorMessage": "Publishing timed out during platform API call. The post may have been published externally. Check the platform before retrying.",
+      "mediaCount": 10,
+      "contentType": null,
+      "duplicateGuard": "zernio-409"
+    }
+  },
+  "createdAt": "2026-05-01T04:26:39.893242+00:00",
+  "instagramCarouselMedia": [
+    {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_집주인-1만2천건-만기폭탄-첫집러-기회냐-함정이냐/carousel/slide-01.png",
+      "publicUrl": "https://media.zernio.com/temp/1777609636975_9zdrvjvn_slide-01.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_집주인-1만2천건-만기폭탄-첫집러-기회냐-함정이냐/carousel/slide-02.png",
+      "publicUrl": "https://media.zernio.com/temp/1777609638306_0kui10el_slide-02.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_집주인-1만2천건-만기폭탄-첫집러-기회냐-함정이냐/carousel/slide-03.png",
+      "publicUrl": "https://media.zernio.com/temp/1777609639685_bgy0gjud_slide-03.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_집주인-1만2천건-만기폭탄-첫집러-기회냐-함정이냐/carousel/slide-04.png",
+      "publicUrl": "https://media.zernio.com/temp/1777609641293_yf5thzao_slide-04.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_집주인-1만2천건-만기폭탄-첫집러-기회냐-함정이냐/carousel/slide-05.png",
+      "publicUrl": "https://media.zernio.com/temp/1777609642639_7yrq8q60_slide-05.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_집주인-1만2천건-만기폭탄-첫집러-기회냐-함정이냐/carousel/slide-06.png",
+      "publicUrl": "https://media.zernio.com/temp/1777609644009_v3yid7t6_slide-06.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_집주인-1만2천건-만기폭탄-첫집러-기회냐-함정이냐/carousel/slide-07.png",
+      "publicUrl": "https://media.zernio.com/temp/1777609645360_1sa00j0o_slide-07.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_집주인-1만2천건-만기폭탄-첫집러-기회냐-함정이냐/carousel/slide-08.png",
+      "publicUrl": "https://media.zernio.com/temp/1777609647419_lg798fwo_slide-08.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_집주인-1만2천건-만기폭탄-첫집러-기회냐-함정이냐/carousel/slide-09.png",
+      "publicUrl": "https://media.zernio.com/temp/1777609649511_6mei0c6d_slide-09.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_집주인-1만2천건-만기폭탄-첫집러-기회냐-함정이냐/carousel/slide-10.png",
+      "publicUrl": "https://media.zernio.com/temp/1777609651301_axxg9t1f_slide-10.png",
+      "contentType": "image/png"
+    }
+  ],
+  "threadsCarouselMedia": [
+    {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_집주인-1만2천건-만기폭탄-첫집러-기회냐-함정이냐/carousel/slide-01.png",
+      "publicUrl": "https://media.zernio.com/temp/1777609742007_55nvpm8a_slide-01.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_집주인-1만2천건-만기폭탄-첫집러-기회냐-함정이냐/carousel/slide-02.png",
+      "publicUrl": "https://media.zernio.com/temp/1777609743336_wylra8lq_slide-02.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_집주인-1만2천건-만기폭탄-첫집러-기회냐-함정이냐/carousel/slide-03.png",
+      "publicUrl": "https://media.zernio.com/temp/1777609745596_x66jfzqm_slide-03.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_집주인-1만2천건-만기폭탄-첫집러-기회냐-함정이냐/carousel/slide-04.png",
+      "publicUrl": "https://media.zernio.com/temp/1777609746964_c5zb8k1n_slide-04.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_집주인-1만2천건-만기폭탄-첫집러-기회냐-함정이냐/carousel/slide-05.png",
+      "publicUrl": "https://media.zernio.com/temp/1777609748262_4z6mkday_slide-05.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_집주인-1만2천건-만기폭탄-첫집러-기회냐-함정이냐/carousel/slide-06.png",
+      "publicUrl": "https://media.zernio.com/temp/1777609749604_172pxdwv_slide-06.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_집주인-1만2천건-만기폭탄-첫집러-기회냐-함정이냐/carousel/slide-07.png",
+      "publicUrl": "https://media.zernio.com/temp/1777609750977_htgxds5b_slide-07.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_집주인-1만2천건-만기폭탄-첫집러-기회냐-함정이냐/carousel/slide-08.png",
+      "publicUrl": "https://media.zernio.com/temp/1777609752341_wll2y4i9_slide-08.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_집주인-1만2천건-만기폭탄-첫집러-기회냐-함정이냐/carousel/slide-09.png",
+      "publicUrl": "https://media.zernio.com/temp/1777609753633_g0h44giu_slide-09.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_집주인-1만2천건-만기폭탄-첫집러-기회냐-함정이냐/carousel/slide-10.png",
+      "publicUrl": "https://media.zernio.com/temp/1777609755216_xe5ji16r_slide-10.png",
+      "contentType": "image/png"
+    }
+  ]
+}

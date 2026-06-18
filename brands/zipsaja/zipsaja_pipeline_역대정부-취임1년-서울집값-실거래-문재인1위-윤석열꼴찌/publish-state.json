@@ -1,0 +1,445 @@
+{
+  "updatedAt": "2026-06-11T21:44:57.335638+09:00",
+  "mode": "publish-now",
+  "bundle": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_역대정부-취임1년-서울집값-실거래-문재인1위-윤석열꼴찌",
+  "media": {
+    "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_역대정부-취임1년-서울집값-실거래-문재인1위-윤석열꼴찌/reels/zipsaja-reel-30s.mp4",
+    "type": "video"
+  },
+  "platforms": {
+    "instagram_reel": {
+      "status": "submitted",
+      "postId": "6a2aad42d6ca1907ce549b6f",
+      "response": {
+        "post": {
+          "recycling": {
+            "enabled": false,
+            "gapFreq": "month",
+            "recycleCount": 0,
+            "contentVariations": [],
+            "contentVariationIndex": 0
+          },
+          "_id": "6a2aad42d6ca1907ce549b6f",
+          "userId": "6925d39a4d42babc89dd33e5",
+          "title": "",
+          "content": "역대 대통령 취임 1년, 서울 집값 누가 제일 올렸을까? 🦁\n집사자가 실거래로 직접 계산했어 (KB지수 말고 진짜 거래가, 동일 단지·평형 매칭).\n\n이명박 -4.0%\n박근혜 +4.4%\n문재인 +16.9% (역대 1위 🔥)\n윤석열 -17.1% (역대 꼴찌)\n이재명 +14.8% (2위·진행중)\n\n이재명 1주년 '역대최대'라는데, 진짜 거래가로 보면 문재인 첫해(+16.9%)가 1위고 이재명이 2위야. 윤석열 첫해는 -17%로 역대 꼴찌.\n\n정권 탓이 아니라 시장 사이클이야. 근데 숫자는 숫자고.\n너네 정권 때가 제일 심했다? 댓글로 숫자 보고 싸워봐 🔥\n\n· 노무현(2003)은 실거래 데이터 전이라 제외(2006~)\n· 이재명은 약 12개월 진행 중\n기준 · proptech_db 실거래(서울 300세대↑ 아파트) · 동일 단지·평형 매칭 중위 · 취임일±45일 vs +1년",
+          "mediaItems": [
+            {
+              "type": "video",
+              "url": "https://media.zernio.com/media/1781181756593_fa1zt24n_zipsaja-reel-30s-audio-mapped-ig-safe.mp4",
+              "_id": "6a2aad42d6ca1907ce549b70"
+            }
+          ],
+          "platforms": [
+            {
+              "platform": "instagram",
+              "accountId": {
+                "_id": "69f08a47985e734bf3c9c295",
+                "platform": "instagram",
+                "profileId": "6925d3d1359f1d8910fb02e6",
+                "displayName": "집사는 집사자",
+                "isActive": true,
+                "profilePicture": "https://scontent-lhr8-1.cdninstagram.com/v/t51.82787-19/671223225_18085027718096961_646454800105286025_n.jpg?stp=dst-jpg_s206x206_tt6&_nc_cat=108&ccb=7-5&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=y3U7ZaTUaQMQ7kNvwFv7OF4&_nc_oc=Ado2Rt6O0q2NXAlbRm9EXWdFl4QPdP5L0-jBy54ArvTITaI5Re5X0NuDTDwfKINz5i8&_nc_zt=24&_nc_ht=scontent-lhr8-1.cdninstagram.com&edm=AP4hL3IEAAAA&_nc_gid=Xla_f2KsMefaDj2Olsx13w&_nc_tpa=Q5bMBQE-zYHwc3JODhbnlo_9UwugcF5ewrmyTd70qeacGzRvj2WauVOitKpedtw_e1RQ3RA4rRA7ZtKQ9Q&oh=00_Af8JLmYm9JknQePlkQRxMFxI2y7JfmskzSQeb4gWuXWbjQ&oe=6A300B68",
+                "username": "zipsaja_"
+              },
+              "profileId": "6925d3d1359f1d8910fb02e6",
+              "customMedia": [],
+              "scheduledFor": "2026-06-11T12:42:41.135Z",
+              "platformSpecificData": {
+                "contentType": "reels",
+                "shareToFeed": true,
+                "audioName": "zipsaja original audio",
+                "instagramThumbnail": "https://media.zernio.com/temp/1781181759024_owc8j5gr_instagram-reel-cover.png",
+                "__platformUserIdSnapshot": "26232925676410203",
+                "__usernameSnapshot": "zipsaja_",
+                "publishingStarted": "2026-06-11T12:42:42.956Z",
+                "lastPublishStage": "awaiting-finalize",
+                "pendingContainerId": "18095382386096961"
+              },
+              "status": "processing",
+              "publishAttempts": 0,
+              "contentHash": "5510d596b8a1c737ae5b39374afd0715",
+              "_id": "6a2aad42d6ca1907ce549b71"
+            }
+          ],
+          "scheduledFor": "2026-06-11T12:42:41.135Z",
+          "timezone": "UTC",
+          "status": "publishing",
+          "tags": [],
+          "hashtags": [],
+          "mentions": [],
+          "visibility": "public",
+          "crosspostingEnabled": true,
+          "metadata": {
+            "usageCounted": true
+          },
+          "publishAttempts": 0,
+          "contentHash": "5510d596b8a1c737ae5b39374afd0715",
+          "createdAt": "2026-06-11T12:42:42.341Z",
+          "updatedAt": "2026-06-11T12:42:44.602Z",
+          "__v": 0,
+          "publishingClaimedAt": "2026-06-11T12:42:42.474Z"
+        },
+        "message": "Post published successfully"
+      }
+    },
+    "instagram_carousel": {
+      "status": "submitted",
+      "postId": "6a2aad63d6ca1907ce54a0f8",
+      "response": {
+        "post": {
+          "recycling": {
+            "enabled": false,
+            "gapFreq": "month",
+            "recycleCount": 0,
+            "contentVariations": [],
+            "contentVariationIndex": 0
+          },
+          "_id": "6a2aad63d6ca1907ce54a0f8",
+          "userId": "6925d39a4d42babc89dd33e5",
+          "title": "",
+          "content": "역대 대통령 취임 1년, 서울 집값 누가 제일 올렸을까? 🦁\n집사자가 실거래로 직접 계산했어 (KB지수 말고 진짜 거래가, 동일 단지·평형 매칭).\n\n이명박 -4.0%\n박근혜 +4.4%\n문재인 +16.9% (역대 1위 🔥)\n윤석열 -17.1% (역대 꼴찌)\n이재명 +14.8% (2위·진행중)\n\n이재명 1주년 '역대최대'라는데, 진짜 거래가로 보면 문재인 첫해(+16.9%)가 1위고 이재명이 2위야. 윤석열 첫해는 -17%로 역대 꼴찌.\n\n정권 탓이 아니라 시장 사이클이야. 근데 숫자는 숫자고.\n너네 정권 때가 제일 심했다? 댓글로 숫자 보고 싸워봐 🔥\n\n· 노무현(2003)은 실거래 데이터 전이라 제외(2006~)\n· 이재명은 약 12개월 진행 중\n기준 · proptech_db 실거래(서울 300세대↑ 아파트) · 동일 단지·평형 매칭 중위 · 취임일±45일 vs +1년",
+          "mediaItems": [
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1781181768615_6ca9pk9z_slide-01.png",
+              "_id": "6a2aad63d6ca1907ce54a0f9"
+            },
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1781181770566_sk28edfu_slide-02.png",
+              "_id": "6a2aad63d6ca1907ce54a0fa"
+            },
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1781181772423_bnq7vo73_slide-03.png",
+              "_id": "6a2aad63d6ca1907ce54a0fb"
+            },
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1781181774422_zkn1y9c7_slide-04.png",
+              "_id": "6a2aad63d6ca1907ce54a0fc"
+            },
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1781181777206_xx88hczc_slide-05.png",
+              "_id": "6a2aad63d6ca1907ce54a0fd"
+            },
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1781181779829_mm1yfbfn_slide-06.png",
+              "_id": "6a2aad63d6ca1907ce54a0fe"
+            },
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1781181781683_vrd5ho74_slide-07.png",
+              "_id": "6a2aad63d6ca1907ce54a0ff"
+            },
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1781181783628_24dbcrkk_slide-08.png",
+              "_id": "6a2aad63d6ca1907ce54a100"
+            },
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1781181785676_0r2quwb9_slide-09.png",
+              "_id": "6a2aad63d6ca1907ce54a101"
+            },
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1781181787611_b5x62cc1_slide-10.png",
+              "_id": "6a2aad63d6ca1907ce54a102"
+            }
+          ],
+          "platforms": [
+            {
+              "platform": "instagram",
+              "accountId": {
+                "_id": "69f08a47985e734bf3c9c295",
+                "platform": "instagram",
+                "profileId": "6925d3d1359f1d8910fb02e6",
+                "displayName": "집사는 집사자",
+                "isActive": true,
+                "profilePicture": "https://scontent-lhr8-1.cdninstagram.com/v/t51.82787-19/671223225_18085027718096961_646454800105286025_n.jpg?stp=dst-jpg_s206x206_tt6&_nc_cat=108&ccb=7-5&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=y3U7ZaTUaQMQ7kNvwFv7OF4&_nc_oc=Ado2Rt6O0q2NXAlbRm9EXWdFl4QPdP5L0-jBy54ArvTITaI5Re5X0NuDTDwfKINz5i8&_nc_zt=24&_nc_ht=scontent-lhr8-1.cdninstagram.com&edm=AP4hL3IEAAAA&_nc_gid=Xla_f2KsMefaDj2Olsx13w&_nc_tpa=Q5bMBQE-zYHwc3JODhbnlo_9UwugcF5ewrmyTd70qeacGzRvj2WauVOitKpedtw_e1RQ3RA4rRA7ZtKQ9Q&oh=00_Af8JLmYm9JknQePlkQRxMFxI2y7JfmskzSQeb4gWuXWbjQ&oe=6A300B68",
+                "username": "zipsaja_"
+              },
+              "profileId": "6925d3d1359f1d8910fb02e6",
+              "customMedia": [],
+              "scheduledFor": "2026-06-11T12:43:09.529Z",
+              "platformSpecificData": {
+                "__platformUserIdSnapshot": "26232925676410203",
+                "__usernameSnapshot": "zipsaja_",
+                "publishingStarted": "2026-06-11T12:43:16.531Z",
+                "lastPublishStage": "awaiting-finalize",
+                "pendingContainerId": "18095382815096961"
+              },
+              "status": "processing",
+              "publishAttempts": 0,
+              "contentHash": "133a1c8b4a5d0fe0a4e3f76f5b43acbc",
+              "_id": "6a2aad63d6ca1907ce54a103"
+            }
+          ],
+          "scheduledFor": "2026-06-11T12:43:09.529Z",
+          "timezone": "UTC",
+          "status": "publishing",
+          "tags": [],
+          "hashtags": [],
+          "mentions": [],
+          "visibility": "public",
+          "crosspostingEnabled": true,
+          "metadata": {
+            "usageCounted": true
+          },
+          "publishAttempts": 0,
+          "contentHash": "133a1c8b4a5d0fe0a4e3f76f5b43acbc",
+          "createdAt": "2026-06-11T12:43:15.907Z",
+          "updatedAt": "2026-06-11T12:44:31.731Z",
+          "__v": 0,
+          "publishingClaimedAt": "2026-06-11T12:43:16.008Z"
+        },
+        "message": "Post published successfully"
+      }
+    },
+    "threads": {
+      "status": "submitted",
+      "postId": "6a2aadcf127e51d163d098d4",
+      "response": {
+        "post": {
+          "recycling": {
+            "enabled": false,
+            "gapFreq": "month",
+            "recycleCount": 0,
+            "contentVariations": [],
+            "contentVariationIndex": 0
+          },
+          "_id": "6a2aadcf127e51d163d098d4",
+          "userId": "6925d39a4d42babc89dd33e5",
+          "title": "",
+          "content": "역대 대통령 취임 1년 서울 집값, 실거래로 직접 계산했어.\n1위 문재인 +16.9% / 2위 이재명 +14.8% / 꼴찌 윤석열 -17.1%.\n'이재명 역대최대'라는데 진짜 거래가론 문재인이 1위. 너네 정권 때가 제일 심했다? 댓글 ㄱㄱ 🔥",
+          "mediaItems": [
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1781181876150_j1pqcybt_slide-01.png",
+              "_id": "6a2aadcf127e51d163d098d5"
+            },
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1781181878673_rd04w4qc_slide-02.png",
+              "_id": "6a2aadcf127e51d163d098d6"
+            },
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1781181881240_t11jm5ox_slide-03.png",
+              "_id": "6a2aadcf127e51d163d098d7"
+            },
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1781181883852_p7zilkiw_slide-04.png",
+              "_id": "6a2aadcf127e51d163d098d8"
+            },
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1781181885748_4qkcmpd9_slide-05.png",
+              "_id": "6a2aadcf127e51d163d098d9"
+            },
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1781181887720_2drpor4t_slide-06.png",
+              "_id": "6a2aadcf127e51d163d098da"
+            },
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1781181889627_xrlm9140_slide-07.png",
+              "_id": "6a2aadcf127e51d163d098db"
+            },
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1781181891535_ikw8trzs_slide-08.png",
+              "_id": "6a2aadcf127e51d163d098dc"
+            },
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1781181894136_hlydfrgg_slide-09.png",
+              "_id": "6a2aadcf127e51d163d098dd"
+            },
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1781181896134_kka1syez_slide-10.png",
+              "_id": "6a2aadcf127e51d163d098de"
+            }
+          ],
+          "platforms": [
+            {
+              "platform": "threads",
+              "accountId": {
+                "_id": "69f08af4985e734bf3c9c749",
+                "profileId": "6925d3d1359f1d8910fb02e6",
+                "platform": "threads",
+                "displayName": "zipsaja_",
+                "isActive": true,
+                "profilePicture": "https://scontent-lhr8-2.cdninstagram.com/v/t51.82787-19/682266102_18095452699904183_162638842714231833_n.jpg?stp=dst-jpg_s206x206_tt6&_nc_cat=103&ccb=7-5&_nc_sid=30ff31&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy5DMyJ9&_nc_ohc=hS5YkYsx5UoQ7kNvwHC2fHA&_nc_oc=AdpRvNFelkk_VjUsYJlc6EXAOmszVwjaRgMFLPaQQALjsqEndbnumXypQl6nDTTj9Lw&_nc_zt=24&_nc_ht=scontent-lhr8-2.cdninstagram.com&edm=AP4hL3IEAAAA&_nc_gid=p73c0h3HX9Zm8OdyWfsuBw&_nc_tpa=Q5bMBQGkzd3pkyQNTjH3yQAww2Sfldr7WEKBxcgH3egMjFY5lNqA_Cu7OvYNQ7RD0ROpRfRt-8GWFJUY9A&oh=00_Af96k6qIxi9dyQnayfHxsEZHk1T4wyElf91uBpkfA_QuEw&oe=6A3028B0",
+                "username": "zipsaja_"
+              },
+              "profileId": "6925d3d1359f1d8910fb02e6",
+              "customMedia": [],
+              "scheduledFor": "2026-06-11T12:44:58.262Z",
+              "platformSpecificData": {
+                "topic_tag": "부동산",
+                "__platformUserIdSnapshot": "26700354756297895",
+                "__usernameSnapshot": "zipsaja_",
+                "publishingStarted": "2026-06-11T12:45:04.527Z",
+                "lastPublishStage": "publishing"
+              },
+              "status": "published",
+              "publishAttempts": 0,
+              "contentHash": "116132b452dc576b4a42d34f8b29b287",
+              "_id": "6a2aadcf127e51d163d098df",
+              "platformPostId": "18083532197544939",
+              "platformPostUrl": "https://www.threads.com/@zipsaja_/post/DZcjQhMiId5",
+              "publishedAt": "2026-06-11T12:46:38.063Z"
+            }
+          ],
+          "scheduledFor": "2026-06-11T12:44:58.262Z",
+          "timezone": "UTC",
+          "status": "published",
+          "tags": [],
+          "hashtags": [],
+          "mentions": [],
+          "visibility": "public",
+          "crosspostingEnabled": true,
+          "metadata": {
+            "usageCounted": true
+          },
+          "publishAttempts": 0,
+          "contentHash": "116132b452dc576b4a42d34f8b29b287",
+          "createdAt": "2026-06-11T12:45:03.913Z",
+          "updatedAt": "2026-06-11T12:46:38.268Z",
+          "__v": 0,
+          "publishingClaimedAt": "2026-06-11T12:45:04.058Z"
+        },
+        "message": "Post published successfully"
+      }
+    }
+  },
+  "createdAt": "2026-06-11T21:42:40.290654+09:00",
+  "instagramReelThumbnail": {
+    "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_역대정부-취임1년-서울집값-실거래-문재인1위-윤석열꼴찌/publish-ready/instagram-reel-cover.png",
+    "publicUrl": "https://media.zernio.com/temp/1781181759024_owc8j5gr_instagram-reel-cover.png",
+    "contentType": "image/png"
+  },
+  "instagramCarouselMedia": [
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_역대정부-취임1년-서울집값-실거래-문재인1위-윤석열꼴찌/publish-ready/instagram-carousel/slide-01.png",
+      "publicUrl": "https://media.zernio.com/temp/1781181768615_6ca9pk9z_slide-01.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_역대정부-취임1년-서울집값-실거래-문재인1위-윤석열꼴찌/publish-ready/instagram-carousel/slide-02.png",
+      "publicUrl": "https://media.zernio.com/temp/1781181770566_sk28edfu_slide-02.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_역대정부-취임1년-서울집값-실거래-문재인1위-윤석열꼴찌/publish-ready/instagram-carousel/slide-03.png",
+      "publicUrl": "https://media.zernio.com/temp/1781181772423_bnq7vo73_slide-03.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_역대정부-취임1년-서울집값-실거래-문재인1위-윤석열꼴찌/publish-ready/instagram-carousel/slide-04.png",
+      "publicUrl": "https://media.zernio.com/temp/1781181774422_zkn1y9c7_slide-04.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_역대정부-취임1년-서울집값-실거래-문재인1위-윤석열꼴찌/publish-ready/instagram-carousel/slide-05.png",
+      "publicUrl": "https://media.zernio.com/temp/1781181777206_xx88hczc_slide-05.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_역대정부-취임1년-서울집값-실거래-문재인1위-윤석열꼴찌/publish-ready/instagram-carousel/slide-06.png",
+      "publicUrl": "https://media.zernio.com/temp/1781181779829_mm1yfbfn_slide-06.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_역대정부-취임1년-서울집값-실거래-문재인1위-윤석열꼴찌/publish-ready/instagram-carousel/slide-07.png",
+      "publicUrl": "https://media.zernio.com/temp/1781181781683_vrd5ho74_slide-07.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_역대정부-취임1년-서울집값-실거래-문재인1위-윤석열꼴찌/publish-ready/instagram-carousel/slide-08.png",
+      "publicUrl": "https://media.zernio.com/temp/1781181783628_24dbcrkk_slide-08.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_역대정부-취임1년-서울집값-실거래-문재인1위-윤석열꼴찌/publish-ready/instagram-carousel/slide-09.png",
+      "publicUrl": "https://media.zernio.com/temp/1781181785676_0r2quwb9_slide-09.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_역대정부-취임1년-서울집값-실거래-문재인1위-윤석열꼴찌/publish-ready/instagram-carousel/slide-10.png",
+      "publicUrl": "https://media.zernio.com/temp/1781181787611_b5x62cc1_slide-10.png",
+      "contentType": "image/png"
+    }
+  ],
+  "threadsCarouselMedia": [
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_역대정부-취임1년-서울집값-실거래-문재인1위-윤석열꼴찌/publish-ready/threads-carousel/slide-01.png",
+      "publicUrl": "https://media.zernio.com/temp/1781181876150_j1pqcybt_slide-01.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_역대정부-취임1년-서울집값-실거래-문재인1위-윤석열꼴찌/publish-ready/threads-carousel/slide-02.png",
+      "publicUrl": "https://media.zernio.com/temp/1781181878673_rd04w4qc_slide-02.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_역대정부-취임1년-서울집값-실거래-문재인1위-윤석열꼴찌/publish-ready/threads-carousel/slide-03.png",
+      "publicUrl": "https://media.zernio.com/temp/1781181881240_t11jm5ox_slide-03.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_역대정부-취임1년-서울집값-실거래-문재인1위-윤석열꼴찌/publish-ready/threads-carousel/slide-04.png",
+      "publicUrl": "https://media.zernio.com/temp/1781181883852_p7zilkiw_slide-04.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_역대정부-취임1년-서울집값-실거래-문재인1위-윤석열꼴찌/publish-ready/threads-carousel/slide-05.png",
+      "publicUrl": "https://media.zernio.com/temp/1781181885748_4qkcmpd9_slide-05.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_역대정부-취임1년-서울집값-실거래-문재인1위-윤석열꼴찌/publish-ready/threads-carousel/slide-06.png",
+      "publicUrl": "https://media.zernio.com/temp/1781181887720_2drpor4t_slide-06.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_역대정부-취임1년-서울집값-실거래-문재인1위-윤석열꼴찌/publish-ready/threads-carousel/slide-07.png",
+      "publicUrl": "https://media.zernio.com/temp/1781181889627_xrlm9140_slide-07.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_역대정부-취임1년-서울집값-실거래-문재인1위-윤석열꼴찌/publish-ready/threads-carousel/slide-08.png",
+      "publicUrl": "https://media.zernio.com/temp/1781181891535_ikw8trzs_slide-08.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_역대정부-취임1년-서울집값-실거래-문재인1위-윤석열꼴찌/publish-ready/threads-carousel/slide-09.png",
+      "publicUrl": "https://media.zernio.com/temp/1781181894136_hlydfrgg_slide-09.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_역대정부-취임1년-서울집값-실거래-문재인1위-윤석열꼴찌/publish-ready/threads-carousel/slide-10.png",
+      "publicUrl": "https://media.zernio.com/temp/1781181896134_kka1syez_slide-10.png",
+      "contentType": "image/png"
+    }
+  ],
+  "liveStatus": {
+    "IG Reel": {
+      "url": "https://www.instagram.com/reel/DZci2TTDCFX/"
+    },
+    "IG Carousel": {
+      "url": "https://www.instagram.com/p/DZcjCsnjlIZ/"
+    },
+    "Threads": {
+      "url": "https://www.threads.com/@zipsaja_/post/DZcjQhMiId5"
+    }
+  }
+}

@@ -1,0 +1,173 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "howzero-claude-code",
+  "elements": [
+    {"type":"text","id":"title","x":40,"y":40,"width":1120,"height":40,"text":"HowZero 사업 라인 + 하와 강사 유튜브 대행 비즈니스 모델","fontSize":26,"fontFamily":1,"strokeColor":"#1e1e1e","seed":1001,"autoResize":true},
+    {"type":"text","id":"subtitle","x":40,"y":85,"width":1120,"height":24,"text":"사업 라인 맵 → 하와 수익 3-Layer → (A)·(C) 풀대행 funnel + 수익 모델","fontSize":15,"fontFamily":1,"strokeColor":"#555555","seed":1002,"autoResize":true},
+
+    {"type":"text","id":"biz-section-header","x":100,"y":130,"width":1000,"height":24,"text":"전체 사업 라인 맵","fontSize":18,"fontFamily":1,"strokeColor":"#1e1e1e","seed":5000,"autoResize":true},
+
+    {"type":"rectangle","id":"biz-h-l","x":100,"y":160,"width":240,"height":40,"roundness":{"type":3},"backgroundColor":"#e9ecef","fillStyle":"solid","roughness":0,"strokeColor":"#868e96","strokeWidth":1,"seed":5010,"boundElements":[{"type":"text","id":"biz-h-l-text"}]},
+    {"type":"text","id":"biz-h-l-text","x":100,"y":170,"width":240,"height":20,"text":"사업 라인","fontSize":15,"fontFamily":1,"strokeColor":"#1e1e1e","textAlign":"center","verticalAlign":"middle","containerId":"biz-h-l","seed":5011,"autoResize":false},
+    {"type":"rectangle","id":"biz-h-r","x":340,"y":160,"width":760,"height":40,"roundness":{"type":3},"backgroundColor":"#e9ecef","fillStyle":"solid","roughness":0,"strokeColor":"#868e96","strokeWidth":1,"seed":5012,"boundElements":[{"type":"text","id":"biz-h-r-text"}]},
+    {"type":"text","id":"biz-h-r-text","x":340,"y":170,"width":760,"height":20,"text":"정체","fontSize":15,"fontFamily":1,"strokeColor":"#1e1e1e","textAlign":"center","verticalAlign":"middle","containerId":"biz-h-r","seed":5013,"autoResize":false},
+
+    {"type":"rectangle","id":"biz-1-l","x":100,"y":210,"width":240,"height":50,"roundness":{"type":3},"backgroundColor":"#a5d8ff","fillStyle":"solid","roughness":0,"strokeColor":"#4a9eed","strokeWidth":1,"seed":5020,"boundElements":[{"type":"text","id":"biz-1-l-text"}]},
+    {"type":"text","id":"biz-1-l-text","x":100,"y":225,"width":240,"height":20,"text":"하우제로","fontSize":16,"fontFamily":1,"strokeColor":"#1e3a8a","textAlign":"center","verticalAlign":"middle","containerId":"biz-1-l","seed":5021,"autoResize":false},
+    {"type":"rectangle","id":"biz-1-r","x":340,"y":210,"width":760,"height":50,"roundness":{"type":3},"backgroundColor":"#ffffff","fillStyle":"solid","roughness":0,"strokeColor":"#dee2e6","strokeWidth":1,"seed":5022,"boundElements":[{"type":"text","id":"biz-1-r-text"}]},
+    {"type":"text","id":"biz-1-r-text","x":340,"y":225,"width":760,"height":20,"text":"기업 AX 컨설팅 (B2B)","fontSize":15,"fontFamily":1,"strokeColor":"#1e1e1e","textAlign":"center","verticalAlign":"middle","containerId":"biz-1-r","seed":5023,"autoResize":false},
+
+    {"type":"rectangle","id":"biz-2-l","x":100,"y":260,"width":240,"height":50,"roundness":{"type":3},"backgroundColor":"#ffe8d6","fillStyle":"solid","roughness":0,"strokeColor":"#f59e0b","strokeWidth":1,"seed":5030,"boundElements":[{"type":"text","id":"biz-2-l-text"}]},
+    {"type":"text","id":"biz-2-l-text","x":100,"y":275,"width":240,"height":20,"text":"하와 솔루션","fontSize":16,"fontFamily":1,"strokeColor":"#92400e","textAlign":"center","verticalAlign":"middle","containerId":"biz-2-l","seed":5031,"autoResize":false},
+    {"type":"rectangle","id":"biz-2-r","x":340,"y":260,"width":760,"height":50,"roundness":{"type":3},"backgroundColor":"#ffffff","fillStyle":"solid","roughness":0,"strokeColor":"#dee2e6","strokeWidth":1,"seed":5032,"boundElements":[{"type":"text","id":"biz-2-r-text"}]},
+    {"type":"text","id":"biz-2-r-text","x":340,"y":275,"width":760,"height":20,"text":"내부 도구 — 하와 팀이 6편 만들 때 사용","fontSize":15,"fontFamily":1,"strokeColor":"#1e1e1e","textAlign":"center","verticalAlign":"middle","containerId":"biz-2-r","seed":5033,"autoResize":false},
+
+    {"type":"rectangle","id":"biz-3-l","x":100,"y":310,"width":240,"height":50,"roundness":{"type":3},"backgroundColor":"#ffd8a8","fillStyle":"solid","roughness":0,"strokeColor":"#f59e0b","strokeWidth":2,"seed":5040,"boundElements":[{"type":"text","id":"biz-3-l-text"}]},
+    {"type":"text","id":"biz-3-l-text","x":100,"y":325,"width":240,"height":20,"text":"하와 (A)  ★","fontSize":16,"fontFamily":1,"strokeColor":"#92400e","textAlign":"center","verticalAlign":"middle","containerId":"biz-3-l","seed":5041,"autoResize":false},
+    {"type":"rectangle","id":"biz-3-r","x":340,"y":310,"width":760,"height":50,"roundness":{"type":3},"backgroundColor":"#fff8f0","fillStyle":"solid","roughness":0,"strokeColor":"#f59e0b","strokeWidth":1,"seed":5042,"boundElements":[{"type":"text","id":"biz-3-r-text"}]},
+    {"type":"text","id":"biz-3-r-text","x":340,"y":325,"width":760,"height":20,"text":"강사 개인과 직거래 — 풀대행 + 강의 수익 share","fontSize":15,"fontFamily":1,"strokeColor":"#1e1e1e","textAlign":"center","verticalAlign":"middle","containerId":"biz-3-r","seed":5043,"autoResize":false},
+
+    {"type":"rectangle","id":"biz-4-l","x":100,"y":360,"width":240,"height":50,"roundness":{"type":3},"backgroundColor":"#ffd8a8","fillStyle":"solid","roughness":0,"strokeColor":"#f59e0b","strokeWidth":2,"seed":5050,"boundElements":[{"type":"text","id":"biz-4-l-text"}]},
+    {"type":"text","id":"biz-4-l-text","x":100,"y":375,"width":240,"height":20,"text":"하와 (C)  ★","fontSize":16,"fontFamily":1,"strokeColor":"#92400e","textAlign":"center","verticalAlign":"middle","containerId":"biz-4-l","seed":5051,"autoResize":false},
+    {"type":"rectangle","id":"biz-4-r","x":340,"y":360,"width":760,"height":50,"roundness":{"type":3},"backgroundColor":"#fff8f0","fillStyle":"solid","roughness":0,"strokeColor":"#f59e0b","strokeWidth":1,"seed":5052,"boundElements":[{"type":"text","id":"biz-4-r-text"}]},
+    {"type":"text","id":"biz-4-r-text","x":340,"y":375,"width":760,"height":20,"text":"외부 강의 플랫폼 파트너십 — 풀대행 + 확장 수익 share","fontSize":15,"fontFamily":1,"strokeColor":"#1e1e1e","textAlign":"center","verticalAlign":"middle","containerId":"biz-4-r","seed":5053,"autoResize":false},
+
+    {"type":"rectangle","id":"biz-5-l","x":100,"y":410,"width":240,"height":50,"roundness":{"type":3},"backgroundColor":"#c3fae8","fillStyle":"solid","roughness":0,"strokeColor":"#06b6d4","strokeWidth":1,"seed":5060,"boundElements":[{"type":"text","id":"biz-5-l-text"}]},
+    {"type":"text","id":"biz-5-l-text","x":100,"y":425,"width":240,"height":20,"text":"불사자","fontSize":16,"fontFamily":1,"strokeColor":"#0e7490","textAlign":"center","verticalAlign":"middle","containerId":"biz-5-l","seed":5061,"autoResize":false},
+    {"type":"rectangle","id":"biz-5-r","x":340,"y":410,"width":760,"height":50,"roundness":{"type":3},"backgroundColor":"#ffffff","fillStyle":"solid","roughness":0,"strokeColor":"#dee2e6","strokeWidth":1,"seed":5062,"boundElements":[{"type":"text","id":"biz-5-r-text"}]},
+    {"type":"text","id":"biz-5-r-text","x":340,"y":425,"width":760,"height":20,"text":"셀러용 self-serve SaaS (강사 대행과 무관)","fontSize":15,"fontFamily":1,"strokeColor":"#1e1e1e","textAlign":"center","verticalAlign":"middle","containerId":"biz-5-r","seed":5063,"autoResize":false},
+
+    {"type":"rectangle","id":"biz-6-l","x":100,"y":460,"width":240,"height":50,"roundness":{"type":3},"backgroundColor":"#d0bfff","fillStyle":"solid","roughness":0,"strokeColor":"#8b5cf6","strokeWidth":1,"seed":5070,"boundElements":[{"type":"text","id":"biz-6-l-text"}]},
+    {"type":"text","id":"biz-6-l-text","x":100,"y":475,"width":240,"height":20,"text":"하입덕","fontSize":16,"fontFamily":1,"strokeColor":"#5b21b6","textAlign":"center","verticalAlign":"middle","containerId":"biz-6-l","seed":5071,"autoResize":false},
+    {"type":"rectangle","id":"biz-6-r","x":340,"y":460,"width":760,"height":50,"roundness":{"type":3},"backgroundColor":"#ffffff","fillStyle":"solid","roughness":0,"strokeColor":"#dee2e6","strokeWidth":1,"seed":5072,"boundElements":[{"type":"text","id":"biz-6-r-text"}]},
+    {"type":"text","id":"biz-6-r-text","x":340,"y":475,"width":760,"height":20,"text":"쇼츠 크리에이터용 self-serve SaaS (강사 대행과 무관)","fontSize":15,"fontFamily":1,"strokeColor":"#1e1e1e","textAlign":"center","verticalAlign":"middle","containerId":"biz-6-r","seed":5073,"autoResize":false},
+
+    {"type":"text","id":"biz-link","x":100,"y":540,"width":1000,"height":24,"text":"↓ 하와 관련 사업 라인을 수익 Layer 구조로 재구성","fontSize":15,"fontFamily":1,"strokeColor":"#b45309","seed":5080,"autoResize":true},
+
+    {"type":"text","id":"l3-section-header","x":100,"y":580,"width":1000,"height":24,"text":"하와 수익 구조 — 3-Layer","fontSize":18,"fontFamily":1,"strokeColor":"#1e1e1e","seed":6000,"autoResize":true},
+
+    {"type":"text","id":"layer1-label","x":40,"y":650,"width":140,"height":22,"text":"Layer 1","fontSize":17,"fontFamily":1,"strokeColor":"#92400e","seed":6001,"autoResize":true},
+    {"type":"text","id":"layer1-sub","x":40,"y":676,"width":140,"height":18,"text":"메인 사업","fontSize":13,"fontFamily":1,"strokeColor":"#757575","seed":6002,"autoResize":true},
+
+    {"type":"rectangle","id":"layer1-box","x":480,"y":630,"width":240,"height":100,"roundness":{"type":3},"backgroundColor":"#ffd8a8","fillStyle":"solid","roughness":0,"strokeColor":"#f59e0b","strokeWidth":3,"seed":6010,"boundElements":[{"type":"text","id":"layer1-box-text"}]},
+    {"type":"text","id":"layer1-box-text","x":480,"y":655,"width":240,"height":50,"text":"하와\n강사 유튜브 대행","fontSize":18,"fontFamily":1,"strokeColor":"#92400e","textAlign":"center","verticalAlign":"middle","containerId":"layer1-box","seed":6011,"autoResize":false,"lineHeight":1.4},
+
+    {"type":"arrow","id":"l3-arrow-1-a","x":600,"y":730,"width":210,"height":40,"points":[[0,0],[-210,40]],"strokeColor":"#1e1e1e","strokeWidth":2,"roughness":0,"endArrowhead":"arrow","seed":6050},
+    {"type":"arrow","id":"l3-arrow-1-c","x":600,"y":730,"width":210,"height":40,"points":[[0,0],[210,40]],"strokeColor":"#1e1e1e","strokeWidth":2,"roughness":0,"endArrowhead":"arrow","seed":6051},
+
+    {"type":"text","id":"layer2-label","x":40,"y":810,"width":140,"height":22,"text":"Layer 2","fontSize":17,"fontFamily":1,"strokeColor":"#92400e","seed":6020,"autoResize":true},
+    {"type":"text","id":"layer2-sub","x":40,"y":836,"width":140,"height":18,"text":"두 가지 계약 형태","fontSize":13,"fontFamily":1,"strokeColor":"#757575","seed":6021,"autoResize":true},
+
+    {"type":"rectangle","id":"layer2-a","x":200,"y":770,"width":380,"height":140,"roundness":{"type":3},"backgroundColor":"#ffe8d6","fillStyle":"solid","roughness":0,"strokeColor":"#f59e0b","strokeWidth":2,"seed":6030,"boundElements":[{"type":"text","id":"layer2-a-text"}]},
+    {"type":"text","id":"layer2-a-text","x":200,"y":802,"width":380,"height":76,"text":"하와 (A)\n강사 개인 직거래\n풀대행 + 강의 수익 share","fontSize":17,"fontFamily":1,"strokeColor":"#92400e","textAlign":"center","verticalAlign":"middle","containerId":"layer2-a","seed":6031,"autoResize":false,"lineHeight":1.5},
+
+    {"type":"rectangle","id":"layer2-c","x":620,"y":770,"width":380,"height":140,"roundness":{"type":3},"backgroundColor":"#ffe8d6","fillStyle":"solid","roughness":0,"strokeColor":"#f59e0b","strokeWidth":2,"seed":6040,"boundElements":[{"type":"text","id":"layer2-c-text"}]},
+    {"type":"text","id":"layer2-c-text","x":620,"y":802,"width":380,"height":76,"text":"하와 (C)\n외부 강의 플랫폼 파트너십\n풀대행 + 확장 수익 share","fontSize":17,"fontFamily":1,"strokeColor":"#92400e","textAlign":"center","verticalAlign":"middle","containerId":"layer2-c","seed":6041,"autoResize":false,"lineHeight":1.5},
+
+    {"type":"text","id":"a-detail-label","x":210,"y":920,"width":380,"height":18,"text":"↳ 하와 (A) 강사 사례","fontSize":13,"fontFamily":1,"strokeColor":"#92400e","seed":6200,"autoResize":true},
+    {"type":"arrow","id":"a-tree-arrow","x":390,"y":910,"width":0,"height":30,"points":[[0,0],[0,30]],"strokeColor":"#f59e0b","strokeWidth":1,"roughness":0,"strokeStyle":"dashed","endArrowhead":null,"seed":6205},
+
+    {"type":"rectangle","id":"a-detail-1","x":200,"y":940,"width":380,"height":70,"roundness":{"type":3},"backgroundColor":"#fff3e0","fillStyle":"solid","roughness":0,"strokeColor":"#f59e0b","strokeWidth":1,"strokeStyle":"dashed","seed":6210,"boundElements":[{"type":"text","id":"a-detail-1-text"}]},
+    {"type":"text","id":"a-detail-1-text","x":200,"y":963,"width":380,"height":24,"text":"용감한용팀장 — 구매대행 강의 수익","fontSize":14,"fontFamily":1,"strokeColor":"#92400e","textAlign":"center","verticalAlign":"middle","containerId":"a-detail-1","seed":6211,"autoResize":false},
+
+    {"type":"rectangle","id":"a-detail-2","x":200,"y":1020,"width":380,"height":70,"roundness":{"type":3},"backgroundColor":"#fff3e0","fillStyle":"solid","roughness":0,"strokeColor":"#f59e0b","strokeWidth":1,"strokeStyle":"dashed","seed":6220,"boundElements":[{"type":"text","id":"a-detail-2-text"}]},
+    {"type":"text","id":"a-detail-2-text","x":200,"y":1043,"width":380,"height":24,"text":"하우제로 — 기업 AX 강의 → 기업 AX 도입 수익","fontSize":14,"fontFamily":1,"strokeColor":"#92400e","textAlign":"center","verticalAlign":"middle","containerId":"a-detail-2","seed":6221,"autoResize":false},
+
+    {"type":"rectangle","id":"a-detail-3","x":200,"y":1100,"width":380,"height":70,"roundness":{"type":3},"backgroundColor":"#fff3e0","fillStyle":"solid","roughness":0,"strokeColor":"#f59e0b","strokeWidth":1,"strokeStyle":"dashed","seed":6230,"boundElements":[{"type":"text","id":"a-detail-3-text"}]},
+    {"type":"text","id":"a-detail-3-text","x":200,"y":1115,"width":380,"height":40,"text":"정재무 대표 (블리스아토)\n구매대행 월매출 2억 · 쇼핑쇼츠","fontSize":14,"fontFamily":1,"strokeColor":"#92400e","textAlign":"center","verticalAlign":"middle","containerId":"a-detail-3","seed":6231,"autoResize":false,"lineHeight":1.4},
+
+    {"type":"text","id":"c-detail-label","x":620,"y":920,"width":380,"height":18,"text":"↳ 하와 (C) 강사 사례","fontSize":13,"fontFamily":1,"strokeColor":"#92400e","seed":6240,"autoResize":true},
+    {"type":"arrow","id":"c-tree-arrow","x":810,"y":910,"width":0,"height":30,"points":[[0,0],[0,30]],"strokeColor":"#f59e0b","strokeWidth":1,"roughness":0,"strokeStyle":"dashed","endArrowhead":null,"seed":6245},
+
+    {"type":"rectangle","id":"c-detail-1","x":620,"y":940,"width":380,"height":70,"roundness":{"type":3},"backgroundColor":"#fff3e0","fillStyle":"solid","roughness":0,"strokeColor":"#f59e0b","strokeWidth":1,"strokeStyle":"dashed","seed":6250,"boundElements":[{"type":"text","id":"c-detail-1-text"}]},
+    {"type":"text","id":"c-detail-1-text","x":620,"y":963,"width":380,"height":24,"text":"시행착오 — 강의 플랫폼 산하 강사","fontSize":14,"fontFamily":1,"strokeColor":"#92400e","textAlign":"center","verticalAlign":"middle","containerId":"c-detail-1","seed":6251,"autoResize":false},
+
+    {"type":"rectangle","id":"c-detail-2","x":620,"y":1020,"width":380,"height":70,"roundness":{"type":3},"backgroundColor":"#fff3e0","fillStyle":"solid","roughness":0,"strokeColor":"#f59e0b","strokeWidth":1,"strokeStyle":"dashed","seed":6260,"boundElements":[{"type":"text","id":"c-detail-2-text"}]},
+    {"type":"text","id":"c-detail-2-text","x":620,"y":1043,"width":380,"height":24,"text":"힘찬 — 강의 플랫폼 산하 강사","fontSize":14,"fontFamily":1,"strokeColor":"#92400e","textAlign":"center","verticalAlign":"middle","containerId":"c-detail-2","seed":6261,"autoResize":false},
+
+    {"type":"arrow","id":"l3-arrow-a-3","x":580,"y":910,"width":20,"height":300,"points":[[0,0],[20,300]],"strokeColor":"#8b5cf6","strokeWidth":2,"roughness":0,"endArrowhead":"arrow","strokeStyle":"dashed","seed":6060},
+    {"type":"arrow","id":"l3-arrow-c-3","x":620,"y":910,"width":20,"height":300,"points":[[0,0],[-20,300]],"strokeColor":"#8b5cf6","strokeWidth":2,"roughness":0,"endArrowhead":"arrow","strokeStyle":"dashed","seed":6061},
+
+    {"type":"text","id":"layer3-label","x":40,"y":1280,"width":140,"height":22,"text":"Layer 3","fontSize":17,"fontFamily":1,"strokeColor":"#5b21b6","seed":6070,"autoResize":true},
+    {"type":"text","id":"layer3-sub","x":40,"y":1306,"width":140,"height":18,"text":"부가 SaaS 수익","fontSize":13,"fontFamily":1,"strokeColor":"#757575","seed":6071,"autoResize":true},
+
+    {"type":"rectangle","id":"layer3-container","x":160,"y":1210,"width":880,"height":230,"roundness":{"type":3},"backgroundColor":"#f3f0ff","fillStyle":"solid","roughness":0,"strokeColor":"#8b5cf6","strokeWidth":1,"strokeStyle":"dashed","seed":6080},
+    {"type":"text","id":"layer3-header","x":160,"y":1228,"width":880,"height":22,"text":"부가 수익 — A·C 양쪽 모두에 얹는 SaaS 라이센스","fontSize":15,"fontFamily":1,"strokeColor":"#5b21b6","textAlign":"center","verticalAlign":"top","seed":6081,"autoResize":false},
+
+    {"type":"rectangle","id":"layer3-bsj","x":220,"y":1270,"width":340,"height":150,"roundness":{"type":3},"backgroundColor":"#c3fae8","fillStyle":"solid","roughness":0,"strokeColor":"#06b6d4","strokeWidth":2,"seed":6090,"boundElements":[{"type":"text","id":"layer3-bsj-text"}]},
+    {"type":"text","id":"layer3-bsj-text","x":220,"y":1300,"width":340,"height":90,"text":"불사자\n셀러용 self-serve SaaS\n강사가 셀러일 때 라이센스","fontSize":16,"fontFamily":1,"strokeColor":"#0e7490","textAlign":"center","verticalAlign":"middle","containerId":"layer3-bsj","seed":6091,"autoResize":false,"lineHeight":1.5},
+
+    {"type":"rectangle","id":"layer3-hyp","x":640,"y":1270,"width":340,"height":150,"roundness":{"type":3},"backgroundColor":"#d0bfff","fillStyle":"solid","roughness":0,"strokeColor":"#8b5cf6","strokeWidth":2,"seed":6100,"boundElements":[{"type":"text","id":"layer3-hyp-text"}]},
+    {"type":"text","id":"layer3-hyp-text","x":640,"y":1300,"width":340,"height":90,"text":"하입덕\n쇼츠 크리에이터용 self-serve SaaS\n강사 본인 / 팔로워 콘텐츠 활용","fontSize":16,"fontFamily":1,"strokeColor":"#5b21b6","textAlign":"center","verticalAlign":"middle","containerId":"layer3-hyp","seed":6101,"autoResize":false,"lineHeight":1.5},
+
+    {"type":"text","id":"l3-to-funnel","x":100,"y":1470,"width":1000,"height":24,"text":"↓ Layer 1·2 (A·C) 풀대행 funnel + 수익 구조 상세","fontSize":15,"fontFamily":1,"strokeColor":"#b45309","seed":7000,"autoResize":true},
+
+    {"type":"rectangle","id":"legend-bg","x":40,"y":1510,"width":1120,"height":34,"roundness":{"type":3},"backgroundColor":"#f8f9fa","fillStyle":"solid","roughness":0,"strokeColor":"#dee2e6","strokeWidth":1,"seed":1010},
+    {"type":"ellipse","id":"legend-orange","x":60,"y":1521,"width":12,"height":12,"backgroundColor":"#ffd8a8","fillStyle":"solid","roughness":0,"strokeColor":"#f59e0b","strokeWidth":1,"seed":1020},
+    {"type":"text","id":"legend-orange-text","x":80,"y":1519,"width":160,"height":18,"text":"하와 운영 단계","fontSize":13,"fontFamily":1,"strokeColor":"#1e1e1e","seed":1021,"autoResize":true},
+    {"type":"ellipse","id":"legend-blue","x":260,"y":1521,"width":12,"height":12,"backgroundColor":"#a5d8ff","fillStyle":"solid","roughness":0,"strokeColor":"#4a9eed","strokeWidth":1,"seed":1022},
+    {"type":"text","id":"legend-blue-text","x":280,"y":1519,"width":160,"height":18,"text":"강사 운영 단계","fontSize":13,"fontFamily":1,"strokeColor":"#1e1e1e","seed":1023,"autoResize":true},
+    {"type":"ellipse","id":"legend-green","x":460,"y":1521,"width":12,"height":12,"backgroundColor":"#b2f2bb","fillStyle":"solid","roughness":0,"strokeColor":"#22c55e","strokeWidth":1,"seed":1024},
+    {"type":"text","id":"legend-green-text","x":480,"y":1519,"width":200,"height":18,"text":"기존 매출 (강사 100%)","fontSize":13,"fontFamily":1,"strokeColor":"#1e1e1e","seed":1025,"autoResize":true},
+    {"type":"ellipse","id":"legend-yellow","x":700,"y":1521,"width":12,"height":12,"backgroundColor":"#fff3bf","fillStyle":"solid","roughness":0,"strokeColor":"#f59e0b","strokeWidth":1,"seed":1026},
+    {"type":"text","id":"legend-yellow-text","x":720,"y":1519,"width":260,"height":18,"text":"확장 매출 (강사 + 하와 share)","fontSize":13,"fontFamily":1,"strokeColor":"#1e1e1e","seed":1027,"autoResize":true},
+
+    {"type":"text","id":"left-header","x":60,"y":1570,"width":480,"height":26,"text":"기존 인스타 funnel","fontSize":20,"fontFamily":1,"strokeColor":"#1e1e1e","seed":2001,"autoResize":true},
+    {"type":"text","id":"right-header","x":620,"y":1570,"width":480,"height":26,"text":"+ 유튜브 funnel (하와 신규 채널)","fontSize":20,"fontFamily":1,"strokeColor":"#1e1e1e","seed":3001,"autoResize":true},
+
+    {"type":"rectangle","id":"left-1","x":60,"y":1610,"width":480,"height":70,"roundness":{"type":3},"backgroundColor":"#a5d8ff","fillStyle":"solid","roughness":0,"strokeColor":"#4a9eed","strokeWidth":2,"seed":2010,"boundElements":[{"type":"text","id":"left-1-text"}]},
+    {"type":"text","id":"left-1-text","x":60,"y":1633,"width":480,"height":24,"text":"인스타 콘텐츠","fontSize":18,"fontFamily":1,"strokeColor":"#1e1e1e","textAlign":"center","verticalAlign":"middle","containerId":"left-1","seed":2030,"autoResize":false},
+    {"type":"arrow","id":"left-arrow-1","x":300,"y":1680,"width":0,"height":40,"points":[[0,0],[0,40]],"strokeColor":"#1e1e1e","strokeWidth":2,"roughness":0,"endArrowhead":"arrow","seed":2050},
+
+    {"type":"rectangle","id":"left-2","x":60,"y":1720,"width":480,"height":70,"roundness":{"type":3},"backgroundColor":"#a5d8ff","fillStyle":"solid","roughness":0,"strokeColor":"#4a9eed","strokeWidth":2,"seed":2011,"boundElements":[{"type":"text","id":"left-2-text"}]},
+    {"type":"text","id":"left-2-text","x":60,"y":1743,"width":480,"height":24,"text":"단톡방 (기존 멤버)","fontSize":18,"fontFamily":1,"strokeColor":"#1e1e1e","textAlign":"center","verticalAlign":"middle","containerId":"left-2","seed":2031,"autoResize":false},
+    {"type":"arrow","id":"left-arrow-2","x":300,"y":1790,"width":0,"height":40,"points":[[0,0],[0,40]],"strokeColor":"#1e1e1e","strokeWidth":2,"roughness":0,"endArrowhead":"arrow","seed":2051},
+
+    {"type":"rectangle","id":"left-3","x":60,"y":1830,"width":480,"height":70,"roundness":{"type":3},"backgroundColor":"#a5d8ff","fillStyle":"solid","roughness":0,"strokeColor":"#4a9eed","strokeWidth":2,"seed":2012,"boundElements":[{"type":"text","id":"left-3-text"}]},
+    {"type":"text","id":"left-3-text","x":60,"y":1853,"width":480,"height":24,"text":"무료 강의","fontSize":18,"fontFamily":1,"strokeColor":"#1e1e1e","textAlign":"center","verticalAlign":"middle","containerId":"left-3","seed":2032,"autoResize":false},
+    {"type":"arrow","id":"left-arrow-3","x":300,"y":1900,"width":0,"height":40,"points":[[0,0],[0,40]],"strokeColor":"#1e1e1e","strokeWidth":2,"roughness":0,"endArrowhead":"arrow","seed":2052},
+
+    {"type":"rectangle","id":"left-4","x":60,"y":1940,"width":480,"height":70,"roundness":{"type":3},"backgroundColor":"#a5d8ff","fillStyle":"solid","roughness":0,"strokeColor":"#4a9eed","strokeWidth":2,"seed":2013,"boundElements":[{"type":"text","id":"left-4-text"}]},
+    {"type":"text","id":"left-4-text","x":60,"y":1963,"width":480,"height":24,"text":"유료 강의 결제","fontSize":18,"fontFamily":1,"strokeColor":"#1e1e1e","textAlign":"center","verticalAlign":"middle","containerId":"left-4","seed":2033,"autoResize":false},
+    {"type":"arrow","id":"left-arrow-4","x":300,"y":2010,"width":0,"height":40,"points":[[0,0],[0,40]],"strokeColor":"#1e1e1e","strokeWidth":2,"roughness":0,"endArrowhead":"arrow","seed":2053},
+
+    {"type":"rectangle","id":"left-result","x":60,"y":2050,"width":480,"height":80,"roundness":{"type":3},"backgroundColor":"#b2f2bb","fillStyle":"solid","roughness":0,"strokeColor":"#22c55e","strokeWidth":2,"seed":2020,"boundElements":[{"type":"text","id":"left-result-text"}]},
+    {"type":"text","id":"left-result-text","x":60,"y":2078,"width":480,"height":26,"text":"강사 매출 100%","fontSize":20,"fontFamily":1,"strokeColor":"#15803d","textAlign":"center","verticalAlign":"middle","containerId":"left-result","seed":2034,"autoResize":false},
+
+    {"type":"rectangle","id":"right-1","x":620,"y":1610,"width":480,"height":70,"roundness":{"type":3},"backgroundColor":"#ffd8a8","fillStyle":"solid","roughness":0,"strokeColor":"#f59e0b","strokeWidth":2,"seed":3010,"boundElements":[{"type":"text","id":"right-1-text"}]},
+    {"type":"text","id":"right-1-text","x":620,"y":1633,"width":480,"height":24,"text":"유튜브 콘텐츠 6편 / 월","fontSize":18,"fontFamily":1,"strokeColor":"#1e1e1e","textAlign":"center","verticalAlign":"middle","containerId":"right-1","seed":3030,"autoResize":false},
+    {"type":"arrow","id":"right-arrow-1","x":860,"y":1680,"width":0,"height":40,"points":[[0,0],[0,40]],"strokeColor":"#1e1e1e","strokeWidth":2,"roughness":0,"endArrowhead":"arrow","seed":3050},
+
+    {"type":"rectangle","id":"right-2","x":620,"y":1720,"width":480,"height":70,"roundness":{"type":3},"backgroundColor":"#ffd8a8","fillStyle":"solid","roughness":0,"strokeColor":"#f59e0b","strokeWidth":2,"seed":3011,"boundElements":[{"type":"text","id":"right-2-text"}]},
+    {"type":"text","id":"right-2-text","x":620,"y":1743,"width":480,"height":24,"text":"단톡방 (신규 멤버 모객 + DB)","fontSize":18,"fontFamily":1,"strokeColor":"#1e1e1e","textAlign":"center","verticalAlign":"middle","containerId":"right-2","seed":3031,"autoResize":false},
+    {"type":"arrow","id":"right-arrow-2","x":860,"y":1790,"width":0,"height":40,"points":[[0,0],[0,40]],"strokeColor":"#1e1e1e","strokeWidth":2,"roughness":0,"endArrowhead":"arrow","seed":3051},
+
+    {"type":"rectangle","id":"right-3","x":620,"y":1830,"width":480,"height":70,"roundness":{"type":3},"backgroundColor":"#a5d8ff","fillStyle":"solid","roughness":0,"strokeColor":"#4a9eed","strokeWidth":2,"seed":3012,"boundElements":[{"type":"text","id":"right-3-text"}]},
+    {"type":"text","id":"right-3-text","x":620,"y":1853,"width":480,"height":24,"text":"무료 강의","fontSize":18,"fontFamily":1,"strokeColor":"#1e1e1e","textAlign":"center","verticalAlign":"middle","containerId":"right-3","seed":3032,"autoResize":false},
+    {"type":"arrow","id":"right-arrow-3","x":860,"y":1900,"width":0,"height":40,"points":[[0,0],[0,40]],"strokeColor":"#1e1e1e","strokeWidth":2,"roughness":0,"endArrowhead":"arrow","seed":3052},
+
+    {"type":"rectangle","id":"right-4","x":620,"y":1940,"width":480,"height":70,"roundness":{"type":3},"backgroundColor":"#a5d8ff","fillStyle":"solid","roughness":0,"strokeColor":"#4a9eed","strokeWidth":2,"seed":3013,"boundElements":[{"type":"text","id":"right-4-text"}]},
+    {"type":"text","id":"right-4-text","x":620,"y":1963,"width":480,"height":24,"text":"유료 결제 + sales/CS","fontSize":18,"fontFamily":1,"strokeColor":"#1e1e1e","textAlign":"center","verticalAlign":"middle","containerId":"right-4","seed":3033,"autoResize":false},
+    {"type":"arrow","id":"right-arrow-4","x":860,"y":2010,"width":0,"height":40,"points":[[0,0],[0,40]],"strokeColor":"#1e1e1e","strokeWidth":2,"roughness":0,"endArrowhead":"arrow","seed":3053},
+
+    {"type":"rectangle","id":"right-result","x":620,"y":2050,"width":480,"height":80,"roundness":{"type":3},"backgroundColor":"#fff3bf","fillStyle":"solid","roughness":0,"strokeColor":"#f59e0b","strokeWidth":2,"seed":3020,"boundElements":[{"type":"text","id":"right-result-text"}]},
+    {"type":"text","id":"right-result-text","x":620,"y":2078,"width":480,"height":26,"text":"강사 매출 + 하와 share","fontSize":20,"fontFamily":1,"strokeColor":"#b45309","textAlign":"center","verticalAlign":"middle","containerId":"right-result","seed":3034,"autoResize":false},
+
+    {"type":"text","id":"revenue-header","x":40,"y":2180,"width":1120,"height":28,"text":"수익 모델 (하와 → 강사 계약 구조)","fontSize":20,"fontFamily":1,"strokeColor":"#1e1e1e","seed":4001,"autoResize":true},
+
+    {"type":"rectangle","id":"revenue-1","x":40,"y":2220,"width":360,"height":150,"roundness":{"type":3},"backgroundColor":"#a5d8ff","fillStyle":"solid","roughness":0,"strokeColor":"#4a9eed","strokeWidth":2,"seed":4010,"boundElements":[{"type":"text","id":"revenue-1-text"}]},
+    {"type":"text","id":"revenue-1-text","x":40,"y":2250,"width":360,"height":90,"text":"기본급 (월 정액)\n200~300만원\n콘텐츠 6편 + 단톡방 운영","fontSize":17,"fontFamily":1,"strokeColor":"#1e40af","textAlign":"center","verticalAlign":"middle","containerId":"revenue-1","seed":4020,"autoResize":false,"lineHeight":1.6},
+
+    {"type":"rectangle","id":"revenue-2","x":420,"y":2220,"width":360,"height":150,"roundness":{"type":3},"backgroundColor":"#ffd8a8","fillStyle":"solid","roughness":0,"strokeColor":"#f59e0b","strokeWidth":2,"seed":4011,"boundElements":[{"type":"text","id":"revenue-2-text"}]},
+    {"type":"text","id":"revenue-2-text","x":420,"y":2250,"width":360,"height":90,"text":"확장 수익 share\n25 ~ 35%\n신규 단톡방 멤버 결제분만","fontSize":17,"fontFamily":1,"strokeColor":"#b45309","textAlign":"center","verticalAlign":"middle","containerId":"revenue-2","seed":4021,"autoResize":false,"lineHeight":1.6},
+
+    {"type":"rectangle","id":"revenue-3","x":800,"y":2220,"width":360,"height":150,"roundness":{"type":3},"backgroundColor":"#c3fae8","fillStyle":"solid","roughness":0,"strokeColor":"#06b6d4","strokeWidth":2,"seed":4012,"boundElements":[{"type":"text","id":"revenue-3-text"}]},
+    {"type":"text","id":"revenue-3-text","x":800,"y":2250,"width":360,"height":90,"text":"타겟 강사 매출 규모\n연 5천 ~ 1억\n시즌성·신상품 영향 큼","fontSize":17,"fontFamily":1,"strokeColor":"#0e7490","textAlign":"center","verticalAlign":"middle","containerId":"revenue-3","seed":4022,"autoResize":false,"lineHeight":1.6}
+  ],
+  "appState": {
+    "viewBackgroundColor": "#ffffff",
+    "gridSize": null
+  },
+  "files": {}
+}

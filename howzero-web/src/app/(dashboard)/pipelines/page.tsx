@@ -338,18 +338,13 @@ function EditPipelineDialog({
     pipeline?.interval_minutes?.toString() ?? "30"
   );
   const [keyword, setKeyword] = useState(pipeline?.keyword ?? "");
-  const [startAt, setStartAt] = useState("");
-  const [endAt, setEndAt] = useState("");
+  const [startAt, setStartAt] = useState(() =>
+    toLocalDatetime(pipeline?.start_at ?? null)
+  );
+  const [endAt, setEndAt] = useState(() =>
+    toLocalDatetime(pipeline?.end_at ?? null)
+  );
   const updatePipeline = useUpdatePipeline();
-
-  useEffect(() => {
-    if (pipeline) {
-      setIntervalMinutes(pipeline.interval_minutes?.toString() ?? "30");
-      setKeyword(pipeline.keyword ?? "");
-      setStartAt(toLocalDatetime(pipeline.start_at));
-      setEndAt(toLocalDatetime(pipeline.end_at));
-    }
-  }, [pipeline]);
 
   function handleSave() {
     if (!pipeline) return;
@@ -485,8 +480,12 @@ function EmailConfigDialog({
   open: boolean;
   onOpenChange: (open: boolean) => void;
 }) {
-  const [emailSubject, setEmailSubject] = useState("");
-  const [emailBody, setEmailBody] = useState("");
+  const [emailSubject, setEmailSubject] = useState(
+    () => pipeline?.email_subject ?? ""
+  );
+  const [emailBody, setEmailBody] = useState(
+    () => pipeline?.email_body ?? ""
+  );
   const updatePipeline = useUpdatePipeline();
   const sendEmail = useSendPipelineEmail();
 
@@ -495,13 +494,6 @@ function EmailConfigDialog({
   const attachments = attachmentsData as PipelineAttachment[] | undefined;
   const addAttachment = useAddPipelineAttachment();
   const deleteAttachment = useDeletePipelineAttachment();
-
-  useEffect(() => {
-    if (pipeline) {
-      setEmailSubject(pipeline.email_subject ?? "");
-      setEmailBody(pipeline.email_body ?? "");
-    }
-  }, [pipeline]);
 
   function handleSave() {
     if (!pipeline) return;
@@ -1755,6 +1747,7 @@ export default function PipelinesPage() {
 
       {/* Edit Pipeline Dialog */}
       <EditPipelineDialog
+        key={editPipeline?.id ?? "edit-none"}
         pipeline={editPipeline}
         open={editDialogOpen}
         onOpenChange={(v) => {
@@ -1785,6 +1778,7 @@ export default function PipelinesPage() {
 
       {/* Email Config Dialog */}
       <EmailConfigDialog
+        key={emailConfigPipeline?.id ?? "email-none"}
         pipeline={emailConfigPipeline}
         open={emailConfigOpen}
         onOpenChange={(v) => {

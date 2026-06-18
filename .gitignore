@@ -18,6 +18,9 @@ data/*.sqlite
 data/token.json
 data/viewtrap/
 
+# TossInvest 계좌 리포트 산출물
+toss/reports/
+
 .pytest_cache/
 .coverage
 htmlcov/
@@ -26,6 +29,7 @@ htmlcov/
 
 # git worktrees (isolated feature branches)
 .worktrees/
+.superpowers/
 
 # 설정 백업 파일
 *.bak
@@ -38,5 +42,12 @@ htmlcov/
 chrome-headless-shell
 scripts/content_carousel/package-lock.json
 
-# GitHub 100MB 한도 — 거대 미디어는 별도 보관
+# GitHub 100MB 한도 — 거대 미디어는 별도 보관 (Dropbox로만 동기화)
 brands/howzero/howzero_carousel_pmqTgyPZdto/pmqTgyPZdto.mp4
+brands/braveyong/braveyong_carousel_oTxHFTjY_fY/source/highres/
+reports/youtube-carousel/**/yt-highlights/*.mp4
+brands/zipsaja/zipsaja_misc_인테리어-업체선정/통화_녹음/
+
+# OpenHuman workspace (memory_tree DB + wiki — git에 들어가면 안 됨)
+openhuman/
+.vercel

@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<title>용감한 용팀장 강의 바로가기 — 불사자 대시보드 배너</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nanum+Pen+Script&family=Pretendard:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0a0a0a;
+    --ink:#fafaf9;          /* off-white */
+    --mute:rgba(250,250,249,.60);
+    --line:rgba(250,250,249,.10);
+    --marker:#ffe14d;       /* 노란 형광펜 — 랜딩과 동일 액센트 */
+    --foreground:#fafaf9;
+    --background:#0a0a0a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#000;}
+  body{
+    font-family:'Pretendard',system-ui,-apple-system,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    color:var(--ink);
+  }
+
+  .banner{
+    width:2000px;height:400px;
+    position:relative;overflow:hidden;
+    /* === A. CINEMATIC STUDIO BACKDROP ===
+       Higgsfield Soul Location 생성 백드롭 (backdrop-A-02.png).
+       검정 + 우측 amber 빛 산란 + 입자 + 미세 스모크 */
+    background:
+      #050505 url('./backdrop-A-02.png') center/cover no-repeat;
+    display:grid;
+    grid-template-columns: 420px 1fr 720px;
+    align-items:center;
+    gap:0;
+    padding:0 44px 0 52px;
+  }
+  /* (legacy smoke layer 제거 — AI backdrop이 이미 스모크 내장) */
+  .banner > .smoke{display:none;}
+  /* 텍스트 가독성용 dim 오버레이 — A 배경이 골드 톤이라 중앙은 살짝만 어둡게 */
+  .banner > .dim{
+    position:absolute;inset:0;pointer-events:none;z-index:1;
+    background:linear-gradient(
+      90deg,
+      rgba(10,10,10,.55) 0%,
+      rgba(10,10,10,.35) 30%,
+      rgba(10,10,10,.20) 55%,
+      rgba(10,10,10,.55) 100%
+    );
+  }
+  /* 모든 전경은 dim 위로 */
+  .face-wrap,.copy,.cta-wrap{position:relative;z-index:2}
+
+  /* === LEFT : 원형 grayscale 얼굴 + 하단 이름 캡션 === */
+  .face-wrap{
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:16px;
+    height:100%;
+  }
+  .face{
+    width:240px;height:240px;border-radius:50%;
+    overflow:hidden;
+    border:2px solid var(--foreground);
+    box-shadow:0 20px 50px -20px rgba(0,0,0,.7);
+  }
+  .face img{
+    width:100%;height:100%;object-fit:cover;
+    filter:grayscale(1);
+  }
+  .face-caption{
+    display:inline-flex;align-items:center;gap:10px;
+    font:800 22px/1 'Pretendard',sans-serif;
+    letter-spacing:-0.018em;
+    color:var(--ink);
+  }
+  .face-caption .bar{
+    display:inline-block;width:18px;height:2px;background:var(--marker);
+  }
+
+  /* === CENTER : 카피 — 위계 (강사 네임플레이트 + 메인 + 부메인 + 손글씨) === */
+  .copy{
+    display:flex;flex-direction:column;gap:10px;
+    padding-right:16px;
+  }
+
+  .main-title{
+    font-family:'Pretendard',sans-serif;
+    font-weight:900;
+    font-size:62px;line-height:1.02;
+    letter-spacing:-0.035em;
+    color:var(--ink);
+  }
+  .sub-title{
+    font-family:'Pretendard',sans-serif;
+    font-weight:700;
+    font-size:30px;line-height:1.15;
+    letter-spacing:-0.022em;
+    color:rgba(250,250,249,.88);
+  }
+  .sub-title strong{
+    color:var(--marker);
+    font-weight:900;
+  }
+
+  /* 손글씨 한 줄 — 진정성 액센트 */
+  .hand{
+    margin-top:4px;
+    font-family:'Gowun Dodum','Nanum Pen Script',cursive;
+    font-weight:400;
+    font-size:20px;
+    line-height:1.4;
+    color:rgba(250,250,249,.78);
+    letter-spacing:-0.005em;
+  }
+  .hand .sign{
+    color:var(--marker);
+    margin-left:6px;
+  }
+  /* 다크 배경용 marker — 노란 단색 블록 + 검정 글자 */
+  .marker{
+    background-image:linear-gradient(180deg, var(--marker) 0%, var(--marker) 100%);
+    color:#0a0a0a;
+    padding:4px 14px;
+    border-radius:4px;
+    box-decoration-break:clone;
+    -webkit-box-decoration-break:clone;
+  }
+
+  /* === RIGHT : CTA pill — 두 줄 + 더 크게 === */
+  .cta-wrap{
+    display:flex;flex-direction:column;align-items:flex-end;justify-content:center;
+    gap:16px;height:100%;
+  }
+  .cta{
+    display:inline-flex;align-items:center;gap:26px;
+    background:var(--foreground);
+    color:var(--background);
+    padding:32px 50px;
+    border-radius:9999px;
+    border:2px solid var(--foreground);
+    box-shadow:
+      0 32px 64px -18px rgba(255,255,255,.30),
+      0 0 0 6px rgba(255,225,77,.14);
+    transition:all .25s ease;
+  }
+  .cta-text{
+    display:flex;flex-direction:column;align-items:flex-start;gap:8px;
+  }
+  .cta-when{
+    font:700 16px/1 'Pretendard',sans-serif;
+    color:#525252;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+  }
+  .cta-when .dot{
+    display:inline-block;width:7px;height:7px;border-radius:50%;
+    background:#dc2626;
+    margin-right:7px;vertical-align:middle;
+    box-shadow:0 0 10px rgba(220,38,38,.7);
+  }
+  .cta-action{
+    font:900 38px/1 'Pretendard',sans-serif;
+    letter-spacing:-0.022em;
+    color:var(--background);
+    white-space:nowrap;
+  }
+  .cta .arrow{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:54px;height:54px;
+    background:#0a0a0a;color:var(--marker);
+    border-radius:50%;
+    font-size:30px;font-weight:900;
+    transform:translateY(-1px);
+    flex-shrink:0;
+  }
+
+  /* 그리드 텍스처 제거 — A 시네마틱 배경에서 충돌 */
+</style>
+</head>
+<body>
+  <div class="banner">
+    <!-- A 컨셉 시네마틱 배경 레이어 -->
+    <div class="smoke"></div>
+    <div class="dim"></div>
+
+    <!-- LEFT : 원형 grayscale 얼굴 + 하단 이름 캡션 -->
+    <div class="face-wrap">
+      <div class="face">
+        <img src="./face.jpg" alt="용감한 용팀장" />
+      </div>
+      <div class="face-caption">
+        <span class="bar"></span>
+        용감한 용팀장
+        <span class="bar"></span>
+      </div>
+    </div>
+
+    <!-- CENTER : 카피 (메인 + 부메인 + 손글씨) -->
+    <div class="copy">
+      <h1 class="main-title"><span class="marker">무재고 AI 셀링</span></h1>
+      <h2 class="sub-title">AI로 효자상품 10개. 월 순익 <strong>800만 원</strong> 만들기.</h2>
+      <p class="hand">
+        그 방법, 그대로 풀어드립니다 <span class="sign">— 용팀장</span>
+      </p>
+    </div>
+
+    <!-- RIGHT : CTA -->
+    <div class="cta-wrap">
+      <div class="cta">
+        <div class="cta-text">
+          <span class="cta-when"><span class="dot"></span>6월 8일(월) 19:00</span>
+          <span class="cta-action">무료강의 대기방 입장</span>
+        </div>
+        <span class="arrow">↗</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

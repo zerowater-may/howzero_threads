@@ -1,0 +1,448 @@
+{
+  "updatedAt": "2026-06-11T21:11:16.882992+09:00",
+  "mode": "publish-now",
+  "bundle": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_하이닉스-성과급-11억-셔세권-vs-이천본진-4억",
+  "media": {
+    "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_하이닉스-성과급-11억-셔세권-vs-이천본진-4억/reels/zipsaja-reel-30s.mp4",
+    "type": "video"
+  },
+  "platforms": {
+    "instagram_reel": {
+      "status": "submitted",
+      "postId": "6a2aa55b7666efb787a98b9c",
+      "response": {
+        "post": {
+          "recycling": {
+            "enabled": false,
+            "gapFreq": "month",
+            "recycleCount": 0,
+            "contentVariations": [],
+            "contentVariationIndex": 0
+          },
+          "_id": "6a2aa55b7666efb787a98b9c",
+          "userId": "6925d39a4d42babc89dd33e5",
+          "title": "",
+          "content": "반도체 다니면 집 걱정 없지~? 성과급 11억 영끌해도 동탄역 국평은 못 산다 🦁\n\n하이닉스·삼성 성과급(최대 6억) + 대출 = 예산 11억.\n근데 하이닉스 본진은 이천, 직원들은 셔틀 닿는 '셔세권'으로 간다.\n\n❌ 11억으로 안 되는 곳\n판교 35.7억 · 성복역 16.3억 · 동탄역 국평 14.7억\n\n⭕ 11억으로 되는 곳\n동탄역 헤리엇(신축) 10.4억 · 힐스테이트기흥 11억 · 광교 24평 10.6억\n\n🤯 근데 반도체 본진은 국평이 6억 이하\n이천(하이닉스) 4.1억 · 평택 고덕(삼성) 6.0억 · 광주역 6.7억\n\n같은 국평인데 통근 거리에 가격이 8배.\n이천 본진 4억 vs 동탄 셔세권 14억 vs 판교 35억.\n\n너라면 ① 동탄 셔세권 ② 이천 본진 4억?\n반도체 다니는 친구 태그하고 같이 싸워봐 🔥\n\n기준 · 네이버 부동산 실거래(국토부 신고가) · 2026년 거래 · 화성/용인/이천/평택/수원 · 공급평형 · 성과급·셔세권 수치 보도 기준",
+          "mediaItems": [
+            {
+              "type": "video",
+              "url": "https://media.zernio.com/media/1781179732770_khr0l29t_zipsaja-reel-30s-audio-mapped-ig-safe.mp4",
+              "_id": "6a2aa55b7666efb787a98b9d"
+            }
+          ],
+          "platforms": [
+            {
+              "platform": "instagram",
+              "accountId": {
+                "_id": "69f08a47985e734bf3c9c295",
+                "platform": "instagram",
+                "profileId": "6925d3d1359f1d8910fb02e6",
+                "displayName": "집사는 집사자",
+                "isActive": true,
+                "profilePicture": "https://scontent-lhr8-1.cdninstagram.com/v/t51.82787-19/671223225_18085027718096961_646454800105286025_n.jpg?stp=dst-jpg_s206x206_tt6&_nc_cat=108&ccb=7-5&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=y3U7ZaTUaQMQ7kNvwFv7OF4&_nc_oc=Ado2Rt6O0q2NXAlbRm9EXWdFl4QPdP5L0-jBy54ArvTITaI5Re5X0NuDTDwfKINz5i8&_nc_zt=24&_nc_ht=scontent-lhr8-1.cdninstagram.com&edm=AP4hL3IEAAAA&_nc_gid=Xla_f2KsMefaDj2Olsx13w&_nc_tpa=Q5bMBQE-zYHwc3JODhbnlo_9UwugcF5ewrmyTd70qeacGzRvj2WauVOitKpedtw_e1RQ3RA4rRA7ZtKQ9Q&oh=00_Af8JLmYm9JknQePlkQRxMFxI2y7JfmskzSQeb4gWuXWbjQ&oe=6A300B68",
+                "username": "zipsaja_"
+              },
+              "profileId": "6925d3d1359f1d8910fb02e6",
+              "customMedia": [],
+              "scheduledFor": "2026-06-11T12:08:58.773Z",
+              "platformSpecificData": {
+                "contentType": "reels",
+                "shareToFeed": true,
+                "audioName": "zipsaja original audio",
+                "instagramThumbnail": "https://media.zernio.com/temp/1781179735907_sc9qebeh_instagram-reel-cover.png",
+                "__platformUserIdSnapshot": "26232925676410203",
+                "__usernameSnapshot": "zipsaja_",
+                "publishingStarted": "2026-06-11T12:09:01.355Z",
+                "lastPublishStage": "awaiting-finalize",
+                "pendingContainerId": "18095378021096961"
+              },
+              "status": "processing",
+              "publishAttempts": 0,
+              "contentHash": "46913a031532dc25b680d6e31930b886",
+              "_id": "6a2aa55b7666efb787a98b9e"
+            }
+          ],
+          "scheduledFor": "2026-06-11T12:08:58.773Z",
+          "timezone": "UTC",
+          "status": "publishing",
+          "tags": [],
+          "hashtags": [],
+          "mentions": [],
+          "visibility": "public",
+          "crosspostingEnabled": true,
+          "metadata": {
+            "usageCounted": true
+          },
+          "publishAttempts": 0,
+          "contentHash": "46913a031532dc25b680d6e31930b886",
+          "createdAt": "2026-06-11T12:09:00.018Z",
+          "updatedAt": "2026-06-11T12:09:00.440Z",
+          "__v": 0,
+          "publishingClaimedAt": "2026-06-11T12:09:00.440Z"
+        },
+        "message": "Post published successfully"
+      }
+    },
+    "instagram_carousel": {
+      "status": "submitted",
+      "postId": "6a2aa58014e16c01a32f676a",
+      "response": {
+        "post": {
+          "recycling": {
+            "enabled": false,
+            "gapFreq": "month",
+            "recycleCount": 0,
+            "contentVariations": [],
+            "contentVariationIndex": 0
+          },
+          "_id": "6a2aa58014e16c01a32f676a",
+          "userId": "6925d39a4d42babc89dd33e5",
+          "title": "",
+          "content": "반도체 다니면 집 걱정 없지~? 성과급 11억 영끌해도 동탄역 국평은 못 산다 🦁\n\n하이닉스·삼성 성과급(최대 6억) + 대출 = 예산 11억.\n근데 하이닉스 본진은 이천, 직원들은 셔틀 닿는 '셔세권'으로 간다.\n\n❌ 11억으로 안 되는 곳\n판교 35.7억 · 성복역 16.3억 · 동탄역 국평 14.7억\n\n⭕ 11억으로 되는 곳\n동탄역 헤리엇(신축) 10.4억 · 힐스테이트기흥 11억 · 광교 24평 10.6억\n\n🤯 근데 반도체 본진은 국평이 6억 이하\n이천(하이닉스) 4.1억 · 평택 고덕(삼성) 6.0억 · 광주역 6.7억\n\n같은 국평인데 통근 거리에 가격이 8배.\n이천 본진 4억 vs 동탄 셔세권 14억 vs 판교 35억.\n\n너라면 ① 동탄 셔세권 ② 이천 본진 4억?\n반도체 다니는 친구 태그하고 같이 싸워봐 🔥\n\n기준 · 네이버 부동산 실거래(국토부 신고가) · 2026년 거래 · 화성/용인/이천/평택/수원 · 공급평형 · 성과급·셔세권 수치 보도 기준",
+          "mediaItems": [
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1781179747797_yha9zkd0_slide-01.png",
+              "_id": "6a2aa58014e16c01a32f676b"
+            },
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1781179749752_nrn549fm_slide-02.png",
+              "_id": "6a2aa58014e16c01a32f676c"
+            },
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1781179752239_ijmbrwhc_slide-03.png",
+              "_id": "6a2aa58014e16c01a32f676d"
+            },
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1781179754132_it59iwnp_slide-04.png",
+              "_id": "6a2aa58014e16c01a32f676e"
+            },
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1781179755943_tqa7nwaj_slide-05.png",
+              "_id": "6a2aa58014e16c01a32f676f"
+            },
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1781179757921_neg5emzm_slide-06.png",
+              "_id": "6a2aa58014e16c01a32f6770"
+            },
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1781179759796_r6oq9v8d_slide-07.png",
+              "_id": "6a2aa58014e16c01a32f6771"
+            },
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1781179761877_3gpvg1ez_slide-08.png",
+              "_id": "6a2aa58014e16c01a32f6772"
+            },
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1781179763793_2vs6v1ls_slide-09.png",
+              "_id": "6a2aa58014e16c01a32f6773"
+            },
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1781179766729_ctdimoay_slide-10.png",
+              "_id": "6a2aa58014e16c01a32f6774"
+            }
+          ],
+          "platforms": [
+            {
+              "platform": "instagram",
+              "accountId": {
+                "_id": "69f08a47985e734bf3c9c295",
+                "platform": "instagram",
+                "profileId": "6925d3d1359f1d8910fb02e6",
+                "displayName": "집사는 집사자",
+                "isActive": true,
+                "profilePicture": "https://scontent-lhr8-1.cdninstagram.com/v/t51.82787-19/671223225_18085027718096961_646454800105286025_n.jpg?stp=dst-jpg_s206x206_tt6&_nc_cat=108&ccb=7-5&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=y3U7ZaTUaQMQ7kNvwFv7OF4&_nc_oc=Ado2Rt6O0q2NXAlbRm9EXWdFl4QPdP5L0-jBy54ArvTITaI5Re5X0NuDTDwfKINz5i8&_nc_zt=24&_nc_ht=scontent-lhr8-1.cdninstagram.com&edm=AP4hL3IEAAAA&_nc_gid=Xla_f2KsMefaDj2Olsx13w&_nc_tpa=Q5bMBQE-zYHwc3JODhbnlo_9UwugcF5ewrmyTd70qeacGzRvj2WauVOitKpedtw_e1RQ3RA4rRA7ZtKQ9Q&oh=00_Af8JLmYm9JknQePlkQRxMFxI2y7JfmskzSQeb4gWuXWbjQ&oe=6A300B68",
+                "username": "zipsaja_"
+              },
+              "profileId": "6925d3d1359f1d8910fb02e6",
+              "customMedia": [],
+              "scheduledFor": "2026-06-11T12:09:28.849Z",
+              "platformSpecificData": {
+                "__platformUserIdSnapshot": "26232925676410203",
+                "__usernameSnapshot": "zipsaja_",
+                "publishingStarted": "2026-06-11T12:09:36.917Z",
+                "lastPublishStage": "awaiting-finalize",
+                "pendingContainerId": "18095378273096961"
+              },
+              "status": "processing",
+              "publishAttempts": 0,
+              "contentHash": "c39a05601cd3ee5e9a6a4fcbfd4770db",
+              "_id": "6a2aa58014e16c01a32f6775"
+            }
+          ],
+          "scheduledFor": "2026-06-11T12:09:28.849Z",
+          "timezone": "UTC",
+          "status": "publishing",
+          "tags": [],
+          "hashtags": [],
+          "mentions": [],
+          "visibility": "public",
+          "crosspostingEnabled": true,
+          "metadata": {
+            "usageCounted": true
+          },
+          "publishAttempts": 0,
+          "contentHash": "c39a05601cd3ee5e9a6a4fcbfd4770db",
+          "createdAt": "2026-06-11T12:09:36.432Z",
+          "updatedAt": "2026-06-11T12:10:52.158Z",
+          "__v": 0,
+          "publishingClaimedAt": "2026-06-11T12:09:36.525Z"
+        },
+        "message": "Post published successfully"
+      }
+    },
+    "threads": {
+      "status": "submitted",
+      "postId": "6a2aa5e98c8bf07f5f993d1d",
+      "response": {
+        "post": {
+          "recycling": {
+            "enabled": false,
+            "gapFreq": "month",
+            "recycleCount": 0,
+            "contentVariations": [],
+            "contentVariationIndex": 0
+          },
+          "_id": "6a2aa5e98c8bf07f5f993d1d",
+          "userId": "6925d39a4d42babc89dd33e5",
+          "title": "",
+          "content": "반도체 다니면 집 걱정 없지~? 성과급 11억 영끌해도 동탄역 국평은 못 산다.\n근데 회사 옆 이천 본진은 국평 4.1억. 동탄 셔세권 14억, 판교 35억.\n너라면 ① 셔세권 ② 이천 본진 4억? 반도체 다니는 친구 태그 ㄱㄱ 🔥",
+          "mediaItems": [
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1781179857672_1zql0j41_slide-01.png",
+              "_id": "6a2aa5e98c8bf07f5f993d1e"
+            },
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1781179859599_xjqwwts3_slide-02.png",
+              "_id": "6a2aa5e98c8bf07f5f993d1f"
+            },
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1781179861607_u0nea0dt_slide-03.png",
+              "_id": "6a2aa5e98c8bf07f5f993d20"
+            },
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1781179863697_ib1u4em8_slide-04.png",
+              "_id": "6a2aa5e98c8bf07f5f993d21"
+            },
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1781179865763_5guf3sm0_slide-05.png",
+              "_id": "6a2aa5e98c8bf07f5f993d22"
+            },
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1781179867763_4ep82w83_slide-06.png",
+              "_id": "6a2aa5e98c8bf07f5f993d23"
+            },
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1781179869861_u9xuhyok_slide-07.png",
+              "_id": "6a2aa5e98c8bf07f5f993d24"
+            },
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1781179871812_cfthmvbh_slide-08.png",
+              "_id": "6a2aa5e98c8bf07f5f993d25"
+            },
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1781179873761_zn6y1p1x_slide-09.png",
+              "_id": "6a2aa5e98c8bf07f5f993d26"
+            },
+            {
+              "type": "image",
+              "url": "https://media.zernio.com/media/1781179875661_xcgq5xsf_slide-10.png",
+              "_id": "6a2aa5e98c8bf07f5f993d27"
+            }
+          ],
+          "platforms": [
+            {
+              "platform": "threads",
+              "accountId": {
+                "_id": "69f08af4985e734bf3c9c749",
+                "profileId": "6925d3d1359f1d8910fb02e6",
+                "platform": "threads",
+                "displayName": "zipsaja_",
+                "isActive": true,
+                "profilePicture": "https://scontent-lhr8-2.cdninstagram.com/v/t51.82787-19/682266102_18095452699904183_162638842714231833_n.jpg?stp=dst-jpg_s206x206_tt6&_nc_cat=103&ccb=7-5&_nc_sid=30ff31&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy5DMyJ9&_nc_ohc=hS5YkYsx5UoQ7kNvwHC2fHA&_nc_oc=AdpRvNFelkk_VjUsYJlc6EXAOmszVwjaRgMFLPaQQALjsqEndbnumXypQl6nDTTj9Lw&_nc_zt=24&_nc_ht=scontent-lhr8-2.cdninstagram.com&edm=AP4hL3IEAAAA&_nc_gid=p73c0h3HX9Zm8OdyWfsuBw&_nc_tpa=Q5bMBQGkzd3pkyQNTjH3yQAww2Sfldr7WEKBxcgH3egMjFY5lNqA_Cu7OvYNQ7RD0ROpRfRt-8GWFJUY9A&oh=00_Af96k6qIxi9dyQnayfHxsEZHk1T4wyElf91uBpkfA_QuEw&oe=6A3028B0",
+                "username": "zipsaja_"
+              },
+              "profileId": "6925d3d1359f1d8910fb02e6",
+              "customMedia": [],
+              "scheduledFor": "2026-06-11T12:11:17.745Z",
+              "platformSpecificData": {
+                "topic_tag": "부동산",
+                "__platformUserIdSnapshot": "26700354756297895",
+                "__usernameSnapshot": "zipsaja_",
+                "publishingStarted": "2026-06-11T12:11:22.480Z",
+                "lastPublishStage": "publishing"
+              },
+              "status": "published",
+              "publishAttempts": 0,
+              "contentHash": "b358d00db954f3d2969938ba2d546e50",
+              "_id": "6a2aa5e98c8bf07f5f993d28",
+              "platformPostId": "17986623645006638",
+              "platformPostUrl": "https://www.threads.com/@zipsaja_/post/DZcfYR_Dhxm",
+              "publishedAt": "2026-06-11T12:12:37.702Z"
+            }
+          ],
+          "scheduledFor": "2026-06-11T12:11:17.745Z",
+          "timezone": "UTC",
+          "status": "published",
+          "tags": [],
+          "hashtags": [],
+          "mentions": [],
+          "visibility": "public",
+          "crosspostingEnabled": true,
+          "metadata": {
+            "usageCounted": true
+          },
+          "publishAttempts": 0,
+          "contentHash": "b358d00db954f3d2969938ba2d546e50",
+          "createdAt": "2026-06-11T12:11:21.950Z",
+          "updatedAt": "2026-06-11T12:12:37.834Z",
+          "__v": 0,
+          "publishingClaimedAt": "2026-06-11T12:11:22.069Z"
+        },
+        "message": "Post published successfully"
+      }
+    }
+  },
+  "createdAt": "2026-06-11T21:08:57.893580+09:00",
+  "instagramReelThumbnail": {
+    "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_하이닉스-성과급-11억-셔세권-vs-이천본진-4억/publish-ready/instagram-reel-cover.png",
+    "publicUrl": "https://media.zernio.com/temp/1781179735907_sc9qebeh_instagram-reel-cover.png",
+    "contentType": "image/png"
+  },
+  "instagramCarouselMedia": [
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_하이닉스-성과급-11억-셔세권-vs-이천본진-4억/publish-ready/instagram-carousel/slide-01.png",
+      "publicUrl": "https://media.zernio.com/temp/1781179747797_yha9zkd0_slide-01.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_하이닉스-성과급-11억-셔세권-vs-이천본진-4억/publish-ready/instagram-carousel/slide-02.png",
+      "publicUrl": "https://media.zernio.com/temp/1781179749752_nrn549fm_slide-02.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_하이닉스-성과급-11억-셔세권-vs-이천본진-4억/publish-ready/instagram-carousel/slide-03.png",
+      "publicUrl": "https://media.zernio.com/temp/1781179752239_ijmbrwhc_slide-03.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_하이닉스-성과급-11억-셔세권-vs-이천본진-4억/publish-ready/instagram-carousel/slide-04.png",
+      "publicUrl": "https://media.zernio.com/temp/1781179754132_it59iwnp_slide-04.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_하이닉스-성과급-11억-셔세권-vs-이천본진-4억/publish-ready/instagram-carousel/slide-05.png",
+      "publicUrl": "https://media.zernio.com/temp/1781179755943_tqa7nwaj_slide-05.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_하이닉스-성과급-11억-셔세권-vs-이천본진-4억/publish-ready/instagram-carousel/slide-06.png",
+      "publicUrl": "https://media.zernio.com/temp/1781179757921_neg5emzm_slide-06.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_하이닉스-성과급-11억-셔세권-vs-이천본진-4억/publish-ready/instagram-carousel/slide-07.png",
+      "publicUrl": "https://media.zernio.com/temp/1781179759796_r6oq9v8d_slide-07.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_하이닉스-성과급-11억-셔세권-vs-이천본진-4억/publish-ready/instagram-carousel/slide-08.png",
+      "publicUrl": "https://media.zernio.com/temp/1781179761877_3gpvg1ez_slide-08.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_하이닉스-성과급-11억-셔세권-vs-이천본진-4억/publish-ready/instagram-carousel/slide-09.png",
+      "publicUrl": "https://media.zernio.com/temp/1781179763793_2vs6v1ls_slide-09.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_하이닉스-성과급-11억-셔세권-vs-이천본진-4억/publish-ready/instagram-carousel/slide-10.png",
+      "publicUrl": "https://media.zernio.com/temp/1781179766729_ctdimoay_slide-10.png",
+      "contentType": "image/png"
+    }
+  ],
+  "threadsCarouselMedia": [
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_하이닉스-성과급-11억-셔세권-vs-이천본진-4억/publish-ready/threads-carousel/slide-01.png",
+      "publicUrl": "https://media.zernio.com/temp/1781179857672_1zql0j41_slide-01.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_하이닉스-성과급-11억-셔세권-vs-이천본진-4억/publish-ready/threads-carousel/slide-02.png",
+      "publicUrl": "https://media.zernio.com/temp/1781179859599_xjqwwts3_slide-02.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_하이닉스-성과급-11억-셔세권-vs-이천본진-4억/publish-ready/threads-carousel/slide-03.png",
+      "publicUrl": "https://media.zernio.com/temp/1781179861607_u0nea0dt_slide-03.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_하이닉스-성과급-11억-셔세권-vs-이천본진-4억/publish-ready/threads-carousel/slide-04.png",
+      "publicUrl": "https://media.zernio.com/temp/1781179863697_ib1u4em8_slide-04.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_하이닉스-성과급-11억-셔세권-vs-이천본진-4억/publish-ready/threads-carousel/slide-05.png",
+      "publicUrl": "https://media.zernio.com/temp/1781179865763_5guf3sm0_slide-05.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_하이닉스-성과급-11억-셔세권-vs-이천본진-4억/publish-ready/threads-carousel/slide-06.png",
+      "publicUrl": "https://media.zernio.com/temp/1781179867763_4ep82w83_slide-06.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_하이닉스-성과급-11억-셔세권-vs-이천본진-4억/publish-ready/threads-carousel/slide-07.png",
+      "publicUrl": "https://media.zernio.com/temp/1781179869861_u9xuhyok_slide-07.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_하이닉스-성과급-11억-셔세권-vs-이천본진-4억/publish-ready/threads-carousel/slide-08.png",
+      "publicUrl": "https://media.zernio.com/temp/1781179871812_cfthmvbh_slide-08.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_하이닉스-성과급-11억-셔세권-vs-이천본진-4억/publish-ready/threads-carousel/slide-09.png",
+      "publicUrl": "https://media.zernio.com/temp/1781179873761_zn6y1p1x_slide-09.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_하이닉스-성과급-11억-셔세권-vs-이천본진-4억/publish-ready/threads-carousel/slide-10.png",
+      "publicUrl": "https://media.zernio.com/temp/1781179875661_xcgq5xsf_slide-10.png",
+      "contentType": "image/png"
+    }
+  ],
+  "liveStatus": {
+    "instagram_reel": {
+      "status": "published",
+      "url": "https://www.instagram.com/reel/DZce_gska_t/"
+    },
+    "instagram_carousel": {
+      "status": "published",
+      "url": "https://www.instagram.com/p/DZcfMMdl-ko/"
+    },
+    "threads": {
+      "status": "published",
+      "url": "https://www.threads.com/@zipsaja_/post/DZcfYR_Dhxm"
+    }
+  }
+}

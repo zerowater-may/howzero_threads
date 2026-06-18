@@ -26,6 +26,11 @@
 
 ## 🧰 기타 (1회성)
 
+- [howzero_misc_positioning-playground/](./howzero_misc_positioning-playground/) — 하우제로 유튜브 포지셔닝 플레이그라운드 HTML (2026-06-02)
+- [howzero_misc_youtube-reference-research/](./howzero_misc_youtube-reference-research/) — 미국/한국/대만 AI 자동화 유튜버 구독자·성장·인게이지먼트 벤치마크 엑셀 (2026-06-02)
+- [howzero_misc_coupang-3-loss-holes-playground/](./howzero_misc_coupang-3-loss-holes-playground/) — 앤더슨 쿠팡 3가지 리스크 레퍼런스 좌/우 벤치마킹 Playground HTML (2026-06-04)
+- `howzero_misc_positioning-change-prompt.md` — 하우제로 포지셔닝 변경 지시문/프롬프트
+- `howzero_misc_positioning-system.md` — 변경 포지셔닝 기준 채널 소개, 콘텐츠 축, CTA, 기본 세팅 체크리스트
 - `howzero_misc_cta-templates.md` — CTA 템플릿
 - `howzero_misc_email-minicourse-3day.md` — 3일 미니코스
 - `howzero_misc_story-carousel.html` — 스토리 캐러셀 HTML
@@ -47,8 +52,11 @@
 - **타깃**: 1인 셀러 · 구매대행 · 쿠팡셀러 · 스마트스토어 셀러
 - **페르소나 한 줄**: *"셀러 1년 차에 월 1억 만들어보고, 데이터에 빠져 AI 개발자가 된 후, 셀러를 위한 AI 자동화만 박는 중."*
 - **톤**: 본체 톤 + "셀러를 위해 AI 개발자가 업무 자동화" 봉사 톤
-- **금지**: "운 좋게", "찍어봤다", "SaaS 연 10억", "지금도 셀링 중"
+- **금지**: "운 좋게", "찍어봤다", AX 본체 권위 문장 남발, "지금도 셀링 중"
 
 | ID | 주제 | 파일 |
 |---|---|---|
 | S-001 | AI 상세페이지 도입부 1분 (v1) | [howzero_script/S-001-commerce-intro-ai-detail-page.md](./howzero_script/S-001-commerce-intro-ai-detail-page.md) |
+| S-002 | 스마트스토어 마누태그 10분 풀영상 (v1~v6) | [howzero_script/S-002-commerce-smartstore-manutag.md](./howzero_script/S-002-commerce-smartstore-manutag.md) |
+| S-003 | 계절 선점 소싱 10분 풀영상 — 불사자 키워드 1개월 무료 CTA (v1) | [howzero_script/S-003-commerce-seasonal-sourcing.md](./howzero_script/S-003-commerce-seasonal-sourcing.md) |
+| S-004 | 쿠팡 초보가 손해 보는 3가지 — 앤더슨 구조를 불사자 쿠팡스카우터 출시 맥락으로 치환 | [howzero_script/S-004-commerce-coupang-3-loss-holes.md](./howzero_script/S-004-commerce-coupang-3-loss-holes.md) |

@@ -15,10 +15,10 @@ class FrameError(RuntimeError):
 # the frame on top of text — center-cropping to 3:4 destroys the composition
 # and often clips news chyrons, interview subjects, or on-screen text.
 # Pipeline:
-#   1) scale to 1080 wide (keep aspect, even height)
+#   1) scale to 2160 wide (keep aspect, even height)
 #   2) light unsharp mask to restore detail lost in re-encoding
 _CROP_FILTER = (
-    "scale=1080:-2:flags=lanczos,"
+    "scale=2160:-2:flags=lanczos,"
     "unsharp=5:5:0.8:3:3:0.4"
 )
 

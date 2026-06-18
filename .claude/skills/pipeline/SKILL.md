@@ -77,7 +77,7 @@ zipsaja는 `zipsaja-remotion-v1` stateful DAG를 사용한다.
 `python3 -m scripts.pipeline zipsaja <주제>`는 `pipeline-state.json`에 Remotion 워크플로우 메타데이터를 기록한 뒤 다음 단계를 자동으로 이어서 실행한다.
 
 1. `scripts.zipsaja_data_fetch`
-2. `scripts.content_reels` (30초 Remotion)
+2. `scripts.content_reels` (30초 Remotion + BGM baked audio-mapped MP4)
 3. `scripts.content_carousel` (4:5 배포용)
 4. `scripts.content_attachments`
 5. `scripts.content_captions`
@@ -89,7 +89,7 @@ zipsaja는 `zipsaja-remotion-v1` stateful DAG를 사용한다.
 
 `package-qa` 완료 후 `status="completed"`인 번들만 Zernio 게시 대상으로 삼는다.
 
-- Instagram Reels: 1080x1920, 9:16, H.264, 30fps. 외부 음원은 `zipsaja-reel-30s-audio-mapped.mp4`에 먼저 박고, UI crop 방지를 위해 `zipsaja-reel-30s-audio-mapped-ig-safe.mp4`를 우선 업로드한다. 기존 `22s` 파일은 30초 파일이 없을 때만 legacy fallback이다.
+- Instagram Reels: 1080x1920, 9:16, H.264, 30fps. `scripts.content_reels`가 반드시 `zipsaja-reel-30s-audio-mapped.mp4`와 `zipsaja-reel-30s-audio-mapped-ig-safe.mp4`를 만든다. `--bgm` 또는 `HOWZERO_REELS_BGM_PATH`가 있으면 해당 음원을 loop해서 박고, 없으면 ffmpeg synthetic BGM을 생성한다. 업로드는 `zipsaja-reel-30s-audio-mapped-ig-safe.mp4`를 우선 사용한다. 기존 `22s` 파일은 30초 파일이 없을 때만 legacy fallback이다.
 - Instagram Reels cover: `publish-ready/instagram-reel-cover.png` 1080x1920. Zernio `instagramThumbnail`로 업로드한다.
 - Instagram Carousel: 1080x1350, 4:5 이미지 최대 10장. 이미지 캐러셀에는 오디오를 담을 수 없으므로 음악 없이 Feed carousel로 게시한다.
 - Threads: 기본은 `publish-ready/threads-carousel/slide-*.png` 이미지 캐러셀이다. 본문은 2~3줄, 140자 이내, 해시태그 없는 강한 훅으로만 쓴다.

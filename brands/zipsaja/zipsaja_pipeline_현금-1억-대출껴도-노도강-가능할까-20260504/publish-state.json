@@ -1,0 +1,230 @@
+{
+  "createdAt": "2026-05-04T04:48:58.026498+00:00",
+  "mode": "publish-now",
+  "bundle": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_현금-1억-대출껴도-노도강-가능할까-20260504",
+  "platforms": {
+    "instagram_reel": {
+      "status": "published",
+      "postId": "69f887e22816b85117212b73",
+      "response": {
+        "post": {
+          "recycling": {
+            "enabled": false,
+            "gapFreq": "month",
+            "recycleCount": 0,
+            "contentVariations": [],
+            "contentVariationIndex": 0
+          },
+          "_id": "69f887e22816b85117212b73",
+          "userId": "6925d39a4d42babc89dd33e5",
+          "title": "",
+          "content": "댓글에 엑셀 쓰면 계산표, PDF 쓰면 요약 리포트 보내줄게.\n\n현금 1억 모으면 서울 첫집이 조금 보일 줄 알았잖아.\n근데 노도강도 계산기를 다시 두드려야 하는 가격대가 됐어.\n\n전제는 단순하게 잡았어.\n내 돈 1억.\n주담대 70%.\n수도권·규제지역 주택구입목적 주담대 6억 한도.\n취득세, 중개비, 이사비는 아직 안 넣었어.\n실제 한도는 DSR, 소득, 은행 심사에 따라 더 줄 수 있고.\n\n그렇게 최대치에 가깝게 잡아도,\n도봉구는 약 7,300만 부족.\n노원구는 약 1.04억 부족.\n강북구는 6억 한도까지 걸리면서 약 1.65억 부족.\n\n문제는 집값이 몇 % 올랐냐가 아니야.\n내 예산표에서 후보지가 하나씩 지워진다는 거야.\n\n노도강도 이제 자동 선택지가 아니다.\n\n#서울부동산 #첫집 #노도강 #주담대 #집사자 #실거래가 #부동산데이터",
+          "mediaItems": [
+            {
+              "type": "video",
+              "url": "https://media.zernio.com/media/1777895388960_f6z4k374_zipsaja-reel-30s-audio-mapped-ig-safe.mp4",
+              "_id": "69f887e22816b85117212b74"
+            }
+          ],
+          "platforms": [
+            {
+              "platform": "instagram",
+              "accountId": {
+                "_id": "69f08a47985e734bf3c9c295",
+                "platform": "instagram",
+                "profileId": "6925d3d1359f1d8910fb02e6",
+                "displayName": "집사는 집사자",
+                "isActive": true,
+                "profilePicture": "https://scontent-lhr8-1.cdninstagram.com/v/t51.82787-19/671223225_18085027718096961_646454800105286025_n.jpg?stp=dst-jpg_s206x206_tt6&_nc_cat=108&ccb=7-5&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=FMY3_16IniMQ7kNvwFnf-d-&_nc_oc=AdrCaI3qoOhVzG_VPNhNbEJJ99x4G-CGnrkpUu6T8cikmkIVIMm--hxHWZ084hrg0JE&_nc_zt=24&_nc_ht=scontent-lhr8-1.cdninstagram.com&edm=AP4hL3IEAAAA&_nc_gid=gMKp4mPvfA0jIo4FqaT2Fw&_nc_tpa=Q5bMBQF2ESzLZHa6H-TpMjV8qhD4s2mQDKTfaVBxKuknfhRDWHytjDv0oEJ5dpkZKc7hunHG_oCsyF_EZQ&oh=00_Af4mnFWks0PxDUJJoRczuTERIPPrr5ydS3yBq5xgNO1j2A&oe=69FDF268",
+                "username": "zipsaja_"
+              },
+              "profileId": "6925d3d1359f1d8910fb02e6",
+              "customMedia": [],
+              "scheduledFor": "2026-05-04T11:49:53.814Z",
+              "platformSpecificData": {
+                "contentType": "reels",
+                "shareToFeed": true,
+                "audioName": "zipsaja original audio",
+                "instagramThumbnail": "https://media.zernio.com/temp/1777895391559_7hqhwors_instagram-reel-cover.png",
+                "__platformUserIdSnapshot": "26232925676410203",
+                "__usernameSnapshot": "zipsaja_",
+                "publishingStarted": "2026-05-04T11:49:55.088Z",
+                "lastPublishStage": "publishing",
+                "pendingContainerId": "18088771475096961"
+              },
+              "status": "published",
+              "publishAttempts": 0,
+              "contentHash": "d3db2a3dc56647116d559db6bf378391",
+              "_id": "69f887e22816b85117212b75",
+              "platformPostId": "17913669420180690",
+              "platformPostUrl": "https://www.instagram.com/reel/DX6mmVyjjgu/",
+              "publishedAt": "2026-05-04T11:50:29.886Z"
+            }
+          ],
+          "scheduledFor": "2026-05-04T11:49:53.814Z",
+          "timezone": "UTC",
+          "status": "published",
+          "tags": [],
+          "hashtags": [],
+          "mentions": [],
+          "visibility": "public",
+          "crosspostingEnabled": true,
+          "metadata": {
+            "usageCounted": true
+          },
+          "publishAttempts": 0,
+          "contentHash": "d3db2a3dc56647116d559db6bf378391",
+          "createdAt": "2026-05-04T11:49:54.694Z",
+          "updatedAt": "2026-05-04T11:50:30.105Z",
+          "__v": 0,
+          "publishingClaimedAt": "2026-05-04T11:49:54.811Z"
+        },
+        "message": "Post published successfully"
+      },
+      "platform": "instagram",
+      "platformStatus": "published",
+      "platformPostId": "17913669420180690",
+      "platformPostUrl": "https://www.instagram.com/reel/DX6mmVyjjgu/",
+      "publishedAt": "2026-05-04T11:50:29.886Z",
+      "mediaCount": 1
+    },
+    "instagram_carousel": {
+      "status": "publishing",
+      "postId": "69f888213f1c0b939ed07101",
+      "platform": "instagram",
+      "platformStatus": "processing",
+      "contentType": null,
+      "mediaCount": 10,
+      "duplicateGuard": "zernio-409",
+      "platformPostId": null,
+      "platformPostUrl": null,
+      "publishedAt": null
+    },
+    "threads": {
+      "status": "publishing",
+      "postId": "69f888591f663d9c1661348d",
+      "platform": "threads",
+      "platformStatus": "processing",
+      "contentType": null,
+      "mediaCount": 10,
+      "duplicateGuard": "zernio-409",
+      "platformPostId": null,
+      "platformPostUrl": null,
+      "publishedAt": null
+    }
+  },
+  "updatedAt": "2026-05-04T11:54:10.709058+00:00",
+  "media": {
+    "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_현금-1억-대출껴도-노도강-가능할까-20260504/reels/zipsaja-reel-30s.mp4",
+    "type": "video"
+  },
+  "instagramReelThumbnail": {
+    "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_현금-1억-대출껴도-노도강-가능할까-20260504/publish-ready/instagram-reel-cover.png",
+    "publicUrl": "https://media.zernio.com/temp/1777895391559_7hqhwors_instagram-reel-cover.png",
+    "contentType": "image/png"
+  },
+  "instagramCarouselMedia": [
+    {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_현금-1억-대출껴도-노도강-가능할까-20260504/publish-ready/instagram-carousel/slide-01.png",
+      "publicUrl": "https://media.zernio.com/temp/1777895432331_sillf9xm_slide-01.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_현금-1억-대출껴도-노도강-가능할까-20260504/publish-ready/instagram-carousel/slide-02.png",
+      "publicUrl": "https://media.zernio.com/temp/1777895434351_9xdkzefg_slide-02.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_현금-1억-대출껴도-노도강-가능할까-20260504/publish-ready/instagram-carousel/slide-03.png",
+      "publicUrl": "https://media.zernio.com/temp/1777895435723_c40slhkq_slide-03.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_현금-1억-대출껴도-노도강-가능할까-20260504/publish-ready/instagram-carousel/slide-04.png",
+      "publicUrl": "https://media.zernio.com/temp/1777895437595_sra8w2tx_slide-04.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_현금-1억-대출껴도-노도강-가능할까-20260504/publish-ready/instagram-carousel/slide-05.png",
+      "publicUrl": "https://media.zernio.com/temp/1777895439493_cxct2xrp_slide-05.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_현금-1억-대출껴도-노도강-가능할까-20260504/publish-ready/instagram-carousel/slide-06.png",
+      "publicUrl": "https://media.zernio.com/temp/1777895441359_0cmzh67w_slide-06.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_현금-1억-대출껴도-노도강-가능할까-20260504/publish-ready/instagram-carousel/slide-07.png",
+      "publicUrl": "https://media.zernio.com/temp/1777895443241_69ibx642_slide-07.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_현금-1억-대출껴도-노도강-가능할까-20260504/publish-ready/instagram-carousel/slide-08.png",
+      "publicUrl": "https://media.zernio.com/temp/1777895445462_r2wahb0v_slide-08.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_현금-1억-대출껴도-노도강-가능할까-20260504/publish-ready/instagram-carousel/slide-09.png",
+      "publicUrl": "https://media.zernio.com/temp/1777895446798_6m8tfm32_slide-09.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_현금-1억-대출껴도-노도강-가능할까-20260504/publish-ready/instagram-carousel/slide-10.png",
+      "publicUrl": "https://media.zernio.com/temp/1777895448297_dc8gx85f_slide-10.png",
+      "contentType": "image/png"
+    }
+  ],
+  "threadsCarouselMedia": [
+    {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_현금-1억-대출껴도-노도강-가능할까-20260504/publish-ready/threads-carousel/slide-01.png",
+      "publicUrl": "https://media.zernio.com/temp/1777895492887_nlfpht9h_slide-01.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_현금-1억-대출껴도-노도강-가능할까-20260504/publish-ready/threads-carousel/slide-02.png",
+      "publicUrl": "https://media.zernio.com/temp/1777895494257_5xp8pcmh_slide-02.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_현금-1억-대출껴도-노도강-가능할까-20260504/publish-ready/threads-carousel/slide-03.png",
+      "publicUrl": "https://media.zernio.com/temp/1777895495673_bg9lqusa_slide-03.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_현금-1억-대출껴도-노도강-가능할까-20260504/publish-ready/threads-carousel/slide-04.png",
+      "publicUrl": "https://media.zernio.com/temp/1777895497034_4cz3om84_slide-04.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_현금-1억-대출껴도-노도강-가능할까-20260504/publish-ready/threads-carousel/slide-05.png",
+      "publicUrl": "https://media.zernio.com/temp/1777895498337_575plgrf_slide-05.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_현금-1억-대출껴도-노도강-가능할까-20260504/publish-ready/threads-carousel/slide-06.png",
+      "publicUrl": "https://media.zernio.com/temp/1777895499897_sri7h1tz_slide-06.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_현금-1억-대출껴도-노도강-가능할까-20260504/publish-ready/threads-carousel/slide-07.png",
+      "publicUrl": "https://media.zernio.com/temp/1777895501491_no1h09l1_slide-07.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_현금-1억-대출껴도-노도강-가능할까-20260504/publish-ready/threads-carousel/slide-08.png",
+      "publicUrl": "https://media.zernio.com/temp/1777895503749_sph5bq3e_slide-08.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_현금-1억-대출껴도-노도강-가능할까-20260504/publish-ready/threads-carousel/slide-09.png",
+      "publicUrl": "https://media.zernio.com/temp/1777895506035_y1axso8z_slide-09.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_현금-1억-대출껴도-노도강-가능할까-20260504/publish-ready/threads-carousel/slide-10.png",
+      "publicUrl": "https://media.zernio.com/temp/1777895507466_17bf98m2_slide-10.png",
+      "contentType": "image/png"
+    }
+  ]
+}

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>빌리브로 웨비나 구조 × 용팀장 변환 — 좌우 비교</title>
+<style>
+  :root{
+    --bg:#0d0e12; --panel:#15171d; --panel2:#1b1e26; --line:#2a2e38;
+    --ink:#e7e9ee; --mut:#9aa0ad; --dim:#6b7180;
+    --ref:#8b93a4; --yong:#ff5a00; --warn:#ffb020; --ok:#37d399;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0; background:var(--bg); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard","Segoe UI",sans-serif; line-height:1.55; -webkit-font-smoothing:antialiased;}
+  .mono{font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace}
+
+  header{position:sticky; top:0; z-index:50; background:rgba(13,14,18,.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+  .htop{max-width:1280px; margin:0 auto; padding:14px 20px 0;}
+  .htop h1{margin:0; font-size:18px; letter-spacing:-.01em;}
+  .htop p{margin:4px 0 12px; color:var(--mut); font-size:13px;}
+  .htop .meta{color:var(--dim); font-size:12px}
+  .controls{display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-bottom:12px}
+  .toggle{appearance:none; border:1px solid var(--line); background:var(--panel2); color:var(--mut); padding:6px 12px; border-radius:999px; font-size:12.5px; cursor:pointer; transition:.15s;}
+  .toggle:hover{color:var(--ink); border-color:#3a3f4b}
+  .toggle.on{background:rgba(255,176,32,.14); border-color:var(--warn); color:var(--warn)}
+  .legend{display:flex; gap:10px; flex-wrap:wrap; margin-left:auto; font-size:11.5px; color:var(--dim)}
+  .legend span{display:inline-flex; align-items:center; gap:5px}
+  .dot{width:9px;height:9px;border-radius:50%}
+
+  .colhead{max-width:1280px; margin:0 auto; padding:0 20px; display:grid; grid-template-columns:minmax(0,1fr) 116px minmax(0,1fr);}
+  .colhead .ch{padding:9px 14px; font-size:12.5px; font-weight:700; letter-spacing:.02em; border-top:1px solid var(--line)}
+  .colhead .l{color:var(--ref); text-align:right}
+  .colhead .c{text-align:center; color:var(--dim); font-weight:600}
+  .colhead .r{color:var(--yong)}
+
+  .wrap{max-width:1280px; margin:0 auto; padding:18px 20px 40px}
+  .grid{display:grid; grid-template-columns:minmax(0,1fr) 116px minmax(0,1fr); row-gap:14px; align-items:stretch}
+
+  .card{background:var(--panel); border:1px solid var(--line); padding:14px 16px; transition:.18s; position:relative; cursor:pointer; min-width:0;}
+  .card.l{border-radius:12px 0 0 12px; border-right:none}
+  .card.r{border-radius:0 12px 12px 0; border-left:none; background:var(--panel2); box-shadow:inset 3px 0 0 rgba(255,90,0,.5)}
+  .card:hover{border-color:#3a4150}
+  .chead{display:flex; align-items:center; gap:8px}
+  .chev{margin-left:auto; color:var(--dim); font-size:12px; transition:transform .22s; flex:none}
+  .card.open .chev{transform:rotate(90deg)}
+  .card h3{margin:0; font-size:14px; letter-spacing:-.01em}
+  .card.l h3{color:#c7ccd6}
+  .card.r h3{color:#ffd9c4}
+  .tchip{font-size:10.5px; font-weight:700; padding:2px 7px; border-radius:6px; white-space:nowrap; flex:none}
+  .card.l .tchip{background:#23262f; color:#aeb4c0}
+  .card.r .tchip{background:rgba(255,90,0,.16); color:#ff8a4d}
+  .purpose{font-size:12.5px; color:var(--mut); margin:6px 0 9px}
+  .quote{font-size:12px; color:var(--ink); background:#0f1116; border:1px solid var(--line); border-radius:8px; padding:8px 10px; margin:0;}
+  .card.l .quote{border-left:2px solid var(--ref)}
+  .card.r .quote{border-left:2px solid var(--yong)}
+  .quote b{color:var(--yong); font-weight:600}
+
+  .detail{max-height:0; overflow:hidden; transition:max-height .3s ease, opacity .2s, margin .2s; opacity:0;}
+  .card.open .detail{max-height:640px; opacity:1; margin-top:11px}
+  .detail .dlabel{font-size:10.5px; font-weight:700; letter-spacing:.04em; color:var(--dim); text-transform:uppercase; margin-bottom:6px}
+  .detail ul{margin:0; padding-left:16px}
+  .detail li{font-size:12px; color:var(--mut); margin-bottom:5px}
+  .detail li b{color:var(--ink); font-weight:600}
+  .card.r .detail li b{color:#ffcfb6}
+
+  .guard{margin-top:10px; font-size:11.5px; color:var(--warn); background:rgba(255,176,32,.08); border:1px solid rgba(255,176,32,.28); border-radius:8px; padding:7px 9px; display:flex; gap:6px;}
+  .guard b{color:#ffce6b}
+
+  .spine{display:flex; flex-direction:column; align-items:center; padding-top:10px; gap:6px; position:relative;}
+  .spine::before{content:""; position:absolute; top:0; bottom:-14px; width:2px; background:var(--line)}
+  .num{width:30px;height:30px;border-radius:50%; display:grid; place-items:center; font-size:13px; font-weight:800; color:#0d0e12; position:relative; z-index:2;}
+  .pct{font-size:10px; color:var(--dim)}
+  .emo{font-size:10.5px; font-weight:700; padding:2px 8px; border-radius:999px; white-space:nowrap; position:relative; z-index:2;}
+
+  body.guardmode .pair:not(.has-guard){opacity:.28; filter:saturate(.4)}
+  body.guardmode .pair.has-guard .card.r{box-shadow:inset 3px 0 0 var(--warn)}
+  .pair{display:contents}
+
+  .summary{max-width:1280px;margin:0 auto;padding:0 20px 70px}
+  .scols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .sbox{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+  .sbox h4{margin:0 0 10px;font-size:13.5px}
+  .sbox.ok h4{color:var(--ok)} .sbox.no h4{color:#ff6b6b}
+  .sbox ul{margin:0;padding-left:18px;font-size:12.5px;color:var(--mut)}
+  .sbox li{margin-bottom:6px} .sbox li b{color:var(--ink);font-weight:600}
+
+  .scriptbtn{margin-top:10px; width:100%; appearance:none; cursor:pointer; border:1px dashed #3a4150; background:#0f1116; color:#cdd2db; padding:8px 10px; border-radius:8px; font-size:11.5px; font-weight:600; transition:.15s}
+  .scriptbtn:hover{border-color:var(--yong); color:var(--yong); background:rgba(255,90,0,.06)}
+  .deckbtn{display:block; margin-top:8px; text-align:center; text-decoration:none; background:#7c1f38; color:#fff; padding:9px 10px; border-radius:8px; font-size:12px; font-weight:800; letter-spacing:.01em; transition:.15s}
+  .deckbtn:hover{background:#9a2747}
+
+  .mback{position:fixed; inset:0; z-index:100; background:rgba(5,6,9,.78); backdrop-filter:blur(4px); display:none; align-items:center; justify-content:center; padding:24px}
+  .mback.show{display:flex}
+  .mpanel{background:var(--bg); border:1px solid var(--line); border-radius:16px; width:min(1120px,100%); height:86vh; display:flex; flex-direction:column; overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,.5)}
+  .mhead{display:flex; align-items:center; gap:12px; padding:14px 18px; border-bottom:1px solid var(--line)}
+  .mhead h2{margin:0; font-size:15px; letter-spacing:-.01em}
+  .mhead .x{margin-left:auto; cursor:pointer; color:var(--mut); background:var(--panel2); border:1px solid var(--line); border-radius:8px; width:30px; height:30px; display:grid; place-items:center; font-size:14px}
+  .mhead .x:hover{color:var(--ink); border-color:#3a4150}
+  .mcols{display:grid; grid-template-columns:1fr 1fr; overflow:hidden; flex:1}
+  .mcol{overflow:auto}
+  .mcol+.mcol{border-left:1px solid var(--line)}
+  .mcolhead{position:sticky; top:0; background:rgba(13,14,18,.96); backdrop-filter:blur(6px); padding:10px 18px; font-size:12.5px; font-weight:700; border-bottom:1px solid var(--line); z-index:2}
+  .mcol.l .mcolhead{color:var(--ref)} .mcol.r .mcolhead{color:var(--yong)}
+  .pbody{padding:14px 18px 48px}
+  .pbody p{margin:0 0 13px; font-size:13px; line-height:1.75; color:#d4d8e0}
+  .mcol.r .pbody p b{color:var(--yong); font-weight:600}
+
+  .slidestrip{margin-top:11px}
+  .slabel{font-size:10px; color:var(--dim); margin-bottom:5px}
+  .slides{display:flex; gap:5px; overflow-x:auto; padding-bottom:5px; scrollbar-width:thin; min-width:0}
+  .slides::-webkit-scrollbar{height:6px}
+  .slides::-webkit-scrollbar-thumb{background:#2a2e38; border-radius:3px}
+  .slides img{flex:none; width:64px; height:36px; object-fit:cover; border-radius:3px; border:1px solid var(--line); cursor:zoom-in; opacity:.82; transition:.15s; background:#000}
+  .slides img:hover{opacity:1; border-color:var(--ref); transform:scale(1.08)}
+
+  .lb{position:fixed; inset:0; z-index:120; background:rgba(0,0,0,.88); display:none; align-items:center; justify-content:center; padding:30px; cursor:zoom-out}
+  .lb.show{display:flex}
+  .lb img{max-width:92%; max-height:92%; border-radius:8px; box-shadow:0 20px 70px rgba(0,0,0,.6)}
+
+  @media(max-width:820px){
+    .colhead,.grid{grid-template-columns:1fr}
+    .colhead .c,.spine{display:none}
+    .card.l,.card.r{border-radius:12px;border:1px solid var(--line)}
+    .card.l{border-bottom:none;border-radius:12px 12px 0 0}
+    .card.r{border-radius:0 0 12px 12px}
+    .scols{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="htop">
+    <h1>빌리브로 웨비나 구조 × 용팀장 6/8 무료강의 변환</h1>
+    <p>카드를 <b>클릭</b>하면 세부가 펼쳐집니다 · <b class="mono">시간</b> = 왼쪽 빌리브로(≈추정, 총 ~135분) · 오른쪽 용팀장(120분 배분안)</p>
+    <div class="controls">
+      <button class="toggle" id="expandBtn">⤢ 전체 펼치기</button>
+      <button class="toggle" id="guardBtn">⚠️ 톤가드 파트만 강조</button>
+      <a class="toggle" href="editor.html" style="text-decoration:none; border-color:#7c1f38; color:#ff8a4d">✏️ 스크립트 편집기</a>
+      <span class="meta">왼쪽=빌리브로 레퍼런스 · 오른쪽=용팀장 변환</span>
+      <div class="legend" id="legend"></div>
+    </div>
+  </div>
+  <div class="colhead">
+    <div class="ch l">◀ 빌리브로 (레퍼런스 · ≈135분)</div>
+    <div class="ch c">파트 · %</div>
+    <div class="ch r">용팀장 변환 (120분) ▶</div>
+  </div>
+</header>
+
+<div class="wrap"><div class="grid" id="grid"></div></div>
+
+<div class="summary">
+  <div class="scols">
+    <div class="sbox ok">
+      <h4>✅ 그대로 차용할 골격</h4>
+      <ul>
+        <li><b>권위 → 인간화 → 사회적 증거 3겹</b></li>
+        <li><b>참여형 고통 공감</b> — 답답한 점을 채팅에 직접 쓰게</li>
+        <li><b>오픈북 데이터 실연</b> — 소싱·SEO 화면 공유</li>
+        <li><b>본론을 진짜로 준다</b> — 완성 시스템만 유료 게이팅</li>
+        <li><b>떡밥 → Q&A 회수</b> — 이탈 방지</li>
+      </ul>
+    </div>
+    <div class="sbox no">
+      <h4>⛔ 베끼면 안 되는 것 (톤 가드)</h4>
+      <ul>
+        <li><b>상위노출 보장 / 가구매 산식</b> → 합법 SEO 자동화로</li>
+        <li><b>전액 환불·순익 보장</b> → "실행 지원" 톤</li>
+        <li><b>좌석 카운트다운 허위 긴급성</b> → 신청서 선별 톤</li>
+        <li><b>거액 가격 앵커 후 라이브 인하</b> 금지</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="mback" id="mback">
+  <div class="mpanel">
+    <div class="mhead"><h2 id="mtitle">스크립트 전문</h2><div class="x" id="mclose">✕</div></div>
+    <div class="mcols">
+      <div class="mcol l" id="mcolL"><div class="mcolhead">◀ 빌리브로 임찬 (실제 발화)</div><div class="pbody" id="mbodyL"></div></div>
+      <div class="mcol r" id="mcolR"><div class="mcolhead">용팀장 변환 (스크립트) ▶</div><div class="pbody" id="mbodyR"></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="lb" id="lb"><img id="lbimg" src="" alt="slide"></div>
+
+<script src="scripts.js"></script>
+<script src="slides.js"></script>
+<script>
+// 섹션 덱(용팀장 PPT) 상대경로 — 압축해서 다른 PC에서 열어도 동작
+const DECKBASE='../braveyong_misc_free-webinar-2026-06-08-deck/';
+const DECK={1:'section-1-opening',2:'section-2-intro',3:'section-3-why-noinventory',4:'section-4-differentiation',5:'section-5-sourcing',6:'section-6-seo',7:'section-7-story',8:'section-8-proof',9:'section-9-offer',10:'section-10-closing'};
+
+// 스크립트 편집본(localStorage) 우선 → scripts.js → 인라인 순으로 사용
+const STORE_KEY='yong_scripts_v1';
+function loadOverride(){ try{return JSON.parse(localStorage.getItem(STORE_KEY))||{}}catch(e){return {}} }
+function scriptFor(n){ const o=loadOverride(); if(o[n]&&o[n].rscript) return o[n]; if(window.SCRIPTS&&window.SCRIPTS[n]) return window.SCRIPTS[n]; const p=(typeof PARTS!=='undefined')&&PARTS.find(x=>x.n===n); if(p&&p.lscript) return {lscript:p.lscript,rscript:p.rscript}; return null; }
+
+const EMO = {
+  warm:['워밍업','#64748b'], trust:['신뢰 선점','#3b82f6'], empathy:['공감','#2dd4bf'],
+  rise:['고조','#f59e0b'], proof:['확신','#8b5cf6'], human:['인간화','#fb7185'],
+  peak:['피크','#ff7a1a'], sales:['세일즈','#ef4444'], satis:['만족','#34d399'],
+};
+
+const PARTS = [
+  { n:1, pct:'0–5%', emo:'warm', lts:'≈0–7분', rts:'0–8분',
+    lt:'오프닝 / 라이브 셋업', lp:'메모장 준비 유도 · 전자책 리드매그넷 환기 · 소통 모드 ON',
+    lq:'"다들 시작하기 전에 메모장 한 번씩 준비해 주세요."',
+    ld:['"메모장 준비하세요" → 학습 모드 + 행동 약속 동시 유발','채팅 인사·반응으로 소통 모드 형성("목소리 잘 들리나요")','전자책(리드매그넷) 환기 — 끝까지 보면 광고편까지 준다','첫 좋아요/댓글 즉시 호명 → 참여 보상'],
+    rt:'오프닝 — 정책 충격 + 무료자료 환기', rp:'6/1 네이버 1,000개 제한 충격으로 시작 · 메모 준비 유도',
+    rq:'"오늘 끝까지 보시면 <b>마노태그 추출 프로그램 · 소싱 키워드 리스트 · 광고 전자책 가이드</b>까지 단톡방에 다 드립니다."',
+    rd:['6/1 네이버 1,000개 제한 + 쿠팡 이슈 → "지금 위기" 프레임','메모장 준비 유도 (행동 약속)','<b>무료자료 3종 약속: 마노태그 추출 프로그램 · 소싱 키워드 리스트 · 광고 전자책 가이드</b> (끝까지 보면 단톡방에)','채팅 워밍업 "매출 어느 정도세요?"'],
+    lscript:[
+      `안녕하세요. 빌리브로 임찬입니다. 반갑습니다. 오랜만에 뵙습니다. 목소리 잘 들리시나요? 댓글 한 번씩 남겨 주시면 제가 체크해 보도록 하겠습니다.`,
+      `오늘 또 알찬 정보들로 제가 준비를 했습니다. 오늘 무료 강의만 들으셔도 제가 디테일하게 이 온라인 판매에 대한 틀을 잡힐 수 있게 제가 준비를 했거든요.`,
+      `처음이신 분들은 살짝 제 내용이 어려울 수 있는데 괜찮으실까요? 왜냐면 지금 유튜브에 정말 쉽게 쉽게 돈 번다라는 내용들이 너무 많잖아요. 근데 저는 제 유튜브에는 그런 식으로 말씀드리고 있지 않죠. 뭐 딸깍해서 돈 벌 수 있다. 그거 다 거짓말이잖아요. 그죠?`,
+      `다들 시작하기 전에 앞서서 메모장 한 번씩 준비해 주세요. 중간중간 모르고 막히는 문제들이 꼭 하나하나씩 있을 거예요. 그런 것들 다 메모장에 질문 적어 주시고 Q&A 시간에, 아니면 중간중간 궁금하실 때 저한테 질문 주시면 제가 하나하나 답변드리도록 하겠습니다.`,
+      `제가 실제로 제품들을 같이 찾아보고 소싱하면서 정말 도움될 수 있는 정보들로 준비를 했어요. 저도 이 라이브 준비하는 시간 정말 오래 걸렸으니까 집중해서 봐 주신다면 도움이 많이 되실 거라고 생각합니다. 쉽게 되는 게 어디겠어요? 그런 말 믿지 않습니다.`,
+      `저는 좀 소통하는 이 라이브를 가져 보려고 해요. 이 온라인 판매가 혼자 하는 게 정말 쉽지가 않거든요. 정말 외롭고 혼자 나아간다는 게 쉽지 않은데, 그런 부분들을 소통하면서 하나하나씩 풀어 나가는 시간 가졌으면 좋겠습니다. 제가 준비한 시간은 약 2시간에서 3시간 정도 됩니다.`,
+      `전자책 혹시 다들 한 번씩 읽어 보셨나요? 저희 단톡방에 들어오신 분들에게는 제가 미리 무료로 전달을 드렸었죠. 거의 160페이지 정도로 세 달 동안 적은 전자책이거든요. 단톡방 상단에 신청서를 작성해 주시면 다운 받을 수 있는 링크가 나와요.`,
+      `제가 1편 드렸던 게 소싱 편이었죠. 이 소싱을 얼마나 디테일하게 하는지에 대한 전자책이었는데요. 오늘 라이브를 끝까지 들어 주시는 분들에게는 제가 전자책 광고편까지 준비를 했습니다.`
+    ],
+    rscript:[
+      `네, 안녕하세요. 용감한 용팀장입니다. 반갑습니다. 목소리 잘 들리시나요? 댓글로 한 번씩 인사 남겨 주시면 제가 체크하겠습니다.`,
+      `오늘은 무료강의지만, 이거 하나만 제대로 들으셔도 네이버에서 상품 파는 틀이 잡히게 준비했습니다. 처음 오신 분들은 조금 어려울 수 있는데 괜찮습니다. 천천히 다 설명드릴게요.`,
+      `먼저 솔직하게 하나 짚고 갈게요. 요즘 유튜브에 'AI로 딸깍 한 번에 돈 번다' 이런 거 많죠. 저는 그렇게 말 안 합니다. 그거 다 거짓말이에요. 쉽게 되는 게 어디 있겠어요. 대신, <b>제대로 하면 되는 방향</b>은 분명히 있습니다. 오늘 그걸 보여드릴 거예요. 특히 지금까지 상품 수천 개씩 그냥 막 올리던 <b>대량등록 셀러분들, 요즘 다 힘들어하시죠.</b> 6월부터 네이버가 1,000개로 막아버렸으니까요. 이제 많이 올리는 게임은 끝났습니다. 적게 올려도 제대로 올리는 방법, 그게 지금 필요한 거예요.`,
+      `시작 전에 메모장 하나씩 켜 주세요. 중간중간 막히는 부분 꼭 생기거든요. 그거 적어 두셨다가 Q&A 때, 아니면 중간에 바로 질문 주시면 하나하나 답변드리겠습니다.`,
+      `그리고 오늘 왜 이 타이밍에 강의를 하냐면요. <b>6월 1일부터 네이버가 상품 등록 1,000개 제한</b>을 걸었습니다. 지금 셀러 단톡방마다 '이제 어떡하냐' 난리예요. 그런데 저는 오히려 지금이 기회라고 봅니다. 왜 그런지가 오늘 핵심이에요.`,
+      `오늘 끝까지 들어주시는 분들한테는 제가 단톡방에 자료를 다 드릴 거예요. 첫째, <b>마노태그 자동 추출 프로그램.</b> 둘째, 오늘 제가 직접 거른 <b>소싱 키워드 리스트.</b> 셋째, <b>광고 전자책 가이드</b>까지. 이거 세 개 다 드립니다. 그러니까 끝까지 자리 지켜 주세요.`,
+      `저는 이 라이브를 혼자 떠드는 게 아니라 같이 소통하면서 하고 싶어요. 온라인 셀링이 혼자 하면 진짜 외롭고 막막하거든요. 그 막힌 부분들, 오늘 같이 하나씩 풀어봅시다.`,
+      `오늘 준비한 건 두 시간 정도예요. 시작하기 전에 채팅으로 지금 매출 어느 정도신지, 셀링 얼마나 하셨는지 한 번씩 남겨 주세요. 제가 보고 눈높이 맞춰서 진행하겠습니다.`
+    ] },
+
+  { n:2, pct:'5–9%', emo:'trust', lts:'≈7–12분', rts:'8–14분',
+    lt:'자기소개 / 권위 증명', lp:'매출·교수·구독자로 "강의팔이 의심" 선제 차단',
+    lq:'"상품 네 개로 월 매출 1억 7천만 원을 내고 있는 빌리브로 임찬입니다."',
+    ld:['권위 수치: 상품 4개로 월 1.7억','직함: 경희대 겸임교수 · 구독자 4.6만','쿠팡 본사 미팅 일화 → "지독하게 테스트한 사람 처음"','"이름 모르는 강사로 보이기 싫다" → 강의팔이 의심 차단'],
+    rt:'자기소개 — 직장인 육아아빠 + 실전 셀러', rp:'9살·7살 키우는 가장 + 직접 막혀본 셀러로 신뢰 선점',
+    rq:'"저는 애 둘 키우는 직장인이고, <b>직접 다 깨져본 셀러</b>입니다."',
+    rd:['9살·7살 육아 + 직장인 (생활 장면으로 친근화)','감으로 올리다 막혀본 실전 셀러 관점','"같이 막혀봤다" 공감형 신뢰 (권위 과시 대신)','<b>⚠️ 매출·부동산·순익 수치는 검증 후에만</b>'],
+    guard:'매출·부동산·순익 수치는 단정 금지. 검증 전엔 "직접 막혀본 관점"으로 낮춘다.' },
+
+  { n:3, pct:'9–15%', emo:'empathy', lts:'≈12–20분', rts:'14–22분',
+    lt:'도입 — "디지털 노가다" 공감', lp:'고통 구체화 + 채팅에 간절한 이유 쓰게 해 자기개방',
+    lq:'"하루 세네 시간만 자면서 이 디지털 노가다를 하고 있더라고요."',
+    ld:['"하루 3시간 자며 노가다" 고통 장면화','팔릴지 모르는 상품 1,000개 등록의 막막함','채팅에 "간절한 이유" 직접 쓰게 함 → 자기개방','"학원비 때문에" 등 청중 사연으로 감정 공유'],
+    rt:'도입 — 노가다 공감 → "왜 AI 무재고 셀링"', rp:'고통 공감 → 네 갈래 길(사입·국내위탁·해외구매대행·대량) 비교 + 반자동 셀러도 포섭',
+    rq:'"사입은 돈 묶이고, 국내 위탁은 세금이 무겁고, 대량등록은 1,000개로 막혔어요. <b>순수익에만 세금 붙는 해외 구매대행 + AI 무재고 셀링</b>, 그래서 이겁니다."',
+    rd:['"300개 올렸는데 검색에 한 번도 안 보임" 장면화 + 채팅에 "답답한 점" 쓰게 유도','<b>네 갈래 길 ①</b> 사입 = 초기비용 크고 재고 묶임','<b>②</b> 국내 위탁 = 세금에서 발목 (마진 얇은데 매출 기준)','<b>③</b> 해외 구매대행 = 순수익에만 과세 → 세금 부담 가벼움','<b>④</b> 대량등록 = 안 팔림 + 6/1 1,000개 제한으로 끝','<b>→ 해외 구매대행 기반 AI 무재고 셀링</b> (재고0·자본0, 효자상품 몇 개)','<b>반자동 대량등록 셀러도 OK</b> — 새로 안 올려도, 쌓인 것 중 효자상품만 골라 SEO 재세팅'],
+    guard:'세금 비교(국내 위탁 vs 해외 구매대행)는 본인 사업자 유형·세무 상담 기준으로 확인 후 말한다. "거의 안 낸다 / 1% 미만" 식 단정 금지.' },
+
+  { n:4, pct:'15–25%', emo:'rise', lts:'≈20–34분', rts:'22–32분',
+    lt:'핵심 사례 + 차별화 개념', lp:'선풍기·비염안대로 "차별화 = 마진" 각인',
+    lq:'"남들 안대 만 원 팔아 1,000원 벌 때, 저흰 4만 원에 팔아 3만 원 벌자."',
+    ld:['선풍기 18,000 떼서 34,900 판매','비염 찜질안대 4만원 (만원짜리 대비 30배 마진)','"남들 1,000원 벌 때 3만원 벌자" 리프레이밍','하루 하나만 팔아도 월 100만 (소액→거액 전환)'],
+    rt:'차별화 사례 — SEO 1페이지 / 효자상품', rp:'SEO 세팅만으로 노출된 사례 · 효자상품 1개 = 평범 100개',
+    rq:'"오늘 아침 등록한 상품이 1페이지에 보이고 있어요. <b>효자상품 1개가 평범한 상품 100개</b>입니다."',
+    rd:['SEO만으로 1페이지 노출된 상품 화면 제시','효자상품 1개 = 평범 100개 프레임','매출 아닌 <b>순익 중심</b> ("순익이 중요하다")','<b>⚠️ "등록 즉시 꽂힌다" 금지 → "확률↑·순위 모니터링"</b>'],
+    guard:'"등록하자마자 꽂힌다" 단정 금지 → "노출 확률↑·키워드별 순위를 직접 모니터링" 톤.' },
+
+  { n:5, pct:'25–38%', emo:'proof', lts:'≈34–51분', rts:'32–50분',
+    lt:'본론 1 — 소싱 실연 (오픈북)', lp:'불사자에서 틈새 키워드·로켓 비율 낮은 키워드 라이브 시연',
+    lq:'"이게 제가 말하는 틈새 시장이라는 거예요."',
+    ld:['불사자 필터: 비브랜드+쇼핑성+시장 1억↑+검색제안 10만','핵심 = 로켓 비율 낮은 틈새 키워드 (테이블톱 2.3억에 로켓 1명)','화면 공유로 실시간 검색 = "온라인은 오픈북"','따라 할 수 있는 수준으로 공개 (맛보기 아님)'],
+    rt:'본론 1 — 소싱 라이브 (GPTs)', rp:'두 출발점(신규=소싱부터 / 기존 반자동=내 상품 진단부터) → 셀러라이프 필터 + GPTs',
+    rq:'"오늘 쓰는 <b>필터링 파일</b>, 끝까지 보신 분들께 그대로 드릴게요."',
+    rd:['<b>두 출발점</b> — 신규는 소싱부터 / 기존 반자동 대량등록은 "내 스토어 효자상품 골라내기"부터','셀러라이프 전체 다운로드 → 필터로 중소형 키워드 추림','구매대행 적합 사이즈 기준 1차 필터','GPTs에 엑셀 넣고 대화하며 키워드 선별 실연','"오늘 쓴 필터링 파일, 끝까지 본 분께 공유"'] },
+
+  { n:6, pct:'38–45%', emo:'proof', lts:'≈51–61분', rts:'50–72분',
+    lt:'본론 2 — 판매가 기획', lp:'"쿠팡이 밀어주는 가격대" 27,500원 설정법',
+    lq:'"13,000원에 2,000원 남기지 말고, 27,500원에 만 원씩 남기자."',
+    ld:['"다른 고객이 함께 본 상품"=무광고 영역=쿠팡이 밀어주는 가격대','리뷰 4.8↑ + 불사자 가격 분포로 27,500원 산출','13,000원에 2,000원 말고 27,500원에 만원','데이터 기반 가격 ("감 아니라 데이터")'],
+    rt:'본론 2 — SEO 7요소 세팅 실연', rp:'상품명·카테고리·텀카운트·속성·태그·마노태그·마켓명 화면 시연',
+    rq:'"상품 1개 SEO 잡는 데 30분~1시간… <b>1,000개면 4개월</b>이에요. (비밀은 뒤에)"',
+    rd:['SEO 7요소: 상품명·카테고리·텀카운트·속성·태그·마노태그·마켓명','F12 텀카운트 · 속성 21만→2,100 축소 시연','49자 채우기보다 "최적 텀"이 중요','<b>2단 후크</b>: "1개 30분 × 1,000개 = 4개월 → 비밀은 PART 끝에"'] },
+
+  { n:7, pct:'45–55%', emo:'human', lts:'≈61–74분', rts:'72–80분',
+    lt:'화자 영웅 서사', lp:'빚 1억 → 8만개 등록 → 체크리스트 300개로 인간화',
+    lq:'"24살에 빚 1억이 생겼습니다."',
+    ld:['24살 빚 1억 → 바닥 서사','8만 개 상품 등록 노가다 경험','체크리스트 300개 = 디테일·헌신 증거','경찰서·30만원 옥탑방 = 인간미 (권위와 다른 결)'],
+    rt:'영웅 서사 — 부동산 세금 vs 현금흐름', rp:'부동산 자산은 있지만 세금 1억+·돈 묶임 → 매월 현금 들어오는 셀링으로',
+    rq:'"부동산 때문에 세금만 <b>1년에 1억 넘게</b> 냅니다. 자산은 있는데 돈은 다 묶여있고요. <b>그래서 매월 현금이 들어오고 세금도 가벼운 온라인 셀링</b>을 합니다."',
+    rd:[
+      '<b>부동산 자산은 있지만 매년 세금만 1억 넘게 낸다</b> — 자산이 곧 현금흐름은 아니다',
+      '부동산 = 돈이 <b>묶이는</b> 자산 (팔기 전엔 못 쓰고 세금만 나간다)',
+      '온라인 셀링 = <b>매월 현금이 들어오는</b> 흐름 → 본질이 다르다',
+      '구매대행은 <b>순익에만 과세</b> → 사입 대비 세금 부담이 훨씬 가볍다 (절세 구조)',
+      '직장+육아 병행하며 일군 현금흐름 (쉬운 돈벌이 아님, 시스템으로 만든 것)',
+      '<b>⚠️ 부동산 채수·세금 1억·순익 수치는 본인 확인 후 공개</b> (라이브에서 단정 시 근거 준비)'
+    ],
+    guard:'부동산 세금 1억·채수·순익 수치는 본인 확인/근거 확보 후 공개. 자산 자랑이 아니라 "묶이는 돈 vs 현금흐름·절세" 메시지로만 쓴다.' },
+
+  { n:8, pct:'55–72%', emo:'peak', lts:'≈74–97분', rts:'80–95분',
+    lt:'수강생 성과 + 라이브 인터뷰', lp:'텍스트 후기 → 실명 셀러 라이브 출연으로 사회적 증거 피크',
+    lq:'"처음으로 1천만 원 돌파해서 1100 정도 나왔습니다."',
+    ld:['텍스트 후기 계단: 160→400→600→1,100만','대전 50대 셀러 실명 라이브 출연','"강의비 1,500만 썼다","혼낼 땐 확실히" 디테일=진정성','페르소나별(4050/육아맘/요리사/대기업 퇴사) 자기투영'],
+    rt:'사회적 증거 — 후기 + 수강생', rp:'후기 캡처 54장 + (가능하면) 수강생 등장 · 페르소나별 투영',
+    rq:'"이렇게 바뀐 분들 후기를 보여드릴게요." (사실 위주)',
+    rd:['후기 캡처 54장 토글로 제시','(가능하면) 수강생 직접 등장 인터뷰','페르소나별 사례로 청중 자기투영','<b>⚠️ "순익 보장/누구나 성공" 금지 → 변화 사실만</b>'],
+    guard:'"순수익 보장/누구나 성공" 표현 금지. 결과 단정 대신 변화 사실만.' },
+
+  { n:9, pct:'72–85%', emo:'sales', lts:'≈97–115분', rts:'95–110분',
+    lt:'유료 전환 (세일즈)', lp:'"Q&A" 명목 진입 → 가격 앵커→인하→한정→환불→카운트다운',
+    lq:'"딱 열 분만 들어갑니다. / 300만 원 안 나오면 전액 환불."',
+    ld:['"Q&A" 명목으로 자연스럽게 세일즈 진입','가격 앵커 450/550 → 라이브 인하 300/349 + 현금 10만','12개월 무이자 = 월 25만 "학원비보다 싸다"','열 명 한정 + 전액 환불 보장 + 좌석 카운트다운'],
+    rt:'유료 전환 — 오프라인 5회 200만원', rp:'"특강 여기까지" 후 전환 · 토요일 오프라인 5회 + 평생 스터디 + 불사자',
+    rq:'"<b>토요일 오프라인 5회</b>, 같이 고쳐보는 반입니다. <b>신청서 남겨주시면 한 분씩 카톡으로 안내</b>드려요."',
+    rd:['"오늘 준비한 특강은 여기까지" 후 전환 신호','토요일 오프라인 5회(강남/선릉) 200만원','월1회 평생 스터디 + 불사자 풀버전 (최대 차별점)','<b>⚠️ 전액환불·카운트다운·앵커 인하 금지 → "신청서 보고 한 분씩 안내"</b>'],
+    guard:'전액환불·순익 보장·좌석 카운트다운·거액 앵커 후 인하 전부 금지. 신청서 선별 톤 유지.' },
+
+  { n:10, pct:'85–100%', emo:'satis', lts:'≈115–135분', rts:'110–120분',
+    lt:'Q&A + 클로징', lp:'상위노출 떡밥 회수(가구매 산식) + 좌석 카운트다운',
+    lq:'"여섯 자리밖에 안 남았습니다." → "단 한 자리 남았고요."',
+    ld:['상위노출 떡밥 회수: 가구매 50개×6,000×30일=900만 산식','"500/700만짜리 내용" 가치 강조','반론 실시간 처리 ("연락 안 된다던데" 등)','좌석 카운트다운 "여섯→한 자리"로 압박'],
+    rt:'Q&A + 클로징 — 떡밥 회수', rp:'본론 떡밥(불사자 SEO 30초) 회수 + 진짜 질문 응대',
+    rq:'"아까 그 비밀 — <b>불사자가 SEO 7요소를 1상품 30초에</b> 잡아줍니다." (합법 SEO)',
+    rd:['본론 떡밥 회수: 불사자 SEO 7요소 1상품 30초 시연','<b>합법 SEO 자동화</b>로 ("상위노출 보장 아님")','"이런 분은 신청 마세요/오세요" 선별 + 진짜 질문 응대','<b>⚠️ 가구매·상위노출 보장 금지 / "신청서 링크 단톡방에"</b>'],
+    guard:'상위노출 보장·가구매 산식 금지 → 합법 SEO 자동화로. "신청서 링크는 단톡방에".' },
+];
+
+document.getElementById('legend').innerHTML = Object.values(EMO).map(([t,c])=>`<span><i class="dot" style="background:${c}"></i>${t}</span>`).join('');
+
+const g = document.getElementById('grid');
+g.innerHTML = PARTS.map(p=>{
+  const [emoT,emoC]=EMO[p.emo];
+  const has = p.guard ? ' has-guard':'';
+  const guardHtml = p.guard ? `<div class="guard"><b>⚠️</b><span>${p.guard}</span></div>` : '';
+  const ld = p.ld.map(x=>`<li>${x}</li>`).join('');
+  const rd = p.rd.map(x=>`<li>${x}</li>`).join('');
+  const hasScript = scriptFor(p.n);
+  const sbtn = hasScript ? `<button class="scriptbtn" data-script="${p.n}">📄 스크립트 전문 더 자세히 보기 (좌우 비교)</button>` : '';
+  const dbtn = DECK[p.n] ? `<a class="deckbtn" href="${DECKBASE}${DECK[p.n]}.html" target="_blank" rel="noopener">🎬 이 섹션 용팀장 슬라이드 열기 →</a>` : '';
+  return `<div class="pair${has}">
+    <div class="card l" data-card>
+      <div class="chead"><h3>${p.lt}</h3><span class="tchip mono">${p.lts}</span><span class="chev">▸</span></div>
+      <p class="purpose">${p.lp}</p>
+      <p class="quote">${p.lq}</p>
+      ${sbtn}
+      ${(window.SLIDES&&SLIDES[p.n]&&SLIDES[p.n].length)?`<div class="slidestrip"><div class="slabel">📑 PPT 슬라이드 ${SLIDES[p.n].length}장 · 가로 스크롤 · 클릭 확대</div><div class="slides">${SLIDES[p.n].map(s=>`<img loading="lazy" src="slides/${s}.png" data-full="slides/${s}.png" alt="${s}">`).join('')}</div></div>`:''}
+      <div class="detail"><div class="dlabel">세부 흐름</div><ul>${ld}</ul></div>
+    </div>
+    <div class="spine">
+      <div class="num" style="background:${emoC}">${p.n}</div>
+      <div class="pct mono">${p.pct}</div>
+      <div class="emo" style="background:${emoC}22;color:${emoC}">${emoT}</div>
+    </div>
+    <div class="card r" data-card>
+      <div class="chead"><h3>${p.rt}</h3><span class="tchip mono">${p.rts}</span><span class="chev">▸</span></div>
+      <p class="purpose">${p.rp}</p>
+      <p class="quote">${p.rq}</p>
+      ${sbtn}
+      ${dbtn}
+      <div class="detail"><div class="dlabel">세부 흐름 (용팀장)</div><ul>${rd}</ul></div>
+      ${guardHtml}
+    </div>
+  </div>`;
+}).join('');
+
+// script modal
+const mback=document.getElementById('mback');
+function openScript(n){
+  const p=PARTS.find(x=>x.n===n); if(!p) return;
+  const src = scriptFor(n);
+  if(!src) return;
+  document.getElementById('mtitle').textContent=`PART ${p.n} · ${p.rt.split('—')[0].trim()} — 스크립트 전문 비교`;
+  document.getElementById('mbodyL').innerHTML=src.lscript.map(t=>`<p>${t}</p>`).join('');
+  document.getElementById('mbodyR').innerHTML=src.rscript.map(t=>`<p>${t}</p>`).join('');
+  mL.scrollTop=0; mR.scrollTop=0;
+  mback.classList.add('show');
+}
+function closeScript(){ mback.classList.remove('show'); }
+g.querySelectorAll('[data-script]').forEach(b=>b.addEventListener('click',e=>{ e.stopPropagation(); openScript(+b.dataset.script); }));
+document.getElementById('mclose').addEventListener('click',closeScript);
+mback.addEventListener('click',e=>{ if(e.target===mback) closeScript(); });
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeScript(); });
+
+// sync the two script columns proportionally
+const mL=document.getElementById('mcolL'), mR=document.getElementById('mcolR');
+function sync(a,b){ a.addEventListener('scroll',()=>{ if(a._lock){a._lock=false;return;} const d=a.scrollHeight-a.clientHeight; if(d<=0)return; b._lock=true; b.scrollTop=(a.scrollTop/d)*(b.scrollHeight-b.clientHeight); }); }
+sync(mL,mR); sync(mR,mL);
+
+g.querySelectorAll('[data-card]').forEach(c=>{
+  c.addEventListener('click', e=>{ if(e.target.closest('a, .scriptbtn, .slidestrip')) return; c.classList.toggle('open'); });
+});
+
+// slide lightbox
+const lb=document.getElementById('lb'), lbimg=document.getElementById('lbimg');
+g.addEventListener('click',e=>{ const im=e.target.closest('.slides img'); if(im){ e.stopPropagation(); lbimg.src=im.dataset.full; lb.classList.add('show'); } });
+lb.addEventListener('click',()=>lb.classList.remove('show'));
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') lb.classList.remove('show'); });
+
+const eBtn=document.getElementById('expandBtn');
+eBtn.addEventListener('click',()=>{
+  const cards=[...g.querySelectorAll('[data-card]')];
+  const anyClosed=cards.some(c=>!c.classList.contains('open'));
+  cards.forEach(c=>c.classList.toggle('open', anyClosed));
+  eBtn.classList.toggle('on', anyClosed);
+  eBtn.textContent = anyClosed ? '⤡ 전체 접기' : '⤢ 전체 펼치기';
+});
+
+const gBtn=document.getElementById('guardBtn');
+gBtn.addEventListener('click',()=>{
+  document.body.classList.toggle('guardmode');
+  gBtn.classList.toggle('on', document.body.classList.contains('guardmode'));
+});
+</script>
+</body>
+</html>

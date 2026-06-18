@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>S-004 쿠팡 3가지 실수 × 불사자 쿠팡스카우터 플레이그라운드</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f5b4c'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-size='30' fill='%23ffcc33' font-family='Arial'%3E火%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#f5efe5; --paper:#fffdf8; --ink:#171411; --muted:#6f665b; --line:#ded2c2;
+    --left:#2f2f32; --right:#0f5b4c; --accent:#ffcc33; --danger:#d94b38; --green:#0f7c64;
+    --shadow:0 18px 50px rgba(29,20,10,.12); --radius:22px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:radial-gradient(circle at top left,#fff8df 0,#f5efe5 38%,#eadfce 99.9%);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard","Noto Sans KR",sans-serif;line-height:1.55}
+  .wrap{max-width:1520px;margin:0 auto;padding:42px 28px 56px}
+  header{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:stretch;margin-bottom:26px}
+  .eyebrow{font-size:13px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--green)}
+  h1{font-size:clamp(34px,5vw,74px);line-height:.98;margin:10px 0 14px;letter-spacing:-.058em;text-wrap:balance}
+  .lead{font-size:20px;color:var(--muted);max-width:900px;word-break:keep-all}
+  .score{background:#171411;color:#fff;border-radius:28px;padding:22px;box-shadow:var(--shadow);display:flex;flex-direction:column;justify-content:space-between;min-height:250px}
+  .score strong{font-size:54px;line-height:1;color:var(--accent)}
+  .score p{margin:8px 0 0;color:#e8e0d4;word-break:keep-all}
+  .score .mini{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:18px}.mini div{border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:10px;background:rgba(255,255,255,.06)}.mini b{display:block;color:#fff}.mini span{font-size:12px;color:#cabfac}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .panel{background:rgba(255,253,248,.86);backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+  .panel .top{padding:22px 24px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px;justify-content:space-between}
+  .tag{font-size:12px;font-weight:950;letter-spacing:.08em;text-transform:uppercase;padding:7px 10px;border-radius:999px;background:#eee4d4;color:#4d4439;white-space:nowrap}
+  .tag.left{background:#ededed;color:#333}.tag.right{background:#e4f2ed;color:var(--right)}.tag.hot{background:#fff0b8;color:#6b4c00}
+  h2{font-size:30px;line-height:1.08;margin:0;letter-spacing:-.035em}
+  .body{padding:22px 24px 26px}
+  .hook{font-size:26px;line-height:1.12;font-weight:950;letter-spacing:-.04em;padding:18px;border-radius:18px;margin-bottom:18px;word-break:keep-all}
+  .leftHook{background:#f1f1f1;border-left:7px solid var(--left)}
+  .rightHook{background:#eaf7f1;border-left:7px solid var(--right)}
+  .rows{display:grid;gap:12px}
+  .row{display:grid;grid-template-columns:94px 1fr;gap:14px;padding:14px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.58)}
+  .time{font-weight:950;color:var(--muted);font-variant-numeric:tabular-nums}.row b{display:block;margin-bottom:4px}.row p{margin:0;color:#4f473d;word-break:keep-all}
+  .compare{grid-column:1/-1;margin-top:22px;background:#15120f;color:#fff;border-radius:26px;padding:26px;box-shadow:var(--shadow)}
+  .compare h2{margin-bottom:18px}.matrix{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:18px;min-height:178px}.card small{display:inline-block;font-weight:950;color:var(--accent);margin-bottom:8px}.card h3{margin:0 0 8px;font-size:22px}.card p{margin:0;color:#e7ded2;word-break:keep-all}
+  .demo{grid-column:1/-1;margin-top:22px;display:grid;grid-template-columns:.9fr 1.1fr;gap:22px}.demoCard{background:var(--paper);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);padding:22px}.demoCard img{width:100%;border-radius:16px;border:1px solid #e2d7c8;background:#fff;display:block}.caption{font-size:14px;color:var(--muted);margin-top:10px;word-break:keep-all}.metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:16px}.metric{padding:16px;border-radius:16px;background:#eaf7f1;border:1px solid #bfe5d8}.metric b{display:block;font-size:24px;color:var(--right)}.metric span{font-size:13px;color:#38665c;font-weight:800}
+  .script{grid-column:1/-1;margin-top:22px;display:grid;grid-template-columns:.72fr 1.28fr;gap:22px}.sticky{position:sticky;top:18px;background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:var(--shadow);height:max-content}.sticky h2{font-size:34px}.thumb{margin:16px 0;padding:22px;border-radius:20px;background:#111;color:#fff;min-height:230px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;position:relative}.thumb:before{content:"";position:absolute;inset:-40px;background:radial-gradient(circle at 76% 18%,rgba(255,204,51,.38),transparent 35%)}.thumb>*{position:relative}.thumb .big{font-size:43px;line-height:1;font-weight:950;letter-spacing:-.055em}.thumb .sub{font-size:18px;color:#f6d65d;font-weight:950}.scriptBox{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:var(--shadow)}.scriptBox h3{font-size:26px;margin:0 0 10px}.scriptBox p{font-size:18px;margin:0 0 14px;word-break:keep-all}.hl{background:linear-gradient(transparent 55%,rgba(255,204,51,.75) 55%);font-weight:950}.cta{background:#eaf7f1;border:1px solid #bfe5d8;border-radius:18px;padding:18px;margin-top:16px;font-weight:850;color:#0b4b3f;word-break:keep-all}.footer{margin-top:28px;color:var(--muted);font-size:14px}
+  @media (max-width:1100px){header,.grid,.demo,.script,.matrix{grid-template-columns:1fr}.sticky{position:relative;top:auto}.wrap{padding:26px 16px}h1{font-size:42px}.score strong{font-size:42px}.metrics{grid-template-columns:1fr}.row{grid-template-columns:78px 1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <div class="eyebrow">HowZero Commerce Playground · Same Structure Benchmark</div>
+      <h1>원본 구조를 그대로 두고<br>불사자 쿠팡스카우터로 치환하기</h1>
+      <p class="lead">이번 버전은 “하우제로식으로 새로 해석”이 아니다. 원본 영상의 교육 구조와 핵심 내용을 거의 같은 순서로 유지하고, 프로그램 데모와 CTA만 불사자 커머스 신규 프로그램으로 바꾼 촬영 설계다.</p>
+    </div>
+    <div class="score">
+      <div><span class="tag hot">Product Angle</span><p>신규 출시: 쿠팡 상품 화면에서 판매량·조회수·매출·전환율을 확인하는 불사자 쿠팡스카우터.</p></div>
+      <div class="mini"><div><b>KEEP</b><span>3가지 실수 구조</span></div><div><b>KEEP</b><span>물병/텀블러/구성품 예시</span></div><div><b>CHANGE</b><span>프로그램명·데모</span></div><div><b>CTA</b><span>불사자 고정댓글</span></div></div>
+    </div>
+  </header>
+
+  <section class="grid">
+    <article class="panel">
+      <div class="top"><span class="tag left">Reference</span><h2>원본 구조</h2></div>
+      <div class="body">
+        <div class="hook leftHook">“쿠팡 초보가 손해 보는 3가지”</div>
+        <div class="rows">
+          <div class="row"><div class="time">0:00</div><div><b>무거운 이야기</b><p>정산 때 적자, 물건은 팔리는데 돈이 새는 문제를 먼저 말한다.</p></div></div>
+          <div class="row"><div class="time">1</div><div><b>미비한 시장 분석</b><p>핫하다는 말만 듣고 사입하면 악성재고가 생긴다.</p></div></div>
+          <div class="row"><div class="time">2</div><div><b>전략 없는 광고비</b><p>주문이 찍혀도 손익분기점 ROAS를 모르면 팔수록 손해일 수 있다.</p></div></div>
+          <div class="row"><div class="time">3</div><div><b>상품과 사랑에 빠짐</b><p>작게 테스트하고 반응 있는 상품만 효자 상품으로 키워야 한다.</p></div></div>
+          <div class="row"><div class="time">기준</div><div><b>초보 소싱 기준</b><p>리뷰 300개 이하, 월 판매량 300개 이상, 판매가 1만원 이상, 로켓 딱지 제외.</p></div></div>
+          <div class="row"><div class="time">Demo</div><div><b>판매량 추적/AI 소싱</b><p>물병 스트랩, 텀블러, 테이프 커터, 보행기 튜브처럼 실제 예시를 보며 설명한다.</p></div></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="panel">
+      <div class="top"><span class="tag right">HowZero</span><h2>불사자 치환 구조</h2></div>
+      <div class="body">
+        <div class="hook rightHook">“판매량 안 보고 사입하면 위험합니다”</div>
+        <div class="rows">
+          <div class="row"><div class="time">0:00</div><div><b>같은 경고</b><p>쿠팡 상품이 팔려도 판매량·매출·전환율을 같이 봐야 한다고 시작한다.</p></div></div>
+          <div class="row"><div class="time">1</div><div><b>시장 분석 부족</b><p>핫하다는 말 대신 실제 판매량과 경쟁 강도를 본다.</p></div></div>
+          <div class="row"><div class="time">2</div><div><b>광고비 착각</b><p>매출이 아니라 팔고 남는 돈을 기준으로 광고를 판단한다.</p></div></div>
+          <div class="row"><div class="time">3</div><div><b>상품 집착</b><p>작게 테스트하고 숫자 있는 상품만 분석·확장한다.</p></div></div>
+          <div class="row"><div class="time">기준</div><div><b>동일 기준 유지</b><p>리뷰, 판매량, 판매가, 로켓 여부를 그대로 설명한다.</p></div></div>
+          <div class="row"><div class="time">Demo</div><div><b>불사자 쿠팡스카우터</b><p>상품 화면에서 판매량, 조회수, 매출, 전환율을 바로 보여준다.</p></div></div>
+        </div>
+      </div>
+    </article>
+
+    <section class="compare">
+      <h2>이번 수정의 핵심: 바꾸는 건 “해석”이 아니라 “주체와 화면”</h2>
+      <div class="matrix">
+        <div class="card"><small>STRUCTURE</small><h3>원본 순서 유지</h3><p>무거운 도입 → 3가지 실수 → 초보 기준 → 상품 예시 → 프로그램 데모 → CTA 순서로 간다.</p></div>
+        <div class="card"><small>CONTENT</small><h3>내용도 거의 동일</h3><p>시장 분석, 광고비, 상품 집착, 리뷰 300개 이하, 월 판매량 300개 이상 기준을 그대로 쓴다.</p></div>
+        <div class="card"><small>PRODUCT</small><h3>불사자 신규 프로그램</h3><p>원본의 판매량 추적 프로그램 자리에 불사자 쿠팡스카우터를 넣는다.</p></div>
+        <div class="card"><small>TONE</small><h3>대표님 봉사 톤</h3><p>강한 단정 대신 “대표님이 감이 아니라 숫자로 보게 도와드린다”로 정리한다.</p></div>
+      </div>
+    </section>
+
+    <section class="demo">
+      <article class="demoCard">
+        <span class="tag right">Screenshot · Product Overlay</span>
+        <h2 style="margin:12px 0 14px">불사자 쿠팡스카우터 화면</h2>
+        <img src="assets/bulsaja-coupang-scout-product.png" alt="불사자 쿠팡스카우터 상품 화면: 판매량, 조회수, 매출, 전환율 표시" />
+        <div class="caption">사용자 제공 스크린샷. 쿠팡 상품 화면 위에 판매량, 조회수, 매출, 전환율이 표시되는 구조.</div>
+      </article>
+      <article class="demoCard">
+        <span class="tag right">Talking Points</span>
+        <h2 style="margin:12px 0 14px">데모에서 읽어줘야 할 숫자</h2>
+        <div class="metrics">
+          <div class="metric"><b>판매량</b><span>이 상품이 실제로 얼마나 움직이는지</span></div>
+          <div class="metric"><b>조회수</b><span>사람들이 얼마나 보고 있는지</span></div>
+          <div class="metric"><b>매출</b><span>분석할 가치가 있는 규모인지</span></div>
+          <div class="metric"><b>전환율</b><span>조회가 구매로 이어지는 힘</span></div>
+        </div>
+        <div style="height:16px"></div>
+        <img src="assets/bulsaja-coupang-scout-menu.png" alt="불사자 메뉴 화면" />
+        <div class="caption">메뉴 화면은 “상품수집하기 → 쿠팡데이터분석” 작업대 느낌을 보여주는 보조 컷으로 사용.</div>
+      </article>
+    </section>
+
+    <section class="script">
+      <aside class="sticky">
+        <span class="tag right">Thumbnail Draft</span>
+        <div class="thumb"><div class="sub">쿠팡 초보</div><div class="big">판매량 안 보고<br>사입?</div><div class="sub">손해 보는 3가지</div></div>
+        <h2>촬영 한 줄 약속</h2>
+        <p>원본처럼 3가지 실수를 짚고, 마지막에 불사자 쿠팡스카우터로 “숫자를 보고 들어가는 방법”을 보여준다.</p>
+      </aside>
+      <article class="scriptBox">
+        <h3>0:00 도입부 샘플</h3>
+        <p>대표님, 오늘은 조금 무거운 이야기를 해보겠습니다. 쿠팡 처음 시작할 때 대수롭지 않게 넘기지만, 나중에 정산표에서 바로 티 나는 문제가 있습니다.</p>
+        <p><span class="hl">시장 분석 없이 들어가는 것, 광고비를 매출로 착각하는 것, 상품과 사랑에 빠지는 것.</span> 이 세 가지입니다.</p>
+        <h3>데모 전환 문장</h3>
+        <p>원래 이걸 손으로 보려면 상품 하나하나 열고, 리뷰 보고, 판매량 추정하고, 가격 보고, 다시 엑셀에 적어야 합니다. 그래서 이번에 불사자에서 쿠팡 판매량과 매출을 보는 신규 프로그램을 만들었습니다.</p>
+        <h3>CTA</h3>
+        <p>고정 댓글에 불사자 쿠팡스카우터 링크 남겨두겠습니다. 대표님이 쿠팡 상품을 감으로 보지 않고, 판매량과 매출을 보면서 판단하고 싶다면 확인해보세요.</p>
+        <div class="cta">검수 기준: 원본 구조는 유지. 프로그램명과 화면은 불사자로 치환. 판매량·조회수·매출·전환율은 “판단 보조 데이터”로 말하고, 확정형 보장 표현은 피한다.</div>
+      </article>
+    </section>
+  </section>
+  <div class="footer">Source: YouTube `ZYbKUUrbatI` transcript via vidIQ MCP + user-provided Bulsaja Coupang Scout screenshots. Internal benchmarking playground.</div>
+</div>
+</body>
+</html>

@@ -23,6 +23,9 @@ async function migrate() {
   const pipelineEmailConfigSql = readFileSync(join(__dirname, "005_pipeline_email_config.sql"), "utf-8");
   await sql.unsafe(pipelineEmailConfigSql);
 
+  const contentPublishJobsSql = readFileSync(join(__dirname, "006_content_publish_jobs.sql"), "utf-8");
+  await sql.unsafe(contentPublishJobsSql);
+
   console.log("Migrations complete.");
   await sql.end();
 }

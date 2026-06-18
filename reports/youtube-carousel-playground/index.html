@@ -1,0 +1,1481 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>YouTube to Carousel Pipeline Playground</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;500;700;900&display=swap");
+
+    :root {
+      --ink: #111111;
+      --paper: #f3f2ec;
+      --panel: #ffffff;
+      --line: #252525;
+      --muted: #66645e;
+      --soft: #e4e0d4;
+      --wine: #8b2020;
+      --maroon: #3f0000;
+      --gold: #ffca28;
+      --green: #0c7c66;
+      --cyan: #0a6c8e;
+      --blueprint: #173b45;
+      --shadow: 0 18px 0 rgba(17, 17, 17, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: "Noto Sans KR", sans-serif;
+      background:
+        linear-gradient(90deg, rgba(17, 17, 17, 0.035) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(17, 17, 17, 0.035) 1px, transparent 1px),
+        var(--paper);
+      background-size: 32px 32px;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    .shell {
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: auto 1fr;
+    }
+
+    .topbar {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: end;
+      padding: 28px 32px 20px;
+      border-bottom: 3px solid var(--ink);
+      background: rgba(255, 255, 255, 0.84);
+      backdrop-filter: blur(8px);
+    }
+
+    .brandline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .stamp {
+      display: inline-flex;
+      align-items: center;
+      height: 28px;
+      padding: 0 10px;
+      border: 2px solid var(--ink);
+      background: var(--gold);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .eyebrow {
+      font-size: 13px;
+      font-weight: 900;
+      color: var(--wine);
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "Black Han Sans", "Noto Sans KR", sans-serif;
+      font-size: 56px;
+      line-height: 0.98;
+      letter-spacing: 0;
+      font-weight: 400;
+    }
+
+    .subtitle {
+      max-width: 760px;
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.65;
+      font-weight: 700;
+    }
+
+    .runbox {
+      width: 340px;
+      border: 3px solid var(--ink);
+      background: var(--panel);
+      padding: 14px;
+      box-shadow: var(--shadow);
+    }
+
+    .runbox-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      font-weight: 900;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .meter {
+      height: 12px;
+      border: 2px solid var(--ink);
+      background: repeating-linear-gradient(
+        90deg,
+        var(--green) 0,
+        var(--green) 18px,
+        #ffffff 18px,
+        #ffffff 24px
+      );
+      transform-origin: left center;
+    }
+
+    .workspace {
+      display: grid;
+      grid-template-columns: 320px minmax(560px, 1fr) 360px;
+      min-height: 0;
+    }
+
+    .controls,
+    .detail {
+      background: var(--panel);
+      padding: 24px;
+      min-height: 0;
+      overflow: auto;
+    }
+
+    .controls {
+      border-right: 3px solid var(--ink);
+    }
+
+    .detail {
+      border-left: 3px solid var(--ink);
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 14px;
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    .section-title::before {
+      content: "";
+      width: 16px;
+      height: 16px;
+      background: var(--wine);
+      border: 2px solid var(--ink);
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    label {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    input,
+    select {
+      width: 100%;
+      min-height: 44px;
+      border: 2px solid var(--ink);
+      border-radius: 0;
+      background: #fbfbf8;
+      color: var(--ink);
+      padding: 10px 12px;
+      font-weight: 800;
+    }
+
+    .segmented {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border: 2px solid var(--ink);
+      background: var(--ink);
+      gap: 2px;
+    }
+
+    .segmented button {
+      min-height: 44px;
+      border: 0;
+      border-radius: 0;
+      background: var(--panel);
+      color: var(--ink);
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .segmented button.active {
+      background: var(--maroon);
+      color: #ffffff;
+    }
+
+    .toggle-row {
+      display: grid;
+      grid-template-columns: 26px 1fr;
+      gap: 10px;
+      align-items: start;
+      margin-bottom: 20px;
+    }
+
+    .toggle-row input {
+      width: 22px;
+      height: 22px;
+      min-height: 0;
+      accent-color: var(--wine);
+    }
+
+    .toggle-copy {
+      font-size: 14px;
+      line-height: 1.55;
+      font-weight: 800;
+    }
+
+    .command {
+      display: grid;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      word-break: break-word;
+      border: 2px solid var(--ink);
+      background: #151515;
+      color: #f7f3e7;
+      padding: 14px;
+      font-size: 13px;
+      line-height: 1.55;
+      font-weight: 700;
+    }
+
+    .run-button {
+      width: 100%;
+      min-height: 48px;
+      border: 3px solid var(--ink);
+      background: var(--gold);
+      color: var(--ink);
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 6px 6px 0 var(--ink);
+    }
+
+    .run-button:active {
+      transform: translate(4px, 4px);
+      box-shadow: 2px 2px 0 var(--ink);
+    }
+
+    .legend {
+      display: grid;
+      gap: 10px;
+      margin-top: 24px;
+      padding-top: 22px;
+      border-top: 2px solid var(--soft);
+    }
+
+    .legend-row {
+      display: grid;
+      grid-template-columns: 86px 1fr;
+      gap: 10px;
+      align-items: center;
+      font-size: 13px;
+      line-height: 1.45;
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 24px;
+      padding: 2px 8px;
+      border: 2px solid var(--ink);
+      background: #f7f7f4;
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .badge.code {
+      background: #dff3ed;
+    }
+
+    .badge.agent {
+      background: #ffe7e7;
+    }
+
+    .badge.ai {
+      background: #fff1a8;
+    }
+
+    .badge.human {
+      background: #dceff5;
+    }
+
+    .ownership-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 2px solid var(--soft);
+    }
+
+    .owner-card {
+      border: 2px solid var(--ink);
+      background: #fbfbf8;
+      padding: 10px;
+    }
+
+    .owner-card strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .owner-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+      font-weight: 800;
+    }
+
+    .board {
+      position: relative;
+      padding: 28px 28px 34px;
+      overflow: auto;
+    }
+
+    .lanes {
+      min-width: 720px;
+      display: grid;
+      grid-template-rows: auto auto auto;
+      gap: 18px;
+    }
+
+    .lane {
+      border: 3px solid var(--ink);
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: var(--shadow);
+    }
+
+    .lane-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      border-bottom: 3px solid var(--ink);
+      padding: 10px 14px;
+      background: #ffffff;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .lane-body {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(190px, 1fr));
+      gap: 16px;
+      padding: 16px;
+    }
+
+    .node {
+      position: relative;
+      min-height: 188px;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 12px;
+      border: 3px solid var(--ink);
+      background: var(--panel);
+      padding: 14px;
+      cursor: pointer;
+      transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+      box-shadow: 8px 8px 0 rgba(17, 17, 17, 0.16);
+    }
+
+    .node.owner-code {
+      background: #f0fbf6;
+    }
+
+    .node.owner-ai {
+      background: #fff8cf;
+    }
+
+    .node.owner-hybrid {
+      background: linear-gradient(135deg, #f0fbf6 0 49%, #fff8cf 49% 100%);
+    }
+
+    .node.owner-human {
+      background: #eff8fb;
+    }
+
+    .node:hover,
+    .node.active {
+      transform: translate(-3px, -3px);
+      box-shadow: 12px 12px 0 var(--ink);
+      background: #fffdf6;
+    }
+
+    .node.running {
+      animation: pulse 800ms ease-in-out infinite alternate;
+    }
+
+    @keyframes pulse {
+      from { outline: 0 solid rgba(255, 202, 40, 0); }
+      to { outline: 8px solid rgba(255, 202, 40, 0.36); }
+    }
+
+    .node-index {
+      position: absolute;
+      top: -13px;
+      right: 12px;
+      min-width: 34px;
+      height: 28px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--ink);
+      background: var(--ink);
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .node-title {
+      font-size: 20px;
+      line-height: 1.2;
+      font-weight: 900;
+    }
+
+    .node-copy {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+      font-weight: 700;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .implementation-strip {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      margin-top: -4px;
+    }
+
+    .impl-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 26px;
+      border: 2px solid var(--ink);
+      font-size: 11px;
+      line-height: 1;
+      font-weight: 900;
+      background: #ffffff;
+    }
+
+    .impl-pill.code-on {
+      background: #dff3ed;
+    }
+
+    .impl-pill.ai-on {
+      background: #fff1a8;
+    }
+
+    .impl-pill.off {
+      color: #8b8580;
+      background: #efede7;
+      border-style: dashed;
+    }
+
+    .output-tag {
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      min-height: 30px;
+      padding: 4px 8px;
+      border-left: 6px solid var(--wine);
+      background: #f0eee6;
+      font-size: 12px;
+      font-weight: 900;
+      color: var(--muted);
+    }
+
+    .rail {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 16px;
+      min-width: 720px;
+      border: 3px dashed var(--ink);
+      padding: 14px 18px;
+      background: #ffffff;
+    }
+
+    .rail-line {
+      height: 4px;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--ink) 0,
+        var(--ink) 18px,
+        transparent 18px,
+        transparent 28px
+      );
+    }
+
+    .rail-label {
+      font-weight: 900;
+      font-size: 14px;
+      text-align: center;
+      color: var(--wine);
+    }
+
+    .detail-kicker {
+      margin: 0 0 8px;
+      color: var(--wine);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .detail h2 {
+      margin: 0 0 12px;
+      font-size: 32px;
+      line-height: 1.15;
+      font-weight: 900;
+    }
+
+    .detail-copy {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+      font-weight: 700;
+    }
+
+    .work-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 18px 0;
+    }
+
+    .work-card {
+      border: 3px solid var(--ink);
+      background: #ffffff;
+      min-height: 170px;
+    }
+
+    .work-card.code-work {
+      background: #f0fbf6;
+    }
+
+    .work-card.ai-work {
+      background: #fff8cf;
+    }
+
+    .work-head {
+      border-bottom: 3px solid var(--ink);
+      padding: 9px 10px;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .work-list {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 12px 14px 14px 26px;
+      color: var(--ink);
+      font-size: 13px;
+      line-height: 1.5;
+      font-weight: 800;
+    }
+
+    .work-list li::marker {
+      color: var(--wine);
+    }
+
+    .agent-split-panel {
+      display: none;
+      margin: 0 0 18px;
+      border: 3px solid var(--ink);
+      background: #151515;
+      color: #f7f3e7;
+    }
+
+    .agent-split-panel.visible {
+      display: block;
+    }
+
+    .agent-split-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      border-bottom: 3px solid var(--ink);
+      background: var(--gold);
+      color: var(--ink);
+      padding: 10px 12px;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .agent-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      padding: 10px;
+    }
+
+    .agent-card {
+      display: grid;
+      gap: 7px;
+      border: 2px solid #f7f3e7;
+      background: #232323;
+      padding: 9px;
+      min-height: 128px;
+    }
+
+    .agent-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: center;
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .agent-name {
+      color: #ffffff;
+      font-size: 14px;
+      line-height: 1.25;
+      font-weight: 900;
+    }
+
+    .agent-task,
+    .agent-output {
+      margin: 0;
+      font-size: 11px;
+      line-height: 1.45;
+      font-weight: 800;
+    }
+
+    .agent-output {
+      color: #dff3ed;
+    }
+
+    .artifact-list {
+      display: grid;
+      gap: 8px;
+      margin: 18px 0 22px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .artifact-list li {
+      display: grid;
+      grid-template-columns: 12px 1fr;
+      gap: 10px;
+      align-items: baseline;
+      font-size: 14px;
+      line-height: 1.55;
+      font-weight: 800;
+    }
+
+    .artifact-list li::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border: 2px solid var(--ink);
+      background: var(--gold);
+      transform: rotate(45deg);
+    }
+
+    .mini-preview {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .mini-slide {
+      aspect-ratio: 3 / 4;
+      border: 2px solid var(--ink);
+      background: #ffffff;
+      padding: 8px;
+      display: grid;
+      align-content: space-between;
+      min-height: 142px;
+    }
+
+    .mini-slide:nth-child(1) {
+      background: var(--maroon);
+      color: #ffffff;
+    }
+
+    .mini-slide:nth-child(2) {
+      background: #fff6c7;
+    }
+
+    .mini-slide:nth-child(3) {
+      background: #eef6f2;
+    }
+
+    .mini-top {
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+    .mini-title {
+      font-family: "Black Han Sans", "Noto Sans KR", sans-serif;
+      font-size: 22px;
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .note {
+      border: 2px solid var(--ink);
+      background: #fff8d8;
+      padding: 12px;
+      font-size: 13px;
+      line-height: 1.6;
+      font-weight: 800;
+    }
+
+    @media (max-width: 1180px) {
+      .workspace {
+        grid-template-columns: 290px minmax(520px, 1fr);
+      }
+
+      .detail {
+        grid-column: 1 / -1;
+        border-left: 0;
+        border-top: 3px solid var(--ink);
+      }
+    }
+
+    @media (max-width: 820px) {
+      .topbar {
+        grid-template-columns: 1fr;
+        padding: 22px;
+      }
+
+      h1 {
+        font-size: 40px;
+      }
+
+      .runbox {
+        width: 100%;
+      }
+
+      .workspace {
+        grid-template-columns: 1fr;
+      }
+
+      .controls,
+      .detail {
+        border-left: 0;
+        border-right: 0;
+      }
+
+      .controls {
+        border-bottom: 3px solid var(--ink);
+      }
+
+      .lanes,
+      .rail {
+        min-width: 0;
+      }
+
+      .lane-body {
+        grid-template-columns: 1fr;
+      }
+
+      .rail {
+        grid-template-columns: 1fr;
+      }
+
+      .work-split {
+        grid-template-columns: 1fr;
+      }
+
+      .agent-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div>
+        <div class="brandline">
+          <span class="stamp">PLAYGROUND</span>
+          <span class="eyebrow">YouTube -> Wiki -> Research -> Carousel</span>
+        </div>
+        <h1>유튜브를 캐러셀로 바꾸는 작업대</h1>
+        <p class="subtitle">
+          영상 링크 하나가 들어오면, 코드 파이프라인은 4K 소스와 자료를 뽑고,
+          AI는 wiki와 해석을 만든다. Codex/Claude는 그 결과를 용팀장식 10장 구조와
+          HTML 렌더로 조립한다.
+        </p>
+      </div>
+      <aside class="runbox" aria-label="pipeline status">
+        <div class="runbox-label">
+          <span>현재 설계 완성도</span>
+          <span id="scoreLabel">8 / 9</span>
+        </div>
+        <div class="meter" id="meter"></div>
+      </aside>
+    </header>
+
+    <section class="workspace">
+      <aside class="controls">
+        <h2 class="section-title">입력값</h2>
+        <div class="field">
+          <label for="urlInput">YouTube URL</label>
+          <input id="urlInput" value="https://youtu.be/oTxHFTjY_fY?si=xuGtUFKH1wsygA3n" spellcheck="false">
+        </div>
+        <div class="field">
+          <label for="brandSelect">브랜드</label>
+          <select id="brandSelect">
+            <option value="braveyong">braveyong · 용감한 용팀장</option>
+            <option value="howzero">howzero · 하우제로</option>
+            <option value="zipsaja">zipsaja · 집사자</option>
+            <option value="mkt">mkt · 마케터스클럽</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>MCPTube 모드</label>
+          <div class="segmented" role="group" aria-label="MCPTube mode">
+            <button type="button" class="active" data-mode="text">TEXT</button>
+            <button type="button" data-mode="full">FULL</button>
+          </div>
+        </div>
+        <label class="toggle-row">
+          <input id="frameToggle" type="checkbox" checked>
+          <span class="toggle-copy">영상 프레임은 리서치용으로 추출. 게시 카드에는 저작권 확인 후 사용.</span>
+        </label>
+        <button class="run-button" id="runSim" type="button">시뮬레이션 실행</button>
+
+        <div class="command">
+          <h2 class="section-title">실행 명령</h2>
+          <pre id="commandPreview"></pre>
+        </div>
+
+        <div class="legend" aria-label="badge legend">
+          <h2 class="section-title">딱지 구분</h2>
+          <div class="legend-row">
+            <span class="badge code">코딩</span>
+            <span>CLI, shell script, Python, ffmpeg, Puppeteer처럼 반복 가능한 실행 단위.</span>
+          </div>
+          <div class="legend-row">
+            <span class="badge agent">Codex/Claude</span>
+            <span>원고 구조화, 톤 변환, HTML/CSS 작성, 검수 기준 적용.</span>
+          </div>
+          <div class="legend-row">
+            <span class="badge ai">AI</span>
+            <span>LLM, vision, wiki synthesis, 검색 질의 응답처럼 모델 판단이 들어가는 부분.</span>
+          </div>
+          <div class="legend-row">
+            <span class="badge human">사람 판단</span>
+            <span>소스 선택, 저작권, 최종 업로드, 메시지 리스크 판단.</span>
+          </div>
+        </div>
+
+        <div class="ownership-grid" aria-label="work ownership summary">
+          <h2 class="section-title">실행 주체</h2>
+          <div class="owner-card">
+            <strong>코드로 구현된 부분</strong>
+            <p>yt-dlp, MCPTube CLI, Python, ffmpeg, Puppeteer, 파일 정리처럼 같은 입력이면 다시 실행 가능한 단계.</p>
+          </div>
+          <div class="owner-card">
+            <strong>AI가 하는 부분</strong>
+            <p>wiki 합성, 논점 추출, 스토리보드, 문장 톤 변환, 검수 코멘트처럼 판단과 생성이 들어가는 단계.</p>
+          </div>
+        </div>
+      </aside>
+
+      <section class="board" aria-label="pipeline board">
+        <div class="lanes" id="laneBoard"></div>
+        <div class="rail">
+          <div class="rail-line"></div>
+          <div class="rail-label">fallback: 기존 scripts.yt_highlights가 항상 남아있다</div>
+          <div class="rail-line"></div>
+        </div>
+      </section>
+
+      <aside class="detail" id="detailPanel">
+        <p class="detail-kicker" id="detailKicker">STEP 01</p>
+        <h2 id="detailTitle">유튜브 URL 접수</h2>
+        <p class="detail-copy" id="detailCopy"></p>
+        <div class="badge-row" id="detailBadges"></div>
+        <div class="work-split" aria-label="code and ai split">
+          <section class="work-card code-work">
+            <div class="work-head">코드로 구현된 일</div>
+            <ul class="work-list" id="codeWorkList"></ul>
+          </section>
+          <section class="work-card ai-work">
+            <div class="work-head">AI가 하는 일</div>
+            <ul class="work-list" id="aiWorkList"></ul>
+          </section>
+        </div>
+        <section class="agent-split-panel" id="agentSplitPanel" aria-label="phase agents">
+          <div class="agent-split-head">
+            <span id="agentPanelTitle">에이전트 분할</span>
+            <span id="agentCount">0 agents</span>
+          </div>
+          <div class="agent-grid" id="agentGrid"></div>
+        </section>
+        <ul class="artifact-list" id="artifactList"></ul>
+        <div class="note" id="detailNote"></div>
+        <div class="mini-preview" aria-label="carousel preview">
+          <div class="mini-slide">
+            <div class="mini-top">01 HOOK</div>
+            <div class="mini-title">가짜는<br>걸러진다</div>
+          </div>
+          <div class="mini-slide">
+            <div class="mini-top">05 VALUE</div>
+            <div class="mini-title">근거<br>3개</div>
+          </div>
+          <div class="mini-slide">
+            <div class="mini-top">10 CTA</div>
+            <div class="mini-title">오늘<br>점검</div>
+          </div>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <script>
+    const stages = [
+      {
+        lane: "A. 수집",
+        index: "01",
+        title: "유튜브 URL 접수",
+        copy: "브랜드, 영상 링크, 재사용 가능 범위를 확정한다.",
+        owner: "human",
+        badges: ["human"],
+        codeParts: ["URL에서 video_id 추출", "brand/slug 입력값을 명령어로 변환"],
+        aiParts: ["아직 없음. 이 단계는 사람의 소스 선택이 기준이다."],
+        output: "입력 URL + 브랜드 키",
+        artifacts: ["YouTube URL", "brand=braveyong", "slug=영상 주제"],
+        note: "사람 판단이 필요한 이유: 영상 프레임, 원문 인용, 원저작자 표기 범위를 여기서 정한다."
+      },
+      {
+        lane: "A. 수집",
+        index: "02",
+        title: "수집 병렬 처리",
+        copy: "Transcript, Frame, Wiki, Source Risk 에이전트가 같은 URL을 각자 다른 관점으로 수집한다.",
+        owner: "hybrid",
+        badges: ["code", "ai"],
+        codeParts: ["scripts/run_youtube_carousel_research.sh 실행", "yt-dlp, transcript API, ffmpeg, mcptube CLI를 각각 호출", "수집 결과를 source/ 아래로 분리 저장"],
+        aiParts: ["Wiki Agent가 MCPTube topic/entity/concept를 합성", "Source Risk Agent가 원문 인용과 프레임 재사용 위험을 표시"],
+        output: "collection bundle",
+        artifacts: ["transcript.json", "source/highres/*.mp4", "mcptube-wiki/", "source-risk.md"],
+        note: "여기서 병렬화하면 자막 실패, 프레임 저화질, wiki 실패, 저작권 리스크를 따로 볼 수 있다.",
+        agentPanelTitle: "수집 에이전트 분할",
+        agents: [
+          {
+            slide: "A1",
+            name: "Transcript Agent",
+            role: "자막/대본",
+            task: "YouTube subtitle, transcript API, fallback transcript를 모으고 빈 구간을 표시한다.",
+            output: "transcript.json + transcript-notes.md"
+          },
+          {
+            slide: "A2",
+            name: "Frame Agent",
+            role: "4K 프레임",
+            task: "2160p 이상 소스 여부를 확인하고 캐러셀 후보 프레임을 추출한다.",
+            output: "source/highres/*.mp4 + frames/*.jpg"
+          },
+          {
+            slide: "A3",
+            name: "Wiki Agent",
+            role: "지식화",
+            task: "MCPTube로 topic, entity, concept 페이지를 만들고 Markdown으로 내보낸다.",
+            output: "mcptube-wiki/*.md"
+          },
+          {
+            slide: "A4",
+            name: "Source Risk Agent",
+            role: "사용 리스크",
+            task: "원문 인용, 영상 프레임, 외부 자료 사용 가능 범위를 빨간불/노란불로 표시한다.",
+            output: "source-risk.md"
+          }
+        ]
+      },
+      {
+        lane: "A. 수집",
+        index: "03",
+        title: "4K 하이라이트 추출",
+        copy: "yt_highlights가 2160p 우선으로 영상, transcript, scene, frame을 뽑는다.",
+        owner: "code",
+        badges: ["code"],
+        codeParts: ["yt-dlp format height<=2160", "PySceneDetect scene 추출", "ffmpeg로 2160px wide JPG 저장"],
+        aiParts: ["없음. 이 단계는 자동화된 수집/추출이다."],
+        output: "highlights.json",
+        artifacts: ["source/highres/oTxHFTjY_fY.mp4", "transcript.json", "scenes.json", "frames/h01_f01.jpg", "highlights.json"],
+        note: "이번 저화질 원인은 기존 소스가 640x360으로 받아진 것이다. 이제 기본값은 4K 가능 영상이면 3840x2160 소스를 우선 사용한다."
+      },
+      {
+        lane: "B. 해석",
+        index: "04",
+        title: "Wiki export",
+        copy: "MCPTube wiki를 Markdown으로 꺼내 캐러셀 브리프 재료로 만든다.",
+        owner: "hybrid",
+        badges: ["code", "ai"],
+        codeParts: ["wiki export 경로 생성", "video/topic/concept markdown 파일 정리", "source/mcptube-wiki/로 복사"],
+        aiParts: ["wiki 문단의 요지와 연결 관계 생성", "원문 transcript를 지식 페이지로 요약"],
+        output: "mcptube-wiki/",
+        artifacts: ["video markdown", "topic markdown", "concept markdown"],
+        note: "AI가 만든 wiki는 원문 대체물이 아니다. 원문 자막과 같이 대조해서 써야 한다."
+      },
+      {
+        lane: "B. 해석",
+        index: "05",
+        title: "확장검색 브리프",
+        copy: "Claim, Counter, Persona, CTA 에이전트가 같은 원문을 서로 다른 산출물로 분해한다.",
+        owner: "ai",
+        badges: ["agent", "ai"],
+        codeParts: ["브리프 파일 idea-brief.md 저장", "참조 파일 경로 연결", "agent별 산출물을 sections로 병합"],
+        aiParts: ["Claim Agent가 핵심 주장 추출", "Counter Agent가 오해/반박을 정리", "Persona Agent가 용팀장 톤으로 바꾸고 CTA Agent가 마무리 후보를 만든다."],
+        output: "idea-brief.md",
+        artifacts: ["claim-brief.md", "counter-brief.md", "persona-brief.md", "cta-brief.md", "idea-brief.md"],
+        note: "브리프를 쪼개면 단순 요약이 아니라 콘텐츠 각도, 반박, 톤, 행동 유도까지 따로 품질을 볼 수 있다.",
+        agentPanelTitle: "브리프 에이전트 분할",
+        agents: [
+          {
+            slide: "B1",
+            name: "Claim Agent",
+            role: "핵심 주장",
+            task: "영상에서 반복되는 핵심 주장과 근거 문장을 원문 기준으로 뽑는다.",
+            output: "claim-brief.md"
+          },
+          {
+            slide: "B2",
+            name: "Counter Agent",
+            role: "반박/오해",
+            task: "쉽게 번다, 성과 보장, 재고 없음 같은 오해를 먼저 잡아낸다.",
+            output: "counter-brief.md"
+          },
+          {
+            slide: "B3",
+            name: "Persona Agent",
+            role: "용팀장 톤",
+            task: "브레이브용 말투로 직설적이지만 과장 없는 문장 기준을 만든다.",
+            output: "persona-brief.md"
+          },
+          {
+            slide: "B4",
+            name: "CTA Agent",
+            role: "행동 유도",
+            task: "저장, 점검, 상담, 댓글 등 강매 없이 이어지는 CTA 후보를 만든다.",
+            output: "cta-brief.md"
+          }
+        ]
+      },
+      {
+        lane: "B. 해석",
+        index: "06",
+        title: "10장 스토리보드",
+        copy: "10개 슬라이드를 10개 slide-agent가 나눠 쓰고, editor pass에서 하나의 흐름으로 합친다.",
+        owner: "ai",
+        badges: ["agent", "ai"],
+        codeParts: ["storyboard.md schema 고정", "slide-agent 결과를 slide 01-10 순서로 병합", "editor pass에서 누락/중복/번호를 검증"],
+        aiParts: ["10개 slide-agent가 각 장 원고를 병렬 작성", "editor agent가 전체 흐름과 톤 편차를 정리", "critic agent가 과장, 저작권, CTA 리스크를 점검"],
+        output: "10 slide-agent drafts",
+        artifacts: ["slide-agent-01.md ~ slide-agent-10.md", "storyboard.md", "editor-notes.md", "critic-check.md"],
+        note: "여기서는 한 에이전트가 10장을 전부 쓰지 않는다. 각 장은 전담 에이전트가 맡고, 마지막에 Codex/Claude가 편집장처럼 연결한다.",
+        agentPanelTitle: "스토리보드 에이전트 분할",
+        agents: [
+          {
+            slide: "01",
+            name: "Hook Agent",
+            role: "첫 장 훅",
+            task: "3초 안에 멈추게 할 한 문장과 강한 대비를 만든다.",
+            output: "slide 01 headline + subhook"
+          },
+          {
+            slide: "02",
+            name: "Problem Agent",
+            role: "문제 정의",
+            task: "왜 월급/현금흐름 문제가 출발점인지 원문 근거로 압축한다.",
+            output: "slide 02 problem frame"
+          },
+          {
+            slide: "03",
+            name: "Structure Agent",
+            role: "핵심 구조",
+            task: "혼자 다 하면 오래 못 간다는 구조적 메시지를 잡는다.",
+            output: "slide 03 operating principle"
+          },
+          {
+            slide: "04",
+            name: "Skeptic Agent",
+            role: "의심 제거",
+            task: "쉽게 돈 번다는 식의 오해를 먼저 걷어낸다.",
+            output: "slide 04 objection handling"
+          },
+          {
+            slide: "05",
+            name: "Model Agent",
+            role: "사업 모델",
+            task: "재고 없는 구매대행 구조의 장단점을 균형 있게 정리한다.",
+            output: "slide 05 model contrast"
+          },
+          {
+            slide: "06",
+            name: "SEO Agent",
+            role: "검색/상위노출",
+            task: "상품명, 키워드, 카테고리 검증 기준을 한 장으로 만든다.",
+            output: "slide 06 SEO rule"
+          },
+          {
+            slide: "07",
+            name: "Proof Agent",
+            role: "근거 제시",
+            task: "성과 보장이 아니라 검증 과정이라는 뉘앙스로 근거를 배치한다.",
+            output: "slide 07 evidence frame"
+          },
+          {
+            slide: "08",
+            name: "Number Agent",
+            role: "숫자 해석",
+            task: "매출/마진 숫자를 자랑이 아니라 구조 역추적용으로 바꾼다.",
+            output: "slide 08 number meaning"
+          },
+          {
+            slide: "09",
+            name: "Checklist Agent",
+            role: "실행 체크",
+            task: "저장만 하지 않고 오늘 확인할 3개 행동을 만든다.",
+            output: "slide 09 checklist"
+          },
+          {
+            slide: "10",
+            name: "CTA Agent",
+            role: "마무리 CTA",
+            task: "강매 없이 기준으로 움직이라는 결론과 저장/상담 CTA를 만든다.",
+            output: "slide 10 closing CTA"
+          }
+        ]
+      },
+      {
+        lane: "C. 렌더",
+        index: "07",
+        title: "HTML/CSS 제작",
+        copy: "Layout, Copy Fit, Visual, Render 에이전트가 디자인과 렌더 리스크를 나눠 처리한다.",
+        owner: "hybrid",
+        badges: ["agent", "code"],
+        codeParts: ["slides.html 구조와 CSS 작성", "프레임 파일 연결", "캡처 safe zone과 4:5 비율 고정", "capture.mjs 실행 기준 생성"],
+        aiParts: ["Layout Agent가 화면 구조를 정리", "Copy Fit Agent가 줄바꿈/넘침을 줄인다", "Visual Agent가 색/강조/이미지 배치를 잡는다"],
+        output: "slides.html",
+        artifacts: ["layout-map.md", "copy-fit-notes.md", "visual-system.md", "slides.html", "capture.mjs"],
+        note: "렌더는 코드지만 실패 원인은 대개 레이아웃, 문장 길이, 이미지 배치에서 나온다. 그래서 제작 전 에이전트를 나눈다.",
+        agentPanelTitle: "렌더 제작 에이전트 분할",
+        agents: [
+          {
+            slide: "C1",
+            name: "Layout Agent",
+            role: "화면 구조",
+            task: "10장 전체의 정보 밀도, safe zone, 시선 흐름을 먼저 설계한다.",
+            output: "layout-map.md"
+          },
+          {
+            slide: "C2",
+            name: "Copy Fit Agent",
+            role: "문장 맞춤",
+            task: "긴 문장을 줄이고 줄바꿈, 제목 길이, 버튼/박스 안 텍스트 넘침을 잡는다.",
+            output: "copy-fit-notes.md"
+          },
+          {
+            slide: "C3",
+            name: "Visual Agent",
+            role: "시각 시스템",
+            task: "브레이브용 컬러, 강조 딱지, 프레임 배치, 대비를 결정한다.",
+            output: "visual-system.md"
+          },
+          {
+            slide: "C4",
+            name: "Render Agent",
+            role: "캡처 실행",
+            task: "Puppeteer 캡처 조건과 2160x2880 PNG 출력 기준을 고정한다.",
+            output: "capture.mjs + slide-*.png"
+          }
+        ]
+      },
+      {
+        lane: "C. 렌더",
+        index: "08",
+        title: "PNG 캡처",
+        copy: "Puppeteer capture.mjs가 slide-01.png부터 순서대로 뽑는다.",
+        owner: "code",
+        badges: ["code"],
+        codeParts: ["Puppeteer viewport 1080x1440 + deviceScaleFactor 2", "slide-01.png부터 slide-10.png 저장", "contact-sheet.png 생성"],
+        aiParts: ["없음. 렌더는 결정된 HTML을 기계적으로 캡처한다."],
+        output: "slide-*.png",
+        artifacts: ["capture.mjs", "slide-01.png", "slide-10.png"],
+        note: "반복 실행 가능한 코딩 단계다. 사람이 손으로 캡처하지 않는다."
+      },
+      {
+        lane: "C. 렌더",
+        index: "09",
+        title: "검수와 게시 준비",
+        copy: "Fact Check, Overclaim, IG Crop, Brand Tone 에이전트가 게시 전 사고 가능성을 줄인다.",
+        owner: "hybrid",
+        badges: ["human", "agent"],
+        codeParts: ["brands/braveyong/braveyong_carousel_oTxHFTjY_fY/로 산출물 정리", "INDEX.md 업데이트", "해상도와 테스트 검증", "QA 결과를 publish-check.md로 저장"],
+        aiParts: ["Fact Check Agent가 원문 불일치를 찾는다", "Overclaim Agent가 위험 문장을 제거한다", "IG Crop Agent와 Brand Tone Agent가 게시 적합성을 본다"],
+        output: "publish-ready",
+        artifacts: ["fact-check.md", "overclaim-check.md", "ig-crop-check.md", "brand-tone-check.md", "publish-check.md"],
+        note: "최종 승인 자체는 사람 몫이다. 하지만 QA 에이전트를 나누면 어떤 이유로 막혔는지 바로 보인다.",
+        agentPanelTitle: "게시 전 QA 에이전트 분할",
+        agents: [
+          {
+            slide: "Q1",
+            name: "Fact Check Agent",
+            role: "사실 대조",
+            task: "슬라이드 문장이 원문 transcript, wiki, 영상 장면과 어긋나는지 확인한다.",
+            output: "fact-check.md"
+          },
+          {
+            slide: "Q2",
+            name: "Overclaim Agent",
+            role: "과장 제거",
+            task: "쉽게 번다, 보장, 누구나 가능 같은 리스크 표현을 찾고 대체 문장을 낸다.",
+            output: "overclaim-check.md"
+          },
+          {
+            slide: "Q3",
+            name: "IG Crop Agent",
+            role: "인스타 안전영역",
+            task: "4:5 캐러셀, 썸네일, 모바일 가독성, 텍스트 겹침을 점검한다.",
+            output: "ig-crop-check.md"
+          },
+          {
+            slide: "Q4",
+            name: "Brand Tone Agent",
+            role: "용팀장 톤",
+            task: "직설적이되 허풍 없이, 경험 기반 자신감으로 들리는지 확인한다.",
+            output: "brand-tone-check.md"
+          }
+        ]
+      }
+    ];
+
+    const badgeLabels = {
+      code: "코딩",
+      agent: "Codex/Claude",
+      ai: "AI",
+      human: "사람 판단"
+    };
+
+    const board = document.getElementById("laneBoard");
+    const detailKicker = document.getElementById("detailKicker");
+    const detailTitle = document.getElementById("detailTitle");
+    const detailCopy = document.getElementById("detailCopy");
+    const detailBadges = document.getElementById("detailBadges");
+    const codeWorkList = document.getElementById("codeWorkList");
+    const aiWorkList = document.getElementById("aiWorkList");
+    const agentSplitPanel = document.getElementById("agentSplitPanel");
+    const agentPanelTitle = document.getElementById("agentPanelTitle");
+    const agentCount = document.getElementById("agentCount");
+    const agentGrid = document.getElementById("agentGrid");
+    const artifactList = document.getElementById("artifactList");
+    const detailNote = document.getElementById("detailNote");
+    const commandPreview = document.getElementById("commandPreview");
+    const urlInput = document.getElementById("urlInput");
+    const brandSelect = document.getElementById("brandSelect");
+    const frameToggle = document.getElementById("frameToggle");
+    const modeButtons = [...document.querySelectorAll("[data-mode]")];
+    const runSim = document.getElementById("runSim");
+    let activeIndex = 0;
+    let mode = "text";
+
+    function badgeHTML(type) {
+      return `<span class="badge ${type}" title="${badgeLabels[type]}">${badgeLabels[type]}</span>`;
+    }
+
+    function renderBoard() {
+      const lanes = [...new Set(stages.map((stage) => stage.lane))];
+      board.innerHTML = lanes.map((lane) => {
+        const laneStages = stages.filter((stage) => stage.lane === lane);
+        return `
+          <div class="lane">
+            <div class="lane-head">
+              <span>${lane}</span>
+              <span>${laneStages.length} steps</span>
+            </div>
+            <div class="lane-body">
+              ${laneStages.map((stage) => {
+                const idx = stages.indexOf(stage);
+                const hasCode = stage.badges.includes("code") || stage.codeParts.some((item) => !item.startsWith("없음"));
+                const hasAi = stage.badges.includes("ai") || stage.badges.includes("agent") || stage.aiParts.some((item) => !item.startsWith("없음"));
+                return `
+                  <article class="node owner-${stage.owner} ${idx === activeIndex ? "active" : ""}" data-index="${idx}">
+                    <span class="node-index">${stage.index}</span>
+                    <div class="node-title">${stage.title}</div>
+                    <p class="node-copy">${stage.copy}</p>
+                    <div class="badge-row">${stage.badges.map(badgeHTML).join("")}</div>
+                    <div class="implementation-strip" aria-label="implementation split">
+                      <span class="impl-pill ${hasCode ? "code-on" : "off"}">코드 ${hasCode ? "ON" : "OFF"}</span>
+                      <span class="impl-pill ${hasAi ? "ai-on" : "off"}">AI ${hasAi ? "ON" : "OFF"}</span>
+                    </div>
+                    <span class="output-tag">${stage.output}</span>
+                  </article>
+                `;
+              }).join("")}
+            </div>
+          </div>
+        `;
+      }).join("");
+
+      document.querySelectorAll(".node").forEach((node) => {
+        node.addEventListener("click", () => {
+          activeIndex = Number(node.dataset.index);
+          updateDetail();
+          renderBoard();
+        });
+      });
+    }
+
+    function updateDetail() {
+      const stage = stages[activeIndex];
+      detailKicker.textContent = `STEP ${stage.index}`;
+      detailTitle.textContent = stage.title;
+      detailCopy.textContent = stage.copy;
+      detailBadges.innerHTML = stage.badges.map(badgeHTML).join("");
+      codeWorkList.innerHTML = stage.codeParts.map((item) => `<li>${item}</li>`).join("");
+      aiWorkList.innerHTML = stage.aiParts.map((item) => `<li>${item}</li>`).join("");
+      const agents = stage.agents || [];
+      agentSplitPanel.classList.toggle("visible", agents.length > 0);
+      agentPanelTitle.textContent = stage.agentPanelTitle || "에이전트 분할";
+      agentCount.textContent = `${agents.length} agents`;
+      agentGrid.innerHTML = agents.map((agent) => {
+        const label = /^\d+$/.test(agent.slide) ? `S${agent.slide}` : agent.slide;
+        return `
+          <article class="agent-card">
+            <div class="agent-meta">
+              <span>${label}</span>
+              <span>${agent.role}</span>
+            </div>
+            <div class="agent-name">${agent.name}</div>
+            <p class="agent-task">${agent.task}</p>
+            <p class="agent-output">${agent.output}</p>
+          </article>
+        `;
+      }).join("");
+      artifactList.innerHTML = stage.artifacts.map((item) => `<li>${item}</li>`).join("");
+      detailNote.textContent = stage.note;
+    }
+
+    function safeSlugFromUrl(url) {
+      const match = url.match(/(?:v=|youtu\.be\/|shorts\/|embed\/)([A-Za-z0-9_-]{11})/);
+      return match ? match[1] : "youtube-topic";
+    }
+
+    function updateCommand() {
+      const url = urlInput.value.trim() || "https://youtu.be/VIDEO_ID";
+      const brand = brandSelect.value;
+      const slug = safeSlugFromUrl(url);
+      const modePart = mode === "full" ? " --mode full" : "";
+      const frameLine = frameToggle.checked
+        ? "# frames 추출 포함: yt-highlights/frames/"
+        : "# 게시용 프레임 사용 안 함: 텍스트 재구성 우선";
+      commandPreview.textContent =
+`scripts/run_youtube_carousel_research.sh "${url}" \\
+  --brand ${brand} \\
+  --slug ${slug}${modePart}
+
+${frameLine}
+
+# 코드 구현
+# 수집 agents: transcript/frame/wiki/source-risk 결과를 source/에 저장
+# mcptube ingest + wiki export
+# yt_highlights: 2160p 영상 다운로드, transcript/scenes/highlights/frame 추출
+# Puppeteer: slides.html -> 2160x2880 slide-*.png 캡처
+# QA 결과: fact/overclaim/ig-crop/brand-tone check 파일 저장
+
+# AI 담당
+# Collection agents: Transcript, Frame, Wiki, Source Risk
+# Brief agents: Claim, Counter, Persona, CTA
+# Codex/Claude: 10개 slide-agent로 storyboard.md 분할 작성
+# Render agents: Layout, Copy Fit, Visual, Render
+# editor/critic pass: 흐름, 중복, 과장, CTA 리스크 검수
+# QA agents: Fact Check, Overclaim, IG Crop, Brand Tone
+
+# 최종 산출
+# brands/${brand}/${brand}_carousel_${slug}/`;
+    }
+
+    function setMode(nextMode) {
+      mode = nextMode;
+      modeButtons.forEach((button) => {
+        button.classList.toggle("active", button.dataset.mode === mode);
+      });
+      updateCommand();
+    }
+
+    function runSimulation() {
+      const nodes = [...document.querySelectorAll(".node")];
+      nodes.forEach((node) => node.classList.remove("running"));
+      let cursor = 0;
+      const timer = setInterval(() => {
+        nodes.forEach((node) => node.classList.remove("running"));
+        activeIndex = cursor;
+        updateDetail();
+        renderBoard();
+        const activeNode = document.querySelector(`.node[data-index="${cursor}"]`);
+        if (activeNode) activeNode.classList.add("running");
+        cursor += 1;
+        if (cursor >= stages.length) {
+          clearInterval(timer);
+          setTimeout(() => {
+            document.querySelectorAll(".node").forEach((node) => node.classList.remove("running"));
+          }, 700);
+        }
+      }, 620);
+    }
+
+    modeButtons.forEach((button) => {
+      button.addEventListener("click", () => setMode(button.dataset.mode));
+    });
+    [urlInput, brandSelect, frameToggle].forEach((el) => {
+      el.addEventListener("input", updateCommand);
+      el.addEventListener("change", updateCommand);
+    });
+    runSim.addEventListener("click", runSimulation);
+
+    renderBoard();
+    updateDetail();
+    updateCommand();
+  </script>
+</body>
+</html>

@@ -1,6 +1,7 @@
 from scripts.zipsaja_data_fetch.fetch import (
     SEOUL_DISTRICTS_ORDER,
     compute_change_pct,
+    derive_period_labels,
     rows_to_dataset,
 )
 
@@ -36,6 +37,19 @@ def test_rows_to_dataset_full_shape():
     assert dataset["districts"][0]["priceBefore"] == 31_682_495
     assert dataset["districts"][1]["priceAfter"] == 16_997_362
     assert dataset["districts"][1]["changePct"] == 17.3
+    assert dataset["beforeLabel"] == "2024.6~2025.6"
+    assert dataset["afterLabel"] == "2025.6~현재"
+
+
+def test_derive_period_labels_shortens_year_comparison():
+    assert derive_period_labels("2025.01~2025.12 vs 2026.01~현재") == (
+        "2025 평균",
+        "2026 현재",
+    )
+
+
+def test_derive_period_labels_falls_back_for_unknown_format():
+    assert derive_period_labels("") == ("이전", "이후")
 
 
 def test_rows_to_dataset_empty_district_dropped():

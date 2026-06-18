@@ -1,6 +1,7 @@
 import { Worker } from "bullmq";
 import Redis from "ioredis";
 import { processScheduledPost } from "./processors/scheduled-post";
+import { processContentPublish } from "./processors/content-publish";
 import { processCommentPipeline } from "./processors/comment-pipeline";
 import { processTokenRefresh } from "./processors/token-refresh";
 
@@ -18,6 +19,12 @@ new Worker("scheduled-posts", processScheduledPost, {
 new Worker("comment-pipelines", processCommentPipeline, {
   connection,
   concurrency: 3,
+});
+
+new Worker("content-publish", processContentPublish, {
+  connection,
+  concurrency: 1,
+  limiter: { max: 3, duration: 60_000 },
 });
 
 new Worker("token-refresh", processTokenRefresh, {

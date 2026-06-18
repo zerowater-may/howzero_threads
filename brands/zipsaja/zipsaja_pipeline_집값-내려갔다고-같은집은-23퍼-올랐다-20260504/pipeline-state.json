@@ -1,0 +1,229 @@
+{
+  "pipeline_id": "zipsaja_20260504_집값-내려갔다고-같은집은-23퍼-올랐다-20260504",
+  "brand": "zipsaja",
+  "topic": "집값 내려갔다고? 같은집은 23% 올랐다",
+  "slug": "집값-내려갔다고-같은집은-23퍼-올랐다-20260504",
+  "created_at": "2026-05-04T03:54:23.257964+00:00",
+  "status": "completed",
+  "failed_at": null,
+  "failed_reason": null,
+  "data": {
+    "source": "국토부 실거래가",
+    "preset": "same-unit-yoy-2025-2026",
+    "dataset": {
+      "generatedAt": "2026-05-04T03:54:23.256719+00:00",
+      "title": "집값 내려갔다고? 같은집은 23% 올랐다",
+      "subtitle": "전체 통계 말고, 같은 단지·같은 평형만 다시 봤다",
+      "periodLabel": "2025.01.01~2025.04.30 vs 2026.01.01~2026.04.30",
+      "source": "국토부 실거래가 · 서울 아파트 매매 · 동일 단지/평형 비교",
+      "beforeLabel": "2025 같은집",
+      "afterLabel": "2026 같은집",
+      "districts": [
+        {
+          "district": "서초구",
+          "priceBefore": 275000,
+          "priceAfter": 325000,
+          "changePct": 18.2
+        },
+        {
+          "district": "강남구",
+          "priceBefore": 250000,
+          "priceAfter": 298000,
+          "changePct": 19.2
+        },
+        {
+          "district": "용산구",
+          "priceBefore": 225000,
+          "priceAfter": 276000,
+          "changePct": 22.7
+        },
+        {
+          "district": "송파구",
+          "priceBefore": 159000,
+          "priceAfter": 204000,
+          "changePct": 28.3
+        },
+        {
+          "district": "성동구",
+          "priceBefore": 140250,
+          "priceAfter": 185750,
+          "changePct": 32.4
+        },
+        {
+          "district": "마포구",
+          "priceBefore": 148500,
+          "priceAfter": 183500,
+          "changePct": 23.6
+        },
+        {
+          "district": "동작구",
+          "priceBefore": 122000,
+          "priceAfter": 158000,
+          "changePct": 29.5
+        },
+        {
+          "district": "강동구",
+          "priceBefore": 128000,
+          "priceAfter": 172750,
+          "changePct": 35.0
+        },
+        {
+          "district": "광진구",
+          "priceBefore": 136875,
+          "priceAfter": 177500,
+          "changePct": 29.7
+        },
+        {
+          "district": "중구",
+          "priceBefore": 114500,
+          "priceAfter": 149500,
+          "changePct": 30.6
+        },
+        {
+          "district": "영등포구",
+          "priceBefore": 121625,
+          "priceAfter": 157500,
+          "changePct": 29.5
+        },
+        {
+          "district": "종로구",
+          "priceBefore": 118750,
+          "priceAfter": 149980,
+          "changePct": 26.3
+        },
+        {
+          "district": "동대문구",
+          "priceBefore": 91000,
+          "priceAfter": 109500,
+          "changePct": 20.3
+        },
+        {
+          "district": "서대문구",
+          "priceBefore": 105000,
+          "priceAfter": 128000,
+          "changePct": 21.9
+        },
+        {
+          "district": "양천구",
+          "priceBefore": 105250,
+          "priceAfter": 126500,
+          "changePct": 20.2
+        },
+        {
+          "district": "강서구",
+          "priceBefore": 98750,
+          "priceAfter": 117375,
+          "changePct": 18.9
+        },
+        {
+          "district": "성북구",
+          "priceBefore": 87000,
+          "priceAfter": 99500,
+          "changePct": 14.4
+        },
+        {
+          "district": "은평구",
+          "priceBefore": 92000,
+          "priceAfter": 99750,
+          "changePct": 8.4
+        },
+        {
+          "district": "관악구",
+          "priceBefore": 82000,
+          "priceAfter": 103750,
+          "changePct": 26.5
+        },
+        {
+          "district": "구로구",
+          "priceBefore": 73000,
+          "priceAfter": 78750,
+          "changePct": 7.9
+        },
+        {
+          "district": "강북구",
+          "priceBefore": 74500,
+          "priceAfter": 86500,
+          "changePct": 16.1
+        },
+        {
+          "district": "금천구",
+          "priceBefore": 68950,
+          "priceAfter": 71025,
+          "changePct": 3.0
+        },
+        {
+          "district": "노원구",
+          "priceBefore": 63700,
+          "priceAfter": 68000,
+          "changePct": 6.8
+        },
+        {
+          "district": "중랑구",
+          "priceBefore": 68000,
+          "priceAfter": 72800,
+          "changePct": 7.1
+        },
+        {
+          "district": "도봉구",
+          "priceBefore": 55700,
+          "priceAfter": 57600,
+          "changePct": 3.4
+        }
+      ],
+      "sheetTitle": "same-unit-yoy",
+      "districtLabel": "자치구",
+      "changeLabel": "전년대비",
+      "sizeLabel": "서울 아파트 · 같은 단지/같은 평형 비교",
+      "ctaHook": "댓글에 엑셀/PDF 쓰면 원자료 줄게",
+      "ctaText": "\"엑셀\" — 구별 데이터<br>\"PDF\" — 요약 리포트",
+      "summaryStats": {
+        "matchedSaleUnits": 3436,
+        "sameUnitSaleMedian2025Eok": 10.41,
+        "sameUnitSaleMedian2026Eok": 12.8,
+        "sameUnitSaleMedianYoYPct": 22.9,
+        "sameUnitJeonseMedian2025Eok": 5.9,
+        "sameUnitJeonseMedian2026Eok": 6.5,
+        "sameUnitJeonseMedianYoYPct": 10.2,
+        "allSaleDeals2025": 19980,
+        "allSaleDeals2026": 16342,
+        "allSaleDealsYoYPct": -18.2,
+        "allSaleMedianYoYPct": -15.6
+      }
+    }
+  },
+  "tone": null,
+  "artifacts": {
+    "data": {
+      "path": "brands/zipsaja/zipsaja_pipeline_집값-내려갔다고-같은집은-23퍼-올랐다-20260504/data.json"
+    },
+    "reels": {
+      "path": "brands/zipsaja/zipsaja_pipeline_집값-내려갔다고-같은집은-23퍼-올랐다-20260504/reels"
+    },
+    "carousel": {
+      "path": "brands/zipsaja/zipsaja_pipeline_집값-내려갔다고-같은집은-23퍼-올랐다-20260504/carousel"
+    },
+    "attachments": {
+      "path": "brands/zipsaja/zipsaja_pipeline_집값-내려갔다고-같은집은-23퍼-올랐다-20260504/attachments"
+    },
+    "captions": {
+      "path": "brands/zipsaja/zipsaja_pipeline_집값-내려갔다고-같은집은-23퍼-올랐다-20260504/captions"
+    },
+    "publish-ready": {
+      "path": "brands/zipsaja/zipsaja_pipeline_집값-내려갔다고-같은집은-23퍼-올랐다-20260504/publish-ready"
+    }
+  },
+  "workflow_version": "zipsaja-remotion-v1",
+  "forbidden_tools": [
+    "hyperframes"
+  ],
+  "steps": {
+    "brief": "done",
+    "data": "done",
+    "storyboard": "skipped",
+    "remotion": "done",
+    "carousel": "done",
+    "attachments": "done",
+    "captions": "done",
+    "package-qa": "done"
+  }
+}

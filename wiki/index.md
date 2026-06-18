@@ -71,7 +71,7 @@
 
 | 페이지 | 요약 | 주요 소스 |
 |---|---|---|
-| [[Zipsaja Index]] | 집사자 작업 진입점 — 정체성, 자산 인벤토리, pipeline 번들 16개 주제 지도 | `brands/zipsaja/INDEX.md` |
+| [[Zipsaja Index]] | 집사자 작업 진입점 — 정체성, 자산 인벤토리, pipeline 번들 19개 주제 지도 | `brands/zipsaja/INDEX.md` |
 | [[Zipsaja Persona]] | 반말 친구 톤, 타깃 심리, 시각 아이덴티티(베이지+오렌지/Gmarket Sans/마스코트), 톤 가드 | `.claude/skills/zipsaja-design/`, `brands/zipsaja/INDEX.md` |
 | [[Zipsaja Content Playbook]] | 댓글싸움 골격, 후크 공식, 대립축, 감정 아크, 캐러셀·릴스 구조, 파이프라인·게시 | `zipsaja_misc_firsthome-rage-research/`, `zipsaja_pipeline_*`, `.claude/skills/zipsaja-*` |
 | [[Zipsaja Data Findings]] | 서울 실거래 인사이트 누적(강남 둔화/동북권 급등, 통계 착시, 첫집 현금격차) + data.json schema | `zipsaja_pipeline_*/data.json`, `/zipsaja-data-fetch` |

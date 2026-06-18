@@ -1,43 +1,92 @@
 import { Section } from "./section"
-import { Users, Coins, Check } from "lucide-react"
+import { Clock, ArrowRight } from "lucide-react"
 import { course } from "@/lib/config"
+import { CountdownTimer } from "@/components/countdown-timer"
+import { PaymentDialog } from "@/components/payment-dialog"
 
-/** 15 소수정예 한정 — 워밍 톤(유일). 카운트다운/거짓 잔여석 금지. */
-const items = [
+/** 1기 마감-상대 타임어택 — 거짓 잔여석 아님, 선착순 정원·마감일 기준 진짜 마감. */
+const priceFirst = (course.priceFirst / 10000).toLocaleString() // 198
+const priceRegular = (course.priceRegular / 10000).toLocaleString() // 250
+
+const timeline = [
   {
-    Icon: Users,
-    title: "소수정예 운영",
-    body: "현장에서 직접 한 분 한 분 봐드리려면, 인원이 어쩔 수 없이 한정돼요. 정확한 모집 인원은 신청서 보고 따로 안내드립니다.",
+    time: "지금",
+    title: "1기 모집 중",
+    body: "여기까지 오신 분만 1기 특별가가 열립니다.",
+    done: true,
   },
   {
-    Icon: Coins,
-    title: `1기 ${(course.priceFirst / 10000).toLocaleString()}만원 · 정가 ${(course.priceRegular / 10000).toLocaleString()}만원`,
-    body: "1기 실행자에게만 적용되는 가격이에요. 카드 무이자 할부도 되니까, 한 번에 부담되시면 나눠 결제하셔도 됩니다.",
+    time: "마감 임박",
+    title: `1기 특별가 ${priceFirst}만원 마감`,
+    body: "마감 전까지만. 마감되면 이 가격은 닫힙니다.",
+    done: false,
   },
   {
-    Icon: Check,
-    title: "선착순 아닌 선별",
-    body: "신청서 보고 한 분씩 따로 보고, 맞는 분들께만 참여·결제 안내드려요.",
+    time: "마감 후",
+    title: `정가 ${priceRegular}만원`,
+    body: `지금 안 하면 다음엔 ${priceRegular}만원. ${(course.priceRegular - course.priceFirst) / 10000}만원 차이가 그냥 시간으로 생깁니다.`,
+    done: false,
   },
 ]
 
 export function Scarcity() {
   return (
-    <Section tone="warm" label="1기 한정" title={<>왜 아무나 못 받는지.</>} lead="압박하려고 만든 가짜 마감이 아니에요. 오프라인 실전반이라서 생기는, 어쩔 수 없는 진짜 제약입니다.">
-      <div className="grid gap-3 md:grid-cols-3">
-        {items.map(({ Icon, title, body }) => (
-          <div key={title} className="border-2 border-[var(--warm-border)] bg-background p-5">
-            <Icon className="h-5 w-5 text-[var(--warm-border)]" />
-            <h3 className="mt-3 text-base font-bold tracking-tight">{title}</h3>
-            <p className="mt-1.5 text-sm leading-relaxed text-foreground/70">{body}</p>
+    <Section
+      tone="warm"
+      label="1기 마감 임박"
+      title={<>지금 시작하면, 1기 특별가.</>}
+      lead={`압박하려고 만든 가짜 마감이 아니에요. 여기까지 오신 분께만 여는 1기 특별가라, 선착순 정원이 차거나 마감일이 지나면 진짜로 닫힙니다.`}
+    >
+      {/* 큰 카운트다운 — 눈에 가장 먼저 들어오게 */}
+      <div className="flex flex-col items-center border-2 border-brand bg-background px-5 py-7 text-center sm:py-8">
+        <div className="font-mono inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-brand">
+          <Clock className="h-3.5 w-3.5" />
+          1기 마감까지 남은 시간
+        </div>
+        <CountdownTimer className="mt-3 scale-[1.6] text-foreground sm:scale-[2]" />
+        <p className="mt-6 text-base font-bold leading-snug tracking-tight sm:text-lg">
+          지금 <span className="text-brand">{priceFirst}만원</span>, 마감되면{" "}
+          <span className="text-foreground/45 line-through">{priceRegular}만원</span>
+        </p>
+        <PaymentDialog
+          amount={course.priceFirst}
+          label={`지금 1기 특별가 ${priceFirst}만원 결제`}
+          className="mt-5 inline-flex w-full max-w-md items-center justify-center gap-2 rounded-full border-2 border-brand bg-brand px-6 py-4 text-base font-bold text-brand-foreground transition-all hover:opacity-90"
+        />
+        <p className="mt-3 text-xs text-foreground/55">
+          이름·휴대폰만 넣으면 결제창이 바로 열려요. 카드 무이자 할부 가능.
+        </p>
+      </div>
+
+      {/* 마감-상대 타임라인 — 모집 중 → 마감 임박 → 마감 후 정가 */}
+      <div className="mt-8 grid gap-3 md:grid-cols-3">
+        {timeline.map((step, i) => (
+          <div
+            key={step.time}
+            className={`relative border-2 p-5 ${
+              i === 1
+                ? "border-brand bg-background"
+                : "border-[var(--warm-border)] bg-background"
+            }`}
+          >
+            <div className="font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-foreground/50">
+              {step.time}
+            </div>
+            <h3 className="mt-2 flex items-center gap-1.5 text-base font-bold tracking-tight">
+              {step.title}
+            </h3>
+            <p className="mt-1.5 text-sm leading-relaxed text-foreground/70">{step.body}</p>
+            {i < timeline.length - 1 && (
+              <ArrowRight className="absolute -right-2.5 top-1/2 hidden h-5 w-5 -translate-y-1/2 text-[var(--warm-border)] md:block" />
+            )}
           </div>
         ))}
       </div>
 
       {/* 인터뷰 톤 — 강의 쇼핑 굴레에서 빠져나오자는 정직한 한 줄 */}
-      <p className="font-memo mt-6 text-base leading-relaxed text-foreground/80 sm:text-lg">
+      <p className="font-memo mt-8 text-base leading-relaxed text-foreground/80 sm:text-lg">
         매번 다른 강의를 또 결제하고, 또 혼자 막히는 자리에 돌아오지 마세요.<br />
-        한 번 제대로, 같이 끝까지 갑니다.
+        이번 한 번 제대로, 같이 끝까지 갑니다.
       </p>
     </Section>
   )

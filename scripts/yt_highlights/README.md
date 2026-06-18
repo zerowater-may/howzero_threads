@@ -20,7 +20,7 @@ Produces in `./out/<run_name>/`:
 - `<video_id>.mp4` + `<video_id>.info.json` (yt-dlp artifacts)
 - `transcript.json` — `[{t, d, text}, ...]`
 - `scenes.json` — `[{index, start, end}, ...]`
-- `frames/h01_f01.jpg`, … — cropped 3:4 JPGs, ordered by highlight rank
+- `frames/h01_f01.jpg`, … — source aspect-ratio JPGs, ordered by highlight rank
 - `highlights.json` — final assembled output
 
 ## Flags
@@ -79,6 +79,10 @@ ls /tmp/yt-highlights-smoke/frames/ | head
 If `source == "heatmap"` and the frames directory has files → the pipeline is working.
 
 If `source == "transcript_fallback"` → the video has no Most Replayed or chapter markers. This is expected for recently uploaded or low-traffic videos. Pick a more popular video and retry.
+
+## Frame quality
+
+기본 다운로드는 `2160p`까지 허용한다. 캐러셀 출력이 2160px wide PNG라서 720p/1080p 소스로 뽑은 프레임은 슬라이드 안에서 확대되어 뭉개진다. 프레임 JPG도 2160px wide로 저장한다.
 
 ## Verified behavior on real video (2026-04-20)
 

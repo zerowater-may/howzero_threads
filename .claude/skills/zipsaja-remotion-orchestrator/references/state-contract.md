@@ -71,7 +71,7 @@ publish-ready/
 └── threads-carousel/slide-01.png ...    # 1080x1350, 4:5
 ```
 
-Reels API publishing prefers `reels/zipsaja-reel-30s-audio-mapped-ig-safe.mp4`, then `reels/zipsaja-reel-30s-audio-mapped.mp4`, then `reels/zipsaja-reel-30s.mp4`. Legacy `22s` files are fallback only when no 30s reel exists.
+Reels generation must create `reels/zipsaja-reel-30s-audio-mapped.mp4` and `reels/zipsaja-reel-30s-audio-mapped-ig-safe.mp4` in the same `scripts.content_reels` step. Reels API publishing prefers `reels/zipsaja-reel-30s-audio-mapped-ig-safe.mp4`, then `reels/zipsaja-reel-30s-audio-mapped.mp4`, then `reels/zipsaja-reel-30s.mp4`. Legacy `22s` files are fallback only when no 30s reel exists.
 
 ## Hard Rule
 

@@ -1,3 +1,11 @@
 {
-  "promptDelete": false
+  "promptDelete": false,
+  "userIgnoreFilters": [
+    "howzero-web/node_modules/",
+    "node_modules/",
+    "howzero-web/.next/",
+    ".git/",
+    ".claude/worktrees/",
+    ".playwright-mcp/"
+  ]
 }

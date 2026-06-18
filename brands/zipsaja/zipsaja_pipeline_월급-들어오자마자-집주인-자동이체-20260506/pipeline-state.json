@@ -1,0 +1,39 @@
+{
+  "brand": "zipsaja",
+  "topic": "월급 들어오자마자 집주인 자동이체",
+  "slug": "월급-들어오자마자-집주인-자동이체-20260506",
+  "status": "completed",
+  "workflow_version": "zipsaja-remotion-v1-rent-salary-existing-assets",
+  "source": "국토교통부 2026년 3월 주택통계 · 단순 해석",
+  "sourceUrl": "https://www.molit.go.kr/USR/NEWS/dtl.jsp?id=95091958&lcmspage=1",
+  "steps": {
+    "brief": "done",
+    "data": "done",
+    "storyboard": "done",
+    "carousel": "done",
+    "remotion": "done",
+    "attachments": "done",
+    "captions": "done",
+    "package-qa": "done"
+  },
+  "artifacts": {
+    "data": {
+      "path": "brands/zipsaja/zipsaja_pipeline_월급-들어오자마자-집주인-자동이체-20260506/data.json"
+    },
+    "carousel": {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_월급-들어오자마자-집주인-자동이체-20260506/carousel"
+    },
+    "reels": {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_월급-들어오자마자-집주인-자동이체-20260506/reels"
+    },
+    "attachments": {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_월급-들어오자마자-집주인-자동이체-20260506/attachments"
+    },
+    "captions": {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_월급-들어오자마자-집주인-자동이체-20260506/captions"
+    },
+    "publish-ready": {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_월급-들어오자마자-집주인-자동이체-20260506/publish-ready"
+    }
+  }
+}

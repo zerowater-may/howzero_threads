@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>김승현 님 영양제 체크리스트</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #d7ecfb;
+      color: #24201d;
+      font-family: "Gaegu", "Comic Sans MS", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+      line-height: 1.25;
+    }
+
+    .memo {
+      height: 277mm;
+      position: relative;
+      overflow: hidden;
+      background: #ffe8b5;
+      border: 5px solid #24201d;
+      border-radius: 28px;
+      box-shadow: 12px 14px 0 rgba(36, 32, 29, .12);
+      padding: 118px 46px 34px;
+    }
+
+    .wave {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 132px;
+      background: #3b9bd5;
+      border-bottom: 5px solid #24201d;
+      clip-path: polygon(
+        0 0, 100% 0, 100% 78%,
+        94% 68%, 88% 82%, 80% 70%, 72% 84%,
+        64% 72%, 56% 84%, 48% 70%, 40% 82%,
+        32% 70%, 24% 82%, 16% 70%, 8% 82%, 0 72%
+      );
+    }
+
+    .title-pill {
+      position: absolute;
+      top: 28px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-2deg);
+      background: #fffdfa;
+      border: 5px solid #24201d;
+      border-radius: 999px;
+      padding: 8px 34px 10px;
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: .02em;
+      white-space: nowrap;
+    }
+
+    .name {
+      position: relative;
+      z-index: 2;
+      display: inline-block;
+      background: #fff9dc;
+      border: 3px solid #24201d;
+      border-radius: 18px;
+      padding: 8px 16px;
+      font-size: 25px;
+      font-weight: 900;
+      transform: rotate(-1deg);
+      margin-bottom: 14px;
+    }
+
+    .date {
+      position: absolute;
+      top: 140px;
+      right: 48px;
+      font-size: 17px;
+      font-weight: 800;
+      color: #443b34;
+      transform: rotate(1deg);
+    }
+
+    .list {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      gap: 18px;
+      margin-top: 4px;
+    }
+
+    .item {
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 15px;
+      align-items: start;
+    }
+
+    .circle {
+      width: 30px;
+      height: 30px;
+      border: 5px solid #24201d;
+      border-radius: 999px;
+      background: #fffdfa;
+      margin-top: 6px;
+      transform: rotate(-5deg);
+    }
+
+    .line {
+      min-height: 0;
+      border-bottom: 5px solid #24201d;
+      transform: rotate(-.4deg);
+      padding-bottom: 12px;
+    }
+
+    .line:nth-child(even) {
+      transform: rotate(.5deg);
+    }
+
+    .main {
+      font-size: 30px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      margin-bottom: 5px;
+    }
+
+    .sub {
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: #554b43;
+      letter-spacing: -0.04em;
+    }
+
+    .products {
+      display: grid;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .products.three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .product {
+      display: grid;
+      grid-template-columns: 88px 1fr;
+      gap: 12px;
+      align-items: center;
+      background: rgba(255, 253, 250, .82);
+      border: 3px solid rgba(36, 32, 29, .42);
+      border-radius: 16px;
+      padding: 8px 12px;
+    }
+
+    .products.three .product {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      gap: 5px;
+      padding: 7px 6px 8px;
+      text-align: center;
+    }
+
+    .product img {
+      width: 84px;
+      height: 84px;
+      object-fit: contain;
+      background: #fff;
+      border: 2px solid rgba(36, 32, 29, .18);
+      border-radius: 12px;
+      padding: 3px;
+    }
+
+    .products.three .product img {
+      width: 92px;
+      height: 92px;
+    }
+
+    .product-name {
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+      font-size: 15px;
+      font-weight: 850;
+      color: #312a25;
+      line-height: 1.32;
+      letter-spacing: -0.04em;
+    }
+
+    .products.three .product-name {
+      min-height: 51px;
+      font-size: 11.4px;
+      line-height: 1.28;
+      display: flex;
+      align-items: center;
+    }
+
+    .effect {
+      margin-top: 3px;
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+      font-size: 11.5px;
+      font-weight: 800;
+      color: #615449;
+      line-height: 1.32;
+      letter-spacing: -0.04em;
+    }
+
+    .products.three .effect {
+      margin-top: 0;
+      font-size: 10px;
+      min-height: 26px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 3px 9px;
+      margin-left: 8px;
+      border: 2px solid #24201d;
+      border-radius: 999px;
+      background: #fffdfa;
+      font-size: 14px;
+      vertical-align: 4px;
+      white-space: nowrap;
+    }
+
+    .memo-note {
+      position: absolute;
+      left: 58px;
+      bottom: 38px;
+      width: 360px;
+      border: 3px solid #24201d;
+      border-radius: 18px;
+      background: #fff8db;
+      padding: 11px 14px;
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+      font-size: 12.5px;
+      font-weight: 800;
+      color: #4b423b;
+      transform: rotate(-1.5deg);
+    }
+
+    .doodle-left {
+      position: absolute;
+      left: 32px;
+      bottom: 122px;
+      width: 70px;
+      height: 70px;
+    }
+
+    .doodle-right {
+      position: absolute;
+      right: 36px;
+      bottom: 42px;
+      width: 88px;
+      height: 72px;
+    }
+
+    .bubble {
+      position: absolute;
+      border-radius: 999px;
+      background: rgba(255, 199, 115, .32);
+    }
+
+    .bubble.b1 { width: 10px; height: 10px; left: 70px; top: 390px; }
+    .bubble.b2 { width: 16px; height: 16px; right: 95px; top: 430px; }
+    .bubble.b3 { width: 8px; height: 8px; right: 75px; top: 452px; }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+    }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <main class="memo">
+    <div class="wave"></div>
+    <div class="title-pill">영양제 체크리스트</div>
+    <div class="date">김승현 님</div>
+    <div class="bubble b1"></div>
+    <div class="bubble b2"></div>
+    <div class="bubble b3"></div>
+
+    <div class="name">까먹지 말고 꼭 챙겨드세요</div>
+
+    <section class="list">
+      <div class="item">
+        <div class="circle"></div>
+        <div class="line">
+          <div class="main">공복 · 유산균 1캡슐 <span class="tag">장 컨디션</span></div>
+          <div class="sub">물 한 컵이랑 먼저. 속이 예민하면 밥 먹고 난 뒤로 옮겨도 됩니다.</div>
+          <div class="products">
+            <div class="product">
+              <img src="assets/cgn-lactobif-30.jpg" alt="California Gold Nutrition LactoBif 30 프로바이오틱">
+              <div>
+                <div class="product-name">California Gold Nutrition, LactoBif® 30 프로바이오틱, 300억CFU, 베지 캡슐 60정</div>
+                <div class="effect">배가 더부룩하거나 장 리듬이 흐트러질 때 기본으로 챙기는 제품.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="circle"></div>
+        <div class="line">
+          <div class="main">밥 먹고 · 3개 챙기기 <span class="tag">기본+피부</span></div>
+          <div class="sub">멀티 1정 + 포도씨 1캡슐 + 피토세라마이드 2캡슐. 식사 후에 한 번에 묶으면 덜 까먹습니다.</div>
+          <div class="products three">
+            <div class="product">
+              <img src="assets/nature-made-multi-for-her.jpg" alt="Nature Made 여성용 종합비타민">
+              <div>
+                <div class="product-name">Nature Made, 여성용 종합비타민, 90정</div>
+                <div class="effect">철분, 엽산, 비타민 D, B12, 아연 기본 보충.</div>
+              </div>
+            </div>
+            <div class="product">
+              <img src="assets/now-grape-seed.jpg" alt="NOW Foods 포도 씨추출물 500mg">
+              <div>
+                <div class="product-name">NOW Foods, 포도 씨추출물, 500mg, 베지 캡슐 90정</div>
+                <div class="effect">오래 서 있는 날 항산화와 순환 컨디션 관리.</div>
+              </div>
+            </div>
+            <div class="product">
+              <img src="assets/vitauthority-phytoceramides.jpg" alt="Vitauthority 피토세라마이드 플러스">
+              <div>
+                <div class="product-name">Vitauthority, 피토세라마이드 +, 베지 캡슐 60정</div>
+                <div class="effect">건조한 기내 환경에서 피부 장벽과 수분감 관리.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="circle"></div>
+        <div class="line">
+          <div class="main">자기 전 · 마그네슘 2정 <span class="tag">수면 루틴</span></div>
+          <div class="sub">밤비행 후에는 시계 시간이 아니라 내가 잘 시간 기준으로 먹으면 됩니다.</div>
+          <div class="products">
+            <div class="product">
+              <img src="assets/doctors-best-magnesium.jpg" alt="Doctor's Best 고흡수 마그네슘">
+              <div>
+                <div class="product-name">Doctor's Best, 고흡수 마그네슘, 120정(1정당 100mg)</div>
+                <div class="effect">긴장 풀고 잠들기 전 루틴 잡을 때. 근육 뻐근함 관리에도 같이 챙기기.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="memo-note">
+      커피는 멀티비타민 바로 앞뒤로 몰아 마시지 않기.<br>
+      약 먹는 날이나 컨디션 안 좋은 날은 무리해서 추가하지 않기.
+    </div>
+
+    <svg class="doodle-left" viewBox="0 0 100 100" aria-hidden="true">
+      <path d="M42 19c-17 0-29 13-28 30 1 18 18 29 35 25l5 11c3 7 15 4 12-4l-5-12c9-7 14-17 11-29-3-13-15-21-30-21z" fill="#d8b6e2" stroke="#24201d" stroke-width="6" stroke-linejoin="round"/>
+      <circle cx="35" cy="46" r="4" fill="#24201d"/>
+      <circle cx="52" cy="46" r="4" fill="#24201d"/>
+      <path d="M28 68c-5 11-8 18-18 20M49 73c0 11-3 18-12 23M66 65c8 8 14 12 23 11" fill="none" stroke="#24201d" stroke-width="6" stroke-linecap="round"/>
+    </svg>
+
+    <svg class="doodle-right" viewBox="0 0 120 90" aria-hidden="true">
+      <path d="M20 50c17-22 45-28 68-9l20-18c5-4 10 0 8 7l-8 22 9 20c3 7-3 12-9 7L88 63c-25 17-52 12-68-13z" fill="#ffa75c" stroke="#24201d" stroke-width="6" stroke-linejoin="round"/>
+      <circle cx="44" cy="48" r="4" fill="#24201d"/>
+      <path d="M58 50c7 3 13 3 19 0M21 49c-7-4-12-6-17-7" fill="none" stroke="#24201d" stroke-width="5" stroke-linecap="round"/>
+    </svg>
+  </main>
+</body>
+</html>

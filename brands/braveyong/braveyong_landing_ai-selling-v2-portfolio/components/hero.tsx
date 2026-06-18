@@ -1,13 +1,14 @@
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowUpRight } from "lucide-react"
 import { config, course } from "@/lib/config"
+import { PaymentDialog } from "@/components/payment-dialog"
+import { CountdownTimer } from "@/components/countdown-timer"
 
 /**
- * 01 Hero — 포트폴리오 1컬럼 중앙 (시안 A).
- * ○ 얼굴(grayscale 원형) → 이름 UPPERCASE → 서브라인 → 한 단락 → [APPLY] [FREE LECTURE]
- * 손글씨 액센트 1줄(Gowun Dodum)로 진정성 보강.
- * CTA 압은 다음 섹션 02 STRIP이 받음.
+ * 01 Hero — 포트폴리오 1컬럼 중앙 (시안 A) + 타임어택 오퍼.
+ * ○ 얼굴(grayscale 원형) → 이름 UPPERCASE → 서브라인 → 한 단락
+ * → [1기 마감 임박 배지 + 카운트다운 + 가격 앵커 + 결제 CTA]
+ * Clarity 실측: 평균 스크롤 28%, 거의 안 내림 → 오퍼(가격+카운트다운+결제버튼)를 첫 화면에 전부 노출.
  */
 export function Hero() {
   return (
@@ -56,29 +57,79 @@ export function Hero() {
             </p>
           </div>
 
-          {/* 손글씨 한 줄 — Gowun Dodum, 진정성 */}
-          <p className="hz-fade-up hz-delay-3 font-memo text-base text-foreground/70 sm:text-lg">
-            저도 회사 다니면서, 애 재우고 새벽에 상품 올렸습니다.
-          </p>
+          {/* ─── 타임어택 오퍼 박스 — Clarity상 안 내리는 사람 위해 첫 화면에 전부 ─── */}
+          <div className="hz-fade-up hz-delay-3 mx-auto max-w-xl rounded-2xl border-2 border-brand bg-brand/[0.06] p-5 text-center sm:p-7">
+            {/* 배지 — 선착순 1기 마감 임박 */}
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-brand px-3 py-1.5 text-xs font-bold text-brand-foreground sm:text-sm">
+              지금 1기 모집 중 — 곧 마감됩니다
+            </span>
 
-          {/* CTA — 메인 1개 (40~50대 시인성, 결제는 신청서 작성 후 카톡으로) */}
-          <div className="hz-fade-up hz-delay-4 flex flex-col items-stretch gap-3 border-t border-foreground/10 pt-6 sm:items-center sm:pt-8">
-            <Link
-              href={config.googleFormUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="신청서 작성하기 — 약 1분, 새 창에서 열림"
-              data-track="hero_apply"
-              className="group inline-flex items-center justify-center gap-2.5 rounded-full border-2 border-foreground bg-foreground px-8 py-4 text-base font-bold tracking-tight text-background transition-all duration-300 hover:bg-background hover:text-foreground sm:px-10 sm:py-5 sm:text-lg"
-            >
-              신청서 작성하기 (약 1분)
-              <ArrowUpRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 sm:h-6 sm:w-6" />
-            </Link>
+            {/* 카운트다운 — config.cohort1Deadline 타깃, 마감 후 자동 숨김 */}
+            <div className="mt-4 flex justify-center text-foreground">
+              <CountdownTimer />
+            </div>
+
+            {/* 가격 앵커 — 250만 취소선 → 1기 특별가 198만 강조 */}
+            <div className="mt-4 space-y-1">
+              <p className="text-sm text-foreground/55 sm:text-base">
+                마감되면 정가{" "}
+                <span className="font-bold text-foreground/55 line-through decoration-2">
+                  {(course.priceRegular / 10000).toLocaleString()}만원
+                </span>
+              </p>
+              <p className="text-base text-foreground/70 sm:text-lg">
+                1기 마감 전까지만 특별가
+              </p>
+              <p className="text-4xl font-bold tracking-tight text-brand sm:text-5xl">
+                {(course.priceFirst / 10000).toLocaleString()}만원
+                <span className="ml-1.5 align-middle text-xs font-normal text-foreground/45 sm:text-sm">
+                  (부가세 포함)
+                </span>
+              </p>
+            </div>
+
+            {/* 결제 CTA — 크게(py-4↑), bg-brand로 대비 강하게 */}
+            <div className="mt-5">
+              <PaymentDialog
+                amount={course.priceFirst}
+                label="1기 특별가 — 지금 결제 198만원"
+                className="group inline-flex w-full items-center justify-center gap-2.5 rounded-full border-2 border-brand bg-brand px-8 py-4 text-base font-bold tracking-tight text-brand-foreground transition-all duration-300 hover:opacity-90 sm:px-10 sm:py-5 sm:text-lg"
+              />
+            </div>
+
+            {/* 보조 CTA — 결제가 부담되면 신청서부터. outline 스타일로 결제 버튼이 더 도드라지게 */}
+            <div className="mt-3">
+              <a
+                href={config.googleFormUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="신청서 작성하기 — 약 1분, 새 창에서 열림"
+                data-track="hero_apply_form"
+                className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-foreground bg-transparent px-6 py-3.5 text-sm font-bold text-foreground transition-all hover:bg-foreground hover:text-background"
+              >
+                신청서부터 작성하기 (약 1분)
+              </a>
+            </div>
+
+            {/* 손글씨 한 줄 — Gowun Dodum, 진정성 */}
+            <p className="mt-4 font-memo text-sm text-foreground/70 sm:text-base">
+              저도 회사 다니면서, 애 재우고 새벽에 상품 올렸습니다. 지금 결제하면 1주차부터 같이 시작해요.
+            </p>
           </div>
 
-          {/* 보조 안내 — Pretendard 작게, 사람 말투 */}
-          <p className="hz-fade-up hz-delay-5 text-xs leading-relaxed text-foreground/55 sm:text-sm">
-            {course.cohort} 모집 중 · 신청서 보고 한 분씩 따로 연락드립니다.
+          {/* 보조 — 결제 전 궁금하면 단톡방. 작게. */}
+          <p className="hz-fade-up hz-delay-4 text-xs leading-relaxed text-foreground/55 sm:text-sm">
+            {course.cohort} 모집 중 · 결제 전에 궁금한 게 있으면{" "}
+            <Link
+              href={config.kakaoOpenChatUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-track="hero_kakao_openchat"
+              className="font-bold text-foreground underline decoration-foreground/30 underline-offset-2 hover:decoration-foreground"
+            >
+              단톡방
+            </Link>
+            에서 먼저 물어보셔도 됩니다.
           </p>
         </div>
       </div>

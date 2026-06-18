@@ -1,0 +1,240 @@
+- generic [active] [ref=e1]:
+  - generic:  
+  - text: 
+  - generic:
+    - list [ref=e3]
+    - text: 
+  - generic:
+    - main:
+      - generic [ref=e4]:
+        - link "AI팀" [ref=e5] [cursor=pointer]:
+          - /url: /
+          - img "AI팀" [ref=e6]
+        - generic [ref=e7]:
+          - link "교육" [ref=e8] [cursor=pointer]:
+            - /url: /education
+          - link "컨설팅" [ref=e9] [cursor=pointer]:
+            - /url: /ax-consulting
+          - link "용역" [ref=e10] [cursor=pointer]:
+            - /url: /gov-projects
+          - link "AX 사례집" [ref=e11] [cursor=pointer]:
+            - /url: /ax-cases
+        - link "AX 전문가 상담 신청" [ref=e12] [cursor=pointer]:
+          - /url: javascript:SITE.openModalMenu('m20250122fdf72e3bec98c', 'm202501210bc7069089ffa');
+  - main [ref=e16]:
+    - generic [ref=e28]:
+      - generic [ref=e29]: AX CONSULTING
+      - heading "실제 현장을 바꾸는 AI팀 컨설팅" [level=1] [ref=e30]
+  - main [ref=e34]:
+    - generic [ref=e35]:
+      - heading "모든 기업에 같은 AX는 없습니다" [level=3] [ref=e642]
+      - paragraph [ref=e46]:
+        - text: AI팀은 기업의 기존 업무 방식에서 문제점을 진단한 이후,
+        - text: 매출 증대와 비용 절감을 목표로 AX 전략을 수립해드립니다.
+  - main [ref=e71]:
+    - img [ref=e78]
+  - main [ref=e87]:
+    - generic [ref=e88]:
+      - paragraph [ref=e95]: Point 01
+      - paragraph [ref=e106]:
+        - text: 마케팅, 디자인, 개발, 사업기획 등 100개 이상의 분야에 대한 전략이 있어
+        - text: 어떤 업종과 규모든 기업 맞춤형 AX 전략을 제공합니다.
+  - main [ref=e147]:
+    - generic [ref=e148]:
+      - paragraph [ref=e155]: Point 02
+      - paragraph [ref=e166]:
+        - text: 문제를 정의하는 것부터 실제 현장에 적용되기까지
+        - text: 모든 것은 비즈니스 성과를 목표로 설계되고 진행됩니다.
+      - generic [ref=e177]:
+        - generic [ref=e178]:
+          - generic [ref=e179]: 문제정의
+          - paragraph [ref=e180]:
+            - text: 실제 업무 병목지점
+            - text: 정밀 분석
+        - generic [ref=e182]:
+          - generic [ref=e183]: AX설계
+          - paragraph [ref=e184]:
+            - text: 기업별 맞춤형
+            - text: AX 전략 조합
+        - generic [ref=e186]:
+          - generic [ref=e187]: 실행
+          - paragraph [ref=e188]:
+            - text: AX 전략을 적용하여
+            - text: 솔루션 실행
+        - generic [ref=e190]:
+          - generic [ref=e191]: 성과측정
+          - paragraph [ref=e192]:
+            - text: 정량적 수치로
+            - text: 목표 달성 여부 측정
+        - generic [ref=e194]:
+          - generic [ref=e195]: 유지보수
+          - paragraph [ref=e196]:
+            - text: 고객이 지속적으로
+            - text: 적용하도록 지원
+  - main [ref=e200]:
+    - generic [ref=e201]:
+      - paragraph [ref=e208]: Point 03
+      - paragraph [ref=e219]:
+        - text: 기업 내부에 전문 개발팀이 없어도 괜찮습니다.
+        - text: 비개발 조직도 이해하고 지속적으로 활용하도록 운영을 지원합니다.
+    - generic [ref=e231]:
+      - img "AI TEAM" [ref=e232]
+      - img "AI TEAM" [ref=e233]
+      - img "AI TEAM" [ref=e234]
+      - img "AI TEAM" [ref=e235]
+      - img "AI TEAM" [ref=e236]
+      - img "AI TEAM" [ref=e237]
+  - main [ref=e241]:
+    - img [ref=e248]
+  - main [ref=e257]:
+    - generic [ref=e259]:
+      - paragraph [ref=e279]:
+        - text: AX는 단순히 AI를 도입하는 것이 아닙니다.
+        - text: 기업의 문제를 정확히 파악하고
+        - text: 이를 어떻게 매출 증대와 비용 절감으로 연결할지 판단합니다.
+      - paragraph [ref=e287]: 이에 따라 실제 성과로 이어지도록 최적의 AX 전략을 설계합니다.
+    - generic [ref=e294]:
+      - generic [ref=e305]:
+        - img "워크플로우 문제 진단" [ref=e306]
+        - paragraph [ref=e307]: 워크플로우 문제 진단
+      - generic [ref=e318]:
+        - img "비즈니스 임팩트 목표 설계" [ref=e319]
+        - paragraph [ref=e320]: 비즈니스 임팩트 목표 설계
+      - generic [ref=e331]:
+        - img "맞춤 AX 전략 실행" [ref=e332]
+        - paragraph [ref=e333]: 맞춤 AX 전략 실행
+  - main [ref=e343]:
+    - generic [ref=e345]:
+      - separator [ref=e352]
+      - paragraph [ref=e372]:
+        - text: AX 전략과 솔루션을 제공하는 것만으로 끝이 아닙니다.
+        - text: 최종 목표는 기업이 지속적으로 솔루션을 적용하는 것입니다.
+        - text: 솔루션이 원활히 적용되는지, 장기적인 성장과 확장성까지 고려합니다.
+      - paragraph [ref=e380]: 필요 시 지속적인 유지보수 서비스를 제공합니다.
+    - generic [ref=e387]:
+      - separator [ref=e394]
+      - generic [ref=e405]:
+        - img "매뉴얼 및 유지보수" [ref=e406]
+        - paragraph [ref=e407]: 매뉴얼 및 유지보수
+      - generic [ref=e418]:
+        - img "설문조사를 통한 운영 점검" [ref=e419]
+        - paragraph [ref=e420]: 설문조사를 통한 운영 점검
+      - generic [ref=e431]:
+        - img "운영 지원" [ref=e432]
+        - paragraph [ref=e433]: 운영 지원
+  - main [ref=e443]:
+    - generic [ref=e444]:
+      - separator [ref=e451]
+      - generic [ref=e471]:
+        - generic [ref=e472]:
+          - generic [ref=e499]:
+            - generic [ref=e500]:
+              - img "리서 AX 컨설팅" [ref=e501]
+              - paragraph [ref=e502]:
+                - text: 많은 기업이 신제품 개발과 마케팅을 위해 '시장 조사'에 공을 들입니다.
+                - text: 하지만 정보의 홍수 속에서 필요한 알맹이만 골라내는 작업은
+                - text: 생각보다 많은 시간과 에너지를 소모하게 만듭니다.
+              - paragraph [ref=e503]:
+                - text: 매일 아침마다 1시간 30분씩 시장 조사를 하던
+                - text: 친환경 화장품 회사 E사는 정보를 찾는 것이 아닌,
+                - text: 원하는 정보를 자동으로 받을 수 있도록 자동화 시스템을 적용해
+                - text: 조사 시간을 94% 단축하고 자료 분석에 집중하게 되었습니다.
+              - link "자세히 보기" [ref=e504] [cursor=pointer]:
+                - /url: https://ai-team.imweb.me/ax-cases/?q=YToxOntzOjEyOiJrZXl3b3JkX3R5cGUiO3M6MzoiYWxsIjt9&bmode=view&idx=168814216&t=board&category=3g428Jmz1d
+                - paragraph [ref=e505]: 자세히 보기
+                - img [ref=e506]
+            - generic [ref=e509]:
+              - img "리서 AX 컨설팅" [ref=e510]
+              - generic [ref=e511]: 자료분석
+          - generic [ref=e473]:
+            - generic [ref=e474]:
+              - img "블로그 AX 컨설팅" [ref=e475]
+              - paragraph [ref=e476]:
+                - text: 콘텐츠 제작 과정은 반복적이고 구조화되어 있습니다.
+                - text: 주제를 찾고, 자료를 조사하는 과정들은
+                - text: 자동화 시스템과 기업 문화 개선으로 해결 가능합니다.
+              - paragraph [ref=e477]:
+                - text: 고양시에 위치한 농업회사법인 G사는
+                - text: AI팀과 함께 '블로그 콘텐츠 제작 자동화' 시스템을 통해
+                - text: 매일 1시간씩 소모하던 시간을 15분으로 단축했습니다.
+              - link "자세히 보기" [ref=e478] [cursor=pointer]:
+                - /url: https://ai-team.imweb.me/ax-cases/?q=YToxOntzOjEyOiJrZXl3b3JkX3R5cGUiO3M6MzoiYWxsIjt9&bmode=view&idx=168814097&t=board&category=3g428Jmz1d
+                - paragraph [ref=e479]: 자세히 보기
+                - img [ref=e480]
+            - generic [ref=e483]:
+              - img "블로그 AX 컨설팅" [ref=e484]
+              - generic [ref=e485]: 제조
+          - generic [ref=e486]:
+            - generic [ref=e487]:
+              - img "SEO AX 컨설팅" [ref=e488]
+              - paragraph [ref=e489]:
+                - text: 브랜드가 검색 결과 상단에 잘 노출되고 있는지 확인하는
+                - text: SEO(검색엔진최적화) 모니터링은 필수적인 업무지만
+                - text: 사람이 일일이 눈으로 확인해야 한다는 번거로움이 있습니다.
+              - paragraph [ref=e490]:
+                - text: 고차원적인 사고가 아닌 단순 반복으로 구성된 업무이기에
+                - text: "'자동화'로 해결하여, 매일 아침 출근시 SEO 분석 내용을"
+                - text: 바로 확인할 수 있도록 개선하였습니다.
+              - link "자세히 보기" [ref=e491] [cursor=pointer]:
+                - /url: https://ai-team.imweb.me/ax-cases/?q=YToxOntzOjEyOiJrZXl3b3JkX3R5cGUiO3M6MzoiYWxsIjt9&bmode=view&idx=168813032&t=board&category=3g428Jmz1d
+                - paragraph [ref=e492]: 자세히 보기
+                - img [ref=e493]
+            - generic [ref=e496]:
+              - img "SEO AX 컨설팅" [ref=e497]
+              - generic [ref=e498]: 마케팅
+        - generic [ref=e512]:
+          - button [ref=e513] [cursor=pointer]:
+            - img [ref=e514]
+          - button [ref=e516] [cursor=pointer]:
+            - img [ref=e517]
+  - main [ref=e528]:
+    - generic [ref=e534]:
+      - heading "어디서부터 시작할지 모르겠다면 AX 컨설팅부터 받아보세요." [level=3] [ref=e535]:
+        - text: 어디서부터 시작할지 모르겠다면
+        - text: AX 컨설팅부터 받아보세요.
+      - link "AX 컨설팅 신청하기" [ref=e536] [cursor=pointer]:
+        - /url: javascript:SITE.openModalMenu('m20250122fdf72e3bec98c', 'm202501210bc7069089ffa');
+        - paragraph [ref=e537]: AX 컨설팅 신청하기
+        - img [ref=e538]
+  - main [ref=e550]:
+    - generic [ref=e551]:
+      - img [ref=e556]
+      - paragraph [ref=e571]: Tel. 070-4285-2228 | Fax. 02-2659-9166 | Email. support@alphabrothers.co.kr
+      - separator [ref=e578]
+      - generic [ref=e589]:
+        - generic [ref=e590]:
+          - generic [ref=e591]:
+            - paragraph [ref=e592]: 국내지사
+            - link "본사" [ref=e593] [cursor=pointer]:
+              - /url: javascript:SITE.openModalMenu('m20251126a4ed686c721d1', 'm202501210bc7069089ffa');
+            - link "서울지사" [ref=e594] [cursor=pointer]:
+              - /url: javascript:SITE.openModalMenu('m202511264284b072c26c0', 'm202501210bc7069089ffa');
+            - link "부산지사" [ref=e595] [cursor=pointer]:
+              - /url: javascript:SITE.openModalMenu('m202511271c730d5291f5d', 'm202501210bc7069089ffa');
+          - generic [ref=e596]:
+            - paragraph [ref=e597]: 글로벌 지사
+            - link "일본지사" [ref=e598] [cursor=pointer]:
+              - /url: javascript:SITE.openModalMenu('m202511266bb114807aeef', 'm202501210bc7069089ffa');
+            - link "싱가포르지사" [ref=e599] [cursor=pointer]:
+              - /url: javascript:SITE.openModalMenu('m2025112738695678b5c1c', 'm202501210bc7069089ffa');
+          - generic [ref=e600]:
+            - paragraph [ref=e601]: 추가시설
+            - link "촬영 스튜디오" [ref=e602] [cursor=pointer]:
+              - /url: javascript:SITE.openModalMenu('m2025112619048f66a55ad', 'm202501210bc7069089ffa');
+            - link "보육센터" [ref=e603] [cursor=pointer]:
+              - /url: javascript:SITE.openModalMenu('m2025112634862750b0ed8', 'm202501210bc7069089ffa');
+        - generic [ref=e604]:
+          - link [ref=e605] [cursor=pointer]:
+            - /url: https://www.threads.com/@ai.team_official
+            - img [ref=e606]
+          - link [ref=e608] [cursor=pointer]:
+            - /url: https://www.instagram.com/ai.team_official/
+            - img [ref=e609]
+      - separator [ref=e623]
+      - generic [ref=e634]:
+        - link "이용약관" [ref=e635] [cursor=pointer]:
+          - /url: /?mode=policy
+        - link "개인정보처리방침" [ref=e636] [cursor=pointer]:
+          - /url: /?mode=privacy
+  - iframe [ref=e637]:
+    

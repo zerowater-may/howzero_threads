@@ -45,7 +45,17 @@
       "Bash(mkdir -p out/frames)",
       "Bash(ffmpeg -y -i out/zipsaja-sanggye.mp4 -vf \"select='eq\\(n,60\\)+eq\\(n,150\\)+eq\\(n,250\\)+eq\\(n,350\\)+eq\\(n,450\\)+eq\\(n,550\\)+eq\\(n,650\\)+eq\\(n,750\\)+eq\\(n,850\\)'\" -vsync vfr -q:v 2 out/frames/frame-%02d.jpg)",
       "Bash(cp .claude/settings.local.json .claude/settings.local.json.bak)",
-      "Bash(python3 -c ' *)"
+      "Bash(python3 -c ' *)",
+      "Bash(gh repo *)",
+      "Bash(gh api *)",
+      "Bash(gh search *)",
+      "Bash(curl -fsSL https://raw.githubusercontent.com/tinyhumansai/openhuman/main/scripts/install.sh)",
+      "Bash(bash)",
+      "Read(//Users/zerowater/Downloads/**)",
+      "Bash(mkdir -p /tmp/dp)",
+      "Bash(rm -f /tmp/dp/*)",
+      "Bash(command -v pdftoppm)",
+      "Bash(command -v montage)"
     ]
   },
   "hooks": {
@@ -55,6 +65,17 @@
           {
             "type": "command",
             "command": "/Users/zerowater/Dropbox/zerowater/howzero/.claude/skills/brands-organize/scripts/check-leftover.sh"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/zerowater/Dropbox/zerowater/howzero/.claude/skills/humanize-text/scripts/notify-on-copy-edit.sh"
           }
         ]
       }

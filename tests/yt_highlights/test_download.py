@@ -32,7 +32,11 @@ def test_extract_video_id_rejects_non_youtube():
 # --- download_video: success path ---
 
 def test_download_video_invokes_yt_dlp_and_returns_paths(tmp_path):
+    seen_cmd = None
+
     def fake_run(cmd, **kwargs):
+        nonlocal seen_cmd
+        seen_cmd = cmd
         # yt-dlp is asked to write: <tmp>/VID.mp4 and <tmp>/VID.info.json
         out_template = [a for a in cmd if "%(id)s" in str(a)][0]
         prefix = out_template.split("/%(id)s")[0]
@@ -47,6 +51,10 @@ def test_download_video_invokes_yt_dlp_and_returns_paths(tmp_path):
     assert result["video_path"] == tmp_path / "dQw4w9WgXcQ.mp4"
     assert result["info_path"] == tmp_path / "dQw4w9WgXcQ.info.json"
     assert result["video_path"].exists()
+    assert seen_cmd is not None
+    format_value = seen_cmd[seen_cmd.index("-f") + 1]
+    assert "height<=2160" in format_value
+    assert "height<=720" not in format_value
 
 
 def test_download_video_raises_on_failure(tmp_path):

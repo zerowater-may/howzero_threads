@@ -1,0 +1,217 @@
+{
+  "title": "토스증권 Open API",
+  "version": "1.0.3",
+  "openapi": "3.1.0",
+  "server": "https://openapi.tossinvest.com",
+  "env": {
+    "clientId": "TOSSINVEST_CLIENT_ID",
+    "clientSecret": "TOSSINVEST_CLIENT_SECRET",
+    "baseUrl": "TOSSINVEST_BASE_URL"
+  },
+  "auth": {
+    "type": "oauth2",
+    "flow": "client_credentials",
+    "tokenPath": "POST /oauth2/token",
+    "note": "client당 유효 토큰은 1개다. 재발급하면 이전 토큰은 무효화된다."
+  },
+  "operations": [
+    {
+      "group": "Auth",
+      "operationId": "issueOAuth2Token",
+      "clientMethod": "issue_token",
+      "method": "POST",
+      "path": "/oauth2/token",
+      "rateLimitGroup": "AUTH",
+      "accountRequired": false
+    },
+    {
+      "group": "Market Data",
+      "operationId": "getOrderbook",
+      "clientMethod": "get_orderbook",
+      "method": "GET",
+      "path": "/api/v1/orderbook",
+      "rateLimitGroup": "MARKET_DATA",
+      "accountRequired": false
+    },
+    {
+      "group": "Market Data",
+      "operationId": "getPrices",
+      "clientMethod": "get_prices",
+      "method": "GET",
+      "path": "/api/v1/prices",
+      "rateLimitGroup": "MARKET_DATA",
+      "accountRequired": false
+    },
+    {
+      "group": "Market Data",
+      "operationId": "getTrades",
+      "clientMethod": "get_trades",
+      "method": "GET",
+      "path": "/api/v1/trades",
+      "rateLimitGroup": "MARKET_DATA",
+      "accountRequired": false
+    },
+    {
+      "group": "Market Data",
+      "operationId": "getPriceLimit",
+      "clientMethod": "get_price_limits",
+      "method": "GET",
+      "path": "/api/v1/price-limits",
+      "rateLimitGroup": "MARKET_DATA",
+      "accountRequired": false
+    },
+    {
+      "group": "Market Data",
+      "operationId": "getCandles",
+      "clientMethod": "get_candles",
+      "method": "GET",
+      "path": "/api/v1/candles",
+      "rateLimitGroup": "MARKET_DATA_CHART",
+      "accountRequired": false
+    },
+    {
+      "group": "Stock Info",
+      "operationId": "getStocks",
+      "clientMethod": "get_stocks",
+      "method": "GET",
+      "path": "/api/v1/stocks",
+      "rateLimitGroup": "STOCK",
+      "accountRequired": false
+    },
+    {
+      "group": "Stock Info",
+      "operationId": "getStockWarnings",
+      "clientMethod": "get_stock_warnings",
+      "method": "GET",
+      "path": "/api/v1/stocks/{symbol}/warnings",
+      "rateLimitGroup": "STOCK",
+      "accountRequired": false
+    },
+    {
+      "group": "Market Info",
+      "operationId": "getExchangeRate",
+      "clientMethod": "get_exchange_rate",
+      "method": "GET",
+      "path": "/api/v1/exchange-rate",
+      "rateLimitGroup": "MARKET_INFO",
+      "accountRequired": false
+    },
+    {
+      "group": "Market Info",
+      "operationId": "getKrMarketCalendar",
+      "clientMethod": "get_kr_market_calendar",
+      "method": "GET",
+      "path": "/api/v1/market-calendar/KR",
+      "rateLimitGroup": "MARKET_INFO",
+      "accountRequired": false
+    },
+    {
+      "group": "Market Info",
+      "operationId": "getUsMarketCalendar",
+      "clientMethod": "get_us_market_calendar",
+      "method": "GET",
+      "path": "/api/v1/market-calendar/US",
+      "rateLimitGroup": "MARKET_INFO",
+      "accountRequired": false
+    },
+    {
+      "group": "Account",
+      "operationId": "getAccounts",
+      "clientMethod": "get_accounts",
+      "method": "GET",
+      "path": "/api/v1/accounts",
+      "rateLimitGroup": "ACCOUNT",
+      "accountRequired": false
+    },
+    {
+      "group": "Asset",
+      "operationId": "getHoldings",
+      "clientMethod": "get_holdings",
+      "method": "GET",
+      "path": "/api/v1/holdings",
+      "rateLimitGroup": "ASSET",
+      "accountRequired": true
+    },
+    {
+      "group": "Order History",
+      "operationId": "getOrders",
+      "clientMethod": "get_orders",
+      "method": "GET",
+      "path": "/api/v1/orders",
+      "rateLimitGroup": "ORDER_HISTORY",
+      "accountRequired": true
+    },
+    {
+      "group": "Order",
+      "operationId": "createOrder",
+      "clientMethod": "create_order",
+      "method": "POST",
+      "path": "/api/v1/orders",
+      "rateLimitGroup": "ORDER",
+      "accountRequired": true,
+      "danger": "실제 주문 생성"
+    },
+    {
+      "group": "Order History",
+      "operationId": "getOrder",
+      "clientMethod": "get_order",
+      "method": "GET",
+      "path": "/api/v1/orders/{orderId}",
+      "rateLimitGroup": "ORDER_HISTORY",
+      "accountRequired": true
+    },
+    {
+      "group": "Order",
+      "operationId": "modifyOrder",
+      "clientMethod": "modify_order",
+      "method": "POST",
+      "path": "/api/v1/orders/{orderId}/modify",
+      "rateLimitGroup": "ORDER",
+      "accountRequired": true,
+      "danger": "실제 주문 정정"
+    },
+    {
+      "group": "Order",
+      "operationId": "cancelOrder",
+      "clientMethod": "cancel_order",
+      "method": "POST",
+      "path": "/api/v1/orders/{orderId}/cancel",
+      "rateLimitGroup": "ORDER",
+      "accountRequired": true,
+      "danger": "실제 주문 취소"
+    },
+    {
+      "group": "Order Info",
+      "operationId": "getBuyingPower",
+      "clientMethod": "get_buying_power",
+      "method": "GET",
+      "path": "/api/v1/buying-power",
+      "rateLimitGroup": "ORDER_INFO",
+      "accountRequired": true
+    },
+    {
+      "group": "Order Info",
+      "operationId": "getSellableQuantity",
+      "clientMethod": "get_sellable_quantity",
+      "method": "GET",
+      "path": "/api/v1/sellable-quantity",
+      "rateLimitGroup": "ORDER_INFO",
+      "accountRequired": true
+    },
+    {
+      "group": "Order Info",
+      "operationId": "getCommissions",
+      "clientMethod": "get_commissions",
+      "method": "GET",
+      "path": "/api/v1/commissions",
+      "rateLimitGroup": "ORDER_INFO",
+      "accountRequired": true
+    }
+  ],
+  "contentSafety": [
+    "투자 조언처럼 말하지 말고 API 자동화, 데이터 파이프라인, 리스크 관리 관점으로 다룬다.",
+    "주문 자동화는 라이브 데모보다 MockTransport, dry-run, 체크리스트 중심으로 보여준다.",
+    "실키와 계좌번호는 화면 녹화, 문서, Git에 노출하지 않는다."
+  ]
+}
+

@@ -153,7 +153,7 @@ export default function AboutPage() {
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
               AI가 중요하다는 것은 알지만, 구체적인 증명과 실용적인 ROI가
               확인되어야만 움직이는 중소/중견기업의 대표들. 하우제로는
-              '연매출 10억'이라는 확실한 증거를 바탕으로 신뢰를 줍니다.
+              &apos;연매출 10억&apos;이라는 확실한 증거를 바탕으로 신뢰를 줍니다.
             </p>
           </div>
           <div className="rounded-xl border border-border/60 bg-card p-8">

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>용팀장 무료강의 · 오프닝 (PART 1)</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  @font-face{font-family:'Pretendard';font-weight:45 920;font-style:normal;font-display:swap;src:url('fonts/Pretendard.woff2') format('woff2-variations'),url('fonts/Pretendard.woff2') format('woff2')}
+  @font-face{font-family:'Nanum Pen Script';font-weight:400;font-style:normal;font-display:swap;src:url('fonts/NanumPenScript.woff2') format('woff2')}
+  @font-face{font-family:'Gaegu';font-weight:400;font-style:normal;font-display:swap;src:url('fonts/Gaegu-400.woff2') format('woff2')}
+  :root{
+    --paper:#f2ede2;        /* 따뜻한 종이 */
+    --paper2:#ebe4d6;
+    --ink:#16130d;          /* 먹색 */
+    --ink2:#5c554733;
+    --soft:#6e6557;
+    --hl:#ffe24a;           /* 형광펜 노랑 */
+    --red:#7c1f38;          /* 버건디 (브랜드) — 충격/숫자/액센트 */
+    --burg-bright:#b9324f;  /* 밝은 버건디 (다크 위 강조) */
+    --line:#1613100f;
+  }
+  *{box-sizing:border-box; margin:0; padding:0}
+  html,body{height:100%}
+  body{
+    background:#0c0b09; color:var(--ink);
+    font-family:'Pretendard',-apple-system,sans-serif;
+    display:grid; place-items:center; overflow:hidden;
+  }
+  .pen{font-family:'Nanum Pen Script',cursive}
+  .gae{font-family:'Gaegu',cursive}
+  .mono{font-family:'SF Mono',ui-monospace,Menlo,monospace}
+
+  /* ===== 16:9 무대 ===== */
+  .stage{
+    position:relative; width:min(100vw, 177.78vh); height:min(56.25vw, 100vh);
+    background:var(--paper); overflow:hidden;
+    box-shadow:0 40px 120px rgba(0,0,0,.6);
+  }
+  /* 종이 그레인 */
+  .stage::before{
+    content:""; position:absolute; inset:0; pointer-events:none; z-index:30; opacity:.5;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/></svg>");
+    mix-blend-mode:multiply;
+  }
+  /* 상단 진행바 */
+  .prog{position:absolute; top:0; left:0; height:4px; background:var(--red); z-index:25; transition:width .4s cubic-bezier(.2,.7,.2,1)}
+
+  .slide{
+    position:absolute; inset:0; padding:6.2% 7%;
+    display:none; flex-direction:column; justify-content:center;
+  }
+  .slide.active{display:flex}
+
+  /* 공통 키커 / 푸터 */
+  .kicker{position:absolute; top:6.2%; left:7%; font-size:1.05vw; letter-spacing:.18em; font-weight:700; color:var(--red); text-transform:uppercase}
+  .kicker::before{content:"●"; margin-right:.6em; font-size:.7em; vertical-align:.18em}
+  .pageft{position:absolute; bottom:5.6%; left:7%; font-size:1vw; color:var(--soft); font-weight:600; letter-spacing:.02em}
+
+  /* 형광펜 */
+  .hl{background:linear-gradient(180deg, transparent 58%, var(--hl) 58%, var(--hl) 94%, transparent 94%); padding:0 .06em}
+  .strike{position:relative; color:var(--soft)}
+  .strike::after{content:""; position:absolute; left:-2%; right:-2%; top:52%; height:.13em; background:var(--red); transform:rotate(-3deg)}
+
+  /* 손글씨 메모 */
+  .note{font-family:'Nanum Pen Script',cursive; color:var(--red); line-height:1.05}
+
+  h1{font-weight:900; letter-spacing:-.03em; line-height:1.02}
+
+  /* ---- 등장 애니메이션 ---- */
+  .reveal{opacity:0; transform:translateY(16px); transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1)}
+  .slide.active .reveal{opacity:1; transform:none}
+  .d1{transition-delay:.06s}.d2{transition-delay:.16s}.d3{transition-delay:.28s}
+  .d4{transition-delay:.4s}.d5{transition-delay:.54s}.d6{transition-delay:.68s}.d7{transition-delay:.82s}
+
+  /* ===== HUD ===== */
+  .hud{position:absolute; bottom:5.4%; right:7%; z-index:26; display:flex; align-items:center; gap:1.4vw}
+  .dots{display:flex; gap:.55vw}
+  .dot{width:.62vw; height:.62vw; border-radius:50%; background:#16131033; cursor:pointer; transition:.2s}
+  .dot.on{background:var(--ink); transform:scale(1.25)}
+  .counter{font-size:1vw; font-weight:800; letter-spacing:.05em; color:var(--ink)}
+  .counter b{color:var(--red)}
+  .navhint{position:absolute; bottom:5.6%; left:50%; transform:translateX(-50%); z-index:26; font-size:.92vw; color:var(--soft); letter-spacing:.04em}
+  .navhint kbd{font-family:inherit; background:#1613100f; border:1px solid #16131022; border-radius:5px; padding:.1em .5em; font-weight:700}
+
+  /* click zones */
+  .zone{position:absolute; top:0; bottom:0; width:22%; z-index:20; cursor:pointer}
+  .zone.l{left:0} .zone.r{right:0}
+
+  /* ===================== 슬라이드별 ===================== */
+  /* S1 커버 — 버건디 + 용팀장 사진 */
+  .s1{padding:0; background:radial-gradient(130% 120% at 8% 0%, #3c1020 0%, #260b14 55%, #1a070e 100%)}
+  .s1 .cphoto{position:absolute; right:0; top:0; width:54%; height:100%; background:url('face.jpg') center 16%/cover; filter:saturate(1.05) contrast(1.03)}
+  .s1 .cgrad{position:absolute; inset:0; background:linear-gradient(90deg,#1c0810 0%,#1c0810 35%,rgba(28,8,16,.5) 53%,rgba(28,8,16,0) 75%)}
+  .s1 .ctext{position:absolute; left:7%; top:0; height:100%; width:62%; display:flex; flex-direction:column; justify-content:center; z-index:5}
+  .s1 .ckick{color:#e7adba; letter-spacing:.2em; font-weight:700; font-size:1.05vw; text-transform:uppercase; margin-bottom:1.6vw}
+  .s1 .ckick::before{content:"●"; margin-right:.6em; font-size:.7em; vertical-align:.18em; color:var(--burg-bright)}
+  .s1 .ch1{font-size:6.6vw; font-weight:900; color:#fbf2e9; line-height:1.03; letter-spacing:-.03em}
+  .s1 .ch1 .u{background:linear-gradient(180deg,transparent 56%,var(--burg-bright) 56%,var(--burg-bright) 92%,transparent 92%); padding:0 .05em}
+  .s1 .csub{font-family:'Nanum Pen Script',cursive; font-size:4.8vw; color:#f3aebd; margin-top:.15em; transform:rotate(-2deg)}
+  .s1 .cwho{margin-top:2.2vw; color:#c8a3ab; font-size:1.15vw; font-weight:600; line-height:1.6}
+  .s1 .cwho b{color:#fbf2e9}
+
+  /* S-REV 후기 월 */
+  .srev{padding:0; background:radial-gradient(120% 130% at 100% 0%, #3c1020 0%, #210a12 60%, #18060d 100%); overflow:hidden}
+  .srev .wall{position:absolute; top:-8%; bottom:-8%; right:-2%; width:64%; display:flex; gap:1vw; transform:rotate(-4deg); z-index:1}
+  .srev .col{flex:1; display:flex; flex-direction:column; gap:1vw; will-change:transform}
+  .srev .col img{width:100%; border-radius:7px; border:1px solid #ffffff14; box-shadow:0 8px 22px rgba(0,0,0,.4); background:#fff; display:block}
+  @keyframes rollUp{from{transform:translateY(0)}to{transform:translateY(-50%)}}
+  .srev .colA{animation:rollUp 52s linear infinite}
+  .srev .colB{animation:rollUp 66s linear infinite reverse}
+  .srev .colC{animation:rollUp 58s linear infinite}
+  .srev .colD{animation:rollUp 74s linear infinite reverse}
+  .srev .veil{position:absolute; inset:0; z-index:2; background:linear-gradient(90deg,#19060d 0%,#19060df2 28%,rgba(25,6,13,.6) 50%,rgba(25,6,13,.2) 78%,rgba(25,6,13,.35) 100%)}
+  .srev .rtext{position:absolute; left:7%; top:0; height:100%; width:52%; display:flex; flex-direction:column; justify-content:center; z-index:3}
+  .srev .rkick{color:#e7adba; letter-spacing:.2em; font-weight:700; font-size:1.05vw; text-transform:uppercase; margin-bottom:1.4vw}
+  .srev .rkick::before{content:"●"; margin-right:.6em; color:var(--burg-bright); font-size:.7em; vertical-align:.18em}
+  .srev .rh1{font-size:4.9vw; font-weight:900; color:#fbf2e9; line-height:1.08; letter-spacing:-.03em}
+  .srev .rh1 .u{background:linear-gradient(180deg,transparent 56%,var(--burg-bright) 56%,var(--burg-bright) 92%,transparent 92%)}
+  .srev .rsub{margin-top:1.6vw; color:#cBA9b0; color:#caa9b0; font-size:1.45vw; font-weight:600; line-height:1.55}
+  .srev .rbig{font-family:'Nanum Pen Script',cursive; font-size:3.8vw; color:#f3aebd; margin-top:1vw; transform:rotate(-2deg)}
+
+  /* 다크 슬라이드용 HUD */
+  .stage.dark .counter{color:#fbf2e9} .stage.dark .counter b{color:var(--burg-bright)}
+  .stage.dark .dot{background:#ffffff2e} .stage.dark .dot.on{background:#fff}
+  .stage.dark .navhint{color:#c8a3ab}
+  .stage.dark .navhint kbd{background:#ffffff14; border-color:#ffffff22; color:#fbf2e9}
+
+  /* S2 정책 충격 */
+  .s2 .date{font-size:9vw; font-weight:900; color:var(--red); line-height:.9; letter-spacing:-.04em}
+  .s2 .big{font-size:5.4vw; font-weight:900; letter-spacing:-.03em; margin-top:.1em}
+  .s2 .num{font-size:11vw; font-weight:900; letter-spacing:-.05em; line-height:.95}
+  .s2 .ln{font-size:2.1vw; font-weight:700; color:var(--ink); margin-top:.4em}
+  .s2 .hand{font-family:'Nanum Pen Script',cursive; font-size:4.2vw; color:var(--red); position:absolute; right:7%; bottom:14%; transform:rotate(-5deg)}
+
+  /* S3 거짓말 */
+  .s3 .q{font-size:4.6vw; font-weight:900; letter-spacing:-.03em; line-height:1.12}
+  .s3 .tag{font-family:'Nanum Pen Script',cursive; font-size:3.4vw; color:var(--red); margin-left:.4em}
+  .s3 .punch{font-size:5.4vw; font-weight:900; margin-top:.5em; letter-spacing:-.03em}
+
+  /* S4 메모장 */
+  .s4 h1{font-size:6.6vw}
+  .s4 .sub{font-size:2vw; font-weight:600; color:var(--soft); margin-top:.6em; line-height:1.5; max-width:62%}
+  .s4 .memo{position:absolute; right:6%; top:24%; width:26%; aspect-ratio:1/.82; background:#fffdf5; border:1px solid #1613101a; box-shadow:6px 10px 0 #16131012; transform:rotate(3deg); padding:2vw}
+  .s4 .memo .pen{font-size:2.8vw; color:var(--ink); line-height:1.15}
+  .s4 .memo .chk{color:var(--red)}
+
+  /* S5 무료자료 */
+  .s5 .list{margin-top:1.2vw; display:flex; flex-direction:column; gap:1.3vw}
+  .s5 .item{display:flex; align-items:baseline; gap:1.4vw}
+  .s5 .no{font-size:2.4vw; font-weight:900; color:var(--red); width:1.6em; flex:none}
+  .s5 .nm{font-size:3.3vw; font-weight:900; letter-spacing:-.02em}
+  .s5 .desc{font-size:1.3vw; color:var(--soft); font-weight:600; margin-left:.5em}
+  .s5 .free{font-family:'Nanum Pen Script',cursive; font-size:3.2vw; color:var(--red); position:absolute; right:7%; top:7%; transform:rotate(4deg)}
+
+  /* S6 로드맵 */
+  .s6 .flow{display:flex; align-items:stretch; gap:1vw; margin-top:1.4vw}
+  .s6 .step{flex:1; background:#fffdf5; border:1px solid #1613101a; padding:1.6vw 1.2vw; position:relative}
+  .s6 .step .si{font-size:.95vw; font-weight:800; color:var(--red); letter-spacing:.1em}
+  .s6 .step .sn{font-size:2.3vw; font-weight:900; margin-top:.3em; letter-spacing:-.02em}
+  .s6 .step.dim{opacity:.45}
+  .s6 .arr{align-self:center; font-size:2vw; color:var(--soft)}
+  .s6 .chat{font-family:'Nanum Pen Script',cursive; font-size:3vw; color:var(--red); margin-top:1.8vw; transform:rotate(-1.5deg)}
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+  <div class="prog" id="prog"></div>
+
+  <!-- ===== S1 커버 (버건디 + 용팀장 사진) ===== -->
+  <section class="slide s1 dark active">
+    <div class="cphoto"></div>
+    <div class="cgrad"></div>
+    <div class="ctext">
+      <div class="ckick reveal d1">2026.06.08 LIVE · 용감한 용팀장 무료특강</div>
+      <h1 class="ch1 reveal d2">1,000개 시대,<br>진짜 셀러로<br><span class="u">살아남는 법</span></h1>
+      <div class="csub reveal d4">AI 셀링 완전 정복</div>
+      <div class="cwho reveal d5">용팀장 — <b>9살·7살 키우는 직장인 아빠</b><br>구매대행 · 스마트스토어 · 네이버 SEO</div>
+    </div>
+  </section>
+
+  <!-- ===== S1.5 후기 월 (신뢰 증거) ===== -->
+  <section class="slide srev dark">
+    <div class="wall" id="wall"></div>
+    <div class="veil"></div>
+    <div class="rtext">
+      <div class="rkick reveal d1">수강생 후기 · 스터디 기록</div>
+      <h1 class="rh1 reveal d2">혼자 하던 분들이,<br><span class="u">같이 바뀌고</span> 있습니다.</h1>
+      <div class="rsub reveal d3">강의보다 더 중요한 건 끝나고 나서예요.<br>저는 수강생들과 <b style="color:#fbf2e9">월 1회 스터디를 평생</b> 같이 합니다.</div>
+      <div class="rbig reveal d5">이게 진짜 차별점 ✍️</div>
+    </div>
+    <div class="pageft reveal d4" style="color:#caa9b0">PART 1 · 오프닝</div>
+  </section>
+
+  <!-- ===== S2 정책 충격 ===== -->
+  <section class="slide s2">
+    <div class="kicker reveal d1">왜 하필 지금?</div>
+    <div class="date reveal d2">6.1</div>
+    <div class="big reveal d2">네이버가 막았습니다.</div>
+    <div class="num reveal d3">상품 등록 <span style="color:var(--red)">1,000개</span> 제한</div>
+    <div class="ln reveal d4">많이 올리던 셀러들 — 지금 다 멈췄습니다.</div>
+    <div class="hand reveal d6">근데 저는,<br>오히려 기회 ↗</div>
+    <div class="pageft reveal d5">PART 1 · 오프닝</div>
+  </section>
+
+  <!-- ===== S3 거짓말 / 대량등록 끝 ===== -->
+  <section class="slide s3">
+    <div class="kicker reveal d1">먼저 솔직하게</div>
+    <div class="q reveal d2"><span class="strike">"AI로 딸깍 한 번에 돈 번다"</span><span class="tag pen">← 거짓말</span></div>
+    <div class="punch reveal d4">많이 올리는 게임은 <span style="color:var(--red)">끝</span>났습니다.</div>
+    <div class="q reveal d6" style="font-size:2.6vw; margin-top:.6em; color:var(--soft)">이제는 <span class="hl" style="color:var(--ink)">적게 올려도, 제대로 올리는 법</span>이 필요해요.</div>
+    <div class="pageft reveal d5">PART 1 · 오프닝</div>
+  </section>
+
+  <!-- ===== S4 메모장 ===== -->
+  <section class="slide s4">
+    <div class="kicker reveal d1">시작 전에</div>
+    <h1 class="reveal d2">메모장,<br>지금 <span class="hl">켜세요.</span></h1>
+    <div class="sub reveal d4">강의 중간중간 막히는 부분이 꼭 생깁니다.<br>적어두셨다가 Q&A 때, 아니면 바로 질문 주세요.</div>
+    <div class="memo reveal d3">
+      <div class="pen">오늘 할 일<br><span class="chk">☑</span> 끝까지 보기<br><span class="chk">☑</span> 막히면 적기<br><span class="chk">☑</span> 끝나고 바로 실행 ✍️</div>
+    </div>
+    <div class="pageft reveal d5">PART 1 · 오프닝</div>
+  </section>
+
+  <!-- ===== S5 무료자료 3종 ===== -->
+  <section class="slide s5">
+    <div class="kicker reveal d1">끝까지 보시는 분께 — 단톡방에 전부</div>
+    <div class="free pen reveal d2">전부 무료!</div>
+    <h1 class="reveal d2" style="font-size:3.4vw">오늘의 선물 <span style="color:var(--red)">3가지</span></h1>
+    <div class="list">
+      <div class="item reveal d3"><span class="no">1</span><div><span class="nm"><span class="hl">마노태그 추출 프로그램</span></span><span class="desc">태그 10칸 자동 추출</span></div></div>
+      <div class="item reveal d4"><span class="no">2</span><div><span class="nm"><span class="hl">소싱 키워드 리스트</span></span><span class="desc">오늘 제가 직접 거른 것</span></div></div>
+      <div class="item reveal d5"><span class="no">3</span><div><span class="nm"><span class="hl">광고 전자책 가이드</span></span><span class="desc">시작용 광고 세팅</span></div></div>
+    </div>
+    <div class="pageft reveal d6">끝까지 자리 지켜주세요.</div>
+  </section>
+
+  <!-- ===== S6 로드맵 / 소통 ===== -->
+  <section class="slide s6">
+    <div class="kicker reveal d1">오늘 2시간, 같이 갑니다</div>
+    <h1 class="reveal d2" style="font-size:3.6vw">오늘 배울 <span class="hl">풀사이클</span></h1>
+    <div class="flow">
+      <div class="step reveal d3"><div class="si">STEP 1</div><div class="sn">소싱</div></div>
+      <div class="arr reveal d3">→</div>
+      <div class="step reveal d4"><div class="si">STEP 2</div><div class="sn">기획·SEO</div></div>
+      <div class="arr reveal d4">→</div>
+      <div class="step reveal d5"><div class="si">STEP 3</div><div class="sn">등록·전환</div></div>
+      <div class="arr reveal d5">→</div>
+      <div class="step dim reveal d6"><div class="si">STEP 4</div><div class="sn">광고 <span style="font-size:.6em">(다음에)</span></div></div>
+    </div>
+    <div class="chat reveal d7">시작 전에 — 지금 매출 어느 정도세요? 채팅에 남겨주세요 ↓</div>
+    <div class="pageft reveal d6">PART 1 · 오프닝</div>
+  </section>
+
+  <!-- HUD -->
+  <div class="hud">
+    <div class="dots" id="dots"></div>
+    <div class="counter mono"><b id="cur">01</b> / <span id="tot">06</span></div>
+  </div>
+  <div class="navhint">← → 또는 화면 좌우 클릭</div>
+  <div class="zone l" id="zl"></div>
+  <div class="zone r" id="zr"></div>
+</div>
+
+<script>
+  // 후기 월 채우기
+  (function buildWall(){
+    const wall=document.getElementById('wall'); if(!wall) return;
+    const RCOUNT=50, cols=4, cls=['colA','colB','colC','colD'];
+    const colEls=[];
+    for(let c=0;c<cols;c++){ const d=document.createElement('div'); d.className='col '+cls[c]; wall.appendChild(d); colEls.push(d); }
+    for(let n=1;n<=RCOUNT;n++){ const im=document.createElement('img'); im.loading='lazy'; im.src='reviews/r'+String(n).padStart(2,'0')+'.png'; im.alt='후기'; colEls[(n-1)%cols].appendChild(im); }
+    colEls.forEach(d=>{ d.innerHTML+=d.innerHTML; }); // 이음새 없는 루프용 복제
+  })();
+
+  const slides=[...document.querySelectorAll('.slide')];
+  const dotsBox=document.getElementById('dots');
+  const prog=document.getElementById('prog');
+  const cur=document.getElementById('cur');
+  document.getElementById('tot').textContent=String(slides.length).padStart(2,'0');
+  let i=0;
+  slides.forEach((_,n)=>{ const d=document.createElement('div'); d.className='dot'; d.onclick=()=>go(n); dotsBox.appendChild(d); });
+  const dots=[...dotsBox.children];
+  function go(n){
+    i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('active',k===i));
+    dots.forEach((d,k)=>d.classList.toggle('on',k===i));
+    document.getElementById('stage').classList.toggle('dark', slides[i].classList.contains('dark'));
+    prog.style.width=((i+1)/slides.length*100)+'%';
+    cur.textContent=String(i+1).padStart(2,'0');
+  }
+  document.getElementById('zr').onclick=()=>go(i+1);
+  document.getElementById('zl').onclick=()=>go(i-1);
+  addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();go(i+1);}
+    if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(i-1);}
+    if(e.key==='Home')go(0); if(e.key==='End')go(slides.length-1);
+  });
+  go(0);
+</script>
+</body>
+</html>

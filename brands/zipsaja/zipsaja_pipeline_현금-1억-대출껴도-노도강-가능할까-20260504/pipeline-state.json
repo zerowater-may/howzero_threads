@@ -1,0 +1,125 @@
+{
+  "pipeline_id": "zipsaja_20260504_현금-1억-대출껴도-노도강-가능할까-20260504",
+  "brand": "zipsaja",
+  "topic": "현금 1억 대출껴도 노도강 가능할까",
+  "slug": "현금-1억-대출껴도-노도강-가능할까-20260504",
+  "created_at": "2026-05-04T04:48:58.026145+00:00",
+  "status": "completed",
+  "failed_at": null,
+  "failed_reason": null,
+  "data": {
+    "source": "국토부 실거래가 + 금융위원회",
+    "preset": "nodogang-cash-1eok-loan-simulation",
+    "dataset": {
+      "generatedAt": "2026-05-04T04:48:58.013003+00:00",
+      "title": "현금 1억 대출껴도 노도강 가능할까",
+      "subtitle": "현금 1억 + 주담대 70% 가정, 노원·도봉·강북 후보지 게임",
+      "periodLabel": "2025.01.01~2025.04.30 vs 2026.01.01~2026.04.30",
+      "source": "국토부 실거래가 · 금융위원회 가계부채 관리 강화 방안 · 단순 시뮬레이션",
+      "assumptions": {
+        "cashEok": 1.0,
+        "ltvPct": 70,
+        "loanCapEok": 6.0,
+        "feesExcluded": true,
+        "dsrNote": "실제 한도는 DSR, 소득, 은행 심사, 전입의무 등에 따라 달라질 수 있음"
+      },
+      "districts": [
+        {
+          "district": "도봉구",
+          "short": "도봉",
+          "price2025": 5.57,
+          "price2026": 5.76,
+          "loan2025": 3.9,
+          "cashNeeded2025": 1.67,
+          "shortage2025": 0.67,
+          "loan2026": 4.03,
+          "cashNeeded2026": 1.73,
+          "shortage2026": 0.73,
+          "increase": 0.19,
+          "changePct": 3.4,
+          "priceBefore": 55700,
+          "priceAfter": 57600
+        },
+        {
+          "district": "노원구",
+          "short": "노원",
+          "price2025": 6.37,
+          "price2026": 6.8,
+          "loan2025": 4.46,
+          "cashNeeded2025": 1.91,
+          "shortage2025": 0.91,
+          "loan2026": 4.76,
+          "cashNeeded2026": 2.04,
+          "shortage2026": 1.04,
+          "increase": 0.43,
+          "changePct": 6.8,
+          "priceBefore": 63700,
+          "priceAfter": 68000
+        },
+        {
+          "district": "강북구",
+          "short": "강북",
+          "price2025": 7.45,
+          "price2026": 8.65,
+          "loan2025": 5.21,
+          "cashNeeded2025": 2.24,
+          "shortage2025": 1.24,
+          "loan2026": 6.0,
+          "cashNeeded2026": 2.65,
+          "shortage2026": 1.65,
+          "increase": 1.2,
+          "changePct": 16.1,
+          "priceBefore": 74500,
+          "priceAfter": 86500
+        }
+      ],
+      "ctaHook": "댓글에 엑셀/PDF 쓰면 계산표 줄게",
+      "ctaText": "현금 1억 노도강 계산표"
+    }
+  },
+  "tone": null,
+  "artifacts": {
+    "data": {
+      "path": "brands/zipsaja/zipsaja_pipeline_현금-1억-대출껴도-노도강-가능할까-20260504/data.json"
+    },
+    "carousel": {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_현금-1억-대출껴도-노도강-가능할까-20260504/carousel"
+    },
+    "reels": {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_현금-1억-대출껴도-노도강-가능할까-20260504/reels"
+    },
+    "attachments": {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_현금-1억-대출껴도-노도강-가능할까-20260504/attachments"
+    },
+    "captions": {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_현금-1억-대출껴도-노도강-가능할까-20260504/captions"
+    },
+    "publish-ready": {
+      "path": "/opt/howzero/brands/zipsaja/zipsaja_pipeline_현금-1억-대출껴도-노도강-가능할까-20260504/publish-ready"
+    }
+  },
+  "workflow_version": "zipsaja-remotion-v1-budget-board-existing-assets",
+  "forbidden_tools": [
+    "hyperframes"
+  ],
+  "steps": {
+    "brief": "done",
+    "data": "done",
+    "storyboard": "done",
+    "remotion": "done",
+    "carousel": "done",
+    "attachments": "done",
+    "captions": "done",
+    "package-qa": "done",
+    "brand-assets": "done"
+  },
+  "typography": {
+    "headline": "Jua",
+    "comment": "Gaegu",
+    "body": "Noto Sans KR 700"
+  },
+  "brand_assets": {
+    "mascots": "assets/mascots/mascot-*.png",
+    "source": ".claude/skills/zipsaja-design/assets/mascots"
+  }
+}

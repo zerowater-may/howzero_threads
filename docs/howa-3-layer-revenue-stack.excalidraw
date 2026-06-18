@@ -1,0 +1,49 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "howzero-claude-code",
+  "elements": [
+    {"type":"text","id":"title","x":40,"y":20,"width":1120,"height":40,"text":"하와 3-Layer 수익 구조","fontSize":26,"fontFamily":1,"strokeColor":"#1e1e1e","seed":1001,"autoResize":true},
+    {"type":"text","id":"subtitle","x":40,"y":62,"width":1120,"height":24,"text":"메인 사업 → 두 가지 계약 형태 → 그 위에 얹는 부가 SaaS 수익","fontSize":15,"fontFamily":1,"strokeColor":"#555555","seed":1002,"autoResize":true},
+
+    {"type":"text","id":"layer1-label","x":40,"y":118,"width":140,"height":22,"text":"Layer 1","fontSize":17,"fontFamily":1,"strokeColor":"#92400e","seed":2001,"autoResize":true},
+    {"type":"text","id":"layer1-sub","x":40,"y":144,"width":140,"height":18,"text":"메인 사업","fontSize":13,"fontFamily":1,"strokeColor":"#757575","seed":2002,"autoResize":true},
+
+    {"type":"text","id":"layer2-label","x":40,"y":268,"width":140,"height":22,"text":"Layer 2","fontSize":17,"fontFamily":1,"strokeColor":"#92400e","seed":2011,"autoResize":true},
+    {"type":"text","id":"layer2-sub","x":40,"y":294,"width":140,"height":18,"text":"두 가지 계약 형태","fontSize":13,"fontFamily":1,"strokeColor":"#757575","seed":2012,"autoResize":true},
+
+    {"type":"text","id":"layer3-label","x":40,"y":518,"width":140,"height":22,"text":"Layer 3","fontSize":17,"fontFamily":1,"strokeColor":"#5b21b6","seed":2021,"autoResize":true},
+    {"type":"text","id":"layer3-sub","x":40,"y":544,"width":140,"height":18,"text":"부가 SaaS 수익","fontSize":13,"fontFamily":1,"strokeColor":"#757575","seed":2022,"autoResize":true},
+
+    {"type":"rectangle","id":"layer1-box","x":480,"y":100,"width":240,"height":100,"roundness":{"type":3},"backgroundColor":"#ffd8a8","fillStyle":"solid","roughness":0,"strokeColor":"#f59e0b","strokeWidth":3,"seed":3010,"boundElements":[{"type":"text","id":"layer1-box-text"}]},
+    {"type":"text","id":"layer1-box-text","x":480,"y":125,"width":240,"height":50,"text":"하와\n강사 유튜브 대행","fontSize":18,"fontFamily":1,"strokeColor":"#92400e","textAlign":"center","verticalAlign":"middle","containerId":"layer1-box","seed":3011,"autoResize":false,"lineHeight":1.4},
+
+    {"type":"arrow","id":"arrow-1-a","x":600,"y":200,"width":210,"height":40,"points":[[0,0],[-210,40]],"strokeColor":"#1e1e1e","strokeWidth":2,"roughness":0,"endArrowhead":"arrow","seed":3050},
+    {"type":"arrow","id":"arrow-1-c","x":600,"y":200,"width":210,"height":40,"points":[[0,0],[210,40]],"strokeColor":"#1e1e1e","strokeWidth":2,"roughness":0,"endArrowhead":"arrow","seed":3051},
+
+    {"type":"rectangle","id":"layer2-a","x":200,"y":240,"width":380,"height":140,"roundness":{"type":3},"backgroundColor":"#ffe8d6","fillStyle":"solid","roughness":0,"strokeColor":"#f59e0b","strokeWidth":2,"seed":3020,"boundElements":[{"type":"text","id":"layer2-a-text"}]},
+    {"type":"text","id":"layer2-a-text","x":200,"y":272,"width":380,"height":76,"text":"하와 (A)\n강사 개인 직거래\n풀대행 + 강의 수익 share","fontSize":17,"fontFamily":1,"strokeColor":"#92400e","textAlign":"center","verticalAlign":"middle","containerId":"layer2-a","seed":3021,"autoResize":false,"lineHeight":1.5},
+
+    {"type":"rectangle","id":"layer2-c","x":620,"y":240,"width":380,"height":140,"roundness":{"type":3},"backgroundColor":"#ffe8d6","fillStyle":"solid","roughness":0,"strokeColor":"#f59e0b","strokeWidth":2,"seed":3030,"boundElements":[{"type":"text","id":"layer2-c-text"}]},
+    {"type":"text","id":"layer2-c-text","x":620,"y":272,"width":380,"height":76,"text":"하와 (C)\n외부 강의 플랫폼 파트너십\n풀대행 + 확장 수익 share","fontSize":17,"fontFamily":1,"strokeColor":"#92400e","textAlign":"center","verticalAlign":"middle","containerId":"layer2-c","seed":3031,"autoResize":false,"lineHeight":1.5},
+
+    {"type":"arrow","id":"arrow-a-l3","x":390,"y":380,"width":210,"height":100,"points":[[0,0],[210,100]],"strokeColor":"#8b5cf6","strokeWidth":2,"roughness":0,"endArrowhead":"arrow","strokeStyle":"dashed","seed":3060},
+    {"type":"arrow","id":"arrow-c-l3","x":810,"y":380,"width":210,"height":100,"points":[[0,0],[-210,100]],"strokeColor":"#8b5cf6","strokeWidth":2,"roughness":0,"endArrowhead":"arrow","strokeStyle":"dashed","seed":3061},
+
+    {"type":"rectangle","id":"layer3-container","x":160,"y":480,"width":880,"height":230,"roundness":{"type":3},"backgroundColor":"#f3f0ff","fillStyle":"solid","roughness":0,"strokeColor":"#8b5cf6","strokeWidth":1,"strokeStyle":"dashed","seed":4000},
+    {"type":"text","id":"layer3-header","x":160,"y":498,"width":880,"height":22,"text":"부가 수익 — A·C 양쪽 모두에 얹는 SaaS 라이센스","fontSize":15,"fontFamily":1,"strokeColor":"#5b21b6","textAlign":"center","verticalAlign":"top","seed":4001,"autoResize":false},
+
+    {"type":"rectangle","id":"layer3-bsj","x":220,"y":540,"width":340,"height":150,"roundness":{"type":3},"backgroundColor":"#c3fae8","fillStyle":"solid","roughness":0,"strokeColor":"#06b6d4","strokeWidth":2,"seed":4010,"boundElements":[{"type":"text","id":"layer3-bsj-text"}]},
+    {"type":"text","id":"layer3-bsj-text","x":220,"y":570,"width":340,"height":90,"text":"불사자\n셀러용 self-serve SaaS\n강사가 셀러일 때 라이센스","fontSize":16,"fontFamily":1,"strokeColor":"#0e7490","textAlign":"center","verticalAlign":"middle","containerId":"layer3-bsj","seed":4011,"autoResize":false,"lineHeight":1.5},
+
+    {"type":"rectangle","id":"layer3-hyp","x":640,"y":540,"width":340,"height":150,"roundness":{"type":3},"backgroundColor":"#d0bfff","fillStyle":"solid","roughness":0,"strokeColor":"#8b5cf6","strokeWidth":2,"seed":4020,"boundElements":[{"type":"text","id":"layer3-hyp-text"}]},
+    {"type":"text","id":"layer3-hyp-text","x":640,"y":570,"width":340,"height":90,"text":"하입덕\n쇼츠 크리에이터용 self-serve SaaS\n강사 본인 / 팔로워 콘텐츠 활용","fontSize":16,"fontFamily":1,"strokeColor":"#5b21b6","textAlign":"center","verticalAlign":"middle","containerId":"layer3-hyp","seed":4021,"autoResize":false,"lineHeight":1.5},
+
+    {"type":"text","id":"footer","x":160,"y":730,"width":880,"height":20,"text":"※ Layer 1·2의 메인 매출 = 풀대행 기본급 200~300/월 + 확장 수익 share 25~35%","fontSize":13,"fontFamily":1,"strokeColor":"#757575","seed":5001,"autoResize":true}
+  ],
+  "appState": {
+    "viewBackgroundColor": "#ffffff",
+    "gridSize": null
+  },
+  "files": {}
+}

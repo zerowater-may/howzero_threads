@@ -11,6 +11,7 @@ from typing import Any
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 _TEMPLATE_DIR = Path(__file__).parent / "templates"
+DEFAULT_DATA_SLIDES = 8
 
 
 def format_price_display(manwon: int) -> str:
@@ -26,15 +27,41 @@ def format_price_display(manwon: int) -> str:
 
 def chunk_districts(districts: list[dict[str, Any]], *, per_slide: int) -> list[dict[str, Any]]:
     """Split districts into per-slide chunks with generated headers."""
+    if per_slide <= 0:
+        raise ValueError("per_slide must be greater than 0")
+
     chunks: list[dict[str, Any]] = []
     for i in range(0, len(districts), per_slide):
         rows = districts[i : i + per_slide]
-        if len(rows) == 1:
-            header = rows[0]["district"]
-        else:
-            header = f"{rows[0]['district']} ~ {rows[-1]['district']}"
-        chunks.append({"header": header, "rows": rows})
+        chunks.append({"header": _chunk_header(rows), "rows": rows})
     return chunks
+
+
+def chunk_districts_by_slide_count(
+    districts: list[dict[str, Any]], *, slide_count: int
+) -> list[dict[str, Any]]:
+    """Split districts into exactly up to slide_count balanced data slides."""
+    if slide_count <= 0:
+        raise ValueError("slide_count must be greater than 0")
+    if not districts:
+        return []
+
+    actual_slide_count = min(slide_count, len(districts))
+    base_size, remainder = divmod(len(districts), actual_slide_count)
+    chunks: list[dict[str, Any]] = []
+    start = 0
+    for index in range(actual_slide_count):
+        size = base_size + (1 if index < remainder else 0)
+        rows = districts[start : start + size]
+        chunks.append({"header": _chunk_header(rows), "rows": rows})
+        start += size
+    return chunks
+
+
+def _chunk_header(rows: list[dict[str, Any]]) -> str:
+    if len(rows) == 1:
+        return rows[0]["district"]
+    return f"{rows[0]['district']} ~ {rows[-1]['district']}"
 
 
 def _split_title(title: str) -> tuple[str, str]:
@@ -51,7 +78,11 @@ def _split_title(title: str) -> tuple[str, str]:
 
 
 def build_context(
-    dataset: dict[str, Any], *, max_bar_px: int = 100, per_slide: int = 8
+    dataset: dict[str, Any],
+    *,
+    max_bar_px: int = 100,
+    per_slide: int | None = None,
+    data_slide_count: int = DEFAULT_DATA_SLIDES,
 ) -> dict[str, Any]:
     """Prepare Jinja2 context from raw dataset."""
     max_abs = max((abs(d["changePct"]) for d in dataset["districts"]), default=1.0) or 1.0
@@ -71,17 +102,33 @@ def build_context(
         "title_rest": title_rest,
     }
 
+    if per_slide is None:
+        district_chunks = chunk_districts_by_slide_count(
+            districts_prepared, slide_count=data_slide_count
+        )
+    else:
+        district_chunks = chunk_districts(districts_prepared, per_slide=per_slide)
+
     return {
         "dataset": enriched_dataset,
-        "district_chunks": chunk_districts(districts_prepared, per_slide=per_slide),
+        "district_chunks": district_chunks,
     }
 
 
-def render_html(dataset: dict[str, Any], *, per_slide: int = 8) -> str:
+def render_html(
+    dataset: dict[str, Any],
+    *,
+    per_slide: int | None = None,
+    data_slide_count: int = DEFAULT_DATA_SLIDES,
+) -> str:
     env = Environment(
         loader=FileSystemLoader(str(_TEMPLATE_DIR)),
         autoescape=select_autoescape(["html"]),
     )
     template = env.get_template("zipsaja_apartment_compare.html.j2")
-    ctx = build_context(dataset, per_slide=per_slide)
+    ctx = build_context(
+        dataset,
+        per_slide=per_slide,
+        data_slide_count=data_slide_count,
+    )
     return template.render(**ctx)

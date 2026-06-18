@@ -49,7 +49,8 @@ The workflow is complete only when:
 
 - `reels/full.mp4` exists
 - `reels/zipsaja-reel-30s.mp4` exists
-- if API posting Reels, `reels/zipsaja-reel-30s-audio-mapped-ig-safe.mp4` exists or the user has chosen no baked audio
+- `reels/zipsaja-reel-30s-audio-mapped.mp4` exists
+- `reels/zipsaja-reel-30s-audio-mapped-ig-safe.mp4` exists
 - if API posting Reels, `publish-ready/instagram-reel-cover.png` exists or `--instagram-thumb-offset-ms` is set intentionally
 - `carousel/slides.html` exists
 - carousel PNGs are 1080x1350 for Instagram/Threads feed use

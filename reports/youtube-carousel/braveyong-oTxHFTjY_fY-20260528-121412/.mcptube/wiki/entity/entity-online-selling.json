@@ -1,0 +1,29 @@
+{
+  "slug": "entity-online-selling",
+  "page_type": "entity",
+  "title": "Online Selling",
+  "tags": [
+    "other"
+  ],
+  "related_pages": [
+    "video-oTxHFTjY_fY"
+  ],
+  "created_at": "2026-05-28T03:14:39.045266Z",
+  "updated_at": "2026-05-28T03:14:39.050568Z",
+  "category": "other",
+  "overview": "The main topic of the video. The video discusses the transition from real estate investment to online selling, the challenges involved, and strategies for success.",
+  "video_references": [
+    {
+      "video_id": "oTxHFTjY_fY",
+      "title": "직장인 부동산 투자자가 온라인 셀링을 시작한 이유",
+      "channel": "용감한용팀장 - 셀러를 위한 AI 사용법",
+      "content": "The main topic of the video. The video discusses the transition from real estate investment to online selling, the challenges involved, and strategies for success.",
+      "timestamps": [
+        "01:00",
+        "05:00",
+        "10:00"
+      ],
+      "added_at": "2026-05-28T03:14:39.045266Z"
+    }
+  ]
+}

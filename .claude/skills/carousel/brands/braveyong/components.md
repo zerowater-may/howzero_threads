@@ -354,6 +354,46 @@ convert frames/hXX_f01.jpg -crop 1080x460+0+0 +repage frames/hXX_clean.jpg
 
 ---
 
+## 13. Guide Note 스타일 (레퍼런스형 교육자료)
+
+첨부 레퍼런스처럼 흰 배경, 굵은 손글씨형 제목, 얇은 비교 박스 중심으로 갈 때 사용한다. 최종 HTML에서는 문구를 직접 타이핑해 한글 깨짐을 막는다.
+
+```html
+<div class="slide guide-slide" id="slide-N">
+  <div class="guide-content">
+    <h1 class="guide-title">상품명부터<br>다시 잡기</h1>
+    <div class="guide-subtitle">1. 가장 중요한 건 검색어와 구매 이유</div>
+
+    <section class="guide-panel">
+      <div class="guide-section-head">1. 상품명 비교</div>
+      <div class="guide-compare">
+        <div class="guide-example">
+          <div class="guide-chip">감으로 쓴 상품명</div>
+          <div class="guide-example-title">무선 충전기<br>고속 거치대</div>
+          <div class="guide-caption">키워드가 넓고 구매 이유가 약함</div>
+        </div>
+        <div class="guide-divider"></div>
+        <div class="guide-example">
+          <div class="guide-chip">수정한 상품명</div>
+          <div class="guide-example-title">맥세이프 차량용<br><span class="guide-red">고속 충전 거치대</span></div>
+          <div class="guide-caption">검색어와 용도가 바로 보임</div>
+        </div>
+      </div>
+      <p class="guide-body">상품명은 예쁜 문장이 아니라 검색어와 구매 이유를 같이 보여주는 자리입니다.</p>
+    </section>
+
+    <section class="guide-panel compact">
+      <div class="guide-section-head">2. 오늘 고칠 것</div>
+      <p class="guide-body">내 상품명에서 고객이 실제로 검색할 단어 2개를 앞으로 당겨보세요.</p>
+      <div class="guide-note">작게 바꿔도 노출 구조는 달라집니다.</div>
+    </section>
+  </div>
+  <div class="guide-footer">@brave._.yong_</div>
+</div>
+```
+
+---
+
 ## CSS 전체 스타일시트
 
 ```css
@@ -367,11 +407,12 @@ body { background: #dcd8cf; padding: 60px 0;
 .slide.dark { background: #1A0A0A; color: #fff; }
 
 /* Typography */
-.title { font-family: 'Black Han Sans', sans-serif; font-weight: 400;
+.title { font-family: 'Jua', 'Do Hyeon', 'Black Han Sans', sans-serif; font-weight: 400;
   color: #1A1A1A; letter-spacing: -2px; line-height: 1.05; }
 .title-xl { font-size: 124px; } .title-lg { font-size: 104px; }
 .title-md { font-size: 78px; } .title-sm { font-size: 60px; }
 .slide.dark .title { color: #fff; }
+.title-warning { font-family: 'Black Han Sans', sans-serif; letter-spacing: -4px; }
 
 .body { font-family: 'Noto Sans KR', sans-serif; font-weight: 700;
   color: #1A1A1A; line-height: 1.45; }
@@ -408,7 +449,7 @@ body { background: #dcd8cf; padding: 60px 0;
 .tag::before { content: '●'; color: #FFCA28; font-size: 14px; }
 
 /* Num Label */
-.num-label { font-family: 'Black Han Sans', sans-serif; font-size: 100px;
+.num-label { font-family: 'Jua', 'Do Hyeon', sans-serif; font-size: 100px;
   color: #3F0000; line-height: 0.9; letter-spacing: -4px; }
 .slide.dark .num-label { color: #E8B4B4; }
 
@@ -429,7 +470,7 @@ body { background: #dcd8cf; padding: 60px 0;
   gap: 28px; margin-top: 40px; }
 .stat-card { background: #fff; border: 4px solid #1A1A1A; border-radius: 8px;
   padding: 36px 28px; text-align: center; }
-.stat-num { font-family: 'Black Han Sans'; font-size: 104px;
+.stat-num { font-family: 'Jua', 'Do Hyeon', sans-serif; font-size: 104px;
   color: #3F0000; line-height: 1; letter-spacing: -3px; }
 .stat-label { font-family: 'Noto Sans KR'; font-size: 24px; color: #555;
   font-weight: 900; margin-top: 14px; }
@@ -441,7 +482,7 @@ body { background: #dcd8cf; padding: 60px 0;
   border-radius: 8px; padding: 32px 28px; }
 .vs-card.bad { border-color: #3F0000; }
 .vs-card.good { border-color: #8B2020; background: #FFF8E1; }
-.vs-head { font-family: 'Black Han Sans'; font-size: 44px;
+.vs-head { font-family: 'Jua', 'Do Hyeon', sans-serif; font-size: 44px;
   text-align: center; margin-bottom: 20px; }
 .vs-head.bad { color: #3F0000; }
 .vs-head.good { color: #8B2020; }
@@ -471,7 +512,7 @@ body { background: #dcd8cf; padding: 60px 0;
 .step-row { display: flex; align-items: center; gap: 24px;
   padding: 22px 0; border-bottom: 2px dashed #ddd; }
 .step-row:last-child { border-bottom: none; }
-.step-num { font-family: 'Black Han Sans'; font-size: 72px;
+.step-num { font-family: 'Jua', 'Do Hyeon', sans-serif; font-size: 72px;
   color: #FFCA28; -webkit-text-stroke: 2px #1A1A1A;
   line-height: 1; letter-spacing: -2px; min-width: 96px; }
 .step-text { font-family: 'Noto Sans KR'; font-size: 36px;
@@ -539,6 +580,44 @@ body { background: #dcd8cf; padding: 60px 0;
 .slide.dark .footer .page-num { color: #FFCA28; }
 .arrow-next { font-family: 'Black Han Sans'; font-size: 28px; color: #3F0000; }
 .slide.dark .arrow-next { color: #FFCA28; }
+
+/* Guide Note 스타일 */
+.guide-slide { background: #fff; padding: 72px 76px 104px; }
+.guide-content { position: relative; z-index: 2; }
+.guide-title { font-family: 'Jua', 'Do Hyeon', sans-serif; font-size: 104px;
+  font-weight: 400; letter-spacing: -1px; line-height: 1.03; color: #050505;
+  margin-bottom: 18px; }
+.guide-subtitle { font-family: 'Noto Sans KR', sans-serif; font-size: 36px;
+  font-weight: 500; color: #111; margin-bottom: 34px; }
+.guide-panel { border: 2px solid #CFCFCF; background: #fff;
+  padding: 28px 34px 32px; margin-top: 30px; position: relative; }
+.guide-panel.compact { padding-bottom: 28px; }
+.guide-section-head { font-family: 'Noto Sans KR', sans-serif; font-size: 38px;
+  font-weight: 900; letter-spacing: -1px; color: #050505; margin-bottom: 22px; }
+.guide-compare { border: 2px solid #D7D7D7; border-radius: 22px;
+  padding: 28px 30px; display: grid; grid-template-columns: 1fr 2px 1fr;
+  gap: 30px; align-items: center; }
+.guide-divider { width: 2px; height: 190px; background: #D7D7D7; }
+.guide-example { text-align: center; }
+.guide-chip { display: inline-block; padding: 5px 14px; border: 2px solid #CFCFCF;
+  background: #FAF7E8; font-family: 'Noto Sans KR', sans-serif; font-size: 22px;
+  font-weight: 700; color: #333; margin-bottom: 18px; }
+.guide-example-title { font-family: 'Noto Sans KR', sans-serif; font-size: 36px;
+  font-weight: 700; line-height: 1.28; letter-spacing: -1px; color: #111; }
+.guide-caption { font-family: 'Noto Sans KR', sans-serif; font-size: 24px;
+  font-weight: 500; color: #333; line-height: 1.35; margin-top: 18px; }
+.guide-body { font-family: 'Noto Sans KR', sans-serif; font-size: 30px;
+  font-weight: 500; color: #1A1A1A; line-height: 1.55; letter-spacing: -0.5px;
+  margin-top: 24px; }
+.guide-red { color: #8B2020; font-weight: 900; }
+.guide-note { display: inline-block; margin-top: 18px; padding: 5px 14px;
+  border: 2px solid #CFCFCF; background: #FAF7E8; color: #333;
+  font-family: 'Gaegu', cursive; font-size: 28px; font-weight: 700;
+  transform: rotate(-1deg); }
+.guide-footer { position: absolute; left: 50%; bottom: 48px;
+  transform: translateX(-50%); border: 2px solid #999; padding: 6px 18px;
+  font-family: 'Gaegu', cursive; font-size: 30px; color: #222;
+  background: #fff; }
 ```
 
 ---
@@ -546,7 +625,7 @@ body { background: #dcd8cf; padding: 60px 0;
 ## Google Fonts Import
 
 ```html
-<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Do+Hyeon&family=Black+Han+Sans&family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
 ```
 
 ---

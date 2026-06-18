@@ -1,0 +1,407 @@
+{
+  "meta": {
+    "name": "dy1.mag editorial carousel format",
+    "description": "1080x1350 Instagram carousel format extracted from dy1.mag reference: documentary image, white editorial whitespace, bold Korean sans-serif typography, underlined thesis line, minimal black progress marker.",
+    "source_references": [
+      "/Users/zerowater/Downloads/dy1.mag_post_2026_ 5_ 29__오전 11_00_30.zip",
+      "reference/contact-sheet.jpg",
+      "reference/slide-01.jpg",
+      "reference/slide-02.jpg",
+      "reference/slide-06.jpg",
+      "reference/slide-09.jpg"
+    ],
+    "created_at": "2026-05-29"
+  },
+  "design_system": {
+    "color": {
+      "palette_type": "neutral with controlled accent",
+      "primary": {
+        "hex": "#090909",
+        "role": "dominant text, borders, page marker, black CTA slide"
+      },
+      "secondary": {
+        "hex": "#FFFFFF",
+        "role": "main body slide background and large negative space"
+      },
+      "accent": {
+        "hex": "#2EDC1B",
+        "role": "rare CTA highlight on black slide"
+      },
+      "neutral": {
+        "scale": {
+          "0": "#FFFFFF",
+          "50": "#F7F5F2",
+          "100": "#E6DCD4",
+          "300": "#ABA8A0",
+          "500": "#65696F",
+          "700": "#46372B",
+          "900": "#090909"
+        },
+        "usage": "white and warm-white dominate; black is reserved for type, borders, and CTA background; warm grays come from documentary photo treatment"
+      },
+      "semantic": {
+        "success": "#2EDC1B",
+        "warning": "#D5AF6F",
+        "error": "#B57C5E",
+        "info": "#46AFF5"
+      },
+      "surface": {
+        "background": "#FFFFFF",
+        "card": "#FFFFFF",
+        "elevated": "#F7F5F2"
+      },
+      "contrast_strategy": "dark-on-light dominant with one full black CTA slide; emphasis comes from weight and underline rather than colored panels"
+    },
+    "typography": {
+      "type_scale": {
+        "display": {
+          "size": "76-86px",
+          "weight": "900",
+          "line_height": "1.12",
+          "tracking": "0"
+        },
+        "heading_1": {
+          "size": "48-58px",
+          "weight": "900",
+          "line_height": "1.2",
+          "tracking": "0"
+        },
+        "heading_2": {
+          "size": "42-48px",
+          "weight": "800",
+          "line_height": "1.25",
+          "tracking": "0"
+        },
+        "heading_3": {
+          "size": "34-40px",
+          "weight": "800",
+          "line_height": "1.35",
+          "tracking": "0"
+        },
+        "body": {
+          "size": "32-38px",
+          "weight": "500-700",
+          "line_height": "1.6-1.75",
+          "tracking": "0"
+        },
+        "body_small": {
+          "size": "24-28px",
+          "weight": "500-700",
+          "line_height": "1.5",
+          "tracking": "0"
+        },
+        "caption": {
+          "size": "20-24px",
+          "weight": "500-700",
+          "line_height": "1.4",
+          "tracking": "0"
+        },
+        "overline": {
+          "size": "18-22px",
+          "weight": "700",
+          "line_height": "1.2",
+          "tracking": "0"
+        }
+      },
+      "font_families": {
+        "heading": "Pretendard, SUIT, Noto Sans KR, Apple SD Gothic Neo, sans-serif",
+        "body": "Pretendard, SUIT, Noto Sans KR, Apple SD Gothic Neo, sans-serif",
+        "mono": "SFMono-Regular, Menlo, Consolas, monospace"
+      },
+      "font_style_notes": "clean Korean grotesk sans; no decorative type; hierarchy is created through weight, size, and underline"
+    },
+    "spacing": {
+      "base_unit": "8px",
+      "scale": [
+        "8px",
+        "16px",
+        "24px",
+        "32px",
+        "48px",
+        "64px",
+        "88px",
+        "120px",
+        "180px"
+      ],
+      "content_density": "spacious",
+      "section_rhythm": "large top image block followed by generous text whitespace; each slide intentionally has one focal idea"
+    },
+    "layout": {
+      "grid_system": "single centered column with occasional two-image inset composition",
+      "max_content_width": "880-900px on 1080px canvas",
+      "columns": "1 primary column; 2 columns only for comparison/product frames",
+      "gutter": "32-48px",
+      "breakpoints": {
+        "base": "1080x1350 fixed canvas",
+        "export": "2x export optional at 2160x2700"
+      },
+      "alignment_tendency": "centered editorial grid"
+    },
+    "shape": {
+      "border_radius": {
+        "small": "0px",
+        "medium": "0px",
+        "large": "0px",
+        "pill": "0px"
+      },
+      "border_usage": "sharp 2-3px black borders around image frames and small progress marker",
+      "divider_style": "underline on emphasized copy; no decorative dividers except black bottom marker"
+    },
+    "elevation": {
+      "shadow_style": "none",
+      "levels": {
+        "low": "none",
+        "medium": "none",
+        "high": "cover uses dark gradient overlay instead of shadow"
+      },
+      "depth_cues": "photo cropping, black borders, image inset overlay, full-bleed cover gradient"
+    },
+    "iconography": {
+      "style": "none or source-logo only",
+      "stroke_weight": "not applicable",
+      "size_scale": "logos small and factual, not decorative",
+      "preferred_set": "avoid icons unless needed for source or partner marks"
+    },
+    "motion": {
+      "easing": "none for static carousel",
+      "duration_scale": {
+        "micro": "0ms",
+        "normal": "0ms",
+        "macro": "0ms"
+      },
+      "entrance_pattern": "none",
+      "exit_pattern": "none",
+      "philosophy": "static editorial readability"
+    },
+    "components": {
+      "button_style": "no buttons; CTA appears as text or URL",
+      "input_style": "not used",
+      "card_style": "avoid decorative cards; use bare image frames and text blocks",
+      "navigation_pattern": "small black bottom-right marker implies carousel progress",
+      "modal_style": "not used",
+      "list_style": "short paragraph blocks; avoid bullet-heavy slides",
+      "component_notes": "primary components are cover image, framed image, source caption, center body copy, underlined thesis, black CTA slide"
+    }
+  },
+  "design_style": {
+    "aesthetic": {
+      "mood": [
+        "credible",
+        "documentary",
+        "minimal",
+        "founder-focused",
+        "editorial"
+      ],
+      "visual_metaphor": "startup magazine case-study spread translated into Instagram cards",
+      "era_influence": "modern Korean business media, founder interview editorial, clean social newsroom",
+      "genre": "B2B editorial Instagram carousel",
+      "personality_traits": [
+        "calm",
+        "precise",
+        "serious",
+        "confident",
+        "restrained"
+      ],
+      "adjectives": [
+        "white",
+        "spacious",
+        "sharp",
+        "factual",
+        "quietly premium"
+      ]
+    },
+    "visual_language": {
+      "complexity": "minimal to moderate",
+      "ornamentation": "almost none",
+      "whitespace_usage": "very generous; whitespace carries credibility and pacing",
+      "visual_weight_distribution": "top-heavy image or cover photo, then centered text block; CTA slide inverts to black",
+      "focal_strategy": "single dominant image or single underlined thesis per slide",
+      "contrast_level": "high contrast black text on white; white text on black for CTA",
+      "texture_usage": "documentary photo grain and cover photo texture only"
+    },
+    "composition": {
+      "hierarchy_method": "scale contrast, weight contrast, spatial isolation, underline emphasis",
+      "balance_type": "mostly symmetric with occasional inset image asymmetry",
+      "flow_direction": "top image to lower text, then emphasized thesis line",
+      "grouping_strategy": "image, source, body paragraph, thesis are separated by whitespace",
+      "negative_space_role": "primary signal of premium/editorial restraint"
+    },
+    "imagery": {
+      "photo_treatment": "real documentary photos and interview/video stills; natural color, slight warmth, no heavy filters except cover dark gradient",
+      "illustration_style": "none",
+      "graphic_elements": "thin black borders, underline, tiny bottom marker, occasional inset frame",
+      "pattern_usage": "cover may include large cropped brand/logotype texture; body pages stay plain",
+      "image_shape": "rectangular, sharp corners, full-bleed cover or framed body image"
+    },
+    "interaction_feel": {
+      "feedback_style": "not interactive",
+      "hover_behavior": "not applicable",
+      "transition_personality": "static and editorial",
+      "loading_style": "not applicable",
+      "microinteraction_density": "none"
+    },
+    "brand_voice_in_ui": {
+      "tone": "factual founder-story narration",
+      "formality": "semi-formal, magazine-like Korean",
+      "cta_style": "short direct invitation, usually URL or recruiting line",
+      "empty_state_approach": "not applicable",
+      "error_tone": "not applicable"
+    }
+  },
+  "visual_effects": {
+    "overview": {
+      "effect_intensity": "subtle-accent",
+      "performance_tier": "lightweight",
+      "fallback_strategy": "static image export",
+      "primary_technology": "CSS and raster images"
+    },
+    "background_effects": {
+      "type": "none",
+      "description": "white or black solid surfaces; cover uses source photo/brand background",
+      "technology": "CSS background and raster image",
+      "params": {
+        "color_palette": [
+          "#FFFFFF",
+          "#000000",
+          "#46AFF5",
+          "#2EDC1B"
+        ],
+        "speed": "0",
+        "density": "none",
+        "opacity": "100%",
+        "blend_mode": "normal"
+      }
+    },
+    "particle_systems": {
+      "enabled": false,
+      "type": "none",
+      "description": "no particles",
+      "technology": "none",
+      "params": {
+        "count": 0,
+        "shape": "none",
+        "size_range": "none",
+        "movement_pattern": "none",
+        "color_behavior": "none",
+        "interaction": "none",
+        "spawn_area": "none"
+      }
+    },
+    "3d_elements": {
+      "enabled": false,
+      "type": "none",
+      "description": "no 3D elements in layout",
+      "technology": "none",
+      "params": {
+        "renderer": "none",
+        "lighting": "none",
+        "camera": "none",
+        "materials": "none",
+        "geometry": "none",
+        "post_processing": "none",
+        "interaction_model": "none"
+      }
+    },
+    "shader_effects": {
+      "enabled": false,
+      "type": "none",
+      "description": "no shader effects",
+      "technology": "none",
+      "params": {
+        "uniforms": "none",
+        "vertex_manipulation": "none",
+        "fragment_output": "none",
+        "noise_type": "none",
+        "distortion": "none"
+      }
+    },
+    "scroll_effects": {
+      "parallax": {
+        "enabled": false,
+        "layers": "0",
+        "depth_range": "none",
+        "speed_curve": "none"
+      },
+      "scroll_triggered_animations": {
+        "enabled": false,
+        "trigger_points": "none",
+        "animation_type": "none",
+        "scrub_behavior": "none"
+      },
+      "scroll_morphing": {
+        "enabled": false,
+        "description": "none"
+      }
+    },
+    "text_effects": {
+      "type": "underline-emphasis",
+      "description": "static typographic emphasis through bold weight and underline",
+      "technology": "CSS text-decoration",
+      "params": {
+        "split_strategy": "none",
+        "animation_per_unit": "none",
+        "stagger": "none",
+        "effect_style": "bold underline"
+      }
+    },
+    "cursor_effects": {
+      "enabled": false,
+      "type": "none",
+      "description": "not applicable to static carousel",
+      "params": {
+        "shape": "none",
+        "size": "none",
+        "blend_mode": "none",
+        "trail": "none",
+        "interaction_zone": "none"
+      }
+    },
+    "image_effects": {
+      "type": "framed-raster and cover-gradient",
+      "description": "body images are sharp framed; cover uses full-bleed image with dark lower gradient for white title readability",
+      "technology": "CSS border, object-fit, linear-gradient overlay",
+      "params": {
+        "filter_pipeline": "minimal; preserve documentary photo color",
+        "hover_transform": "none",
+        "reveal_animation": "none",
+        "distortion_type": "none"
+      }
+    },
+    "glassmorphism_neumorphism": {
+      "enabled": false,
+      "style": "none",
+      "params": {
+        "blur_radius": "0",
+        "transparency": "none",
+        "border_treatment": "none",
+        "shadow_type": "none",
+        "light_source_angle": "none"
+      }
+    },
+    "canvas_drawings": {
+      "enabled": false,
+      "type": "none",
+      "description": "no canvas drawing",
+      "technology": "none",
+      "params": {
+        "draw_method": "none",
+        "animation_loop": "none",
+        "color_scheme": "none",
+        "responsiveness": "fixed canvas",
+        "interaction": "none"
+      }
+    },
+    "svg_animations": {
+      "enabled": false,
+      "type": "none",
+      "description": "no SVG animation",
+      "params": {
+        "animation_method": "none",
+        "path_morphing": "none",
+        "stroke_animation": "none",
+        "filter_effects": "none"
+      }
+    },
+    "composite_notes": "This format should remain static. The most important effects are not animation but editorial restraint: large whitespace, documentary image evidence, a single underlined thesis, and almost no decorative UI."
+  }
+}

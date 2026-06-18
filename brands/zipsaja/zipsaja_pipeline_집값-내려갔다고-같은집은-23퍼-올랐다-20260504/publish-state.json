@@ -1,0 +1,218 @@
+{
+  "createdAt": "2026-05-04T03:58:12.052487+00:00",
+  "mode": "publish-now",
+  "bundle": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_집값-내려갔다고-같은집은-23퍼-올랐다-20260504",
+  "platforms": {
+    "instagram_reel": {
+      "status": "submitted",
+      "postId": "69f81dae9d1ee426f06e506a",
+      "response": {
+        "post": {
+          "recycling": {
+            "enabled": false,
+            "gapFreq": "month",
+            "recycleCount": 0,
+            "contentVariations": [],
+            "contentVariationIndex": 0
+          },
+          "_id": "69f81dae9d1ee426f06e506a",
+          "userId": "6925d39a4d42babc89dd33e5",
+          "title": "",
+          "content": "댓글에 엑셀 쓰면 구별 데이터,\nPDF 쓰면 요약 리포트 보내줄게.\n\n집값 내려갔다고 믿고 기다렸어?\n\n전체 통계만 보면 서울 아파트 중위가격은\n12.20억 → 10.30억.\n겉으로는 -15.6%처럼 보여.\n\n근데 같은 단지·같은 평형만 다시 비교하면 얘기가 달라져.\n10.41억 → 12.80억.\n전년대비 +22.9%.\n\n거래량은 19,980건 → 16,342건으로 줄었고,\n싼 거래 비중이 커지면 전체 중위가격은 내려간 것처럼 보일 수 있어.\n\n근데 첫집러가 사려는 건 전체 평균이 아니라\n실제로 눈앞에 있는 같은 집이잖아.\n\n전세도 같은 기준으로 5.90억 → 6.50억,\n+10.2% 올랐어.\n\n결론:\n이건 그냥 하락장이라기보다\n첫집러한테는 체감가 상승장에 가깝다.\n\n출처: 국토교통부 실거래가 공개자료\n기준: 서울 아파트 매매, 동일 단지/평형 비교\n\n#서울부동산 #실거래가 #집사자 #첫집 #아파트매매 #전세난 #부동산데이터",
+          "mediaItems": [
+            {
+              "type": "video",
+              "url": "https://media.zernio.com/media/1777868200724_ya1wu8us_zipsaja-reel-30s-audio-mapped-ig-safe.mp4",
+              "_id": "69f81dae9d1ee426f06e506b"
+            }
+          ],
+          "platforms": [
+            {
+              "platform": "instagram",
+              "accountId": {
+                "_id": "69f08a47985e734bf3c9c295",
+                "platform": "instagram",
+                "profileId": "6925d3d1359f1d8910fb02e6",
+                "displayName": "집사는 집사자",
+                "isActive": true,
+                "profilePicture": "https://scontent-lhr8-1.cdninstagram.com/v/t51.82787-19/671223225_18085027718096961_646454800105286025_n.jpg?stp=dst-jpg_s206x206_tt6&_nc_cat=108&ccb=7-5&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=FMY3_16IniMQ7kNvwFnf-d-&_nc_oc=AdrCaI3qoOhVzG_VPNhNbEJJ99x4G-CGnrkpUu6T8cikmkIVIMm--hxHWZ084hrg0JE&_nc_zt=24&_nc_ht=scontent-lhr8-1.cdninstagram.com&edm=AP4hL3IEAAAA&_nc_gid=gMKp4mPvfA0jIo4FqaT2Fw&_nc_tpa=Q5bMBQF2ESzLZHa6H-TpMjV8qhD4s2mQDKTfaVBxKuknfhRDWHytjDv0oEJ5dpkZKc7hunHG_oCsyF_EZQ&oh=00_Af4mnFWks0PxDUJJoRczuTERIPPrr5ydS3yBq5xgNO1j2A&oe=69FDF268",
+                "username": "zipsaja_"
+              },
+              "profileId": "6925d3d1359f1d8910fb02e6",
+              "customMedia": [],
+              "scheduledFor": "2026-05-04T04:16:45.552Z",
+              "platformSpecificData": {
+                "contentType": "reels",
+                "shareToFeed": true,
+                "audioName": "zipsaja original audio",
+                "instagramThumbnail": "https://media.zernio.com/temp/1777868203877_c08xvgt2_instagram-reel-cover.png",
+                "__platformUserIdSnapshot": "26232925676410203",
+                "__usernameSnapshot": "zipsaja_",
+                "publishingStarted": "2026-05-04T04:16:47.240Z",
+                "lastPublishStage": "publishing",
+                "pendingContainerId": "18088704077096961"
+              },
+              "status": "published",
+              "publishAttempts": 0,
+              "contentHash": "57a668b85d6026813ca2ddbacc5d2a92",
+              "_id": "69f81dae9d1ee426f06e506c",
+              "platformPostId": "17939511894036445",
+              "platformPostUrl": "https://www.instagram.com/reel/DX5yvkCD60S/",
+              "publishedAt": "2026-05-04T04:17:29.639Z"
+            }
+          ],
+          "scheduledFor": "2026-05-04T04:16:45.552Z",
+          "timezone": "UTC",
+          "status": "published",
+          "tags": [],
+          "hashtags": [],
+          "mentions": [],
+          "visibility": "public",
+          "crosspostingEnabled": true,
+          "metadata": {
+            "usageCounted": true
+          },
+          "publishAttempts": 0,
+          "contentHash": "57a668b85d6026813ca2ddbacc5d2a92",
+          "createdAt": "2026-05-04T04:16:46.528Z",
+          "updatedAt": "2026-05-04T04:17:29.778Z",
+          "__v": 0,
+          "publishingClaimedAt": "2026-05-04T04:16:46.617Z"
+        },
+        "message": "Post published successfully"
+      }
+    },
+    "instagram_carousel": {
+      "status": "publishing",
+      "postId": "69f81dfb8c725334ced0ddd9",
+      "platform": "instagram",
+      "platformStatus": "processing",
+      "contentType": null,
+      "mediaCount": 10,
+      "duplicateGuard": "zernio-409"
+    },
+    "threads": {
+      "status": "publishing",
+      "postId": "69f81e3a981de2bda3d21589",
+      "platform": "threads",
+      "platformStatus": "processing",
+      "contentType": null,
+      "mediaCount": 10,
+      "duplicateGuard": "zernio-409"
+    }
+  },
+  "updatedAt": "2026-05-04T13:19:02.734464+09:00",
+  "media": {
+    "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_집값-내려갔다고-같은집은-23퍼-올랐다-20260504/reels/zipsaja-reel-30s.mp4",
+    "type": "video"
+  },
+  "instagramReelThumbnail": {
+    "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_집값-내려갔다고-같은집은-23퍼-올랐다-20260504/publish-ready/instagram-reel-cover.png",
+    "publicUrl": "https://media.zernio.com/temp/1777868203877_c08xvgt2_instagram-reel-cover.png",
+    "contentType": "image/png"
+  },
+  "instagramCarouselMedia": [
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_집값-내려갔다고-같은집은-23퍼-올랐다-20260504/publish-ready/instagram-carousel/slide-01.png",
+      "publicUrl": "https://media.zernio.com/temp/1777868260991_ux7v5qek_slide-01.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_집값-내려갔다고-같은집은-23퍼-올랐다-20260504/publish-ready/instagram-carousel/slide-02.png",
+      "publicUrl": "https://media.zernio.com/temp/1777868262478_z25v2wdi_slide-02.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_집값-내려갔다고-같은집은-23퍼-올랐다-20260504/publish-ready/instagram-carousel/slide-03.png",
+      "publicUrl": "https://media.zernio.com/temp/1777868263894_y3k97deg_slide-03.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_집값-내려갔다고-같은집은-23퍼-올랐다-20260504/publish-ready/instagram-carousel/slide-04.png",
+      "publicUrl": "https://media.zernio.com/temp/1777868266666_7w1c4uqz_slide-04.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_집값-내려갔다고-같은집은-23퍼-올랐다-20260504/publish-ready/instagram-carousel/slide-05.png",
+      "publicUrl": "https://media.zernio.com/temp/1777868268091_wpw2iimr_slide-05.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_집값-내려갔다고-같은집은-23퍼-올랐다-20260504/publish-ready/instagram-carousel/slide-06.png",
+      "publicUrl": "https://media.zernio.com/temp/1777868269651_b4v29m1b_slide-06.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_집값-내려갔다고-같은집은-23퍼-올랐다-20260504/publish-ready/instagram-carousel/slide-07.png",
+      "publicUrl": "https://media.zernio.com/temp/1777868271762_6iqmrx42_slide-07.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_집값-내려갔다고-같은집은-23퍼-올랐다-20260504/publish-ready/instagram-carousel/slide-08.png",
+      "publicUrl": "https://media.zernio.com/temp/1777868273318_rw72ovxq_slide-08.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_집값-내려갔다고-같은집은-23퍼-올랐다-20260504/publish-ready/instagram-carousel/slide-09.png",
+      "publicUrl": "https://media.zernio.com/temp/1777868274879_gdodwjkn_slide-09.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_집값-내려갔다고-같은집은-23퍼-올랐다-20260504/publish-ready/instagram-carousel/slide-10.png",
+      "publicUrl": "https://media.zernio.com/temp/1777868276553_nwiaplcm_slide-10.png",
+      "contentType": "image/png"
+    }
+  ],
+  "threadsCarouselMedia": [
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_집값-내려갔다고-같은집은-23퍼-올랐다-20260504/publish-ready/threads-carousel/slide-01.png",
+      "publicUrl": "https://media.zernio.com/temp/1777868323973_df11zqed_slide-01.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_집값-내려갔다고-같은집은-23퍼-올랐다-20260504/publish-ready/threads-carousel/slide-02.png",
+      "publicUrl": "https://media.zernio.com/temp/1777868325499_x378z932_slide-02.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_집값-내려갔다고-같은집은-23퍼-올랐다-20260504/publish-ready/threads-carousel/slide-03.png",
+      "publicUrl": "https://media.zernio.com/temp/1777868327636_hmbdmxxp_slide-03.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_집값-내려갔다고-같은집은-23퍼-올랐다-20260504/publish-ready/threads-carousel/slide-04.png",
+      "publicUrl": "https://media.zernio.com/temp/1777868329422_66dex617_slide-04.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_집값-내려갔다고-같은집은-23퍼-올랐다-20260504/publish-ready/threads-carousel/slide-05.png",
+      "publicUrl": "https://media.zernio.com/temp/1777868331164_ot1mluej_slide-05.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_집값-내려갔다고-같은집은-23퍼-올랐다-20260504/publish-ready/threads-carousel/slide-06.png",
+      "publicUrl": "https://media.zernio.com/temp/1777868332623_k60yf3mh_slide-06.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_집값-내려갔다고-같은집은-23퍼-올랐다-20260504/publish-ready/threads-carousel/slide-07.png",
+      "publicUrl": "https://media.zernio.com/temp/1777868334929_zeh3i7eb_slide-07.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_집값-내려갔다고-같은집은-23퍼-올랐다-20260504/publish-ready/threads-carousel/slide-08.png",
+      "publicUrl": "https://media.zernio.com/temp/1777868337292_hdghi43v_slide-08.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_집값-내려갔다고-같은집은-23퍼-올랐다-20260504/publish-ready/threads-carousel/slide-09.png",
+      "publicUrl": "https://media.zernio.com/temp/1777868339522_xosx8sn4_slide-09.png",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/Users/zerowater/Dropbox/zerowater/howzero/brands/zipsaja/zipsaja_pipeline_집값-내려갔다고-같은집은-23퍼-올랐다-20260504/publish-ready/threads-carousel/slide-10.png",
+      "publicUrl": "https://media.zernio.com/temp/1777868340967_ebzmffbr_slide-10.png",
+      "contentType": "image/png"
+    }
+  ]
+}

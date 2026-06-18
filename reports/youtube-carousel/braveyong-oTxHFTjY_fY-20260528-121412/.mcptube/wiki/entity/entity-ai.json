@@ -1,0 +1,29 @@
+{
+  "slug": "entity-ai",
+  "page_type": "entity",
+  "title": "AI",
+  "tags": [
+    "tool"
+  ],
+  "related_pages": [
+    "video-oTxHFTjY_fY"
+  ],
+  "created_at": "2026-05-28T03:14:39.045266Z",
+  "updated_at": "2026-05-28T03:14:39.049672Z",
+  "category": "tool",
+  "overview": "The video focuses on the use of AI tools to improve online selling strategies. The guest and host discuss how AI can be used to automate tasks, analyze data, and improve marketing efforts.",
+  "video_references": [
+    {
+      "video_id": "oTxHFTjY_fY",
+      "title": "직장인 부동산 투자자가 온라인 셀링을 시작한 이유",
+      "channel": "용감한용팀장 - 셀러를 위한 AI 사용법",
+      "content": "The video focuses on the use of AI tools to improve online selling strategies. The guest and host discuss how AI can be used to automate tasks, analyze data, and improve marketing efforts.",
+      "timestamps": [
+        "00:00",
+        "10:00",
+        "20:00"
+      ],
+      "added_at": "2026-05-28T03:14:39.045266Z"
+    }
+  ]
+}

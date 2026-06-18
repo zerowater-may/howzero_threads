@@ -8,6 +8,7 @@ export const metadata: Metadata = {
 };
 
 const navLinks = [
+  { href: "/braveyong-ai-selling", label: "AI 셀링 실전반" },
   { href: "/ai-employees", label: "AI 직원" },
   { href: "/services", label: "서비스" },
   { href: "/pricing", label: "가격표" },

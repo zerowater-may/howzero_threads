@@ -9,13 +9,17 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 from pathlib import Path
 
 from .render import (
     REELS_DATA_TARGET,
+    REEL_AUDIO_MAPPED_IG_SAFE_OUTPUT_NAME,
+    REEL_AUDIO_MAPPED_OUTPUT_NAME,
     REEL_OUTPUT_NAME,
     ffmpeg_export_reel,
+    ffmpeg_make_audio_mapped_reels,
     map_to_remotion_schema,
     trigger_remotion_render,
 )
@@ -25,11 +29,22 @@ def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(prog="content_reels")
     p.add_argument("--data", type=Path, required=True, help="Pipeline data.json")
     p.add_argument("--out", type=Path, required=True, help="Reels output directory")
+    p.add_argument(
+        "--bgm",
+        type=Path,
+        default=None,
+        help="Optional background music file. Defaults to HOWZERO_REELS_BGM_PATH, then synthetic BGM.",
+    )
     return p
 
 
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
+    env_bgm_path = os.environ.get("HOWZERO_REELS_BGM_PATH")
+    bgm_path = args.bgm or (Path(env_bgm_path) if env_bgm_path else None)
+    if bgm_path is not None and not bgm_path.exists():
+        print(f"[content-reels] background music not found: {bgm_path}", file=sys.stderr)
+        return 4
 
     src = json.loads(args.data.read_text(encoding="utf-8"))
     remotion_data = map_to_remotion_schema(src)
@@ -52,7 +67,15 @@ def main(argv: list[str] | None = None) -> int:
     if rc != 0:
         return rc
 
+    audio_mapped = args.out / REEL_AUDIO_MAPPED_OUTPUT_NAME
+    ig_safe = args.out / REEL_AUDIO_MAPPED_IG_SAFE_OUTPUT_NAME
+    rc = ffmpeg_make_audio_mapped_reels(trimmed, audio_mapped, ig_safe, music_path=bgm_path)
+    if rc != 0:
+        return rc
+
     print(f"[content-reels] final → {trimmed}", file=sys.stderr)
+    print(f"[content-reels] audio mapped → {audio_mapped}", file=sys.stderr)
+    print(f"[content-reels] instagram safe → {ig_safe}", file=sys.stderr)
     return 0
 
 

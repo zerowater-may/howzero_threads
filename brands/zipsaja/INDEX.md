@@ -22,9 +22,9 @@
 | **가양동 분석** | [gayang](./zipsaja_carousel_gayang/) | [gayang](./zipsaja_reels_gayang/) (main) | — |
 | **10년 예적금 vs 집** | [10y-ago](./zipsaja_carousel_10y-ago/) | — | 1.45억 격차 |
 
-## 🏗 파이프라인 번들 (전체 16개)
+## 🏗 파이프라인 번들 (전체 19개)
 
-신규 표준(zipsaja-remotion-v1). 위 "시리즈별 자료"는 매칭 시리즈 위주 view이고, 아래가 전체 인벤토리다. 실 완성 **15개** + E2E 테스트 스캐폴드 **1개**. 주제 클러스터·수치 합성은 [[Zipsaja Index]] / [[Zipsaja Data Findings]].
+신규 표준(zipsaja-remotion-v1). 위 "시리즈별 자료"는 매칭 시리즈 위주 view이고, 아래가 전체 인벤토리다. 실 완성 **18개** + E2E 테스트 스캐폴드 **1개**. 주제 클러스터·수치 합성은 [[Zipsaja Index]] / [[Zipsaja Data Findings]].
 
 **A. 강남↔동북권/용산광진 지역 격차** — ⚠️ 아래 4개 + E클러스터 `만기폭탄` = 동일 (A) 25개 구 dataset 공유(훅만 변경)
 - [강남빼고다오른서울집값](./zipsaja_pipeline_강남빼고다오른서울집값/) · [강남은빠지고용산광진이오른이유](./zipsaja_pipeline_강남은빠지고용산광진이오른이유/) · [용산광진-급등에-첫집-현금격차-5억-벌어짐](./zipsaja_pipeline_용산광진-급등에-첫집-현금격차-5억-벌어짐/) · [대출은-막혔는데-서울은-더-올라버린-구](./zipsaja_pipeline_대출은-막혔는데-서울은-더-올라버린-구/)
@@ -40,6 +40,15 @@
 
 **E. 만기폭탄/통계 착시**
 - [집주인-1만2천건-만기폭탄-첫집러-기회냐-함정이냐](./zipsaja_pipeline_집주인-1만2천건-만기폭탄-첫집러-기회냐-함정이냐/) · [집값-내려갔다고-같은집은-23퍼-올랐다](./zipsaja_pipeline_집값-내려갔다고-같은집은-23퍼-올랐다-20260504/)
+
+**F. 신축 vs 구축 / 예산 트레이드오프**
+- [5억-서울-신축은-단-4곳-나머지는-다-구축](./zipsaja_pipeline_5억-서울-신축은-단-4곳-나머지는-다-구축/) — 🟢 **게시완료(2026-06-11)** IG carousel `6a2a2d03893fa31c7d85ef27` · Threads [DZbkp9siD2-](https://www.threads.com/@zipsaja_/post/DZbkp9siD2-). 5억대 매매 2,115건 중 신축 0.8%(4곳), 결국 구축. 영끌 신축 vs 구축 입성 댓글싸움
+
+**G. 반도체 셔세권 / 직군 타겟 (네이버 실거래)**
+- [하이닉스-성과급-11억-셔세권-vs-이천본진-4억](./zipsaja_pipeline_하이닉스-성과급-11억-셔세권-vs-이천본진-4억/) — 🟢 **게시완료(2026-06-11)** IG [릴스](https://www.instagram.com/reel/DZce_gska_t/)·[캐러셀](https://www.instagram.com/p/DZcfMMdl-ko/) · [Threads](https://www.threads.com/@zipsaja_/post/DZcfYR_Dhxm). 성과급 11억으로 동탄역 국평(14.7억)도 못 가는데 하이닉스 본진 이천은 4.1억. 셔세권 프리미엄 vs 본진 가성비 + 반도체 직군 태그 유도. **경기 데이터는 proptech에 없어 네이버 실거래 스크래핑으로 수집**
+
+**H. 정권별 비교 / 시계열 (proptech 실거래 매칭)**
+- [역대정부-취임1년-서울집값-실거래-문재인1위-윤석열꼴찌](./zipsaja_pipeline_역대정부-취임1년-서울집값-실거래-문재인1위-윤석열꼴찌/) — 🟢 **게시완료(2026-06-11)** IG [릴스](https://www.instagram.com/reel/DZci2TTDCFX/)·[캐러셀](https://www.instagram.com/p/DZcjCsnjlIZ/) · [Threads](https://www.threads.com/@zipsaja_/post/DZcjQhMiId5). 역대 대통령 취임 1년 서울 아파트 변동률(동일단지·평형 매칭): 문재인 +16.9%(1위)·이재명 +14.8%·윤석열 -17.1%(꼴찌). 노무현은 데이터 2006~라 제외. 정권 부동산 책임론 댓글싸움. 릴스 = 막대그래프 데이터 영상
 
 **테스트** — [이재명-대통령-당선후-서울-실거래-E2E-검증](./zipsaja_pipeline_이재명-대통령-당선후-서울-실거래-E2E-검증/) (E2E 스모크 테스트 출력 경로, 빈 폴더 보존. 기록: `docs/superpowers/plans/2026-04-24-pipeline-full-orchestration.md` Task 14)
 

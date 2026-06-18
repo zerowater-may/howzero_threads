@@ -45,10 +45,51 @@
 </style>
 
 <style>
-  .cover-hero { padding: 200px 80px 0; }
-  .cover-hero h1 { font-family: var(--ff-headline); font-size: 120px; line-height: 1.05; margin: 0 0 24px; letter-spacing: -2px; }
-  .cover-hero .sub { font-family: var(--ff-body); font-weight: 700; font-size: 44px; color: var(--fg-2); }
-  .cover-mascot { position: absolute; right: 60px; bottom: 220px; width: 280px; }
+  /* Cover — 옛 손작업 톤: 손글씨 eyebrow + 인라인 pill + 크림 box stamp + 마스코트 정착 */
+  .cv-wrap { padding: 60px 80px 0; }
+
+  .cv-eyebrow {
+    font-family: var(--ff-hand); font-weight: 700;
+    font-size: 40px; color: var(--fg-3);
+    margin: 60px 0 18px;
+  }
+
+  .cv-headline {
+    font-family: var(--ff-headline);
+    font-size: 110px; line-height: 1.1;
+    letter-spacing: -2px;
+    margin: 0 0 32px;
+    max-width: 720px;
+  }
+  .cv-headline .zs-pill {
+    font-size: 110px;
+    padding: 4px 28px 12px;
+    line-height: 1.1;
+    white-space: nowrap;
+  }
+
+  .cv-arrow {
+    font-family: var(--ff-headline);
+    font-size: 64px; line-height: 1.1;
+    margin: 0 0 40px;
+  }
+
+  .cv-subnote {
+    display: inline-block;
+    background: var(--zs-cream);
+    border: 3px solid var(--zs-ink);
+    border-radius: 16px;
+    box-shadow: 4px 4px 0 0 var(--zs-ink);
+    padding: 18px 32px;
+    font-family: var(--ff-headline);
+    font-size: 34px;
+  }
+
+  .cv-mascot {
+    position: absolute;
+    right: 50px; bottom: 180px;
+    width: 320px; height: 320px;
+  }
 </style>
 
 </head>
@@ -56,11 +97,19 @@
 <section class="zs-slide" data-screen-label="01 cover">
   <div class="zs-num">01</div>
   
-<div class="cover-hero">
-  <h1>10년간 서울</h1>
-  <p class="sub">어디가 제일 올랐을까?</p>
+<div class="cv-wrap">
+  <div class="cv-eyebrow">데이터로 본 부동산 10년</div>
+
+  <h1 class="cv-headline">10년간 서울<br><span class="zs-pill">어디가 올랐나?</span></h1>
+
+  <div class="cv-arrow">→</div>
+
+  
+    <div class="cv-subnote">실거래 238만건 · 25개 구 비교</div>
+  
 </div>
-<img src="/Users/zerowater/Dropbox/zerowater/howzero/.claude/skills/zipsaja-design/assets/mascots/mascot-hero.png" class="cover-mascot" alt="">
+
+<img src="/Users/zerowater/Dropbox/zerowater/howzero/.claude/skills/zipsaja-design/assets/mascots/mascot-hero.png" class="cv-mascot" alt="">
 
   <div class="zs-foot">
     <div class="handle"><b>@zipsaja · 서울 300세대+ 1,377단지 · 활성 매물 42,048건 · 2026-04-23 기준</b></div>

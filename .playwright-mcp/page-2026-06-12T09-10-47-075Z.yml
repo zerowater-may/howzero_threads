@@ -1,0 +1,452 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - button "페이지 최상단으로" [ref=e4]:
+        - generic [ref=e6]: 용감한 용팀장
+      - navigation "용팀장 랜딩 전환" [ref=e7]:
+        - link "AI 셀링 강의" [ref=e8] [cursor=pointer]:
+          - /url: /
+        - link "8월 통관 특강" [ref=e9] [cursor=pointer]:
+          - /url: /815
+      - generic [ref=e10]:
+        - button "다크 모드로 전환" [ref=e11]:
+          - img [ref=e12]
+        - button "지금 신청" [ref=e14]:
+          - img [ref=e15]
+          - text: 지금 신청
+  - main [ref=e17]:
+    - generic [ref=e19]:
+      - generic [ref=e20]:
+        - generic [ref=e21]: 6/21(일) 온라인 라이브
+        - generic [ref=e22]: 단 1회 진행
+        - generic [ref=e23]: 8월 데드라인
+      - paragraph [ref=e24]: 대기업 공인인증서 담당 출신이 알려드립니다
+      - heading "구매대행 셀러 계속 하려면 ‘사업자 인증서’. 그거, 지금 못 만드시잖아요." [level=1] [ref=e25]:
+        - text: 구매대행 셀러 계속 하려면 ‘사업자 인증서’.
+        - text: 그거, 지금 못 만드시잖아요.
+      - paragraph [ref=e26]: 8월부터는 관세청 유니패스에 업체 등록(통관고유부호)이 안 된 사업자는 수입신고 자체가 안 됩니다. 그 등록에 꼭 필요한 게 사업자 인증서 — 없으면 구매대행을 못 합니다.
+      - paragraph [ref=e27]: 사업자 인증서는 통장이 있어야 나옵니다. 그런데 통장은 한 달에 하나, 사업자는 여러 개죠. 사업자 10개, 어떻게 만드시겠어요?
+      - paragraph [ref=e28]: 통장 한 개도 더 안 만들고 인증서까지 만드는, 지금 되는 방법입니다. 언제 막힐지 모릅니다 — 6/21 라이브 단 1회로 배우고, 다음 날 바로 발급받으세요.
+      - generic [ref=e29]:
+        - button "6/21 라이브 자리 잡기" [ref=e30]:
+          - img [ref=e31]
+          - text: 6/21 라이브 자리 잡기
+        - generic [ref=e33]: 6/20(토) 결제 마감 — 단 1회 라이브, 지나면 신청이 닫힙니다
+        - generic [ref=e37]:
+          - generic [ref=e38]: 결제 마감까지
+          - generic [ref=e39]: D-8
+          - generic [ref=e40]: ·
+          - generic [ref=e41]: 05:49:12
+        - paragraph [ref=e42]: 209,000원 (부가세 포함) · 결제선생 안전결제
+      - generic [ref=e43]:
+        - generic [ref=e44]:
+          - img "용감한 용팀장 — 현직 구매대행 셀러" [ref=e45]
+          - generic [ref=e46]:
+            - generic [ref=e47]: 대기업 공인인증서 담당 출신
+            - generic [ref=e48]: 지금도 직접 올리는 현직 셀러
+        - paragraph [ref=e49]: 겁주려고 만든 페이지가 아닙니다. 현직 셀러가 제 사업자 등록하면서 만든 페이지입니다.
+      - paragraph [ref=e50]: 지금 다른 셀러들이 어떤 상황인지, 30초만 보세요 ↓
+    - generic [ref=e52]:
+      - generic [ref=e53]: 가상 시나리오
+      - heading "지금 셀러들 사이 공기, 대충 이렇습니다." [level=2] [ref=e54]
+      - paragraph [ref=e55]: 특정 대화를 옮긴 게 아니라, 8월 등록을 앞둔 셀러들이 겪는 상황을 가상의 대화로 재구성한 장면입니다. 그런데 어딘가 익숙할 겁니다.
+      - generic [ref=e56]:
+        - generic [ref=e57]:
+          - generic [ref=e58]: 사장님 1
+          - paragraph [ref=e60]: 8월 전에 등록 못 끝내면 수입이 멈춘다는데, 어디서부터 손대야 할지 모르겠네요
+        - generic [ref=e61]:
+          - generic [ref=e62]: 사장님 2
+          - paragraph [ref=e64]: 사업자 수만큼 인증서가 필요하다는 얘길 오늘 처음 들었어요. 저 사업자 여러 개인데…
+        - generic [ref=e65]:
+          - generic [ref=e66]: 사장님 3
+          - paragraph [ref=e68]: 주거래 은행 다녀왔는데 요즘은 신규 계좌 자체를 잘 안 내준다고 하더라고요
+        - generic [ref=e69]:
+          - generic [ref=e70]: 사장님 4
+          - paragraph [ref=e72]: 어떤 분은 된다고 하고 어떤 분은 안 된다고 하고… 정확히 아는 사람이 없어요
+        - generic [ref=e73]:
+          - generic [ref=e74]: 사장님 5
+          - paragraph [ref=e76]: 인증서 비용 알아봤더니 사업자 수만큼 곱해지고, 내년에 또 내야 한다네요
+        - generic [ref=e77]:
+          - generic [ref=e78]: 사장님 6
+          - paragraph [ref=e80]: 다음 달에 물량 들어올 게 있어서 더 불안합니다. 시간이 부족해요
+        - generic [ref=e81]:
+          - generic [ref=e82]: 사장님 7
+          - generic [ref=e83]:
+            - paragraph [ref=e84]: 좀 더 상황 보고 움직여도 되지 않을까요?
+            - paragraph [ref=e86]:
+              - img [ref=e87]
+              - text: 제일 위험한 답
+      - generic [ref=e90]:
+        - paragraph [ref=e91]: 공통점이 하나 있죠 — 정확히 아는 사람이 없다는 것. 그래서 다들 멈춰 있습니다. 멈춰 있는 동안 8월은 옵니다.
+        - paragraph [ref=e92]: 6/21 밤, 이 막막함 전부에 답을 드립니다. 인증서에 매년 돈 쓸 필요가 없는 경로까지 — 대기업에서 공인인증서를 만들던 사람이 순서대로 보여드립니다.
+    - generic [ref=e94]:
+      - generic [ref=e95]: SELF CHECK
+      - heading "하나라도 해당되면, 8월, 당신 차례입니다." [level=2] [ref=e96]
+      - generic [ref=e97]:
+        - generic [ref=e98]:
+          - generic [ref=e99]: ✓
+          - paragraph [ref=e101]: 구매대행 사업자가 1개라도 있다
+          - generic [ref=e102]: 대상
+        - generic [ref=e103]:
+          - generic [ref=e104]: ✓
+          - paragraph [ref=e106]: 사업자가 5개, 10개, 30개다
+          - generic [ref=e107]: 전부 각각 대상
+        - generic [ref=e108]:
+          - generic [ref=e109]: ✓
+          - paragraph [ref=e111]: 배대지·위탁·중개로 해외 물건을 들여온다
+          - generic [ref=e112]: 대상
+        - generic [ref=e113]:
+          - generic [ref=e114]: ✓
+          - generic [ref=e115]:
+            - paragraph [ref=e116]: 예전에 구매대행 등록 다 해놨다
+            - paragraph [ref=e117]: ‘예전에 했으니 괜찮다’가 제일 위험합니다.
+          - generic [ref=e118]: 재등록 대상
+      - paragraph [ref=e119]: 체크했다면 다음 질문은 하나죠 — ‘그럼 통장 또 만들어야 하나?’ 그 질문의 답이 오늘 페이지의 전부입니다. 계속 내려보세요.
+    - generic [ref=e121]:
+      - generic [ref=e122]: D+1 SIMULATION
+      - heading "준비 안 하면, 8월, 당신의 아침은 이렇게 시작됩니다." [level=2] [ref=e123]
+      - generic [ref=e124]:
+        - generic [ref=e125]:
+          - generic [ref=e126]: 07:32
+          - generic [ref=e127]:
+            - paragraph [ref=e128]: 배대지 알림
+            - paragraph [ref=e129]: 통관 보류 — 통관고유부호 미기재
+            - paragraph [ref=e130]: "배대지: 해외 물건을 받아 한국으로 부쳐주는 대행 창고. 멈추는 곳이 여기입니다."
+        - generic [ref=e131]:
+          - generic [ref=e132]: 09:10
+          - generic [ref=e133]:
+            - paragraph [ref=e134]: 스토어 문의 7건
+            - paragraph [ref=e135]: “배송 언제 되나요?”
+            - paragraph [ref=e136]: 답할 말이 없습니다. 통관고유부호는 하루 만에 안 나옵니다.
+        - generic [ref=e137]:
+          - generic [ref=e138]: 13:00
+          - generic [ref=e139]:
+            - paragraph [ref=e140]: 첫 환불 요청
+            - paragraph [ref=e141]: 구매대행은 현지 결제가 이미 끝난 구조 — 환불은 곧 내 돈이 나가는 겁니다.
+        - generic [ref=e142]:
+          - generic [ref=e143]: 17:45
+          - generic [ref=e144]:
+            - paragraph [ref=e145]: 배송지연 누적 — 판매자 점수 하락
+            - paragraph [ref=e146]: 노출이 줄고, 최악은 판매 제한입니다.
+      - paragraph [ref=e147]: 과장 같습니까? 저 네 줄에서 제가 지어낸 건 시각뿐입니다. 저도 구매대행을 직접 돌리는 사람이라 압니다.
+      - generic [ref=e148]:
+        - paragraph [ref=e149]: 그래서 오늘 할 일 — 지금 UNI-PASS(관세청 전자통관 사이트)에서 내 통관고유부호가 있는지 조회하세요. 무료고, 1분입니다. 없다면, 아래를 계속 읽으셔야 합니다.
+        - link "UNI-PASS 바로가기 ↗" [ref=e150] [cursor=pointer]:
+          - /url: https://unipass.customs.go.kr
+    - generic [ref=e152]:
+      - generic [ref=e153]: 풀리지 않는 세 가지
+      - heading "당신을 멈추게 한 건 8월이 아니라, 풀리지 않는 이 세 가지입니다." [level=2] [ref=e154]
+      - paragraph [ref=e155]: 구매대행 사장님들 단톡방이 멈춘 이유가 이 셋입니다. 하나씩 보세요 — 지금 당신도 여기 막혀 있을 겁니다.
+      - generic [ref=e156]:
+        - generic [ref=e157]:
+          - generic [ref=e158]: "01"
+          - paragraph [ref=e159]: 통장은 한 달에 하나, 사업자는 10개.
+          - paragraph [ref=e161]:
+            - generic [ref=e162]: Q
+            - text: 이 산수, 어떻게 푸시겠어요?
+        - generic [ref=e163]:
+          - generic [ref=e164]: "02"
+          - paragraph [ref=e165]: 통장이 없으면 인증서도 없고, 인증서가 없으면 구매대행도 못 합니다.
+          - paragraph [ref=e167]:
+            - generic [ref=e168]: Q
+            - text: 이 고리, 어디서 끊으시겠어요?
+        - generic [ref=e169]:
+          - generic [ref=e170]: "03"
+          - paragraph [ref=e171]: 급해서 창구로 달려가면 — “20영업일 뒤에 오세요.”
+          - paragraph [ref=e173]:
+            - generic [ref=e174]: Q
+            - text: 이 줄에 안 서는 방법이 따로 있습니다.
+      - paragraph [ref=e175]: 셋 다 빠져나가는 길이 있습니다. 단, 순서를 알아야 합니다. 그 순서가 6/21입니다.
+    - generic [ref=e177]:
+      - generic [ref=e178]: HOW IT WORKS
+      - heading "등록까지 가는 길은 4칸. 막히는 칸은 하나뿐입니다." [level=2] [ref=e179]
+      - generic [ref=e180]:
+        - generic [ref=e181]:
+          - text: STEP 1
+          - paragraph [ref=e182]: ●●● ●●●● ●●
+          - paragraph [ref=e183]: 🔒 비공개 — 라이브에서 공개
+          - generic [ref=e184]: →
+        - generic [ref=e185]:
+          - text: STEP 2
+          - paragraph [ref=e186]: ●●● ●●●● ●●
+          - paragraph [ref=e187]: 🔒 비공개 — 라이브에서 공개
+          - generic [ref=e188]: →
+        - generic [ref=e189]:
+          - text: STEP 3
+          - paragraph [ref=e190]: 🔒 여기서 전부 막힘
+          - paragraph [ref=e191]: 남들은 이 칸에서 한 달을 날립니다.
+          - generic [ref=e192]: →
+        - generic [ref=e193]:
+          - text: STEP 4
+          - paragraph [ref=e194]: ●●● ●●●● ●●
+          - paragraph [ref=e195]: 🔒 비공개 — 라이브에서 공개
+      - paragraph [ref=e196]: 남들은 이 한 칸에서 새 통장을 만들려다 한 달을 날립니다. 우리는 이 칸을 ‘다른 순서’로 통과합니다 — 공인인증서를 일로 다루던 사람이라 아는 순서고, 그 순서가 6/21의 전부입니다.
+      - generic [ref=e197]:
+        - paragraph [ref=e198]: 유료로 가면 — 사업자 5개 연 10만 / 20개 연 40만 / 30개 연 60만 원, 매년.
+        - paragraph [ref=e199]:
+          - text: 오늘 방법이면
+          - generic [ref=e201]:
+            - text: 0원
+            - img
+      - paragraph [ref=e202]: 단, 은행·지점·비대면 정책마다 되고 안 되고가 갈립니다. 되는 경로와 막혔을 때 빠지는 우회로까지가 6/21 내용입니다.
+      - paragraph [ref=e203]: 정확성 3원칙 — ① ‘무조건 된다’는 없다 ② 막혀도 빠질 길이 있다 ③ 화면 그대로, 안 되는 건 안 된다고 말합니다
+    - generic [ref=e205]:
+      - generic [ref=e206]: WHO
+      - heading "대기업 공인인증서 담당 출신, 현직 구매대행 셀러입니다." [level=2] [ref=e207]
+      - generic [ref=e208]:
+        - generic [ref=e209]:
+          - img "용감한 용팀장 — 현직 구매대행·글로벌위탁 셀러" [ref=e210]
+          - generic [ref=e211]:
+            - generic [ref=e212]: 용감한 용팀장
+            - generic [ref=e213]: 대기업 공인인증서 담당 출신 · 현직 구매대행·글로벌위탁 셀러
+        - generic [ref=e214]:
+          - generic [ref=e215]:
+            - paragraph [ref=e216]: 대기업에서 공인인증서를 일로 다루던 사람입니다. 인증서가 어떤 순서로 나오고, 어디서 막히는지 업무로 겪어봤습니다.
+            - paragraph [ref=e217]: 강의가 본업이 아닙니다. 지금도 구매대행·글로벌위탁을 직접 돌립니다. 8월은 남 일이 아니라 제 일이고, 제 사업자부터 이 방법으로 등록합니다.
+            - paragraph [ref=e218]: 혼자 상품 1만 개를 직접 올려봤습니다. 직장 다니면서, 애 재우고 올리던 시절도 있었습니다. 여러분이 지금 서 있는 자리에서 출발했다는 뜻입니다.
+            - paragraph [ref=e219]: 올해 서울 강남에서 AI셀링 실전반 1기를 오프라인으로 열었고, 강의가 끝나도 스터디로 같이 갑니다. 한 번 팔고 사라지는 장사는 안 합니다.
+          - generic [ref=e220]:
+            - generic [ref=e221]: 대기업 공인인증서 담당 출신
+            - generic [ref=e222]: 지금도 직접 올리는 현직 셀러
+            - generic [ref=e223]: 혼자 1만 개 등록
+            - generic [ref=e224]: 실전반 1기 + 스터디 운영
+      - generic [ref=e225]:
+        - figure "강남 오프라인 실전반 현장" [ref=e226]:
+          - img "용팀장 강남 오프라인 실전반 강의실 현장" [ref=e227]
+          - generic [ref=e228]: 강남 오프라인 실전반 현장
+        - figure "1기 수료 단체사진" [ref=e229]:
+          - img "AI셀링 실전반 1기 수료 단체사진" [ref=e230]
+          - generic [ref=e231]: 1기 수료 단체사진
+        - figure "강의 끝나고도 같이 가는 스터디" [ref=e232]:
+          - img "강의가 끝난 뒤에도 이어지는 스터디 — 수강생들의 손모음" [ref=e233]
+          - generic [ref=e234]: 강의 끝나고도 같이 가는 스터디
+        - figure "노트북 펴고 같이 고치는 자리" [ref=e235]:
+          - img "노트북을 펴고 둘러앉아 같이 고치는 스터디 자리" [ref=e236]
+          - generic [ref=e237]: 노트북 펴고 같이 고치는 자리
+    - generic [ref=e239]:
+      - generic [ref=e240]: WHAT YOU GET
+      - heading "6월 21일 밤 10시, 당신 손에 남는 9가지." [level=2] [ref=e241]
+      - paragraph [ref=e242]: 발급 전 서류 준비부터 발급 후 매년 갱신까지 — 강의 ‘시청’이 아니라, 8월 전에 끝내는 ‘준비 상태’를 가져가는 자리입니다.
+      - generic [ref=e243]:
+        - generic [ref=e244]:
+          - generic [ref=e245]: ☑
+          - heading "내 사업자가 8월 등록 대상인지 1분 판별 기준" [level=3] [ref=e247]
+        - generic [ref=e248]:
+          - generic [ref=e249]: ☑
+          - generic [ref=e250]:
+            - heading "발급 전 준비서류, 사업자별로 빠짐없이 체크" [level=3] [ref=e251]
+            - paragraph [ref=e252]: 신청 전에 갖춰야 할 것부터
+        - generic [ref=e253]:
+          - generic [ref=e254]: ☑
+          - generic [ref=e255]:
+            - heading "사업자 10개도 통장 추가 없이 인증서까지 끝내는 ‘경로’" [level=3] [ref=e256]
+            - paragraph [ref=e257]: 은행 문의 멘트 포함
+        - generic [ref=e258]:
+          - generic [ref=e259]: ☑
+          - generic [ref=e260]:
+            - heading "은행에서 막혀도 빠져나가는 우회로 3종" [level=3] [ref=e261]
+            - paragraph [ref=e262]: 정체는 라이브에서
+        - generic [ref=e263]:
+          - generic [ref=e264]: ☑
+          - generic [ref=e265]:
+            - heading "신청부터 발급까지 업무 순서 그대로" [level=3] [ref=e266]
+            - paragraph [ref=e267]: 대기업 공인인증서 담당이 일하던 순서
+        - generic [ref=e268]:
+          - generic [ref=e269]: ☑
+          - generic [ref=e270]:
+            - heading "UNI-PASS 통관고유부호 발급 5단계" [level=3] [ref=e271]
+            - paragraph [ref=e272]: 관세청 사이트 화면 그대로 따라하기
+        - generic [ref=e273]:
+          - generic [ref=e274]: ☑
+          - generic [ref=e275]:
+            - heading "사업자 여러 개 대량 처리 순서" [level=3] [ref=e276]
+            - paragraph [ref=e277]: 수십 개도 하루에 끝내는 동선
+        - generic [ref=e278]:
+          - generic [ref=e279]: ☑
+          - generic [ref=e280]:
+            - heading "발급 후 매년 갱신·사후관리 루틴까지" [level=3] [ref=e281]
+            - paragraph [ref=e282]: 한 번 배우면 매년 당신 것
+        - generic [ref=e283]:
+          - generic [ref=e284]: ☑
+          - heading "8월 전 최종 점검 체크리스트" [level=3] [ref=e286]
+      - paragraph [ref=e287]: 용어 몰라도 됩니다. 통관고유부호·UNI-PASS·공동인증서, 나올 때마다 한 줄씩 풀고 갑니다. 막히면 그 자리에서 질문하세요 — 그게 라이브로 하는 이유입니다.
+    - generic [ref=e289]:
+      - generic [ref=e290]: DEADLINE
+      - heading "8월에서 거꾸로 세면, 오늘이 제일 싼 날입니다." [level=2] [ref=e291]
+      - paragraph [ref=e292]: 라이브 단 1회 — 같은 자리는 다시 없습니다. 6/20 결제 마감이 지나면 신청 자체가 닫힙니다.
+      - generic [ref=e293]:
+        - generic [ref=e294]: 결제 마감
+        - generic [ref=e295]:
+          - generic [ref=e296]: 결제 마감까지
+          - generic [ref=e297]: D-8
+          - generic [ref=e298]: ·
+          - generic [ref=e299]: 05:49:12
+      - generic [ref=e300]:
+        - generic [ref=e301]: ← 오늘 (잃는 것 없음)
+        - generic [ref=e302]: 8월 (매출 정지) →
+      - list [ref=e303]:
+        - listitem [ref=e304]:
+          - generic [ref=e308]: 오늘
+          - paragraph [ref=e309]: 잃는 것 없음
+        - listitem [ref=e310]:
+          - generic [ref=e314]: 6/20
+          - paragraph [ref=e315]: 결제 마감 — 신청 자체가 닫힘
+        - listitem [ref=e316]:
+          - generic [ref=e320]: 6/21
+          - paragraph [ref=e321]: 라이브 단 1회 — Q&A 기회 끝
+        - listitem [ref=e322]:
+          - paragraph [ref=e324]:
+            - img [ref=e325]
+            - text: 여기부터 도박
+          - generic [ref=e331]: 7월
+          - paragraph [ref=e332]: 발급·처리 구간 — 은행 한 번만 꼬여도 빠듯
+        - listitem [ref=e333]:
+          - generic [ref=e337]: 8월
+          - paragraph [ref=e338]: 통관 정지 = 매출 정지
+      - paragraph [ref=e340]: 7월에 혼자 시작하면 은행 한 번만 꼬여도 데드라인을 넘깁니다. 오늘 할 일은 둘 중 하나 — 결제하거나, 최소한 6/20 알람이라도 맞추세요. 아무것도 안 하는 게 제일 비쌉니다.
+    - generic [ref=e342]:
+      - generic [ref=e343]: WHY NOW
+      - heading "지금은 됩니다. 문제는, 언제까지 될지 아무도 모른다는 겁니다." [level=2] [ref=e344]
+      - generic [ref=e345]:
+        - paragraph [ref=e346]: 이 방법은 은행 정책에 기대는 길입니다. 은행 정책은 예고 없이 바뀔 수 있고, 사람이 몰리면 조여지기도 합니다.
+        - paragraph [ref=e347]: ‘곧 막힌다’고 단정하지는 않겠습니다 — 그건 아무도 모릅니다. 다만 확실한 건 하나, 지금은 된다는 것뿐입니다.
+        - paragraph [ref=e348]: 되는 지금이 가장 확실합니다. 오늘 배우고, 내일 바로 발급받으세요.
+    - generic [ref=e350]:
+      - generic [ref=e351]: PRICE
+      - heading "‘20만 원, 비싸다’ — 좋습니다. 안 들었을 때 값과 비교해 보죠." [level=2] [ref=e352]
+      - generic [ref=e353]:
+        - generic [ref=e354]:
+          - paragraph [ref=e355]: 안 듣고 혼자 하면
+          - list [ref=e356]:
+            - listitem [ref=e357]:
+              - generic [ref=e358]: ✕
+              - generic [ref=e359]:
+                - paragraph [ref=e360]: 유료 인증서로 매년 — 사업자 20개면 연 400,000원
+                - paragraph [ref=e361]: 한 번이 아니라 매년 반복됩니다 ↻
+            - listitem [ref=e362]:
+              - generic [ref=e363]: ✕
+              - generic [ref=e364]:
+                - paragraph [ref=e365]: 혼자 헤매는 한 달
+                - paragraph [ref=e366]: 은행 왔다갔다, 급하면 창구에서 “20영업일 뒤에 오세요”
+            - listitem [ref=e367]:
+              - generic [ref=e368]: ✕
+              - generic [ref=e369]:
+                - paragraph [ref=e370]: 8월, 통관 정지 = 매출 정지
+                - paragraph [ref=e371]: 등록 없이는 수입신고 자체가 안 됩니다
+            - listitem [ref=e372]:
+              - generic [ref=e373]: ✕
+              - generic [ref=e374]:
+                - paragraph [ref=e375]: 환불은 곧 내 돈
+                - paragraph [ref=e376]: 구매대행은 현지 결제가 이미 끝난 구조입니다
+            - listitem [ref=e377]:
+              - generic [ref=e378]: ✕
+              - generic [ref=e379]:
+                - paragraph [ref=e380]: 배송지연 누적 → 판매자 점수 하락
+                - paragraph [ref=e381]: 노출이 줄고, 최악은 판매 제한입니다
+        - generic [ref=e382]:
+          - paragraph [ref=e383]: 이 특강 1회
+          - paragraph [ref=e384]:
+            - generic [ref=e385]:
+              - text: 209,000원
+              - img
+            - text: (부가세 포함)
+          - list [ref=e386]:
+            - listitem [ref=e387]:
+              - generic [ref=e388]: ✓
+              - paragraph [ref=e389]: 통장 추가 없이 인증서까지 끝내는 경로
+            - listitem [ref=e390]:
+              - generic [ref=e391]: ✓
+              - paragraph [ref=e392]: 막히면 그 자리에서 바로 Q&A
+            - listitem [ref=e393]:
+              - generic [ref=e394]: ✓
+              - paragraph [ref=e395]: 발급 후 매년 갱신 루틴까지 — 한 번 배우면 계속 당신 것
+      - paragraph [ref=e396]: 왼쪽 다섯 줄 중 하나만 겪어도 209,000원보다 비쌉니다. 특강이 비싼 게 아니라, 안 듣고 치르는 값이 비쌉니다.
+      - generic [ref=e397]:
+        - button "6/21 라이브 자리 잡기" [ref=e398]:
+          - img [ref=e399]
+          - text: 6/21 라이브 자리 잡기
+        - paragraph [ref=e401]:
+          - img "용감한 용팀장 프로필" [ref=e402]
+          - text: 대기업 공인인증서 담당 출신 · 현직 셀러가 직접 진행
+        - generic [ref=e403]:
+          - generic [ref=e404]: 결제 마감까지
+          - generic [ref=e405]: D-8
+          - generic [ref=e406]: ·
+          - generic [ref=e407]: 05:49:12
+        - paragraph [ref=e408]: 환불 정책은 결제 전 카톡으로 안내드립니다.
+      - generic [ref=e409]:
+        - generic [ref=e410]:
+          - generic [ref=e411]:
+            - text: "1"
+            - paragraph [ref=e412]: 결제선생으로 결제
+          - generic [ref=e413]:
+            - text: "2"
+            - paragraph [ref=e414]: 결제 확인
+          - generic [ref=e415]:
+            - text: "3"
+            - paragraph [ref=e416]: 카톡 오픈채팅 입장 (결제자 전용)
+          - generic [ref=e417]:
+            - text: "4"
+            - paragraph [ref=e418]: 6/21(일) 밤 8시 라이브
+        - paragraph [ref=e419]: 방에서는 6/21까지 제가 직접 챙깁니다 — 실전반 1기 때도 그렇게 했습니다.
+    - generic [ref=e421]:
+      - generic [ref=e422]: FAQ
+      - heading "결제 전에 보는 질문들." [level=2] [ref=e423]
+      - generic [ref=e424]:
+        - group [ref=e425]:
+          - generic "통관고유부호가 정확히 뭔가요? +" [ref=e426] [cursor=pointer]:
+            - text: 통관고유부호가 정확히 뭔가요?
+            - generic [ref=e427]: +
+        - group [ref=e428]:
+          - generic "통관 한 번도 안 해본 왕초보인데 따라갈 수 있나요? +" [ref=e429] [cursor=pointer]:
+            - text: 통관 한 번도 안 해본 왕초보인데 따라갈 수 있나요?
+            - generic [ref=e430]: +
+        - group [ref=e431]:
+          - generic "법인사업자도 개인계좌로 되나요? +" [ref=e432] [cursor=pointer]:
+            - text: 법인사업자도 개인계좌로 되나요?
+            - generic [ref=e433]: +
+        - group [ref=e434]:
+          - generic "기존에 등록했는데 또 해야 하나요? +" [ref=e435] [cursor=pointer]:
+            - text: 기존에 등록했는데 또 해야 하나요?
+            - generic [ref=e436]: +
+        - group [ref=e437]:
+          - generic "통장을 진짜 하나도 안 만들어도 되나요? +" [ref=e438] [cursor=pointer]:
+            - text: 통장을 진짜 하나도 안 만들어도 되나요?
+            - generic [ref=e439]: +
+        - group [ref=e440]:
+          - generic "당일 라이브에 못 들어가면요? +" [ref=e441] [cursor=pointer]:
+            - text: 당일 라이브에 못 들어가면요?
+            - generic [ref=e442]: +
+    - generic [ref=e444]:
+      - heading "8월, 그 아침 알림이 ‘통관 보류’일지 ‘발송 완료’일지는, 6월의 당신이 정합니다." [level=2] [ref=e445]
+      - generic [ref=e446]:
+        - generic [ref=e447]:
+          - paragraph [ref=e448]: 성과를 보장한다는 말은 안 합니다. 은행별로 다른 부분은 다르다고 그대로 말씀드립니다.
+          - paragraph [ref=e449]: 겁만 주고 사라지지도 않습니다. 오늘 무료로 할 일(통관고유부호 조회)은 이미 드렸습니다. 그 다음 단계를 6월 21일 밤에 끝내고 싶으면, 지금 자리를 잡으세요.
+          - paragraph [ref=e450]: 지금 되는 방법을 알려드립니다. 언제 막힐지는 아무도 모릅니다 — 배우고, 당장 인증서부터 받으세요.
+          - paragraph [ref=e451]: 약속은 하나 — 6/21 밤, ‘내일 뭘 해야 하는지’ 모르는 채로 끝나는 일은 없습니다.
+        - generic [ref=e452]:
+          - img "용감한 용팀장" [ref=e453]
+          - generic [ref=e455]: 용감한 용팀장
+        - generic [ref=e456]:
+          - button "6/21 라이브 자리 잡기" [ref=e457]:
+            - img [ref=e458]
+            - text: 6/21 라이브 자리 잡기
+          - generic [ref=e460]:
+            - generic [ref=e461]: 결제 마감까지
+            - generic [ref=e462]: D-8
+            - generic [ref=e463]: ·
+            - generic [ref=e464]: 05:49:12
+        - paragraph [ref=e465]: ⚠️ 본 특강은 일반 정보 제공용이며 개별 사안에 대한 법률·세무·관세 자문이 아닙니다. 제도·은행 정책·세관 절차는 변경될 수 있으므로 실행 직전 관세청·관세사·세무사·해당 은행에 최신 내용을 확인하세요. 특정 결과나 성과를 보장하지 않습니다.
+    - generic [ref=e467]:
+      - paragraph [ref=e468]:
+        - text: 강의 한 번 듣고 끝나는 시장이 아닙니다.
+        - text: 계속 같이 공부하는 사람이 남습니다.
+      - paragraph [ref=e469]: 본 페이지는 매출이나 수익을 보장하지 않습니다. ‘효자상품 10개’는 용팀장 기준으로 팔릴 구조를 갖춘 상품 10개를 5주 동안 직접 완성한다는 의미이며, 성과를 단정하지 않습니다.
+      - paragraph [ref=e470]:
+        - text: © 2026 용감한 용팀장 · 5주 오프라인 AI 셀링 실전반 · 서울 강남·
+        - link "braveyong@example.com" [ref=e471] [cursor=pointer]:
+          - /url: mailto:braveyong@example.com
+  - region "Notifications (F8)":
+    - list
+  - alert [ref=e472]

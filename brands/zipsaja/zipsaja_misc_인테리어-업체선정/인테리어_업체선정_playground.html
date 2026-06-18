@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>인테리어 업체선정 explorer · 봉천동 두산 59A</title>
+<style>
+  :root{
+    --bg:#14171c; --panel:#1b1f27; --panel2:#222732; --border:#2d333b;
+    --text:#c9d1d9; --dim:#8b949e; --accent:#58a6ff; --gold:#e3b341;
+    --li:#7ee787; --ha:#79c0ff; --ap:#ffa657; --fi:#d2a8ff; --ho:#56d4ba;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--text);
+    font-family:-apple-system,'Apple SD Gothic Neo','Segoe UI',sans-serif;font-size:14px;line-height:1.5;}
+  code,.mono{font-family:ui-monospace,'SF Mono',Menlo,monospace;}
+  .wrap{display:grid;grid-template-columns:340px 1fr;min-height:100vh;}
+  /* ── 좌측 컨트롤 ── */
+  .ctrl{background:var(--panel);border-right:1px solid var(--border);padding:18px 16px;overflow-y:auto;height:100vh;position:sticky;top:0;}
+  .ctrl h1{font-size:16px;margin:0 0 2px;}
+  .sub{color:var(--dim);font-size:12px;margin-bottom:16px;}
+  .grp{margin-bottom:18px;}
+  .grp h2{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);margin:0 0 8px;border-bottom:1px solid var(--border);padding-bottom:4px;}
+  .presets{display:flex;flex-wrap:wrap;gap:6px;}
+  .preset{background:var(--panel2);border:1px solid var(--border);color:var(--text);
+    padding:5px 9px;border-radius:14px;font-size:12px;cursor:pointer;transition:.15s;}
+  .preset:hover{border-color:var(--accent);color:#fff;}
+  .preset.on{background:var(--accent);border-color:var(--accent);color:#08111f;font-weight:600;}
+  .row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:7px 0;}
+  .row label{font-size:13px;}
+  .row .val{font-size:12px;color:var(--gold);font-variant-numeric:tabular-nums;min-width:54px;text-align:right;}
+  input[type=range]{width:100%;accent-color:var(--accent);}
+  .slider-row{margin:9px 0;}
+  .slider-row .lab{display:flex;justify-content:space-between;font-size:12px;margin-bottom:2px;}
+  .slider-row .lab b{color:var(--text);font-weight:500;}
+  .slider-row .lab span{color:var(--gold);}
+  .toggle{display:flex;align-items:center;gap:8px;margin:6px 0;font-size:13px;cursor:pointer;}
+  .toggle input{accent-color:var(--accent);width:16px;height:16px;}
+  /* ── 우측 ── */
+  .main{padding:18px 20px 150px;overflow-y:auto;height:100vh;}
+  .tabs{display:flex;gap:4px;margin-bottom:14px;border-bottom:1px solid var(--border);}
+  .tab{padding:8px 14px;cursor:pointer;color:var(--dim);font-size:13px;border-bottom:2px solid transparent;margin-bottom:-1px;}
+  .tab.on{color:#fff;border-bottom-color:var(--accent);}
+  .view{display:none;}
+  .view.on{display:block;}
+  /* 업체 카드 */
+  .firm{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:10px;border-left:4px solid var(--border);transition:.2s;}
+  .firm.over{opacity:.45;}
+  .firm .fh{display:flex;align-items:baseline;justify-content:space-between;gap:10px;}
+  .firm .rank{font-size:13px;color:var(--dim);min-width:24px;}
+  .firm .fname{font-size:16px;font-weight:600;}
+  .firm .score{margin-left:auto;font-size:13px;color:var(--gold);font-variant-numeric:tabular-nums;}
+  .bar{height:7px;background:var(--panel2);border-radius:4px;overflow:hidden;margin:8px 0 6px;}
+  .bar i{display:block;height:100%;border-radius:4px;transition:width .3s;}
+  .firm .meta{font-size:12px;color:var(--dim);display:flex;flex-wrap:wrap;gap:5px 14px;margin-top:6px;}
+  .firm .meta b{color:var(--text);font-weight:500;}
+  .badge{display:inline-block;font-size:11px;padding:1px 7px;border-radius:10px;margin-left:6px;}
+  .b-over{background:#5a2a2a;color:#ffb4b4;}
+  .b-best{background:#1f4a36;color:#7ee787;}
+  .pill{font-size:11px;padding:1px 6px;border-radius:8px;background:var(--panel2);color:var(--dim);}
+  /* 아코디언 */
+  .acc{background:var(--panel);border:1px solid var(--border);border-radius:8px;margin-bottom:8px;overflow:hidden;}
+  .acc>summary{padding:10px 14px;cursor:pointer;font-weight:600;font-size:14px;list-style:none;display:flex;justify-content:space-between;}
+  .acc>summary::-webkit-details-marker{display:none;}
+  .acc>summary::after{content:"▸";color:var(--dim);transition:.2s;}
+  .acc[open]>summary::after{transform:rotate(90deg);}
+  .acc .body{padding:4px 14px 12px;}
+  .acc table{width:100%;border-collapse:collapse;font-size:13px;}
+  .acc td{padding:6px 4px;vertical-align:top;border-top:1px solid var(--border);}
+  .acc td.k{color:var(--ho);font-weight:500;width:32%;}
+  .acc td.m{color:var(--dim);font-size:12px;}
+  /* 체크리스트 */
+  .q{display:flex;gap:10px;padding:9px 12px;background:var(--panel);border:1px solid var(--border);border-radius:8px;margin-bottom:6px;align-items:flex-start;}
+  .q input{margin-top:3px;accent-color:var(--li);width:16px;height:16px;flex:none;}
+  .q .qt{font-size:13px;}
+  .q .qm{font-size:11px;color:var(--dim);margin-top:2px;}
+  .q .imp{font-size:10px;padding:1px 6px;border-radius:8px;margin-left:6px;}
+  .imp-필수{background:#5a2a2a;color:#ffb4b4;} .imp-권장{background:#4a3d1f;color:#e3b341;}
+  .who{font-size:10px;color:var(--ho);}
+  /* 출력 */
+  .out{position:fixed;bottom:0;left:340px;right:0;background:var(--panel2);border-top:1px solid var(--border);padding:12px 20px;max-height:240px;overflow-y:auto;}
+  .out .oh{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+  .out .oh b{font-size:12px;color:var(--dim);text-transform:uppercase;letter-spacing:.06em;}
+  .out pre{margin:0;white-space:pre-wrap;font-size:12.5px;line-height:1.55;color:#d6dee6;}
+  .copy{background:var(--accent);color:#08111f;border:none;padding:6px 14px;border-radius:7px;font-weight:600;cursor:pointer;font-size:12px;}
+  .copy:active{transform:scale(.96);}
+  @media(max-width:820px){.wrap{grid-template-columns:1fr;}.ctrl{height:auto;position:static;}.main{height:auto;}.out{left:0;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <!-- 좌측 컨트롤 -->
+  <aside class="ctrl">
+    <h1>🏠 업체선정 explorer</h1>
+    <div class="sub">봉천동 두산 59A(24평형)<br>전체+확장2+에어컨4+샷시 · 9월 입주</div>
+
+    <div class="grp">
+      <h2>프리셋</h2>
+      <div class="presets" id="presets"></div>
+    </div>
+
+    <div class="grp">
+      <h2>예산 상한 (VAT포함)</h2>
+      <div class="slider-row">
+        <div class="lab"><b>최대 예산</b><span id="budgetV">6,000만</span></div>
+        <input type="range" id="budget" min="4000" max="8000" step="100" value="6000">
+      </div>
+      <div class="sub" style="margin:0">초과 업체는 흐리게 표시됩니다.</div>
+    </div>
+
+    <div class="grp">
+      <h2>우선순위 가중치 (0~5)</h2>
+      <div id="weights"></div>
+    </div>
+
+    <div class="grp">
+      <h2>필수 조건 (걸면 미달 업체 제외)</h2>
+      <div id="filters"></div>
+    </div>
+  </aside>
+
+  <!-- 우측 -->
+  <main class="main">
+    <div class="tabs">
+      <div class="tab on" data-v="rank">🏆 업체 순위</div>
+      <div class="tab" data-v="home">🛠 홈루덴스 상담요약</div>
+      <div class="tab" data-v="check">✅ 미팅 체크리스트</div>
+    </div>
+
+    <section class="view on" id="v-rank"></section>
+    <section class="view" id="v-home"></section>
+    <section class="view" id="v-check"></section>
+  </main>
+</div>
+
+<!-- 하단 출력 -->
+<div class="out">
+  <div class="oh">
+    <b>내 선정 메모 (복사해서 메모/클로드에 붙여넣기)</b>
+    <button class="copy" id="copyBtn">📋 복사</button>
+  </div>
+  <pre id="prompt"></pre>
+</div>
+
+<script>
+// ===== 데이터 =====
+const FIRMS = [
+  {id:"livart", name:"리바트", color:"var(--li)", total:5525, est:"정식 견적서", as:"무상 3년",
+    window:"현대 L&C 이중창", furn:"리바트 M100(자체)", ac:"단내림 2개소(목공포함)",
+    strong:"최저가·직영시공·3년 A/S", weak:"TV장·붙박이장 견적 공란",
+    s:{price:5, as:5, design:3, brand:4, trans:3}, license:true, direct:true, asY:3, vat:true},
+  {id:"hanssem", name:"한샘", color:"var(--ha)", total:7812, est:"정식 견적서", as:"무상(명시)",
+    window:"1,118만원", furn:"한샘 주방·수납", ac:"환기/공조 800만",
+    strong:"대기업 풀패키지·자재 구성 명확", weak:"최고가·수납 0원 확인필요",
+    s:{price:1, as:4, design:4, brand:5, trans:4}, license:true, direct:false, asY:3, vat:true},
+  {id:"apt", name:"아파트멘터리", color:"var(--ap)", total:7250, est:"전화 상담", as:"미확인",
+    window:"전체 교체", furn:"전체 맞춤제작", ac:"시스템 4대 포함",
+    strong:"맞춤제작 디자인·사례 풍부", weak:"가구 별도라 총액↑·방문상담 필요",
+    s:{price:2, as:2, design:5, brand:4, trans:3}, license:null, direct:null, asY:0, vat:null},
+  {id:"first", name:"퍼스트에비뉴", color:"var(--fi)", total:7800, est:"전화 상담", as:"1년 무상",
+    window:"KCC", furn:"주방 한솔/맞춤", ac:"삼성 무풍 4대",
+    strong:"자재 브랜드 명확·사례 기반", weak:"전화 추정 견적·A/S 1년으로 짧음",
+    s:{price:2, as:2, design:4, brand:4, trans:3}, license:null, direct:null, asY:1, vat:null},
+  {id:"home", name:"홈루덴스", color:"var(--ho)", total:6100, est:"전화+방문상담(6/13)", as:"미확인",
+    window:"HOMECC 확정(가스켓)", furn:"한샘(부엌·현관장)/욕실장 제작", ac:"견적 제외→직접결제",
+    strong:"방문 디테일 압도적·6천내 맞춤·에어컨/공산품 분리 투명", weak:"2차 견적서 아직·A/S 미확인",
+    s:{price:4, as:2, design:5, brand:3, trans:5}, license:null, direct:null, asY:0, vat:null},
+];
+const WEIGHTS = [
+  {key:"price", label:"가성비(가격)"},
+  {key:"design", label:"디자인·맞춤"},
+  {key:"trans", label:"투명성·신뢰"},
+  {key:"brand", label:"브랜드 안정"},
+  {key:"as", label:"A/S 보증"},
+];
+const FILTERS = [
+  {key:"license", label:"건설면허 확인된 곳만"},
+  {key:"direct", label:"직영시공만"},
+  {key:"as3", label:"A/S 3년 이상"},
+  {key:"budget", label:"예산 초과 제외"},
+];
+const PRESETS = {
+  "가성비 우선":{budget:6000, w:{price:5,design:2,trans:3,brand:2,as:3}, f:{}},
+  "디자인·맞춤 우선":{budget:7500, w:{price:2,design:5,trans:3,brand:3,as:2}, f:{}},
+  "안전·A/S 우선":{budget:7000, w:{price:3,design:2,trans:4,brand:5,as:5}, f:{as3:true}},
+  "홈루덴스로 굳히기":{budget:6200, w:{price:4,design:5,trans:5,brand:2,as:2}, f:{budget:true}},
+};
+
+// 홈루덴스 방문상담 요약 (시트7 압축)
+const HOME = [
+  ["집 진단",[
+    ["현황","순정(올수리X)·12층 계단식·갈매기몰딩 등 클래식","스프링클러 없음→단내림 목공"],
+    ["방향성","무몰딩·30mm 걸레받이로 모던화","몰딩 철거 시 천장 처짐→보강"],
+    ["벽 상태","수직·수평 불량. 공용부 한 면 면잡기 권장","방은 가구로 가려 생략"],
+  ]],
+  ["현관",[
+    ["중문","12층 계단식이라 선택. 권장: 여닫이 3도어","슬라이딩 불가(벽없음)·넣기/빼기 견적"],
+    ["신발장","띄움(플로팅)+하부 간접등. 오픈선반 X",""],
+  ]],
+  ["주방",[
+    ["후드","위치 유지. 빌트인 후드 권장",""],
+    ["가스/인덕션","인덕션→가스관 베란다 계량기에서 차단",""],
+    ["냉장고","키친핏(700) 유리 vs 양문형(900)","양문형은 부엌장 수납 죽음"],
+    ["식탁","확장 시 6인/원형·사무겸용. 망장(양념서랍)",""],
+  ]],
+  ["거실",[
+    ["TV","반매립 고객 X(공간↓). 콘센트 800높이 정리",""],
+    ["에어컨/천장","시스템 4대+단내림(간접등). 커튼박스 양쪽 간접등","전동커튼은 배선만"],
+  ]],
+  ["방·베란다",[
+    ["안방","침대 퀸. 시스템장(400)+행거. 수납 일단 제외","혼자 선거주·짜기/빼기 견적"],
+    ["기타","컴퓨터·운동방. 앞방 베란다=창고+도장+빨래건조","실외기실 문짝(관리실 확인)"],
+  ]],
+  ["욕실(1개)",[
+    ["구성","롱젠다이·졸리컷 타일·유리파티션 투명+밑띄움·욕조→샤워",""],
+    ["거울장/전기","슬라이딩 거울장(800)·내부 간접등+콘센트·비데콘센트 정리",""],
+    ["환기건조","고객: 일단 일반+전동댐퍼","휴젠뜨/제로크/하츠는 5배(추후 조정)"],
+  ]],
+  ["마감재",[
+    ["벽지","개나리 로하스/프리모 or LX 디아망 or 신한→회벽톤·개나리 방향","웜/쿨/그레이지로 선택 축소"],
+    ["마루","와이드 강마루(동화/한솔 ~11만/평) vs LX 에디터온 SPC","컬러 우선"],
+    ["창호","HOMECC 확정(가스켓·곰팡이↓)",""],
+    ["가구","한샘(부엌·현관장)/욕실장 제작",""],
+  ]],
+  ["견적·일정",[
+    ["예산","고객 상한 6천 초반(VAT포함)","타사: 리바트5,525/한샘7,812/5천대·7천 각1곳"],
+    ["에어컨","견적 제외→직접결제(마진절감)·단내림 목공은 포함",""],
+    ["2차 미팅","6/18(목) 19시·서초(남부터미널) 비상주 사무실·3D 설계",""],
+    ["공사","8월말 착공·잔금 8/28·입주 9/30",""],
+  ]],
+];
+const ADVICE = [
+  "건설면허 보유 확인(없으면 1,500만 한도)",
+  "너무 싼 1곳 빼고 나머지 평균→수렴값. 견적서 맨밑 잡비·마진(25%) 확인",
+  "철거 후 A/B/C안 중 C(안함)가 베스트. 접지없음·전선1.5sq 등 특이사항 비용 가능",
+  "에어컨·인터폰·커튼·러그=공산품 최저가 직접(러그는 워셔블)",
+  "컬러/패턴 세게 X(2~3년 질림). 포인트는 쿠션·러그·소품으로",
+];
+const QS = [
+  {q:"이 금액 부가세 포함이에요, 별도예요?", m:"리바트·한샘 포함 / 전화3곳 확인 필요", imp:"필수", who:"공통"},
+  {q:"가구·붙박이장이 견적에 포함이에요, 별도예요?", m:"4곳 다 별도 가능성", imp:"필수", who:"공통"},
+  {q:"시스템에어컨 4대, 직접결제 절차 안내해 주세요", m:"홈루덴스는 직접결제 권장(마진↓)", imp:"권장", who:"홈루덴스"},
+  {q:"창호 HOMECC 가스켓 방식 맞죠? 단열 스펙은요?", m:"가스켓=곰팡이↓", imp:"권장", who:"홈루덴스"},
+  {q:"A/S 무상 기간이 몇 년이에요?", m:"홈루덴스·아파트멘터리 미확인", imp:"필수", who:"홈루덴스·아파트멘터리"},
+  {q:"확장부 결로방지 단열 어떻게 하세요?", m:"확장 2개소·안 하면 결로/곰팡이", imp:"필수", who:"공통"},
+  {q:"욕실 방수는 덧방이에요, 철거 후예요?", m:"철거 후=방수 새로", imp:"필수", who:"공통"},
+  {q:"공사 지연 시 지체보상금 넣어주세요", m:"9/30 입주·잔금 8/28", imp:"필수", who:"공통"},
+  {q:"표준계약서·보증증권(서울보증) 발행되나요?", m:"부도·하자 대비", imp:"권장", who:"공통"},
+  {q:"추가비용은 어떤 경우에 생겨요?", m:"실측·자재변경 시 변동", imp:"필수", who:"공통"},
+];
+
+// ===== 상태 =====
+const state = {
+  budget:6000,
+  w:{price:3, design:3, trans:3, brand:3, as:3},
+  f:{license:false, direct:false, as3:false, budget:false},
+  checked:{},
+  preset:null,
+};
+
+// ===== 렌더: 컨트롤 =====
+function buildControls(){
+  // 프리셋
+  document.getElementById("presets").innerHTML = Object.keys(PRESETS)
+    .map(p=>`<span class="preset" data-p="${p}">${p}</span>`).join("");
+  // 가중치
+  document.getElementById("weights").innerHTML = WEIGHTS.map(w=>`
+    <div class="slider-row">
+      <div class="lab"><b>${w.label}</b><span id="wv-${w.key}">${state.w[w.key]}</span></div>
+      <input type="range" id="w-${w.key}" min="0" max="5" step="1" value="${state.w[w.key]}">
+    </div>`).join("");
+  // 필터
+  document.getElementById("filters").innerHTML = FILTERS.map(f=>`
+    <label class="toggle"><input type="checkbox" id="f-${f.key}"> ${f.label}</label>`).join("");
+}
+
+// ===== 점수 계산 =====
+function scoreOf(firm){
+  const w = state.w;
+  const sumW = Object.values(w).reduce((a,b)=>a+b,0) || 1;
+  let raw = 0;
+  for(const k in w){ raw += (firm.s[k]||0) * w[k]; }
+  return raw / sumW; // 0~5
+}
+function isOverBudget(firm){ return firm.total > state.budget; }
+function passesFilters(firm){
+  if(state.f.license && firm.license !== true) return false;
+  if(state.f.direct && firm.direct !== true) return false;
+  if(state.f.as3 && firm.asY < 3) return false;
+  if(state.f.budget && isOverBudget(firm)) return false;
+  return true;
+}
+
+// ===== 렌더: 순위 =====
+function renderRank(){
+  const list = FIRMS.map(f=>({f, sc:scoreOf(f), pass:passesFilters(f), over:isOverBudget(f)}))
+    .filter(x=>x.pass)
+    .sort((a,b)=> b.sc - a.sc);
+  const best = list.length ? list[0].f.id : null;
+  const el = document.getElementById("v-rank");
+  if(!list.length){ el.innerHTML = `<p style="color:var(--dim)">조건을 만족하는 업체가 없습니다. 필터를 풀어보세요.</p>`; return; }
+  el.innerHTML = list.map((x,i)=>{
+    const f=x.f, pct=Math.round(x.sc/5*100);
+    return `<div class="firm ${x.over?'over':''}" style="border-left-color:${f.color}">
+      <div class="fh">
+        <span class="rank">${i+1}위</span>
+        <span class="fname" style="color:${f.color}">${f.name}</span>
+        ${f.id===best?'<span class="badge b-best">추천</span>':''}
+        ${x.over?'<span class="badge b-over">예산초과</span>':''}
+        <span class="score">${x.sc.toFixed(2)} / 5</span>
+      </div>
+      <div class="bar"><i style="width:${pct}%;background:${f.color}"></i></div>
+      <div class="meta">
+        <span><b>${f.total.toLocaleString()}만</b> ${f.est}</span>
+        <span>A/S <b>${f.as}</b></span>
+        <span>창호 <b>${f.window}</b></span>
+        <span>가구 <b>${f.furn}</b></span>
+      </div>
+      <div class="meta"><span style="color:var(--li)">👍 ${f.strong}</span></div>
+      <div class="meta"><span style="color:#ff9a9a">⚠ ${f.weak}</span></div>
+    </div>`;
+  }).join("");
+}
+
+// ===== 렌더: 홈루덴스 상담 =====
+function renderHome(){
+  const el = document.getElementById("v-home");
+  let html = HOME.map((sec,i)=>`
+    <details class="acc" ${i<2?'open':''}>
+      <summary>${sec[0]}</summary>
+      <div class="body"><table>${sec[1].map(r=>`
+        <tr><td class="k">${r[0]}</td><td>${r[1]}${r[2]?`<div class="m">↳ ${r[2]}</div>`:''}</td></tr>`).join("")}
+      </table></div>
+    </details>`).join("");
+  html += `<details class="acc" open><summary>⭐ 디자이너 핵심 조언</summary>
+    <div class="body"><table>${ADVICE.map((a,i)=>`<tr><td class="k">${i+1}</td><td>${a}</td></tr>`).join("")}</table></div></details>`;
+  el.innerHTML = html;
+}
+
+// ===== 렌더: 체크리스트 =====
+function renderCheck(){
+  const el = document.getElementById("v-check");
+  el.innerHTML = `<p style="color:var(--dim);font-size:13px;margin:0 0 10px">6/18 홈루덴스 2차 미팅 등에서 확인할 질문. 체크하면 아래 메모에서 빠집니다.</p>` +
+    QS.map((q,i)=>`<label class="q">
+      <input type="checkbox" data-q="${i}" ${state.checked[i]?'checked':''}>
+      <span><span class="qt">${q.q}</span> <span class="imp imp-${q.imp}">${q.imp}</span>
+        <div class="qm">${q.m} · <span class="who">${q.who}</span></div></span>
+    </label>`).join("");
+  el.querySelectorAll('input[data-q]').forEach(c=>c.addEventListener('change',e=>{
+    state.checked[e.target.dataset.q] = e.target.checked; setPreset(null); updatePrompt();
+  }));
+}
+
+// ===== 출력 =====
+function updatePrompt(){
+  const ranked = FIRMS.map(f=>({f, sc:scoreOf(f), pass:passesFilters(f)}))
+    .filter(x=>x.pass).sort((a,b)=>b.sc-a.sc);
+  const wTop = [...WEIGHTS].sort((a,b)=>state.w[b.key]-state.w[a.key])
+    .filter(w=>state.w[w.key]>0).slice(0,3).map(w=>w.label);
+  const lines = [];
+  lines.push("【봉천동 두산 59A(24평형) 인테리어 업체선정】");
+  lines.push(`· 예산 상한: ${state.budget.toLocaleString()}만원(VAT포함)`);
+  lines.push(`· 내 우선순위: ${wTop.join(" > ") || "(미설정)"}`);
+  const fOn = FILTERS.filter(f=>state.f[f.key]).map(f=>f.label);
+  if(fOn.length) lines.push(`· 필수 조건: ${fOn.join(", ")}`);
+  lines.push("");
+  if(ranked.length){
+    lines.push("▶ 이 기준 추천 순위:");
+    ranked.forEach((x,i)=>lines.push(`  ${i+1}. ${x.f.name} (${x.sc.toFixed(2)}/5, ${x.f.total.toLocaleString()}만)`));
+  } else {
+    lines.push("▶ 조건을 만족하는 업체 없음 (필터 완화 필요)");
+  }
+  const todo = QS.map((q,i)=>({q,i})).filter(x=>!state.checked[x.i]);
+  lines.push("");
+  if(todo.length){
+    lines.push(`▶ 미팅에서 확인할 질문 (${todo.length}개):`);
+    todo.forEach(x=>lines.push(`  □ [${x.q.imp}] ${x.q.q} (${x.q.who})`));
+  } else {
+    lines.push("▶ 미팅 질문 전부 확인 완료 ✅");
+  }
+  lines.push("");
+  lines.push("※ 홈루덴스 2차 견적서는 6/18(목) 19시 미팅에서 수령 예정. 받으면 xlsx 시트2 빈칸 입력.");
+  document.getElementById("prompt").textContent = lines.join("\n");
+}
+
+// ===== 통합 갱신 =====
+function updateAll(){
+  document.getElementById("budgetV").textContent = state.budget.toLocaleString()+"만";
+  WEIGHTS.forEach(w=>{ const v=document.getElementById("wv-"+w.key); if(v) v.textContent=state.w[w.key]; });
+  renderRank(); renderHome(); renderCheck(); updatePrompt();
+}
+
+function setPreset(name){
+  state.preset = name;
+  document.querySelectorAll(".preset").forEach(p=>p.classList.toggle("on", p.dataset.p===name));
+}
+function applyPreset(name){
+  const p = PRESETS[name]; if(!p) return;
+  state.budget = p.budget;
+  state.w = {...p.w};
+  state.f = {license:false, direct:false, as3:false, budget:false, ...p.f};
+  // 컨트롤 반영
+  document.getElementById("budget").value = state.budget;
+  WEIGHTS.forEach(w=>{ document.getElementById("w-"+w.key).value = state.w[w.key]; });
+  FILTERS.forEach(f=>{ document.getElementById("f-"+f.key).checked = !!state.f[f.key]; });
+  setPreset(name); updateAll();
+}
+
+// ===== 이벤트 =====
+function bind(){
+  document.getElementById("budget").addEventListener("input",e=>{ state.budget=+e.target.value; setPreset(null); updateAll(); });
+  WEIGHTS.forEach(w=>document.getElementById("w-"+w.key).addEventListener("input",e=>{
+    state.w[w.key]=+e.target.value; setPreset(null); updateAll(); }));
+  FILTERS.forEach(f=>document.getElementById("f-"+f.key).addEventListener("change",e=>{
+    state.f[f.key]=e.target.checked; setPreset(null); updateAll(); }));
+  document.querySelectorAll(".preset").forEach(p=>p.addEventListener("click",()=>applyPreset(p.dataset.p)));
+  document.querySelectorAll(".tab").forEach(t=>t.addEventListener("click",()=>{
+    document.querySelectorAll(".tab").forEach(x=>x.classList.remove("on"));
+    document.querySelectorAll(".view").forEach(x=>x.classList.remove("on"));
+    t.classList.add("on"); document.getElementById("v-"+t.dataset.v).classList.add("on");
+  }));
+  document.getElementById("copyBtn").addEventListener("click",()=>{
+    navigator.clipboard.writeText(document.getElementById("prompt").textContent).then(()=>{
+      const b=document.getElementById("copyBtn"); const t=b.textContent; b.textContent="✓ 복사됨!";
+      setTimeout(()=>b.textContent=t,1200);
+    });
+  });
+}
+
+buildControls(); bind(); updateAll();
+</script>
+</body>
+</html>

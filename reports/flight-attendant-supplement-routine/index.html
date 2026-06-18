@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>승무원 맞춤 영양제 복용 루틴 보고서</title>
+  <style>
+    @page {
+      size: A4 landscape;
+      margin: 9mm;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #f5f1ea;
+      color: #171717;
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+      line-height: 1.45;
+    }
+
+    .page {
+      min-height: 100vh;
+      padding: 18px 20px 14px;
+      background: #fffdf9;
+    }
+
+    .eyebrow {
+      color: #6f5443;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 30px;
+      line-height: 1.15;
+      letter-spacing: -0.04em;
+    }
+
+    .lead {
+      margin: 7px 0 10px;
+      color: #4c463f;
+      font-size: 11.5px;
+      max-width: 980px;
+    }
+
+    .notice {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 12px;
+      margin: 0 0 9px;
+    }
+
+    .notice-box {
+      border: 1px solid #d8cfc3;
+      background: #fff8ec;
+      padding: 7px 9px;
+      border-radius: 8px;
+      font-size: 9.5px;
+      color: #3f352b;
+    }
+
+    .notice-box strong {
+      color: #8a251f;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      background: #fff;
+      border: 1px solid #cfc7bc;
+      font-size: 9.5px;
+    }
+
+    th {
+      background: #2c211c;
+      color: #fff;
+      padding: 6px 6px;
+      text-align: left;
+      font-size: 9.5px;
+      letter-spacing: -0.02em;
+      border-right: 1px solid rgba(255,255,255,.18);
+    }
+
+    td {
+      vertical-align: top;
+      padding: 6px 6px;
+      border-top: 1px solid #ddd4c9;
+      border-right: 1px solid #e3dbd1;
+    }
+
+    tr:nth-child(even) td {
+      background: #fffaf3;
+    }
+
+    .col-type { width: 10%; }
+    .col-product { width: 21%; }
+    .col-routine { width: 17%; }
+    .col-nutrients { width: 32%; }
+    .col-note { width: 20%; }
+
+    .badge {
+      display: inline-block;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: #eee4d8;
+      color: #4c3428;
+      font-weight: 800;
+      font-size: 9px;
+      margin-bottom: 4px;
+    }
+
+    .product {
+      font-weight: 850;
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+    }
+
+    a {
+      color: #8a251f;
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    .muted {
+      color: #6c6259;
+      font-size: 8.8px;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 12px;
+    }
+
+    li {
+      margin: 0 0 2px;
+    }
+
+    .time {
+      font-weight: 850;
+      color: #1f1b18;
+    }
+
+    .red {
+      color: #8a251f;
+      font-weight: 850;
+    }
+
+    .footer {
+      margin-top: 7px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      color: #6c6259;
+      font-size: 8.5px;
+      border-top: 1px solid #ddd4c9;
+      padding-top: 8px;
+    }
+
+    .sources {
+      max-width: 860px;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="eyebrow">Supplement Routine Summary</div>
+    <h1>승무원 맞춤 영양제 복용 루틴 보고서</h1>
+    <p class="lead">
+      조사한 제품을 기준으로, 바로가기 링크와 하루 복용 타이밍, 그리고 주요 영양소 충족도를 한눈에 보이도록 정리했습니다.
+      매일 챙기기 쉬운 순서로 아침, 점심, 취침 전 루틴으로 나눴습니다.
+    </p>
+
+    <section class="notice">
+      <div class="notice-box"><strong>정리 기준</strong> 기준치가 있는 성분은 충족률, 기준치가 없는 성분은 함량으로 적었습니다.</div>
+      <div class="notice-box"><strong>복용 전 체크</strong> 약 복용, 임신/수유, 철분 제한, 혈액응고 이슈, 밀 알레르기가 있으면 전문가 확인이 필요합니다.</div>
+    </section>
+
+    <table>
+      <thead>
+        <tr>
+          <th class="col-type">루틴 구분</th>
+          <th class="col-product">제품명 / 바로가기</th>
+          <th class="col-routine">하루 복용 타이밍</th>
+          <th class="col-nutrients">주요 영양소 / 충족률</th>
+          <th class="col-note">승무원 루틴에서 보는 포인트</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <span class="badge">핵심 장벽</span><br>
+            기본 영양
+          </td>
+          <td>
+            <div class="product">Nature Made, Multi For Her, 90 Tablets</div>
+            <a href="https://www.iherb.com/pr/nature-made-multi-for-her-90-tablets/40397">아이허브 바로가기</a>
+          </td>
+          <td>
+            <span class="time">아침 식사 직후 1정</span><br>
+            <span class="muted">제품 권장도 식사와 함께 1일 1정입니다.</span>
+          </td>
+          <td>
+            <ul>
+              <li>철분 18mg: <span class="red">100%</span></li>
+              <li>엽산 1000mcg DFE: <span class="red">250%</span></li>
+              <li>비타민 D3 25mcg: <span class="red">250%</span> <span class="muted">(KDRI 여성 기준)</span></li>
+              <li>칼슘 250mg: <span class="red">35.7%</span></li>
+              <li>비타민 B12 6mcg: <span class="red">250%</span></li>
+              <li>판토텐산 10mg: <span class="red">200%</span></li>
+              <li>아연 15mg: <span class="red">214%</span></li>
+            </ul>
+          </td>
+          <td>
+            불규칙한 식사 때 기본 영양을 깔아주는 역할입니다. 철분제가 따로 있으면 중복을 확인하세요.
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <span class="badge">핵심 장벽</span><br>
+            피부 건조
+          </td>
+          <td>
+            <div class="product">Vitauthority, Phytoceramides +, 60 Vegetarian Capsules</div>
+            <a href="https://www.iherb.com/pr/vitauthority-phytoceramides-60-vegetarian-capsules/138051">아이허브 바로가기</a>
+          </td>
+          <td>
+            <span class="time">점심 식사 직후 2캡슐</span><br>
+            <span class="muted">물 충분히 섭취. 제품 기준 1회 2캡슐입니다.</span>
+          </td>
+          <td>
+            <ul>
+              <li>Ceratiq 밀 오일 추출물 750mg</li>
+              <li>히알루론산 50mg</li>
+              <li class="muted">두 성분 모두 일일 기준치가 정해져 있지 않습니다.</li>
+            </ul>
+          </td>
+          <td>
+            건조한 기내 환경에서 피부 보습과 장벽 컨디션을 챙기는 목적입니다. 밀 알레르기는 주의가 필요합니다.
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <span class="badge">핵심 장벽</span><br>
+            항산화
+          </td>
+          <td>
+            <div class="product">NOW Foods, Grape Seed Extract, 500mg, 90 Veg Capsules</div>
+            <a href="https://www.iherb.com/pr/now-foods-grape-seed-extract-500-mg-90-veg-capsules/115909">아이허브 바로가기</a>
+          </td>
+          <td>
+            <span class="time">아침 식사 직후 1캡슐</span><br>
+            <span class="muted">멀티비타민과 같은 식사 때 묶으면 잊기 쉽지 않습니다.</span>
+          </td>
+          <td>
+            <ul>
+              <li>포도씨 추출물 500mg</li>
+              <li>총 폴리페놀 90% 이상 표준화</li>
+              <li class="muted">일일 기준치가 정해져 있지 않습니다.</li>
+            </ul>
+          </td>
+          <td>
+            장시간 기립과 잦은 이동이 많은 날, 항산화와 혈관 건강을 보조하는 포지션입니다.
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <span class="badge">보완 완충</span><br>
+            수면/근육
+          </td>
+          <td>
+            <div class="product">Doctor's Best, High Absorption Magnesium, 100mg, 240 Tablets</div>
+            <a href="https://www.iherb.com/pr/doctor-s-best-high-absorption-magnesium-lysinate-glycinate-chelated-albion-traacs-240-tablets-100-mg-per-tablet/16567">아이허브 바로가기</a>
+          </td>
+          <td>
+            <span class="time">취침 직전 2정</span><br>
+            <span class="muted">제품 권장량은 2정씩 하루 2회입니다. 여기서는 취침 전 2정 루틴으로 정리했습니다.</span>
+          </td>
+          <td>
+            <ul>
+              <li>마그네슘 200mg: <span class="red">48%</span></li>
+              <li>형태: lysinate glycinate chelate</li>
+            </ul>
+          </td>
+          <td>
+            시차와 교대근무로 긴장이 올라간 날, 취침 전 루틴으로 넣기 좋습니다.
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <span class="badge">보완 완충</span><br>
+            장 컨디션
+          </td>
+          <td>
+            <div class="product">California Gold Nutrition, LactoBif 30 Probiotics, 30 Billion CFU</div>
+            <a href="https://www.iherb.com/pr/california-gold-nutrition-lactobif-30-probiotics-30-billion-cfu-120-veggie-capsules/143853">아이허브 바로가기</a>
+          </td>
+          <td>
+            <span class="time">아침 기상 직후 공복 1캡슐</span><br>
+            <span class="muted">제품 기준은 음식과 함께 또는 없이 1일 1캡슐입니다.</span>
+          </td>
+          <td>
+            <ul>
+              <li>8종 프로바이오틱스 블렌드</li>
+              <li>총 300억 CFU</li>
+              <li class="muted">일일 기준치가 정해져 있지 않습니다.</li>
+            </ul>
+          </td>
+          <td>
+            식사 시간이 흔들리거나 복부 팽만감이 잦을 때 장 컨디션을 보조하는 루틴입니다.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="footer">
+      <div>
+        작성일: 2026-05-27<br>
+        기준: 사용자 제공 KDRI 여성 기준 수치 + 아이허브 제품 라벨 확인
+      </div>
+      <div class="sources">
+        참고: iHerb 제품 상세 페이지. 본 자료는 건강 정보 정리용이며, 질병의 진단·치료·예방 목적이 아닙니다.
+      </div>
+    </div>
+  </main>
+</body>
+</html>

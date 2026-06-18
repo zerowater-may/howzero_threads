@@ -66,27 +66,44 @@
 
 ## 타이포그래피
 
-- **Headline**: `Black Han Sans` (강렬한 고딕, weight 400)
+- **Headline A / Guide**: `Jua` (굵고 친근한 손글씨형 제목. 교육자료/가이드형 카드 기본)
+- **Headline B / Warning**: `Black Han Sans` (정책 변화, 경고, 팩폭 커버에만 제한 사용)
+- **Fallback**: `Do Hyeon` (Jua가 너무 둥글게 보일 때 쓰는 좁고 또렷한 제목 대체)
 - **Body**: `Noto Sans KR` weight 700/900
 - **Whisper/Comment**: `Gaegu` weight 700 (손글씨)
 
 ### Google Fonts
 ```
-https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@400;700;900&display=swap
+https://fonts.googleapis.com/css2?family=Jua&family=Do+Hyeon&family=Black+Han+Sans&family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@400;700;900&display=swap
 ```
 
 ### 사이즈 가이드 (1080x1440 기준)
 | 역할 | 폰트 | 사이즈 | 비고 |
 |------|------|--------|------|
-| Cover Title | Black Han Sans | 148~172px | letter-spacing: -4~-6px |
-| Title MD | Black Han Sans | 78px | 슬라이드 타이틀 |
-| Title LG | Black Han Sans | 104px | CTA 타이틀 |
+| Guide Cover Title | Jua | 92~118px | letter-spacing: -1~-2px, line-height: 1.03 |
+| Guide Title MD | Jua | 74~92px | 교육자료형 슬라이드 타이틀 |
+| Warning Cover Title | Black Han Sans | 128~160px | 경고/정책/팩폭 커버에만 사용 |
+| Title LG | Jua 또는 Black Han Sans | 96~116px | CTA 성격에 따라 선택 |
 | Body LG | Noto Sans KR 900 | 44px | 본문 강조 |
 | Body MD | Noto Sans KR 700 | 36px | 일반 본문 |
 | Body SM | Noto Sans KR 700 | 28px | 부가 설명 (회색) |
 | Whisper | Gaegu 700 | 32~42px | rotate: -1deg |
-| Num Label | Black Han Sans | 100px | 슬라이드 번호 |
-| Stat Num | Black Han Sans | 80~104px | 숫자 강조 |
+| Section Label | Noto Sans KR 900 | 32~42px | `1. 상품명 비교` 같은 박스 섹션 제목 |
+| Num Label | Jua | 84~104px | 슬라이드 번호/큰 숫자 |
+| Stat Num | Jua 또는 Black Han Sans | 80~104px | 숫자 강조 |
+
+### 레퍼런스형 가이드 스타일
+
+첨부 레퍼런스처럼 보이게 만들 때는 `Black Han Sans`를 기본 제목으로 쓰지 않는다. 아래 조합을 우선한다.
+
+- 큰 제목: `Jua`, 검정, 92~118px, 행간 1.03, 자간 -1~-2px
+- 소제목: `Noto Sans KR 700`, 34~40px
+- 박스 제목: `Noto Sans KR 900`, 34~44px
+- 본문: `Noto Sans KR 500~700`, 26~32px
+- 강조: 와인 레드(`#8B2020`) 한두 곳만
+- 코멘트 라벨: 연한 베이지/아이보리 배경 + 얇은 회색 border
+
+레이아웃은 흰 배경에 얇은 회색 선, 비교 박스, 작은 라벨, 넓은 여백을 사용한다. 다크 커버/강한 형광펜은 강의 모집이나 정책 경고처럼 에너지가 필요한 장면에만 쓴다.
 
 ## 형광펜 스타일
 
@@ -117,6 +134,7 @@ https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gaegu:wght@400;70
 - **분량**: 10~12장 (디테일 있을 경우 12~13장)
 - **padding**: `80px 80px 120px`
 - **필수 슬라이드**: HOOK (다크) · 훅 확인 · Value 슬라이드 다수 · CTA (다크)
+- **가이드형 카드뉴스**: 흰 배경 + Jua 제목 + 얇은 박스 비교표를 기본으로 한다. 후킹은 문장으로 세게, 시각은 차분하게 간다.
 
 ## 슬로건/캐치프레이즈
 
@@ -145,7 +163,7 @@ https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gaegu:wght@400;70
 |---|---|---|
 | **분야** | AI 자동화/SaaS | 구매대행/네이버 SEO |
 | **색감** | 크림 + 파스텔 형광펜 | 따뜻한 크림 + 붉은/골드 |
-| **Headline** | 붓펜 손글씨 (Nanum Pen Script) | 강렬한 고딕 (Black Han Sans) |
+| **Headline** | 붓펜 손글씨 (Nanum Pen Script) | 가이드형 Jua + 경고형 Black Han Sans |
 | **톤** | 안티하이프, 차분한 직설 | 팩트 폭격, 도발 + 독려 |
 | **CTA** | 무료 오딧 신청 | 단톡방 유입 |
 | **Accent** | 연두/핑크/레몬 파스텔 | 붉은/골드/다크 |

@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>김승현 님 영양제 하루 루틴표</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #f5f7fb;
+      color: #253047;
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+      line-height: 1.38;
+    }
+
+    .sheet {
+      min-height: 100vh;
+      padding: 20px;
+      background:
+        radial-gradient(circle at 8% 6%, rgba(220, 235, 255, .95), transparent 28%),
+        radial-gradient(circle at 92% 10%, rgba(255, 229, 214, .9), transparent 30%),
+        linear-gradient(180deg, #fffdfd 0%, #fbfdff 100%);
+      border: 1px solid #e5eaf3;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 168px;
+      gap: 14px;
+      align-items: stretch;
+      margin-bottom: 14px;
+    }
+
+    .title-card {
+      border: 1px solid #dce4f1;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, .82);
+      padding: 18px 20px;
+      box-shadow: 0 10px 28px rgba(96, 117, 152, .12);
+    }
+
+    .eyebrow {
+      color: #6c7ba8;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .13em;
+      margin-bottom: 7px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 30px;
+      line-height: 1.12;
+      letter-spacing: -0.045em;
+    }
+
+    .name {
+      display: inline-block;
+      padding: 2px 10px 4px;
+      border-radius: 999px;
+      background: #dcecff;
+      color: #425a8d;
+      white-space: nowrap;
+    }
+
+    .subtitle {
+      margin-top: 8px;
+      color: #5c667d;
+      font-size: 12.5px;
+    }
+
+    .date-card {
+      border: 1px solid #e3d8ef;
+      border-radius: 20px;
+      background: #f3ecff;
+      padding: 15px 14px;
+      box-shadow: 0 10px 28px rgba(128, 100, 168, .1);
+    }
+
+    .date-card strong {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    .date-line {
+      height: 26px;
+      border-bottom: 1.5px dashed #9b8eb5;
+      color: #8f85a3;
+      font-size: 11px;
+    }
+
+    .check-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .check {
+      border: 1px solid #dce4ef;
+      border-radius: 15px;
+      padding: 9px 10px;
+      background: #fff;
+      font-size: 11.6px;
+      font-weight: 850;
+      color: #38445d;
+    }
+
+    .check:nth-child(1) { background: #e5f7f1; }
+    .check:nth-child(2) { background: #fff0df; }
+    .check:nth-child(3) { background: #eef0ff; }
+    .check:nth-child(4) { background: #fff7cf; }
+
+    .box {
+      display: inline-block;
+      width: 13px;
+      height: 13px;
+      border: 1.8px solid #6c7ba8;
+      border-radius: 4px;
+      background: rgba(255,255,255,.8);
+      margin-right: 6px;
+      vertical-align: -2px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 11px;
+      margin-bottom: 12px;
+    }
+
+    .routine {
+      display: grid;
+      grid-template-columns: 102px 1fr;
+      gap: 12px;
+      border: 1px solid #dbe3ef;
+      border-radius: 18px;
+      background: rgba(255,255,255,.9);
+      padding: 12px 13px;
+      box-shadow: 0 7px 18px rgba(104, 125, 160, .08);
+    }
+
+    .time {
+      border-radius: 14px;
+      padding: 11px 9px;
+      min-height: 100px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      color: #273143;
+    }
+
+    .mint .time { background: #dff7ed; }
+    .peach .time { background: #ffe3d2; }
+    .lavender .time { background: #ece8ff; }
+    .lemon .time { background: #fff3c7; }
+
+    .time small {
+      font-size: 10px;
+      font-weight: 900;
+      color: #6c7ba8;
+      margin-bottom: 5px;
+      letter-spacing: .04em;
+    }
+
+    .time strong {
+      font-size: 15px;
+      line-height: 1.16;
+      letter-spacing: -0.04em;
+    }
+
+    .routine-body {
+      min-width: 0;
+    }
+
+    .product-line {
+      display: flex;
+      align-items: baseline;
+      gap: 7px;
+      flex-wrap: wrap;
+      margin: 1px 0 4px;
+    }
+
+    .product {
+      font-size: 15.4px;
+      font-weight: 900;
+      letter-spacing: -0.035em;
+      color: #20293a;
+    }
+
+    .dose {
+      display: inline-block;
+      border-radius: 999px;
+      background: #dcecff;
+      color: #425a8d;
+      padding: 3px 8px;
+      font-size: 10.4px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .why {
+      font-size: 12.2px;
+      color: #465269;
+      margin-bottom: 7px;
+    }
+
+    .tip {
+      display: block;
+      border-radius: 10px;
+      background: #f7f9fc;
+      border: 1px dashed #cbd6e7;
+      color: #667086;
+      padding: 6px 8px;
+      font-size: 10.8px;
+    }
+
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 6px;
+      margin-top: 7px;
+    }
+
+    .benefit {
+      border-radius: 10px;
+      background: #f7f9fc;
+      border: 1px solid #e1e7f0;
+      padding: 6px 8px;
+      font-size: 10.7px;
+      color: #4b566e;
+    }
+
+    .benefit strong {
+      display: block;
+      font-size: 10.4px;
+      color: #5a6db0;
+      margin-bottom: 2px;
+    }
+
+    .bottom {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 10px;
+    }
+
+    .panel {
+      border: 1px solid #dbe3ef;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, .9);
+      padding: 11px 12px;
+      box-shadow: 0 7px 18px rgba(104, 125, 160, .07);
+    }
+
+    .panel h2 {
+      margin: 0 0 8px;
+      font-size: 14px;
+      letter-spacing: -0.035em;
+      color: #273143;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 16px;
+    }
+
+    li {
+      margin: 0 0 4px;
+      font-size: 10.9px;
+      color: #4b566e;
+    }
+
+    .nutri {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10.6px;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .nutri th {
+      text-align: left;
+      padding: 6px 7px;
+      background: #e8f1ff;
+      color: #41598c;
+      font-size: 10px;
+    }
+
+    .nutri td {
+      padding: 6px 7px;
+      border-top: 1px solid #e5eaf3;
+      color: #4b566e;
+      vertical-align: top;
+    }
+
+    .accent {
+      color: #5a6db0;
+      font-weight: 900;
+    }
+
+    .footer {
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 1px solid #dbe3ef;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      color: #7a8396;
+      font-size: 9.4px;
+    }
+  </style>
+</head>
+<body>
+  <main class="sheet">
+    <section class="hero">
+      <div class="title-card">
+        <div class="eyebrow">Pastel Supplement Schedule</div>
+        <h1><span class="name">김승현 님</span> 영양제 하루 루틴표</h1>
+        <div class="subtitle">이미 구매한 제품 기준입니다. 바쁜 비행일에도 이 순서만 보고 챙기면 됩니다.</div>
+      </div>
+      <div class="date-card">
+        <strong>오늘 체크</strong>
+        <div class="date-line">　　　년　　　월　　　일</div>
+      </div>
+    </section>
+
+    <section class="check-row">
+      <div class="check"><span class="box"></span>기상 직후</div>
+      <div class="check"><span class="box"></span>아침 식사 후</div>
+      <div class="check"><span class="box"></span>점심 식사 후</div>
+      <div class="check"><span class="box"></span>자기 전</div>
+    </section>
+
+    <section class="timeline">
+      <article class="routine mint">
+        <div class="time"><small>STEP 01</small><strong>기상 직후<br>공복</strong></div>
+        <div class="routine-body">
+          <div class="product-line">
+            <div class="product">California Gold Nutrition LactoBif 30 Probiotics</div>
+            <span class="dose">1캡슐</span>
+          </div>
+          <div class="why">일어나서 물 한 컵이랑 먼저 챙기세요. 비행 일정 때문에 장 컨디션이 흔들릴 때 기본으로 깔아두는 루틴입니다.</div>
+          <div class="tip">속이 예민한 날은 공복 말고 아침 식사 후로 옮겨도 됩니다.</div>
+          <div class="benefit-grid">
+            <div class="benefit"><strong>좋은 점</strong>배변 리듬과 장 컨디션을 편하게 잡는 데 도움</div>
+            <div class="benefit"><strong>비행 때</strong>식사 시간이 밀릴 때 생기는 더부룩함 관리용</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="routine peach">
+        <div class="time"><small>STEP 02</small><strong>아침<br>식사 직후</strong></div>
+        <div class="routine-body">
+          <div class="product-line">
+            <div class="product">Nature Made Multi For Her + NOW Foods Grape Seed Extract</div>
+            <span class="dose">멀티 1정 + 포도씨 1캡슐</span>
+          </div>
+          <div class="why">아침 먹고 바로 묶어서 먹으면 제일 덜 까먹습니다. 기본 비타민·미네랄과 항산화 루틴을 한 번에 챙깁니다.</div>
+          <div class="tip">멀티에는 철분이 들어 있습니다. 철분제를 따로 먹고 있으면 중복만 확인하세요.</div>
+          <div class="benefit-grid">
+            <div class="benefit"><strong>멀티비타민</strong>철분, 엽산, 비타민 D, B12, 아연 기본 보충</div>
+            <div class="benefit"><strong>포도씨</strong>오래 서 있는 날 항산화와 혈관 컨디션 보조</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="routine lavender">
+        <div class="time"><small>STEP 03</small><strong>점심<br>식사 직후</strong></div>
+        <div class="routine-body">
+          <div class="product-line">
+            <div class="product">Vitauthority Phytoceramides +</div>
+            <span class="dose">2캡슐</span>
+          </div>
+          <div class="why">건조한 기내 환경을 자주 겪는 날, 피부 보습과 장벽 컨디션을 챙기는 루틴입니다.</div>
+          <div class="tip">물 충분히 마시고, 밀 알레르기가 있으면 복용 전 확인이 필요합니다.</div>
+          <div class="benefit-grid">
+            <div class="benefit"><strong>좋은 점</strong>피부 속건조와 보습 컨디션 관리에 도움</div>
+            <div class="benefit"><strong>비행 때</strong>건조한 기내에서 피부 장벽을 챙기는 용도</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="routine lemon">
+        <div class="time"><small>STEP 04</small><strong>취침<br>30분 전</strong></div>
+        <div class="routine-body">
+          <div class="product-line">
+            <div class="product">Doctor's Best High Absorption Magnesium</div>
+            <span class="dose">2정</span>
+          </div>
+          <div class="why">시차, 교대근무, 다리 뭉침이 있는 날 자기 전 루틴으로 넣습니다. “현재 내가 잘 시간” 기준으로 보면 됩니다.</div>
+          <div class="tip">처음엔 1정으로 시작해도 됩니다. 속이 괜찮으면 2정으로 올리세요.</div>
+          <div class="benefit-grid">
+            <div class="benefit"><strong>좋은 점</strong>긴장 완화, 근육 이완, 수면 루틴 보조</div>
+            <div class="benefit"><strong>비행 때</strong>밤비행 후 몸이 예민할 때 마무리 루틴</div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <div class="footer">
+      <div>김승현 님 출력용 A4 세로 루틴표 · 2026-05-27</div>
+      <div>건강 정보 정리용입니다. 복용 중인 약이 있거나 알레르기가 있으면 전문가에게 확인하세요.</div>
+    </div>
+  </main>
+</body>
+</html>

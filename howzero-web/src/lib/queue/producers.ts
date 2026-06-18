@@ -3,12 +3,16 @@ import { connection } from "./connection";
 import type {
   ScheduledPostJobData,
   CommentPipelineJobData,
+  ContentPublishJobData,
 } from "./types";
 
 const postQueue = new Queue<ScheduledPostJobData>("scheduled-posts", {
   connection,
 });
 const pipelineQueue = new Queue<CommentPipelineJobData>("comment-pipelines", {
+  connection,
+});
+const contentPublishQueue = new Queue<ContentPublishJobData>("content-publish", {
   connection,
 });
 const tokenQueue = new Queue("token-refresh", { connection });
@@ -48,6 +52,25 @@ export async function registerCommentPipeline(
 
 export async function removeCommentPipeline(pipelineId: string) {
   await pipelineQueue.removeRepeatableByKey(`pipeline-${pipelineId}`);
+}
+
+export async function enqueueContentPublishJob(
+  publishJobId: string,
+  scheduledAt: Date
+) {
+  const delay = Math.max(0, scheduledAt.getTime() - Date.now());
+  await contentPublishQueue.add(
+    "publish-content",
+    { publishJobId },
+    {
+      jobId: `content-publish-${publishJobId}`,
+      delay,
+      attempts: 2,
+      backoff: { type: "exponential", delay: 120_000 },
+      removeOnComplete: true,
+      removeOnFail: { age: 7 * 24 * 3600 },
+    }
+  );
 }
 
 export async function registerTokenRefresh() {
