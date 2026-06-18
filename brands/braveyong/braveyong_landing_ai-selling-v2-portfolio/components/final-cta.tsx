@@ -15,29 +15,29 @@ export function FinalCTA() {
         </p>
 
         <h2 className="text-3xl font-bold uppercase leading-tight tracking-tight sm:text-4xl md:text-5xl">
-          1기 마감 전까지만<br className="sm:hidden" /> 특별가
+          7/10까지만<br className="sm:hidden" /> 얼리버드가
         </h2>
         <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-background/70 sm:text-lg">
           1만 개 올리는 방식, 정말로 한번 바꿔보고 싶으시면<br className="hidden sm:block" />
           그때 하신 그 결심, 지금 바로 잡으세요.
         </p>
 
-        {/* 가격 앵커링 + 1기 마감 urgency */}
+        {/* 가격 앵커링 + 얼리버드 마감 urgency */}
         <div className="mx-auto mt-8 inline-flex flex-col items-center gap-1">
           <span className="text-sm text-background/50">
             <s>정가 250만원</s>
           </span>
           <span className="text-4xl font-bold tabular-nums sm:text-5xl">
-            지금 198만원
+            지금 230만원
           </span>
           <span className="font-mono mt-1 text-[11px] uppercase tracking-[0.14em] text-background/55">
-            부가세 포함
+            부가세 별도
           </span>
         </div>
 
         <div className="mt-6 flex flex-col items-center gap-3">
           <p className="text-sm font-bold text-background sm:text-base">
-            1기 마감 임박 · 마감되면 정가 250만원
+            얼리버드 마감 임박 · 7/10 지나면 정가 250만원
           </p>
           <CountdownTimer className="text-background" />
         </div>
@@ -46,7 +46,7 @@ export function FinalCTA() {
           <div data-track="final_pay" className="contents">
             <PaymentDialog
               amount={course.priceFirst}
-              label="1기 특별가 — 지금 결제 198만원"
+              label="얼리버드가 — 지금 결제 230만원"
               dark
               className="inline-flex w-full max-w-md items-center justify-center gap-2 rounded-full border-2 border-brand bg-brand px-8 py-5 text-base font-bold uppercase tracking-[0.08em] text-brand-foreground transition-all hover:opacity-90 sm:text-lg"
             />

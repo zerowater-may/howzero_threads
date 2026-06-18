@@ -4,13 +4,13 @@ import Image from "next/image"
 import { useState, type ReactNode } from "react"
 import { ChevronDown, X } from "lucide-react"
 import { Section } from "./section"
-import { highlights, captures } from "@/lib/testimonials"
+import { highlights, captures, week1Reviews } from "@/lib/testimonials"
 
 /**
  * 04 후기 벽 — 하이브리드 (시안 A).
  * 하이라이트 8장 텍스트 카드 → ▼ 더 보기 → 캡처 46장 그리드 + Dialog lightbox.
  *
- * 하이라이트 슬롯은 운영 입력 — body 비면 "1기 모집 중" placeholder가 표시된다.
+ * 하이라이트 슬롯은 운영 입력 — body 비면 "2기 모집 중" placeholder가 표시된다.
  * label/title/lead는 optional — 미지정 시 기존 강의 랜딩(/) 카피 그대로 (course 무손상).
  */
 export function TestimonialWall({
@@ -35,6 +35,70 @@ export function TestimonialWall({
         "이 8장은 그동안 진행한 스터디·라이브 클래스 카페에 실제로 달린 후기에서 따왔어요. 원본 캡처는 아래 ▼ 더 보기로 50장 전부 보실 수 있습니다."
       }
     >
+      {/* ── 1주차 실전 후기 (featured) — 카톡 후기 발췌, 후킹 핵심 밑줄 + 결과 인증 ── */}
+      <div className="mb-10">
+        <div className="mb-4 flex flex-wrap items-center gap-2">
+          <span className="font-mono inline-flex items-center rounded-full bg-brand px-3 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-brand-foreground">
+            🔥 1주차 실전 후기
+          </span>
+          <span className="text-sm font-bold tracking-tight text-foreground sm:text-base">
+            결제하고 첫 주, 벌써 결과가 나왔습니다.
+          </span>
+        </div>
+        <div className="grid gap-3 md:grid-cols-3">
+          {week1Reviews.map((r, i) => (
+            <article
+              key={i}
+              className={`flex flex-col border-2 bg-background p-5 ${
+                r.proof ? "border-brand shadow-[0_6px_0_var(--foreground)]" : "border-foreground"
+              }`}
+            >
+              <header className="font-mono mb-3 flex items-center justify-between text-[10px] font-bold uppercase tracking-[0.08em]">
+                <span>{r.name}</span>
+                <span className="opacity-55">{r.source}</span>
+              </header>
+              <p className="text-sm leading-relaxed text-foreground/85">
+                “
+                {r.parts.map((p, j) =>
+                  "u" in p ? (
+                    <u
+                      key={j}
+                      className="font-bold text-foreground decoration-brand decoration-2 underline-offset-[3px]"
+                    >
+                      {p.u}
+                    </u>
+                  ) : (
+                    <span key={j}>{p.t}</span>
+                  ),
+                )}
+                ”
+              </p>
+              {r.proof && (
+                <div className="mt-4 flex items-center gap-3 border-2 border-brand bg-brand/[0.06] px-3 py-2.5">
+                  <span className="text-xl font-extrabold leading-none tracking-tight text-brand sm:text-2xl">
+                    {r.proof.rank}
+                  </span>
+                  <span className="text-[11px] leading-tight text-foreground/70">
+                    {r.proof.sub}
+                    <br />
+                    {r.proof.note}
+                  </span>
+                </div>
+              )}
+              <a
+                href={r.capture}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-track={`week1_capture_${i + 1}`}
+                className="font-mono mt-auto pt-4 inline-flex items-center gap-1 self-start text-[10px] font-bold uppercase tracking-[0.1em] text-foreground/45 underline underline-offset-2 transition-colors hover:text-foreground"
+              >
+                📷 카톡 원본 보기
+              </a>
+            </article>
+          ))}
+        </div>
+      </div>
+
       {/* 하이라이트 8장 카드 그리드 — 실제 후기 텍스트 (펼치기 전에도 노출) */}
       <div className="grid gap-3 md:grid-cols-2">
         {highlights.map((h, i) => {
@@ -55,7 +119,7 @@ export function TestimonialWall({
               </header>
               <p className="text-sm leading-relaxed">
                 {placeholder
-                  ? "1기 모집 중 — 첫 후기를 함께 만들 분의 자리입니다."
+                  ? "2기 모집 중 — 첫 후기를 함께 만들 분의 자리입니다."
                   : `“${h.body}”`}
               </p>
             </article>

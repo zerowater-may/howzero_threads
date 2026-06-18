@@ -72,3 +72,77 @@ export const photos = {
   studyDesk: "/assets/photos/study-desk.jpg",      // 노트북 둘러앉은 스터디
   classroom: "/assets/photos/classroom.jpg",       // 강의실
 } as const
+
+/**
+ * 1주차 실전 후기 — 2기 직전 1주차 수강생 카톡 후기에서 발췌.
+ * parts: 본문 조각. `u`는 후킹 밑줄 강조 구간, `t`는 일반 텍스트.
+ * proof: 결과 인증 배지 (검색 노출 순위 등). capture: 카톡 원본 캡처.
+ */
+export type Week1Part = { t: string } | { u: string }
+export type Week1Review = {
+  name: string
+  source: string
+  parts: Week1Part[]
+  proof?: { rank: string; sub: string; note: string }
+  capture: string
+}
+
+export const week1Reviews: Week1Review[] = [
+  {
+    name: "1주차 수강생",
+    source: "카톡 후기",
+    parts: [
+      { t: "저도 열심히 배우고 적용해서 얼른 안정적으로 자리 잡아 보겠습니다! 짜잔~ " },
+      { u: "첫날 올린 1번 상품" },
+      { t: ", 어디 있는지 보시라요!" },
+    ],
+    proof: { rank: "1페이지 3위", sub: "1,543개 중 3위", note: "첫날 등록한 상품" },
+    capture: "/assets/testimonials/week1/w1-04.png",
+  },
+  {
+    name: "1주차 수강생",
+    source: "카톡 후기",
+    parts: [
+      { t: "항상 배려가 넘치는 용쌤. 사실 네이버 상품 수량이 1,000개로 제한되기 직전에 " },
+      { u: "매출 2,000만 원, 2,700만 원을 찍으면서" },
+      { t: " ‘드디어 나도 좀 팔아보려나?’ 했는데, 1,000개 제한이 적용되고 다시 원점으로 돌아왔어요. 그래도 용쌤 수업이 다시 한번 제 길잡이가 되어줄 거라 생각해서 " },
+      { u: "고민 없이 질렀어요." },
+    ],
+    capture: "/assets/testimonials/week1/w1-02.png",
+  },
+  {
+    name: "1주차 수강생",
+    source: "카톡 후기",
+    parts: [
+      { t: "용팀장님이 하나하나 챙겨주신 덕분에 끝까지 따라갈 수 있었습니다! 마지막에 " },
+      { u: "직접 등록한 상품이 1페이지 상위에 노출되는 걸" },
+      { t: " 보고 넘넘 기뻤어요. 첫 강의를 듣고, 어렵고 도망가고 싶어도 " },
+      { u: "일단 붙들고 뭐라도 해보면 결국 되긴 된다는 걸" },
+      { t: " 다시 느꼈네요!! 좋은 강의 감사합니다!" },
+    ],
+    capture: "/assets/testimonials/week1/w1-03.png",
+  },
+  {
+    name: "1주차 수강생",
+    source: "카톡 후기",
+    parts: [
+      { t: "그냥 듣기 좋은 이론이 아니라, 실제로 상품을 팔아본 사람이 현장에서 겪은 방식대로 알려주는 느낌이라 내 상품에도 적용할 수 있겠다는 생각이 들었어요. 그동안 첫 단추인 상품 선정·상품명 설계를 너무 대충 해왔는데, 이번 수업을 계기로 " },
+      { u: "키워드부터 상품명, 상세페이지, 광고까지 하나의 흐름으로 보고 접근해야겠다" },
+      { t: "는 생각이 들었습니다. 아직 1주차지만 " },
+      { u: "방향성은 확실히 잡힌 것 같습니다." },
+    ],
+    capture: "/assets/testimonials/week1/w1-01.png",
+  },
+  {
+    name: "1주차 수강생",
+    source: "카톡 후기",
+    parts: [
+      { t: "진도가 늦어지더라도 " },
+      { u: "모든 과정을 세세하게 함께 진행해주셔서" },
+      { t: ", 다른 강의와 다르게 " },
+      { u: "오해하거나 대충 이해한 부분 없이 제대로 배우고 실행하고 있다는" },
+      { t: " 생각이 들어 더 귀중한 시간이었어요. 용팀장님의 진심을 믿고 열심히 해보겠습니다. 1기분들 모두 화이팅입니다!" },
+    ],
+    capture: "/assets/testimonials/week1/w1-05.png",
+  },
+]

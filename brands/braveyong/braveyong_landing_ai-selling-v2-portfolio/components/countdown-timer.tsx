@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { config } from "@/lib/config"
 
 /**
- * 1기 신청 마감 카운트다운.
+ * 얼리버드가 마감 카운트다운.
  * `config.cohort1Deadline` (ISO datetime, KST)까지 D-N · HH:MM:SS.
  * 마감 후 자동 숨김 → consumer가 `showWhenExpired={false}` 기본으로 조건부 렌더.
  *
@@ -25,7 +25,7 @@ export function CountdownTimer({
   className = "",
   compact = false,
   deadline,
-  label = "1기 마감까지",
+  label = "얼리버드 마감까지",
 }: {
   className?: string
   /** 모바일/sticky용 단일 줄 압축 표기 */

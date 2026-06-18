@@ -2,9 +2,9 @@ import { Section } from "./section"
 // calendar timeline 제거로 unused imports 정리 — 필요 시 부활
 
 /**
- * 09-B 1기 강의일정 캘린더 — Operation 다음, WhyYong 직전.
- * 월간 grid (6월·7월) + 5주 timeline 카드 (origin-story 패턴).
- * 데이터: course.startDate 2026-06-13(토) 기준 매주 토요일 오프라인 5회, 줌은 2~5주차 직전 수요일 4회.
+ * 09-B 2기 강의일정 캘린더 — Operation 다음, WhyYong 직전.
+ * 월간 grid (7월·8월) + 5주 timeline 카드 (origin-story 패턴).
+ * 데이터: course.startDate 2026-07-25(토) 기준 매주 토요일 오프라인 5회, 줌은 2~5주차 직전 수요일 4회.
  * grid 각 셀 hover 시 그 날 일정 detail tooltip 표시.
  */
 type OffEvent = { type: "off"; n: number; title: string }
@@ -18,26 +18,26 @@ const months: {
   events: Record<number, DayEvent>
 }[] = [
   {
-    label: "2026.06",
-    daysInMonth: 30,
-    startWeekday: 0, // 2026-06-01 = Mon
-    events: {
-      13: { type: "off", n: 1, title: "소싱" },
-      17: { type: "zoom", week: 2 },
-      20: { type: "off", n: 2, title: "가공" },
-      24: { type: "zoom", week: 3 },
-      27: { type: "off", n: 3, title: "판매" },
-    },
-  },
-  {
     label: "2026.07",
     daysInMonth: 31,
     startWeekday: 2, // 2026-07-01 = Wed
     events: {
-      1: { type: "zoom", week: 4 },
-      4: { type: "off", n: 4, title: "광고" },
-      8: { type: "zoom", week: 5 },
-      11: { type: "off", n: 5, title: "시스템화" },
+      25: { type: "off", n: 1, title: "소싱" },
+      29: { type: "zoom", week: 2 },
+    },
+  },
+  {
+    label: "2026.08",
+    daysInMonth: 31,
+    startWeekday: 5, // 2026-08-01 = Sat
+    events: {
+      1: { type: "off", n: 2, title: "가공" },
+      5: { type: "zoom", week: 3 },
+      8: { type: "off", n: 3, title: "판매" },
+      12: { type: "zoom", week: 4 },
+      15: { type: "off", n: 4, title: "광고" },
+      19: { type: "zoom", week: 5 },
+      22: { type: "off", n: 5, title: "시스템화" },
     },
   },
 ]
@@ -186,10 +186,10 @@ export function Calendar() {
       tone="warm"
       id="calendar"
       label="Calendar"
-      title={<>1기, 같이 가는 5주 일정.</>}
+      title={<>2기, 같이 가는 5주 일정.</>}
       lead="오프라인 5회 + 줌 보강 4회. 매주 토요일 오프라인으로 같이 작업하고, 사이 주중에 줌으로 보강합니다."
     >
-      {/* 월간 grid 보기 — 6월 + 7월. mx-auto + max-w로 셀 비대 방지 */}
+      {/* 월간 grid 보기 — 7월 + 8월. mx-auto + max-w로 셀 비대 방지 */}
       <div className="mb-4 grid gap-4 lg:grid-cols-2">
         {months.map((m, i) => (
           <MonthGrid key={m.label} m={m} idx={i} />
@@ -218,11 +218,11 @@ export function Calendar() {
       <div className="grid gap-2 border-2 border-foreground bg-background p-5 text-sm sm:grid-cols-3 sm:text-base">
         <div>
           <span className="font-mono mr-2 text-[10px] font-bold uppercase tracking-[0.12em] text-foreground/55">오프라인 (토)</span>
-          <span className="font-bold tabular-nums">6.13 · 6.20 · 6.27 · 7.4 · 7.11</span>
+          <span className="font-bold tabular-nums">7.25 · 8.1 · 8.8 · 8.15 · 8.22</span>
         </div>
         <div>
           <span className="font-mono mr-2 text-[10px] font-bold uppercase tracking-[0.12em] text-foreground/55">줌 보강 (수)</span>
-          <span className="font-bold tabular-nums">6.17 · 6.24 · 7.1 · 7.8</span>
+          <span className="font-bold tabular-nums">7.29 · 8.5 · 8.12 · 8.19</span>
         </div>
         <div className="sm:text-right">
           <span className="font-mono mr-2 text-[10px] font-bold uppercase tracking-[0.12em] text-foreground/55">장소</span>
@@ -231,7 +231,7 @@ export function Calendar() {
       </div>
 
       <p className="font-memo mt-6 text-sm leading-relaxed text-foreground/70 sm:text-base">
-        ※ 위 일정은 예정이에요. 정확한 시간·장소(선릉역 or 강남역 주변)는 1기 확정 후 참여자분께 따로 안내드립니다. 주차별 상세는 1기 신청 후 공개합니다.
+        ※ 위 일정은 예정이에요. 정확한 시간·장소(선릉역 or 강남역 주변)는 2기 확정 후 참여자분께 따로 안내드립니다. 주차별 상세는 2기 신청 후 공개합니다.
       </p>
     </Section>
   )

@@ -1,13 +1,11 @@
 import Image from "next/image"
 import Link from "next/link"
 import { config, course } from "@/lib/config"
-import { PaymentDialog } from "@/components/payment-dialog"
-import { CountdownTimer } from "@/components/countdown-timer"
 
 /**
  * 01 Hero — 포트폴리오 1컬럼 중앙 (시안 A) + 타임어택 오퍼.
  * ○ 얼굴(grayscale 원형) → 이름 UPPERCASE → 서브라인 → 한 단락
- * → [1기 마감 임박 배지 + 카운트다운 + 가격 앵커 + 결제 CTA]
+ * → [얼리버드 마감 임박 배지 + 카운트다운 + 가격 앵커 + 결제 CTA]
  * Clarity 실측: 평균 스크롤 28%, 거의 안 내림 → 오퍼(가격+카운트다운+결제버튼)를 첫 화면에 전부 노출.
  */
 export function Hero() {
@@ -54,66 +52,6 @@ export function Hero() {
             </p>
             <p className="text-sm leading-relaxed text-foreground/65 sm:text-base">
               5주 동안 내 상황에 맞는 시작점부터 잡고, 매주 2개씩 같이 고쳐갑니다.
-            </p>
-          </div>
-
-          {/* ─── 타임어택 오퍼 박스 — Clarity상 안 내리는 사람 위해 첫 화면에 전부 ─── */}
-          <div className="hz-fade-up hz-delay-3 mx-auto max-w-xl rounded-2xl border-2 border-brand bg-brand/[0.06] p-5 text-center sm:p-7">
-            {/* 배지 — 선착순 1기 마감 임박 */}
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-brand px-3 py-1.5 text-xs font-bold text-brand-foreground sm:text-sm">
-              지금 1기 모집 중 — 곧 마감됩니다
-            </span>
-
-            {/* 카운트다운 — config.cohort1Deadline 타깃, 마감 후 자동 숨김 */}
-            <div className="mt-4 flex justify-center text-foreground">
-              <CountdownTimer />
-            </div>
-
-            {/* 가격 앵커 — 250만 취소선 → 1기 특별가 198만 강조 */}
-            <div className="mt-4 space-y-1">
-              <p className="text-sm text-foreground/55 sm:text-base">
-                마감되면 정가{" "}
-                <span className="font-bold text-foreground/55 line-through decoration-2">
-                  {(course.priceRegular / 10000).toLocaleString()}만원
-                </span>
-              </p>
-              <p className="text-base text-foreground/70 sm:text-lg">
-                1기 마감 전까지만 특별가
-              </p>
-              <p className="text-4xl font-bold tracking-tight text-brand sm:text-5xl">
-                {(course.priceFirst / 10000).toLocaleString()}만원
-                <span className="ml-1.5 align-middle text-xs font-normal text-foreground/45 sm:text-sm">
-                  (부가세 포함)
-                </span>
-              </p>
-            </div>
-
-            {/* 결제 CTA — 크게(py-4↑), bg-brand로 대비 강하게 */}
-            <div className="mt-5">
-              <PaymentDialog
-                amount={course.priceFirst}
-                label="1기 특별가 — 지금 결제 198만원"
-                className="group inline-flex w-full items-center justify-center gap-2.5 rounded-full border-2 border-brand bg-brand px-8 py-4 text-base font-bold tracking-tight text-brand-foreground transition-all duration-300 hover:opacity-90 sm:px-10 sm:py-5 sm:text-lg"
-              />
-            </div>
-
-            {/* 보조 CTA — 결제가 부담되면 신청서부터. outline 스타일로 결제 버튼이 더 도드라지게 */}
-            <div className="mt-3">
-              <a
-                href={config.googleFormUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="신청서 작성하기 — 약 1분, 새 창에서 열림"
-                data-track="hero_apply_form"
-                className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-foreground bg-transparent px-6 py-3.5 text-sm font-bold text-foreground transition-all hover:bg-foreground hover:text-background"
-              >
-                신청서부터 작성하기 (약 1분)
-              </a>
-            </div>
-
-            {/* 손글씨 한 줄 — Gowun Dodum, 진정성 */}
-            <p className="mt-4 font-memo text-sm text-foreground/70 sm:text-base">
-              저도 회사 다니면서, 애 재우고 새벽에 상품 올렸습니다. 지금 결제하면 1주차부터 같이 시작해요.
             </p>
           </div>
 

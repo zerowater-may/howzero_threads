@@ -12,8 +12,8 @@ const isGoogleFormUrlMissing =
 export const config = {
   // 폼 URL 미설정 시 페이지 top 튀는 것 방지 — 신청 섹션(#apply)으로 부드러운 스크롤
   googleFormUrl: isGoogleFormUrlMissing ? "#apply" : rawGoogleFormUrl,
-  /** 1기 신청 마감 ISO datetime — 카운트다운 종료 후 자동 숨김 */
-  cohort1Deadline: process.env.NEXT_PUBLIC_COHORT1_DEADLINE || "2026-06-14T23:59:59+09:00",
+  /** 얼리버드가 마감 ISO datetime (7/10까지) — 카운트다운 종료 후 자동 숨김 */
+  cohort1Deadline: process.env.NEXT_PUBLIC_COHORT1_DEADLINE || "2026-07-10T23:59:59+09:00",
   youtubeFreeUrl: process.env.NEXT_PUBLIC_YOUTUBE_FREE_URL || "#",
   contactEmail: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "braveyong@example.com",
   ga4Id: process.env.NEXT_PUBLIC_GA4_ID || "",
@@ -36,14 +36,19 @@ export const config = {
 /** 강의·상품 고정값 (운영자가 변경할 때만 여기 수정) */
 export const course = {
   name: "5주 오프라인 AI 셀링 실전반",
-  cohort: "1기",
-  priceFirst: 1_980_000,           // 1기 실행자 특별가 (부가세 포함)
-  priceRegular: 2_500_000,         // 2기 이후 정가
+  cohort: "2기",
+  // ── 가격 ──
+  // 화면 표기는 공급가(부가세 별도)로 230만/250만을 보여주고,
+  // 실제 결제선생 청구는 부가세 포함 금액(priceFirst/priceRegular)으로 나간다.
+  priceFirst: 2_530_000,           // 얼리버드(7/10까지) 결제액 = 공급가 230만 + VAT (부가세 포함)
+  priceRegular: 2_750_000,         // 정가(7/10 이후) 결제액 = 공급가 250만 + VAT (부가세 포함)
+  priceFirstSupply: 2_300_000,     // 화면 표기용 공급가 — "230만원 (부가세 별도)"
+  priceRegularSupply: 2_500_000,   // 화면 표기용 공급가 — "250만원 (부가세 별도)"
   capacityMin: 10,                 // 페이지 노출 X (내부 운영 기준)
   capacityMax: 15,                 // 페이지 노출 X
-  freeLectureDate: "2026-06-08 (월) 19:00",
-  startDate: "2026-06-13 (토)",
-  endDate: "2026-07-11 (토)",
+  freeLectureDate: "2026-07-20 (월) 19:00",
+  startDate: "2026-07-25 (토)",
+  endDate: "2026-08-22 (토)",
   weeks: 5,
   offlineCount: 5,
   zoomCount: 4,

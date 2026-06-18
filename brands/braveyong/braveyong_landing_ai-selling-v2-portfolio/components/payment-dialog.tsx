@@ -13,7 +13,7 @@ type PaymentDialogProps = {
   dark?: boolean
   /** send-bill로 보낼 상품 key. 미지정 시 서버가 기존 강의(course)로 처리 */
   productKey?: string
-  /** 카운트다운 마감 ISO. 미지정 시 1기 마감 */
+  /** 카운트다운 마감 ISO. 미지정 시 얼리버드 마감 */
   deadline?: string
   deadlineLabel?: string
   /** 안내 문단 override (기본은 강의용 문구) */

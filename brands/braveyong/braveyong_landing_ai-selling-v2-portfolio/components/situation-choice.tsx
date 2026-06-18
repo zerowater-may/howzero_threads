@@ -76,14 +76,14 @@ export function SituationChoice() {
               어디서 시작하든, 5주 안에 효자상품 하나는 같이 만듭니다.
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-background/75 sm:text-base">
-              초보든, 대량등록만 해봤든 상관없어요. 지금 1기 모집 중 — 곧 마감됩니다. 1기 마감 전까지만 특별가로 시작하세요.
+              초보든, 대량등록만 해봤든 상관없어요. 지금 2기 모집 중 — 얼리버드 7/10 마감. 7/10까지만 얼리버드가로 시작하세요.
               결제하시면 용팀장이 카톡으로 1주차 일정·장소를 직접 챙겨 드립니다.
             </p>
           </div>
           <div className="flex flex-col items-stretch gap-2">
             <PaymentDialog
               amount={course.priceFirst}
-              label="1기 특별가 — 지금 결제 198만원"
+              label="얼리버드가 — 지금 결제 230만원"
               className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-background bg-background px-6 py-3.5 text-sm font-bold text-foreground transition-all hover:opacity-90 sm:text-base"
             />
             <a

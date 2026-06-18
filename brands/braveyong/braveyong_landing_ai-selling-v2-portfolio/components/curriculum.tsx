@@ -5,7 +5,7 @@ import { course } from "@/lib/config"
 /**
  * 08 5주 커리큘럼 — 좌→우 5블럭 대분류 (소싱→가공→판매→광고→시스템화).
  * 다른 강사 전략 노출 방지 위해 상세 topics/outputs/scene은 blur+잠금.
- * 1기 신청 후 공개.
+ * 2기 신청 후 공개.
  */
 const blocks: { n: number; label: string; sub: string }[] = [
   { n: 1, label: "소싱",       sub: "현재 상태 진단 + 후보 상품 발굴" },
@@ -30,7 +30,7 @@ export function Curriculum() {
       id="curriculum"
       label="5주 커리큘럼"
       title={<>오프라인 {course.offlineCount}회 + 줌 보강 {course.zoomCount}회</>}
-      lead="대분류만 공개합니다. 상세 커리큘럼·실습 자료는 1기 신청 후 따로 안내드려요."
+      lead="대분류만 공개합니다. 상세 커리큘럼·실습 자료는 2기 신청 후 따로 안내드려요."
     >
       {/* 좌→우 5블럭 horizontal flow — 모바일은 vertical */}
       <div className="grid gap-3 md:grid-cols-5">
@@ -87,7 +87,7 @@ export function Curriculum() {
               상세 커리큘럼
             </div>
             <div className="mt-1 text-lg font-bold tracking-tight sm:text-xl">
-              1기 신청 후 공개합니다.
+              2기 신청 후 공개합니다.
             </div>
             <p className="font-memo mt-2 max-w-md text-center text-sm leading-relaxed text-foreground/70 sm:text-base">
               실습 자료·체크리스트·프레임은 결제 확정자에게만 보내드려요.
@@ -98,7 +98,7 @@ export function Curriculum() {
 
       {/* 안내 한 줄 — 진심 감성 */}
       <p className="font-memo mt-6 text-sm leading-relaxed text-foreground/70 sm:text-base">
-        ※ 제 1기 수강생분들에게 진심이고 싶어서요. 손에 잡히는 자료·체크리스트는 결제하신 분들께만 직접 보내드립니다.
+        ※ 제 2기 수강생분들에게 진심이고 싶어서요. 손에 잡히는 자료·체크리스트는 결제하신 분들께만 직접 보내드립니다.
       </p>
     </Section>
   )
