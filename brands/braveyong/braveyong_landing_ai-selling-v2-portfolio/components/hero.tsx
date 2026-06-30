@@ -51,7 +51,7 @@ export function Hero() {
               만드는 셀러로.
             </p>
             <p className="text-sm leading-relaxed text-foreground/65 sm:text-base">
-              5주 동안 내 상황에 맞는 시작점부터 잡고, 매주 2개씩 같이 고쳐갑니다.
+              4주 동안 내 상황에 맞는 시작점부터 잡고, 매주 2~3개씩 같이 고쳐갑니다.
             </p>
           </div>
 

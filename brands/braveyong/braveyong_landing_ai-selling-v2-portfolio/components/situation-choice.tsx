@@ -25,7 +25,7 @@ const paths = [
   {
     tag: "직장·육아 병행",
     title: "시간이 가장 부족하다면",
-    body: "매주 2개만 끝내는 루틴으로 쪼갭니다. 오프라인 사이에는 줌 보강으로 막힌 부분만 풉니다.",
+    body: "매주 2~3개씩 끝내는 루틴으로 쪼갭니다. 오프라인 사이에는 줌 보강으로 막힌 부분만 풉니다.",
     output: "주 2개 실행 루틴",
   },
 ]
@@ -63,7 +63,7 @@ export function SituationChoice() {
               {path.body}
             </p>
             <div className="mt-5 border-t border-foreground/15 pt-4 text-sm font-bold text-foreground">
-              5주 안에 남길 것: {path.output}
+              4주 안에 남길 것: {path.output}
             </div>
           </article>
         ))}
@@ -73,7 +73,7 @@ export function SituationChoice() {
         <div className="grid gap-5 md:grid-cols-[1fr_auto] md:items-center">
           <div>
             <h3 className="text-xl font-bold tracking-tight sm:text-2xl">
-              어디서 시작하든, 5주 안에 효자상품 하나는 같이 만듭니다.
+              어디서 시작하든, 4주 안에 효자상품 하나는 같이 만듭니다.
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-background/75 sm:text-base">
               초보든, 대량등록만 해봤든 상관없어요. 지금 2기 모집 중 — 얼리버드 7/10 마감. 7/10까지만 얼리버드가로 시작하세요.

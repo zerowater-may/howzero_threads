@@ -3,8 +3,8 @@ import { Section } from "./section"
 
 /**
  * 09-B 2기 강의일정 캘린더 — Operation 다음, WhyYong 직전.
- * 월간 grid (7월·8월) + 5주 timeline 카드 (origin-story 패턴).
- * 데이터: course.startDate 2026-07-25(토) 기준 매주 토요일 오프라인 5회, 줌은 2~5주차 직전 수요일 4회.
+ * 월간 grid (7월·8월) + 4주 timeline 카드 (origin-story 패턴).
+ * 데이터: course.startDate 2026-07-25(토) 기준 매주 토요일 오프라인 4회, 줌은 2~4주차 직전 수요일 3회.
  * grid 각 셀 hover 시 그 날 일정 detail tooltip 표시.
  */
 type OffEvent = { type: "off"; n: number; title: string }
@@ -36,8 +36,6 @@ const months: {
       8: { type: "off", n: 3, title: "판매" },
       12: { type: "zoom", week: 4 },
       15: { type: "off", n: 4, title: "광고" },
-      19: { type: "zoom", week: 5 },
-      22: { type: "off", n: 5, title: "시스템화" },
     },
   },
 ]
@@ -186,8 +184,8 @@ export function Calendar() {
       tone="warm"
       id="calendar"
       label="Calendar"
-      title={<>2기, 같이 가는 5주 일정.</>}
-      lead="오프라인 5회 + 줌 보강 4회. 매주 토요일 오프라인으로 같이 작업하고, 사이 주중에 줌으로 보강합니다."
+      title={<>2기, 같이 가는 4주 일정.</>}
+      lead="오프라인 4회 + 줌 보강 3회. 매주 토요일 오프라인으로 같이 작업하고, 사이 주중에 줌으로 보강합니다."
     >
       {/* 월간 grid 보기 — 7월 + 8월. mx-auto + max-w로 셀 비대 방지 */}
       <div className="mb-4 grid gap-4 lg:grid-cols-2">
@@ -218,11 +216,11 @@ export function Calendar() {
       <div className="grid gap-2 border-2 border-foreground bg-background p-5 text-sm sm:grid-cols-3 sm:text-base">
         <div>
           <span className="font-mono mr-2 text-[10px] font-bold uppercase tracking-[0.12em] text-foreground/55">오프라인 (토)</span>
-          <span className="font-bold tabular-nums">7.25 · 8.1 · 8.8 · 8.15 · 8.22</span>
+          <span className="font-bold tabular-nums">7.25 · 8.1 · 8.8 · 8.15</span>
         </div>
         <div>
           <span className="font-mono mr-2 text-[10px] font-bold uppercase tracking-[0.12em] text-foreground/55">줌 보강 (수)</span>
-          <span className="font-bold tabular-nums">7.29 · 8.5 · 8.12 · 8.19</span>
+          <span className="font-bold tabular-nums">7.29 · 8.5 · 8.12</span>
         </div>
         <div className="sm:text-right">
           <span className="font-mono mr-2 text-[10px] font-bold uppercase tracking-[0.12em] text-foreground/55">장소</span>

@@ -116,7 +116,7 @@ export function Apply() {
           {[
             { n: "01", h: "지금 결제", b: "이름·휴대폰만 입력하면 결제창이 바로 열립니다. 카드·이체·무이자 할부 가능." },
             { n: "02", h: "용팀장 카톡 안내", b: "결제 확정되면 용팀장이 카톡으로 1주차 일정·장소를 직접 챙겨 보내드려요." },
-            { n: "03", h: "7/25 토 5주 시작", b: "5주 오프라인 실전반 시작. 상품 직접 같이 고쳐 갑니다." },
+            { n: "03", h: "7/25 토 4주 시작", b: "4주 오프라인 실전반 시작. 상품 직접 같이 고쳐 갑니다." },
           ].map((s) => (
             <li key={s.n} className="relative border-l-2 border-foreground/30 pl-4">
               <div className="font-mono mb-1 text-[10px] font-bold text-foreground/55">STEP {s.n}</div>
@@ -139,7 +139,7 @@ export function Apply() {
         <div className="mt-5 grid gap-3 border-t border-background/15 pt-5 text-sm text-background/85 sm:grid-cols-2">
           <p>
             <span className="font-mono mr-2 text-[10px] uppercase tracking-[0.15em] text-background/55">받습니다</span>
-            직장·육아 병행하면서도 5주 동안 직접 상품을 같이 고쳐 가실 분
+            직장·육아 병행하면서도 4주 동안 직접 상품을 같이 고쳐 가실 분
           </p>
           <p>
             <span className="font-mono mr-2 text-[10px] uppercase tracking-[0.15em] text-background/55">정중히 사양</span>

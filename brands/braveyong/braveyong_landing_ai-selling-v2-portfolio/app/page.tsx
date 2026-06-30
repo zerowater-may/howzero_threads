@@ -17,6 +17,7 @@ import { Comparison } from "@/components/comparison"
 import { Price } from "@/components/price"
 import { Scarcity } from "@/components/scarcity"
 import { Apply } from "@/components/apply"
+import { FreeLecture } from "@/components/free-lecture"
 import { FAQ } from "@/components/faq"
 import { FinalCTA } from "@/components/final-cta"
 import { Footer } from "@/components/footer"
@@ -26,7 +27,7 @@ import { RevealObserver } from "@/components/reveal-observer"
 import { OriginStory } from "@/components/origin-story"
 
 /**
- * 용감한 용팀장 — 5주 오프라인 AI 셀링 실전반 (2기) 랜딩 v2
+ * 용감한 용팀장 — 4주 오프라인 AI 셀링 실전반 (2기) 랜딩 v2
  *
  * spec: docs/superpowers/specs/2026-05-23-braveyong-ai-selling-landing-v2-portfolio-style-design.md
  * 18블록 wireframe + Hero/Footer/Sticky CTA.
@@ -56,6 +57,7 @@ export default function Page() {
         <Price />             {/* 18 */}
         <Scarcity />          {/* 19 */}
         <Apply />             {/* 20 */}
+        <FreeLecture />       {/* 20-B 무료강의(7/20) — 결제 부담층 저관여 진입점 */}
         <FAQ />               {/* 21 */}
         <FinalCTA />          {/* 22 */}
         <Footer />            {/* 23 */}

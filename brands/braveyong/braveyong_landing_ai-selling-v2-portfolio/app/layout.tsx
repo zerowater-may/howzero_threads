@@ -78,9 +78,9 @@ const gaegu = Gaegu({
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://braveyong.example.com"),
-  title: "5주 오프라인 AI 셀링 실전반 — 용감한 용팀장",
+  title: "4주 오프라인 AI 셀링 실전반 — 용감한 용팀장",
   description:
-    "1만 개를 무작정 올리는 셀러에서 효자상품 10개를 만드는 셀러로. 서울 강남 오프라인 5회 + 줌 보강 4회. 2기 모집 중 · 신청서 보고 한 분씩 따로 안내.",
+    "1만 개를 무작정 올리는 셀러에서 효자상품 10개를 만드는 셀러로. 서울 강남 오프라인 4회 + 줌 보강 3회. 2기 모집 중 · 신청서 보고 한 분씩 따로 안내.",
   keywords: [
     "용감한 용팀장",
     "AI 셀링",
@@ -97,23 +97,23 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "ko_KR",
-    title: "5주 오프라인 AI 셀링 실전반 — 용감한 용팀장",
+    title: "4주 오프라인 AI 셀링 실전반 — 용감한 용팀장",
     description:
-      "1만 개를 무작정 올리는 셀러에서, 효자상품 10개를 만드는 셀러로. 서울 강남 오프라인 5회 + 줌 보강 4회. 신청서 보고 한 분씩 따로 안내드려요.",
+      "1만 개를 무작정 올리는 셀러에서, 효자상품 10개를 만드는 셀러로. 서울 강남 오프라인 4회 + 줌 보강 3회. 신청서 보고 한 분씩 따로 안내드려요.",
     siteName: "용감한 용팀장",
     images: [
       {
         url: "/assets/og-banner.png",
         width: 1200,
         height: 630,
-        alt: "용감한 용팀장 — 5주 오프라인 AI 셀링 실전반",
+        alt: "용감한 용팀장 — 4주 오프라인 AI 셀링 실전반",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "5주 오프라인 AI 셀링 실전반 — 용감한 용팀장",
-    description: "효자상품 10개를 5주 동안 같이 만듭니다. 서울 강남 · 소수정예 · 신청서 보고 한 분씩.",
+    title: "4주 오프라인 AI 셀링 실전반 — 용감한 용팀장",
+    description: "효자상품 10개를 4주 동안 같이 만듭니다. 서울 강남 · 소수정예 · 신청서 보고 한 분씩.",
     images: ["/assets/og-banner.png"],
   },
   robots: {
@@ -155,9 +155,9 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Course",
-              name: "5주 오프라인 AI 셀링 실전반 (2기)",
+              name: "4주 오프라인 AI 셀링 실전반 (2기)",
               description:
-                "1만 개를 무작정 올리는 셀러에서 효자상품 10개를 만드는 셀러로. 오프라인 5회 + 줌 보강 4회, 서울 강남, 소수정예.",
+                "1만 개를 무작정 올리는 셀러에서 효자상품 10개를 만드는 셀러로. 오프라인 4회 + 줌 보강 3회, 서울 강남, 소수정예.",
               provider: {
                 "@type": "Person",
                 name: "용감한 용팀장",

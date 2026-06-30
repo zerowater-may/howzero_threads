@@ -6,9 +6,9 @@ import { Check } from "lucide-react"
 const elements = ["키워드 · 카테고리", "상품명 · 대표이미지", "상세페이지 · 가격", "등록 전 체크까지 맞춰진 상품"]
 const howto = [
   ["상품 선정 프레임은 제가 직접", " 드려요."],
-  ["매주 과제로 1~2개씩", " 같이 만들어요."],
+  ["매주 과제로 2~3개씩", " 같이 만들어요."],
   ["기존 상품 개선·새 상품 소싱", " 어디부터 시작하셔도 됩니다."],
-  ["5주 동안 총 10개", " 본인 손으로 완성해요."],
+  ["4주 동안 총 10개", " 본인 손으로 완성해요."],
 ]
 
 export function Outcome() {
@@ -17,14 +17,14 @@ export function Outcome() {
       label="핵심 결과물"
       title={
         <>
-          5주 동안 효자상품 <ScribbleCircle><span className="text-foreground">10개</span></ScribbleCircle>를 함께 만듭니다.
+          4주 동안 효자상품 <ScribbleCircle><span className="text-foreground">10개</span></ScribbleCircle>를 함께 만듭니다.
         </>
       }
     >
       <div className="mb-6 border-l-4 border-foreground bg-background p-6">
         <p className="text-lg font-bold leading-snug sm:text-xl">
           처음부터 100개, 1000개를 효자상품으로 만드는 건 사실상 불가능해요.<br />
-          그래서 5주 동안 먼저 10개부터 같이 만들어 갑니다.
+          그래서 4주 동안 먼저 10개부터 같이 만들어 갑니다.
         </p>
       </div>
 
@@ -63,7 +63,7 @@ export function Outcome() {
       <div className="mt-6 border border-[var(--warm-border)] bg-[var(--warm)] p-5 text-sm leading-relaxed">
         <span className="font-bold">참고하세요.</span> ‘효자상품 10개’는 매출을 보장하는 표현이 아닙니다.
         이 페이지에서 효자상품 10개는{" "}
-        <span className="font-bold">용팀장 기준으로 팔릴 구조를 갖춘 상품 10개를 5주 동안 직접 완성한다</span>는 의미입니다.
+        <span className="font-bold">용팀장 기준으로 팔릴 구조를 갖춘 상품 10개를 4주 동안 직접 완성한다</span>는 의미입니다.
       </div>
 
       {/* 인터뷰 scene: 효자상품은 발견이 아니라 가공 — Origin Story 03과 톤 통일 */}
@@ -84,7 +84,7 @@ export function Outcome() {
         <p className="font-memo mt-5 text-sm leading-relaxed text-foreground/70 sm:text-base">
           한 상품을 효자상품으로 키우는 패턴이 손에 잡히니까,<br />
           <span className="font-bold text-foreground">같은 방식으로 다음 후보를 계속 늘려가는 중</span>이에요.<br />
-          이걸 5주 동안 같이 해보는 게 이번 강의입니다.
+          이걸 4주 동안 같이 해보는 게 이번 강의입니다.
         </p>
       </div>
     </Section>

@@ -64,6 +64,13 @@ export const captures: string[] = Array.from({ length: 50 }, (_, i) => {
   return `/assets/testimonials/t-${n}.png`
 })
 
+/** 3주차 실전 후기 캡처 6장 — public/assets/testimonials/week3/w3-01~06.png.
+ *  1주차(week1Reviews) 다음 블록에 캡처 그리드로 노출. 클릭 시 원본 새 탭. */
+export const week3Captures: string[] = Array.from({ length: 6 }, (_, i) => {
+  const n = String(i + 1).padStart(2, "0")
+  return `/assets/testimonials/week3/w3-${n}.png`
+})
+
 /** 현장 사진 — 사기꾼 의심 차단·졸업 스터디 섹션에 분산 배치 */
 /** PNG → JPG 변환 (사진 압축 효율, 모바일 성능 최적화) — 디자인은 동일, 픽셀만 압축. */
 export const photos = {

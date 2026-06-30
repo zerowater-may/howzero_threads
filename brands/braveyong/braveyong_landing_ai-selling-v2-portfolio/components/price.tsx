@@ -18,7 +18,7 @@ export function Price() {
             얼리버드 마감 임박 · 얼리버드가
           </span>
           <div className="text-sm font-bold text-foreground/70">
-            5주 오프라인 AI 셀링 실전반 · {course.cohort}
+            4주 오프라인 AI 셀링 실전반 · {course.cohort}
           </div>
 
           {/* 타임어택 카운트다운 — 얼리버드 마감 (마감 후 자동 숨김) */}
@@ -61,6 +61,9 @@ export function Price() {
             <span className="rounded-full border border-[var(--warm-border)] bg-[var(--warm)] px-2.5 py-1 font-bold text-[var(--warm-border)]">
               💳 카드 무이자 할부 가능
             </span>
+            <span className="rounded-full border border-brand bg-brand/10 px-2.5 py-1 font-bold text-brand">
+              🛡 3개월 환불 보장
+            </span>
           </div>
 
           {/* 할부 부담 완화 한 줄 — 사람 말투 */}
@@ -85,7 +88,7 @@ export function Price() {
 
           {/* CTA 직전 감정 정당화 — 결제 결심을 도와주는 한 줄 */}
           <p className="font-memo mt-4 rounded border-l-2 border-foreground bg-background/60 px-3 py-2 text-sm leading-relaxed text-foreground">
-            받는 건 5주가 아니라,<br />
+            받는 건 4주가 아니라,<br />
             <span className="font-bold">내가 직접 만든 효자상품 10개</span>
             와, 졸업 후에도 같이 가는 사람들입니다.
           </p>
@@ -111,7 +114,7 @@ export function Price() {
             <p className="text-foreground/75">
               1기를 마친 후기가 쌓였고, 이번 2기는 7/10까지 얼리버드가로 모십니다. 일찍 결정하신 분께 그만큼 가격을 낮췄어요.<br />
               <br />
-              <span className="font-bold text-foreground">대신 5주 진심으로 함께할 분만 오세요.</span>
+              <span className="font-bold text-foreground">대신 4주 진심으로 함께할 분만 오세요.</span>
               <br />
               오프라인에 직접 오시고, 줌 보강 들으시고, 매주 과제 같이 해주실 분. 결제하시면 용팀장이 카톡으로 1주차 일정·장소를 바로 챙겨 드릴게요.
             </p>
@@ -121,9 +124,9 @@ export function Price() {
               <span className="marker">녹화강의가 아니에요.</span>
             </p>
             <p className="mt-3 text-foreground/75">
-              5주 동안 각자의 상품을 같이 보고, 효자상품 10개를 손으로 직접 완성하는{" "}
+              4주 동안 각자의 상품을 같이 보고, 효자상품 10개를 손으로 직접 완성하는{" "}
               <span className="font-bold text-foreground">오프라인 실전반</span>이에요.<br />
-              PDF·녹화 한 묶음에 매기는 값이 아니라, 같이 만드는 5주 자체에 대한 값입니다.
+              PDF·녹화 한 묶음에 매기는 값이 아니라, 같이 만드는 4주 자체에 대한 값입니다.
             </p>
           </div>
           <div className="border-l-4 border-[var(--warm-border)] bg-[var(--warm)] p-5 text-sm leading-relaxed">

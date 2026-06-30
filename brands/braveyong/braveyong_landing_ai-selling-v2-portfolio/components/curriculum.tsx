@@ -3,16 +3,15 @@ import { Section } from "./section"
 import { course } from "@/lib/config"
 
 /**
- * 08 5주 커리큘럼 — 좌→우 5블럭 대분류 (소싱→가공→판매→광고→시스템화).
+ * 08 4주 커리큘럼 — 좌→우 4블럭 대분류 (소싱→가공→판매→광고). 마지막 주차(시스템화) 제외.
  * 다른 강사 전략 노출 방지 위해 상세 topics/outputs/scene은 blur+잠금.
  * 2기 신청 후 공개.
  */
 const blocks: { n: number; label: string; sub: string }[] = [
-  { n: 1, label: "소싱",       sub: "현재 상태 진단 + 후보 상품 발굴" },
-  { n: 2, label: "가공",       sub: "상품명 · 카테고리 · AI 상세" },
-  { n: 3, label: "판매",       sub: "등록 + 대표이미지 + 전환 체크" },
-  { n: 4, label: "광고",       sub: "검색·쇼핑 광고 운영 기초" },
-  { n: 5, label: "시스템화",   sub: "AI 반복 루틴 + 효자상품 10개 점검" },
+  { n: 1, label: "소싱",   sub: "현재 상태 진단 + 후보 상품 발굴" },
+  { n: 2, label: "가공",   sub: "상품명 · 카테고리 · AI 상세" },
+  { n: 3, label: "판매",   sub: "등록 + 대표이미지 + 전환 체크" },
+  { n: 4, label: "광고",   sub: "검색·쇼핑 광고 운영 기초" },
 ]
 
 /** 잠긴 상세 — blur로 미리보기만 (실제 keyword는 의도적으로 약하게) */
@@ -21,19 +20,18 @@ const lockedTeasers = [
   "상품명 SEO 5단 검증법 · 대표이미지 A/B 패턴",
   "상세페이지 스토리보드 · 구매 이유 → 불안 제거 순서",
   "쇼핑 광고 입찰 기준 · CPC 관리 루틴",
-  "AI 반복 작업 템플릿 · 매주 운영 루틴표",
 ]
 
 export function Curriculum() {
   return (
     <Section
       id="curriculum"
-      label="5주 커리큘럼"
+      label="4주 커리큘럼"
       title={<>오프라인 {course.offlineCount}회 + 줌 보강 {course.zoomCount}회</>}
       lead="대분류만 공개합니다. 상세 커리큘럼·실습 자료는 2기 신청 후 따로 안내드려요."
     >
-      {/* 좌→우 5블럭 horizontal flow — 모바일은 vertical */}
-      <div className="grid gap-3 md:grid-cols-5">
+      {/* 좌→우 4블럭 horizontal flow — 모바일은 vertical */}
+      <div className="grid gap-3 md:grid-cols-4">
         {blocks.map((b, i) => (
           <div
             key={b.n}
@@ -45,7 +43,7 @@ export function Curriculum() {
             <h3 className="text-xl font-bold tracking-tight sm:text-2xl">{b.label}</h3>
             <p className="mt-2 text-xs leading-relaxed text-foreground/65 sm:text-sm">{b.sub}</p>
 
-            {/* 화살표 — 데스크탑만 (블럭 사이 4개) */}
+            {/* 화살표 — 데스크탑만 (블럭 사이 3개) */}
             {i < blocks.length - 1 && (
               <ChevronRight
                 className="absolute -right-[16px] top-1/2 z-10 hidden h-7 w-7 -translate-y-1/2 rounded-full bg-background p-0.5 text-foreground/40 ring-2 ring-background md:block"

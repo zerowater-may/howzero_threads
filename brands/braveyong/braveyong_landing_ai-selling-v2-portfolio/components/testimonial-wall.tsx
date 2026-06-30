@@ -4,7 +4,7 @@ import Image from "next/image"
 import { useState, type ReactNode } from "react"
 import { ChevronDown, X } from "lucide-react"
 import { Section } from "./section"
-import { highlights, captures, week1Reviews } from "@/lib/testimonials"
+import { highlights, captures, week1Reviews, week3Captures } from "@/lib/testimonials"
 
 /**
  * 04 후기 벽 — 하이브리드 (시안 A).
@@ -95,6 +95,41 @@ export function TestimonialWall({
                 📷 카톡 원본 보기
               </a>
             </article>
+          ))}
+        </div>
+      </div>
+
+      {/* ── 3주차 실전 후기 (캡처) — 카톡 후기 원본 6장, 클릭 시 새 탭 ── */}
+      <div className="mb-10">
+        <div className="mb-4 flex flex-wrap items-center gap-2">
+          <span className="font-mono inline-flex items-center rounded-full bg-foreground px-3 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-background">
+            📒 3주차 후기
+          </span>
+          <span className="text-sm font-bold tracking-tight text-foreground sm:text-base">
+            3주차에도, 직접 적용한 변화를 남겨주셨어요.
+          </span>
+        </div>
+        <div className="grid items-start gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {week3Captures.map((src, i) => (
+            <a
+              key={src}
+              href={src}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-track={`week3_capture_${i + 1}`}
+              aria-label={`3주차 수강생 후기 ${i + 1} 원본 보기`}
+              className="group block overflow-hidden border-2 border-foreground bg-background transition-transform hover:-translate-y-0.5 hover:shadow-[0_6px_0_var(--foreground)]"
+            >
+              <Image
+                src={src}
+                alt={`3주차 수강생 후기 ${i + 1}`}
+                width={526}
+                height={400}
+                sizes="(min-width:1024px) 320px, (min-width:640px) 50vw, 100vw"
+                className="h-auto w-full"
+                loading="lazy"
+              />
+            </a>
           ))}
         </div>
       </div>

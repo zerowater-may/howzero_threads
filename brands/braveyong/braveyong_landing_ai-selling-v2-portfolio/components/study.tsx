@@ -20,10 +20,10 @@ export function Study() {
       <div className="mb-6 border-l-4 border-foreground bg-background p-6">
         <p className="text-lg font-bold leading-snug sm:text-xl">
           저는 <span className="text-foreground">끝나고 나서가 더 중요하다</span>고 생각해요.<br />
-          5주가 끝나도 매월 한 번 강남에서 같이 모여요. 정책이 바뀌고, 네이버 로직이 바뀌고, 시장이 바뀌어도 — 천천히 같이 따라갑니다.
+          4주가 끝나도 매월 한 번 강남에서 같이 모여요. 정책이 바뀌고, 네이버 로직이 바뀌고, 시장이 바뀌어도 — 천천히 같이 따라갑니다.
         </p>
         <p className="font-memo mt-4 text-base leading-relaxed text-foreground/75 sm:text-lg">
-          <span className="marker">같이 한다는 게,</span> 5주짜리 약속이 아니어서요.
+          <span className="marker">같이 한다는 게,</span> 4주짜리 약속이 아니어서요.
         </p>
       </div>
 
@@ -64,7 +64,7 @@ export function Study() {
           <ul className="space-y-2.5">
             <li className="flex items-start gap-2.5 text-sm">
               <Check className="mt-0.5 h-4 w-4 flex-none" />
-              5주 본강의를 끝낸 분만 참여하실 수 있어요.
+              4주 본강의를 끝낸 분만 참여하실 수 있어요.
             </li>
             <li className="flex items-start gap-2.5 text-sm">
               <Check className="mt-0.5 h-4 w-4 flex-none" />

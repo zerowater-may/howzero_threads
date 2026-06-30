@@ -56,7 +56,7 @@ export function TrustEvidence() {
             className="object-cover"
           />
           <figcaption className="absolute bottom-0 left-0 right-0 bg-foreground/85 px-3 py-2.5 text-[11px] font-bold leading-snug text-background">
-            강의는 5주지만,<br />같이 가는 건 그 뒤부터
+            강의는 4주지만,<br />같이 가는 건 그 뒤부터
           </figcaption>
         </figure>
         <figure className="relative aspect-square overflow-hidden border-2 border-foreground bg-background">
