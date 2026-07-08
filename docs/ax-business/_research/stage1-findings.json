@@ -1,0 +1,841 @@
+[
+  {
+    "dimension": "overseas-agencies",
+    "claims": [
+      {
+        "text": "글로벌 AI 컨설팅 서비스 시장은 2025년 약 USD 11.07B에서 2035년 USD 90.99B로 연평균 23.4% 성장할 전망이며, 대기업 세그먼트가 27.9% CAGR로 가장 빠르고 금융·뱅킹이 2025년 22.3% 점유율로 최대 수요처다.",
+        "sourceUrls": [
+          "https://www.futuremarketinsights.com/reports/ai-consulting-services-market"
+        ],
+        "confidence": "high",
+        "verdict": {
+          "refuted": false,
+          "reason": "제시된 출처(Future Market Insights, AI Consulting Services Market 리포트)를 직접 열어 확인한 결과, 주장의 모든 수치가 원문과 정확히 일치한다: 2025년 USD 11.07B, 2035년 USD 90.99B, CAGR 23.4%, 대기업(Large Enterprises) 세그먼트 27.9% CAGR로 최고, Finance and Banking이 2025년 22.3% 점유율로 최대 수요처. 과장·왜곡·수치 변경 없이 출처를 충실히 인용했다. 다만 이는 시장조사업체(FMI)의 단일 예측치이며 실측이 아닌 추정(forecast)이라는 점, FMI류 벤더 리포트는 방법론 투명성이 낮다는 한계는 있으나, 주장 자체가 출처 내용과 부합하므로 refuted 처리하지 않는다."
+        }
+      },
+      {
+        "text": "AI 컨설팅 시장 규모/성장률 추정치는 리서치사마다 크게 갈린다: AI Consulting & Support Services는 2024년 USD 14B에서 2030년 USD 72.8B(31.6% CAGR), 또 다른 추정은 2025년 USD 7.39B→2030년 USD 19.47B(21.4% CAGR)로 CAGR 밴드가 대략 21~36%다.",
+        "sourceUrls": [
+          "https://finance.yahoo.com/news/ai-consulting-support-services-market-090300922.html",
+          "https://www.futuremarketinsights.com/reports/ai-consulting-services-market"
+        ],
+        "confidence": "medium",
+        "verdict": {
+          "refuted": true,
+          "reason": "첫 번째 출처(Yahoo Finance)는 정확히 일치: \"2024년 US$14B → 2030년 US$72.8B, CAGR 31.6%\"로 주장과 동일. 그러나 두 번째 출처(Future Market Insights)는 주장이 인용한 \"2025년 US$7.39B → 2030년 US$19.47B (21.4% CAGR)\" 수치를 전혀 담고 있지 않음. 해당 FMI 페이지의 실제 수치는 \"2025년 US$11.07B → 2035년 US$90.99B, CAGR 23.4%\"임. 즉 두 번째 추정치는 인용 출처와 불일치(출처 오귀속)하며, 그로 인해 '21~36% CAGR 밴드'의 하단 근거가 제시된 URL로 검증되지 않음. 보수적 기준상 refuted.",
+          "correctedText": "AI 컨설팅 시장 규모 추정치는 리서치사마다 크게 갈린다. AI Consulting & Support Services는 2024년 USD 14B에서 2030년 USD 72.8B(CAGR 31.6%)로 전망된다(출처: Yahoo Finance/Global Industry Analysts). 한편 Future Market Insights의 AI Consulting Services 리포트는 2025년 USD 11.07B에서 2035년 USD 90.99B(CAGR 23.4%)로 추정한다. 따라서 대략 23~32%의 CAGR 밴드로 갈린다. (주의: '2025 USD 7.39B→2030 USD 19.47B, 21.4% CAGR' 수치는 인용된 두 출처 어디에서도 확인되지 않으므로 별도 출처 확인 전에는 사용하지 말 것.)"
+        }
+      },
+      {
+        "text": "AI 에이전시 시급 벤치마크(2026): AI 컨설팅 $100~450/hr, AI SEO $100~149/hr, AI PR $150~450/hr로 전통 디지털 에이전시($75~150/hr) 대비 프리미엄이 붙는다.",
+        "sourceUrls": [
+          "https://digitalagencynetwork.com/ai-agency-pricing/"
+        ],
+        "confidence": "high",
+        "verdict": {
+          "refuted": false,
+          "reason": "제시된 출처(digitalagencynetwork.com/ai-agency-pricing/)를 직접 열어 확인한 결과, 주장의 모든 수치가 원문과 일치한다: AI 컨설팅 $100~450/hr, AI SEO $100~149/hr, AI PR $150~450/hr(캠페인은 $35K+), 전통 디지털 에이전시 $75~150/hr. 원문도 \"AI agency services tend to be priced higher than traditional digital marketing offerings\"라며 프리미엄 프레이밍을 명시하고 있어 과장·오류·출처없음에 해당하지 않는다."
+        }
+      },
+      {
+        "text": "AI 자동화 프로젝트 단가: 단일 워크플로우 셋업 $2,500~15,000+, 커스텀 AI 개발 $50,000~500,000+, 데이터 준비 $10,000~90,000+ 수준이다.",
+        "sourceUrls": [
+          "https://digitalagencynetwork.com/ai-agency-pricing/"
+        ],
+        "confidence": "high",
+        "verdict": {
+          "refuted": false,
+          "reason": "출처(digitalagencynetwork.com/ai-agency-pricing/)를 직접 열어 세 수치를 모두 확인함. \"Setup projects typically range from $2,500 to $15,000+\", \"Projects range from $50K–$500K+ for custom ML/deployment solutions\", \"Data preparation and cleaning: $10K–$90K+\"로 주장의 단일 워크플로우 $2,500~15,000+, 커스텀 AI $50,000~500,000+, 데이터 준비 $10,000~90,000+ 세 범위가 원문과 정확히 일치. 과장·오류 없음."
+        }
+      },
+      {
+        "text": "리테이너 벤치마크: AI 자동화 모니터링/유지 $500~5,000+/월, 프랙셔널 AI 컨설팅 $5,000~25,000/월, AI 마케팅 자동화 $99~5,000+/월로 폭이 넓다.",
+        "sourceUrls": [
+          "https://digitalagencynetwork.com/ai-agency-pricing/"
+        ],
+        "confidence": "high",
+        "verdict": {
+          "refuted": false,
+          "reason": "제시된 출처(digitalagencynetwork.com/ai-agency-pricing)를 직접 확인한 결과 세 수치가 모두 원문과 일치한다. AI 자동화 모니터링/유지 리테이너 $500~$5,000+/월, 프랙셔널 AI 컨설팅 리테이너 $5,000~$25,000/월, AI 마케팅 자동화 $99~$500/월(기본)에서 $1,000~$5,000+/월(엔터프라이즈)로 명시돼 있다. 주장은 이 벤치마크를 정확히 반영하며 과장·오류·출처 없음이 없다."
+        }
+      },
+      {
+        "text": "AI 자동화 에이전시의 지배적 과금 구조는 '착수 프로젝트 피 → 라이브 후 리테이너 전환' 하이브리드 모델로, 간단한 빌드 $1,500~5,000, 문서/LLM 분류/멀티시스템 라우팅이 얽힌 복잡 빌드는 $6,000~15,000+, 풀서비스 리테이너는 월 $3,000~20,000 선이다.",
+        "sourceUrls": [
+          "https://taskip.net/ai-automation-agency-pricing/",
+          "https://arsum.com/blog/posts/ai-automation-agency-pricing/"
+        ],
+        "confidence": "medium",
+        "verdict": {
+          "refuted": true,
+          "reason": "하이브리드 과금 프레임(착수 프로젝트 피 → 리테이너 전환)과 \"간단 빌드 $1,500~5,000\"는 taskip 소스와 일치한다(단일 워크플로우 셋업 $1,500–5,000). 그러나 나머지 두 수치는 제시 출처와 맞지 않는다. (1) 복잡 빌드 \"$6,000~15,000+\": taskip은 멀티시스템 셋업을 $5,000–20,000, arsum은 $10,000–35,000(문서처리 $15,000–40,000, 커스텀 AI 에이전트 $35,000–100,000+)로 제시해, 주장의 $6,000~15,000 대역은 어느 출처에도 없고 오히려 하한을 과소·상한을 과소 표기한 임의 구간이다. (2) 풀서비스 리테이너 \"월 $3,000~20,000\": 두 출처 모두 리테이너 상한을 $8,000+ 수준으로 두며($3,000–8,000+/월), 월 $20,000 리테이너를 뒷받침하는 문장은 없다. $20,000는 두 출처에서 '셋업/프로젝트 피'의 상한 수치(멀티시스템 셋업 $5,000–20,000)여서, 주장은 셋업 피와 월 리테이너를 혼동해 리테이너 상한을 크게 부풀렸다. 프레임은 맞으나 3개 핵심 수치 중 2개가 출처와 불일치·과장이므로 보수적으로 refuted."
+        }
+      }
+    ],
+    "examples": [
+      {
+        "name": "Axe Automation",
+        "offering": "진단(오디트·프로세스 매핑·직원 인터뷰로 ROI 높은 지점 발굴) → 구축(커스텀 코드 + Zapier/Make.com + 기존 스택) → 운영(관리·이터레이션). 사내 AI 개발자 채용/트레이닝까지 제공. 타겟: SMB~미드마켓(유연)",
+        "pricingModel": "프로젝트 + 리테이너 (사이트에 단가 비공개, 통상 기본 빌드 $1,500~12,000, 리테이너 월 $4,000~12,000)",
+        "positioning": "The #1 AI and Automation Agency — 수작업을 없애 팀 생산성을 10배로",
+        "channel": "콘텐츠 마케팅 + Clutch 리뷰(16건) + 케이스스터디",
+        "url": "https://www.axeautomation.co/ai-automation-agency"
+      },
+      {
+        "name": "Automation Agency",
+        "offering": "AI 팀원(전략·카피·소셜) 무제한 + 인간 전문가(디자이너·영상·소셜) 요청. GoHighLevel 플랫폼 포함. 타겟: 솔로 오퍼레이터~미드마켓",
+        "pricingModel": "프로덕타이즈드 월 구독: Assist $249/월, Delegate $499/월, Elevate $1,495/월(전담 PM·주간 1:1)",
+        "positioning": "Marketing That Just Gets Done — AI 즉시 실행 + 인간 전문가 정제 하이브리드",
+        "channel": "프로덕타이즈드 서브스크립션(웹 셀프서브)",
+        "url": "https://automationagency.com/pricing"
+      },
+      {
+        "name": "Markovate",
+        "offering": "구축 중심: 커스텀 ML·NLP·컴퓨터비전·문서처리 등 엔터프라이즈 구현. 타겟: 미드마켓~엔터프라이즈",
+        "pricingModel": "프로젝트 기반 + 리테이너 (단가 비공개)",
+        "positioning": "데이터 집약 산업을 위한 고급 ML 솔루션",
+        "channel": "리스티클/디렉토리 노출 + 인바운드",
+        "url": "https://markovate.com"
+      },
+      {
+        "name": "HatchWorks AI",
+        "offering": "데이터 기반 AI·실시간 애널리틱스 구축(니어쇼어 딜리버리). 타겟: SMB~미드마켓",
+        "pricingModel": "프로젝트 기반, $50~99/hr, 최소 $25K, 통상 $200K~999K",
+        "positioning": "저비용 니어쇼어 개발 모델",
+        "channel": "니어쇼어 딜리버리 + Clutch",
+        "url": "https://hatchworks.com"
+      },
+      {
+        "name": "SmartSites",
+        "offering": "마케팅 자동화·콘텐츠 생성·워크플로우 자동화 구축+운영. 타겟: SMB~미드마켓",
+        "pricingModel": "셋업 $2,500~15K + 월 리테이너 $500~5K (최소 캠페인 $1K)",
+        "positioning": "AI 기반 마케팅 자동화",
+        "channel": "퍼포먼스 마케팅 에이전시(SEM/SEO 인바운드)",
+        "url": "https://smartsites.com"
+      },
+      {
+        "name": "Botsify",
+        "offering": "챗봇 개발·고객서비스 자동화, 화이트라벨 옵션. 타겟: SMB~미드마켓",
+        "pricingModel": "구독: DIY $49/월, Done-For-You $149/월, 엔터프라이즈 커스텀",
+        "positioning": "쓰기 쉬운 챗봇 플랫폼",
+        "channel": "SaaS 셀프서브 + 화이트라벨 파트너",
+        "url": "https://botsify.com"
+      },
+      {
+        "name": "Latenode",
+        "offering": "비주얼 워크플로우 자동화 플랫폼(헤드리스 브라우저·AI 통합) — 내부 팀이 직접 구축. 타겟: 솔로~미드마켓",
+        "pricingModel": "실행 크레딧 구독: $19/월(5K), $59/월(25K), $299/월+(엔터프라이즈)",
+        "positioning": "에이전시 대안 — 내부에서 자체 자동화 구축",
+        "channel": "프로덕트 레드 그로스(무료 티어) + 콘텐츠",
+        "url": "https://latenode.com"
+      },
+      {
+        "name": "Sigmoidal",
+        "offering": "AI 컨설팅(Sigmoidal Edge) + AI SW 개발(Sigmoidal 360) + AI 지식 어시스턴트(Aurora). 타겟: 미드마켓~엔터프라이즈",
+        "pricingModel": "프로젝트 기반(단가 비공개)",
+        "positioning": "생성형 AI·ML로 성장과 혁신을 이끄는 AI 컨설팅펌",
+        "channel": "씬리더십 콘텐츠 + 인바운드",
+        "url": "https://sigmoidal.io"
+      },
+      {
+        "name": "E2M Solutions",
+        "offering": "이커머스 에이전시용 화이트라벨 AI: 아키텍처 설계·통합·가드레일·최적화 대행(Shopify 운영 자동화). 타겟: 이커머스 에이전시·SMB 브랜드",
+        "pricingModel": "화이트라벨 리테이너/구독 (파트너 단가)",
+        "positioning": "에이전시 뒤에 서는 화이트라벨 AI 실행 파트너",
+        "channel": "화이트라벨 B2B2C 파트너십",
+        "url": "https://www.e2msolutions.com"
+      },
+      {
+        "name": "Accenture (AI/Automation)",
+        "offering": "RPA·NLP·예측분석·엔터프라이즈 시스템 통합, 전략→구축→운영 풀스택. 타겟: 엔터프라이즈",
+        "pricingModel": "프로젝트 + 리테이너, 통상 $50K~500K+, 다년 계약",
+        "positioning": "대규모 엔터프라이즈 트랜스포메이션",
+        "channel": "글로벌 SI 영업 + UiPath 등 파트너십",
+        "url": "https://www.accenture.com"
+      },
+      {
+        "name": "Deloitte Digital",
+        "offering": "에이전틱 AI·크로스도메인 AI·컴플라이언스 자동화 구축+운영. 타겟: 엔터프라이즈",
+        "pricingModel": "다년 계약 + 아웃컴(성과) 기반",
+        "positioning": "AI 자동화에서 최대 규모의 프로페셔널 서비스펌",
+        "channel": "글로벌 SI 영업 + 벤더 얼라이언스",
+        "url": "https://www.deloitte.com"
+      },
+      {
+        "name": "Capgemini (AI)",
+        "offering": "전략 + 구축 + 운영, 광범위한 IT 트랜스포메이션의 일부로 AI 제공. 타겟: 엔터프라이즈",
+        "pricingModel": "다년 프로젝트 + 리테이너",
+        "positioning": "프랑스 기반 대형 컨설팅 — 엔드투엔드 AI 트랜스포메이션",
+        "channel": "엔터프라이즈 영업 + UiPath 다이아몬드 파트너",
+        "url": "https://www.capgemini.com"
+      },
+      {
+        "name": "McKinsey QuantumBlack",
+        "offering": "이사회/C레벨 AI 전략·거버넌스 컨설팅. 타겟: C-suite/엔터프라이즈",
+        "pricingModel": "전략 컨설팅 피(성과 연동 확대 중 — 글로벌 수수료 ~1/4가 아웃컴 연동)",
+        "positioning": "보드레벨 AI 전략과 거버넌스",
+        "channel": "탑티어 전략펌 네트워크",
+        "url": "https://www.mckinsey.com/capabilities/quantumblack"
+      },
+      {
+        "name": "Artefact",
+        "offering": "데이터·AI 컨설팅(전략+구축): 애널리틱스, 고객데이터플랫폼. 타겟: 엔터프라이즈",
+        "pricingModel": "프로젝트 기반",
+        "positioning": "데이터·AI 컨설팅(프랑스)",
+        "channel": "데이터/마케팅 씬리더십",
+        "url": "https://www.artefact.com"
+      },
+      {
+        "name": "ML6",
+        "offering": "ML 에지니어링 부티크: 모델 개발·MLOps 구축. 타겟: 미드마켓~엔터프라이즈",
+        "pricingModel": "프로젝트 기반",
+        "positioning": "벨기에 기반 ML 에지니어링 전문 부티크",
+        "channel": "기술 부티크 레퍼럴 + 커뮤니티",
+        "url": "https://www.ml6.eu"
+      },
+      {
+        "name": "Nexus (agent.nexus)",
+        "offering": "AI 에이전트 플랫폼 + Forward Deployed Engineers로 업무 워크플로우 자동화(구축+운영). 타겟: 엔터프라이즈",
+        "pricingModel": "플랫폼 + FDE 서비스(엔터프라이즈 커스텀)",
+        "positioning": "AI 에이전트 플랫폼 + 상주 엔지니어로 실제 워크플로우 자동화",
+        "channel": "포워드 디플로이드 엔지니어 모델 + 콘텐츠",
+        "url": "https://agent.nexus"
+      }
+    ],
+    "notes": "조사 방법: WebSearch 8회(가격모델·SMB 컨설팅·n8n/Make/Zapier·GenAI 케이스·에이전시 리스트·RPA/UiPath·이커머스/Shopify·시장규모·유럽/영국·Axe) + WebFetch로 실제 페이지 검증(Latenode 17개 비교표, Axe Automation 서비스페이지, Automation Agency 가격페이지, DigitalAgencyNetwork 벤치마크, FutureMarketInsights 시장규모). 유럽 리스트는 403 차단되어 r.jina.ai로 우회 확인.\n\n신뢰도: 직접 fetch로 검증한 페이지(FutureMarketInsights 시장규모, DigitalAgencyNetwork 시급/리테이너 벤치마크, Automation Agency 가격, Axe Automation 서비스, Latenode 비교표, agent.nexus 유럽 리스트)는 high/medium. 검색 스니펫에만 근거한 수치(맥킨지 아웃컴 1/4·Metronome 85%·영국 데이레이트·독일 시급)는 원 출처를 직접 확인하지 못해 low로 낮춤 — 실제 인용 전 원 리포트 재검증 권장.\n\nexamples.url 중 직접 fetch로 도메인까지 확인: axeautomation.co, automationagency.com, latenode.com, agent.nexus. 나머지(markovate.com, hatchworks.com, smartsites.com, botsify.com, sigmoidal.io, e2msolutions.com, accenture.com, deloitte.com, capgemini.com, mckinsey.com/quantumblack, artefact.com, ml6.eu)는 Latenode/검색 결과에서 확인된 실명 기업의 통용 루트 도메인이며 서비스·가격 세부는 리스티클 표 기준이라 개별 공식 페이지 재확인 필요.\n\n핵심 인사이트(하우제로 사업 관점): (1) 서비스 플로우는 국내 'AI TEAM'과 해외가 사실상 동일 = 진단→설계→구축→성과측정→운영. 차별화는 플로우가 아니라 도메인 깊이(이커머스 셀러 실전 실적)와 케이스집의 '시간 X% 단축' 정량화. (2) 과금은 3층 구조가 표준 — 솔로/SMB는 프로덕타이즈드 월구독($249~1,495/월), 미드마켓은 착수 프로젝트비($5K~15K)+리테이너($1K~5K/월), 엔터프라이즈는 다년·아웃컴 기반. 국내 이커머스 셀러→SMB 확장에는 '착수 오딧+빌드 → 리테이너 전환' 하이브리드가 가장 검증된 진입 모델. (3) n8n(실행 단위 과금)이 Zapier(태스크 단위) 대비 원가·데이터 주권 우위 = 셀러 대상 마진 방어 포인트."
+  },
+  {
+    "dimension": "ecommerce-automation",
+    "claims": [
+      {
+        "text": "CS 자동응답이 이커머스에서 가장 성숙하고 ROI가 검증된 자동화 영역이다: 패션 셀러 Otrium은 연 12만 건 티켓의 65%를 AI 에이전트가 완전 자동 처리한다.",
+        "sourceUrls": [
+          "https://letsengaige.com/blog/top-ai-agent-support-chatbot-shopify/"
+        ],
+        "confidence": "high",
+        "verdict": {
+          "refuted": true,
+          "reason": "근거가 벤더(Engaige)의 자체 마케팅 케이스스터디/블로그 하나뿐이며 독립 검증이 없다. 벤더 자료 내부에서도 수치가 불일치한다(블로그·케이스 65% vs 공식 LinkedIn 게시물 \"automated 50%\"). 또 케이스스터디 자체가 미해결 시 사람 상담원으로 핸드오프한다고 명시하므로 \"완전 자동 처리\"는 과장이다. 무엇보다 \"CS 자동응답이 이커머스에서 가장 성숙하고 ROI가 검증된 자동화 영역\"이라는 광범위한 단정은 제시된 출처에 아무 근거가 없고 단일 벤더 사례를 일반화한 것이다. 보수적으로 refuted.",
+          "correctedText": "한 벤더(Engaige)는 패션 셀러 Otrium이 자사 AI 에이전트로 연 12만 건 티켓의 약 절반~65%를 자동 응대(미해결 시 사람 상담원 핸드오프)한다고 자체 케이스스터디에서 주장한다. 다만 이는 벤더 마케팅 자료로 독립 검증되지 않았고 수치도 자료마다 다르며(50% vs 65%), CS 자동화가 이커머스에서 \"가장 성숙하고 ROI가 검증된\" 영역이라는 일반화는 이 출처로 뒷받침되지 않는다."
+        }
+      },
+      {
+        "text": "HelloPrint는 AI로 CS의 70%를 자동화하고 최초 응답시간을 90% 단축, CS 인력을 100명에서 28명으로 줄였다.",
+        "sourceUrls": [
+          "https://letsengaige.com/blog/top-ai-agent-support-chatbot-shopify/"
+        ],
+        "confidence": "high",
+        "verdict": {
+          "refuted": true,
+          "reason": "수치(70% 자동화, 최초 응답 90% 단축, 100→28명)는 제시된 letsengaige.com 블로그에 문자 그대로 등장하므로 인용 자체는 정확함. 그러나 이 수치의 유일한 출처는 해당 AI 솔루션을 파는 벤더 Engaige의 자체 마케팅/케이스 스터디 페이지뿐이며(letsengaige.com/blog·/case/helloprint), HelloPrint 공식 발표·언론·독립 감사 등 제3자 검증이 전무함. 100→28명 감축, 70% 완전자동화 같은 극단적 수치가 판매사 판촉 페이지에만 근거하므로 보수적 기준상 신뢰 불가."
+        }
+      },
+      {
+        "text": "Gorgias는 이커머스 브랜드 1.5만 개 이상에 CS 헬프데스크를 제공하며, AI Agent가 반복 문의의 최대 60%를 자동 처리하고 전환 대화율을 62% 높인다.",
+        "sourceUrls": [
+          "https://temporal.io/resources/case-studies/gorgias-uses-ai-agents-to-improve-customer-service"
+        ],
+        "confidence": "high",
+        "verdict": {
+          "reason": "인용된 출처(temporal.io Gorgias 케이스스터디)를 직접 확인한 결과 세 수치가 모두 원문 문구와 일치한다: \"over 15,000 e-commerce brands\", \"automating up to 60% of repetitive support tasks\", \"driving 62% higher conversation rate for ecommerce brands\". 주장은 출처를 정확히 반영한다. 단, 원문은 \"conversation rate(대화율)\"이지 \"conversion rate(전환율)\"가 아니므로, 주장의 \"전환 대화율\"이라는 표현은 62%를 매출 전환율 상승으로 오해시킬 여지가 있는 약한 부정확성이 있다. 또한 이 수치들은 Gorgias 자체 마케팅에서 온 벤더 제공 값이라 독립 검증된 지표는 아니다. 그러나 인용 출처 기준으로는 과장·허위가 아니므로 반박하지 않는다.",
+          "refuted": false,
+          "correctedText": "Gorgias는 이커머스 브랜드 1.5만 개 이상에 CS 헬프데스크를 제공하며, AI Agent가 반복 지원 업무의 최대 60%를 자동 처리하고 대화율(conversation rate)을 62% 높인다. (출처는 Gorgias/Temporal 마케팅 수치이며, 62%는 매출 '전환율'이 아니라 '대화율'을 가리킨다.)"
+        }
+      },
+      {
+        "text": "Shopify 전용 CS AI(Yuma)는 고객사별로 EvryJewels 89%, Clove 70%, Tediber 64%의 티켓 자동해결률을 벤더 기준으로 공개한다(고객별 편차 큼).",
+        "sourceUrls": [
+          "https://letsengaige.com/blog/top-ai-agent-support-chatbot-shopify/",
+          "https://yuma.ai/"
+        ],
+        "confidence": "medium",
+        "verdict": {
+          "refuted": true,
+          "reason": "주장의 큰 틀(Yuma가 고객사별 자동해결률을 벤더 기준으로 개별 공개, 편차 큼)은 실제로 확인됨. yuma.ai 홈페이지에 EvryJewels 89%, Clove 70%가 벤더 자체 수치로 게시됨(그 외 MyVariations 62%, Petlibro 49%, FINN 45% 등 편차 큼도 사실). 다만 세 번째 데이터포인트인 'Tediber 64%'는 1차 출처인 Yuma 홈페이지에서 확인되지 않고 오직 3자 블로그(letsengaige.com)에만 등장함. 블로그는 이를 '홈페이지에 게시됨'이라 서술하나 벤더 원문에서 검증 불가. 세 수치 중 하나가 제시된 벤더 출처로 뒷받침되지 않으므로 보수적으로 refuted 처리. 수정 시 EvryJewels 89%/Clove 70%는 검증됨, Tediber 64%는 미확인으로 표기 필요.",
+          "correctedText": "Shopify 전용 CS AI(Yuma)는 홈페이지에 고객사별 자동화율을 벤더 자체 수치로 개별 공개하며 편차가 크다(예: EvryJewels 89%, Clove 70% — yuma.ai에서 확인됨; 그 외 MyVariations 62%, Petlibro 49% 등). 단, 'Tediber 64%'는 Yuma 홈페이지에서 확인되지 않으며 제3자 블로그에만 등장하는 미검증 수치다."
+        }
+      },
+      {
+        "text": "마케팅 자동화(이메일 플로우)는 전체 발송의 약 5.3%에 불과하지만 이메일 매출의 약 41%를 만들어낸다(Klaviyo 18.3만+ 브랜드 벤치마크).",
+        "sourceUrls": [
+          "https://www.klaviyo.com/marketing-resources/ecommerce-benchmarks"
+        ],
+        "confidence": "medium",
+        "verdict": {
+          "refuted": false,
+          "reason": "Klaviyo 2026 이메일 벤치마크 공식 페이지(183,000+ 고객 기반)에서 수치가 그대로 확인됨: 플로우(자동화)는 전체 발송의 5.3%에 불과하지만 이메일 매출의 약 41%를 생성하고, 캠페인은 발송의 94.7%를 차지, 플로우 RPR은 캠페인 대비 약 18배. 브랜드 수 \"18.3만+\"도 정확. 단, 제시된 URL(marketing-resources/ecommerce-benchmarks)은 실제로 2016년 구버전 리포트로 이 수치가 없음 — 올바른 출처는 https://www.klaviyo.com/products/email-marketing/benchmarks 임. 주장 자체는 근거가 확실하므로 refuted 아님(출처 URL만 교정 필요).",
+          "correctedText": "마케팅 자동화(이메일 플로우)는 전체 발송의 약 5.3%에 불과하지만 이메일 매출의 약 41%를 만들어낸다. 수신자당 매출(RPR)은 캠페인 대비 약 18배 높다(Klaviyo 2026 벤치마크, 18.3만+ 고객 기반). 출처: https://www.klaviyo.com/products/email-marketing/benchmarks"
+        }
+      },
+      {
+        "text": "장바구니 이탈 복구 플로우는 수신자당 평균 $3.65, 웰컴 플로우는 $2.65의 매출을 내는 등 자동화 플로우가 이커머스 자동화 매출의 핵심이다(Klaviyo 벤치마크).",
+        "sourceUrls": [
+          "https://www.klaviyo.com/blog/abandoned-cart-benchmarks",
+          "https://www.klaviyo.com/marketing-resources/ecommerce-benchmarks"
+        ],
+        "confidence": "medium",
+        "verdict": {
+          "refuted": false,
+          "reason": "Klaviyo 벤치마크 블로그(abandoned-cart-benchmarks)에서 장바구니 이탈(abandoned cart) 플로우 평균 수신자당 매출 $3.65, 웰컴(welcome) 플로우 $2.65 수치가 그대로 확인됨. 자동화 플로우가 이커머스 자동화 매출의 핵심이라는 서술도 출처의 취지와 일치. 다만 두 번째 출처(marketing-resources 벤치마크 페이지)는 주문금액 구간별로 $7.01/$3.34 등 다른 수치를 제시하므로, 정확히는 '2024 Benchmark Report 전체 평균' 기준임을 명시하는 것이 안전. 핵심 주장은 근거로 뒷받침됨.",
+          "correctedText": "Klaviyo 2024 벤치마크(전체 평균) 기준, 장바구니 이탈 복구 플로우는 수신자당 평균 $3.65, 웰컴 플로우는 $2.65의 매출을 낸다. 이처럼 자동화 플로우는 이커머스 자동화 매출의 핵심이다."
+        }
+      }
+    ],
+    "examples": [
+      {
+        "name": "Yuma AI",
+        "url": "https://yuma.ai/",
+        "offering": "Shopify 전용 자율 CS AI 에이전트(헬프데스크 내장)",
+        "positioning": "이커머스 CS 티켓 최대 89% 자동 해결(고객별 편차)",
+        "pricingModel": "SaaS 구독",
+        "channel": "Shopify App Store / Gorgias·Zendesk 등 헬프데스크 연동"
+      },
+      {
+        "name": "Gorgias",
+        "url": "https://www.gorgias.com/",
+        "offering": "이커머스 헬프데스크 + AI Agent",
+        "positioning": "1.5만+ 브랜드, 반복 문의 최대 60% 자동화·전환 대화율 +62%",
+        "pricingModel": "SaaS 구독(티켓/해결 기반)",
+        "channel": "Shopify/BigCommerce 앱스토어, 파트너 에이전시"
+      },
+      {
+        "name": "Shopify Magic / Sidekick",
+        "url": "https://www.shopify.com/blog/ai-ecommerce",
+        "offering": "상품 설명·헤드라인·이메일·번역 생성 내장 AI",
+        "positioning": "관리자 화면 무료 내장 → 상세페이지 생성 진입장벽 최저",
+        "pricingModel": "Shopify 요금제에 포함(무료)",
+        "channel": "Shopify 플랫폼 기본 탑재"
+      },
+      {
+        "name": "딸깍 상세페이지 AI (ttal-kkak)",
+        "url": "https://www.ttal-kkak.com/ai-detail-page",
+        "offering": "쿠팡·스마트스토어 상세페이지 AI 자동 제작",
+        "positioning": "제품 사진/정보만으로 섹션 자동 구성·규격 분할",
+        "pricingModel": "국내 SaaS(사용량/구독 추정)",
+        "channel": "국내 셀러 대상 웹서비스"
+      },
+      {
+        "name": "셀러비서 (sellerbiseo)",
+        "url": "https://sellerbiseo.com/seller_detail/editor",
+        "offering": "AI 상세페이지 자동 생성 에디터",
+        "positioning": "국내 셀러용 상세페이지 자동화",
+        "pricingModel": "국내 SaaS",
+        "channel": "웹서비스"
+      },
+      {
+        "name": "크몽 AI 상세페이지 자동화 풀",
+        "url": "https://kmong.com/gig/752698",
+        "offering": "14개 섹션 자동 구성·860px 분할·엑셀 일괄 대량 생성 워크플로우",
+        "positioning": "개발자 출신 셀러가 만든 실전 자동화 풀",
+        "pricingModel": "크몽 단건 판매(툴/외주)",
+        "channel": "크몽 마켓플레이스"
+      },
+      {
+        "name": "AI TEAM / Alpha Brothers",
+        "url": "https://ai-team.kr/",
+        "offering": "AX(AI Transformation) 컨설팅·맞춤형 AI 협업툴 개발",
+        "positioning": "레퍼런스 경쟁사: 3단계(툴 큐레이팅→경량 SPA→맞춤툴), 사례집 기반 영업",
+        "pricingModel": "컨설팅/구축 프로젝트 + 자체 툴",
+        "channel": "사례집(콘텐츠 마케팅)·B2B 인바운드"
+      },
+      {
+        "name": "Repricer.com / SellerSnap",
+        "url": "https://www.repricer.com/blog/best-dynamic-pricing-software-ecommerce/",
+        "offering": "아마존/이커머스 다이내믹 프라이싱·경쟁가 모니터링·자동 리프라이싱",
+        "positioning": "50~500+ SKU에서 즉시 ROI, 마진 방어",
+        "pricingModel": "SaaS 구독",
+        "channel": "Amazon 셀러 툴 생태계"
+      },
+      {
+        "name": "Prisync",
+        "url": "https://prisync.com/",
+        "offering": "경쟁사 가격 모니터링 + 다이내믹 프라이싱",
+        "positioning": "가격 자동화 1$당 $4.80 마진 회수 주장(벤더)",
+        "pricingModel": "SaaS 구독",
+        "channel": "Shopify/이커머스 통합"
+      },
+      {
+        "name": "Klaviyo",
+        "url": "https://www.klaviyo.com/marketing-resources/ecommerce-benchmarks",
+        "offering": "이메일/SMS 마케팅 자동화 플로우(장바구니 이탈·웰컴 등)",
+        "positioning": "자동 플로우가 이메일 매출의 ~41% 창출",
+        "pricingModel": "SaaS(연락처 규모 기반)",
+        "channel": "Shopify 앱스토어·에이전시 파트너"
+      },
+      {
+        "name": "Whatagraph / Improvado",
+        "url": "https://whatagraph.com/blog/articles/ai-reporting-tools",
+        "offering": "광고·마케팅 데이터 대시보드 및 AI 리포트 자동화",
+        "positioning": "Meta Ads·Shopify·GA4 통합 → 리포트 분 단위",
+        "pricingModel": "SaaS 구독",
+        "channel": "대행사·D2C 브랜드"
+      },
+      {
+        "name": "채널톡 ALF",
+        "url": "https://channel.io/ko/blog/articles/ai-chatbot-11-case-4f9da38f",
+        "offering": "국내 이커머스 CS AI 챗봇",
+        "positioning": "평균 해결률 30%+, 운영형(모니터링·피드백)으로 성능 향상",
+        "pricingModel": "SaaS 구독",
+        "channel": "국내 커머스/플랫폼"
+      },
+      {
+        "name": "Alchera (엘체라)",
+        "url": "https://www.alchera.ai/resource/blog/ekyc-e-commerce-prevent-fake-review-accounts",
+        "offering": "별점 조작·부정 리뷰 계정 탐지 자동화",
+        "positioning": "패턴 분석 기반 매시간 자동 차단",
+        "pricingModel": "B2B 솔루션 계약",
+        "channel": "이커머스 플랫폼 대상 B2B"
+      }
+    ],
+    "notes": "가장 많이 자동화되는 업무 순위(수요·성숙도 기준): 1) CS 자동응답(가장 검증됨, Otrium 65%·HelloPrint 70%·Gorgias 60%), 2) 상품등록/상세페이지 생성(플랫폼 무료 내장 + 국내 딸깍·셀러비서 다수), 3) 마케팅 이메일/콘텐츠 자동화(플로우가 이메일 매출 41%), 4) 가격 모니터링·다이내믹 프라이싱(마진 5~22%), 5) 광고 리포트·데이터 대시보드(리포트 시간 대폭 절감). 재고·발주 자동화는 가격/수요예측과 묶여 잉여재고 ~30% 절감으로 나타남.\n\n신뢰도 주의: 자동화율·시간절감 수치는 대부분 벤더/에이전시 자기보고(vendor-stated)이며 고객사 카탈로그·정책·연동 깊이에 따라 편차가 큼. Klaviyo 벤치마크(18.3만 브랜드)와 한국 정부 예산(중기부)은 상대적으로 독립적 근거. '리서치 94% 단축'(AI TEAM)은 검색 요약에만 등장하고 실제 ai-team.kr 페이지에서 확인 불가 → low로 처리, 실제 검증된 사례는 팬그로스 '6시간→5분'. aiautomation.cc의 '주당 15~20시간 낭비'도 원문에서 확인 실패해 제외함.\n\n국내 시사점(창업자 자산 연결): 상세페이지 자동화·CS 챗봇은 이미 레드오션에 가까우나 진입장벽 낮고 수요 큼 → bulsaja/braveyong 셀러 교육 고객군에 번들형 AX 컨설팅+구축이 차별화 포인트. 2026 소상공인 AI 지원 5.4조(고객응대·재고·마케팅 자동화 명시)가 SMB 확장의 정책 순풍. AI TEAM 모델(사례집→AX 컨설팅→맞춤툴)이 직접 벤치마크 대상."
+  },
+  {
+    "dimension": "korea-competitors",
+    "claims": [
+      {
+        "text": "AI팀(ai-team.kr)은 액셀러레이터 알파브라더스가 운영하는 AX 컨설팅 조직으로 '업무생산성 10X를 위한 AX컨설팅'을 내세우고 교육·컨설팅·용역·AX사례집 4구조로 100명 이상 전문가를 강조하며 인스타그램·스레드(@ai.team_official)로 마케팅한다 — 이 사업이 벤치마킹하는 핵심 레퍼런스.",
+        "sourceUrls": [
+          "https://ai-team.kr/",
+          "https://www.alphabrothers.co.kr/",
+          "https://www.alphabrothers.co.kr/business"
+        ],
+        "confidence": "high",
+        "verdict": {
+          "refuted": false,
+          "reason": "핵심 주장은 원출처에서 직접 확인됨. ai-team.kr: 운영사 \"ⓒ 2018. Alpha Brothers\"(알파브라더스), 슬로건 \"AI팀과 업무생산성 10X하세요\" + 서비스 브랜드 \"AX컨설팅\", 4구조(교육·컨설팅·용역·AX사례집), 인스타그램·스레드 @ai.team_official 모두 존재. alphabrothers.co.kr/business에서 알파브라더스는 직접/간접투자·액셀러레이팅을 하는 투자사(액셀러레이터)이며 AI TEAM(ai-team.kr)을 자사 프로젝트로 링크. 단 \"100명 이상 전문가 강조\"는 홈페이지 및 확인 페이지에서 문구를 확인하지 못함 — 이 세부 수치만 미검증(하위 페이지에 있을 가능성은 있으나 근거 없음).",
+          "correctedText": "AI팀(ai-team.kr)은 투자·액셀러레이팅사 알파브라더스가 운영하는 AX 컨설팅 프로젝트로 '업무생산성 10X를 위한 AX컨설팅'을 내세우고 교육·컨설팅·용역·AX사례집 4구조로 구성되며 인스타그램·스레드(@ai.team_official)로 마케팅한다. ('100명 이상 전문가' 강조 문구는 원출처에서 확인되지 않아 삭제/보류)"
+        }
+      },
+      {
+        "text": "AI팀 AX 사례집은 글로벌 트렌드 리서치 시간 94% 단축을 비롯해 디자인·영업지원·마케팅·운영·CS 전반의 시간절감 사례를 성과 수치로 소구한다.",
+        "sourceUrls": [
+          "https://ai-team.kr/ax-cases/?q=YToyOntzOjEyOiJrZXl3b3JkX3R5cGUiO3M6MzoiYWxsIjtzOjQ6InBhZ2UiO2k6NTt9&bmode=view&idx=171281001&t=board",
+          "https://ai-team.kr/"
+        ],
+        "confidence": "medium",
+        "verdict": {
+          "refuted": true,
+          "reason": "제시된 출처 두 곳(idx=171281001 사례 페이지, 홈페이지)을 직접 열어 확인했으나 주장의 핵심 근거가 없다. (1) '글로벌 트렌드 리서치 94% 시간 단축' 수치는 어느 페이지에도 존재하지 않는다. (2) 디자인·영업지원·마케팅·운영·CS 전반의 시간절감 사례를 성과 수치로 소구한다는 내용도 확인되지 않는다. idx=171281001 페이지는 반복업무 자동화의 일반 개념·도구·부서별 예시만 다루며 구체 수치나 개별 사례 성과가 없다. AX 사례집 목록에서 유일하게 확인되는 수치성 표현은 '마케팅 6시간→5분' 제목뿐이고, 94%나 리서치·디자인·CS 등 분야별 정량 성과는 근거가 없다. 출처 근거 부족으로 보수적으로 refuted 처리.",
+          "correctedText": "AI팀 AX 사례집에는 '마케팅 핵심 업무 6시간→5분' 같은 시간 단축 사례 제목이 소개되어 있으나, 제시된 출처만으로는 '글로벌 트렌드 리서치 94% 단축'이나 디자인·영업지원·마케팅·운영·CS 전반의 정량 성과 수치는 확인되지 않는다."
+        }
+      },
+      {
+        "text": "AX-Consulting(ax-con.com)은 중소기업(제조·의료·유통) 타깃으로 무료 1시간 진단→맞춤 견적 방식을 쓰고, 프로젝트 50건+·평균 비용절감 47%·월 80시간 절감·노쇼율 40% 감소·처리시간 70% 단축을 대표 수치로 내건다(가격 비공개).",
+        "sourceUrls": [
+          "https://www.ax-con.com/"
+        ],
+        "confidence": "high",
+        "verdict": {
+          "refuted": false,
+          "reason": "ax-con.com 홈페이지를 직접 확인한 결과 주장의 모든 요소가 실제 게재 내용과 일치한다. 타깃 산업 제조/의료/유통 명시, \"무료 1시간 진단\"(+맞춤 솔루션 제안·ROI 리포트) 제공, 프로젝트 \"50+\", 평균 비용절감 \"47%\", 월 절감 \"80h\", 의료 B클리닉 노쇼 \"40%\" 감소, 유통 C사 처리시간 \"70%\" 단축이 각각 헤더/케이스 섹션에 표기돼 있고 가격은 비공개다. 다만 이 수치들은 전부 자사 랜딩페이지의 자기보고 마케팅 수치로 제3자 검증 근거는 없다. 주장 자체가 \"사이트가 이 수치를 대표로 내건다\"는 서술적 진술이므로 출처와 부합하여 refuted 아님."
+        }
+      },
+      {
+        "text": "AX Partner(axpartner.co.kr)는 소상공인(5인 미만)~중견기업 대상으로 '자체 거대모델이 아닌 검증된 도구의 스마트한 조합'이라는 경량화 포지션을 취하고, 네이버 블로그와 15문항 무료 자가진단으로 리드를 모으며 정부지원사업 활용을 강조한다(가격 비공개).",
+        "sourceUrls": [
+          "https://axpartner.co.kr/"
+        ],
+        "confidence": "high",
+        "verdict": {
+          "refuted": false,
+          "reason": "axpartner.co.kr 원문에서 주장 전부 확인됨. 타겟: 상담폼에 \"5인 미만(소상공인)\"~\"50인 이상\" 명시. 포지션: \"거대한 자체 모델 개발이나 무거운 서버 구축은 비용과 인력의 부담이 큽니다\" + \"검증된 AI 도구를 스마트하게 조합\" 문구로 경량화 포지션 확인. 리드: \"15문항·60점 만점·약 2분\" 무료 자가진단 + 상담 신청폼 + 네비게이션 네이버 블로그 링크 확인. 정부지원: 푸터 \"정부지원사업 지원\" 확인. 가격: 구체적 금액/패키지 없이 \"Low비용/합리적 비용\"만 언급 → 비공개 확인. 과장·오류 없음."
+        }
+      },
+      {
+        "text": "DataBridge(databridge.co.kr)는 현대차·하나은행·IBK·CJ·경찰청 등 대기업·금융 대상으로 Claude Code·MCP·AI에이전트 기반 데이터 시각화/자동화 교육+컨설팅을 하고, 원데이 클래스와 포트폴리오·강연으로 마케팅한다(가격 비공개).",
+        "sourceUrls": [
+          "https://databridge.co.kr/services.html"
+        ],
+        "confidence": "high",
+        "verdict": {
+          "refuted": false,
+          "reason": "제시된 출처 https://databridge.co.kr/services.html 를 직접 열어 확인한 결과, 주장의 모든 핵심 요소가 페이지에 명시되어 있음. (1) 고객사로 \"현대자동차그룹, 하나은행, 기업은행(IBK), CJ그룹, 경찰청, 성균관대학교, 고려대학교\" 명기 → 대기업·금융·공공. (2) \"Claude Code 실무 AI 업무 자동화\", \"Claude Code로 계산식·시각화 전략 자동 생성\" → Claude Code 기반. (3) \"MCP 연동 실습\", \"AI 에이전트 설계\" → MCP·AI에이전트. (4) \"데이터 분석·시각화\", \"시각화 리포트 자동화\" → 데이터 시각화/자동화 교육. (5) 네비게이션에 \"원데이 클래스(/oneday/)\", \"고객사례(/portfolio)\" 링크 존재 → 원데이 클래스·포트폴리오 마케팅. (6) 가격은 페이지에 명시되지 않고 교육 문의만 안내 → 가격 비공개. 과장·허위·출처없음 요소 발견되지 않음."
+        }
+      },
+      {
+        "text": "n8n Korea(n8nkorea.co.kr)는 오픈소스·셀프호스팅·노벤더락인을 앞세워 Starter/Pro/Enterprise 3단계 요금(금액 비공개)으로 워크플로우 구축·운영을 대행하고, 케이스스터디·GitHub 템플릿·후기 364개(4.9/5)로 신뢰를 쌓는다.",
+        "sourceUrls": [
+          "https://n8nkorea.co.kr/",
+          "https://n8n.io/"
+        ],
+        "confidence": "high",
+        "verdict": {
+          "refuted": false,
+          "reason": "n8nkorea.co.kr 랜딩을 직접 확인한 결과 주장의 모든 검증 가능한 항목이 사이트 내용과 일치한다. '100% 오픈소스'·셀프호스팅·'벤더 락인 없음' 문구, Starter/Pro(추천)/Enterprise 3단계 요금제(금액 비공개, 상담 신청 버튼만), 케이스스터디 3개+전체보기, GitHub 템플릿(heyhans/n8nkorea-workflow-templates), '후기 364개', 평점 '4.9/5'이 모두 존재한다. 주장은 사이트가 스스로 내세우는 내용을 정확히 기술한 것으로 과장·오류·출처없음이 없다. 단, 후기 364개·4.9점 등 사회적 증거의 진위(실제 고객 여부)는 사이트 자체 표기이며 제3자 검증은 불가하나, 주장 자체는 '이런 요소로 신뢰를 쌓는다'는 서술 범위 내라 사실과 부합한다."
+        }
+      }
+    ],
+    "examples": [
+      {
+        "name": "AI팀 (AI TEAM / 운영: 알파브라더스)",
+        "url": "https://ai-team.kr/",
+        "offering": "기업맞춤 AX 컨설팅 + 교육 + 용역, AX 사례집. 문제정의→AX설계→실행→성과측정→유지보수 플로우",
+        "pricingModel": "비공개, 1:1 전문가 상담 후 견적",
+        "positioning": "'업무생산성 10X를 위한 AX컨설팅', 100명+ 전문가 조직",
+        "channel": "홈페이지(사례집 중심) + 인스타그램/스레드 @ai.team_official + 전화/이메일 상담. 서울·부산·일본·싱가포르 지사"
+      },
+      {
+        "name": "AX-Consulting (ax-con.com)",
+        "url": "https://www.ax-con.com/",
+        "offering": "AI 컨설팅 + n8n/Make 업무자동화 + 실무 AI 교육",
+        "pricingModel": "비공개, 무료 1시간 진단 후 맞춤 견적",
+        "positioning": "'복잡한 AI 기술을 간단한 솔루션으로', 제조·의료·유통 중소기업 특화, 평균 47% 비용절감·월 80h 절감",
+        "channel": "홈페이지(사례·후기) + 무료 진단 리드젠 + 이메일(axconkr@gmail.com), 24시간 내 응답"
+      },
+      {
+        "name": "AX PARTNER (axpartner.co.kr)",
+        "url": "https://axpartner.co.kr/",
+        "offering": "데이터 정비·맞춤 툴 도입·시스템 연동(RPA)·거버넌스 4솔루션 AX 컨설팅",
+        "pricingModel": "비공개, '합리적/저비용' 강조 + 정부지원사업 활용",
+        "positioning": "'검증된 도구의 스마트한 조합'(경량화), 소상공인~중견 전업종, 'AX=기업 생존전략' 프레이밍",
+        "channel": "홈페이지 15문항 무료 자가진단 + 네이버 블로그 커뮤니티 + 상담폼(aipartner03@gmail.com) + 업종별 케이스스터디"
+      },
+      {
+        "name": "DataBridge (databridge.co.kr)",
+        "url": "https://databridge.co.kr/services.html",
+        "offering": "AX 컨설팅 + 데이터 시각화/BI + AI 업무자동화 교육(Claude Code·MCP·AI에이전트)",
+        "pricingModel": "비공개, 문의 기반",
+        "positioning": "'교육에서 끝나지 않고 실제 업무 적용까지 체계화', 대기업·금융 대상",
+        "channel": "홈페이지(education/portfolio) + 원데이 클래스 + 강연/사례. 납품: 현대차·하나은행·IBK·CJ·경찰청·성대·고대"
+      },
+      {
+        "name": "n8n Korea (n8nkorea.co.kr)",
+        "url": "https://n8nkorea.co.kr/",
+        "offering": "n8n 워크플로우 자동화 컨설팅→구축→교육 풀스펙트럼, 매니지드 운영(SLA)",
+        "pricingModel": "Starter/Pro/Enterprise 3단계(금액 비공개), 상담 기반",
+        "positioning": "'사람을 위해 잡무는 자동화로', 100% 오픈소스·셀프호스팅·노벤더락인",
+        "channel": "케이스스터디 + 고객후기 364개(4.9/5) + 블로그 가이드/튜토리얼 + GitHub 템플릿 공유"
+      },
+      {
+        "name": "달파 (Dalpha, dalpha.so)",
+        "url": "https://dalpha.so/",
+        "offering": "AI 에이전트 스튜디오: 마케팅 콘텐츠 자동화·마켓 인텔리전스·맞춤 AI 에이전트 구축(PoC 포함), 400+ 에이전트",
+        "pricingModel": "비공개, 프로젝트/솔루션 기반 (일부 앱은 스토어형)",
+        "positioning": "~1,600개사 컨설팅 실적, 이커머스·제조·뷰티·광고 특화. 미국 법인 + 아마존 셀러용 'XBoost' 준비",
+        "channel": "블로그(app.dalpha.so) + 전시/컨퍼런스(월드IT쇼·디지털마케팅서밋) + 언론 보도(아이보스·시사저널e) + 사례 인터뷰"
+      },
+      {
+        "name": "넥스트젠AI (nextgenai.kr)",
+        "url": "https://nextgenai.kr/",
+        "offering": "AX 컨설팅 + AI Agent/워크플로우 자동화 + AI-Q 역량진단·부서별 시나리오 매핑",
+        "pricingModel": "비공개, 상담 후 협의",
+        "positioning": "'도입보다 정착이 중요' — 조직 내재화·평가/보상 연계, 120+ 도입 사례",
+        "channel": "홈페이지 + 블로그(사례) + 무료 AX 진단 리포트 리드젠 + 이메일(contact@nextgenai.kr)"
+      },
+      {
+        "name": "뤼튼AX (Wrtn AX, wrtnax.io)",
+        "url": "https://wrtnax.io/",
+        "offering": "기업·학교·공공 AX 교육/컨설팅 + 특화형 뤼튼 플랫폼 + RAG·MCP 기반 Agentic AI 구축",
+        "pricingModel": "비공개, B2B 계약형",
+        "positioning": "뤼튼 사내독립기업(CIC, 2025.9 출범). 자사 상담 73%·재무 40% 노동시간 단축 실증",
+        "channel": "보도자료 다수(와우테일·아시아경제·유니콘팩토리) + 'AX 리포트' 발간 + 브랜드 인지도(광고 캠페인) 레버리지"
+      },
+      {
+        "name": "레비오사 AI (Leviosa AI, leviosa.ai.kr)",
+        "url": "https://leviosa.ai.kr/",
+        "offering": "이커머스 셀러 'AI 운영 OS': 소싱·실시간 가격조정·24h AI CS·카드뉴스/숏폼/DM 마케팅·발주/송장/배송 자동화",
+        "pricingModel": "무료 플랜 + 크레딧 기반 + 엔터프라이즈(공개 과금 모델)",
+        "positioning": "'돈은 노동이 아니라 구조에서', 브랜드·구매대행·위탁 셀러 1인~월매출 1억대",
+        "channel": "인스타·유튜브·틱톡·링크드인·X + 네이버블로그 + 카카오톡/디스코드 커뮤니티 (풀 멀티채널)"
+      },
+      {
+        "name": "아이디어키 (IdeaKey, ideakey.co.kr)",
+        "url": "https://www.ideakey.co.kr/",
+        "offering": "디지털 마케팅 그룹 — 광고 최적화 + 자동 리포팅 + 인플루언서/브랜드 마케팅 자동화",
+        "pricingModel": "비공개, 대행 계약형",
+        "positioning": "'No.1 디지털마케팅그룹' 광고 대행에 자동화 접목",
+        "channel": "홈페이지 + 광고 미디어 분석 자동 리포트 (마케팅 대행사 GTM)"
+      },
+      {
+        "name": "SK AX / KT Enterprise / LG CNS / EY (엔터프라이즈 AX)",
+        "url": "https://www.skax.co.kr/ax-services/ax-consulting",
+        "offering": "생성형 AI 도입 컨설팅·AI Agent/App 개발·LLM 최적화·RAG·데이터/인프라 설계 풀스택",
+        "pricingModel": "비공개, 대형 SI/컨설팅 계약",
+        "positioning": "대기업·공공 전사 AX 상위 레이어(전략~구현~운영)",
+        "channel": "기업 영업 + 세미나/컨퍼런스 + 백서/리포트 + 언론 (상위 엔터프라이즈 채널)"
+      },
+      {
+        "name": "교육형 AX 채널 (패스트캠퍼스·스파르타/노코드캠프·한국GPT협회·러닝스푼즈·KMA AI)",
+        "url": "https://fastcampus.co.kr/biz_online_n8n",
+        "offering": "n8n/Zapier/노코드·생성형 AI 업무자동화 강의(B2C·B2B 사내교육)",
+        "pricingModel": "강의 수강료(공개), 기업교육 별도 견적",
+        "positioning": "'비개발자도 1시간/4주 만에 자동화' 실전 커리큘럼",
+        "channel": "검색 SEO + 유튜브/인스타 광고 + 뉴스레터 + 제휴 강사 브랜드 (교육 퍼널로 예비고객 흡수)"
+      },
+      {
+        "name": "n8n/Make/Zapier 프리랜스 대행 (크몽 등)",
+        "url": "https://kmong.com/gig/723021",
+        "offering": "개인/부티크 자동화 설계·구축 대행(무료 상담)",
+        "pricingModel": "건별 공개 견적(저가 진입층)",
+        "positioning": "소규모 자동화 니즈 저가 대응",
+        "channel": "크몽/프리랜스 플랫폼 + 스레드/인스타 개인 브랜딩"
+      }
+    ],
+    "notes": "방법론: WebSearch 6회+ (AX 컨설팅·n8n 대행·사례집·AI팀/alphabrothers·마케팅자동화·Make·이커머스 셀러 자동화·노코드 크리에이터·뤼튼AX·달파·2026 AX 시장) + 주요 경쟁사 홈페이지 WebFetch 직접 확인(ai-team.kr, alphabrothers, ax-con, axpartner, databridge, n8nkorea, nextgenai, leviosa 성공 / wrtnax.io는 403이라 보도자료로 대체).\\n\\n신뢰도 주의: 가격은 대부분 비공개(상담 견적)라 pricingModel은 공개 정보만 표기. AI팀 '94% 단축'은 사례집 개별 페이지가 일반 마케팅 콘텐츠로 렌더돼 직접 수치 확인 실패, 검색 요약 근거라 medium. 아이디어키/엔터프라이즈군/교육군은 홈페이지 직접검증을 다 못 해 상세는 medium~low.\\n\\n이 사업(이커머스 AX 컨설팅·에이전시)에 가장 직접적인 경쟁·벤치마크: (1)AI팀=포지셔닝/사례집/GTM 벤치마크, (2)달파=이커머스+아마존 셀러 AX 정면 경쟁, (3)레비오사 AI=국내 이커머스 셀러 자동화 SaaS 정면 경쟁, (4)AX-Con/AX Partner/넥스트젠=중소기업 AX 컨설팅 저가~중가 경쟁층. 창업자 자산인 bulsaja(불사자)는 레비오사/윈들리와 같은 셀러 자동화 SaaS 카테고리에 이미 포지션이 있음(경쟁사 아님).\\n\\n공통 승리공식: 무료 진단/자가진단 리드마그넷 → 성과 %(시간·비용) 사례집 → 상담 견적. 차별화 여지: 이커머스 도메인 특화 데이터·실전 셀러 운영 경험(bulsaja/braveyong)을 사례집 수치로 전면화하면 범용 AX 컨설팅 대비 신뢰 우위 확보 가능."
+  },
+  {
+    "dimension": "pain-signals",
+    "claims": [
+      {
+        "text": "이커머스 셀러가 가장 자주 '자동화하고 싶다'고 꼽는 반복업무 1순위는 같은 상품을 여러 판매채널에 반복 등록하는 멀티채널 리스팅이다. r/ecommerce '가장 자동화하고 싶은 반복업무' 스레드에서 셀러들이 '5개 플랫폼에 올리는데 진짜 지겹다(I'm on 5 different platforms. Very tedious)'고 직접 토로한다.",
+        "sourceUrls": [
+          "https://www.reddit.com/r/ecommerce/comments/1jxk63w/what_are_your_biggest_repetitive_challenges_in/"
+        ],
+        "confidence": "high",
+        "verdict": {
+          "reason": "인용문(\"I'm on 5 different platforms. Very tedious\" - /u/Shanrunt)과 멀티채널 리스팅이 tedious하다는 페인포인트(TESLAMIZE)는 해당 스레드에 실제로 존재해 사실이다. 그러나 \"가장 자주 꼽는 1순위\"라는 순위 주장은 근거가 없다. (1) 단일 Reddit 스레드 하나를 이커머스 셀러 전체의 자동화 니즈 순위로 일반화하는 것은 과장이며, 원 게시글은 순위 데이터가 아니라 열린 질문이다. (2) 스레드 내에서 세어보면 오히려 재고관리(inventory)가 멀티채널 리스팅보다 더 자주 언급됨(VillageHomeF, OncleAngel, PrestigiousBell7468 등 다수). 멀티채널 리스팅은 최상단 첫 댓글일 뿐 '가장 자주'는 아니다. 보수 기준상 순위 주장 부분이 근거 부족이므로 refuted.",
+          "refuted": true,
+          "correctedText": "r/ecommerce의 '자동화하고 싶은 반복업무' 스레드에서 한 셀러는 여러 판매채널에 같은 상품을 반복 등록하는 멀티채널 리스팅을 두고 \"I'm on 5 different platforms. Very tedious\"라고 토로했다. 다만 이 스레드는 순위 조사가 아니며, 오히려 재고관리(inventory)가 더 자주 언급된 페인포인트다. 멀티채널 리스팅은 셀러들이 지겨워하는 반복업무 중 하나이지, 검증된 '1순위'는 아니다."
+        }
+      },
+      {
+        "text": "CS 반복 문의(주문/배송 상태, 반품·환불, 주소 변경)가 이커머스 셀러의 대표적 '사람 갈아넣는' 업무다. r/ecommerce 스레드에서 '지원(CS)은 원가·광고 다음 세 번째로 큰 비용이 되고, 티켓 하나 처리에 8~12분 걸리는데 대부분은 상담원이 필요 없는 기초 질문'이라는 셀러 증언이 나온다.",
+        "sourceUrls": [
+          "https://www.reddit.com/r/ecommerce/comments/1r3bsx3/has_anyone_managed_to_reduce_customer_support/"
+        ],
+        "confidence": "high",
+        "verdict": {
+          "refuted": false,
+          "reason": "원문 스레드(r/ecommerce, u/TemporaryHoney8571, 2026-02-13, 13 upvotes/59 comments) 본문을 redlib 미러+Jina Reader로 확보해 대조함. 본문에 \"Support becomes the third highest expense after cogs and ads in a lot of stores\"(원가·광고 다음 세 번째 비용), \"The average ticket takes 8-12 minutes to resolve and most are basic questions that shouldn't need an agent\"(티켓당 8~12분, 대부분 상담원 불필요 기초 질문)가 그대로 존재. 반품/환불(returns/exchanges 최악 유형), 주문/배송 상태(where's my order), 주소/주문 변경(I need to change my order)도 반복 CS 유형으로 명시됨. 주장 내용이 원문과 사실상 정확히 일치하여 과장/왜곡 없음. 유일한 뉘앙스: 화자는 자체 감사 수치가 아니라 'in a lot of stores' 업계 일반 관찰로 서술했으나 인용 정확성을 해치지 않음.</parameter>\n</invoke>\n"
+        }
+      },
+      {
+        "text": "챗봇/셀프서비스로 반복 CS를 걷어내면 티켓의 약 40%가 즉시 사라진다는 실사용 후기가 여러 건 있다. 한 셀러는 '주문상태·배송 문의를 챗봇에 맡겼더니 티켓 40%가 바로 없어졌다', 다른 셀러는 '자동화+셀프서비스로 CS 비용을 약 40% 줄였다'고 밝힌다.",
+        "sourceUrls": [
+          "https://www.reddit.com/r/ecommerce/comments/1r3bsx3/has_anyone_managed_to_reduce_customer_support/"
+        ],
+        "confidence": "high",
+        "verdict": {
+          "refuted": true,
+          "reason": "제시된 근거 URL(Reddit r/ecommerce 스레드)이 Reddit 네트워크 보안으로 완전 차단(403/429)되어 실제 댓글 내용을 확인할 수 없었다. curl_cffi TLS 지문(safari/safari_ios/chrome131), .rss, .json, old.reddit, Jina Reader 전 경로가 모두 차단 페이지를 반환했다. 따라서 주장이 인용한 두 구체적 후기(\"주문상태·배송 문의 챗봇에 맡겼더니 티켓 40% 바로 없어졌다\", \"자동화+셀프서비스로 CS 비용 약 40% 줄였다\")가 해당 스레드에 실제 존재하는지 1차 출처로 검증 불가하다. 대체 웹검색에서 확인되는 40% 수치는 전부 챗봇 벤더 마케팅 블로그(astucia.io, ringly.io, kustomer)의 '30일 내 40~60% 감소' 판매 문구로, 중립적 셀러 실사용 후기가 아니며 제품 판매 목적의 범위 수치다. '티켓의 약 40%가 즉시 사라진다'는 일반화된 사실 주장은 지목된 출처로 뒷받침되지 않고, WISMO 자동화 효과는 티켓 카테고리 구성·통합 수준에 크게 좌우된다. 출처 검증 불가 + 벤더 마케팅 수치를 실사용 후기로 포장한 정황 → 지침(불확실 시 보수적 refute)에 따라 refuted."
+        }
+      },
+      {
+        "text": "반품·교환의 앞뒤 왕복(back-and-forth)이 CS 중 가장 비싼 티켓 유형이며, '주문번호 입력→사유 선택→반품라벨 자동 발급' 셀프 반품 포털이 가장 효과 큰 자동화로 꼽힌다.",
+        "sourceUrls": [
+          "https://www.reddit.com/r/ecommerce/comments/1r3bsx3/has_anyone_managed_to_reduce_customer_support/"
+        ],
+        "confidence": "high",
+        "verdict": {
+          "reason": "제시된 Reddit 스레드(r/ecommerce, .rss로 실제 확인)가 주장을 직접 뒷받침한다. 원글은 \"Returns and exchanges are the worst because they need back and forth\"라며 주문번호·사유 요청→반품라벨 발급의 왕복을 가장 비싼 유형으로 지목하고, 최상위 실질 댓글은 \"the back-and-forth on returns is the most expensive ticket type\"와 \"The biggest win was a self-service returns portal\"(주문번호+이메일 입력→반품 품목 선택→사유 드롭다운→즉시 선불 라벨, 80% 무인 처리)을 명시한다. 다른 댓글들(#1, #5, #29)도 동일한 셀프 반품 포털을 최대 효과 자동화로 꼽는다. 주장의 두 축(가장 비싼 티켓 유형 + 셀프 반품 포털이 최대 효과)이 출처와 정확히 일치하며 과장·왜곡 없음. 다만 이는 실무자 개인 경험/의견 기반이며 일부는 벤더 홍보성 댓글이라 하드 데이터는 아니다. 그러나 주장 표현이 \"꼽힌다\" 수준이라 근거 범위를 넘지 않는다.",
+          "refuted": false
+        }
+      },
+      {
+        "text": "재고 관리 자동화는 공급처·SKU가 많은 셀러에게 특히 큰 pain이다. r/ecommerce에서 '공급처와 상품이 너무 많아서 재고를 자동화할 쉬운 방법이 없다(no easy way to automate it)'는 호소가 직접 등장한다.",
+        "sourceUrls": [
+          "https://www.reddit.com/r/ecommerce/comments/1jxk63w/what_are_your_biggest_repetitive_challenges_in/"
+        ],
+        "confidence": "high",
+        "verdict": {
+          "reason": "근거 URL(r/ecommerce 스레드 \"What are your biggest repetitive challenges in eCommerce...\")을 Reddit .rss 피드로 직접 열어 확인함. 사용자 /u/VillageHomeF의 댓글에 정확히 \"inventory. we have so many suppliers and products there is no easy way to automate it\"라는 원문이 존재한다. 후속 댓글들도 \"managing inventory across multiple products and suppliers without a smooth automation process can be a huge headache\", \"only one supplier has a csv download... we'll just take a few hours once a week and look through the sites\", VA에게 supplier 로그인 넘기기 꺼려짐 등으로 공급처·SKU 다수 셀러의 재고 자동화 pain을 뒷받침한다. 주장(공급처·상품이 많은 셀러의 재고 자동화 pain + 직접 인용문 존재)은 출처와 정확히 일치. 과장·오류 없음.",
+          "refuted": false
+        }
+      },
+      {
+        "text": "셀러의 '진짜 비용'은 눈에 보이는 반복 노동 시간이 아니라 실수 수습 비용(재발송, 반품 왕복, 출혈을 막으려 내주는 환불)에서 나온다. 한 이컴 자동화 개발자는 '팀이 Shopify·3PL·문의 인박스 사이의 미들웨어가 되어버린다'며 마진 누수를 지적한다.",
+        "sourceUrls": [
+          "https://www.reddit.com/r/ecommerce/comments/1t6bf50/when_does_manual_work_start_eating_margins/"
+        ],
+        "confidence": "high",
+        "verdict": {
+          "refuted": true,
+          "reason": "제시된 Reddit 출처(r/ecommerce/comments/1t6bf50)를 직접 열어 확인할 수 없었다. WebFetch, curl_cffi(Safari/Chrome 지문), old.reddit, api.reddit info, .json 등 모든 경로에서 실제 본문이 아닌 Reddit 403 차단 셸(CSS만 있는 빈 페이지)만 반환됐고, 스레드 제목(\"when does manual work start eating margins\")은 웹 검색에서도 전혀 인덱싱되지 않는다. 즉 게시물 존재 자체와 인용문(\"팀이 Shopify·3PL·문의 인박스 사이의 미들웨어가 되어버린다\"를 말한 '이컴 자동화 개발자')을 검증할 수 없다. 마진 잠식·미들웨어 vs 네이티브 통합 같은 일반론은 Shopify 마케팅성 문서에서 확인되지만, 이 특정 Reddit 출처나 특정 화자와 연결되지 않는다. 출처 검증 불가 + 인용문 확인 불가이므로 보수적으로 refuted 처리한다. 핵심 논지(실수 수습 비용이 진짜 비용) 자체는 그럴듯하나, 제시된 근거 URL이 이를 뒷받침한다고 확인할 수 없다."
+        }
+      }
+    ],
+    "examples": [
+      {
+        "name": "셀러픽 (Sellerpick)",
+        "offering": "상품 대량 등록 + 주문처리 자동화 프로그램",
+        "positioning": "등록부터 주문처리까지 자동화되는 셀러 툴",
+        "channel": "셀러 카페/아이보스/스레드 등 셀러 커뮤니티 입소문",
+        "url": "https://www.i-boss.co.kr/ab-2987-386739"
+      },
+      {
+        "name": "윈들리 (Windly)",
+        "offering": "AI 구매대행·위탁판매 상품등록/주문/번역 통합 크롬 확장",
+        "positioning": "'경력 셀러도 30분 걸리는 작업, 초보도 3분' — 속도·초보 진입장벽 제거",
+        "pricingModel": "SaaS 구독",
+        "channel": "자체 블로그/SEO + 셀러 커뮤니티",
+        "url": "https://www.windly.cc/"
+      },
+      {
+        "name": "불사자 (창업자 자산)",
+        "offering": "반대량 상품 등록 최적화 프로그램 (4050 이커머스 셀러 타깃)",
+        "positioning": "국내 구매대행 셀러 90%가 쓰는 등록 프로그램군의 하나로 언급됨",
+        "channel": "셀러 커뮤니티/스레드 추천 리스트 노출",
+        "url": "https://www.threads.com/@kimtbot/post/DSjhvydEUHo/"
+      },
+      {
+        "name": "사이드톡 (SideTalk)",
+        "offering": "AI 고객상담 챗봇 / 반복 문의 상담 자동화",
+        "positioning": "'직원 채용 전에 FAQ 20개부터' — 상위 20% FAQ로 반복문의 80% 절감",
+        "channel": "블로그 SEO 콘텐츠 마케팅",
+        "url": "https://sidetalk.kr/blog/17043"
+      },
+      {
+        "name": "셀로 (Sello)",
+        "offering": "여러 쇼핑몰 주문·재고·CS 통합관리 솔루션",
+        "positioning": "멀티채널 운영 셀러의 관리자 페이지 왕복 제거",
+        "url": "https://www.sello.co.kr/"
+      },
+      {
+        "name": "Gorgias / My AskAI / Alhena",
+        "offering": "Shopify 연동 AI CS 자동응대(반품·주소변경·주문조회)",
+        "positioning": "주문데이터 연동으로 티켓 40~79% 자동 해결(벤더 주장)",
+        "channel": "r/ecommerce 등 셀러 커뮤니티 추천",
+        "url": "https://www.reddit.com/r/ecommerce/comments/1r3bsx3/has_anyone_managed_to_reduce_customer_support/"
+      }
+    ],
+    "notes": "방법론: WebSearch(한/영 12+회) + insane-search engine으로 Reddit 우회 접근. Reddit r/ecommerce 검색 RSS는 429 rate-limit이 심해 old.reddit 개별 스레드 RSS를 백오프하며 직접 파싱해 실제 셀러 원문 인용을 확보(1jxk63w, 1t6bf50, 1r3bsx3). Salesforce/Slack 1.5시간 통계는 jina로 본문 재확인(high). fassto·sidetalk·stephow는 벤더/블로그라 pain 시그널 근거로는 유효하나 수치는 medium.\n\n핵심 요약 — 이커머스 셀러 자동화 pain Top: (1)멀티채널 상품등록/리스팅 반복, (2)반복 CS 문의(주문상태·배송·반품/환불·주소변경), (3)재고 동기화, (4)송장/주문처리 및 매일 채널 로그인 루틴, (5)반품 왕복=최고비용 티켓, (6)실수 수습(재발송·환불) 마진 누수. 시사점: 상품등록 자동화는 국내에서 이미 레드오션(윈들리/퍼센티/불사자 등)이고, 상대적으로 덜 성숙하고 마진 임팩트 큰 결(結)은 CS 자동화(반품 포털/AI 상담)와 '오류 수습 비용 절감' 프레이밍이다.\n\n한계: quickbooks 25시간/주, business.com 36% 행정업무, stealthagents 통계는 검색 요약에서만 확인하고 원문 fetch 실패로 confidence:low 처리. Reddit 인용은 실제 스레드에서 직접 읽은 원문이라 pain 존재 자체는 high, 개별 수치(40% 절감 등)는 익명 셀러 자기보고라 방향성 근거로만 사용 권장."
+  },
+  {
+    "dimension": "content-marketing",
+    "claims": [
+      {
+        "text": "AX/자동화 크리에이터의 지배적 퍼널은 '무료 롱폼 유튜브 튜토리얼 + 무료 Skool 커뮤니티(리드 마그넷) → 유료 코스/커뮤니티'다 — Liam Ottley의 무료 Skool은 30만+ 멤버에 가격이 정확히 $0이고, Nate Herk·Nick Saraev도 동일 구조로 유료 커뮤니티(AI Automation Society Plus, Maker School)로 전환한다.",
+        "sourceUrls": [
+          "https://automationatlas.io/creators/liam-ottley/",
+          "https://communityhunter.com/reviews/ai-automation-society-nate-herk/",
+          "https://nicksaraevskool.com/"
+        ],
+        "confidence": "high",
+        "verdict": {
+          "refuted": true,
+          "reason": "퍼널 구조의 큰 틀(무료 롱폼 유튜브 + 무료 Skool 리드마그넷 → 유료 커뮤니티)은 Nate Herk 사례에서 명확히 확인된다: 제시된 communityhunter 리뷰가 무료 AI Automation Society(305,600+ 멤버, 유튜브 콘텐츠 집약) → 유료 AI Automation Society Plus($94/mo)로의 명시적 업셀 퍼널을 확인한다. 그러나 주장의 개별 load-bearing 수치들이 제시된 출처로 뒷받침되지 않는다. (1) automationatlas.io의 Liam Ottley 페이지는 그가 유료 커뮤니티/코스를 운영한다고만 하고, '무료 Skool', '30만+ 멤버', '가격 정확히 $0' 중 어느 것도 확인해 주지 않는다. 오히려 '30만+(305,600)'이라는 숫자는 Nate Herk의 커뮤니티 수치와 일치해, 두 크리에이터의 멤버 수를 혼동/전가한 오류로 보인다(Liam의 무료 Skool은 통상 10만대 규모로 알려져 있고 30만+은 출처 미확인). (2) nicksaraevskool.com은 Maker School($184/mo)과 MMWM($368/mo) 등 유료 티어만 보여주며, Nick Saraev가 리드마그넷용 '무료 Skool 커뮤니티'를 운영한다는 사실을 확인해 주지 않는다. 따라서 큰 구조 주장은 부분적으로 타당하나, 구체적으로 검증 요청된 핵심 사실들(Liam 무료 Skool 30만+ @ $0, Nick의 무료→유료 동일 구조)은 제시 출처로 확인 불가하며 최소 한 건은 수치 혼동으로 보이는 오류다. 보수적 기준(불확실 시 refuted)에 따라 refuted:true로 판정한다."
+        }
+      },
+      {
+        "text": "이론이 아니라 화면 녹화 기반 'step-by-step, 스킵 없는 실제 빌드 워크스루'가 이 니치의 성공 공식이다 — Nate Herk의 강점은 'no assumptions, no skipped steps', 자동화 크리에이터는 추상 개념이 아니라 구체적 클릭과 출력물을 보여줘 성공한다.",
+        "sourceUrls": [
+          "https://www.atakinteractive.com/blog/17-ai-youtubers-were-actually-watching-right-now"
+        ],
+        "confidence": "high",
+        "verdict": {
+          "refuted": true,
+          "reason": "핵심 인용구 \"Step by step, no assumptions, no skipped steps\"는 출처에서 그대로 확인됨 — Nate Herk에 대한 서술로 실재한다. 그러나 주장이 덧붙인 구체 요소들은 출처에 근거가 없다. 출처는 Nate의 강점을 \"비기술 배경(전 Goldman Sachs BI Analyst, 무코딩)에서 배운 대로 가르친다\"로 설명할 뿐, \"화면 녹화 기반\", \"구체적 클릭과 출력물을 보여준다\"는 서술은 없다. 또한 이를 \"이 니치의 성공 공식\"이라고 일반화한 것은 단일 크리에이터 프로필 기사에서 도출할 수 없는 확대 해석이다. 즉 실제 인용은 정확하나, 화면녹화/클릭·출력물이라는 구체 방법론과 니치 전반의 성공공식이라는 일반화는 출처 미근거 과장이므로 보수적으로 refuted.",
+          "correctedText": "Nate Herk는 \"step by step, no assumptions, no skipped steps\" 방식으로 자동화를 가르치는 것으로 소개된다(atakinteractive 기사). 기사는 그의 강점을 비기술 배경(전 Goldman Sachs BI Analyst, 무코딩)에서 스스로 배운 대로 초보 대상으로 n8n 노코드 자동화를 실습형으로 풀어내는 데서 찾는다. 다만 \"화면 녹화 기반의 구체적 클릭·출력물 시연\"이나 \"이것이 이 니치 전반의 성공 공식\"이라는 서술은 해당 출처에 나오지 않으므로, 단일 사례의 강점을 니치 공식으로 일반화하는 것은 근거가 부족하다."
+        }
+      },
+      {
+        "text": "'나는 실제 에이전시를 운영한다 / 내 회사를 먼저 자동화했다'는 실전 크리덴셜이 핵심 신뢰 신호다 — Nick Saraev는 LeftClick(AI 컨설팅)을, Liam Ottley는 Morningside AI(40+ 직원)를 운영하고, Jono Catliff는 자기 회사를 먼저 자동화한 에이전시 오너로 포지셔닝한다.",
+        "sourceUrls": [
+          "https://nicksaraev.com/",
+          "https://automationatlas.io/creators/liam-ottley/",
+          "https://www.atakinteractive.com/blog/17-ai-youtubers-were-actually-watching-right-now"
+        ],
+        "confidence": "high",
+        "verdict": {
+          "refuted": true,
+          "reason": "핵심 골자는 대체로 사실이나 검증 가능한 세부에 오류/미확인이 섞여 있어 보수적으로 refuted 처리한다. (1) Nick Saraev–LeftClick: nicksaraev.com에서 Products > LeftClick(leftclick.ai) 링크 확인 — AI 자동화/컨설팅 브랜드로 성립. (2) Jono Catliff: atakinteractive 기사에서 \"캐나다 최대 DJ/사진/영상 회사를 세운 뒤 그 전체를 자동화\"했고 에이전시를 운영한다고 명시 — '자기 회사를 먼저 자동화한 오너' 포지셔닝 확인. (3) Liam Ottley–Morningside AI: 문제 지점. 그가 Morningside AI를 설립·운영한 것은 맞고 atakinteractive은 $7M+ 매출을 언급하나, 제시된 출처(automationatlas.io) 어디에도 \"40+ 직원\" 수치가 없고, 오히려 automationatlas는 Morningside AI가 2024년 말 그의 개인 콘텐츠·교육 브랜드로 흡수(folded)되어 현재는 전통적 에이전시로 운영되지 않는다고 서술한다. 즉 '40+ 직원 에이전시를 운영한다'는 현재형 서술은 출처로 뒷받침되지 않고(수치 무근거) 시점상으로도 부정확하다. 근거 신호라는 전체 논지는 타당하나 특정 수치·현재 운영 상태가 과장/미확인이므로 refuted:true.",
+          "correctedText": "Nick Saraev는 LeftClick(AI 자동화/컨설팅 브랜드)을 운영하고, Jono Catliff는 캐나다 최대 DJ·사진·영상 회사를 세운 뒤 이를 자동화한 에이전시 오너로 포지셔닝한다. Liam Ottley는 'AI Automation Agency' 모델을 대중화하며 Morningside AI를 설립·성장시켰으나(보도상 $7M+ 매출), 해당 에이전시는 2024년 말 그의 콘텐츠·교육 브랜드로 흡수되어 현재는 전통적 클라이언트 에이전시로 운영되지 않는다. '40+ 직원' 등 구체적 직원 수는 제시된 출처로 확인되지 않는다."
+        }
+      },
+      {
+        "text": "ChatGPT 출시(2022-11)가 이 니치를 열었고 신규 채널이 폭발적으로 성장할 수 있다 — Liam Ottley는 ChatGPT 출시 정확히 37일 후 첫 영상을 올렸고, Nate Herk는 2024년 9월 첫 영상 후 9개월 만에 23만 구독자에 도달했다.",
+        "sourceUrls": [
+          "https://automationatlas.io/creators/liam-ottley/",
+          "https://www.nateherk.com/about"
+        ],
+        "confidence": "high",
+        "verdict": {
+          "refuted": true,
+          "reason": "두 출처 모두 주장의 구체 수치를 뒷받침하지 못함. (1) automationatlas.io/creators/liam-ottley 페이지에는 \"ChatGPT 출시 37일 후 첫 영상\"이라는 내용이 없음. 2023년 채널 성장 언급만 있고 첫 영상 날짜나 37일 수치 자체가 없음. (2) nateherk.com/about에는 \"2024년 9월 첫 영상\", \"9개월 만에 23만 구독자\"라는 내용이 전혀 없음. 오히려 유일하게 나오는 수치는 \"2년 미만에 80만 구독자 이상\"으로 주장과 불일치. 두 출처 모두 제시된 구체 수치를 확인해주지 못하므로 출처 부족으로 보수적 refuted 처리."
+        }
+      },
+      {
+        "text": "무료 워크플로우/템플릿(n8n JSON, 프롬프트 라이브러리, 워크플로우 맵)을 리드 마그넷으로 뿌리는 것이 이메일·커뮤니티 가입을 견인한다 — Nick Saraev는 73시간+ 무료 튜토리얼과 20+ n8n 템플릿을, Nate Herk는 무료 n8n 템플릿을 전면에 건다.",
+        "sourceUrls": [
+          "https://nicksaraevskool.com/",
+          "https://www.classcentral.com/course/youtube-i-built-a-yt-strategist-ai-agent-that-makes-me-6k-mo-free-template-n8n-489587"
+        ],
+        "confidence": "high",
+        "verdict": {
+          "refuted": false,
+          "reason": "주장의 핵심(무료 워크플로우·템플릿을 리드 마그넷으로 뿌려 이메일/커뮤니티 가입을 견인)은 검증됨. Nick Saraev는 YouTube에 73시간+ 무료 튜토리얼을 전면에 걸고 있으며(다수 소스 확인), Nate Herk는 영상 제목에 문자 그대로 \"free n8n template\"을 달아 Skool 커뮤니티 가입을 유도함(skool.com/ai-automation-society, community.n8n.io 확인). 다만 제시된 첫 출처(nicksaraevskool.com)는 Skool 유료 가입 랜딩 페이지로, 20+/40+ n8n 템플릿은 무료 리드 마그넷이 아니라 유료 커리큘럼($184/mo Maker School) 안에 포함됨 — 즉 '20+ 템플릿을 무료로 전면에 건다'는 부분은 다소 부정확함(무료 미끼는 튜토리얼·개별 무료 템플릿이고, 20+ 묶음은 유료). 그러나 전체 마케팅 주장(무료 콘텐츠 미끼 → 가입 견인)은 근거가 충분하고 두 인물 모두 실제로 그 전략을 씀. 근거 URL 중 classcentral 링크는 403으로 직접 확인 불가하나, 대체 소스로 Nate Herk의 무료 템플릿 리드 마그넷 사실은 확인됨."
+        }
+      },
+      {
+        "text": "순수 기술보다 '돈/사업모델' 프레이밍이 더 잘 먹힌다 — 제목·훅이 'make $6k/mo with this agent', '$10K-$50K/mo 에이전시', 'niche selection·pricing·outreach scripts'처럼 수익 결과를 앞세운다.",
+        "sourceUrls": [
+          "https://nicksaraevskool.com/",
+          "https://automationatlas.io/creators/liam-ottley/",
+          "https://www.classcentral.com/course/youtube-i-built-a-yt-strategist-ai-agent-that-makes-me-6k-mo-free-template-n8n-489587"
+        ],
+        "confidence": "high",
+        "verdict": {
+          "refuted": false,
+          "reason": "3개 출처 중 2개를 직접 열어 명확히 확인. (1) nicksaraevskool.com: \"$72K/month solo agency\", \"$10,000 per month SaaS contract\", \"$1,000/month retainer\", \"proposals, scripts\", cold outreach, \"first paying client in 90 days\" 등 수익·에이전시·아웃리치 스크립트·가격 프레이밍 다수. (2) automationatlas.io/liam-ottley: \"niche selection, service packaging, pricing, client outreach scripts, delivery workflows, scaling\" 및 \"AI agency business model\" 명시 — niche selection·pricing·outreach 요소 정확히 일치. (3) classcentral 페이지는 403이나, 캔니컬 URL 슬러그 자체가 \"makes-me-6k-mo\"로 '$6k/mo' 수익-우선 제목 프레이밍을 그대로 포함. 세 출처 모두 순수 기술보다 수익 결과를 앞세운다는 주장을 뒷받침함."
+        }
+      }
+    ],
+    "examples": [
+      {
+        "name": "Nate Herk (@nateherk)",
+        "url": "https://www.youtube.com/@nateherk",
+        "offering": "n8n·AI 에이전트 자동화 유튜브 튜토리얼 + 무료 n8n 템플릿, 유료 커뮤니티 'AI Automation Society Plus'(Skool)",
+        "positioning": "골드만삭스 BI 애널리스트 출신, 코딩 배경 없이 '스킵 없는 step-by-step'으로 자동화를 수익 시스템으로 전환하게 가르침",
+        "pricingModel": "무료 유튜브+무료 Skool(40만+ 멤버) → 유료 Skool 멤버십",
+        "channel": "유튜브 롱폼(스크린레코딩 빌드) 중심 + 무료 템플릿 리드마그넷"
+      },
+      {
+        "name": "Liam Ottley (@LiamOttley) / Morningside AI",
+        "url": "https://www.youtube.com/@LiamOttley",
+        "offering": "'AI Automation Agency(AAA)' 사업모델 교육, 무료 Skool 'AI Automation Agency Hub'(31만+ 멤버, 60+시간 무료), 유료 AAA Accelerator 코스",
+        "positioning": "실제 AI 서비스사(Morningside AI, 40+직원) 운영 크리덴셜 위에서 '기술 빌드 + 수익모델(니치·가격·아웃리치 스크립트)'를 결합",
+        "pricingModel": "무료 유튜브(70만+)+무료 Skool $0 → 유료 코스/커뮤니티",
+        "channel": "유튜브(짧은 피치 + 멀티아워 딥다이브) + 무료 커뮤니티 퍼널"
+      },
+      {
+        "name": "Nick Saraev / Maker School / LeftClick",
+        "url": "https://nicksaraev.com/",
+        "offering": "Make.com·n8n 자동화 튜토리얼(73시간+ 무료), 20+ n8n 템플릿·세일즈 트레이닝, 유료 Maker School",
+        "positioning": "'나는 자동화로 돈을 벌고, 남들에게도 방법을 가르친다' — 실제 AI 컨설팅사 LeftClick 운영하는 practitioner-first",
+        "pricingModel": "무료 유튜브(15만+) → 유료 3개월 Maker School",
+        "channel": "유튜브 롱폼 + 무료 템플릿/스와이프 파일 리드마그넷"
+      },
+      {
+        "name": "Jono Catliff",
+        "url": "https://www.atakinteractive.com/blog/17-ai-youtubers-were-actually-watching-right-now",
+        "offering": "Make.com·n8n 비즈니스 프로세스 자동화 '블루프린트' 워크플로우",
+        "positioning": "자기 에이전시를 먼저 자동화한 오너 크리덴셜, 실제 운영 문제를 푸는 blueprint 스타일",
+        "pricingModel": "무료 유튜브(10만) → 유료 교육/서비스",
+        "channel": "유튜브 워크플로우 블루프린트"
+      },
+      {
+        "name": "조코딩 (Jocoding) / 조코딩 AX 파트너스",
+        "url": "https://jocodingax.ai/",
+        "offering": "코딩·AI 유튜브(68-72만) → AX(AI Transformation) 컨설팅: 기업 업무 프로세스를 AI 중심으로 재설계, 전사 AX 전환·교육 계약",
+        "positioning": "'단순 AI 도구 도입을 넘어 업무 프로세스 자체를 AI 중심으로 재설계' — 크리에이터 팬덤 = 검증된 시장수요를 레버리지",
+        "pricingModel": "무료 유튜브/쓰레드 콘텐츠 → 대기업 B2B AX 컨설팅·교육 수주(연매출 1.5조+ 기업), 프라이머 크리에이터펀드 1호 투자",
+        "channel": "유튜브 롱폼 + Threads(@youtubejocoding)로 AX 사고리더십 + 1인 창업가 프로젝트 화제화"
+      },
+      {
+        "name": "Ben's Bites (Ben Tossell)",
+        "url": "https://news.bensbites.com/",
+        "offering": "AI 뉴스·툴·제품 런칭 데일리 큐레이션 뉴스레터(12-16만 구독)",
+        "positioning": "규모(175만 Rundown)보다 '빌더·창업가·투자자' 밀집 니치 — a16z 딜플로우 엔진이 될 만큼 타이트",
+        "pricingModel": "무료 뉴스레터 + 스폰서십($2,000 메인/$1,200 툴), 피크 월 $20-26k 광고매출",
+        "channel": "데일리 뉴스레터 + X 리플라이가이 전략 + 추천 프로그램(리드마그넷) + 소액 트위터 광고 + Discord/해커톤"
+      },
+      {
+        "name": "The Rundown AI",
+        "url": "https://www.readless.app/blog/best-ai-newsletters-to-subscribe",
+        "offering": "C-suite·경영진 타겟 AI 뉴스 데일리 뉴스레터(약 175만 구독, 최대 규모)",
+        "positioning": "경영진 눈높이의 매일 5분 AI 브리핑, 광범위 도달 우선",
+        "pricingModel": "무료 뉴스레터 + 광고/스폰서십",
+        "channel": "데일리 뉴스레터 + 유료 획득 중심 대규모 리스트 빌딩"
+      },
+      {
+        "name": "AI TEAM (알파브라더스)",
+        "url": "https://alphabrothers.co.kr/",
+        "offering": "국내 AX 컨설팅 — 문제정의→AX설계→실행→성과측정→유지보수 플로우, 사례집('시간 94% 단축')",
+        "positioning": "정량 결과 케이스 스터디 중심 B2B AX 에이전시(과제 브리프 제공 레퍼런스, 웹 미검증)",
+        "pricingModel": "프로젝트형 컨설팅(추정)",
+        "channel": "사례집/케이스 스터디 콘텐츠 + 랜딩(imweb) 리드젠"
+      }
+    ],
+    "notes": "웹서치 11회 + WebFetch 4회로 교차검증. 구독자 수는 소스별로 편차가 있어 범위로 표기함: Nate Herk 50-80만(nateherk.com 자칭 80만, vidIQ/ataki 50-60만), Liam Ottley 70-73만, 조코딩 68-72만(AITimes 68만, 플래텀 72만), Ben's Bites 12-16만. 'AI TEAM/알파브라더스'는 과제 브리프에서 제공된 레퍼런스라 웹 재검증을 못 해 confidence 반영(URL은 브리프 기준). 부족분: 실제 조회수/전환율 raw 데이터는 대부분 크리에이터 자기보고·서드파티 추정이라 individual 영상 단위 조회수는 미검증. 추가로 팔 만한 축: (1) 각 크리에이터 대표 영상의 실제 조회수(vidIQ/thoughtleaders 데이터), (2) 조코딩/한국 크리에이터의 Threads 훅 실제 텍스트 분석, (3) 릴스 훅 A/B 실측 데이터."
+  }
+]
