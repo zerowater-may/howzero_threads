@@ -54,6 +54,7 @@ howzero/
 │   ├── settings.json               ← 글로벌 Plugin 설정
 │   └── settings.local.json         ← Permissions + Hooks
 ├── howzero-web/                    ← 웹 프론트엔드
+├── ax-web/                         ← 하우제로 AX 랜딩 (히어로 AI 상담 챗봇 + 리드 DB, port 3300)
 ├── scripts/                        ← 유틸리티 스크립트
 │   ├── yt_highlights/              ← YouTube → highlights.json + 프레임
 │   ├── nano_carousel/              ← Carousel 자동화
