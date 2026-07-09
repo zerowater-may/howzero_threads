@@ -42,7 +42,7 @@ export default function OsCanvas() {
             }}
             className={`rounded-full border px-4 py-2 text-sm font-semibold transition-colors ${
               preset === key
-                ? "border-[var(--cobalt)] bg-[var(--cobalt)] text-black"
+                ? "border-[var(--cobalt)] bg-[var(--cobalt)] text-white"
                 : "border-[var(--line)] bg-transparent text-[var(--dim)] hover:text-[var(--ink)]"
             }`}
           >

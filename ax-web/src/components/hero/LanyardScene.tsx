@@ -23,13 +23,27 @@ extend({ MeshLineGeometry, MeshLineMaterial });
 
 const CARD_GLB = "/card.glb";
 
-export default function LanyardScene({ onCardClick }: { onCardClick: () => void }) {
+export default function LanyardScene({
+  onCardClick,
+  onContextLost,
+}: {
+  onCardClick: () => void;
+  onContextLost?: () => void;
+}) {
   return (
     <Canvas
       camera={{ position: [0, 0, 20], fov: 20 }}
       dpr={[1, 1.5]}
       gl={{ alpha: true }}
-      onCreated={({ gl }) => gl.setClearColor(new THREE.Color(0x000000), 0)}
+      onCreated={({ gl }) => {
+        gl.setClearColor(new THREE.Color(0x000000), 0);
+        // Safari가 GPU 프로세스를 죽이면 캔버스 자리에 흰 박스+사드페이스가 남는다.
+        // 컨텍스트 로스트 시 배지 전체를 내려서(미표시 정책, 스펙 §3·§6) 그 잔해를 없앤다.
+        gl.domElement.addEventListener("webglcontextlost", (e) => {
+          e.preventDefault();
+          onContextLost?.();
+        });
+      }}
       style={{ width: "100%", height: "100%" }}
     >
       <ambientLight intensity={Math.PI} />

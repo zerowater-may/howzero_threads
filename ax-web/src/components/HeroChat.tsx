@@ -120,7 +120,7 @@ export default function HeroChat() {
                 <div
                   className={
                     m.role === "user"
-                      ? "max-w-[85%] rounded-lg rounded-br-sm bg-[var(--cobalt)] px-3.5 py-2.5 text-sm leading-relaxed text-black"
+                      ? "max-w-[85%] rounded-lg rounded-br-sm bg-[var(--cobalt)] px-3.5 py-2.5 text-sm leading-relaxed text-white"
                       : "max-w-[85%] rounded-lg rounded-bl-sm bg-[#1a1a1c] px-3.5 py-2.5 text-sm leading-relaxed text-[var(--ink)]"
                   }
                 >
@@ -167,7 +167,7 @@ export default function HeroChat() {
             <button
               type="submit"
               disabled={streaming || !input.trim()}
-              className="shrink-0 rounded-lg bg-[var(--cobalt)] px-4 py-2.5 text-sm font-semibold text-black transition-opacity disabled:opacity-40"
+              className="shrink-0 rounded-lg bg-[var(--cobalt)] px-4 py-2.5 text-sm font-semibold text-white transition-opacity disabled:opacity-40"
             >
               보내기
             </button>

@@ -28,6 +28,7 @@ function hasWebGL(): boolean {
 export default function LanyardBadge() {
   const [enabled, setEnabled] = useState(false);
   const [visible, setVisible] = useState(true);
+  const [contextLost, setContextLost] = useState(false);
 
   useEffect(() => {
     const mq = window.matchMedia("(min-width: 1360px)");
@@ -44,7 +45,7 @@ export default function LanyardBadge() {
     };
   }, []);
 
-  if (!enabled) return null;
+  if (!enabled || contextLost) return null;
 
   return (
     <div
@@ -55,6 +56,7 @@ export default function LanyardBadge() {
       <SilentBoundary>
         <LanyardScene
           onCardClick={() => document.getElementById("founder")?.scrollIntoView({ behavior: "smooth" })}
+          onContextLost={() => setContextLost(true)}
         />
       </SilentBoundary>
     </div>

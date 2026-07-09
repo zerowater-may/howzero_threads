@@ -6,7 +6,7 @@ import type { OsNodeData, OsNodeKind } from "./presets";
 // 레퍼런스(flow-*.jpg)의 카드형 노드 — 다크 재해석
 const KIND_STYLE: Record<OsNodeKind, { border: string; badge: string; badgeText: string }> = {
   trigger: { border: "border-[var(--line)]", badge: "bg-zinc-700 text-white", badgeText: "TRIGGER" },
-  ai: { border: "border-[var(--cobalt)]/60", badge: "bg-[var(--cobalt)] text-black", badgeText: "AI" },
+  ai: { border: "border-[var(--cobalt)]/60", badge: "bg-[var(--cobalt)] text-white", badgeText: "AI" },
   gate: { border: "border-dashed border-[var(--dim)]", badge: "bg-zinc-600 text-white", badgeText: "HUMAN" },
   running: { border: "border-[var(--ok)]/70", badge: "bg-[var(--ok)] text-black", badgeText: "RUNNING" },
 };

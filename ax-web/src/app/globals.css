@@ -8,10 +8,10 @@
   --ink: #f2f2ef;          /* 본문 텍스트 */
   --dim: #9a9aa0;          /* 보조 텍스트 */
   --line: #26262a;         /* 보더 */
-  --cobalt: #f97316;       /* 주 액센트 — 오렌지 (이름은 호환용 유지) */
-  --cobalt-deep: #ea580c;
-  --signal: #f97316;       /* 숫자 하이라이트 — 액센트와 통일 */
-  --warm: #ba9465;         /* 채팅 포커스 보더 (shaders 레퍼런스) */
+  --cobalt: #4d6bff;       /* 주 액센트 — 일렉트릭 코발트 (v1 브랜드 컬러 계승) */
+  --cobalt-deep: #3452f5;
+  --signal: #7d93ff;       /* 숫자 하이라이트 — 본문 위 가독용 밝은 톤 */
+  --warm: #6e82d8;         /* 채팅 포커스 보더 — 쿨 스틸 블루 */
   --ok: #22c55e;           /* Running 노드 */
   --font-display: "SUIT Variable", "Pretendard Variable", sans-serif;
   --font-body: "Pretendard Variable", -apple-system, sans-serif;
@@ -58,7 +58,7 @@ body {
   align-items: center;
   gap: 0.5rem;
   background: var(--cobalt);
-  color: #0a0a0a;
+  color: #ffffff;
   font-weight: 700;
   padding: 0.875rem 1.75rem;
   border-radius: 0.5rem;

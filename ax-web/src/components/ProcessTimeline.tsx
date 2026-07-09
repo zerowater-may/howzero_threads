@@ -26,7 +26,7 @@ export default function ProcessTimeline() {
               <span className="font-[family-name:var(--font-mono)] text-sm font-semibold text-[var(--cobalt)]">{num}</span>
               <span
                 className={`rounded px-1.5 py-0.5 font-[family-name:var(--font-mono)] text-[9px] font-semibold ${
-                  badge === "RUNNING" ? "bg-[var(--ok)] text-black pulse-dot" : badge === "AI" ? "bg-[var(--cobalt)] text-black" : "bg-zinc-600 text-white"
+                  badge === "RUNNING" ? "bg-[var(--ok)] text-black pulse-dot" : badge === "AI" ? "bg-[var(--cobalt)] text-white" : "bg-zinc-600 text-white"
                 }`}
               >
                 {badge}

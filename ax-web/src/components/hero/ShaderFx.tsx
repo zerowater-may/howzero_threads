@@ -44,7 +44,7 @@ export function Orb() {
       <LiquidMetal
         style={{ height: 80, width: 80, filter: "blur(14px)", position: "absolute" }}
         colorBack="hsl(0, 0%, 0%, 0)"
-        colorTint="hsl(29, 77%, 49%)"
+        colorTint="hsl(228, 92%, 62%)"
         repetition={4}
         softness={0.5}
         shiftRed={0.3}
@@ -59,7 +59,7 @@ export function Orb() {
       <LiquidMetal
         style={{ height: 80, width: 80 }}
         colorBack="hsl(0, 0%, 0%, 0)"
-        colorTint="hsl(29, 77%, 49%)"
+        colorTint="hsl(228, 92%, 62%)"
         repetition={4}
         softness={0.5}
         shiftRed={0.3}
@@ -100,11 +100,11 @@ export function FocusBorder({ active }: { active: boolean }) {
         scale={0.7}
         speed={1}
         colors={[
-          "hsl(29, 70%, 37%)",
-          "hsl(32, 100%, 83%)",
-          "hsl(4, 32%, 30%)",
-          "hsl(25, 60%, 50%)",
-          "hsl(0, 100%, 10%)",
+          "hsl(228, 70%, 40%)",
+          "hsl(222, 100%, 85%)",
+          "hsl(248, 32%, 32%)",
+          "hsl(224, 65%, 55%)",
+          "hsl(232, 100%, 12%)",
         ]}
       />
     </div>

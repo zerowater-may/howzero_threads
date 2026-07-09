@@ -15,7 +15,7 @@ export async function makeHowzeroCardTexture(): Promise<string> {
 
   const RIGHT = SIZE / 2 - 55;
 
-  ctx.fillStyle = "#f97316";
+  ctx.fillStyle = "#4d6bff";
   ctx.font = "800 110px 'Pretendard Variable', sans-serif";
   ctx.textAlign = "left";
   ctx.textBaseline = "middle";
@@ -33,11 +33,11 @@ export async function makeHowzeroCardTexture(): Promise<string> {
   ctx.font = "500 40px 'Pretendard Variable', sans-serif";
   ctx.fillText("연매출 10억 SaaS 운영자", RIGHT, SIZE - 396);
 
-  ctx.fillStyle = "#f97316";
+  ctx.fillStyle = "#4d6bff";
   ctx.fillRect(55, SIZE - 340, 200, 6);
 
   ctx.textAlign = "center";
-  ctx.fillStyle = "#f97316";
+  ctx.fillStyle = "#4d6bff";
   ctx.font = "800 72px 'Pretendard Variable', sans-serif";
   ctx.fillText("howzero", 1030, 640);
 
