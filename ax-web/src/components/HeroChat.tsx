@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { Orb, FocusBorder } from "@/components/hero/ShaderFx";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
@@ -15,6 +16,7 @@ export default function HeroChat() {
   const [input, setInput] = useState("");
   const [streaming, setStreaming] = useState(false);
   const [failed, setFailed] = useState(false);
+  const [focused, setFocused] = useState(false);
   const sessionRef = useRef<string | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -83,75 +85,95 @@ export default function HeroChat() {
   }
 
   return (
-    <div className="flex h-[480px] flex-col overflow-hidden rounded-xl border border-[var(--line)] bg-white shadow-[0_24px_60px_-30px_rgba(16,20,37,0.25)]">
-      {/* 진단 콘솔 헤더 */}
-      <div className="flex items-center justify-between border-b border-[var(--line)] px-4 py-3">
-        <span className="font-[family-name:var(--font-mono)] text-xs tracking-widest text-[var(--dim)]">
-          howzero · 무료 진단 대화
-        </span>
-        <span className="flex items-center gap-1.5 font-[family-name:var(--font-mono)] text-xs text-[var(--dim)]">
-          <span className="h-2 w-2 rounded-full bg-emerald-500" aria-hidden />
-          상담 가능
-        </span>
-      </div>
-
-      {/* 메시지 */}
-      <div ref={scrollRef} className="flex-1 space-y-3 overflow-y-auto px-4 py-4" aria-live="polite">
-        {messages.map((m, i) => (
-          <div key={i} className={m.role === "user" ? "flex justify-end" : "flex justify-start"}>
-            <div
-              className={
-                m.role === "user"
-                  ? "max-w-[85%] rounded-lg rounded-br-sm bg-[var(--cobalt)] px-3.5 py-2.5 text-sm leading-relaxed text-white"
-                  : "max-w-[85%] rounded-lg rounded-bl-sm bg-[var(--paper)] px-3.5 py-2.5 text-sm leading-relaxed text-[var(--ink)]"
-              }
-            >
-              {m.content}
-              {streaming && i === messages.length - 1 && m.role === "assistant" && m.content === "" && (
-                <span className="flex gap-1 py-1" aria-label="답변 작성 중">
-                  <span className="typing-dot" />
-                  <span className="typing-dot" />
-                  <span className="typing-dot" />
-                </span>
-              )}
-            </div>
-          </div>
-        ))}
-        {failed && (
-          <p className="rounded-lg border border-[var(--line)] bg-[var(--paper)] px-3.5 py-2.5 text-sm text-[var(--dim)]">
-            지금은 상담 연결이 어렵습니다.{" "}
-            <a href="#contact" className="font-semibold text-[var(--cobalt)] underline">
-              아래 폼으로 남겨주시면
-            </a>{" "}
-            1영업일 내 연락드립니다.
-          </p>
-        )}
-      </div>
-
-      {/* 입력 */}
-      <form
-        className="flex gap-2 border-t border-[var(--line)] p-3"
-        onSubmit={(e) => {
-          e.preventDefault();
-          send();
-        }}
+    <div className="relative">
+      {/* 오브 + 안내 라인 — 포커스 시 페이드아웃 */}
+      <div
+        className="flex items-center gap-2 transition-all duration-500"
+        style={{ opacity: focused ? 0 : 1, transform: focused ? "translateY(8px)" : "none" }}
       >
-        <input
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          maxLength={2000}
-          placeholder="예: 상세페이지 만드는 데 하루 3시간씩 씁니다"
-          aria-label="자동화 고민 입력"
-          className="min-w-0 flex-1 rounded-lg border border-[var(--line)] px-3.5 py-2.5 text-sm placeholder:text-[var(--dim)]/60"
-        />
-        <button
-          type="submit"
-          disabled={streaming || !input.trim()}
-          className="shrink-0 rounded-lg bg-[var(--ink)] px-4 py-2.5 text-sm font-semibold text-white transition-opacity disabled:opacity-40"
+        <Orb />
+        <p className="text-sm font-light text-white/40">진단 대화는 무료고, 기록은 진단 준비에만 씁니다</p>
+      </div>
+
+      <div className="relative">
+        <FocusBorder active={focused} />
+        <div
+          id="hero-chat"
+          className="relative z-10 flex h-[480px] flex-col overflow-hidden rounded-2xl border bg-[var(--chat)] transition-colors duration-500"
+          style={{ borderColor: focused ? "var(--warm)" : "#3d3d3d" }}
         >
-          보내기
-        </button>
-      </form>
+          {/* 진단 콘솔 헤더 */}
+          <div className="flex items-center justify-between border-b border-[#242424] px-4 py-3">
+            <span className="font-[family-name:var(--font-mono)] text-xs tracking-widest text-[var(--dim)]">
+              howzero · 무료 진단 대화
+            </span>
+            <span className="flex items-center gap-1.5 font-[family-name:var(--font-mono)] text-xs text-[var(--dim)]">
+              <span className="h-2 w-2 rounded-full bg-emerald-500" aria-hidden />
+              상담 가능
+            </span>
+          </div>
+
+          {/* 메시지 */}
+          <div ref={scrollRef} className="flex-1 space-y-3 overflow-y-auto px-4 py-4" aria-live="polite">
+            {messages.map((m, i) => (
+              <div key={i} className={m.role === "user" ? "flex justify-end" : "flex justify-start"}>
+                <div
+                  className={
+                    m.role === "user"
+                      ? "max-w-[85%] rounded-lg rounded-br-sm bg-[var(--cobalt)] px-3.5 py-2.5 text-sm leading-relaxed text-black"
+                      : "max-w-[85%] rounded-lg rounded-bl-sm bg-[#1a1a1c] px-3.5 py-2.5 text-sm leading-relaxed text-[var(--ink)]"
+                  }
+                >
+                  {m.content}
+                  {streaming && i === messages.length - 1 && m.role === "assistant" && m.content === "" && (
+                    <span className="flex gap-1 py-1" aria-label="답변 작성 중">
+                      <span className="typing-dot" />
+                      <span className="typing-dot" />
+                      <span className="typing-dot" />
+                    </span>
+                  )}
+                </div>
+              </div>
+            ))}
+            {failed && (
+              <p className="rounded-lg border border-[#242424] bg-[#1a1a1c] px-3.5 py-2.5 text-sm text-[var(--dim)]">
+                지금은 상담 연결이 어렵습니다.{" "}
+                <a href="#contact" className="font-semibold text-[var(--cobalt)] underline">
+                  아래 폼으로 남겨주시면
+                </a>{" "}
+                1영업일 내 연락드립니다.
+              </p>
+            )}
+          </div>
+
+          {/* 입력 */}
+          <form
+            className="flex gap-2 border-t border-[#242424] p-3"
+            onSubmit={(e) => {
+              e.preventDefault();
+              send();
+            }}
+          >
+            <input
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onFocus={() => setFocused(true)}
+              onBlur={() => setFocused(false)}
+              maxLength={2000}
+              placeholder="예: 상세페이지 만드는 데 하루 3시간씩 씁니다"
+              aria-label="자동화 고민 입력"
+              className="min-w-0 flex-1 rounded-lg border border-[#3d3d3d] bg-transparent px-3.5 py-2.5 text-sm text-[var(--ink)] placeholder:text-[var(--dim)]/60"
+            />
+            <button
+              type="submit"
+              disabled={streaming || !input.trim()}
+              className="shrink-0 rounded-lg bg-[var(--cobalt)] px-4 py-2.5 text-sm font-semibold text-black transition-opacity disabled:opacity-40"
+            >
+              보내기
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
   );
 }
