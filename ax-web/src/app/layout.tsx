@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "하우제로 — 반복업무를 지우는 AX 실행 파트너",
+  title: "howzero — 당신 회사만의 AI 운영 OS",
   description:
-    "AI 도입이 아니라 시간 회수를 팝니다. 연매출 10억 이커머스 SaaS를 직접 자동화해본 운영자가 진단부터 구축·운영까지 실행합니다.",
+    "반복업무 시간, 어떻게 0으로 만드나. 연매출 10억 이커머스 SaaS를 직접 자동화해본 운영자가 프로세스 정립부터 자동화까지 — 회사만의 AI 운영 OS를 만듭니다.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
