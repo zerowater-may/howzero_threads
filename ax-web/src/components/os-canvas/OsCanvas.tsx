@@ -72,7 +72,7 @@ export default function OsCanvas() {
           <>
             <FlowCanvas key={preset} preset={preset} onSelect={onSelect} />
             <p className="mt-2 text-xs text-[var(--dim)]">
-              노드를 끌어서 움직이고, 클릭하면 각 단계가 하는 일을 볼 수 있습니다.
+              노드는 끌어서 움직여보세요. 클릭하면 그 단계가 하는 일이 나옵니다.
             </p>
             {/* 상세 카드 */}
             <div
