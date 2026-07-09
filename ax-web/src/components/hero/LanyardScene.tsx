@@ -28,7 +28,7 @@ export default function LanyardScene({ onCardClick }: { onCardClick: () => void 
     <Canvas
       camera={{ position: [0, 0, 20], fov: 20 }}
       dpr={[1, 1.5]}
-      gl={{ alpha: true, preserveDrawingBuffer: true }}
+      gl={{ alpha: true }}
       onCreated={({ gl }) => gl.setClearColor(new THREE.Color(0x000000), 0)}
       style={{ width: "100%", height: "100%" }}
     >
@@ -65,13 +65,25 @@ function Band({ onCardClick, maxSpeed = 50, minSpeed = 0 }: { onCardClick: () =>
 
   const [cardTexture, setCardTexture] = useState<THREE.Texture | null>(null);
   useEffect(() => {
-    const dataUrl = makeHowzeroCardTexture();
-    if (!dataUrl) return;
-    new THREE.TextureLoader().load(dataUrl, (t) => {
-      t.flipY = false;
-      t.colorSpace = THREE.SRGBColorSpace;
-      setCardTexture(t);
+    let mounted = true;
+    let loadedTexture: THREE.Texture | null = null;
+    makeHowzeroCardTexture().then((dataUrl) => {
+      if (!dataUrl || !mounted) return;
+      new THREE.TextureLoader().load(dataUrl, (t) => {
+        if (!mounted) {
+          t.dispose();
+          return;
+        }
+        t.flipY = false;
+        t.colorSpace = THREE.SRGBColorSpace;
+        loadedTexture = t;
+        setCardTexture(t);
+      });
     });
+    return () => {
+      mounted = false;
+      loadedTexture?.dispose();
+    };
   }, []);
 
   const [curve] = useState(() => new THREE.CatmullRomCurve3([new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3()]));
@@ -160,8 +172,7 @@ function Band({ onCardClick, maxSpeed = 50, minSpeed = 0 }: { onCardClick: () =>
           >
             <mesh geometry={nodes.card.geometry}>
               <meshPhysicalMaterial
-                map={cardTexture ?? materials.base.map}
-                map-anisotropy={16}
+                {...(cardTexture ? { map: cardTexture, "map-anisotropy": 16 } : { color: "#161618" })}
                 clearcoat={1}
                 clearcoatRoughness={0.15}
                 roughness={0.9}

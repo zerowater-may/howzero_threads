@@ -36,7 +36,10 @@ export default function OsCanvas() {
             key={key}
             role="tab"
             aria-selected={preset === key}
-            onClick={() => setPreset(key)}
+            onClick={() => {
+              setPreset(key);
+              setSelected(null);
+            }}
             className={`rounded-full border px-4 py-2 text-sm font-semibold transition-colors ${
               preset === key
                 ? "border-[var(--cobalt)] bg-[var(--cobalt)] text-black"
@@ -67,7 +70,7 @@ export default function OsCanvas() {
           </ol>
         ) : (
           <>
-            <FlowCanvas preset={preset} onSelect={onSelect} />
+            <FlowCanvas key={preset} preset={preset} onSelect={onSelect} />
             <p className="mt-2 text-xs text-[var(--dim)]">
               노드를 끌어서 움직이고, 클릭하면 각 단계가 하는 일을 볼 수 있습니다.
             </p>
@@ -89,6 +92,23 @@ export default function OsCanvas() {
                 <p className="text-sm text-[var(--dim)]">노드를 클릭하면 이 자리에 단계 설명이 나옵니다.</p>
               )}
             </div>
+            {/* 키보드 사용자용 접근 경로 — 노드 클릭은 마우스 전용이라 별도 제공 */}
+            <details className="mt-4 rounded-xl border border-[var(--line)] bg-[var(--card)] p-5">
+              <summary className="cursor-pointer text-sm font-semibold text-[var(--dim)]">
+                전체 단계 설명 펼쳐보기
+              </summary>
+              <ol className="mt-3 space-y-3">
+                {PRESETS[preset].nodes.map((node, i) => (
+                  <li key={node.id}>
+                    <p className="text-sm font-bold">
+                      {String(i + 1).padStart(2, "0")} {node.data.label}{" "}
+                      <span className="font-normal text-[var(--dim)]">{node.data.sub}</span>
+                    </p>
+                    <p className="mt-1 text-sm leading-relaxed text-[var(--dim)]">{node.data.detail}</p>
+                  </li>
+                ))}
+              </ol>
+            </details>
           </>
         )}
       </div>

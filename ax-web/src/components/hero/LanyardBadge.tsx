@@ -30,8 +30,9 @@ export default function LanyardBadge() {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    const mq = window.matchMedia("(min-width: 1024px)");
-    const update = () => setEnabled(mq.matches && hasWebGL());
+    const mq = window.matchMedia("(min-width: 1360px)");
+    const update = () =>
+      setEnabled(mq.matches && hasWebGL() && !window.matchMedia("(prefers-reduced-motion: reduce)").matches);
     update();
     mq.addEventListener("change", update);
 

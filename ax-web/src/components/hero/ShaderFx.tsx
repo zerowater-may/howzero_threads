@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 
 // WebGL 실패 시(로드 에러 포함) 정적 오렌지 원으로 폴백 — 스펙 §6
@@ -16,8 +17,28 @@ function OrbFallback() {
   return <div className="h-[56px] w-[56px] rounded-full bg-[var(--cobalt)]/40 blur-sm" />;
 }
 
+function useReducedMotion(): boolean {
+  const [reduced, setReduced] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setReduced(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+  return reduced;
+}
+
 // shaders-chat-app 레퍼런스 파라미터 이식 (오렌지 팔레트)
 export function Orb() {
+  const reduced = useReducedMotion();
+  if (reduced) {
+    return (
+      <div className="relative flex h-[80px] w-[80px] items-center justify-center">
+        <OrbFallback />
+      </div>
+    );
+  }
   return (
     <div className="relative flex h-[80px] w-[80px] items-center justify-center">
       <LiquidMetal
@@ -55,11 +76,13 @@ export function Orb() {
 }
 
 export function FocusBorder({ active }: { active: boolean }) {
+  const reduced = useReducedMotion();
+  if (reduced || !active) return null;
   return (
     <div
       aria-hidden
       className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center transition-opacity duration-700"
-      style={{ opacity: active ? 1 : 0 }}
+      style={{ opacity: 1 }}
     >
       <PulsingBorder
         style={{ height: "146.5%", minWidth: "143%" }}

@@ -2,7 +2,8 @@
 // 실명 금지 — 스펙 §3. 문구는 Founder 크리덴셜만.
 const SIZE = 1376;
 
-export function makeHowzeroCardTexture(): string {
+export async function makeHowzeroCardTexture(): Promise<string> {
+  await document.fonts.ready;
   const canvas = document.createElement("canvas");
   canvas.width = SIZE;
   canvas.height = SIZE;

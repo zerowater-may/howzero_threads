@@ -18,12 +18,15 @@ interface Props {
 
 export default function FlowCanvas({ preset, onSelect }: Props) {
   const [nodes, setNodes] = useState<Node<OsNodeData>[]>(PRESETS[preset].nodes);
+  const [reduced, setReduced] = useState(false);
 
-  // 탭 전환 시 노드셋 교체 + 선택 해제
   useEffect(() => {
-    setNodes(PRESETS[preset].nodes);
-    onSelect(null);
-  }, [preset, onSelect]);
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setReduced(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
 
   const onNodesChange = useCallback(
     (changes: NodeChange<Node<OsNodeData>>[]) => setNodes((ns) => applyNodeChanges(changes, ns)),
@@ -36,7 +39,7 @@ export default function FlowCanvas({ preset, onSelect }: Props) {
         nodes={nodes}
         edges={PRESETS[preset].edges.map((e) => ({
           ...e,
-          animated: true,
+          animated: !reduced,
           style: { stroke: "#3f3f46" },
         }))}
         nodeTypes={nodeTypes}
