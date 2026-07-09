@@ -17,8 +17,10 @@ DB는 **PGlite**(임베디드 Postgres, `./.pglite/`) — 별도 설치 불필�
 PGlite는 **단일 프로세스 전용**이다. dev 서버가 떠 있는 동안 다른 프로세스(스크립트, 두 번째 서버)가 같은 `.pglite/`를 열면 데이터가 손상될 수 있다. 리드 확인은 서버를 내리고 하거나 읽기 전용으로 짧게:
 
 ```bash
-node -e "const {PGlite}=require('@electric-sql/pglite');new PGlite('./.pglite').query('SELECT source,name,contact,company,pain_summary,created_at FROM leads ORDER BY id DESC').then(r=>console.table(r.rows))"
+node -e "const {PGlite}=require('@electric-sql/pglite');new PGlite('./.pglite').query('SELECT source,name,contact,email,company,industry,areas,budget,start_timing,pain_summary,created_at FROM leads ORDER BY id DESC').then(r=>console.table(r.rows))"
 ```
+
+폼은 상세 항목(회사명·담당자·연락처·이메일·직책·유입경로·업종·희망 영역·예산·시기·동의 시각)을 수집한다 (2026-07-10 확장). 기존 `.pglite`에 새 컬럼이 없으면 `npm run db:init` 한 번 (dev 서버 내리고).
 
 서버 종료는 **Ctrl+C(SIGINT)** 로 할 것. `pkill`(SIGTERM)로 죽이면 직전 몇 초 내 쓰인 리드가 flush 전에 유실될 수 있다 (2026-07-09 검증: SIGINT는 1초 뒤 종료해도 보존, SIGTERM은 유실 재현).
 

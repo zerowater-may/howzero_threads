@@ -23,3 +23,13 @@ CREATE TABLE IF NOT EXISTS leads (
   source TEXT NOT NULL CHECK (source IN ('chat', 'form')),
   created_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
+
+-- 상세 상담 폼 확장 필드 (2026-07-10, 윤자동 벤치마킹). 기존 DB에도 부팅 시 안전 적용.
+ALTER TABLE leads ADD COLUMN IF NOT EXISTS email TEXT;
+ALTER TABLE leads ADD COLUMN IF NOT EXISTS role TEXT;
+ALTER TABLE leads ADD COLUMN IF NOT EXISTS referral TEXT;
+ALTER TABLE leads ADD COLUMN IF NOT EXISTS industry TEXT;
+ALTER TABLE leads ADD COLUMN IF NOT EXISTS areas TEXT;          -- 자동화 희망 영역 (쉼표 구분)
+ALTER TABLE leads ADD COLUMN IF NOT EXISTS budget TEXT;
+ALTER TABLE leads ADD COLUMN IF NOT EXISTS start_timing TEXT;
+ALTER TABLE leads ADD COLUMN IF NOT EXISTS agreed_at TIMESTAMPTZ; -- 개인정보 수집·이용 동의 시각 (증빙)

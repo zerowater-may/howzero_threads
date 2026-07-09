@@ -293,7 +293,7 @@ export default function Home() {
             숫자로 받아보세요
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-center text-[var(--dim)]">
-            연락처만 남기시면 1영업일 내 연락드립니다. 진단은 무료고, 영업 전화로 괴롭히지 않습니다.
+            남겨주시면 1영업일 내 연락드립니다. 진단은 무료고, 영업 전화로 괴롭히지 않습니다.
           </p>
           <div className="mt-10">
             <ContactForm />

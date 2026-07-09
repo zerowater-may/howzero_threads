@@ -7,6 +7,15 @@ const LeadSchema = z.object({
   contact: z.string().trim().min(5).max(200),
   company: z.string().trim().max(200).optional(),
   painSummary: z.string().trim().max(2000).optional(),
+  // 상세 상담 폼 확장 (2026-07-10). 채팅 리드는 안 보내므로 전부 optional — 폼 필수 검증은 클라이언트 required가 담당.
+  email: z.string().trim().email().max(200).optional(),
+  role: z.string().trim().max(100).optional(),
+  referral: z.string().trim().max(100).optional(),
+  industry: z.string().trim().max(100).optional(),
+  areas: z.array(z.string().trim().max(50)).max(10).optional(),
+  budget: z.string().trim().max(100).optional(),
+  startTiming: z.string().trim().max(100).optional(),
+  privacyAgreed: z.boolean().optional(),
 });
 
 export async function POST(req: Request) {
@@ -23,12 +32,27 @@ export async function POST(req: Request) {
   if (!parsed.success) {
     return Response.json({ error: "invalid_lead", issues: parsed.error.issues }, { status: 400 });
   }
-  const { name, contact, company, painSummary } = parsed.data;
+  const { name, contact, company, painSummary, email, role, referral, industry, areas, budget, startTiming, privacyAgreed } =
+    parsed.data;
   try {
     const db = await getDb();
     await db.query(
-      `INSERT INTO leads (name, contact, company, pain_summary, source) VALUES ($1, $2, $3, $4, 'form')`,
-      [name ?? null, contact, company ?? null, painSummary ?? null]
+      `INSERT INTO leads (name, contact, company, pain_summary, source, email, role, referral, industry, areas, budget, start_timing, agreed_at)
+       VALUES ($1, $2, $3, $4, 'form', $5, $6, $7, $8, $9, $10, $11, $12)`,
+      [
+        name ?? null,
+        contact,
+        company ?? null,
+        painSummary ?? null,
+        email ?? null,
+        role ?? null,
+        referral ?? null,
+        industry ?? null,
+        areas && areas.length ? areas.join(", ") : null,
+        budget ?? null,
+        startTiming ?? null,
+        privacyAgreed ? new Date().toISOString() : null,
+      ]
     );
   } catch (e) {
     console.error("[leads] db error:", e);
