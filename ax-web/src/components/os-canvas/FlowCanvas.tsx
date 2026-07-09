@@ -34,7 +34,7 @@ export default function FlowCanvas({ preset, onSelect }: Props) {
   );
 
   return (
-    <div className="canvas-dots h-[420px] w-full rounded-xl border border-[var(--line)]">
+    <div className="canvas-dots h-[340px] w-full rounded-xl border border-[var(--line)]">
       <ReactFlow
         nodes={nodes}
         edges={PRESETS[preset].edges.map((e) => ({
@@ -47,7 +47,7 @@ export default function FlowCanvas({ preset, onSelect }: Props) {
         onNodeClick={(_, node) => onSelect(node.data)}
         onPaneClick={() => onSelect(null)}
         fitView
-        fitViewOptions={{ padding: 0.25 }}
+        fitViewOptions={{ padding: 0.12 }}
         panOnDrag={false}
         zoomOnScroll={false}
         zoomOnPinch={false}
@@ -56,6 +56,7 @@ export default function FlowCanvas({ preset, onSelect }: Props) {
         nodesConnectable={false}
         deleteKeyCode={null}
         colorMode="dark"
+        proOptions={{ hideAttribution: true }}
         style={{ background: "transparent" }}
       />
     </div>

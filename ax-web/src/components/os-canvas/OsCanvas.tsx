@@ -8,13 +8,15 @@ import { PRESETS, PRESET_ORDER, type PresetKey, type OsNodeData } from "./preset
 const FlowCanvas = dynamic(() => import("./FlowCanvas"), {
   ssr: false,
   loading: () => (
-    <div className="canvas-dots h-[420px] w-full animate-pulse rounded-xl border border-[var(--line)]" />
+    <div className="canvas-dots h-[340px] w-full animate-pulse rounded-xl border border-[var(--line)]" />
   ),
 });
 
 export default function OsCanvas() {
   const [preset, setPreset] = useState<PresetKey>("cs");
   const [selected, setSelected] = useState<OsNodeData | null>(null);
+  // 빈 상태를 노출하지 않는다 — 선택 전엔 항상 현재 프리셋의 첫 단계를 보여줌
+  const shown = selected ?? PRESETS[preset].nodes[0].data;
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -74,27 +76,16 @@ export default function OsCanvas() {
             <p className="mt-2 text-xs text-[var(--dim)]">
               노드는 끌어서 움직여보세요. 클릭하면 그 단계가 하는 일이 나옵니다.
             </p>
-            {/* 상세 카드 */}
-            <div
-              aria-live="polite"
-              className={`mt-4 rounded-xl border border-[var(--line)] bg-[var(--card)] p-5 transition-opacity ${
-                selected ? "opacity-100" : "opacity-60"
-              }`}
-            >
-              {selected ? (
-                <>
-                  <p className="text-sm font-bold">
-                    {selected.label} <span className="ml-1 font-normal text-[var(--dim)]">{selected.sub}</span>
-                  </p>
-                  <p className="mt-2 text-sm leading-relaxed text-[var(--dim)]">{selected.detail}</p>
-                </>
-              ) : (
-                <p className="text-sm text-[var(--dim)]">노드를 클릭하면 이 자리에 단계 설명이 나옵니다.</p>
-              )}
+            {/* 상세 카드 — 항상 내용이 차 있음 (기본: 첫 단계) */}
+            <div aria-live="polite" className="mt-4 rounded-xl border border-[var(--line)] bg-[var(--card)] p-5">
+              <p className="text-sm font-bold">
+                {shown.label} <span className="ml-1 font-normal text-[var(--dim)]">{shown.sub}</span>
+              </p>
+              <p className="mt-2 text-sm leading-relaxed text-[var(--dim)]">{shown.detail}</p>
             </div>
-            {/* 키보드 사용자용 접근 경로 — 노드 클릭은 마우스 전용이라 별도 제공 */}
-            <details className="mt-4 rounded-xl border border-[var(--line)] bg-[var(--card)] p-5">
-              <summary className="cursor-pointer text-sm font-semibold text-[var(--dim)]">
+            {/* 키보드 사용자용 접근 경로 — 카드 박스가 아니라 조용한 텍스트 링크로 */}
+            <details className="mt-3 px-1">
+              <summary className="cursor-pointer text-xs text-[var(--dim)] underline-offset-4 hover:underline">
                 전체 단계 설명 펼쳐보기
               </summary>
               <ol className="mt-3 space-y-3">

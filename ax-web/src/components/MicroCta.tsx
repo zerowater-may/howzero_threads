@@ -9,7 +9,7 @@ export default function MicroCta({ label = "→ 우리 회사도 되는지 물�
           document.querySelector<HTMLInputElement>("#hero-chat input")?.focus({ preventScroll: true });
         }, 600);
       }}
-      className="mt-8 font-[family-name:var(--font-mono)] text-sm font-semibold text-[var(--cobalt)] hover:underline"
+      className="mt-8 text-sm font-semibold text-[var(--cobalt)] hover:underline"
     >
       {label}
     </button>

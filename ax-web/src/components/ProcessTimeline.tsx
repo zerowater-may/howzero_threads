@@ -8,7 +8,7 @@ const STEPS = [
 
 export default function ProcessTimeline() {
   return (
-    <ol className="canvas-dots mt-10 grid gap-6 rounded-xl border border-[var(--line)] p-6 md:grid-cols-4 md:gap-0">
+    <ol className="canvas-dots mt-10 grid gap-6 rounded-xl border border-[var(--line)] p-6 md:grid-cols-[1.35fr_1fr_1fr_1fr] md:gap-0">
       {STEPS.map(([num, title, desc, badge], i) => (
         <li key={num} className="relative md:px-3">
           {i < 3 && (
@@ -18,8 +18,8 @@ export default function ProcessTimeline() {
             />
           )}
           <div
-            className={`rounded-lg border bg-[var(--card)] p-5 ${
-              badge === "RUNNING" ? "border-[var(--ok)]/70" : badge === "AI" ? "border-[var(--cobalt)]/40" : "border-[var(--line)]"
+            className={`card-lift rounded-2xl border bg-[var(--card)] p-5 ${
+              badge === "AI" ? "border-[var(--cobalt)]/40" : "border-[var(--line)]"
             }`}
           >
             <div className="flex items-center justify-between">

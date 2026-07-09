@@ -50,7 +50,9 @@ export default function ContactForm() {
         />
       </label>
       <label className="grid gap-1.5 text-sm font-medium">
-        연락처 <span className="text-[var(--signal)]">*</span>
+        <span>
+          연락처 <span className="text-[var(--signal)]">*</span>
+        </span>
         <input
           name="contact"
           required

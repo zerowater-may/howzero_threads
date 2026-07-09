@@ -92,22 +92,23 @@ export default function HeroChat() {
         style={{ opacity: focused ? 0 : 1, transform: focused ? "translateY(8px)" : "none" }}
       >
         <Orb />
-        <p className="text-sm font-light text-white/40">진단 대화는 무료고, 기록은 진단 준비에만 씁니다</p>
+        <p className="text-sm font-light text-white/40">궁금한 업무부터 그대로 물어보세요</p>
       </div>
 
       <div className="relative">
         <FocusBorder active={focused} />
         <div
           id="hero-chat"
-          className="relative z-10 flex h-[480px] flex-col overflow-hidden rounded-2xl border bg-[var(--chat)] transition-colors duration-500"
+          className="relative z-10 flex h-[380px] flex-col overflow-hidden rounded-2xl border bg-[var(--chat)] transition-colors duration-500 sm:h-[480px]"
           style={{ borderColor: focused ? "var(--warm)" : "#3d3d3d" }}
         >
-          {/* 진단 콘솔 헤더 */}
+          {/* 진단 콘솔 헤더 — mono+자간은 라틴에만, 한글 라벨은 본문체 */}
           <div className="flex items-center justify-between border-b border-[#242424] px-4 py-3">
-            <span className="font-[family-name:var(--font-mono)] text-xs tracking-widest text-[var(--dim)]">
-              howzero · 무료 진단 대화
+            <span className="text-xs text-[var(--dim)]">
+              <span className="font-[family-name:var(--font-mono)] tracking-widest">howzero</span>
+              <span className="ml-2">무료 진단 대화</span>
             </span>
-            <span className="flex items-center gap-1.5 font-[family-name:var(--font-mono)] text-xs text-[var(--dim)]">
+            <span className="flex items-center gap-1.5 text-xs text-[var(--dim)]">
               <span className="h-2 w-2 rounded-full bg-emerald-500" aria-hidden />
               상담 가능
             </span>
@@ -146,6 +147,26 @@ export default function HeroChat() {
             )}
           </div>
 
+          {/* 추천 질문 칩 — 첫 화면 빈 공간을 기능으로 채움. 대화 시작하면 사라짐 */}
+          {messages.length === 1 && !streaming && !failed && (
+            <div className="flex flex-wrap gap-2 px-4 pb-3">
+              {[
+                "CS 응대가 너무 오래 걸려요",
+                "정산 정리에 매주 반나절 써요",
+                "상세페이지에 하루 3시간 씁니다",
+              ].map((q) => (
+                <button
+                  key={q}
+                  type="button"
+                  onClick={() => setInput(q)}
+                  className="rounded-full border border-[#3d3d3d] px-3 py-1.5 text-xs text-[var(--dim)] transition-colors hover:border-[var(--warm)] hover:text-[var(--ink)]"
+                >
+                  {q}
+                </button>
+              ))}
+            </div>
+          )}
+
           {/* 입력 */}
           <form
             className="flex gap-2 border-t border-[#242424] p-3"
@@ -160,14 +181,14 @@ export default function HeroChat() {
               onFocus={() => setFocused(true)}
               onBlur={() => setFocused(false)}
               maxLength={2000}
-              placeholder="예: 상세페이지 만드는 데 하루 3시간씩 씁니다"
+              placeholder="예: 상세페이지에 하루 3시간 씁니다"
               aria-label="자동화 고민 입력"
               className="min-w-0 flex-1 rounded-lg border border-[#3d3d3d] bg-transparent px-3.5 py-2.5 text-sm text-[var(--ink)] placeholder:text-[var(--dim)]/60"
             />
             <button
               type="submit"
               disabled={streaming || !input.trim()}
-              className="shrink-0 rounded-lg bg-[var(--cobalt)] px-4 py-2.5 text-sm font-semibold text-white transition-opacity disabled:opacity-40"
+              className="shrink-0 rounded-lg bg-[var(--cobalt)] px-4 py-2.5 text-sm font-semibold text-white transition-opacity disabled:opacity-60"
             >
               보내기
             </button>
