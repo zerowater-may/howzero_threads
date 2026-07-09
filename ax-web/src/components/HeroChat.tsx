@@ -7,7 +7,7 @@ type Msg = { role: "user" | "assistant"; content: string };
 const GREETING: Msg = {
   role: "assistant",
   content:
-    "안녕하세요, 하우제로 AX 상담입니다. 요즘 대표님 시간을 제일 많이 잡아먹는 반복업무가 뭔가요? CS 응대, 상품 등록, 정산, 리포트 — 뭐든 편하게 말씀해주세요.",
+    "무엇을 자동화하고 싶으세요? CS 응대, 상품 등록, 정산, 리포트 — 요즘 대표님 시간을 제일 많이 잡아먹는 반복업무를 편하게 말씀해주세요.",
 };
 
 export default function HeroChat() {
@@ -87,7 +87,7 @@ export default function HeroChat() {
       {/* 진단 콘솔 헤더 */}
       <div className="flex items-center justify-between border-b border-[var(--line)] px-4 py-3">
         <span className="font-[family-name:var(--font-mono)] text-xs tracking-widest text-[var(--dim)]">
-          HOWZERO · 무료 진단 대화
+          howzero · 무료 진단 대화
         </span>
         <span className="flex items-center gap-1.5 font-[family-name:var(--font-mono)] text-xs text-[var(--dim)]">
           <span className="h-2 w-2 rounded-full bg-emerald-500" aria-hidden />
