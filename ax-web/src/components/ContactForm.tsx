@@ -32,7 +32,7 @@ export default function ContactForm() {
 
   if (status === "done") {
     return (
-      <p className="rounded-xl border border-[var(--line)] bg-white p-6 text-center text-base font-medium">
+      <p className="rounded-xl border border-[var(--line)] bg-[var(--card)] p-6 text-center text-base font-medium">
         접수됐습니다. <span className="num">1영업일</span> 내에 연락드리겠습니다.
       </p>
     );
@@ -45,7 +45,7 @@ export default function ContactForm() {
         <input
           name="name"
           autoComplete="name"
-          className="rounded-lg border border-[var(--line)] bg-white px-3.5 py-2.5 text-sm"
+          className="rounded-lg border border-[var(--line)] bg-[var(--panel)] px-3.5 py-2.5 text-sm text-[var(--ink)]"
           placeholder="김대표"
         />
       </label>
@@ -56,7 +56,7 @@ export default function ContactForm() {
           required
           minLength={5}
           autoComplete="email"
-          className="rounded-lg border border-[var(--line)] bg-white px-3.5 py-2.5 text-sm"
+          className="rounded-lg border border-[var(--line)] bg-[var(--panel)] px-3.5 py-2.5 text-sm text-[var(--ink)]"
           placeholder="이메일 또는 전화번호"
         />
       </label>
@@ -65,7 +65,7 @@ export default function ContactForm() {
         <input
           name="company"
           autoComplete="organization"
-          className="rounded-lg border border-[var(--line)] bg-white px-3.5 py-2.5 text-sm"
+          className="rounded-lg border border-[var(--line)] bg-[var(--panel)] px-3.5 py-2.5 text-sm text-[var(--ink)]"
           placeholder="회사명 또는 스토어명"
         />
       </label>
@@ -74,7 +74,7 @@ export default function ContactForm() {
         <textarea
           name="painSummary"
           rows={3}
-          className="resize-none rounded-lg border border-[var(--line)] bg-white px-3.5 py-2.5 text-sm"
+          className="resize-none rounded-lg border border-[var(--line)] bg-[var(--panel)] px-3.5 py-2.5 text-sm text-[var(--ink)]"
           placeholder="예: CS 응대에 하루 4시간, 주문 정산에 매주 반나절씩 씁니다"
         />
       </label>
