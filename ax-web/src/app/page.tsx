@@ -180,7 +180,7 @@ export default function Home() {
           <p className="eyebrow">TRACK RECORD</p>
           <h2 className="display mt-3 text-4xl sm:text-5xl lg:text-6xl">팔기 전에, 내가 썼다</h2>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[var(--dim)]">
-            저는 AI 컨설턴트가 되려고 AI를 배운 게 아닙니다. 제 이커머스 SaaS를{" "}
+            저는 AI 컨설턴트가 되려고 AI를 배운 게 아닙니다. 제 SaaS를{" "}
             <span className="num">연매출 10억</span> 규모로 직접 운영하면서, 반복업무에 갈리는 제 직원들의 일을
             먼저 자동화해야 했을 뿐입니다. 그 자동화가 실제로 굴러가는 걸 확인한 다음에야, 남의 회사에도 팔기
             시작했습니다.
@@ -189,35 +189,64 @@ export default function Home() {
             우리 첫 고객은 우리 회사였다 — 검증한 것만 판다.
           </p>
         </Reveal>
-        {/* 실적 — 비대칭 벤토: 핵심 증거(운영 실적)가 판을 지배 */}
+        {/* 프로필 카드 — 윤자동 벤치마킹: 경력 자랑이 아니라 "직접 운영해본 사람" 증명 */}
         <Reveal delay={120}>
           <div className="mt-12 grid gap-4 md:grid-cols-12">
-            <div className="card-lift flex flex-col gap-6 rounded-2xl border border-[var(--line)] bg-[var(--card)] p-8 md:col-span-7">
-              <div>
-                <p className="num text-4xl sm:text-5xl">연매출 10억</p>
-                <h3 className="mt-3 text-lg font-bold">이커머스 SaaS 운영</h3>
+            <div className="card-lift rounded-2xl border border-[var(--line)] bg-[var(--card)] p-8 md:col-span-7">
+              <div className="flex items-center gap-4">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[var(--cobalt)]/15 font-[family-name:var(--font-mono)] text-xl font-bold text-[var(--cobalt)]">
+                  h0
+                </div>
+                <div>
+                  <p className="text-lg font-bold">howzero 파운더</p>
+                  <p className="text-sm text-[var(--dim)]">직접 만들고, 직접 운영하는 AX 실행 파트너</p>
+                </div>
               </div>
-              <p className="max-w-md text-sm leading-relaxed text-[var(--dim)]">
-                AI SaaS &lsquo;불사자&rsquo;를 직접 만들어 운영 중. 상품 데이터·크롤링·결제까지
-                풀스택으로 굴리는 실제 사업. 이 실적은 컨설팅이 아니라 운영에서 나온 숫자입니다.
-              </p>
+              <dl className="mt-8 grid gap-6 sm:grid-cols-3">
+                <div>
+                  <dt className="num text-2xl sm:text-3xl">연매출 10억</dt>
+                  <dd className="mt-1.5 text-sm leading-relaxed text-[var(--dim)]">자체 SaaS를 이 규모로 직접 운영 (내부 실적)</dd>
+                </div>
+                <div>
+                  <dt className="display text-2xl sm:text-3xl">복수 SaaS</dt>
+                  <dd className="mt-1.5 text-sm leading-relaxed text-[var(--dim)]">불사자·하입덕 — 기획부터 개발·운영까지 외주 없이</dd>
+                </div>
+                <div>
+                  <dt className="display text-2xl sm:text-3xl">사내 실전</dt>
+                  <dd className="mt-1.5 text-sm leading-relaxed text-[var(--dim)]">내 직원들의 반복업무부터 자동화 — 실패도 우리 돈으로</dd>
+                </div>
+              </dl>
+              <div className="mt-8 flex flex-wrap gap-2">
+                {["Python", "TypeScript · Next.js", "PostgreSQL", "Claude · GPT API", "크롤링 · RPA", "Remotion"].map((t) => (
+                  <span
+                    key={t}
+                    className="rounded-full border border-[var(--line)] bg-[var(--panel)] px-3 py-1.5 font-[family-name:var(--font-mono)] text-xs text-[var(--dim)]"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
             </div>
-            <div className="grid gap-4 md:col-span-5">
-              <div className="card-lift rounded-2xl border border-[var(--line)] bg-[var(--card)] p-6">
-                <p className="font-[family-name:var(--font-mono)] text-xl font-semibold">SaaS 연쇄 구축</p>
-                <h3 className="mt-2 text-sm font-bold">하입덕 등 복수 제품 출시</h3>
-                <p className="mt-2 text-sm leading-relaxed text-[var(--dim)]">
-                  기획부터 개발·운영까지 외주 없이 직접. 전략만 말하는 컨설팅이 아니라 만들 수 있는 손이
-                  있습니다.
-                </p>
-              </div>
-              <div className="card-lift rounded-2xl border border-[var(--line)] bg-[var(--card)] p-6">
-                <p className="font-[family-name:var(--font-mono)] text-xl font-semibold">사내 자동화 실전</p>
-                <h3 className="mt-2 text-sm font-bold">내 직원들의 반복업무부터 제거</h3>
-                <p className="mt-2 text-sm leading-relaxed text-[var(--dim)]">
-                  CS·정산·콘텐츠 업무를 먼저 우리 회사에서 자동화. 실패도 우리 돈으로 먼저 해봤습니다.
-                </p>
-              </div>
+            <div className="card-lift rounded-2xl border border-[var(--line)] bg-[var(--card)] p-8 md:col-span-5">
+              <p className="text-sm font-bold text-[var(--dim)]">먼저 우리 회사에서 자동화한 것</p>
+              <ul className="mt-5 space-y-4">
+                {[
+                  ["CS 응대", "반복 문의 분류·답변 초안·발송"],
+                  ["정산·리포트", "채널 데이터 취합·대사·주간 보고"],
+                  ["콘텐츠 제작", "소재 수집·초안·발행 파이프라인"],
+                ].map(([t, d]) => (
+                  <li key={t} className="flex gap-3">
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--cobalt)]" aria-hidden />
+                    <div>
+                      <p className="text-sm font-bold">{t}</p>
+                      <p className="mt-0.5 text-sm leading-relaxed text-[var(--dim)]">{d}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-6 border-l-2 border-[var(--cobalt)] pl-3 text-sm leading-relaxed text-[var(--dim)]">
+                여기서 굴러간 파이프라인이 위 OS 설계도의 원본입니다.
+              </p>
             </div>
           </div>
         </Reveal>
