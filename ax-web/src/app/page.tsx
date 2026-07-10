@@ -84,7 +84,7 @@ export default function Home() {
                 <br className="hidden sm:block" />
                 대표가 그 5시간에 할 일이 정말 이건가.&rdquo;
               </p>
-              <p className="mt-3 text-sm text-[var(--dim)]">셀러 증언 — 반복 문의 · 주문/배송 확인 · 반품 응대</p>
+              <p className="mt-3 text-sm text-[var(--dim)]">현장 증언 — 반복 문의 · 주문/배송 확인 · 반품 응대</p>
             </blockquote>
           </Reveal>
           <div className="mt-14 grid gap-x-8 gap-y-10 md:grid-cols-3">
@@ -255,7 +255,7 @@ export default function Home() {
                 <h3 className="display text-xl">착수 — 오딧 + 구축</h3>
                 <p className="num mt-3 text-3xl">300~700만원</p>
                 <p className="mt-1 font-[family-name:var(--font-mono)] text-xs text-[var(--dim)]">
-                  셀러/소규모 기준 · SMB 700~2,000만원
+                  소규모 기준 · SMB 700~2,000만원
                 </p>
                 <p className="mt-4 flex-1 text-sm leading-relaxed text-[var(--dim)]">
                   우선순위 1~2개 업무를 실제로 자동화해 인도. 결과는 시간·비용 before/after로 보고합니다.
@@ -266,7 +266,7 @@ export default function Home() {
                 <h3 className="display text-xl">운영 리테이너</h3>
                 <p className="num mt-3 text-3xl">월 50~150만원</p>
                 <p className="mt-1 font-[family-name:var(--font-mono)] text-xs text-[var(--dim)]">
-                  셀러/소규모 기준 · SMB 월 150~500만원
+                  소규모 기준 · SMB 월 150~500만원
                 </p>
                 <p className="mt-4 flex-1 text-sm leading-relaxed text-[var(--dim)]">
                   구축한 자동화의 모니터링·개선 + 새 업무 자동화 확장. 필요 없으면 언제든 종료.

@@ -10,7 +10,7 @@ export default function ProcessTimeline() {
   return (
     <ol className="canvas-dots mt-10 grid gap-6 rounded-xl border border-[var(--line)] p-6 md:grid-cols-[1.35fr_1fr_1fr_1fr] md:gap-0">
       {STEPS.map(([num, title, desc, badge], i) => (
-        <li key={num} className="relative md:px-3">
+        <li key={num} className="relative h-full md:px-3">
           {i < 3 && (
             <span
               aria-hidden
@@ -18,7 +18,7 @@ export default function ProcessTimeline() {
             />
           )}
           <div
-            className={`card-lift rounded-2xl border bg-[var(--card)] p-5 ${
+            className={`card-lift h-full rounded-2xl border bg-[var(--card)] p-5 ${
               badge === "AI" ? "border-[var(--cobalt)]/40" : "border-[var(--line)]"
             }`}
           >

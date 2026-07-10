@@ -8,7 +8,7 @@ type Msg = { role: "user" | "assistant"; content: string };
 const GREETING: Msg = {
   role: "assistant",
   content:
-    "무엇을 자동화하고 싶으세요? CS 응대, 상품 등록, 정산, 리포트 — 요즘 대표님 시간을 제일 많이 잡아먹는 반복업무를 편하게 말씀해주세요.",
+    "무엇을 자동화하고 싶으세요? CS 응대, 정산, 보고서, 콘텐츠 — 요즘 대표님 시간을 제일 많이 잡아먹는 반복업무를 편하게 말씀해주세요.",
 };
 
 export default function HeroChat() {
@@ -153,7 +153,7 @@ export default function HeroChat() {
               {[
                 "CS 응대가 너무 오래 걸려요",
                 "정산 정리에 매주 반나절 써요",
-                "상세페이지에 하루 3시간 씁니다",
+                "보고서 만드는 데 하루 3시간 씁니다",
               ].map((q) => (
                 <button
                   key={q}
@@ -181,7 +181,7 @@ export default function HeroChat() {
               onFocus={() => setFocused(true)}
               onBlur={() => setFocused(false)}
               maxLength={2000}
-              placeholder="예: 상세페이지에 하루 3시간 씁니다"
+              placeholder="예: 보고서 만드는 데 하루 3시간 씁니다"
               aria-label="자동화 고민 입력"
               className="min-w-0 flex-1 rounded-lg border border-[#3d3d3d] bg-transparent px-3.5 py-2.5 text-sm text-[var(--ink)] placeholder:text-[var(--dim)]/60"
             />

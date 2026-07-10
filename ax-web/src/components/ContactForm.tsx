@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 // 수집 항목은 상세 폼과 동일(윤자동 벤치마킹), API/DB 무변경.
 const ROLES = ["대표/임원", "팀장·매니저", "실무 담당자", "기타"];
 const REFERRALS = ["인스타그램/쓰레드", "유튜브", "검색", "지인 소개", "기타"];
-const INDUSTRIES = ["이커머스/셀러", "세무·회계", "교육/컨설팅", "제조/유통", "서비스업", "기타"];
+const INDUSTRIES = ["이커머스", "세무·회계", "교육/컨설팅", "제조/유통", "서비스업", "기타"];
 const AREAS = [
   "CS/고객응대",
   "정산/회계",
@@ -34,7 +34,7 @@ const STEPS: Step[] = [
   { kind: "multi", key: "areas", q: "어떤 업무를 자동화하고 싶으세요?", options: AREAS },
   { kind: "choice", key: "budget", q: "예상하시는 예산 구간이 있나요?", options: BUDGETS },
   { kind: "choice", key: "startTiming", q: "언제쯤 시작하고 싶으세요?", options: TIMINGS },
-  { kind: "text", key: "company", q: "회사나 스토어 이름을 알려주세요", placeholder: "회사명 또는 스토어명", autoComplete: "organization" },
+  { kind: "text", key: "company", q: "회사 이름을 알려주세요", placeholder: "회사명", autoComplete: "organization" },
   { kind: "text", key: "name", q: "어떻게 불러드리면 될까요?", placeholder: "이름 또는 직함", autoComplete: "name" },
   { kind: "choice", key: "role", q: "회사에서 어떤 역할이세요?", options: ROLES },
   { kind: "text", key: "contact", q: "연락받으실 번호를 알려주세요", placeholder: "010-1234-5678", type: "tel", autoComplete: "tel", minLength: 5 },
