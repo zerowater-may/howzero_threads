@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-// 상세 상담 폼 (2026-07-10, 윤자동 벤치마킹 — 전 항목 수집)
+// 토스식 스텝 폼 (2026-07-10) — 한 화면에 질문 하나, 선택지는 탭하면 자동 진행.
+// 수집 항목은 상세 폼과 동일(윤자동 벤치마킹), API/DB 무변경.
 const ROLES = ["대표/임원", "팀장·매니저", "실무 담당자", "기타"];
 const REFERRALS = ["인스타그램/쓰레드", "유튜브", "검색", "지인 소개", "기타"];
 const INDUSTRIES = ["이커머스/셀러", "세무·회계", "교육/컨설팅", "제조/유통", "서비스업", "기타"];
@@ -20,57 +21,92 @@ const AREAS = [
 const BUDGETS = ["300만원 미만", "300~700만원", "700~2,000만원", "2,000만원 이상", "미정"];
 const TIMINGS = ["최대한 빨리", "1개월 내", "3개월 내", "시기 미정"];
 
-const inputCls =
-  "rounded-lg border border-[var(--line)] bg-[var(--panel)] px-3.5 py-2.5 text-sm text-[var(--ink)] placeholder:text-[var(--dim)]/60";
-const selectCls = inputCls + " appearance-none";
+type Step =
+  | { kind: "choice"; key: string; q: string; options: string[] }
+  | { kind: "multi"; key: "areas"; q: string; options: string[] }
+  | { kind: "text"; key: string; q: string; placeholder: string; type?: string; autoComplete?: string; minLength?: number }
+  | { kind: "textarea"; key: string; q: string; placeholder: string }
+  | { kind: "consent"; q: string };
 
-function Req() {
-  return <span className="text-[var(--signal)]">*</span>;
-}
+// 몰입 순서: 부담 없는 선택부터 → 연락처는 마지막 (완주율)
+const STEPS: Step[] = [
+  { kind: "choice", key: "industry", q: "어떤 업종이세요?", options: INDUSTRIES },
+  { kind: "multi", key: "areas", q: "어떤 업무를 자동화하고 싶으세요?", options: AREAS },
+  { kind: "choice", key: "budget", q: "예상하시는 예산 구간이 있나요?", options: BUDGETS },
+  { kind: "choice", key: "startTiming", q: "언제쯤 시작하고 싶으세요?", options: TIMINGS },
+  { kind: "text", key: "company", q: "회사나 스토어 이름을 알려주세요", placeholder: "회사명 또는 스토어명", autoComplete: "organization" },
+  { kind: "text", key: "name", q: "어떻게 불러드리면 될까요?", placeholder: "이름 또는 직함", autoComplete: "name" },
+  { kind: "choice", key: "role", q: "회사에서 어떤 역할이세요?", options: ROLES },
+  { kind: "text", key: "contact", q: "연락받으실 번호를 알려주세요", placeholder: "010-1234-5678", type: "tel", autoComplete: "tel", minLength: 5 },
+  { kind: "text", key: "email", q: "이메일도 하나 남겨주세요", placeholder: "contact@company.com", type: "email", autoComplete: "email" },
+  { kind: "choice", key: "referral", q: "howzero는 어떻게 알게 되셨어요?", options: REFERRALS },
+  { kind: "textarea", key: "painSummary", q: "더 알려주실 게 있다면요? (선택)", placeholder: "예: CS 응대에 하루 4시간, 주문 정산에 매주 반나절씩 씁니다" },
+  { kind: "consent", q: "마지막이에요. 확인 부탁드립니다" },
+];
 
 export default function ContactForm() {
-  const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
+  const [step, setStep] = useState(0);
+  const [answers, setAnswers] = useState<Record<string, string>>({});
   const [areas, setAreas] = useState<string[]>([]);
-  const [areasError, setAreasError] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
+  const [agreed, setAgreed] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const taRef = useRef<HTMLTextAreaElement>(null);
+
+  const cur = STEPS[step];
+  const total = STEPS.length;
+
+  // 텍스트 스텝 진입 시 자동 포커스 + 이전 값 복원
+  useEffect(() => {
+    if (cur.kind === "text" && inputRef.current) {
+      inputRef.current.value = answers[cur.key] ?? "";
+      inputRef.current.focus();
+    }
+    if (cur.kind === "textarea" && taRef.current) {
+      taRef.current.value = answers[cur.key] ?? "";
+      taRef.current.focus();
+    }
+    // step 전환 시에만 실행 — answers 복원은 진입 시점 값이면 충분
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [step]);
+
+  function next() {
+    setStep((s) => Math.min(s + 1, total - 1));
+  }
+
+  function pick(key: string, value: string) {
+    setAnswers((a) => ({ ...a, [key]: value }));
+    // 탭 피드백이 보이고 나서 넘어가는 토스식 템포
+    setTimeout(next, 160);
+  }
 
   function toggleArea(a: string) {
-    setAreasError(false);
     setAreas((prev) => (prev.includes(a) ? prev.filter((x) => x !== a) : [...prev, a]));
   }
 
-  async function submit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    if (areas.length === 0) {
-      setAreasError(true);
-      return;
-    }
-    const form = e.currentTarget;
-    const data = new FormData(form);
-    const payload = {
-      company: String(data.get("company") || "").trim(),
-      name: String(data.get("name") || "").trim(),
-      contact: String(data.get("contact") || "").trim(),
-      email: String(data.get("email") || "").trim(),
-      role: String(data.get("role") || "").trim(),
-      referral: String(data.get("referral") || "").trim(),
-      industry: String(data.get("industry") || "").trim(),
-      areas,
-      budget: String(data.get("budget") || "").trim(),
-      startTiming: String(data.get("startTiming") || "").trim(),
-      painSummary: String(data.get("painSummary") || "").trim() || undefined,
-      privacyAgreed: data.get("privacy") === "on",
-    };
+  async function submit() {
     setStatus("sending");
     try {
       const res = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({
+          company: answers.company,
+          name: answers.name,
+          contact: answers.contact,
+          email: answers.email,
+          role: answers.role,
+          referral: answers.referral,
+          industry: answers.industry,
+          areas,
+          budget: answers.budget,
+          startTiming: answers.startTiming,
+          painSummary: answers.painSummary || undefined,
+          privacyAgreed: true,
+        }),
       });
       if (!res.ok) throw new Error(String(res.status));
       setStatus("done");
-      form.reset();
-      setAreas([]);
     } catch {
       setStatus("error");
     }
@@ -85,145 +121,181 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={submit} className="grid gap-4 sm:grid-cols-2">
-      <label className="grid gap-1.5 text-sm font-medium">
-        <span>
-          회사/스토어명 <Req />
+    <div className="rounded-2xl border border-[var(--line)] bg-[var(--card)] p-6 sm:p-8">
+      {/* 진행 바 */}
+      <div className="flex items-center gap-3">
+        <div className="h-1 flex-1 overflow-hidden rounded-full bg-[var(--line)]">
+          <div
+            className="h-full rounded-full bg-[var(--cobalt)] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"
+            style={{ width: `${((step + 1) / total) * 100}%` }}
+          />
+        </div>
+        <span className="font-[family-name:var(--font-mono)] text-xs text-[var(--dim)]">
+          {step + 1}/{total}
         </span>
-        <input name="company" required autoComplete="organization" className={inputCls} placeholder="회사명 또는 스토어명" />
-      </label>
-      <label className="grid gap-1.5 text-sm font-medium">
-        <span>
-          담당자명 <Req />
-        </span>
-        <input name="name" required autoComplete="name" className={inputCls} placeholder="김대표" />
-      </label>
-      <label className="grid gap-1.5 text-sm font-medium">
-        <span>
-          연락처 <Req />
-        </span>
-        <input name="contact" required minLength={5} autoComplete="tel" className={inputCls} placeholder="010-1234-5678" />
-      </label>
-      <label className="grid gap-1.5 text-sm font-medium">
-        <span>
-          이메일 <Req />
-        </span>
-        <input name="email" type="email" required autoComplete="email" className={inputCls} placeholder="contact@company.com" />
-      </label>
+      </div>
 
-      <label className="grid gap-1.5 text-sm font-medium">
-        <span>
-          직책/역할 <Req />
-        </span>
-        <select name="role" required defaultValue="" className={selectCls}>
-          <option value="" disabled>선택</option>
-          {ROLES.map((o) => (
-            <option key={o} value={o}>{o}</option>
-          ))}
-        </select>
-      </label>
-      <label className="grid gap-1.5 text-sm font-medium">
-        <span>
-          어떻게 알게 되셨나요? <Req />
-        </span>
-        <select name="referral" required defaultValue="" className={selectCls}>
-          <option value="" disabled>선택</option>
-          {REFERRALS.map((o) => (
-            <option key={o} value={o}>{o}</option>
-          ))}
-        </select>
-      </label>
-      <label className="grid gap-1.5 text-sm font-medium sm:col-span-2">
-        <span>
-          업종 <Req />
-        </span>
-        <select name="industry" required defaultValue="" className={selectCls}>
-          <option value="" disabled>업종을 선택해주세요</option>
-          {INDUSTRIES.map((o) => (
-            <option key={o} value={o}>{o}</option>
-          ))}
-        </select>
-      </label>
+      {/* 스텝 컨텐츠 — key 리마운트로 등장 모션 */}
+      <div key={step} className="rise mt-8 min-h-[300px]">
+        <h3 className="display text-xl sm:text-2xl">{cur.q}</h3>
 
-      <fieldset className="grid gap-2 text-sm font-medium sm:col-span-2">
-        <legend className="mb-1.5">
-          자동화 희망 영역 <Req /> <span className="font-normal text-[var(--dim)]">(복수 선택 가능)</span>
-        </legend>
-        <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
-          {AREAS.map((a) => (
-            <label
-              key={a}
-              className={`flex cursor-pointer items-center gap-2 rounded-lg border px-3 py-2.5 text-sm font-normal transition-colors ${
-                areas.includes(a)
-                  ? "border-[var(--cobalt)] bg-[var(--cobalt)]/10 text-[var(--ink)]"
-                  : "border-[var(--line)] bg-[var(--panel)] text-[var(--dim)] hover:text-[var(--ink)]"
-              }`}
+        {cur.kind === "choice" && (
+          <div className="mt-6 grid gap-2 sm:grid-cols-2">
+            {cur.options.map((o) => (
+              <button
+                key={o}
+                type="button"
+                onClick={() => pick(cur.key, o)}
+                className={`rounded-xl border px-4 py-3.5 text-left text-sm font-medium transition-colors ${
+                  answers[cur.key] === o
+                    ? "border-[var(--cobalt)] bg-[var(--cobalt)]/10 text-[var(--ink)]"
+                    : "border-[var(--line)] bg-[var(--panel)] text-[var(--dim)] hover:border-[var(--cobalt)]/40 hover:text-[var(--ink)]"
+                }`}
+              >
+                {o}
+              </button>
+            ))}
+          </div>
+        )}
+
+        {cur.kind === "multi" && (
+          <>
+            <p className="mt-1 text-sm text-[var(--dim)]">복수 선택 가능</p>
+            <div className="mt-5 grid grid-cols-2 gap-2 sm:grid-cols-3">
+              {cur.options.map((o) => (
+                <button
+                  key={o}
+                  type="button"
+                  onClick={() => toggleArea(o)}
+                  className={`rounded-xl border px-3 py-3 text-left text-sm font-medium transition-colors ${
+                    areas.includes(o)
+                      ? "border-[var(--cobalt)] bg-[var(--cobalt)]/10 text-[var(--ink)]"
+                      : "border-[var(--line)] bg-[var(--panel)] text-[var(--dim)] hover:border-[var(--cobalt)]/40 hover:text-[var(--ink)]"
+                  }`}
+                >
+                  {o}
+                </button>
+              ))}
+            </div>
+            <button
+              type="button"
+              onClick={next}
+              disabled={areas.length === 0}
+              className="btn-primary mt-6 w-full justify-center disabled:opacity-40"
             >
+              {areas.length ? `${areas.length}개 선택 — 다음` : "1개 이상 선택해주세요"}
+            </button>
+          </>
+        )}
+
+        {cur.kind === "text" && (
+          <form
+            className="mt-6"
+            onSubmit={(e) => {
+              e.preventDefault();
+              const v = inputRef.current?.value.trim() ?? "";
+              if (!inputRef.current?.checkValidity() || !v) {
+                inputRef.current?.reportValidity();
+                return;
+              }
+              setAnswers((a) => ({ ...a, [cur.key]: v }));
+              next();
+            }}
+          >
+            <input
+              ref={inputRef}
+              type={cur.type ?? "text"}
+              required
+              minLength={cur.minLength}
+              autoComplete={cur.autoComplete}
+              placeholder={cur.placeholder}
+              className="w-full rounded-xl border border-[var(--line)] bg-[var(--panel)] px-4 py-3.5 text-base text-[var(--ink)] placeholder:text-[var(--dim)]/50"
+            />
+            <button type="submit" className="btn-primary mt-6 w-full justify-center">
+              다음
+            </button>
+          </form>
+        )}
+
+        {cur.kind === "textarea" && (
+          <form
+            className="mt-6"
+            onSubmit={(e) => {
+              e.preventDefault();
+              setAnswers((a) => ({ ...a, [cur.key]: taRef.current?.value.trim() ?? "" }));
+              next();
+            }}
+          >
+            <textarea
+              ref={taRef}
+              rows={4}
+              placeholder={cur.placeholder}
+              className="w-full resize-none rounded-xl border border-[var(--line)] bg-[var(--panel)] px-4 py-3.5 text-base text-[var(--ink)] placeholder:text-[var(--dim)]/50"
+            />
+            <button type="submit" className="btn-primary mt-6 w-full justify-center">
+              다음
+            </button>
+          </form>
+        )}
+
+        {cur.kind === "consent" && (
+          <div className="mt-6">
+            {/* 답변 요약 — 제출 전 확인 */}
+            <dl className="grid gap-1.5 rounded-xl border border-[var(--line)] bg-[var(--panel)] p-4 text-sm sm:grid-cols-2">
+              {[
+                ["회사", answers.company],
+                ["담당자", `${answers.name ?? ""} · ${answers.role ?? ""}`],
+                ["연락처", answers.contact],
+                ["이메일", answers.email],
+                ["업종", answers.industry],
+                ["희망 영역", areas.join(", ")],
+                ["예산", answers.budget],
+                ["시작 시기", answers.startTiming],
+              ].map(([k, v]) => (
+                <div key={k} className="flex gap-2">
+                  <dt className="shrink-0 text-[var(--dim)]">{k}</dt>
+                  <dd className="truncate">{v}</dd>
+                </div>
+              ))}
+            </dl>
+            <label className="mt-5 flex items-start gap-2 text-xs leading-relaxed text-[var(--dim)]">
               <input
                 type="checkbox"
-                checked={areas.includes(a)}
-                onChange={() => toggleArea(a)}
-                className="accent-[var(--cobalt)]"
+                checked={agreed}
+                onChange={(e) => setAgreed(e.target.checked)}
+                className="mt-0.5 accent-[var(--cobalt)]"
               />
-              {a}
+              <span>
+                개인정보 수집·이용에 동의합니다.
+                <br />
+                수집 항목: 위 기재 정보 · 목적: 상담 및 진단 연락 · 보유 기간: 목적 달성 후 파기
+              </span>
             </label>
-          ))}
-        </div>
-        {areasError && <p className="text-xs text-[var(--signal)]">자동화 희망 영역을 1개 이상 선택해주세요.</p>}
-      </fieldset>
-
-      <label className="grid gap-1.5 text-sm font-medium">
-        <span>
-          예상 예산 <Req />
-        </span>
-        <select name="budget" required defaultValue="" className={selectCls}>
-          <option value="" disabled>선택</option>
-          {BUDGETS.map((o) => (
-            <option key={o} value={o}>{o}</option>
-          ))}
-        </select>
-      </label>
-      <label className="grid gap-1.5 text-sm font-medium">
-        <span>
-          희망 시작 시기 <Req />
-        </span>
-        <select name="startTiming" required defaultValue="" className={selectCls}>
-          <option value="" disabled>선택</option>
-          {TIMINGS.map((o) => (
-            <option key={o} value={o}>{o}</option>
-          ))}
-        </select>
-      </label>
-
-      <label className="grid gap-1.5 text-sm font-medium sm:col-span-2">
-        <span>
-          추가 문의사항 <span className="font-normal text-[var(--dim)]">(선택)</span>
-        </span>
-        <textarea
-          name="painSummary"
-          rows={3}
-          className={`resize-none ${inputCls}`}
-          placeholder="예: CS 응대에 하루 4시간, 주문 정산에 매주 반나절씩 씁니다"
-        />
-      </label>
-
-      <label className="flex items-start gap-2 text-xs leading-relaxed text-[var(--dim)] sm:col-span-2">
-        <input type="checkbox" name="privacy" required className="mt-0.5 accent-[var(--cobalt)]" />
-        <span>
-          개인정보 수집·이용에 동의합니다. <Req />
-          <br />
-          수집 항목: 위 기재 정보 · 목적: 상담 및 진단 연락 · 보유 기간: 목적 달성 후 파기
-        </span>
-      </label>
-
-      <div className="sm:col-span-2">
-        <button type="submit" disabled={status === "sending"} className="btn-primary w-full justify-center disabled:opacity-60">
-          {status === "sending" ? "접수 중…" : "무료 진단 신청"}
-        </button>
-        {status === "error" && (
-          <p className="mt-2 text-sm text-[var(--signal)]">접수에 실패했습니다. 다시 시도해주세요.</p>
+            <button
+              type="button"
+              onClick={submit}
+              disabled={!agreed || status === "sending"}
+              className="btn-primary mt-6 w-full justify-center disabled:opacity-40"
+            >
+              {status === "sending" ? "접수 중…" : "무료 진단 신청하기"}
+            </button>
+            {status === "error" && (
+              <p className="mt-2 text-sm text-[var(--signal)]">접수에 실패했습니다. 다시 시도해주세요.</p>
+            )}
+          </div>
         )}
       </div>
-    </form>
+
+      {/* 이전 버튼 */}
+      {step > 0 && (
+        <button
+          type="button"
+          onClick={() => setStep((s) => s - 1)}
+          className="mt-4 text-sm text-[var(--dim)] transition-colors hover:text-[var(--ink)]"
+        >
+          ← 이전으로
+        </button>
+      )}
+    </div>
   );
 }
