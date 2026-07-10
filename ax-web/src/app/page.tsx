@@ -180,9 +180,10 @@ export default function Home() {
           <p className="eyebrow">TRACK RECORD</p>
           <h2 className="display mt-3 text-4xl sm:text-5xl lg:text-6xl">팔기 전에, 내가 썼다</h2>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[var(--dim)]">
-            저는 AI 컨설턴트가 되려고 AI를 배운 게 아닙니다. 제 SaaS를{" "}
-            <span className="num">연매출 10억</span> 규모로 직접 운영하면서, 반복업무에 갈리는 제 직원들의 일을
-            먼저 자동화해야 했을 뿐입니다. 그 자동화가 실제로 굴러가는 걸 확인한 다음에야, 남의 회사에도 팔기
+            저는 AI 컨설턴트가 되려고 AI를 배운 게 아닙니다. 2020년 셀러로 시작해 1년 만에{" "}
+            <span className="num">월 1억</span> 구조를 만들었고, 데이터에 빠져 AI 개발자가 됐습니다. 지금은 제
+            SaaS를 <span className="num">연매출 10억</span> 규모로 직접 운영하면서, 반복업무에 갈리는 제
+            직원들의 일부터 자동화했습니다. 그게 실제로 굴러가는 걸 확인한 다음에야, 남의 회사에도 팔기
             시작했습니다.
           </p>
           <p className="mt-4 border-l-2 border-[var(--cobalt)] pl-4 font-[family-name:var(--font-mono)] text-sm text-[var(--dim)]">
@@ -199,17 +200,21 @@ export default function Home() {
                 </div>
                 <div>
                   <p className="text-lg font-bold">howzero 파운더</p>
-                  <p className="text-sm text-[var(--dim)]">직접 만들고, 직접 운영하는 AX 실행 파트너</p>
+                  <p className="text-sm text-[var(--dim)]">셀러로 시작해 SaaS를 만든, 직접 운영하는 AX 실행 파트너</p>
                 </div>
               </div>
-              <dl className="mt-8 grid gap-6 sm:grid-cols-3">
+              <dl className="mt-8 grid gap-x-6 gap-y-7 sm:grid-cols-2">
                 <div>
-                  <dt className="num text-2xl sm:text-3xl">연매출 10억</dt>
-                  <dd className="mt-1.5 text-sm leading-relaxed text-[var(--dim)]">자체 SaaS를 이 규모로 직접 운영 (내부 실적)</dd>
+                  <dt className="num text-2xl sm:text-3xl">월 1억</dt>
+                  <dd className="mt-1.5 text-sm leading-relaxed text-[var(--dim)]">2020년 셀러로 시작, 1년 만에 만든 매출 구조</dd>
                 </div>
                 <div>
-                  <dt className="display text-2xl sm:text-3xl">복수 SaaS</dt>
-                  <dd className="mt-1.5 text-sm leading-relaxed text-[var(--dim)]">불사자·하입덕 — 기획부터 개발·운영까지 외주 없이</dd>
+                  <dt className="num text-2xl sm:text-3xl">회원 2.5만</dt>
+                  <dd className="mt-1.5 text-sm leading-relaxed text-[var(--dim)]">AI 이커머스 SaaS &lsquo;불사자&rsquo; — 연매출 10억 규모 직접 운영 (내부 실적)</dd>
+                </div>
+                <div>
+                  <dt className="display text-2xl sm:text-3xl">마케팅 SaaS</dt>
+                  <dd className="mt-1.5 text-sm leading-relaxed text-[var(--dim)]">&lsquo;하입덕&rsquo; — SNS 콘텐츠 분석, 기획부터 개발·운영까지 직접</dd>
                 </div>
                 <div>
                   <dt className="display text-2xl sm:text-3xl">사내 실전</dt>
