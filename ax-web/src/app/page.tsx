@@ -75,7 +75,7 @@ export default function Home() {
               대표님 회사에서 시간이 새는 곳, 대부분 여기입니다
             </h2>
           </Reveal>
-          {/* 수치는 셀러 증언 — blockquote 인용 맥락 유지, 독립 스탯 타일 금지 (스펙 §2) */}
+          {/* 수치는 현장 증언 — blockquote 인용 맥락 유지, 독립 스탯 타일 금지 (스펙 §2) */}
           <Reveal delay={100}>
             <blockquote className="mt-14 max-w-4xl">
               <p className="display text-3xl leading-[1.3] text-[var(--ink)] sm:text-[2.75rem]">
@@ -195,10 +195,10 @@ export default function Home() {
             <div className="card-lift flex flex-col gap-6 rounded-2xl border border-[var(--line)] bg-[var(--card)] p-8 md:col-span-7">
               <div>
                 <p className="num text-4xl sm:text-5xl">연매출 10억</p>
-                <h3 className="mt-3 text-lg font-bold">이커머스 셀러 SaaS 운영</h3>
+                <h3 className="mt-3 text-lg font-bold">이커머스 SaaS 운영</h3>
               </div>
               <p className="max-w-md text-sm leading-relaxed text-[var(--dim)]">
-                4050 셀러를 위한 AI 도구 &lsquo;불사자&rsquo;를 직접 만들어 운영 중. 상품 데이터·크롤링·결제까지
+                AI SaaS &lsquo;불사자&rsquo;를 직접 만들어 운영 중. 상품 데이터·크롤링·결제까지
                 풀스택으로 굴리는 실제 사업. 이 실적은 컨설팅이 아니라 운영에서 나온 숫자입니다.
               </p>
             </div>
