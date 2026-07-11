@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "howzero — 당신 회사만의 AI 운영 OS",
   description:
-    "반복업무 시간, 어떻게 0으로 만드나. 연매출 10억 이커머스 SaaS를 직접 자동화해본 운영자가 프로세스 정립부터 자동화까지 — 회사만의 AI 운영 OS를 만듭니다.",
+    "매출은 높이고 비용은 줄이는 구조를 짭니다. 연매출 10억 SaaS를 직접 운영하며 우리 회사부터 자동화한 howzero가 진단부터 구축·운영까지 실행합니다.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -57,9 +57,9 @@ export default function Home() {
             어떻게 0으로 만드나
           </h1>
           <p className="rise rise-3 mt-6 max-w-2xl text-lg leading-relaxed text-[var(--dim)]">
-            단건 자동화가 아니라, 당신 회사만의 AI 운영 OS를 만듭니다.
+            매출은 높이고 비용은 줄이는 구조를 짭니다.
             <br />
-            연매출 <span className="num">10억</span> 이커머스 SaaS를 직접 운영하며 우리 회사부터 자동화했습니다.
+            연매출 <span className="num">10억</span> SaaS를 직접 운영하며 우리 회사부터 그렇게 만들었습니다.
             <br />
             검증한 것만 팝니다.
           </p>
