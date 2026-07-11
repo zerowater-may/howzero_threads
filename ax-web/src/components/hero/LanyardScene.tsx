@@ -185,8 +185,11 @@ function Band({ onCardClick, maxSpeed = 50, minSpeed = 0 }: { onCardClick: () =>
             }}
           >
             <mesh geometry={nodes.card.geometry}>
+              {/* key 리마운트 필수 — map 없이 컴파일된 머티리얼에 나중에 map을 꽂으면
+                  셰이더가 재컴파일되지 않아 카드가 검게 나온다. color도 map과 곱해지므로 흰색 고정. */}
               <meshPhysicalMaterial
-                {...(cardTexture ? { map: cardTexture, "map-anisotropy": 16 } : { color: "#161618" })}
+                key={cardTexture ? "textured" : "plain"}
+                {...(cardTexture ? { map: cardTexture, "map-anisotropy": 16, color: "#ffffff" } : { color: "#161618" })}
                 clearcoat={1}
                 clearcoatRoughness={0.15}
                 roughness={0.9}

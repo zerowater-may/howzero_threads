@@ -8,6 +8,8 @@ import Reveal from "@/components/Reveal";
 
 // 카피 원천: docs/ax-business/04(서사)·06(메시지 뱅크)·07(차별점)·10(오퍼·가격)
 // v2 스펙: docs/superpowers/specs/2026-07-09-ax-web-landing-v2-design.md
+const SHOW_PRICING = false; // 가격 섹션 임시 비공개 (2026-07-11 요청)
+
 export default function Home() {
   return (
     <main className="relative">
@@ -26,9 +28,11 @@ export default function Home() {
             <a href="#process" className="hidden rounded-full px-3 py-1.5 transition-colors hover:bg-white/5 hover:text-[var(--ink)] sm:block">
               진행 방식
             </a>
-            <a href="#pricing" className="hidden rounded-full px-3 py-1.5 transition-colors hover:bg-white/5 hover:text-[var(--ink)] sm:block">
-              가격
-            </a>
+            {SHOW_PRICING && (
+              <a href="#pricing" className="hidden rounded-full px-3 py-1.5 transition-colors hover:bg-white/5 hover:text-[var(--ink)] sm:block">
+                가격
+              </a>
+            )}
             <a href="#contact" className="btn-primary ml-1 !px-4 !py-2 text-sm">
               무료 진단
             </a>
@@ -258,7 +262,8 @@ export default function Home() {
         <MicroCta label="→ 우리 회사 업무도 이렇게 되는지 물어보기" />
       </section>
 
-      {/* ── 6. 가격 ── */}
+      {/* ── 6. 가격 (임시 비공개) ── */}
+      {SHOW_PRICING && (
       <section id="pricing" className="border-y border-[var(--line)] bg-[var(--panel)] scroll-mt-24">
         <div className="mx-auto max-w-6xl px-5 py-24 md:py-28">
           <Reveal>
@@ -316,6 +321,7 @@ export default function Home() {
           </p>
         </div>
       </section>
+      )}
 
       {/* ── 7. CTA + 폼 ── */}
       <section id="contact" className="mx-auto max-w-3xl scroll-mt-24 px-5 py-24 md:py-28">
