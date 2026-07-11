@@ -189,8 +189,39 @@ export default function Home() {
             첫 사례 — 이커머스 교육 기업의 운영 OS
           </h2>
           <p className="mt-4 max-w-2xl text-[var(--dim)]">
-            노코드 빌더 위에 스크립트로 쌓아 올린 강의 판매 퍼널을 자체 플랫폼으로 옮기는 프로젝트.
-            첫 미팅에서 니즈를 이렇게 짚었습니다.
+            겉으로는 잘 돌아가는 회사였습니다. 숫자를 같이 열어보기 전까지는요. 아래는 첫 미팅{" "}
+            <span className="num">68분</span> 동안 이 회사에서 실제로 확인한 숫자입니다.
+          </p>
+        </Reveal>
+        <Reveal delay={60}>
+          {/* 첫 미팅에서 확인된 실제 수치 — 사례 당사자 내부 확인 사실 (증언·추정 아님) */}
+          <div className="mt-10 grid gap-4 sm:grid-cols-3">
+            <div className="card-lift rounded-2xl border border-[var(--line)] bg-[var(--card)] p-6">
+              <p className="num text-3xl sm:text-4xl">300여 건</p>
+              <p className="mt-2 text-sm leading-relaxed text-[var(--dim)]">
+                플로우 개편 중 유실된 신청 데이터. 담당자 실수가 아니라 빌더 위에 스크립트를 덧댄 구조가
+                원인이었습니다.
+              </p>
+            </div>
+            <div className="card-lift rounded-2xl border border-[var(--line)] bg-[var(--card)] p-6">
+              <p className="num text-3xl sm:text-4xl">분당 100회</p>
+              <p className="mt-2 text-sm leading-relaxed text-[var(--dim)]">
+                고객 알림을 떠받치던 무료 API의 발송 한도. 신청자가 몰리는 날 — 즉 제일 잘 되는 날 —
+                누락이 생기는 구조였습니다.
+              </p>
+            </div>
+            <div className="card-lift rounded-2xl border border-[var(--line)] bg-[var(--card)] p-6">
+              <p className="num text-3xl sm:text-4xl">월 22만원</p>
+              <p className="mt-2 text-sm leading-relaxed text-[var(--dim)]">
+                빌더에 내던 이용료. 그런데 무료 특강 신청자가 결제 페이지를 지나가는 구조 하나를 못
+                바꿔서, 스크립트로 가려놓고 운영 중이었습니다.
+              </p>
+            </div>
+          </div>
+          <p className="mt-6 max-w-3xl text-base leading-relaxed">
+            무서운 건 AI가 아니라, <span className="font-bold">잘 되는 날 무너지는 구조</span>입니다. 이
+            회사는 68분 만에 두 가지를 확정했습니다 — 결제·특강 시스템은 절대 멈추지 않게, 그리고 전면
+            개편 대신 강의 하나부터.
           </p>
         </Reveal>
         <Reveal delay={120}>
