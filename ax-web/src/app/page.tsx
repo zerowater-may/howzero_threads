@@ -78,17 +78,17 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-5 py-24 md:py-28">
           <Reveal>
             <h2 className="display mt-3 max-w-2xl text-3xl sm:text-4xl">
-              이 중 몇 개가
+              대표님 회사는
               <br />
-              대표님 회사 얘기입니까
+              몇 개나 해당되시나요
             </h2>
           </Reveal>
           <div className="mt-14 max-w-4xl">
             {[
-              ["01", "지난주 숫자를 보려면 카톡, 엑셀, 메일을 다 뒤져야 한다"],
-              ["02", "매일 반복하는 그 작업, 담당자가 하루 쉬면 밀리고 내가 없으면 멈춘다"],
-              ["03", "직원이 퇴사하면 파일이 아니라 일하는 방법이 같이 나간다"],
-              ["04", "매출이 늘면 일도 정확히 그만큼 늘어난다. 성장할수록 더 바쁘다"],
+              ["01", "지난주 숫자를 보려면 카톡, 엑셀, 메일을 다 뒤져야 하나요?"],
+              ["02", "매일 반복하는 그 작업, 담당자가 하루 쉬면 밀리고 대표님이 안 계시면 멈추나요?"],
+              ["03", "직원이 퇴사할 때 파일만이 아니라 일하는 방법까지 같이 나가나요?"],
+              ["04", "매출이 늘면 일도 그만큼 늘어서, 성장할수록 더 바빠지시나요?"],
             ].map(([num, text], i) => (
               <Reveal key={num} delay={i * 100}>
                 <div className="flex items-baseline gap-5 border-b border-[var(--line)] py-7 sm:gap-8">
@@ -102,8 +102,8 @@ export default function Home() {
           </div>
           <Reveal delay={200}>
             <p className="mt-10 max-w-2xl text-lg leading-relaxed text-[var(--dim)]">
-              2개 이상 해당된다면, 사람 문제가 아니라 <span className="text-[var(--ink)]">구조 문제</span>
-              입니다. 사람은 갈아 넣을수록 지치지만, 구조는 한 번 고치면 계속 일합니다.
+              2개 이상 해당된다면 사람의 문제가 아니라 <span className="text-[var(--ink)]">구조의 문제</span>일
+              가능성이 높습니다. 구조는 한 번 잡아두면 계속 일합니다.
             </p>
           </Reveal>
           <MicroCta />
@@ -171,8 +171,8 @@ export default function Home() {
             첫 사례: 이커머스 교육 기업의 운영 OS
           </h2>
           <p className="mt-4 max-w-2xl text-[var(--dim)]">
-            겉으로는 잘 돌아가는 회사였습니다. 첫 미팅 <span className="num">68분</span> 동안 같이 확인한
-            숫자입니다.
+            잘 운영되고 있는 회사였습니다. 다만 구조에 리스크가 숨어 있었습니다. 첫 미팅{" "}
+            <span className="num">68분</span> 동안 함께 확인한 숫자입니다.
           </p>
         </Reveal>
         <Reveal delay={100}>
@@ -217,7 +217,7 @@ export default function Home() {
             시작했습니다.
           </p>
           <p className="mt-4 border-l-2 border-[var(--cobalt)] pl-4 font-[family-name:var(--font-mono)] text-sm text-[var(--dim)]">
-            우리 첫 고객은 우리 회사였다. 검증한 것만 판다.
+            첫 고객은 우리 회사였습니다. 검증한 것만 팝니다.
           </p>
         </Reveal>
         {/* 프로필 카드 — 윤자동 벤치마킹: 경력 자랑이 아니라 "직접 운영해본 사람" 증명 */}
@@ -343,7 +343,7 @@ export default function Home() {
             </div>
           </Reveal>
           <p className="mt-8 text-xs text-[var(--dim)]">
-            GPT 구독료만 내는 회사와 업무 구조를 바꾼 회사. 1년 뒤 차이는 급여 명세서에서 드러납니다.
+            자동화의 효과는 1년 뒤 인건비 구조에서 가장 크게 나타납니다.
           </p>
         </div>
       </section>
