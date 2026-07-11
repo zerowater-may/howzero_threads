@@ -183,7 +183,7 @@ export default function ContactForm() {
               disabled={areas.length === 0}
               className="btn-primary mt-6 w-full justify-center disabled:opacity-40"
             >
-              {areas.length ? `${areas.length}개 선택 — 다음` : "1개 이상 선택해주세요"}
+              {areas.length ? `${areas.length}개 선택 · 다음` : "1개 이상 선택해주세요"}
             </button>
           </>
         )}

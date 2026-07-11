@@ -50,7 +50,7 @@ export default function Home() {
           <div className="absolute left-1/2 top-[-340px] h-[680px] w-[980px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(77,107,255,0.16),transparent_70%)] blur-2xl" />
         </div>
         <div className="relative mx-auto flex max-w-4xl flex-col items-center px-5 pb-28 pt-32 text-center lg:pt-40">
-          <p className="eyebrow rise rise-1">AX EXECUTION PARTNER — howzero</p>
+          <p className="eyebrow rise rise-1">AX EXECUTION PARTNER · howzero</p>
           <h1 className="display rise rise-2 mt-4 text-4xl sm:text-5xl lg:text-6xl">
             반복업무 시간,
             <br />
@@ -77,7 +77,6 @@ export default function Home() {
       <section className="border-y border-[var(--line)] bg-[var(--panel)]">
         <div className="mx-auto max-w-6xl px-5 py-24 md:py-28">
           <Reveal>
-            <p className="eyebrow">WHERE TIME LEAKS</p>
             <h2 className="display mt-3 max-w-2xl text-3xl sm:text-4xl">
               이 중 몇 개가
               <br />
@@ -87,9 +86,9 @@ export default function Home() {
           <div className="mt-14 max-w-4xl">
             {[
               ["01", "지난주 숫자를 보려면 카톡, 엑셀, 메일을 다 뒤져야 한다"],
-              ["02", "매일 반복하는 그 작업 — 담당자가 하루 쉬면 밀리고, 내가 없으면 멈춘다"],
+              ["02", "매일 반복하는 그 작업, 담당자가 하루 쉬면 밀리고 내가 없으면 멈춘다"],
               ["03", "직원이 퇴사하면 파일이 아니라 일하는 방법이 같이 나간다"],
-              ["04", "매출이 늘면 일도 정확히 그만큼 늘어난다 — 그래서 성장할수록 더 바쁘다"],
+              ["04", "매출이 늘면 일도 정확히 그만큼 늘어난다. 성장할수록 더 바쁘다"],
             ].map(([num, text], i) => (
               <Reveal key={num} delay={i * 100}>
                 <div className="flex items-baseline gap-5 border-b border-[var(--line)] py-7 sm:gap-8">
@@ -103,7 +102,7 @@ export default function Home() {
           </div>
           <Reveal delay={200}>
             <p className="mt-10 max-w-2xl text-lg leading-relaxed text-[var(--dim)]">
-              2개 이상 해당된다면 — 사람 문제가 아니라 <span className="text-[var(--ink)]">구조 문제</span>
+              2개 이상 해당된다면, 사람 문제가 아니라 <span className="text-[var(--ink)]">구조 문제</span>
               입니다. 사람은 갈아 넣을수록 지치지만, 구조는 한 번 고치면 계속 일합니다.
             </p>
           </Reveal>
@@ -114,7 +113,6 @@ export default function Home() {
       {/* ── 3. ★ 당신 회사의 OS — 인터랙티브 노드 캔버스 ── */}
       <section id="os" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-24 md:py-28">
         <Reveal>
-          <p className="eyebrow">YOUR COMPANY&apos;S OS</p>
           <h2 className="display mt-3 max-w-3xl text-3xl sm:text-4xl">
             단건 자동화는 금방 복제됩니다.
             <br />
@@ -152,7 +150,6 @@ export default function Home() {
       <section id="process" className="border-y border-[var(--line)] bg-[var(--panel)] scroll-mt-24">
         <div className="mx-auto max-w-6xl px-5 py-24 md:py-28">
           <Reveal>
-            <p className="eyebrow">PROCESS</p>
             <h2 className="display mt-3 text-3xl sm:text-4xl">진단 없이 견적 없습니다</h2>
             <p className="mt-4 max-w-2xl text-[var(--dim)]">
               AI 도입을 팔지 않습니다. 진단에서 &lsquo;주당 몇 시간이 어느 업무에서 새는지&rsquo;부터 숫자로
@@ -171,7 +168,7 @@ export default function Home() {
         <Reveal>
           <p className="eyebrow">CASE 01 · IN PROGRESS</p>
           <h2 className="display mt-3 max-w-3xl text-3xl sm:text-4xl">
-            첫 사례 — 이커머스 교육 기업의 운영 OS
+            첫 사례: 이커머스 교육 기업의 운영 OS
           </h2>
           <p className="mt-4 max-w-2xl text-[var(--dim)]">
             겉으로는 잘 돌아가는 회사였습니다. 첫 미팅 <span className="num">68분</span> 동안 같이 확인한
@@ -179,15 +176,15 @@ export default function Home() {
           </p>
         </Reveal>
         <Reveal delay={100}>
-          <div className="mt-10 grid gap-4 sm:grid-cols-3">
+          <div className="mt-10 grid gap-8 border-y border-[var(--line)] py-8 sm:grid-cols-3 sm:gap-0 sm:divide-x sm:divide-[var(--line)]">
             {[
-              ["300여 건", "플로우 개편 중 유실된 신청 데이터 — 실수가 아니라 구조가 원인이었습니다."],
-              ["분당 100회", "고객 알림을 떠받치던 무료 API의 한도 — 제일 잘 되는 날 누락이 생깁니다."],
-              ["월 22만원", "빌더에 내던 이용료 — 내면서도 신청 구조 하나를 못 바꿨습니다."],
+              ["300여 건", "플로우 개편 중 유실된 신청 데이터. 실수가 아니라 구조가 원인이었습니다."],
+              ["분당 100회", "고객 알림을 떠받치던 무료 API의 한도. 제일 잘 되는 날 누락이 생깁니다."],
+              ["월 22만원", "빌더에 내던 이용료. 내면서도 신청 구조 하나를 못 바꿨습니다."],
             ].map(([num, desc]) => (
-              <div key={num} className="card-lift rounded-2xl border border-[var(--line)] bg-[var(--card)] p-6">
+              <div key={num} className="sm:px-8 sm:first:pl-0 sm:last:pr-0">
                 <p className="num text-3xl sm:text-4xl">{num}</p>
-                <p className="mt-2 text-sm leading-relaxed text-[var(--dim)]">{desc}</p>
+                <p className="mt-2 max-w-[32ch] text-sm leading-relaxed text-[var(--dim)]">{desc}</p>
               </div>
             ))}
           </div>
@@ -197,7 +194,7 @@ export default function Home() {
             <p className="display text-xl leading-snug sm:text-2xl">
               &ldquo;정규 과정 결제랑 특강 시스템, 이 둘만은 절대 멈추면 안 됩니다.&rdquo;
             </p>
-            <p className="mt-2 text-sm text-[var(--dim)]">— 첫 미팅에서 가장 먼저 확정한 조건</p>
+            <p className="mt-2 text-sm text-[var(--dim)]">첫 미팅에서 가장 먼저 확정한 조건</p>
           </blockquote>
           <p className="mt-6 max-w-3xl leading-relaxed text-[var(--dim)]">
             그래서 이렇게 갑니다. 결제·특강은 무중단으로 고정하고, 전면 개편 대신{" "}
@@ -211,8 +208,7 @@ export default function Home() {
       {/* ── 5. 창업자 + howzero 팀 ── */}
       <section id="founder" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-24 md:py-28">
         <Reveal>
-          <p className="eyebrow">TRACK RECORD</p>
-          <h2 className="display mt-3 text-4xl sm:text-5xl lg:text-6xl">팔기 전에, 내가 썼다</h2>
+            <h2 className="display mt-3 text-4xl sm:text-5xl lg:text-6xl">팔기 전에, 내가 썼다</h2>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[var(--dim)]">
             저는 AI 컨설턴트가 되려고 AI를 배운 게 아닙니다. 2020년 셀러로 시작해 1년 만에{" "}
             <span className="num">월 1억</span> 구조를 만들었고, 데이터에 빠져 AI 개발자가 됐습니다. 지금은 제
@@ -221,7 +217,7 @@ export default function Home() {
             시작했습니다.
           </p>
           <p className="mt-4 border-l-2 border-[var(--cobalt)] pl-4 font-[family-name:var(--font-mono)] text-sm text-[var(--dim)]">
-            우리 첫 고객은 우리 회사였다 — 검증한 것만 판다.
+            우리 첫 고객은 우리 회사였다. 검증한 것만 판다.
           </p>
         </Reveal>
         {/* 프로필 카드 — 윤자동 벤치마킹: 경력 자랑이 아니라 "직접 운영해본 사람" 증명 */}
@@ -244,15 +240,15 @@ export default function Home() {
                 </div>
                 <div>
                   <dt className="num text-2xl sm:text-3xl">회원 2.5만</dt>
-                  <dd className="mt-1.5 text-sm leading-relaxed text-[var(--dim)]">AI 이커머스 SaaS &lsquo;불사자&rsquo; — 연매출 10억 규모 직접 운영 (내부 실적)</dd>
+                  <dd className="mt-1.5 text-sm leading-relaxed text-[var(--dim)]">AI 이커머스 SaaS &lsquo;불사자&rsquo;, 연매출 10억 규모 직접 운영 (내부 실적)</dd>
                 </div>
                 <div>
                   <dt className="display text-2xl sm:text-3xl">마케팅 SaaS</dt>
-                  <dd className="mt-1.5 text-sm leading-relaxed text-[var(--dim)]">&lsquo;하입덕&rsquo; — SNS 콘텐츠 분석, 기획부터 개발·운영까지 직접</dd>
+                  <dd className="mt-1.5 text-sm leading-relaxed text-[var(--dim)]">&lsquo;하입덕&rsquo;, SNS 콘텐츠 분석. 기획부터 개발·운영까지 직접</dd>
                 </div>
                 <div>
                   <dt className="display text-2xl sm:text-3xl">사내 실전</dt>
-                  <dd className="mt-1.5 text-sm leading-relaxed text-[var(--dim)]">내 직원들의 반복업무부터 자동화 — 실패도 우리 돈으로</dd>
+                  <dd className="mt-1.5 text-sm leading-relaxed text-[var(--dim)]">내 직원들의 반복업무부터 자동화. 실패도 우리 돈으로</dd>
                 </div>
               </dl>
               <div className="mt-8 flex flex-wrap gap-2">
@@ -321,7 +317,7 @@ export default function Home() {
                 <span className="absolute -top-3 left-7 bg-[var(--cobalt)] px-2.5 py-0.5 text-[11px] font-semibold text-white">
                   대부분 여기서 시작
                 </span>
-                <h3 className="display text-xl">착수 — 오딧 + 구축</h3>
+                <h3 className="display text-xl">착수: 오딧 + 구축</h3>
                 <p className="num mt-3 text-3xl">300~700만원</p>
                 <p className="mt-1 font-[family-name:var(--font-mono)] text-xs text-[var(--dim)]">
                   소규모 기준 · SMB 700~2,000만원
@@ -347,7 +343,7 @@ export default function Home() {
             </div>
           </Reveal>
           <p className="mt-8 text-xs text-[var(--dim)]">
-            GPT 구독료만 내는 회사와 업무 구조를 바꾼 회사 — 1년 뒤 차이는 급여 명세서에서 드러납니다.
+            GPT 구독료만 내는 회사와 업무 구조를 바꾼 회사. 1년 뒤 차이는 급여 명세서에서 드러납니다.
           </p>
         </div>
       </section>
@@ -356,8 +352,7 @@ export default function Home() {
       {/* ── 7. CTA + 폼 ── */}
       <section id="contact" className="mx-auto max-w-3xl scroll-mt-24 px-5 py-24 md:py-28">
         <Reveal>
-          <p className="eyebrow text-center">FREE DIAGNOSIS</p>
-          <h2 className="display mt-3 text-center text-3xl sm:text-4xl">
+            <h2 className="display mt-3 text-center text-3xl sm:text-4xl">
             어디서 시간이 새는지,
             <br />
             숫자로 받아보세요

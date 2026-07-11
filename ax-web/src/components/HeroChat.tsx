@@ -8,7 +8,7 @@ type Msg = { role: "user" | "assistant"; content: string };
 const GREETING: Msg = {
   role: "assistant",
   content:
-    "무엇을 자동화하고 싶으세요? CS 응대, 정산, 보고서, 콘텐츠 — 요즘 대표님 시간을 제일 많이 잡아먹는 반복업무를 편하게 말씀해주세요.",
+    "무엇을 자동화하고 싶으세요? CS 응대, 정산, 보고서, 콘텐츠. 요즘 대표님 시간을 제일 많이 잡아먹는 반복업무를 편하게 말씀해주세요.",
 };
 
 export default function HeroChat() {
