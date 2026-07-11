@@ -73,55 +73,40 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── 2. 시간이 새는 곳 — 에디토리얼 인용 ── */}
+      {/* ── 2. 자가진단 — 대표 1인칭 체크리스트 (인용 나열은 남 얘기로 읽혀서 폐기, 2026-07-11) ── */}
       <section className="border-y border-[var(--line)] bg-[var(--panel)]">
         <div className="mx-auto max-w-6xl px-5 py-24 md:py-28">
           <Reveal>
             <p className="eyebrow">WHERE TIME LEAKS</p>
             <h2 className="display mt-3 max-w-2xl text-3xl sm:text-4xl">
-              대표님 회사에서 시간이 새는 곳, 대부분 여기입니다
+              이 중 몇 개가
+              <br />
+              대표님 회사 얘기입니까
             </h2>
           </Reveal>
-          {/* 수치는 현장 증언 — blockquote 인용 맥락 유지, 독립 스탯 타일 금지 (스펙 §2) */}
-          <Reveal delay={100}>
-            <blockquote className="mt-14 max-w-4xl">
-              <p className="display text-3xl leading-[1.3] text-[var(--ink)] sm:text-[2.75rem]">
-                &ldquo;CS 티켓 하나에 <span className="num">8~12분</span>. 하루 30건이면{" "}
-                <span className="num">5시간</span>이다.
-                <br className="hidden sm:block" />
-                대표가 그 5시간에 할 일이 정말 이건가.&rdquo;
-              </p>
-              <p className="mt-3 text-sm text-[var(--dim)]">현장 증언 — 반복 문의 · 주문/배송 확인 · 반품 응대</p>
-            </blockquote>
-          </Reveal>
-          <div className="mt-14 grid gap-x-8 gap-y-10 md:grid-cols-3">
-            <Reveal delay={0}>
-              <blockquote className="border-l-2 border-[var(--line)] pl-5">
-                <p className="font-semibold leading-relaxed">
-                  &ldquo;사람을 줄이라는 게 아니다.{" "}
-                  <span className="text-[var(--cobalt)]">다음 채용을 미루라는</span> 거다.&rdquo;
-                </p>
-                <p className="mt-2 text-sm text-[var(--dim)]">신입이 할 일의 몇 %가 반복업무인지부터 계산</p>
-              </blockquote>
-            </Reveal>
-            <Reveal delay={120} className="md:translate-y-6">
-              <blockquote className="border-l-2 border-[var(--line)] pl-5">
-                <p className="font-semibold leading-relaxed">
-                  &ldquo;재발송 한 번, 달래기 환불 한 번. 장부에는 한 줄도 안 잡히지만 마진은 알고 있다.&rdquo;
-                </p>
-                <p className="mt-2 text-sm text-[var(--dim)]">실수 비용 — 사람 문제가 아니라 구조 문제</p>
-              </blockquote>
-            </Reveal>
-            <Reveal delay={240}>
-              <blockquote className="border-l-2 border-[var(--line)] pl-5">
-                <p className="font-semibold leading-relaxed">
-                  &ldquo;매출이 2배가 되면 일도 2배가 되는 구조라면, 그 회사는{" "}
-                  <span className="text-[var(--cobalt)]">2배 매출을 못 받는다</span>.&rdquo;
-                </p>
-                <p className="mt-2 text-sm text-[var(--dim)]">대표가 병목인 회사는 대표의 하루가 매출 상한선</p>
-              </blockquote>
-            </Reveal>
+          <div className="mt-14 max-w-4xl">
+            {[
+              ["01", "지난주 숫자를 보려면 카톡, 엑셀, 메일을 다 뒤져야 한다"],
+              ["02", "매일 반복하는 그 작업 — 담당자가 하루 쉬면 밀리고, 내가 없으면 멈춘다"],
+              ["03", "직원이 퇴사하면 파일이 아니라 일하는 방법이 같이 나간다"],
+              ["04", "매출이 늘면 일도 정확히 그만큼 늘어난다 — 그래서 성장할수록 더 바쁘다"],
+            ].map(([num, text], i) => (
+              <Reveal key={num} delay={i * 100}>
+                <div className="flex items-baseline gap-5 border-b border-[var(--line)] py-7 sm:gap-8">
+                  <span className="font-[family-name:var(--font-mono)] text-sm font-semibold text-[var(--cobalt)]">
+                    {num}
+                  </span>
+                  <p className="display text-xl leading-snug sm:text-2xl lg:text-[1.75rem]">{text}</p>
+                </div>
+              </Reveal>
+            ))}
           </div>
+          <Reveal delay={200}>
+            <p className="mt-10 max-w-2xl text-lg leading-relaxed text-[var(--dim)]">
+              2개 이상 해당된다면 — 사람 문제가 아니라 <span className="text-[var(--ink)]">구조 문제</span>
+              입니다. 사람은 갈아 넣을수록 지치지만, 구조는 한 번 고치면 계속 일합니다.
+            </p>
+          </Reveal>
           <MicroCta />
         </div>
       </section>
