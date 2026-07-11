@@ -8,7 +8,10 @@ const g = globalThis as unknown as { __axdb?: Promise<PGlite> };
 export function getDb(): Promise<PGlite> {
   if (!g.__axdb) {
     g.__axdb = (async () => {
-      const db = new PGlite(join(process.cwd(), ".pglite"));
+      // Vercel 서버리스는 프로젝트 디렉토리가 읽기 전용 — /tmp만 쓰기 가능.
+      // ponytail: 임시 배포용. 콜드스타트마다 초기화되는 휘발 DB라 실 리드 수집 시작 전에 실 Postgres로 교체할 것.
+      const dir = process.env.VERCEL ? "/tmp/.pglite" : join(process.cwd(), ".pglite");
+      const db = new PGlite(dir);
       // 스키마는 IF NOT EXISTS라 매 기동 시 적용해도 안전
       await db.exec(readFileSync(join(process.cwd(), "sql/schema.sql"), "utf8"));
       return db;
