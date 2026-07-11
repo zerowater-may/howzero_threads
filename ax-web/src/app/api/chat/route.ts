@@ -79,8 +79,8 @@ export async function POST(req: Request) {
       if (found.rows.length > 0) sessionId = parsed.data.sessionId;
     }
     if (!sessionId) {
-      const r = await db.query<{ id: string }>(`INSERT INTO chat_sessions DEFAULT VALUES RETURNING id`);
-      sessionId = r.rows[0].id;
+      const r = await db.query(`INSERT INTO chat_sessions DEFAULT VALUES RETURNING id`);
+      sessionId = String(r.rows[0].id);
     }
     await db.query(`INSERT INTO chat_messages (session_id, role, content) VALUES ($1, 'user', $2)`, [
       sessionId,
