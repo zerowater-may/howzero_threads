@@ -181,7 +181,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── 4.5 첫 사례 (진행 중) — 2026-07-11 첫 미팅 니즈 진단, 익명화 ── */}
+      {/* ── 4.5 첫 사례 (진행 중) — 첫 미팅 확인 수치만, 정보 최소화 ── */}
       <section id="case" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-24 md:py-28">
         <Reveal>
           <p className="eyebrow">CASE 01 · IN PROGRESS</p>
@@ -189,106 +189,35 @@ export default function Home() {
             첫 사례 — 이커머스 교육 기업의 운영 OS
           </h2>
           <p className="mt-4 max-w-2xl text-[var(--dim)]">
-            겉으로는 잘 돌아가는 회사였습니다. 숫자를 같이 열어보기 전까지는요. 아래는 첫 미팅{" "}
-            <span className="num">68분</span> 동안 이 회사에서 실제로 확인한 숫자입니다.
+            겉으로는 잘 돌아가는 회사였습니다. 첫 미팅 <span className="num">68분</span> 동안 같이 확인한
+            숫자입니다.
           </p>
         </Reveal>
-        <Reveal delay={60}>
-          {/* 첫 미팅에서 확인된 실제 수치 — 사례 당사자 내부 확인 사실 (증언·추정 아님) */}
+        <Reveal delay={100}>
           <div className="mt-10 grid gap-4 sm:grid-cols-3">
-            <div className="card-lift rounded-2xl border border-[var(--line)] bg-[var(--card)] p-6">
-              <p className="num text-3xl sm:text-4xl">300여 건</p>
-              <p className="mt-2 text-sm leading-relaxed text-[var(--dim)]">
-                플로우 개편 중 유실된 신청 데이터. 담당자 실수가 아니라 빌더 위에 스크립트를 덧댄 구조가
-                원인이었습니다.
-              </p>
-            </div>
-            <div className="card-lift rounded-2xl border border-[var(--line)] bg-[var(--card)] p-6">
-              <p className="num text-3xl sm:text-4xl">분당 100회</p>
-              <p className="mt-2 text-sm leading-relaxed text-[var(--dim)]">
-                고객 알림을 떠받치던 무료 API의 발송 한도. 신청자가 몰리는 날 — 즉 제일 잘 되는 날 —
-                누락이 생기는 구조였습니다.
-              </p>
-            </div>
-            <div className="card-lift rounded-2xl border border-[var(--line)] bg-[var(--card)] p-6">
-              <p className="num text-3xl sm:text-4xl">월 22만원</p>
-              <p className="mt-2 text-sm leading-relaxed text-[var(--dim)]">
-                빌더에 내던 이용료. 그런데 무료 특강 신청자가 결제 페이지를 지나가는 구조 하나를 못
-                바꿔서, 스크립트로 가려놓고 운영 중이었습니다.
-              </p>
-            </div>
+            {[
+              ["300여 건", "플로우 개편 중 유실된 신청 데이터 — 실수가 아니라 구조가 원인이었습니다."],
+              ["분당 100회", "고객 알림을 떠받치던 무료 API의 한도 — 제일 잘 되는 날 누락이 생깁니다."],
+              ["월 22만원", "빌더에 내던 이용료 — 내면서도 신청 구조 하나를 못 바꿨습니다."],
+            ].map(([num, desc]) => (
+              <div key={num} className="card-lift rounded-2xl border border-[var(--line)] bg-[var(--card)] p-6">
+                <p className="num text-3xl sm:text-4xl">{num}</p>
+                <p className="mt-2 text-sm leading-relaxed text-[var(--dim)]">{desc}</p>
+              </div>
+            ))}
           </div>
-          <p className="mt-6 max-w-3xl text-base leading-relaxed">
-            무서운 건 AI가 아니라, <span className="font-bold">잘 되는 날 무너지는 구조</span>입니다. 이
-            회사는 68분 만에 두 가지를 확정했습니다 — 결제·특강 시스템은 절대 멈추지 않게, 그리고 전면
-            개편 대신 강의 하나부터.
-          </p>
         </Reveal>
-        <Reveal delay={120}>
-          <div className="mt-12 grid gap-4 md:grid-cols-12">
-            {/* 좌: 케이스 메타 */}
-            <div className="card-lift rounded-2xl border border-[var(--line)] bg-[var(--card)] p-7 md:col-span-4">
-              <dl className="space-y-5 text-sm">
-                <div>
-                  <dt className="text-[var(--dim)]">업종</dt>
-                  <dd className="mt-1 font-bold">이커머스 교육 (강의 판매)</dd>
-                </div>
-                <div>
-                  <dt className="text-[var(--dim)]">운영 담당</dt>
-                  <dd className="mt-1 font-bold">기획자 출신 비개발자</dd>
-                </div>
-                <div>
-                  <dt className="text-[var(--dim)]">상태</dt>
-                  <dd className="mt-1">
-                    <span className="rounded bg-[var(--cobalt)] px-2 py-0.5 text-[11px] font-semibold text-white">
-                      진단 완료 · 구축 진행 중
-                    </span>
-                  </dd>
-                </div>
-              </dl>
-              <blockquote className="mt-7 border-l-2 border-[var(--cobalt)] pl-3 text-sm leading-relaxed text-[var(--dim)]">
-                &ldquo;정규 과정 결제랑 특강 시스템, 이 둘만은 절대 멈추면 안 됩니다.&rdquo;
-                <span className="mt-1.5 block text-xs">— 첫 미팅에서 가장 먼저 확정한 무중단 제약</span>
-              </blockquote>
-            </div>
-            {/* 우: 니즈 진단 — 현재 → 설계 */}
-            <div className="grid gap-4 md:col-span-8">
-              <div className="card-lift rounded-2xl border border-[var(--line)] bg-[var(--card)] p-7">
-                <p className="font-[family-name:var(--font-mono)] text-xs tracking-widest text-[var(--dim)]">AS-IS — 진단에서 확인한 현재</p>
-                <ul className="mt-4 grid gap-3 sm:grid-cols-2">
-                  {[
-                    "노코드 빌더 위에 스크립트를 덧대 만든 신청 퍼널 — 무료 특강인데 결제 페이지를 지나감",
-                    "DB가 구글 스프레드시트 — 접근 제한 없음, API 분당 발송 제한으로 누락 위험",
-                    "과거 플로우 개편 중 시스템이 멈춰 신청 데이터 300여 건 유실",
-                    "새 기능을 붙일 때마다 빌더 위에 층이 하나씩 늘어 구조가 꼬임",
-                  ].map((t) => (
-                    <li key={t} className="flex gap-2.5 text-sm leading-relaxed text-[var(--dim)]">
-                      <span className="mt-0.5 shrink-0 text-[var(--signal)]" aria-hidden>✕</span>
-                      {t}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="card-lift rounded-2xl border border-[var(--cobalt)]/40 bg-[var(--card)] p-7">
-                <p className="font-[family-name:var(--font-mono)] text-xs tracking-widest text-[var(--cobalt)]">TO-BE — 함께 확정한 설계</p>
-                <ul className="mt-4 grid gap-3 sm:grid-cols-2">
-                  {[
-                    "결제·알림톡·수강 데이터를 자체 DB로 통합 — 보안과 발송 제한 문제를 구조로 해결",
-                    "전면 전환 금지 — 강의 1개만 새 플랫폼에서 먼저 돌려 사이클 검증 후 하나씩 이관",
-                    "결제·특강 두 시스템은 무중단 제약을 설계 조건으로 고정",
-                    "담당자가 AI 코딩 도구로 직접 수정할 수 있게 이관 교육까지 포함",
-                  ].map((t) => (
-                    <li key={t} className="flex gap-2.5 text-sm leading-relaxed text-[var(--dim)]">
-                      <span className="mt-0.5 shrink-0 text-[var(--cobalt)]" aria-hidden>→</span>
-                      {t}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-          <p className="mt-6 text-xs text-[var(--dim)]">
-            성과 수치는 구축 완료 후 before/after로 이 자리에 공개합니다 — 검증한 것만 씁니다.
+        <Reveal delay={180}>
+          <blockquote className="mt-12 max-w-3xl">
+            <p className="display text-xl leading-snug sm:text-2xl">
+              &ldquo;정규 과정 결제랑 특강 시스템, 이 둘만은 절대 멈추면 안 됩니다.&rdquo;
+            </p>
+            <p className="mt-2 text-sm text-[var(--dim)]">— 첫 미팅에서 가장 먼저 확정한 조건</p>
+          </blockquote>
+          <p className="mt-6 max-w-3xl leading-relaxed text-[var(--dim)]">
+            그래서 이렇게 갑니다. 결제·특강은 무중단으로 고정하고, 전면 개편 대신{" "}
+            <span className="text-[var(--ink)]">강의 하나로 새 구조를 검증한 뒤 하나씩 옮깁니다</span>. 성과
+            수치는 구축 완료 후 before/after로 이 자리에 공개합니다.
           </p>
         </Reveal>
         <MicroCta label="→ 우리 회사 진단도 이렇게 받아보기" />
