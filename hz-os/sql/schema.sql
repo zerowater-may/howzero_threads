@@ -158,3 +158,62 @@ CREATE TABLE IF NOT EXISTS edges (
 CREATE INDEX IF NOT EXISTS idx_edges_company ON edges(company_id);
 CREATE INDEX IF NOT EXISTS idx_edges_src ON edges(src_id);
 CREATE INDEX IF NOT EXISTS idx_edges_dst ON edges(dst_id);
+
+-- 제안(proposals) — M/M 견적 (A2Z Step5). line_items = [{label, role, manMonths, unitPrice, amount}].
+-- mm_total·amount는 라인아이템에서 서버가 계산해 저장한다(스냅샷). status: draft/sent/viewed/accepted.
+CREATE TABLE IF NOT EXISTS proposals (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  company_id BIGINT NOT NULL,
+  deal_id BIGINT,
+  line_items JSONB,
+  mm_total NUMERIC NOT NULL DEFAULT 0,
+  amount BIGINT NOT NULL DEFAULT 0,
+  version INT NOT NULL DEFAULT 1,
+  status TEXT NOT NULL DEFAULT 'draft',
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+CREATE INDEX IF NOT EXISTS idx_proposals_company ON proposals(company_id);
+CREATE INDEX IF NOT EXISTS idx_proposals_deal ON proposals(deal_id);
+
+-- 계약(contracts) — 1계약=1진실페이지 (A2Z Step5). milestones = [{label, amount, due, status}].
+-- 라인아이템을 복사하지 않고 proposal_id로 참조. status: active/done/canceled.
+CREATE TABLE IF NOT EXISTS contracts (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  company_id BIGINT NOT NULL,
+  deal_id BIGINT,
+  proposal_id BIGINT,
+  amount BIGINT NOT NULL DEFAULT 0,
+  file_url TEXT,
+  milestones JSONB,
+  status TEXT NOT NULL DEFAULT 'active',
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+CREATE INDEX IF NOT EXISTS idx_contracts_company ON contracts(company_id);
+CREATE INDEX IF NOT EXISTS idx_contracts_proposal ON contracts(proposal_id);
+
+ALTER TABLE projects ADD COLUMN IF NOT EXISTS contract_id BIGINT;
+CREATE INDEX IF NOT EXISTS idx_projects_contract ON projects(contract_id);
+
+-- 투입공수(timelogs) — 계약 원가(인건비) 파생 원천. cost += man_days × day_rate.
+CREATE TABLE IF NOT EXISTS timelogs (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  company_id BIGINT NOT NULL,
+  contract_id BIGINT,
+  member TEXT,
+  man_days NUMERIC NOT NULL DEFAULT 0,
+  day_rate BIGINT NOT NULL DEFAULT 0,
+  note TEXT,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+CREATE INDEX IF NOT EXISTS idx_timelogs_contract ON timelogs(contract_id);
+
+-- 지출(expenses) — 외주/기타 원가. cost += amount.
+CREATE TABLE IF NOT EXISTS expenses (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  company_id BIGINT NOT NULL,
+  contract_id BIGINT,
+  label TEXT,
+  amount BIGINT NOT NULL DEFAULT 0,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+CREATE INDEX IF NOT EXISTS idx_expenses_contract ON expenses(contract_id);

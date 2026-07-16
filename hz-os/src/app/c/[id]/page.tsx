@@ -4,10 +4,13 @@ import { AppShell } from "@/components/AppShell";
 import { StatusBadge } from "@/components/StatusBadge";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { getDb } from "@/lib/db";
 import { requireStaff } from "@/lib/guard";
 import { OntologyPanel, type OntEdge } from "@/components/ontology/OntologyPanel";
 import type { OntObject } from "@/lib/roi";
+import { ProposalForm } from "@/components/proposals/ProposalForm";
+import { setProposalStatus, acceptProposal } from "@/lib/actions/proposals";
 
 interface CompanyRow {
   id: number;
@@ -45,6 +48,24 @@ interface ActivityRow {
   to_state: string | null;
   created_at: string;
 }
+
+interface ProposalRow {
+  id: number;
+  version: number;
+  mm_total: number;
+  amount: number;
+  status: string;
+  has_contract: boolean;
+}
+
+interface ContractRow2 {
+  id: number;
+  amount: number;
+  status: string;
+}
+
+const PROPOSAL_STATUS_LABEL: Record<string, string> = { draft: "작성중", sent: "발송", viewed: "열람", accepted: "수락" };
+const CONTRACT_STATUS_LABEL: Record<string, string> = { active: "진행중", done: "완료", canceled: "해지" };
 
 function fmtDateTime(v: string): string {
   const d = new Date(v);
@@ -114,6 +135,33 @@ export default async function CompanyPage({ params }: { params: Promise<{ id: st
     props: (e.props as Record<string, unknown> | null) ?? null,
   }));
 
+  const { rows: proposalRows } = await db.query(
+    `SELECT p.id, p.version, p.mm_total, p.amount, p.status,
+            EXISTS(SELECT 1 FROM contracts c WHERE c.proposal_id = p.id) AS has_contract
+     FROM proposals p WHERE p.company_id = $1 ORDER BY p.created_at DESC`,
+    [companyId]
+  );
+  const proposals = proposalRows as unknown as ProposalRow[];
+
+  const { rows: contractListRows } = await db.query(
+    "SELECT id, amount, status FROM contracts WHERE company_id = $1 ORDER BY created_at DESC",
+    [companyId]
+  );
+  const contracts = contractListRows as unknown as ContractRow2[];
+
+  const bottleneckLabels = objects.filter((o) => o.type === "bottleneck").map((o) => o.label);
+  const dealOptions = deals.map((d) => ({ id: d.id, label: d.name || `딜 #${d.id}` }));
+  const won = (n: number) => Number(n).toLocaleString("ko-KR");
+
+  async function proposalStatusAction(formData: FormData) {
+    "use server";
+    await setProposalStatus(Number(formData.get("id") || 0), String(formData.get("status") || ""));
+  }
+  async function acceptProposalAction(formData: FormData) {
+    "use server";
+    await acceptProposal(Number(formData.get("id") || 0));
+  }
+
   const info: [string, string | null][] = [
     ["사업자번호", company.business_no],
     ["대표자", company.ceo_name],
@@ -182,6 +230,75 @@ export default async function CompanyPage({ params }: { params: Promise<{ id: st
                 >
                   <span className="truncate text-sm text-foreground">{p.name}</span>
                   <StatusBadge status={p.status} />
+                </Link>
+              ))
+            )}
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+          <div className="flex flex-col gap-3">
+            <div className="flex items-center justify-between">
+              <h2 className="display text-lg">제안</h2>
+              <ProposalForm companyId={company.id} deals={dealOptions} prefillLabels={bottleneckLabels} />
+            </div>
+            {proposals.length === 0 ? (
+              <p className="text-sm text-muted-foreground">아직 제안이 없습니다. 병목이 라인아이템으로 프리필됩니다.</p>
+            ) : (
+              proposals.map((p) => (
+                <div key={p.id} className="flex items-center justify-between gap-3 rounded-md border border-border px-4 py-3">
+                  <div className="min-w-0">
+                    <p className="text-sm text-foreground">
+                      제안 v{p.version} · <span className="font-mono">{won(p.amount)}원</span>
+                    </p>
+                    <p className="mt-0.5 flex items-center gap-2 text-xs text-muted-foreground">
+                      M/M <span className="font-mono">{Number(p.mm_total)}</span>
+                      <Badge variant="secondary">{PROPOSAL_STATUS_LABEL[p.status] ?? p.status}</Badge>
+                      {p.has_contract && <Badge className="bg-primary/15 text-primary">계약됨</Badge>}
+                    </p>
+                  </div>
+                  {p.status !== "accepted" && (
+                    <div className="flex shrink-0 items-center gap-2">
+                      {p.status === "draft" && (
+                        <form action={proposalStatusAction}>
+                          <input type="hidden" name="id" value={p.id} />
+                          <input type="hidden" name="status" value="sent" />
+                          <Button type="submit" size="sm" variant="outline">발송</Button>
+                        </form>
+                      )}
+                      {p.status === "sent" && (
+                        <form action={proposalStatusAction}>
+                          <input type="hidden" name="id" value={p.id} />
+                          <input type="hidden" name="status" value="viewed" />
+                          <Button type="submit" size="sm" variant="outline">열람표시</Button>
+                        </form>
+                      )}
+                      <form action={acceptProposalAction}>
+                        <input type="hidden" name="id" value={p.id} />
+                        <Button type="submit" size="sm">수락 → 계약</Button>
+                      </form>
+                    </div>
+                  )}
+                </div>
+              ))
+            )}
+          </div>
+
+          <div className="flex flex-col gap-3">
+            <h2 className="display text-lg">계약</h2>
+            {contracts.length === 0 ? (
+              <p className="text-sm text-muted-foreground">아직 계약이 없습니다. 제안을 수락하면 자동 생성됩니다.</p>
+            ) : (
+              contracts.map((c) => (
+                <Link
+                  key={c.id}
+                  href={`/contracts/${c.id}`}
+                  className="flex items-center justify-between gap-2 rounded-md border border-border px-4 py-3 hover:border-primary/50"
+                >
+                  <span className="text-sm text-foreground">
+                    계약 #{c.id} · <span className="font-mono">{won(c.amount)}원</span>
+                  </span>
+                  <Badge variant="secondary" className="shrink-0">{CONTRACT_STATUS_LABEL[c.status] ?? c.status}</Badge>
                 </Link>
               ))
             )}
