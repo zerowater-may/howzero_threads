@@ -16,7 +16,8 @@ import { getDb } from "@/lib/db";
 import { requireStaff } from "@/lib/guard";
 import { createProject } from "@/lib/actions/projects";
 import { createCompany } from "@/lib/actions/deals";
-import { DealKanban, type DealRow } from "@/components/DealKanban";
+import { type DealRow } from "@/components/DealKanban";
+import { DealViews } from "@/components/deals/DealViews";
 import Link from "next/link";
 
 interface ProjectRow {
@@ -107,7 +108,7 @@ export default async function Home() {
         </Dialog>
       </div>
 
-      <DealKanban deals={deals} />
+      <DealViews deals={deals} />
 
       <div className="mb-8 flex items-center justify-between">
         <h1 className="display text-2xl">프로젝트</h1>

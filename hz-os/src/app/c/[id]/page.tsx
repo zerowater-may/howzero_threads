@@ -11,6 +11,8 @@ import { OntologyPanel, type OntEdge } from "@/components/ontology/OntologyPanel
 import type { OntObject } from "@/lib/roi";
 import { ProposalForm } from "@/components/proposals/ProposalForm";
 import { setProposalStatus, acceptProposal } from "@/lib/actions/proposals";
+import { ensureClientToken } from "@/lib/actions/client";
+import { CopyButton } from "@/components/CopyButton";
 
 interface CompanyRow {
   id: number;
@@ -22,6 +24,7 @@ interface CompanyRow {
   size: string | null;
   hourly_rate: number;
   margin_threshold: number;
+  client_token: string | null;
 }
 
 interface DealRow {
@@ -87,7 +90,7 @@ export default async function CompanyPage({ params }: { params: Promise<{ id: st
 
   const db = await getDb();
   const { rows: companyRows } = await db.query(
-    "SELECT id, name, business_no, ceo_name, address, industry, size, hourly_rate, margin_threshold FROM companies WHERE id = $1",
+    "SELECT id, name, business_no, ceo_name, address, industry, size, hourly_rate, margin_threshold, client_token FROM companies WHERE id = $1",
     [companyId]
   );
   const company = companyRows[0] as unknown as CompanyRow | undefined;
@@ -161,6 +164,10 @@ export default async function CompanyPage({ params }: { params: Promise<{ id: st
     "use server";
     await acceptProposal(Number(formData.get("id") || 0));
   }
+  async function createClientLinkAction() {
+    "use server";
+    await ensureClientToken(companyId);
+  }
 
   const info: [string, string | null][] = [
     ["사업자번호", company.business_no],
@@ -196,6 +203,31 @@ export default async function CompanyPage({ params }: { params: Promise<{ id: st
                 </div>
               ))}
             </dl>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-sm">고객 링크</CardTitle>
+          </CardHeader>
+          <CardContent className="flex flex-wrap items-center gap-2">
+            {company.client_token ? (
+              <>
+                <code className="min-w-0 flex-1 truncate rounded bg-muted px-2 py-1 text-xs">
+                  /client/{company.client_token}
+                </code>
+                <CopyButton text={`/client/${company.client_token}`} />
+              </>
+            ) : (
+              <>
+                <p className="min-w-0 flex-1 text-sm text-muted-foreground">
+                  고객이 진행 현황·제안·계약을 볼 수 있는 전용 링크를 만듭니다.
+                </p>
+                <form action={createClientLinkAction}>
+                  <Button type="submit" size="sm">고객 링크 생성</Button>
+                </form>
+              </>
+            )}
           </CardContent>
         </Card>
 

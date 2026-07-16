@@ -1,6 +1,6 @@
 "use client";
 
-import { useTransition } from "react";
+import { useState, useTransition, type DragEvent } from "react";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -10,6 +10,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { cn } from "@/lib/utils";
 import { PIPELINE_STAGES } from "@/lib/pipeline";
 import { moveDealStage, assignOwner } from "@/lib/actions/deals";
 import { leadToProject, archiveLead } from "@/lib/actions/leads";
@@ -34,6 +35,10 @@ export interface DealRow {
 }
 
 export function DealKanban({ deals }: { deals: DealRow[] }) {
+  const [, startMove] = useTransition();
+  const [draggingId, setDraggingId] = useState<number | null>(null);
+  const [overStage, setOverStage] = useState<string | null>(null);
+
   const byStage = new Map<string, DealRow[]>();
   for (const s of PIPELINE_STAGES) byStage.set(s, []);
   for (const d of deals) {
@@ -41,47 +46,97 @@ export function DealKanban({ deals }: { deals: DealRow[] }) {
     byStage.get(stage)!.push(d);
   }
 
+  function handleDrop(stage: string, e: DragEvent<HTMLDivElement>) {
+    e.preventDefault();
+    const id = Number(e.dataTransfer.getData("text/plain"));
+    setOverStage(null);
+    setDraggingId(null);
+    if (!id) return;
+    const deal = deals.find((d) => d.id === id);
+    if (deal && deal.stage !== stage) startMove(() => moveDealStage(id, stage));
+  }
+
   return (
-    <section className="mb-10">
-      <div className="mb-4 flex items-center gap-2">
-        <h2 className="display text-lg">딜 파이프라인</h2>
-        <Badge variant="secondary">{deals.length}</Badge>
-      </div>
-      <div className="flex gap-3 overflow-x-auto pb-2">
-        {PIPELINE_STAGES.map((stage) => {
-          const items = byStage.get(stage)!;
-          return (
-            <div key={stage} className="flex w-64 shrink-0 flex-col gap-3">
-              <div className="flex items-center justify-between px-1">
-                <span className="text-sm font-medium text-foreground">{stage}</span>
-                <span className="text-xs text-muted-foreground">{items.length}</span>
-              </div>
-              <div className="flex flex-col gap-2">
-                {items.map((d) => (
-                  <DealCard key={d.id} deal={d} />
-                ))}
-                {items.length === 0 && (
-                  <div className="rounded-lg border border-dashed border-border/60 px-3 py-6 text-center text-xs text-muted-foreground">
-                    비어 있음
-                  </div>
-                )}
-              </div>
+    <div className="flex gap-3 overflow-x-auto pb-2">
+      {PIPELINE_STAGES.map((stage) => {
+        const items = byStage.get(stage)!;
+        const isOver = overStage === stage;
+        return (
+          <div
+            key={stage}
+            onDragOver={(e) => {
+              e.preventDefault();
+              if (overStage !== stage) setOverStage(stage);
+            }}
+            onDragLeave={(e) => {
+              if (!e.currentTarget.contains(e.relatedTarget as Node)) setOverStage(null);
+            }}
+            onDrop={(e) => handleDrop(stage, e)}
+            className={cn(
+              "flex w-64 shrink-0 flex-col gap-3 rounded-lg p-1 transition-colors",
+              isOver && "bg-primary/5 ring-1 ring-primary/40"
+            )}
+          >
+            <div className="flex items-center justify-between px-1">
+              <span className="text-sm font-medium text-foreground">{stage}</span>
+              <span className="text-xs text-muted-foreground">{items.length}</span>
             </div>
-          );
-        })}
-      </div>
-    </section>
+            <div className="flex flex-col gap-2">
+              {items.map((d) => (
+                <DealCard
+                  key={d.id}
+                  deal={d}
+                  dragging={draggingId === d.id}
+                  onDragStart={(e) => {
+                    e.dataTransfer.setData("text/plain", String(d.id));
+                    e.dataTransfer.effectAllowed = "move";
+                    setDraggingId(d.id);
+                  }}
+                  onDragEnd={() => {
+                    setDraggingId(null);
+                    setOverStage(null);
+                  }}
+                />
+              ))}
+              {items.length === 0 && (
+                <div className="rounded-lg border border-dashed border-border/60 px-3 py-6 text-center text-xs text-muted-foreground">
+                  비어 있음
+                </div>
+              )}
+            </div>
+          </div>
+        );
+      })}
+    </div>
   );
 }
 
-function DealCard({ deal }: { deal: DealRow }) {
+function DealCard({
+  deal,
+  dragging,
+  onDragStart,
+  onDragEnd,
+}: {
+  deal: DealRow;
+  dragging: boolean;
+  onDragStart: (e: DragEvent<HTMLDivElement>) => void;
+  onDragEnd: (e: DragEvent<HTMLDivElement>) => void;
+}) {
   const [pending, start] = useTransition();
   const meta = [deal.industry, deal.budget, deal.start_timing].filter(Boolean).join(" · ");
   const utm = [deal.utm_source, deal.utm_campaign, deal.utm_content].filter(Boolean) as string[];
   const title = deal.company || deal.name || "이름 미기재";
 
   return (
-    <div className="rounded-lg border border-border bg-card p-3">
+    <div
+      draggable
+      onDragStart={onDragStart}
+      onDragEnd={onDragEnd}
+      className={cn(
+        "cursor-grab rounded-lg border border-border bg-card p-3 transition-opacity active:cursor-grabbing",
+        dragging && "opacity-50 ring-1 ring-primary/50"
+      )}
+    >
       <div className="flex items-start justify-between gap-2">
         <div className="min-w-0">
           {deal.company_id ? (
@@ -114,7 +169,8 @@ function DealCard({ deal }: { deal: DealRow }) {
         <p className="mt-2 line-clamp-2 text-xs text-foreground/80">{deal.pain_summary}</p>
       )}
 
-      <div className="mt-3 flex items-center gap-2">
+      {/* draggable=false: 카드 드래그와 충돌하지 않게 셀렉트/입력 조작 허용 (키보드 대체수단 유지) */}
+      <div className="mt-3 flex items-center gap-2" draggable={false}>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button size="sm" variant="outline" className="h-7 px-2 text-xs" disabled={pending}>
@@ -136,6 +192,7 @@ function DealCard({ deal }: { deal: DealRow }) {
         </DropdownMenu>
 
         <input
+          draggable={false}
           defaultValue={deal.owner ?? ""}
           placeholder="담당자"
           disabled={pending}
@@ -147,7 +204,7 @@ function DealCard({ deal }: { deal: DealRow }) {
         />
       </div>
 
-      <div className="mt-2 flex gap-2">
+      <div className="mt-2 flex gap-2" draggable={false}>
         <Button
           size="sm"
           variant="ghost"

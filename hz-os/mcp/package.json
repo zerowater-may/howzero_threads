@@ -1,0 +1,17 @@
+{
+  "name": "hz-os-mcp",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "hz-os 사내 딜 파이프라인 stdio MCP 서버 (Claude Desktop 등)",
+  "bin": {
+    "hz-os-mcp": "server.mjs"
+  },
+  "scripts": {
+    "start": "node server.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.20.0",
+    "zod": "^3.25.76"
+  }
+}
