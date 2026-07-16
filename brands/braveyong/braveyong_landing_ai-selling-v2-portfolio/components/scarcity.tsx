@@ -18,7 +18,7 @@ const timeline = [
   {
     time: "마감 임박",
     title: `얼리버드가 ${priceFirst}만원 마감`,
-    body: "7/10까지만. 지나면 이 가격은 닫힙니다.",
+    body: "마감 전까지만. 지나면 이 가격은 닫힙니다.",
     done: false,
   },
   {
@@ -35,7 +35,7 @@ export function Scarcity() {
       tone="warm"
       label="얼리버드 마감 임박"
       title={<>지금 시작하면, 얼리버드가.</>}
-      lead={`압박하려고 만든 가짜 마감이 아니에요. 여기까지 오신 분께만 여는 얼리버드가라, 7/10이 지나거나 정원이 차면 진짜로 닫힙니다.`}
+      lead={`압박하려고 만든 가짜 마감이 아니에요. 여기까지 오신 분께만 여는 얼리버드가라, 개강하거나 정원이 차면 진짜로 닫힙니다.`}
     >
       {/* 큰 카운트다운 — 눈에 가장 먼저 들어오게 */}
       <div className="flex flex-col items-center border-2 border-brand bg-background px-5 py-7 text-center sm:py-8">
@@ -45,7 +45,7 @@ export function Scarcity() {
         </div>
         <CountdownTimer className="mt-3 scale-[1.6] text-foreground sm:scale-[2]" />
         <p className="mt-6 text-base font-bold leading-snug tracking-tight sm:text-lg">
-          지금 <span className="text-brand">{priceFirst}만원</span>, 7/10 지나면{" "}
+          지금 <span className="text-brand">{priceFirst}만원</span>, 마감 후에는{" "}
           <span className="text-foreground/45 line-through">{priceRegular}만원</span>
         </p>
         <PaymentDialog

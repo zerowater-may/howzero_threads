@@ -40,18 +40,19 @@ export function Hero() {
             </p>
           </div>
 
-          {/* 큰 임팩트 카피 — 1만 개 vs 진짜 팔리는 10개 대비 */}
+          {/* 큰 임팩트 카피 — 혼자 다 하는 셀러 vs AI 직원한테 시키는 셀러 */}
           <div className="hz-fade-up hz-delay-2 mx-auto max-w-2xl space-y-3 px-2 sm:px-0">
             <p className="text-base leading-relaxed text-foreground/60 sm:text-lg">
-              상품은 올리는데 검색도 매출도 안 잡히는 셀러에서
+              밤새 혼자 올리고, 혼자 고치고, 혼자 답장하는 셀러에서
             </p>
             <p className="text-2xl font-bold leading-tight tracking-tight text-foreground sm:text-3xl md:text-4xl">
-              진짜 팔리는<br className="sm:hidden" />
-              <span className="marker"> 효자상품 10개 </span>를<br />
-              만드는 셀러로.
+              물건 찾기부터 고객 응대까지<br />
+              <span className="marker">나만의 AI 직원</span>한테{" "}
+              <br className="sm:hidden" />
+              시키는 셀러로.
             </p>
             <p className="text-sm leading-relaxed text-foreground/65 sm:text-base">
-              5주 동안 내 상황에 맞는 시작점부터 잡고, 매주 2개씩 같이 고쳐갑니다.
+              5주 동안 AI 직원을 같이 세팅하고, 그 직원과 효자상품 10개를 만듭니다.
             </p>
           </div>
 

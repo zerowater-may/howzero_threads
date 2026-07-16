@@ -32,7 +32,7 @@ export function Price() {
               {(course.priceRegularSupply / 10000).toLocaleString()}만원
             </s>
             <span className="font-mono rounded-full bg-[var(--warm)] px-2 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--warm-border)]">
-              7/10 지나면 정가
+              마감 후 정가
             </span>
           </div>
           <div className="mt-1 text-5xl font-bold tracking-tight tabular-nums">
@@ -41,7 +41,7 @@ export function Price() {
             <span className="ml-2 text-sm font-bold text-foreground/55">(부가세 별도)</span>
           </div>
           <div className="font-mono mt-1 text-xs font-bold uppercase tracking-[0.12em] text-brand">
-            얼리버드 7/10까지만 · {((course.priceRegularSupply - course.priceFirstSupply) / 10000).toLocaleString()}만원 할인
+            얼리버드 한정 · {((course.priceRegularSupply - course.priceFirstSupply) / 10000).toLocaleString()}만원 할인
           </div>
 
           <div className="mt-3">
@@ -74,12 +74,12 @@ export function Price() {
           {/* 타임어택 — 진짜 이유 (가짜 긴급 X) */}
           <div className="border-l-2 border-brand bg-brand/[0.06] px-4 py-3">
             <div className="font-mono text-[10px] font-bold uppercase tracking-[0.15em] text-foreground/55">
-              왜 7/10까지?
+              왜 얼리버드가?
             </div>
             <p className="mt-1 text-sm leading-relaxed text-foreground/85 sm:text-base">
               지금 2기 모집 중입니다. <span className="font-bold text-foreground">일찍 결정하신 분들께 드리는 얼리버드가</span>라,{" "}
-              <span className="font-bold text-foreground">7/10까지만</span> 230만원(부가세 별도)입니다.{" "}
-              7/10이 지나면 정가 <span className="font-bold text-foreground">250만원</span>으로 올라가요.
+              <span className="font-bold text-foreground">정원 마감 전까지만</span> 230만원(부가세 별도)입니다.{" "}
+              마감 후에는 정가 <span className="font-bold text-foreground">250만원</span>으로 올라가요.
             </p>
           </div>
 
@@ -109,7 +109,7 @@ export function Price() {
         <div className="space-y-3">
           <div className="border-l-4 border-foreground bg-background p-5 text-sm leading-relaxed">
             <p className="text-foreground/75">
-              1기를 마친 후기가 쌓였고, 이번 2기는 7/10까지 얼리버드가로 모십니다. 일찍 결정하신 분께 그만큼 가격을 낮췄어요.<br />
+              1기를 마친 후기가 쌓였고, 이번 2기는 정원 마감 전까지 얼리버드가로 모십니다. 일찍 결정하신 분께 그만큼 가격을 낮췄어요.<br />
               <br />
               <span className="font-bold text-foreground">대신 5주 진심으로 함께할 분만 오세요.</span>
               <br />

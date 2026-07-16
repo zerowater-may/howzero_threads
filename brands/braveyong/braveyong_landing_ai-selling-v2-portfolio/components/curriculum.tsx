@@ -12,7 +12,7 @@ const blocks: { n: number; label: string; sub: string }[] = [
   { n: 2, label: "가공",       sub: "상품명 · 카테고리 · AI 상세" },
   { n: 3, label: "판매",       sub: "등록 + 대표이미지 + 전환 체크" },
   { n: 4, label: "광고",       sub: "검색·쇼핑 광고 운영 기초" },
-  { n: 5, label: "시스템화",   sub: "AI 반복 루틴 + 효자상품 10개 점검" },
+  { n: 5, label: "시스템화",   sub: "나만의 AI 직원 세팅 + 효자상품 10개 점검" },
 ]
 
 /** 잠긴 상세 — blur로 미리보기만 (실제 keyword는 의도적으로 약하게) */
@@ -21,7 +21,7 @@ const lockedTeasers = [
   "상품명 SEO 5단 검증법 · 대표이미지 A/B 패턴",
   "상세페이지 스토리보드 · 구매 이유 → 불안 제거 순서",
   "쇼핑 광고 입찰 기준 · CPC 관리 루틴",
-  "AI 반복 작업 템플릿 · 매주 운영 루틴표",
+  "AI 직원 세팅(디스코드+클로드코드) · 업무 지시문 템플릿",
 ]
 
 export function Curriculum() {

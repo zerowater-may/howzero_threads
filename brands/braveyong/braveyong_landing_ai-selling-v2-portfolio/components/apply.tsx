@@ -21,14 +21,14 @@ export function Apply() {
       {/* 타임어택 — 7/10까지만 230만원, 지나면 250만원 */}
       <div className="mb-6 border-l-4 border-brand bg-brand/[0.06] p-6 sm:p-7">
         <div className="font-mono mb-2 text-[10px] font-bold uppercase tracking-[0.18em] text-brand">
-          지금 2기 모집 중 — 얼리버드 7/10 마감
+          지금 2기 모집 중 — 정원 차면 얼리버드 마감
         </div>
         <p className="text-lg font-bold leading-snug tracking-tight text-foreground sm:text-xl">
-          7/10까지만 얼리버드가{" "}
+          마감 전까지만 얼리버드가{" "}
           <span className="underline decoration-brand/40 decoration-2 underline-offset-4">230만원</span>입니다.
         </p>
         <p className="mt-2 text-sm leading-relaxed text-foreground/75 sm:text-base">
-          7/10 지나면 정가 <span className="font-bold text-foreground">250만원</span>으로 올라갑니다.{" "}
+          마감 후에는 정가 <span className="font-bold text-foreground">250만원</span>으로 올라갑니다.{" "}
           신청서 따로 없습니다. <span className="font-bold text-foreground">지금 바로 결제</span>하면 끝나요.
         </p>
       </div>
@@ -147,7 +147,7 @@ export function Apply() {
           </p>
         </div>
         <p className="font-memo mt-5 border-t border-background/15 pt-4 text-sm leading-relaxed text-background/85 sm:text-base">
-          ⏰ 7/10 지나면 <span className="font-bold text-background">230만원 → 250만원</span>으로 올라갑니다. 결제는 지금 위에서 바로.
+          ⏰ 마감 후에는 <span className="font-bold text-background">230만원 → 250만원</span>으로 올라갑니다. 결제는 지금 위에서 바로.
         </p>
       </div>
 

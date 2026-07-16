@@ -8,6 +8,7 @@ const directions = [
   "아이 학교 보내고 공유오피스로 출근",
   "1만 개 따라 올린 것 중에서 검색에 잡힌 몇 개를, 데이터 보면서 직접 가공",
   "상품명을 하루에 하나씩 만들면서, 순위 변화로 직접 검증",
+  <>지금은 물건 찾기부터 CS 초안까지 <span className="font-bold">AI 직원한테 시키고, 마지막 검수만 직접</span></>,
   <>오후 4시 이후 CS는 일부러 보지 않습니다 — <span className="font-bold">가족 시간을 지키는 시스템</span></>,
   <>강의보다 <span className="font-bold">실행과 졸업 후 스터디</span>를 더 중요하게 생각합니다</>,
 ]

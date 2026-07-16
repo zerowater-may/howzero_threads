@@ -11,6 +11,7 @@ const rows = [
   ["피드백", "댓글로만, 보통 일괄 답변", "내 상품·내 스토어 보고 1:1로"],
   ["중간 점검", "없어요. 못 따라가도 아무도 몰라요", "줌 보강 4회 + 매주 과제 같이"],
   ["SEO 검증", "공식 한 줄로 끝", "키워드별 순위 직접 모니터링"],
+  ["AI 활용", "챗GPT에 물어보는 법 정도", "나만의 AI 직원 세팅까지 같이"],
   ["졸업 후", "끝. 그 다음은 알아서", "매월 오프라인 스터디 (선택)"],
   ["케어", "결제하면 끝, 그 다음은 알아서", "결제 후 한 분씩 직접 통화로 케어"],
 ]
@@ -23,6 +24,9 @@ export function Comparison() {
       title={<>듣는 강의가 아니라, 만드는 실전반입니다.</>}
       lead="같은 5주여도, 끝나고 내 손에 뭐가 남는지가 달라요."
     >
+      <p className="font-mono mb-2 text-[10px] uppercase tracking-[0.14em] text-background/55 sm:hidden">
+        ← 옆으로 밀어서 비교해 보세요
+      </p>
       <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
         <table className="w-full min-w-[480px] border-2 border-background/30 bg-foreground text-background">
           <thead>

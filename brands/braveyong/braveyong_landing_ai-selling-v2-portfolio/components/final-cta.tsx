@@ -15,10 +15,10 @@ export function FinalCTA() {
         </p>
 
         <h2 className="text-3xl font-bold uppercase leading-tight tracking-tight sm:text-4xl md:text-5xl">
-          7/10까지만<br className="sm:hidden" /> 얼리버드가
+          정원 마감 전까지만<br className="sm:hidden" /> 얼리버드가
         </h2>
         <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-background/70 sm:text-lg">
-          1만 개 올리는 방식, 정말로 한번 바꿔보고 싶으시면<br className="hidden sm:block" />
+          혼자 다 하는 방식, 정말로 한번 바꿔보고 싶으시면<br className="hidden sm:block" />
           그때 하신 그 결심, 지금 바로 잡으세요.
         </p>
 
@@ -37,7 +37,7 @@ export function FinalCTA() {
 
         <div className="mt-6 flex flex-col items-center gap-3">
           <p className="text-sm font-bold text-background sm:text-base">
-            얼리버드 마감 임박 · 7/10 지나면 정가 250만원
+            얼리버드 마감 임박 · 마감 후 정가 250만원
           </p>
           <CountdownTimer className="text-background" />
         </div>

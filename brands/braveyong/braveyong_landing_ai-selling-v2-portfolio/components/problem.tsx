@@ -5,7 +5,7 @@ import { Marker } from "./handwriting"
 const items = [
   { n: "01", h: "많이 올렸는데 노출이 없다", p: "상품 수는 늘었는데 검색에서 안 잡힙니다. 올린 만큼 팔리지 않아요." },
   { n: "02", h: "매출은 있는데 안 남는다", p: "매출은 조금 있지만 순수익·CS·시간을 빼고 나면 남는 게 없어요." },
-  { n: "03", h: "정책·한도가 불안하다", p: "정책 바뀌고 등록 한도 막히고 프로그램에 의존하다 보면, 언제 막힐지 모른다는 불안이 늘 따라옵니다." },
+  { n: "03", h: "프로그램은 손만 대신한다", p: "반자동 프로그램은 빨리 올려주기만 해요. 수천 명이 같은 DB로 같은 상품을 올리니, 남는 무기는 가격뿐입니다." },
   { n: "04", h: "방향이 틀렸다", p: "답은 ‘더 많이’가 아니에요. 팔릴 만한 상품 몇 개를 처음부터 다르게 만드는 거예요." },
 ]
 
@@ -37,9 +37,9 @@ export function Problem() {
       <div className="mt-10 border-l-4 border-background bg-background/5 p-6">
         <p className="text-lg font-bold leading-snug sm:text-xl">
           대량등록으로 버티던 셀러에게 필요한 건<br />
-          더 많은 상품이 아니라,{" "}
+          손을 대신하는 복사기가 아니라,{" "}
           <span className="text-foreground">
-            <Marker>팔리는 구조</Marker>
+            <Marker>머리를 대신하는 직원</Marker>
           </span>
           입니다.
         </p>
