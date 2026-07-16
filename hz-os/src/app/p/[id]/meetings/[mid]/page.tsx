@@ -58,6 +58,7 @@ export default async function MeetingPage({
             meetingId={meeting.id}
             projectId={projectId}
             analyzed={!!meeting.summary}
+            hasNeeds={needs.length > 0}
           />
         </div>
 

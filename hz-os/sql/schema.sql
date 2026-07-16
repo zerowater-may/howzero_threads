@@ -129,3 +129,32 @@ CREATE TABLE IF NOT EXISTS activity_log (
 );
 CREATE INDEX IF NOT EXISTS idx_activity_company ON activity_log(company_id);
 CREATE INDEX IF NOT EXISTS idx_activity_object ON activity_log(object_type, object_id);
+
+-- 온톨로지 엔티티 — 고객사 운영 OS의 명사 (A2Z §3, Step4). 단일 테이블 + JSONB props.
+-- type: process/task/tool/automation/bottleneck/metric/deliverable/owner (CHECK 없이 TEXT).
+CREATE TABLE IF NOT EXISTS objects (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  company_id BIGINT NOT NULL,
+  type TEXT NOT NULL,
+  label TEXT NOT NULL,
+  state TEXT DEFAULT 'identified',
+  props JSONB,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+CREATE INDEX IF NOT EXISTS idx_objects_company ON objects(company_id);
+CREATE INDEX IF NOT EXISTS idx_objects_company_type ON objects(company_id, type);
+
+-- 엔티티 사이 typed 그래프 엣지 (A2Z §3, Step4). rel_type: uses/owned_by/replaces/measures/blocks/produces.
+-- 1-hop 순회는 단순 조인으로 충분 (재귀 CTE 불필요).
+CREATE TABLE IF NOT EXISTS edges (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  company_id BIGINT NOT NULL,
+  src_id BIGINT NOT NULL,
+  dst_id BIGINT NOT NULL,
+  rel_type TEXT NOT NULL,
+  props JSONB,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+CREATE INDEX IF NOT EXISTS idx_edges_company ON edges(company_id);
+CREATE INDEX IF NOT EXISTS idx_edges_src ON edges(src_id);
+CREATE INDEX IF NOT EXISTS idx_edges_dst ON edges(dst_id);

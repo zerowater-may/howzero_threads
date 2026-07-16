@@ -6,6 +6,8 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getDb } from "@/lib/db";
 import { requireStaff } from "@/lib/guard";
+import { OntologyPanel, type OntEdge } from "@/components/ontology/OntologyPanel";
+import type { OntObject } from "@/lib/roi";
 
 interface CompanyRow {
   id: number;
@@ -88,6 +90,30 @@ export default async function CompanyPage({ params }: { params: Promise<{ id: st
   );
   const activities = activityRows as unknown as ActivityRow[];
 
+  const { rows: objectRows } = await db.query(
+    "SELECT id, company_id, type, label, state, props FROM objects WHERE company_id = $1 ORDER BY created_at ASC",
+    [companyId]
+  );
+  const objects: OntObject[] = objectRows.map((o) => ({
+    id: Number(o.id),
+    type: String(o.type),
+    label: String(o.label),
+    state: o.state == null ? null : String(o.state),
+    props: (o.props as Record<string, unknown> | null) ?? null,
+  }));
+
+  const { rows: edgeRows } = await db.query(
+    "SELECT id, src_id, dst_id, rel_type, props FROM edges WHERE company_id = $1",
+    [companyId]
+  );
+  const edges: OntEdge[] = edgeRows.map((e) => ({
+    id: Number(e.id),
+    src_id: Number(e.src_id),
+    dst_id: Number(e.dst_id),
+    rel_type: String(e.rel_type),
+    props: (e.props as Record<string, unknown> | null) ?? null,
+  }));
+
   const info: [string, string | null][] = [
     ["사업자번호", company.business_no],
     ["대표자", company.ceo_name],
@@ -160,6 +186,16 @@ export default async function CompanyPage({ params }: { params: Promise<{ id: st
               ))
             )}
           </div>
+        </div>
+
+        <div className="flex flex-col gap-4">
+          <div>
+            <h2 className="display text-lg">운영 OS 온톨로지</h2>
+            <p className="text-sm text-muted-foreground">
+              미팅 니즈에서 뽑은 병목을 ROI로 정렬하고, 무엇부터 자동화할지 데이터로 봅니다.
+            </p>
+          </div>
+          <OntologyPanel companyId={company.id} objects={objects} edges={edges} />
         </div>
 
         <div className="flex flex-col gap-3">
