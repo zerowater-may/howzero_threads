@@ -114,6 +114,10 @@ CREATE INDEX IF NOT EXISTS idx_leads_company ON leads(company_id);
 ALTER TABLE projects ADD COLUMN IF NOT EXISTS company_id BIGINT;
 CREATE INDEX IF NOT EXISTS idx_projects_company ON projects(company_id);
 
+-- 고객 포털 접근 토큰 — client_token만으로 인증 없이 자기 딜 전체를 본다 (share_token 패턴).
+ALTER TABLE companies ADD COLUMN IF NOT EXISTS client_token TEXT;
+CREATE UNIQUE INDEX IF NOT EXISTS idx_companies_client_token ON companies(client_token);
+
 -- append-only 이벤트 로그 (A2Z §3). 자동 히스토리·타임라인 원천.
 CREATE TABLE IF NOT EXISTS activity_log (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
