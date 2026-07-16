@@ -58,5 +58,36 @@ export async function POST(req: Request) {
     console.error("[leads] db error:", e);
     return Response.json({ error: "storage_unavailable" }, { status: 503 });
   }
+
+  // hz-os 프로젝트 포털로 포워딩 — 설정돼 있을 때만, best-effort(실패해도 리드 접수는 성공).
+  const inboundUrl = process.env.HZOS_INBOUND_URL;
+  const inboundSecret = process.env.HZOS_INBOUND_SECRET;
+  if (inboundUrl && inboundSecret) {
+    try {
+      await fetch(inboundUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${inboundSecret}` },
+        body: JSON.stringify({
+          source: "landing",
+          name,
+          contact,
+          email,
+          company,
+          role,
+          referral,
+          industry,
+          areas,
+          budget,
+          startTiming,
+          painSummary,
+          privacyAgreed,
+        }),
+        signal: AbortSignal.timeout(4000),
+      });
+    } catch (e) {
+      console.error("[leads] hz-os forward failed (non-blocking):", e);
+    }
+  }
+
   return Response.json({ ok: true });
 }

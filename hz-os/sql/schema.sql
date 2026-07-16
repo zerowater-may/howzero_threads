@@ -52,6 +52,28 @@ CREATE TABLE IF NOT EXISTS updates (
 );
 CREATE INDEX IF NOT EXISTS idx_updates_project ON updates(project_id);
 
+-- 인바운드 리드 — howzero 랜딩(ax-web) 상담 신청이 포워딩되는 문의함 (2026-07-16)
+CREATE TABLE IF NOT EXISTS leads (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  source TEXT NOT NULL DEFAULT 'landing',
+  name TEXT,
+  contact TEXT,
+  email TEXT,
+  company TEXT,
+  role TEXT,
+  referral TEXT,
+  industry TEXT,
+  areas TEXT,
+  budget TEXT,
+  start_timing TEXT,
+  pain_summary TEXT,
+  agreed_at TIMESTAMPTZ,
+  status TEXT NOT NULL DEFAULT 'new' CHECK (status IN ('new', 'converted', 'archived')),
+  project_id BIGINT REFERENCES projects(id) ON DELETE SET NULL,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+CREATE INDEX IF NOT EXISTS idx_leads_status ON leads(status);
+
 CREATE TABLE IF NOT EXISTS comments (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   project_id BIGINT NOT NULL REFERENCES projects(id) ON DELETE CASCADE,

@@ -15,6 +15,7 @@ import { Label } from "@/components/ui/label";
 import { getDb } from "@/lib/db";
 import { requireStaff } from "@/lib/guard";
 import { createProject } from "@/lib/actions/projects";
+import { InboundLeads, type LeadRow } from "@/components/InboundLeads";
 import Link from "next/link";
 
 interface ProjectRow {
@@ -44,8 +45,15 @@ export default async function Home() {
   `);
   const projects = rows as unknown as ProjectRow[];
 
+  const { rows: leadRows } = await db.query(`
+    SELECT id, source, name, company, contact, email, industry, budget, start_timing, pain_summary, created_at
+    FROM leads WHERE status = 'new' ORDER BY created_at DESC
+  `);
+  const leads = leadRows as unknown as LeadRow[];
+
   return (
     <AppShell>
+      <InboundLeads leads={leads} />
       <div className="mb-8 flex items-center justify-between">
         <h1 className="display text-2xl">프로젝트</h1>
         <Dialog>
