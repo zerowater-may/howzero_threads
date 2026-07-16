@@ -19,6 +19,9 @@ const LeadSchema = z.object({
   startTiming: z.string().trim().max(100).optional(),
   painSummary: z.string().trim().max(4000).optional(),
   privacyAgreed: z.boolean().optional(),
+  utmSource: z.string().trim().max(300).optional(),
+  utmCampaign: z.string().trim().max(200).optional(),
+  utmContent: z.string().trim().max(200).optional(),
 });
 
 function authorized(req: Request): boolean {
@@ -50,8 +53,8 @@ export async function POST(req: Request) {
   try {
     const db = await getDb();
     await db.query(
-      `INSERT INTO leads (source, name, contact, email, company, role, referral, industry, areas, budget, start_timing, pain_summary, agreed_at)
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)`,
+      `INSERT INTO leads (source, name, contact, email, company, role, referral, industry, areas, budget, start_timing, pain_summary, agreed_at, utm_source, utm_campaign, utm_content)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)`,
       [
         d.source ?? "landing",
         d.name ?? null,
@@ -66,6 +69,9 @@ export async function POST(req: Request) {
         d.startTiming ?? null,
         d.painSummary ?? null,
         d.privacyAgreed ? new Date().toISOString() : null,
+        d.utmSource ?? null,
+        d.utmCampaign ?? null,
+        d.utmContent ?? null,
       ]
     );
   } catch (e) {
