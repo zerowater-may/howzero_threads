@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { getDb } from "@/lib/db";
+import { ensureCompany } from "@/lib/migrate";
 import { timingSafeEqual } from "crypto";
 
 // howzero 랜딩(ax-web)이 상담 신청을 포워딩하는 인바운드 엔드포인트.
@@ -52,15 +53,19 @@ export async function POST(req: Request) {
   const areas = Array.isArray(d.areas) ? d.areas.join(", ") : d.areas ?? null;
   try {
     const db = await getDb();
+    // 회사명이 있으면 즉시 company 생성/연결 — 리드가 들어오는 순간 테넌트 루트가 생겨 딜→회사 흐름이 성립.
+    const companyName = d.company?.trim();
+    const companyId = companyName ? await ensureCompany(db, companyName) : null;
     await db.query(
-      `INSERT INTO leads (source, name, contact, email, company, role, referral, industry, areas, budget, start_timing, pain_summary, agreed_at, utm_source, utm_campaign, utm_content)
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)`,
+      `INSERT INTO leads (source, name, contact, email, company, company_id, role, referral, industry, areas, budget, start_timing, pain_summary, agreed_at, utm_source, utm_campaign, utm_content)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17)`,
       [
         d.source ?? "landing",
         d.name ?? null,
         d.contact ?? null,
         d.email ?? null,
         d.company ?? null,
+        companyId,
         d.role ?? null,
         d.referral ?? null,
         d.industry ?? null,
