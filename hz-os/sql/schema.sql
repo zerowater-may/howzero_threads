@@ -86,3 +86,46 @@ CREATE TABLE IF NOT EXISTS comments (
 );
 CREATE INDEX IF NOT EXISTS idx_comments_project ON comments(project_id);
 CREATE INDEX IF NOT EXISTS idx_comments_target ON comments(target_type, target_id);
+
+-- 고객사(Company) — 테넌트 루트 (A2Z §1). 사업자정보는 세금계산서용. (2026-07-16)
+CREATE TABLE IF NOT EXISTS companies (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  name TEXT NOT NULL,
+  business_no TEXT,
+  ceo_name TEXT,
+  address TEXT,
+  industry TEXT,
+  size TEXT,
+  hourly_rate BIGINT NOT NULL DEFAULT 0,
+  margin_threshold INT NOT NULL DEFAULT 30,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+CREATE INDEX IF NOT EXISTS idx_companies_name ON companies(name);
+
+-- 기존 배포 데이터 보존용 확장 컬럼 (멱등: ADD COLUMN IF NOT EXISTS, CHECK 없이 TEXT DEFAULT).
+ALTER TABLE leads ADD COLUMN IF NOT EXISTS company_id BIGINT;
+ALTER TABLE leads ADD COLUMN IF NOT EXISTS stage TEXT DEFAULT '상담신청';
+ALTER TABLE leads ADD COLUMN IF NOT EXISTS owner TEXT;
+ALTER TABLE leads ADD COLUMN IF NOT EXISTS utm_source TEXT;
+ALTER TABLE leads ADD COLUMN IF NOT EXISTS utm_campaign TEXT;
+ALTER TABLE leads ADD COLUMN IF NOT EXISTS utm_content TEXT;
+CREATE INDEX IF NOT EXISTS idx_leads_company ON leads(company_id);
+
+ALTER TABLE projects ADD COLUMN IF NOT EXISTS company_id BIGINT;
+CREATE INDEX IF NOT EXISTS idx_projects_company ON projects(company_id);
+
+-- append-only 이벤트 로그 (A2Z §3). 자동 히스토리·타임라인 원천.
+CREATE TABLE IF NOT EXISTS activity_log (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  company_id BIGINT,
+  object_type TEXT NOT NULL,
+  object_id BIGINT,
+  actor TEXT NOT NULL DEFAULT 'staff',
+  verb TEXT NOT NULL,
+  from_state TEXT,
+  to_state TEXT,
+  payload JSONB,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+CREATE INDEX IF NOT EXISTS idx_activity_company ON activity_log(company_id);
+CREATE INDEX IF NOT EXISTS idx_activity_object ON activity_log(object_type, object_id);

@@ -16,23 +16,28 @@ function schemaSql(): string {
 
 async function makeDb(): Promise<Db> {
   const url = process.env.DATABASE_URL;
+  let db: Db;
   if (url) {
     const { default: postgres } = await import("postgres");
     const sql = postgres(url, { prepare: false, max: 1 });
-    const db: Db = {
+    db = {
       query: async (q, params = []) => ({ rows: (await sql.unsafe(q, params as never[])) as unknown as Record<string, unknown>[] }),
       exec: async (q) => sql.unsafe(q),
     };
     await db.exec(schemaSql());
-    return db;
+  } else {
+    const dir = process.env.VERCEL ? "/tmp/.pglite-hzos" : join(process.cwd(), ".pglite");
+    const lite = new PGlite(dir);
+    await lite.exec(schemaSql());
+    db = {
+      query: async (q, params = []) => (await lite.query(q, params as unknown[])) as { rows: Record<string, unknown>[] },
+      exec: (q) => lite.exec(q),
+    };
   }
-  const dir = process.env.VERCEL ? "/tmp/.pglite-hzos" : join(process.cwd(), ".pglite");
-  const lite = new PGlite(dir);
-  await lite.exec(schemaSql());
-  return {
-    query: async (q, params = []) => (await lite.query(q, params as unknown[])) as { rows: Record<string, unknown>[] },
-    exec: (q) => lite.exec(q),
-  };
+  // 스키마 적용 직후 1회 백필 — 기존 실데이터를 company 루트로 재배치 (멱등).
+  const { runBackfill } = await import("@/lib/migrate");
+  await runBackfill(db);
+  return db;
 }
 
 export function getDb(): Promise<Db> {

@@ -15,7 +15,8 @@ import { Label } from "@/components/ui/label";
 import { getDb } from "@/lib/db";
 import { requireStaff } from "@/lib/guard";
 import { createProject } from "@/lib/actions/projects";
-import { InboundLeads, type LeadRow } from "@/components/InboundLeads";
+import { createCompany } from "@/lib/actions/deals";
+import { DealKanban, type DealRow } from "@/components/DealKanban";
 import Link from "next/link";
 
 interface ProjectRow {
@@ -34,6 +35,17 @@ async function createProjectAction(formData: FormData): Promise<void> {
   await createProject(name, clientName);
 }
 
+async function createCompanyAction(formData: FormData): Promise<void> {
+  "use server";
+  await createCompany({
+    name: String(formData.get("name") || ""),
+    businessNo: String(formData.get("businessNo") || ""),
+    ceoName: String(formData.get("ceoName") || ""),
+    industry: String(formData.get("industry") || ""),
+    size: String(formData.get("size") || ""),
+  });
+}
+
 export default async function Home() {
   await requireStaff();
   const db = await getDb();
@@ -46,14 +58,57 @@ export default async function Home() {
   const projects = rows as unknown as ProjectRow[];
 
   const { rows: leadRows } = await db.query(`
-    SELECT id, source, name, company, contact, email, industry, budget, start_timing, pain_summary, created_at
-    FROM leads WHERE status = 'new' ORDER BY created_at DESC
+    SELECT id, source, name, company, company_id, contact, email, industry, budget,
+           start_timing, pain_summary, stage, owner, utm_source, utm_campaign, utm_content
+    FROM leads WHERE status <> 'archived' ORDER BY created_at DESC
   `);
-  const leads = leadRows as unknown as LeadRow[];
+  const deals = leadRows as unknown as DealRow[];
 
   return (
     <AppShell>
-      <InboundLeads leads={leads} />
+      <div className="mb-6 flex items-center justify-between">
+        <div />
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button variant="outline" size="sm">+ 새 회사</Button>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>새 회사</DialogTitle>
+            </DialogHeader>
+            <form action={createCompanyAction} className="flex flex-col gap-4">
+              <div className="flex flex-col gap-2">
+                <Label htmlFor="companyName">회사명</Label>
+                <Input id="companyName" name="name" required autoFocus />
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                <div className="flex flex-col gap-2">
+                  <Label htmlFor="businessNo">사업자번호</Label>
+                  <Input id="businessNo" name="businessNo" />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <Label htmlFor="ceoName">대표자</Label>
+                  <Input id="ceoName" name="ceoName" />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <Label htmlFor="companyIndustry">업종</Label>
+                  <Input id="companyIndustry" name="industry" />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <Label htmlFor="companySize">규모</Label>
+                  <Input id="companySize" name="size" />
+                </div>
+              </div>
+              <DialogFooter>
+                <Button type="submit">등록</Button>
+              </DialogFooter>
+            </form>
+          </DialogContent>
+        </Dialog>
+      </div>
+
+      <DealKanban deals={deals} />
+
       <div className="mb-8 flex items-center justify-between">
         <h1 className="display text-2xl">프로젝트</h1>
         <Dialog>
