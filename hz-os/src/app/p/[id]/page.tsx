@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AppShell } from "@/components/AppShell";
 import { StatusSelect } from "@/components/StatusSelect";
@@ -109,7 +110,12 @@ export default async function ProjectPage({
             <h1 className="display text-2xl">{project.name}</h1>
             <p className="text-sm text-muted-foreground">{project.client_name || "고객사 미지정"}</p>
           </div>
-          <StatusSelect projectId={project.id} status={project.status} />
+          <div className="flex items-center gap-2">
+            <Button asChild variant="outline" size="sm">
+              <Link href={`/p/${project.id}/docs`}>문서</Link>
+            </Button>
+            <StatusSelect projectId={project.id} status={project.status} />
+          </div>
         </div>
 
         <div className="flex items-center gap-2">
