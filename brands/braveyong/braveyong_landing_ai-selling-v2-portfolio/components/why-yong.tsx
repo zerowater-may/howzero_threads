@@ -19,7 +19,7 @@ export function WhyYong() {
       label="왜 용팀장인가"
       title={
         <>
-          유명한 사람이 파는 강의가 아니라,<br className="hidden sm:block" />
+          유명한 사람이 파는 강의가 아니라,{" "}<br className="hidden sm:block" />
           현업셀러가 직접 막혀본 작업법입니다.
         </>
       }

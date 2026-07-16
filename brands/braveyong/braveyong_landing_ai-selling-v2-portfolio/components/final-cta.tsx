@@ -18,7 +18,7 @@ export function FinalCTA() {
           정원 마감 전까지만<br className="sm:hidden" /> 얼리버드가
         </h2>
         <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-background/70 sm:text-lg">
-          혼자 다 하는 방식, 정말로 한번 바꿔보고 싶으시면<br className="hidden sm:block" />
+          혼자 다 하는 방식, 정말로 한번 바꿔보고 싶으시면{" "}<br className="hidden sm:block" />
           그때 하신 그 결심, 지금 바로 잡으세요.
         </p>
 
