@@ -16,6 +16,9 @@ const LeadSchema = z.object({
   budget: z.string().trim().max(100).optional(),
   startTiming: z.string().trim().max(100).optional(),
   privacyAgreed: z.boolean().optional(),
+  utmSource: z.string().trim().max(300).optional(),
+  utmCampaign: z.string().trim().max(200).optional(),
+  utmContent: z.string().trim().max(200).optional(),
 });
 
 export async function POST(req: Request) {
@@ -32,8 +35,10 @@ export async function POST(req: Request) {
   if (!parsed.success) {
     return Response.json({ error: "invalid_lead", issues: parsed.error.issues }, { status: 400 });
   }
-  const { name, contact, company, painSummary, email, role, referral, industry, areas, budget, startTiming, privacyAgreed } =
-    parsed.data;
+  const {
+    name, contact, company, painSummary, email, role, referral, industry, areas, budget, startTiming, privacyAgreed,
+    utmSource, utmCampaign, utmContent,
+  } = parsed.data;
   try {
     const db = await getDb();
     await db.query(
@@ -81,6 +86,9 @@ export async function POST(req: Request) {
           startTiming,
           painSummary,
           privacyAgreed,
+          utmSource,
+          utmCampaign,
+          utmContent,
         }),
         signal: AbortSignal.timeout(4000),
       });

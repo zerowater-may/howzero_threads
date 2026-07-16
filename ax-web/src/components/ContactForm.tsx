@@ -56,6 +56,18 @@ export default function ContactForm() {
   const cur = STEPS[step];
   const total = STEPS.length;
 
+  // 유입 채널 귀속 — URL의 utm_* 를 잡아 리드에 실어 보낸다 (첫 방문 캡처).
+  const utmRef = useRef<{ source?: string; campaign?: string; content?: string }>({});
+  useEffect(() => {
+    const q = new URLSearchParams(window.location.search);
+    const utm = {
+      source: q.get("utm_source") || document.referrer || undefined,
+      campaign: q.get("utm_campaign") || undefined,
+      content: q.get("utm_content") || undefined,
+    };
+    utmRef.current = utm;
+  }, []);
+
   // 텍스트 스텝 진입 시 자동 포커스 + 이전 값 복원
   useEffect(() => {
     if (cur.kind === "text" && inputRef.current) {
@@ -103,6 +115,9 @@ export default function ContactForm() {
           startTiming: answers.startTiming,
           painSummary: answers.painSummary || undefined,
           privacyAgreed: true,
+          utmSource: utmRef.current.source,
+          utmCampaign: utmRef.current.campaign,
+          utmContent: utmRef.current.content,
         }),
       });
       if (!res.ok) throw new Error(String(res.status));
