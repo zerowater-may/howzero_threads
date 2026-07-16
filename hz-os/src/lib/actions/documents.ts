@@ -4,11 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { getDb } from "@/lib/db";
 import { requireStaff } from "@/lib/guard";
-
-// content 저장 포맷: {format:'md', text}. Plate 폴백으로 마크다운 에디터를 채택.
-function mdContent(text: string) {
-  return { format: "md", text };
-}
+import { mdContent } from "@/lib/doc-content";
 
 function currentText(content: unknown): string {
   if (content && typeof content === "object" && "text" in content) {

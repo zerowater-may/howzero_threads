@@ -6,10 +6,21 @@ import { CopyButton } from "@/components/CopyButton";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { getDb } from "@/lib/db";
 import { requireStaff } from "@/lib/guard";
 import { addComment, addUpdate, regenerateShareToken } from "@/lib/actions/projects";
+import { createMeeting } from "@/lib/actions/meetings";
 import { cn } from "@/lib/utils";
 
 const STEPS = ["진단", "설계", "구축", "운영"] as const;
@@ -52,6 +63,20 @@ interface CommentRow {
   created_at: string;
 }
 
+interface MeetingRow {
+  id: number;
+  title: string;
+  held_at: string | null;
+  summary: string | null;
+}
+
+function fmtMeetingDate(heldAt: string | null): string {
+  if (!heldAt) return "날짜 미정";
+  const d = new Date(heldAt);
+  if (Number.isNaN(d.getTime())) return "날짜 미정";
+  return d.toLocaleDateString("ko-KR", { year: "numeric", month: "long", day: "numeric" });
+}
+
 export default async function ProjectPage({
   params,
 }: {
@@ -85,6 +110,20 @@ export default async function ProjectPage({
     const list = commentsByUpdate.get(c.target_id) || [];
     list.push(c);
     commentsByUpdate.set(c.target_id, list);
+  }
+
+  const { rows: meetingRows } = await db.query(
+    "SELECT id, title, held_at, summary FROM meetings WHERE project_id = $1 ORDER BY created_at DESC",
+    [projectId]
+  );
+  const meetings = meetingRows as unknown as MeetingRow[];
+
+  async function createMeetingAction(formData: FormData): Promise<void> {
+    "use server";
+    const title = String(formData.get("title") || "");
+    const heldAt = String(formData.get("heldAt") || "");
+    const transcript = String(formData.get("transcript") || "");
+    await createMeeting(projectId, title, heldAt, transcript);
   }
 
   async function addUpdateAction(formData: FormData): Promise<void> {
@@ -162,6 +201,68 @@ export default async function ProjectPage({
             )}
           </CardContent>
         </Card>
+
+        <div className="flex flex-col gap-4">
+          <div className="flex items-center justify-between">
+            <h2 className="display text-lg">미팅</h2>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button size="sm" variant="outline">
+                  + 새 미팅
+                </Button>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>새 미팅</DialogTitle>
+                </DialogHeader>
+                <form action={createMeetingAction} className="flex flex-col gap-4">
+                  <div className="flex flex-col gap-2">
+                    <Label htmlFor="title">제목</Label>
+                    <Input id="title" name="title" required autoFocus />
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <Label htmlFor="heldAt">날짜</Label>
+                    <Input id="heldAt" name="heldAt" type="date" />
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <Label htmlFor="transcript">전사</Label>
+                    <Textarea
+                      id="transcript"
+                      name="transcript"
+                      placeholder="회의 전사 내용을 붙여넣으세요."
+                      className="min-h-[200px]"
+                    />
+                  </div>
+                  <DialogFooter>
+                    <Button type="submit">만들기</Button>
+                  </DialogFooter>
+                </form>
+              </DialogContent>
+            </Dialog>
+          </div>
+
+          {meetings.length === 0 ? (
+            <p className="text-sm text-muted-foreground">아직 미팅이 없습니다.</p>
+          ) : (
+            <div className="flex flex-col gap-2">
+              {meetings.map((m) => (
+                <Link
+                  key={m.id}
+                  href={`/p/${projectId}/meetings/${m.id}`}
+                  className="flex items-center justify-between gap-2 rounded-md border border-border px-4 py-3 text-sm hover:border-primary/50"
+                >
+                  <div className="flex min-w-0 flex-col gap-0.5">
+                    <span className="truncate text-foreground">{m.title}</span>
+                    <span className="text-xs text-muted-foreground">{fmtMeetingDate(m.held_at)}</span>
+                  </div>
+                  <Badge className={m.summary ? "bg-primary/15 text-primary" : "bg-secondary text-muted-foreground"}>
+                    {m.summary ? "분석됨" : "미분석"}
+                  </Badge>
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
 
         <div className="flex flex-col gap-4">
           <h2 className="display text-lg">업데이트</h2>
