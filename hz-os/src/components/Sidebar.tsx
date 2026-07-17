@@ -17,13 +17,16 @@ export function Sidebar() {
 
   return (
     <>
-      {/* 데스크톱: 고정 좌측 사이드바 */}
-      <aside className="sticky top-0 hidden h-screen w-60 shrink-0 flex-col border-r border-border bg-card/40 md:flex">
-        <Link href="/" className="flex h-14 items-center gap-2 px-5">
+      {/* 데스크톱: 고정 좌측 사이드바 (노션식 딥블랙) */}
+      <aside className="sticky top-0 hidden h-screen w-60 shrink-0 flex-col border-r border-border/70 bg-sidebar md:flex">
+        <Link href="/" className="flex h-14 items-center gap-2 px-4">
           <span aria-hidden className="inline-block size-2 rounded-full bg-primary" />
           <span className="display text-lg text-foreground">hz-os</span>
         </Link>
-        <nav className="flex flex-1 flex-col gap-1 px-3 py-2">
+        <nav className="flex flex-1 flex-col gap-0.5 px-2 py-2">
+          <p className="px-2 pb-1 pt-1 text-[11px] font-medium uppercase tracking-wider text-muted-foreground/70">
+            워크스페이스
+          </p>
           {NAV.map(({ href, label, icon: Icon, match }) => {
             const active = match(pathname);
             return (
@@ -31,31 +34,31 @@ export function Sidebar() {
                 key={href}
                 href={href}
                 className={cn(
-                  "flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors",
+                  "flex items-center gap-2.5 rounded-md px-2 py-1.5 text-sm transition-colors",
                   active
-                    ? "bg-primary/10 text-foreground"
-                    : "text-muted-foreground hover:bg-muted/50 hover:text-foreground"
+                    ? "bg-white/[0.07] text-foreground"
+                    : "text-muted-foreground hover:bg-white/[0.04] hover:text-foreground"
                 )}
               >
-                <Icon className="size-4" strokeWidth={1.75} />
+                <Icon className="size-4 shrink-0" strokeWidth={1.75} />
                 {label}
               </Link>
             );
           })}
         </nav>
-        <form action="/logout" method="POST" className="border-t border-border p-3">
+        <form action="/logout" method="POST" className="border-t border-border/70 p-2">
           <button
             type="submit"
-            className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-muted/50 hover:text-foreground"
+            className="flex w-full items-center gap-2.5 rounded-md px-2 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-white/[0.04] hover:text-foreground"
           >
-            <LogOut className="size-4" strokeWidth={1.75} />
+            <LogOut className="size-4 shrink-0" strokeWidth={1.75} />
             로그아웃
           </button>
         </form>
       </aside>
 
       {/* 모바일: 상단 컴팩트 바 */}
-      <header className="sticky top-0 z-20 flex items-center gap-1 overflow-x-auto border-b border-border bg-card/80 px-3 py-2 backdrop-blur md:hidden">
+      <header className="sticky top-0 z-20 flex items-center gap-1 overflow-x-auto border-b border-border/70 bg-sidebar/95 px-3 py-2 backdrop-blur md:hidden">
         <Link href="/" className="mr-2 flex shrink-0 items-center gap-2">
           <span aria-hidden className="inline-block size-2 rounded-full bg-primary" />
           <span className="display text-base text-foreground">hz-os</span>
@@ -68,7 +71,7 @@ export function Sidebar() {
               href={href}
               className={cn(
                 "flex shrink-0 items-center gap-1.5 rounded-md px-2.5 py-1.5 text-xs transition-colors",
-                active ? "bg-primary/10 text-foreground" : "text-muted-foreground hover:text-foreground"
+                active ? "bg-white/[0.07] text-foreground" : "text-muted-foreground hover:text-foreground"
               )}
             >
               <Icon className="size-3.5" strokeWidth={1.75} />

@@ -1,32 +1,43 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-/* hz-os — 다크 고정 테마. ax-web 브랜드 토큰(코발트) 계승, shadcn 시맨틱 토큰으로 매핑 */
+/* Pretendard 셀프호스팅 — 한글이 시스템 폰트 폴백으로 깨지지 않게 실제 번들. (OFL, public/fonts) */
+@font-face {
+  font-family: "Pretendard Variable";
+  font-weight: 45 920;
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/PretendardVariable.woff2") format("woff2-variations");
+}
+
+/* hz-os — 노션식 딥블랙 다크 테마. 중립(무채색) 근-검정 + 절제된 블루 액센트 */
 :root {
   color-scheme: dark;
-  --radius: 0.625rem;
-  --background: oklch(0.145 0.002 260);
-  --foreground: oklch(0.96 0.003 90);
-  --card: oklch(0.185 0.004 260);
-  --card-foreground: oklch(0.96 0.003 90);
-  --popover: oklch(0.185 0.004 260);
-  --popover-foreground: oklch(0.96 0.003 90);
-  --primary: oklch(0.58 0.19 268);
+  --radius: 0.5rem;
+  --background: oklch(0.155 0 0);
+  --foreground: oklch(0.945 0 0);
+  --card: oklch(0.192 0 0);
+  --card-foreground: oklch(0.945 0 0);
+  --popover: oklch(0.192 0 0);
+  --popover-foreground: oklch(0.945 0 0);
+  --primary: oklch(0.62 0.15 255);
   --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.24 0.004 260);
-  --secondary-foreground: oklch(0.96 0.003 90);
-  --muted: oklch(0.24 0.004 260);
-  --muted-foreground: oklch(0.68 0.005 260);
-  --accent: oklch(0.24 0.004 260);
-  --accent-foreground: oklch(0.96 0.003 90);
-  --destructive: oklch(0.6 0.2 25);
+  --secondary: oklch(0.235 0 0);
+  --secondary-foreground: oklch(0.945 0 0);
+  --muted: oklch(0.235 0 0);
+  --muted-foreground: oklch(0.655 0 0);
+  --accent: oklch(0.255 0 0);
+  --accent-foreground: oklch(0.97 0 0);
+  --destructive: oklch(0.62 0.2 25);
   --destructive-foreground: oklch(0.99 0 0);
-  --border: oklch(0.26 0.004 260);
-  --input: oklch(0.26 0.004 260);
-  --ring: oklch(0.58 0.19 268);
+  --border: oklch(0.275 0 0);
+  --input: oklch(0.275 0 0);
+  --ring: oklch(0.62 0.15 255);
   --ok: oklch(0.72 0.17 150);
-  --font-body: "Pretendard Variable", -apple-system, sans-serif;
-  --font-display: "SUIT Variable", "Pretendard Variable", sans-serif;
+  /* 노션식 사이드바 전용 — 본문보다 한 톤 더 딥 */
+  --sidebar: oklch(0.135 0 0);
+  --font-body: "Pretendard Variable", -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-display: "Pretendard Variable", -apple-system, "Apple SD Gothic Neo", sans-serif;
   --font-mono-stack: "IBM Plex Mono", ui-monospace, monospace;
 }
 
@@ -51,6 +62,7 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-ok: var(--ok);
+  --color-sidebar: var(--sidebar);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
