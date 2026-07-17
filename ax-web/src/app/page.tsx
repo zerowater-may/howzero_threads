@@ -5,6 +5,9 @@ import ProcessTimeline from "@/components/ProcessTimeline";
 import OsCanvas from "@/components/os-canvas/OsCanvas";
 import LanyardBadge from "@/components/hero/LanyardBadge";
 import Reveal from "@/components/Reveal";
+import Differentiators from "@/components/Differentiators";
+import RoiCalculator from "@/components/RoiCalculator";
+import Faq from "@/components/Faq";
 
 // 카피 원천: docs/ax-business/04(서사)·06(메시지 뱅크)·07(차별점)·10(오퍼·가격)
 // v2 스펙: docs/superpowers/specs/2026-07-09-ax-web-landing-v2-design.md
@@ -31,6 +34,12 @@ export default function Home() {
             <a href="#case" className="hidden rounded-full px-3 py-1.5 transition-colors hover:bg-white/5 hover:text-[var(--ink)] sm:block">
               첫 사례
             </a>
+            <a href="#roi" className="hidden rounded-full px-3 py-1.5 transition-colors hover:bg-white/5 hover:text-[var(--ink)] sm:block">
+              절감 계산
+            </a>
+            <a href="#faq" className="hidden rounded-full px-3 py-1.5 transition-colors hover:bg-white/5 hover:text-[var(--ink)] sm:block">
+              FAQ
+            </a>
             {SHOW_PRICING && (
               <a href="#pricing" className="hidden rounded-full px-3 py-1.5 transition-colors hover:bg-white/5 hover:text-[var(--ink)] sm:block">
                 가격
@@ -52,12 +61,12 @@ export default function Home() {
         <div className="relative mx-auto flex max-w-4xl flex-col items-center px-5 pb-28 pt-32 text-center lg:pt-40">
           <p className="eyebrow rise rise-1">AX EXECUTION PARTNER · howzero</p>
           <h1 className="display rise rise-2 mt-4 text-4xl sm:text-5xl lg:text-6xl">
-            반복업무 시간,
+            매출은 높이고
             <br />
-            어떻게 0으로 만드나
+            비용은 줄이는 구조를 짭니다
           </h1>
           <p className="rise rise-3 mt-6 max-w-2xl text-lg leading-relaxed text-[var(--dim)]">
-            매출은 높이고 비용은 줄이는 구조를 짭니다.
+            반복업무는 시스템이 하고, 사람은 판단만 합니다.
             <br />
             연매출 <span className="num">10억</span> SaaS를 직접 운영하며 우리 회사부터 그렇게 만들었습니다.
             <br />
@@ -108,6 +117,20 @@ export default function Home() {
           </Reveal>
           <MicroCta />
         </div>
+      </section>
+
+      {/* ── 2.5 차별화 — 보통은 vs howzero는 (크몽 AX 구조 벤치마킹, 2026-07-14) ── */}
+      <section id="why" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-24 md:py-28">
+        <Reveal>
+          <h2 className="display mt-3 max-w-2xl text-3xl sm:text-4xl">
+            말은 비슷해도,
+            <br />
+            구조가 다릅니다
+          </h2>
+        </Reveal>
+        {/* 행별 Reveal 스태거는 컴포넌트 내부에서 처리 */}
+        <Differentiators />
+        <MicroCta label="→ 이 구조로 우리 회사 진단받기" />
       </section>
 
       {/* ── 3. ★ 당신 회사의 OS — 인터랙티브 노드 캔버스 ── */}
@@ -205,6 +228,25 @@ export default function Home() {
         <MicroCta label="→ 우리 회사 진단도 이렇게 받아보기" />
       </section>
 
+      {/* ── 4.7 ROI 계산기 — 크몽식 단정(자동화율 65%) 대신 입력값 산수 + 회수 밴드 ── */}
+      <section id="roi" className="border-y border-[var(--line)] bg-[var(--panel)] scroll-mt-24">
+        <div className="mx-auto max-w-6xl px-5 py-24 md:py-28">
+          <Reveal>
+            <h2 className="display mt-3 max-w-2xl text-3xl sm:text-4xl">
+              반복업무에 매달
+              <br />
+              얼마가 나가고 있을까요
+            </h2>
+          </Reveal>
+          <Reveal delay={120}>
+            <div className="mt-14">
+              <RoiCalculator />
+            </div>
+          </Reveal>
+          <MicroCta label="→ 정확한 숫자는 무료 진단에서 받아보기" />
+        </div>
+      </section>
+
       {/* ── 5. 창업자 + howzero 팀 ── */}
       <section id="founder" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-24 md:py-28">
         <Reveal>
@@ -286,6 +328,23 @@ export default function Home() {
           </div>
         </Reveal>
         <MicroCta label="→ 우리 회사 업무도 이렇게 되는지 물어보기" />
+      </section>
+
+      {/* ── 5.5 FAQ — 06 문서 반박처리 R1~R6, 아코디언 없이 전 문항 펼침 ── */}
+      <section id="faq" className="border-y border-[var(--line)] bg-[var(--panel)] scroll-mt-24">
+        <div className="mx-auto max-w-6xl px-5 py-24 md:py-28">
+          <Reveal>
+            <h2 className="display mt-3 max-w-2xl text-3xl sm:text-4xl">
+              궁금한 건 미리 답해 두겠습니다
+            </h2>
+          </Reveal>
+          <Reveal delay={120}>
+            <div className="mt-14">
+              <Faq />
+            </div>
+          </Reveal>
+          <MicroCta label="→ 다른 질문은 무료 진단에서 물어보기" />
+        </div>
       </section>
 
       {/* ── 6. 가격 (임시 비공개) ── */}

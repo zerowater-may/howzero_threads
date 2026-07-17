@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 :root {
+  color-scheme: dark;      /* 네이티브 폼 컨트롤(range 트랙·체크박스·스크롤바)을 다크 기준으로 */
   --paper: #0a0a0a;        /* 페이지 배경 (다크) */
   --panel: #111113;        /* 교차 섹션 배경 */
   --card: #161618;         /* 카드 배경 */
@@ -130,6 +131,37 @@ input:focus-visible,
 textarea:focus-visible {
   outline: 2px solid var(--cobalt);
   outline-offset: 2px;
+}
+
+/* ROI 슬라이더 — UA 트랙이 color-scheme:dark를 무시하고 밝게 그려서 직접 스타일.
+   채움 비율은 컴포넌트가 --fill 인라인 변수로 주입 */
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 9999px;
+  background: linear-gradient(to right, var(--cobalt) var(--fill, 0%), var(--line) var(--fill, 0%));
+}
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+  background: var(--cobalt);
+  border: 3px solid #0e0e10;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+}
+.slider::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+.slider::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 9999px;
+  background: var(--cobalt);
+  border: 3px solid #0e0e10;
 }
 
 @keyframes rise {
