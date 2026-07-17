@@ -5,6 +5,8 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { PIPELINE_STAGES } from "@/lib/pipeline";
 import { getCompanyByToken, getClientPortalData } from "@/lib/client-portal";
+import { getPhasesByCompany } from "@/lib/phases";
+import { GanttTimeline } from "@/components/timeline/GanttTimeline";
 import { cn } from "@/lib/utils";
 
 const PROPOSAL_STATUS_LABEL: Record<string, string> = {
@@ -23,6 +25,7 @@ export default async function ClientPortalPage({ params }: { params: Promise<{ t
 
   const { currentStage, proposals, contracts, sharedDocs, timeline } = await getClientPortalData(company.id);
   const currentIdx = (PIPELINE_STAGES as readonly string[]).indexOf(currentStage);
+  const devRollup = await getPhasesByCompany(company.id);
 
   return (
     <div className="flex flex-col gap-10">
@@ -74,6 +77,14 @@ export default async function ClientPortalPage({ params }: { params: Promise<{ t
           현재 <span className="text-foreground">{currentStage}</span> 단계입니다.
         </p>
       </section>
+
+      {/* (1.5) 개발 진행 — AI가 고객사 언어로 정리한 진행 현황 */}
+      {devRollup.phases.length > 0 && (
+        <section className="flex flex-col gap-4">
+          <h2 className="display text-lg">개발 진행</h2>
+          <GanttTimeline rollup={devRollup} mode="client" />
+        </section>
+      )}
 
       {/* (2) 받은 제안 */}
       <section className="flex flex-col gap-4">

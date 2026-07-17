@@ -21,6 +21,9 @@ import { getDb } from "@/lib/db";
 import { requireStaff } from "@/lib/guard";
 import { addComment, addUpdate, regenerateShareToken } from "@/lib/actions/projects";
 import { createMeeting } from "@/lib/actions/meetings";
+import { getPhases } from "@/lib/phases";
+import { GanttTimeline } from "@/components/timeline/GanttTimeline";
+import { localizePhases } from "@/lib/actions/localize";
 import { cn } from "@/lib/utils";
 
 const STEPS = ["진단", "설계", "구축", "운영"] as const;
@@ -118,6 +121,13 @@ export default async function ProjectPage({
   );
   const meetings = meetingRows as unknown as MeetingRow[];
 
+  const rollup = await getPhases(projectId);
+
+  async function localizeAction(): Promise<void> {
+    "use server";
+    await localizePhases(projectId);
+  }
+
   async function createMeetingAction(formData: FormData): Promise<void> {
     "use server";
     const title = String(formData.get("title") || "");
@@ -174,6 +184,20 @@ export default async function ProjectPage({
             </div>
           ))}
         </div>
+
+        {rollup.phases.length > 0 && (
+          <div className="flex flex-col gap-3">
+            <div className="flex items-center justify-between">
+              <h2 className="display text-lg">진행 타임라인</h2>
+              <form action={localizeAction}>
+                <Button type="submit" size="sm" variant="outline">
+                  AI 고객요약 생성/갱신
+                </Button>
+              </form>
+            </div>
+            <GanttTimeline rollup={rollup} mode="staff" />
+          </div>
+        )}
 
         <Card>
           <CardHeader>

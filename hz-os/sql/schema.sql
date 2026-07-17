@@ -117,6 +117,30 @@ CREATE INDEX IF NOT EXISTS idx_projects_company ON projects(company_id);
 -- 고객 포털 접근 토큰 — client_token만으로 인증 없이 자기 딜 전체를 본다 (share_token 패턴).
 ALTER TABLE companies ADD COLUMN IF NOT EXISTS client_token TEXT;
 CREATE UNIQUE INDEX IF NOT EXISTS idx_companies_client_token ON companies(client_token);
+-- 고객사 언어 — AI 진행요약을 이 언어로 생성 (기본 한국어).
+ALTER TABLE companies ADD COLUMN IF NOT EXISTS client_lang TEXT DEFAULT 'ko';
+
+-- 프로젝트 진행 단계(phases) — 타임라인/간트 원천. 개발 플랜의 단계별 진행률.
+-- status: todo(done=0) / active(0<done<total) / done(done>=total). summary_client = AI 고객언어 요약 캐시.
+CREATE TABLE IF NOT EXISTS phases (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  company_id BIGINT,
+  project_id BIGINT,
+  seq INT NOT NULL DEFAULT 0,
+  name TEXT NOT NULL,
+  deliverable TEXT,
+  detail TEXT,
+  tasks_total INT NOT NULL DEFAULT 0,
+  tasks_done INT NOT NULL DEFAULT 0,
+  status TEXT NOT NULL DEFAULT 'todo',
+  start_at DATE,
+  target_at DATE,
+  summary_client TEXT,
+  client_lang TEXT,
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+CREATE INDEX IF NOT EXISTS idx_phases_project ON phases(project_id);
+CREATE INDEX IF NOT EXISTS idx_phases_company ON phases(company_id);
 
 -- append-only 이벤트 로그 (A2Z §3). 자동 히스토리·타임라인 원천.
 CREATE TABLE IF NOT EXISTS activity_log (
