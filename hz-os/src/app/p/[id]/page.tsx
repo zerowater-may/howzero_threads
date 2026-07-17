@@ -24,6 +24,7 @@ import { createMeeting } from "@/lib/actions/meetings";
 import { getPhases } from "@/lib/phases";
 import { GanttTimeline } from "@/components/timeline/GanttTimeline";
 import { localizePhases } from "@/lib/actions/localize";
+import { syncFromGithub } from "@/lib/actions/sync";
 import { cn } from "@/lib/utils";
 
 const STEPS = ["진단", "설계", "구축", "운영"] as const;
@@ -128,6 +129,11 @@ export default async function ProjectPage({
     await localizePhases(projectId);
   }
 
+  async function syncGithubAction(): Promise<void> {
+    "use server";
+    await syncFromGithub(projectId);
+  }
+
   async function createMeetingAction(formData: FormData): Promise<void> {
     "use server";
     const title = String(formData.get("title") || "");
@@ -189,11 +195,18 @@ export default async function ProjectPage({
           <div className="flex flex-col gap-3">
             <div className="flex items-center justify-between">
               <h2 className="display text-lg">진행 타임라인</h2>
-              <form action={localizeAction}>
-                <Button type="submit" size="sm" variant="outline">
-                  AI 고객요약 생성/갱신
-                </Button>
-              </form>
+              <div className="flex items-center gap-2">
+                <form action={syncGithubAction}>
+                  <Button type="submit" size="sm" variant="outline">
+                    GitHub 진행 동기화
+                  </Button>
+                </form>
+                <form action={localizeAction}>
+                  <Button type="submit" size="sm" variant="outline">
+                    AI 고객요약 생성/갱신
+                  </Button>
+                </form>
+              </div>
             </div>
             <GanttTimeline rollup={rollup} mode="staff" />
           </div>

@@ -1,6 +1,7 @@
 import { getDb } from "@/lib/db";
 import { newShareToken } from "@/lib/auth";
 import { localizeProjectPhases } from "@/lib/ai-localize";
+import { syncPhasesFromGithub } from "@/lib/github-sync";
 import { timingSafeEqual } from "crypto";
 
 // SHCO 코스 플랫폼 프로젝트를 hz-os에 시드(멱등). 진행률은 shco/admin의 superpowers 플랜 체크박스 기준.
@@ -150,9 +151,17 @@ export async function POST(req: Request) {
       }
     }
 
+    const sp = new URL(req.url).searchParams;
+
+    // ?source=github 이면 하드코딩 카운트 대신 레포 플랜 체크박스로 진행률 라이브 동기화.
+    let github: { ok: boolean; updated: number; error?: string } | undefined;
+    if (sp.get("source") === "github") {
+      github = await syncPhasesFromGithub(projectId);
+    }
+
     // ?localize=1 이면 AI 고객언어 요약도 한 번에 생성 (프로덕션 1회 curl로 완결).
     let localize: { ok: boolean; count: number; error?: string } | undefined;
-    if (new URL(req.url).searchParams.get("localize") === "1") {
+    if (sp.get("localize") === "1") {
       localize = await localizeProjectPhases(projectId);
     }
 
@@ -162,6 +171,7 @@ export async function POST(req: Request) {
       companyId,
       projectId,
       phases: { inserted, updated },
+      github,
       localize,
       clientPortal: `/client/${tok.rows[0]?.client_token ?? ""}`,
       staffProject: `/p/${projectId}`,
