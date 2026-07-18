@@ -32,7 +32,7 @@ export default async function ClientPortalPage({ params }: { params: Promise<{ t
       <div className="flex flex-col gap-2">
         <h1 className="display text-2xl">{company.name} 프로젝트 룸</h1>
         <p className="text-sm text-muted-foreground">
-          안녕하세요. howzero가 함께하는 프로젝트 진행 현황을 이곳에서 언제든 확인하실 수 있습니다.
+          안녕하세요. howzero와 진행하는 프로젝트 현황을 이곳에서 언제든 확인하실 수 있습니다.
         </p>
       </div>
 
