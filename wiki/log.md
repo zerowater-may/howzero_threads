@@ -1,5 +1,14 @@
 # HowZero Wiki Log
 
+## 2026-07-19 · update | howzero AX 자산 분리 — 원 레포 정리 (Task 8)
+
+- 요청: howzero AX 사업 자산이 새 레포 `hedgehogcandy/howzero-ax`로 이전·push 완료. 원 레포에서 이전분 삭제 + 포인터 정리.
+- 삭제: `docs/ax-business/`, `ax-web/`, `hz-os/`, AX 전환 브레인 wiki 페이지 8개(`HowZero AX Index/Brain/Content Strategy/Persona`, `HowZero Brand Messaging`, `HowZero Audience`, `AX Offer Map`, `HOWAAA Marketing AX Playbook`), `brands/howzero/howzero_misc_youtube-reference-research/`, `brands/howzero/howzero_misc_positioning-playground/`, AX 관련 misc 3개, AX 관련 spec/plan 문서 14개.
+- 보존: `docs/persona-howzero.md`, `docs/persona-howzero-identity.md` (사본 정책 — 원본 잔류).
+- 변경 페이지: `wiki/index.md`(AX 전환 브레인 섹션을 이전 안내 문구로 교체, 상단 브랜드 표 비고에 이전 표기), `brands/howzero/INDEX.md`(레거시 아카이브 경고 추가), 루트 `AGENTS.md`(프로젝트 구조 트리에서 `ax-web/` 줄을 분리 안내로 교체), `wiki/log.md`.
+- 핵심: 이 vault에는 이제 Commerce 축만 남는다. AX 전환 관련 질문/작업은 새 레포 `hedgehogcandy/howzero-ax`의 `persona/`·`strategy/`·`reference/`를 참조한다.
+
+
 ## 2026-06-11 · update | zipsaja 위키화 충돌 5종 정리
 
 - 요청: 위키화 중 발견한 정리 필요 5종을 "충돌 안 나게" 반영하고, 게시 규격은 최신 릴스 폼을 보고 확정.

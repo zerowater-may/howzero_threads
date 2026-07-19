@@ -8,7 +8,7 @@
 
 | 축 | 중심 페이지 | 대상 | 목적 | 섞지 말 것 |
 |---|---|---|---|---|
-| AX 전환 HowZero | [[HowZero AX Index]] | 기업 대표, 1인 사업자, 마케팅팀 | 마케팅 병목을 진단하고 콘텐츠-리드-팔로업-리포팅 자동화 구축 | 커머스 셀러 톤, 상품 태그, 불사자 CTA |
+| AX 전환 HowZero | [[HowZero AX Index]] | 기업 대표, 1인 사업자, 마케팅팀 | 마케팅 병목을 진단하고 콘텐츠-리드-팔로업-리포팅 자동화 구축 | 커머스 셀러 톤, 상품 태그, 불사자 CTA (별도 레포로 이전) |
 | Commerce HowZero | [[HowZero Commerce Index]] | 스마트스토어, 쿠팡, 구매대행 셀러 | 상세페이지, 상품 등록, 태그, 플랫폼 리스크 자동화 콘텐츠 제작 | B2B AX 컨설턴트 톤, SaaS 10억 권위 남발 |
 
 ## 별도 브랜드 브레인
@@ -20,18 +20,7 @@
 
 ## AX 전환 브레인
 
-| 페이지 | 요약 | 주요 소스 |
-|---|---|---|
-| [[HowZero AX Index]] | AX 전환 작업 진입점 | `wiki/HowZero AX Brain.md` |
-| [[HowZero AX Brain]] | AX 전환/마케팅 AX 본체의 중심 페이지 | `docs/persona-howzero.md`, `docs/marketing/P2-howaaa-*` |
-| [[HowZero AX Persona]] | AX 전환 하우제로의 말투, 권위, 금지 표현 | `docs/persona-howzero.md`, `docs/persona-howzero-identity.md` |
-| [[HOWAAA Marketing AX Playbook]] | 마케팅 AX 병목 6종, 랜딩 구조, CTA | `docs/marketing/P2-howaaa-ax-consulting-landing-benchmark.md` |
-| [[AX Offer Map]] | 무료 오딧, Content Engine, Lead Engine, Growth OS 상품 계단 | `docs/howzero-product-lineup-market-research.md`, `docs/marketing/P2-howaaa-*` |
-| [[HowZero AX Content Strategy]] | AX 전환 콘텐츠 퍼널과 채널별 역할 | `docs/MARKETING-MASTER-STRATEGY.md`, `docs/social-media-positioning.md` |
-| [[AX Reference Library]] | AX 유튜브/크리에이터 레퍼런스를 콘텐츠, 오퍼, 퍼널 설계로 변환하는 저장소 | vidIQ MCP, YouTube, Skool, 크리에이터 공개 링크 |
-| [[HOWAAA Methodology]] | Audit, Automate, Accumulate 3단계 방법론 | `docs/persona-howzero.md`, `docs/MARKETING-MASTER-STRATEGY.md` |
-| [[HowZero Product Lineup]] | AX 본체 서비스, 교육, 디지털 상품, SaaS까지의 4층 수익 구조 | `docs/howzero-product-lineup-market-research.md` |
-| [[HowZero Ingest Workflow]] | 외부 자료를 AX/Commerce 브레인에 맞게 인제스트하고 변환하는 표준 절차 | `wiki/AGENTS.md` |
+2026-07-19 별도 레포 `hedgehogcandy/howzero-ax`의 `persona/`·`strategy/`로 이전했다. 이 vault에는 Commerce 축만 남는다.
 
 ## 커머스 브레인
 
