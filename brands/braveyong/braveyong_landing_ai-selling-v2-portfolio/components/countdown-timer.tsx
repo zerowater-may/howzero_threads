@@ -25,7 +25,7 @@ export function CountdownTimer({
   className = "",
   compact = false,
   deadline,
-  label = "얼리버드 마감까지",
+  label = "개강 전 결제 마감까지",
 }: {
   className?: string
   /** 모바일/sticky용 단일 줄 압축 표기 */

@@ -4,7 +4,7 @@ import Image from "next/image"
 import { useState, type ReactNode } from "react"
 import { ChevronDown, X } from "lucide-react"
 import { Section } from "./section"
-import { highlights, captures, week1Reviews } from "@/lib/testimonials"
+import { highlights, captures, week1Reviews, cohort1Reviews } from "@/lib/testimonials"
 
 /**
  * 04 후기 벽 — 하이브리드 (시안 A).
@@ -35,11 +35,75 @@ export function TestimonialWall({
         "이 8장은 그동안 진행한 스터디·라이브 클래스 카페에 실제로 달린 후기에서 따왔어요. 원본 캡처는 아래 ▼ 더 보기로 50장 전부 보실 수 있습니다."
       }
     >
-      {/* ── 1주차 실전 후기 (featured) — 카톡 후기 발췌, 후킹 핵심 밑줄 + 결과 인증 ── */}
+      {/* ── 1기 진행 중 후기 (featured) — 2주차까지 실제로 온 카톡 원문 ── */}
       <div className="mb-10">
         <div className="mb-4 flex flex-wrap items-center gap-2">
           <span className="font-mono inline-flex items-center rounded-full bg-brand px-3 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-brand-foreground">
-            🔥 1주차 실전 후기
+            1기 진행 중 후기
+          </span>
+          <span className="text-sm font-bold tracking-tight text-foreground sm:text-base">
+            지금 1기가 겪고 있는 일입니다.
+          </span>
+        </div>
+        <div className="grid gap-3 md:grid-cols-3">
+          {cohort1Reviews.map((r, i) => (
+            <article
+              key={i}
+              className={`flex flex-col border-2 bg-background p-5 ${
+                r.proof ? "border-brand shadow-[0_6px_0_var(--foreground)]" : "border-foreground"
+              }`}
+            >
+              <header className="font-mono mb-3 flex items-center justify-between text-[10px] font-bold uppercase tracking-[0.08em]">
+                <span>{r.name}</span>
+                <span className="opacity-55">{r.source}</span>
+              </header>
+              <p className="text-sm leading-relaxed text-foreground/85">
+                “
+                {r.parts.map((p, j) =>
+                  "u" in p ? (
+                    <u
+                      key={j}
+                      className="font-bold text-foreground decoration-brand decoration-2 underline-offset-[3px]"
+                    >
+                      {p.u}
+                    </u>
+                  ) : (
+                    <span key={j}>{p.t}</span>
+                  ),
+                )}
+                ”
+              </p>
+              {r.proof && (
+                <div className="mt-4 flex items-center gap-3 border-2 border-brand bg-brand/[0.06] px-3 py-2.5">
+                  <span className="text-lg font-extrabold leading-none tracking-tight text-brand sm:text-xl">
+                    {r.proof.rank}
+                  </span>
+                  <span className="text-[11px] leading-tight text-foreground/70">
+                    {r.proof.sub}
+                    <br />
+                    {r.proof.note}
+                  </span>
+                </div>
+              )}
+              <a
+                href={r.capture}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-track={`cohort1_capture_${i + 1}`}
+                className="font-mono mt-auto pt-4 inline-flex items-center gap-1 self-start text-[10px] font-bold uppercase tracking-[0.1em] text-foreground/45 underline underline-offset-2 transition-colors hover:text-foreground"
+              >
+                카톡 원본 보기
+              </a>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      {/* ── 1주차 후기 — 결제 직후 첫 주 반응 ── */}
+      <div className="mb-10">
+        <div className="mb-4 flex flex-wrap items-center gap-2">
+          <span className="font-mono inline-flex items-center rounded-full border-2 border-foreground px-3 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-foreground">
+            1주차 후기
           </span>
           <span className="text-sm font-bold tracking-tight text-foreground sm:text-base">
             결제하고 첫 주, 벌써 결과가 나왔습니다.

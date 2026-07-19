@@ -1,104 +1,161 @@
-import { ChevronRight, Lock } from "lucide-react"
+import { Lock } from "lucide-react"
 import { Section } from "./section"
 import { course } from "@/lib/config"
 
 /**
- * 08 5주 커리큘럼 — 좌→우 5블럭 대분류 (소싱→가공→판매→광고→시스템화).
- * 다른 강사 전략 노출 방지 위해 상세 topics/outputs/scene은 blur+잠금.
- * 2기 신청 후 공개.
+ * 08 커리큘럼 — 무료특강 덱(P1~P12) 근거로 전면 재구성 (2026-07-20).
+ *
+ * 이전 버전은 "소싱→가공→판매→광고→시스템화" 5블럭이었는데,
+ * 덱 전체에 광고 커리큘럼 근거가 없었다(광고 언급은 강사 근황 한 문장뿐).
+ * 덱이 실제로 가르치는 뼈대는 다섯 칸(소싱·등록·노출·전환·CS)이고,
+ * 실전반은 그 앞에 "AI 직원 설치·세팅"이 붙는 구조다 (덱 p10-05~08 '설치의 벽').
+ *
+ * 공개 범위: 무엇을 하는지(WHAT)는 무료특강에서 이미 다 공개하므로 열어두고,
+ * 구체적 세팅값·지침 원문(HOW)만 잠근다. 통째로 블러 처리하면
+ * 220만원 결제 판단에 필요한 정보까지 가려진다.
  */
-const blocks: { n: number; label: string; sub: string }[] = [
-  { n: 1, label: "소싱",       sub: "현재 상태 진단 + 후보 상품 발굴" },
-  { n: 2, label: "가공",       sub: "상품명 · 카테고리 · AI 상세" },
-  { n: 3, label: "판매",       sub: "등록 + 대표이미지 + 전환 체크" },
-  { n: 4, label: "광고",       sub: "검색·쇼핑 광고 운영 기초" },
-  { n: 5, label: "시스템화",   sub: "나만의 AI 직원 세팅 + 효자상품 10개 점검" },
+const weeks: {
+  n: number
+  label: string
+  sub: string
+  does: string[]
+  output: string
+}[] = [
+  {
+    n: 1,
+    label: "AI 직원 세팅",
+    sub: "설치의 벽을 같이 넘습니다",
+    does: [
+      "디스코드 + 코덱스 연결 — 내 컴퓨터에 직접",
+      "내 스토어에 맞춘 업무별 지침 세팅",
+      "채팅으로 일 시켜보고 결과물 받아보기",
+    ],
+    output: "내 이름으로 돌아가는 AI 직원 1명",
+  },
+  {
+    n: 2,
+    label: "소싱",
+    sub: "감이 아니라 데이터로 고릅니다",
+    does: [
+      "셀러라이프 키워드 데이터 내려받기",
+      "상품 수 1만 개 이하 · 해외배송 비율 10~50% 필터",
+      "데이터가 거른 뒤 사람이 마지막에 결정하는 순서",
+    ],
+    output: "수만 행에서 걸러낸 소싱 후보 목록",
+  },
+  {
+    n: 3,
+    label: "노출",
+    sub: "안 보이는 상품은 없는 상품입니다",
+    does: [
+      "적합도 7칸 — 상품명·카테고리·브랜드·제조사·마켓명·속성·태그",
+      "텀 카운트 기준으로 상품명 짓기",
+      "남들이 귀찮아서 안 채우는 속성 체크박스 채우기",
+    ],
+    output: "SEO 검증 끝낸 상품명 + 속성 다 채운 등록",
+  },
+  {
+    n: 4,
+    label: "전환",
+    sub: "들어온 사람을 결제까지 데려갑니다",
+    does: [
+      "4칸 지침 — 역할·기준·금지·출력 직접 작성",
+      "상세페이지 설득 순서를 지침으로 옮기기",
+      "결과물이 아니라 지침을 고치는 방식",
+    ],
+    output: "내가 쓴 지침 + AI가 뽑은 상세페이지·썸네일 초안",
+  },
+  {
+    n: 5,
+    label: "CS · 시스템화",
+    sub: "다섯 칸을 전부 위임합니다",
+    does: [
+      "CS 답변 초안까지 지침으로 넘기기",
+      "아침에 지시 → 낮에 진행 → 저녁 검수 루틴",
+      "최종 검수 30분 기준 만들기",
+    ],
+    output: "다섯 칸이 돌아가는 내 시스템",
+  },
 ]
 
-/** 잠긴 상세 — blur로 미리보기만 (실제 keyword는 의도적으로 약하게) */
-const lockedTeasers = [
-  "키워드 의도 분석 · 카테고리 매핑 프레임",
-  "상품명 SEO 5단 검증법 · 대표이미지 A/B 패턴",
-  "상세페이지 스토리보드 · 구매 이유 → 불안 제거 순서",
-  "쇼핑 광고 입찰 기준 · CPC 관리 루틴",
-  "AI 직원 세팅(디스코드+클로드코드) · 업무 지시문 템플릿",
+/** 잠긴 부분 — 구체적 세팅값·원문. 무료특강에서도 공개하지 않는 것만. */
+const locked = [
+  "상위 노출되는 세팅값 기준 — 남들이 모르는 부분",
+  "업무별 지침 풀세트 원문 (계속 업데이트되는 버전)",
+  "내 상품명 검토 피드백 · 테스트 기록 시트 코멘트",
 ]
 
 export function Curriculum() {
   return (
     <Section
       id="curriculum"
-      label="5주 커리큘럼"
-      title={<>오프라인 {course.offlineCount}회 + 줌 보강 {course.zoomCount}회</>}
-      lead="대분류만 공개합니다. 상세 커리큘럼·실습 자료는 2기 신청 후 따로 안내드려요."
+      label={`${course.weeks}주 커리큘럼`}
+      title={<>토요일 오프라인 {course.offlineCount}회 + 수요일 줌 보강</>}
+      lead="오프라인에서 배우고, 그 주 평일 저녁에 막힌 걸 줌으로 풉니다. 노트북 들고 오시면 그 자리에서 직접 돌려보는 방식이에요."
     >
-      {/* 좌→우 5블럭 horizontal flow — 모바일은 vertical */}
       <div className="grid gap-3 md:grid-cols-5">
-        {blocks.map((b, i) => (
+        {weeks.map((w) => (
           <div
-            key={b.n}
-            className="group relative border-2 border-foreground bg-background p-5 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_6px_0_var(--foreground)] sm:p-6"
+            key={w.n}
+            className="group relative flex flex-col border-2 border-foreground bg-background p-5 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_6px_0_var(--foreground)]"
           >
-            <div className="font-mono mb-2 flex items-center justify-between text-[10px] font-bold uppercase tracking-[0.15em] text-foreground/55">
-              <span>WEEK {String(b.n).padStart(2, "0")}</span>
+            <div className="font-mono mb-2 text-[10px] font-bold uppercase tracking-[0.15em] text-foreground/55">
+              WEEK {String(w.n).padStart(2, "0")}
             </div>
-            <h3 className="text-xl font-bold tracking-tight sm:text-2xl">{b.label}</h3>
-            <p className="mt-2 text-xs leading-relaxed text-foreground/65 sm:text-sm">{b.sub}</p>
+            <h3 className="text-lg font-bold tracking-tight sm:text-xl">{w.label}</h3>
+            <p className="mt-1 text-xs leading-relaxed text-foreground/65">{w.sub}</p>
 
-            {/* 화살표 — 데스크탑만 (블럭 사이 4개) */}
-            {i < blocks.length - 1 && (
-              <ChevronRight
-                className="absolute -right-[16px] top-1/2 z-10 hidden h-7 w-7 -translate-y-1/2 rounded-full bg-background p-0.5 text-foreground/40 ring-2 ring-background md:block"
-                aria-hidden
-              />
-            )}
+            <ul className="mt-3 space-y-1.5 border-t border-foreground/10 pt-3">
+              {w.does.map((d) => (
+                <li key={d} className="flex gap-1.5 text-[11px] leading-relaxed text-foreground/75">
+                  <span className="mt-[7px] h-1 w-1 flex-none rounded-full bg-brand" aria-hidden />
+                  {d}
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-auto pt-3">
+              <div className="font-mono text-[9px] font-bold uppercase tracking-[0.12em] text-foreground/45">
+                손에 남는 것
+              </div>
+              <div className="mt-0.5 text-[11px] font-bold leading-snug text-foreground">{w.output}</div>
+            </div>
           </div>
         ))}
       </div>
 
-      {/* 상세 보기 — blur 잠금 카드. 호기심 살리는 동시에 전략 보호 */}
-      <div className="relative mt-8 overflow-hidden border-2 border-foreground bg-background">
-        {/* 미리보기 (blur) */}
-        <div
-          aria-hidden
-          className="pointer-events-none select-none divide-y divide-foreground/10 px-6 py-5 blur-[3px] opacity-55"
-        >
-          {blocks.map((b, i) => (
-            <div key={b.n} className="flex items-start gap-4 py-3">
-              <div className="font-mono flex h-10 w-10 flex-none flex-col items-center justify-center bg-foreground text-background">
-                <span className="text-base font-bold leading-none">{b.n}</span>
-                <span className="text-[8px] opacity-70">WEEK</span>
-              </div>
-              <div className="flex-1">
-                <div className="text-base font-bold tracking-tight">{b.label}</div>
-                <div className="mt-1 text-sm text-foreground/70">{lockedTeasers[i]}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* 오버레이 — 잠금 메시지 */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-background/55 backdrop-blur-[2px]">
-          <div className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-foreground bg-foreground text-background shadow-[0_4px_0_rgba(0,0,0,0.25)]">
-            <Lock className="h-6 w-6" aria-hidden />
+      {/* 잠긴 부분 — 결제자에게만 가는 것 */}
+      <div className="mt-8 border-2 border-foreground bg-background p-6">
+        <div className="flex items-start gap-4">
+          <div className="flex h-11 w-11 flex-none items-center justify-center rounded-full border-2 border-foreground bg-foreground text-background">
+            <Lock className="h-5 w-5" aria-hidden />
           </div>
-          <div className="text-center">
+          <div className="flex-1">
             <div className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-foreground/55">
-              상세 커리큘럼
+              여기까지만 공개합니다
             </div>
-            <div className="mt-1 text-lg font-bold tracking-tight sm:text-xl">
-              2기 신청 후 공개합니다.
+            <div className="mt-1 text-lg font-bold tracking-tight">
+              세팅값과 지침 원문은 {course.cohort} 수강생에게만 갑니다.
             </div>
-            <p className="font-memo mt-2 max-w-md text-center text-sm leading-relaxed text-foreground/70 sm:text-base">
-              실습 자료·체크리스트·프레임은 결제 확정자에게만 보내드려요.
+            <ul className="mt-3 space-y-1.5">
+              {locked.map((l) => (
+                <li key={l} className="flex gap-2 text-sm leading-relaxed text-foreground/70">
+                  <span className="mt-[9px] h-1 w-1 flex-none rounded-full bg-foreground/40" aria-hidden />
+                  {l}
+                </li>
+              ))}
+            </ul>
+            <p className="font-memo mt-4 text-sm leading-relaxed text-foreground/70 sm:text-base">
+              무료특강에서 드리는 자료는 그날 날짜 버전이에요. 실전반은 지침이 업데이트될 때마다 계속 받으시고,
+              무엇보다 <span className="font-bold text-foreground">그 지침을 사장님 스토어에 맞춰 제가 직접 세팅해 드립니다.</span>
             </p>
           </div>
         </div>
       </div>
 
-      {/* 안내 한 줄 — 진심 감성 */}
       <p className="font-memo mt-6 text-sm leading-relaxed text-foreground/70 sm:text-base">
-        ※ 제 2기 수강생분들에게 진심이고 싶어서요. 손에 잡히는 자료·체크리스트는 결제하신 분들께만 직접 보내드립니다.
+        ※ 온라인 수강은 이번에도 받지 않습니다. 상품명 하나하나 봐드리고 테스트 기록에 코멘트를 다는 방식이라,
+        오프라인 {course.capacityMax}명이 제가 감당할 수 있는 최대예요.
       </p>
     </Section>
   )

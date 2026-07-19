@@ -1,12 +1,17 @@
 import Image from "next/image"
 import Link from "next/link"
-import { config, course } from "@/lib/config"
+import { config, course, priceText } from "@/lib/config"
+import { PaymentDialog } from "./payment-dialog"
+import { CountdownTimer } from "./countdown-timer"
 
 /**
- * 01 Hero — 포트폴리오 1컬럼 중앙 (시안 A) + 타임어택 오퍼.
- * ○ 얼굴(grayscale 원형) → 이름 UPPERCASE → 서브라인 → 한 단락
- * → [얼리버드 마감 임박 배지 + 카운트다운 + 가격 앵커 + 결제 CTA]
- * Clarity 실측: 평균 스크롤 28%, 거의 안 내림 → 오퍼(가격+카운트다운+결제버튼)를 첫 화면에 전부 노출.
+ * 01 Hero — 포트폴리오 1컬럼 중앙 + 오퍼 박스.
+ * ○ 얼굴(grayscale 원형) → 이름 → 임팩트 카피 → [가격·마감·결제 CTA] → 보조 링크
+ *
+ * 2026-07-20: 이 주석은 원래 "오퍼를 첫 화면에 전부 노출"이라고 써 있었지만
+ * 실제 코드엔 가격도 카운트다운도 결제 버튼도 없었고, 첫 화면 유일한 액션이
+ * 카톡 단톡방 링크(=이탈)였다. Clarity 실측 평균 스크롤 28%면 대부분이
+ * 이 화면에서 끝나므로, 오퍼를 실제로 넣었다.
  */
 export function Hero() {
   return (
@@ -52,13 +57,37 @@ export function Hero() {
               시키는 셀러로.
             </p>
             <p className="text-sm leading-relaxed text-foreground/65 sm:text-base">
-              5주 동안 AI 직원을 같이 세팅하고, 그 직원과 효자상품 10개를 만듭니다.
+              {course.weeks}주 동안 AI 직원을 같이 세팅하고, 소싱부터 CS까지 다섯 칸을 넘깁니다.
+            </p>
+          </div>
+
+          {/* 오퍼 — 가격·마감·결제 버튼을 첫 화면에. 평균 스크롤 28%라 여기서 끝나는 사람이 가장 많다. */}
+          <div className="hz-fade-up hz-delay-3 mx-auto max-w-md border-2 border-brand bg-background p-5 sm:p-6">
+            <div className="font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-brand">
+              {course.cohort} 모집 중 · 정원 {course.capacityMax}명
+            </div>
+            <div className="mt-2 flex items-baseline justify-center gap-2">
+              <span className="text-4xl font-bold tracking-tight tabular-nums sm:text-5xl">
+                {priceText.total}
+              </span>
+              <span className="text-sm font-bold text-foreground/65">부가세 포함</span>
+            </div>
+            <div className="mt-2">
+              <CountdownTimer className="text-foreground" label="개강 전 결제 마감까지" />
+            </div>
+            <PaymentDialog
+              amount={course.priceFirst}
+              label={priceText.payLabel}
+              className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-brand bg-brand px-6 py-4 text-base font-bold tracking-tight text-brand-foreground transition-all hover:opacity-90 sm:text-lg"
+            />
+            <p className="mt-2.5 text-xs leading-relaxed text-foreground/60">
+              {course.startDate} 개강 · 이름과 연락처만 넣으면 결제창이 바로 열려요
             </p>
           </div>
 
           {/* 보조 — 결제 전 궁금하면 단톡방. 작게. */}
           <p className="hz-fade-up hz-delay-4 text-xs leading-relaxed text-foreground/55 sm:text-sm">
-            {course.cohort} 모집 중 · 결제 전에 궁금한 게 있으면{" "}
+            결제 전에 궁금한 게 있으면{" "}
             <Link
               href={config.kakaoOpenChatUrl}
               target="_blank"

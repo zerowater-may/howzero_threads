@@ -1,9 +1,13 @@
 import { Signature } from "./handwriting"
-import { config, course } from "@/lib/config"
+import { course, priceText } from "@/lib/config"
 import { PaymentDialog } from "./payment-dialog"
 import { CountdownTimer } from "./countdown-timer"
 
-/** 18 최종 CTA (다크) — 결제 단일 CTA + 타임어택 + 흰 펜글씨 서명 */
+/**
+ * 18 최종 CTA (다크) — 결제 단일 CTA + 개강 전 마감 + 흰 펜글씨 서명.
+ * 결제 버튼 바로 아래 있던 "신청서부터 작성하기"(구글폼)는 제거.
+ * 마지막 화면에서 결제 대신 폼으로 새는 경로였다.
+ */
 export function FinalCTA() {
   return (
     <section className="bg-foreground px-4 py-24 text-background sm:px-6 sm:py-28">
@@ -15,58 +19,41 @@ export function FinalCTA() {
         </p>
 
         <h2 className="text-3xl font-bold uppercase leading-tight tracking-tight sm:text-4xl md:text-5xl">
-          정원 마감 전까지만<br className="sm:hidden" /> 얼리버드가
+          {course.cohort} 개강 전까지만<br className="sm:hidden" /> 받습니다
         </h2>
         <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-background/70 sm:text-lg">
           혼자 다 하는 방식, 정말로 한번 바꿔보고 싶으시면{" "}<br className="hidden sm:block" />
           그때 하신 그 결심, 지금 바로 잡으세요.
         </p>
 
-        {/* 가격 앵커링 + 얼리버드 마감 urgency */}
+        {/* 가격 — 결제창에 찍히는 숫자 그대로 */}
         <div className="mx-auto mt-8 inline-flex flex-col items-center gap-1">
-          <span className="text-sm text-background/50">
-            <s>정가 250만원</s>
-          </span>
-          <span className="text-4xl font-bold tabular-nums sm:text-5xl">
-            지금 230만원
-          </span>
+          <span className="text-4xl font-bold tabular-nums sm:text-5xl">{priceText.total}</span>
           <span className="font-mono mt-1 text-[11px] uppercase tracking-[0.14em] text-background/55">
-            부가세 별도
+            부가세 포함 · 정원 {course.capacityMax}명
           </span>
         </div>
 
         <div className="mt-6 flex flex-col items-center gap-3">
           <p className="text-sm font-bold text-background sm:text-base">
-            얼리버드 마감 임박 · 마감 후 정가 250만원
+            {course.startDate} 개강 · 개강하면 {course.cohort}는 닫힙니다
           </p>
-          <CountdownTimer className="text-background" />
+          <CountdownTimer className="text-background" label="개강 전 결제 마감까지" />
         </div>
 
         <div className="mt-8 flex justify-center">
           <div data-track="final_pay" className="contents">
             <PaymentDialog
               amount={course.priceFirst}
-              label="얼리버드가 — 지금 결제 230만원"
+              label={priceText.payLabel}
               dark
               className="inline-flex w-full max-w-md items-center justify-center gap-2 rounded-full border-2 border-brand bg-brand px-8 py-5 text-base font-bold uppercase tracking-[0.08em] text-brand-foreground transition-all hover:opacity-90 sm:text-lg"
             />
           </div>
         </div>
 
-        <div className="mt-4 flex justify-center">
-          <a
-            href={config.googleFormUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="신청서 작성하기 — 약 1분, 새 창에서 열림"
-            data-track="final_apply_form"
-            className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-background bg-transparent px-6 py-3.5 text-sm font-bold text-background transition-all hover:bg-background hover:text-foreground"
-          >
-            신청서부터 작성하기 (약 1분)
-          </a>
-        </div>
-
         <p className="mt-6 text-xs leading-relaxed text-background/55 sm:text-sm">
+          이름과 연락처만 넣으면 결제창이 바로 열립니다.<br />
           결제하시면 용팀장이 카톡으로 1주차 일정·장소를 직접 챙겨 드릴게요.
         </p>
 

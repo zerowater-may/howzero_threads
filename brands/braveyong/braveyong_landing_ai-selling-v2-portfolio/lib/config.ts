@@ -12,8 +12,11 @@ const isGoogleFormUrlMissing =
 export const config = {
   // 폼 URL 미설정 시 페이지 top 튀는 것 방지 — 신청 섹션(#apply)으로 부드러운 스크롤
   googleFormUrl: isGoogleFormUrlMissing ? "#apply" : rawGoogleFormUrl,
-  /** 얼리버드가 마감 ISO datetime (7/10까지) — 카운트다운 종료 후 자동 숨김 */
-  cohort1Deadline: process.env.NEXT_PUBLIC_COHORT1_DEADLINE || "2026-07-10T23:59:59+09:00",
+  /**
+   * 2기 결제 마감 ISO datetime — 개강(7/25) 전날 자정.
+   * 가짜 타이머가 아니라 "개강하면 못 들어온다"는 실제 마감. 지나면 카운트다운 자동 숨김.
+   */
+  cohort1Deadline: process.env.NEXT_PUBLIC_COHORT1_DEADLINE || "2026-07-24T23:59:59+09:00",
   youtubeFreeUrl: process.env.NEXT_PUBLIC_YOUTUBE_FREE_URL || "#",
   contactEmail: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "braveyong@example.com",
   ga4Id: process.env.NEXT_PUBLIC_GA4_ID || "",
@@ -37,22 +40,46 @@ export const config = {
 export const course = {
   name: "5주 오프라인 AI 셀링 실전반",
   cohort: "2기",
-  // ── 가격 ──
-  // 화면 표기는 공급가(부가세 별도)로 230만/250만을 보여주고,
-  // 실제 결제선생 청구는 부가세 포함 금액(priceFirst/priceRegular)으로 나간다.
-  priceFirst: 2_530_000,           // 얼리버드(7/10까지) 결제액 = 공급가 230만 + VAT (부가세 포함)
-  priceRegular: 2_750_000,         // 정가(7/10 이후) 결제액 = 공급가 250만 + VAT (부가세 포함)
-  priceFirstSupply: 2_300_000,     // 화면 표기용 공급가 — "230만원 (부가세 별도)"
-  priceRegularSupply: 2_500_000,   // 화면 표기용 공급가 — "250만원 (부가세 별도)"
-  capacityMin: 10,                 // 페이지 노출 X (내부 운영 기준)
-  capacityMax: 15,                 // 페이지 노출 X
+  // ── 가격 (2기 확정 · 2026-07-20) ──
+  // 단일 가격 구조. 화면 헤드라인은 부가세 포함 220만원으로 노출하고,
+  // 공급가 200만원(부가세 별도)을 보조 표기한다. 결제선생 청구액 = priceFirst.
+  // 얼리버드/정가 이중 구조는 폐지 — 가짜 앵커 대신 1기 198만 → 2기 220만 실제 이력만 쓴다.
+  priceFirst: 2_200_000,           // 실제 결제액 = 공급가 200만 + VAT 20만 (부가세 포함)
+  priceFirstSupply: 2_000_000,     // 화면 표기용 공급가 — "200만원 (부가세 별도)"
+  priceCohort1: 1_980_000,         // 1기 실제 결제액 — 인상 폭을 정직하게 밝히는 용도
+  /** 카드 할부 안내용 — 6개월 무이자 시 월 납입액 (priceFirst / 6, 만원 단위 반올림) */
+  priceMonthly6: 367_000,
+  capacityMax: 20,                 // 2기 정원 — 덱 p10-10 기준 (1기 25명 → 2기 20명, 케어 가능한 최대)
+  cohort1Count: 25,                // 1기 실제 신청 인원 — 덱 p10-10b 근거
   freeLectureDate: "2026-07-20 (월) 19:00",
-  startDate: "2026-07-25 (토)",
-  endDate: "2026-08-22 (토)",
+  startDate: "7월 25일 토요일",   // 화면 표기용 — 기계적인 ISO 날짜 대신 읽히는 형태
+  endDate: "8월 22일 토요일",
   weeks: 5,
   offlineCount: 5,
   zoomCount: 4,
   location: "서울 강남",
   detailAddress: "참여 확정자에게 안내",
   scheduleTime: "추후 안내",       // 운영 입력 필요
+} as const
+
+/**
+ * 화면 표기용 가격 문자열 — 금액 하드코딩 금지용 단일 출처.
+ * 과거 "230만원/250만원/42만원"이 16곳에 흩어져 버튼 라벨(230만)과
+ * 결제 모달 금액(2,530,000원)이 서로 달라 보이는 사고가 있었다.
+ * 금액은 course만 고치면 아래가 전부 따라온다.
+ */
+const wan = (n: number) => `${(n / 10000).toLocaleString()}만원`
+
+export const priceText = {
+  /** 부가세 포함 실제 결제액 — 화면 헤드라인·버튼 라벨은 전부 이걸 쓴다 */
+  total: wan(course.priceFirst),
+  /** 공급가 (부가세 별도) */
+  supply: wan(course.priceFirstSupply),
+  vat: wan(course.priceFirst - course.priceFirstSupply),
+  /** 1기 실제 결제액 — 인상 폭을 밝히는 정직한 앵커 */
+  cohort1: wan(course.priceCohort1),
+  /** 6개월 무이자 할부 시 월 납입액 — 만원 단위 반올림 (36.7만원처럼 소수점 노출 방지) */
+  monthly6: `${Math.round(course.priceMonthly6 / 10000).toLocaleString()}만원`,
+  /** 결제 버튼 기본 라벨 — 모달 안 금액과 반드시 같은 숫자 */
+  payLabel: `지금 결제하기 — ${wan(course.priceFirst)}`,
 } as const

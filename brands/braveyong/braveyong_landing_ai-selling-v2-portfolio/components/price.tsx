@@ -2,95 +2,95 @@ import { Section } from "./section"
 import { ArrowNote } from "./handwriting"
 import { CountdownTimer } from "./countdown-timer"
 import { PaymentDialog } from "@/components/payment-dialog"
-import { config, course } from "@/lib/config"
+import { config, course, priceText } from "@/lib/config"
 
 /**
- * 14 가격 — 얼리버드(7/10) 마감 전까지 타임어택 오퍼.
- * 정가 250만원 strike + 얼리버드가 230만원 강조 + 카운트다운 + 즉시 결제.
- * 신청서/구글폼 흐름 제거 — 결제 단일 CTA.
+ * 14 가격 — 2기 단일가 구조 (2026-07-20 확정).
+ * 얼리버드/정가 이중 표기 폐지. 부가세 포함 220만원 하나만 크게 보여주고,
+ * 앵커는 가짜 정가 대신 1기 실제 결제액(198만)을 쓴다.
+ * 카운트다운 = 개강(7/25) 전날 마감이라는 실제 마감.
  */
+const priceWan = (course.priceFirst / 10000).toLocaleString()          // 220
+const supplyWan = (course.priceFirstSupply / 10000).toLocaleString()   // 200
+const cohort1Wan = (course.priceCohort1 / 10000).toLocaleString()      // 198
+
 export function Price() {
   return (
     <Section id="price" label="가격" title={<>가격은 공개합니다.</>}>
       <div className="grid gap-5 lg:grid-cols-[1.15fr_0.85fr]">
         <div className="relative border-2 border-[var(--warm-border)] bg-background p-7 shadow-[0_18px_50px_rgba(0,0,0,0.06)]">
           <span className="font-mono absolute -top-3 left-6 inline-block bg-brand px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.12em] text-brand-foreground">
-            얼리버드 마감 임박 · 얼리버드가
+            {course.cohort} 정원 {course.capacityMax}명
           </span>
           <div className="text-sm font-bold text-foreground/70">
-            5주 오프라인 AI 셀링 실전반 · {course.cohort}
+            {course.name} · {course.cohort}
           </div>
 
-          {/* 타임어택 카운트다운 — 얼리버드 마감 (마감 후 자동 숨김) */}
+          {/* 개강 전 결제 마감 카운트다운 (마감 후 자동 숨김) */}
           <div className="mt-3">
-            <CountdownTimer className="text-brand" />
+            <CountdownTimer className="text-brand" label="개강 전 결제 마감까지" />
           </div>
 
-          {/* 가격 앵커링 — 정가 250만 strike + 얼리버드가 230만 큰 숫자 */}
-          <div className="mt-3 flex items-baseline gap-3">
-            <s className="text-2xl font-bold text-foreground/40 tabular-nums">
-              {(course.priceRegularSupply / 10000).toLocaleString()}만원
-            </s>
-            <span className="font-mono rounded-full bg-[var(--warm)] px-2 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--warm-border)]">
-              마감 후 정가
+          {/* 가격 — 부가세 포함 총액을 크게. 결제창에 찍히는 숫자와 같게 한다. */}
+          <div className="mt-4 flex items-baseline gap-2">
+            <span className="text-6xl font-bold tracking-tight tabular-nums">{priceWan}</span>
+            <span className="text-xl font-bold text-foreground/70">만원</span>
+          </div>
+          <div className="mt-1.5 text-sm font-bold text-foreground/75">
+            부가세 포함 · 실제 결제되는 금액입니다
+            <span className="ml-2 font-normal text-foreground/55">
+              (공급가 {supplyWan}만원 + 부가세 {(course.priceFirst - course.priceFirstSupply) / 10000}만원)
             </span>
           </div>
-          <div className="mt-1 text-5xl font-bold tracking-tight tabular-nums">
-            {(course.priceFirstSupply / 10000).toLocaleString()}
-            <span className="ml-1 text-lg font-bold text-foreground/65">만원</span>
-            <span className="ml-2 text-sm font-bold text-foreground/55">(부가세 별도)</span>
-          </div>
-          <div className="font-mono mt-1 text-xs font-bold uppercase tracking-[0.12em] text-brand">
-            얼리버드 한정 · {((course.priceRegularSupply - course.priceFirstSupply) / 10000).toLocaleString()}만원 할인
-          </div>
 
           <div className="mt-3">
-            <ArrowNote>2기 얼리버드 특별가예요</ArrowNote>
+            <ArrowNote>결제창에도 이 금액 그대로 찍혀요</ArrowNote>
           </div>
 
-          {/* 타임어택 큰 결제 버튼 — 위쪽·강조 (Clarity: 거의 안 내림) */}
+          {/* 즉시 결제 — 페이지 안에서 바로 결제까지 끝난다 */}
           <PaymentDialog
             amount={course.priceFirst}
-            label={`얼리버드가 — 지금 결제 ${(course.priceFirstSupply / 10000).toLocaleString()}만원`}
+            label={`지금 ${course.cohort} 결제하기 — ${priceWan}만원`}
             className="group mt-5 inline-flex w-full items-center justify-center gap-2.5 rounded-full border-2 border-brand bg-brand px-6 py-4 text-base font-bold tracking-tight text-brand-foreground transition-all hover:opacity-90 sm:py-5 sm:text-lg"
           />
+          <p className="mt-2.5 text-center text-xs leading-relaxed text-foreground/60">
+            신청서 안 씁니다. 이름·연락처만 넣으면 결제창이 바로 열려요.
+          </p>
 
           <div className="font-mono mt-4 flex flex-wrap gap-1.5 text-[10px] uppercase tracking-wider">
             <span className="rounded-full border border-foreground/30 px-2.5 py-1">카드 결제</span>
             <span className="rounded-full border border-foreground/30 px-2.5 py-1">계좌이체</span>
             <span className="rounded-full border border-[var(--warm-border)] bg-[var(--warm)] px-2.5 py-1 font-bold text-[var(--warm-border)]">
-              💳 카드 무이자 할부 가능
+              카드 무이자 할부 가능
             </span>
           </div>
 
-          {/* 할부 부담 완화 한 줄 — 사람 말투 */}
           <p className="font-memo mt-3 text-sm leading-relaxed text-foreground/75 sm:text-base">
-            한 번에 부담되시면, <span className="font-bold text-foreground">카드 3·6개월 무이자 할부</span>로 나눠 결제하실 수 있습니다.<br />
-            6개월 무이자면 <span className="font-bold text-foreground">월 42만원</span>대부터예요.
+            한 번에 부담되시면 <span className="font-bold text-foreground">카드 3·6개월 무이자 할부</span>로 나눠 결제하셔도 됩니다.
+            6개월로 나누면 <span className="font-bold text-foreground">월 {priceText.monthly6}</span>대예요.
           </p>
 
           <hr className="my-5 border-foreground/10" />
 
-          {/* 타임어택 — 진짜 이유 (가짜 긴급 X) */}
+          {/* 앵커 — 가짜 정가 대신 1기 실제 금액을 밝힌다 */}
           <div className="border-l-2 border-brand bg-brand/[0.06] px-4 py-3">
             <div className="font-mono text-[10px] font-bold uppercase tracking-[0.15em] text-foreground/55">
-              왜 얼리버드가?
+              1기보다 올랐습니다
             </div>
             <p className="mt-1 text-sm leading-relaxed text-foreground/85 sm:text-base">
-              지금 2기 모집 중입니다. <span className="font-bold text-foreground">일찍 결정하신 분들께 드리는 얼리버드가</span>라,{" "}
-              <span className="font-bold text-foreground">정원 마감 전까지만</span> 230만원(부가세 별도)입니다.{" "}
-              마감 후에는 정가 <span className="font-bold text-foreground">250만원</span>으로 올라가요.
+              숨기지 않을게요. 1기는 {cohort1Wan}만원이었고, {course.cohort}는 {priceWan}만원입니다.
+              1기 때 없던 <span className="font-bold text-foreground">줌 보강과 유선 케어</span>가 붙었고,
+              대신 정원을 {course.cohort1Count}명에서 <span className="font-bold text-foreground">{course.capacityMax}명으로 줄였어요.</span>{" "}
+              한 사람당 제가 쓸 시간을 늘리려고 그렇게 했습니다.
             </p>
           </div>
 
-          {/* CTA 직전 감정 정당화 — 결제 결심을 도와주는 한 줄 */}
           <p className="font-memo mt-4 rounded border-l-2 border-foreground bg-background/60 px-3 py-2 text-sm leading-relaxed text-foreground">
             받는 건 5주가 아니라,<br />
             <span className="font-bold">내가 직접 만든 효자상품 10개</span>
             와, 졸업 후에도 같이 가는 사람들입니다.
           </p>
 
-          {/* 결제 전 궁금하면 — 보조 채널(1:1 카톡)만 */}
           <p className="mt-4 text-sm leading-relaxed text-foreground/65">
             결제 전에 궁금한 게 있으면,{" "}
             <a
@@ -109,7 +109,7 @@ export function Price() {
         <div className="space-y-3">
           <div className="border-l-4 border-foreground bg-background p-5 text-sm leading-relaxed">
             <p className="text-foreground/75">
-              1기를 마친 후기가 쌓였고, 이번 2기는 정원 마감 전까지 얼리버드가로 모십니다. 일찍 결정하신 분께 그만큼 가격을 낮췄어요.<br />
+              1기를 마친 후기가 쌓였고, 그걸 보고 {course.cohort}를 다시 짰습니다. 보강도 케어도 1기에서 부족했던 걸 채운 거예요.<br />
               <br />
               <span className="font-bold text-foreground">대신 5주 진심으로 함께할 분만 오세요.</span>
               <br />

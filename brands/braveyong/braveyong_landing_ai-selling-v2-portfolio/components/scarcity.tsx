@@ -1,30 +1,31 @@
 import { Section } from "./section"
 import { Clock, ArrowRight } from "lucide-react"
-import { course } from "@/lib/config"
+import { course, priceText } from "@/lib/config"
 import { CountdownTimer } from "@/components/countdown-timer"
 import { PaymentDialog } from "@/components/payment-dialog"
 
-/** 얼리버드(7/10) 마감-상대 타임어택 — 거짓 잔여석 아님, 마감일·정원 기준 진짜 마감. */
-const priceFirst = (course.priceFirstSupply / 10000).toLocaleString() // 230 (부가세 별도)
-const priceRegular = (course.priceRegularSupply / 10000).toLocaleString() // 250 (부가세 별도)
-
+/**
+ * 마감 타임라인 — 가짜 잔여석이 아니라 개강일·정원이라는 진짜 마감.
+ * 얼리버드/정가 이중 가격은 폐지됐으므로(2026-07-20) "가격이 오른다"가 아니라
+ * "개강하면 못 들어온다"로 긴급성의 근거를 바꿨다.
+ */
 const timeline = [
   {
     time: "지금",
-    title: "2기 모집 중",
-    body: "여기까지 오신 분만 얼리버드가가 열립니다.",
+    title: `${course.cohort} 모집 중`,
+    body: `정원 ${course.capacityMax}명. 결제 순서대로 자리가 확정됩니다.`,
     done: true,
   },
   {
-    time: "마감 임박",
-    title: `얼리버드가 ${priceFirst}만원 마감`,
-    body: "마감 전까지만. 지나면 이 가격은 닫힙니다.",
+    time: course.startDate,
+    title: "개강",
+    body: "1주차부터 AI 직원 세팅을 같이 합니다. 중간 합류는 받지 않아요.",
     done: false,
   },
   {
-    time: "마감 후",
-    title: `정가 ${priceRegular}만원`,
-    body: `지금 안 하면 다음엔 ${priceRegular}만원. ${(course.priceRegularSupply - course.priceFirstSupply) / 10000}만원 차이가 그냥 시간으로 생깁니다.`,
+    time: "개강 후",
+    title: "3기까지 대기",
+    body: "다음 기수 일정은 2기 끝나고 정합니다. 기다리는 동안 상품은 그대로예요.",
     done: false,
   },
 ]
@@ -33,24 +34,24 @@ export function Scarcity() {
   return (
     <Section
       tone="warm"
-      label="얼리버드 마감 임박"
-      title={<>지금 시작하면, 얼리버드가.</>}
-      lead={`압박하려고 만든 가짜 마감이 아니에요. 여기까지 오신 분께만 여는 얼리버드가라, 개강하거나 정원이 차면 진짜로 닫힙니다.`}
+      label="개강 전 마감"
+      title={<>{course.startDate} 개강하면 닫힙니다.</>}
+      lead={`압박하려고 만든 가짜 마감이 아니에요. 정원 ${course.capacityMax}명이고, 1주차에 AI 직원 세팅부터 같이 하기 때문에 중간에 합류하실 수가 없습니다.`}
     >
       {/* 큰 카운트다운 — 눈에 가장 먼저 들어오게 */}
       <div className="flex flex-col items-center border-2 border-brand bg-background px-5 py-7 text-center sm:py-8">
         <div className="font-mono inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-brand">
           <Clock className="h-3.5 w-3.5" />
-          얼리버드 마감까지 남은 시간
+          개강 전 결제 마감까지
         </div>
-        <CountdownTimer className="mt-3 scale-[1.6] text-foreground sm:scale-[2]" />
+        <CountdownTimer className="mt-3 scale-[1.6] text-foreground sm:scale-[2]" label="" />
         <p className="mt-6 text-base font-bold leading-snug tracking-tight sm:text-lg">
-          지금 <span className="text-brand">{priceFirst}만원</span>, 마감 후에는{" "}
-          <span className="text-foreground/45 line-through">{priceRegular}만원</span>
+          수강료 <span className="text-brand">{priceText.total}</span>
+          <span className="ml-1.5 text-sm font-normal text-foreground/60">부가세 포함</span>
         </p>
         <PaymentDialog
           amount={course.priceFirst}
-          label={`지금 얼리버드가 ${priceFirst}만원 결제`}
+          label={priceText.payLabel}
           className="mt-5 inline-flex w-full max-w-md items-center justify-center gap-2 rounded-full border-2 border-brand bg-brand px-6 py-4 text-base font-bold text-brand-foreground transition-all hover:opacity-90"
         />
         <p className="mt-3 text-xs text-foreground/55">
