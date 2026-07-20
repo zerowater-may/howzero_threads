@@ -4,6 +4,7 @@ import { TrustEvidence } from "@/components/trust-evidence"
 import { TestimonialWall } from "@/components/testimonial-wall"
 import { Problem } from "@/components/problem"
 import { AIDefinition } from "@/components/ai-definition"
+import { OneYearGap } from "@/components/one-year-gap"
 import { Outcome } from "@/components/outcome"
 import { SituationChoice } from "@/components/situation-choice"
 import { Curriculum } from "@/components/curriculum"
@@ -40,6 +41,7 @@ export default function Page() {
         <Strip />             {/* 02 */}
         <Problem />           {/* 03 */}
         <AIDefinition />      {/* 04 */}
+        <OneYearGap />        {/* 04-B 1년 뒤 두 사람 — 격차가 벌어지는 이유 (덱 P1 이식) */}
         <Outcome />           {/* 05 */}
         <SituationChoice />   {/* 06 */}
         <TrustEvidence />     {/* 07 */}
