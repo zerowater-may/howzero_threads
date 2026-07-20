@@ -217,7 +217,9 @@ export function Calendar() {
       <div className="grid gap-2 border-2 border-foreground bg-background p-5 text-sm sm:grid-cols-3 sm:text-base">
         <div>
           <span className="font-mono mr-2 text-[10px] font-bold uppercase tracking-[0.12em] text-foreground/55">오프라인 (토)</span>
-          <span className="font-bold tabular-nums">7.25 · 8.1 · 8.8 · 8.15 · 8.22</span>
+          {/* 그리드(오프라인 4회)와 반드시 같은 날짜여야 한다.
+              4주로 줄이면서 그리드에서는 8.22를 뺐는데 이 줄에만 남아 5개로 보였다. */}
+          <span className="font-bold tabular-nums">7.25 · 8.1 · 8.8 · 8.15</span>
         </div>
         <div>
           <span className="font-mono mr-2 text-[10px] font-bold uppercase tracking-[0.12em] text-foreground/55">줌 보강 (수)</span>
