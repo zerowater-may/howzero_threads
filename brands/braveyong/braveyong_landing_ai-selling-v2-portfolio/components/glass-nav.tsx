@@ -115,10 +115,12 @@ export function GlassNav() {
               <span className="block h-4 w-4" aria-hidden />
             )}
           </button>
+          {/* 모바일에서 이 버튼이 93x28px이라 손가락으로 정확히 누르기 어려웠다.
+              최소 터치 영역 44px를 확보한다 — 상단 내비는 첫 화면의 유일한 결제 진입점이다. */}
           <PaymentDialog
             amount={course.priceFirst}
             label="지금 결제"
-            className="group inline-flex items-center gap-1.5 rounded-full bg-brand px-3.5 py-1.5 text-xs font-bold tracking-tight text-brand-foreground transition-all hover:opacity-90 hover:ring-2 hover:ring-brand/40 sm:px-4 sm:py-2 sm:text-sm"
+            className="group inline-flex min-h-[44px] items-center gap-1.5 rounded-full bg-brand px-4 py-2.5 text-xs font-bold tracking-tight text-brand-foreground transition-all hover:opacity-90 hover:ring-2 hover:ring-brand/40 sm:min-h-0 sm:px-4 sm:py-2 sm:text-sm"
           />
         </div>
       </div>
