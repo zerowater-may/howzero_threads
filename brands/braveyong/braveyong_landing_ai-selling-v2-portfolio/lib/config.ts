@@ -97,4 +97,6 @@ export const priceText = {
    * 헤드라인은 200만원이지만 버튼에 200만원을 쓰면 결제창에서 220만원이 떠 놀란다.
    */
   payLabel: `지금 결제하기 — ${wan(course.priceFirst)} (부가세 포함)`,
+  /** 좁은 가로 폭(스티키 바 등)용 짧은 라벨 — 금액이 옆에 이미 있을 때 */
+  payLabelShort: "지금 바로 결제하기",
 } as const

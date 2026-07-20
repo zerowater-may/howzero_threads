@@ -47,13 +47,15 @@ export function StickyCTA() {
           </span>
         </div>
 
-        {/* CTA — 결제 하나만. 폼·카톡 등 다른 출구는 두지 않는다. */}
+        {/* CTA — 결제 하나만. 폼·카톡 등 다른 출구는 두지 않는다.
+            라벨은 짧게(payLabelShort) — 좌측에 이미 금액이 있고, 태블릿 세로(768px)에서
+            긴 라벨 + 좌측 가격이 함께 뷰포트를 넘겨 버튼이 잘리던 문제를 막는다. */}
         <div className="flex w-full items-center sm:w-auto">
           <div data-track="sticky_pay_open" className="min-w-0 flex-1 sm:flex-none">
             <PaymentDialog
               amount={course.priceFirst}
-              label={priceText.payLabel}
-              className="flex w-full items-center justify-center gap-2 rounded-full border-2 border-brand bg-brand px-6 py-4 text-base font-extrabold tracking-tight text-brand-foreground shadow-lg transition-all hover:opacity-90 sm:w-auto sm:px-10 sm:text-lg"
+              label={priceText.payLabelShort}
+              className="flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-full border-2 border-brand bg-brand px-6 py-4 text-base font-extrabold tracking-tight text-brand-foreground shadow-lg transition-all hover:opacity-90 sm:w-auto sm:px-9 sm:text-lg"
             />
           </div>
         </div>
