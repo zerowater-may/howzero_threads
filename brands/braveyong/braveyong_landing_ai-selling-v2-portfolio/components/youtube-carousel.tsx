@@ -8,10 +8,27 @@ import { Section } from "./section"
  * 왼쪽→오른쪽 자동 marquee 스크롤. hover 시 정지.
  * 카드 하단 텍스트 제거 — 썸네일과 play 오버레이만.
  */
+/**
+ * title은 화면에 안 보이지만 링크 aria-label과 썸네일 alt로 나간다.
+ * '용팀장 영상 1' 같은 자리표시자를 두면 스크린리더 사용자와 검색엔진에는
+ * 그 문구만 전달된다 — 실제 유튜브 제목으로 맞춰 둔다(2026-07-21 원본 확인).
+ */
 const videos: { id: string; url: string; title: string }[] = [
-  { id: "lkpxv0H3TG0", url: "https://youtu.be/lkpxv0H3TG0?si=LZyRxOqffwsM97AP", title: "용팀장 영상 1" },
-  { id: "AdYg6Gv-gpo", url: "https://youtu.be/AdYg6Gv-gpo?si=XsSQBxQ4HXS2ZXD9", title: "용팀장 영상 2" },
-  { id: "_dXN6UhhdEc", url: "https://youtu.be/_dXN6UhhdEc?si=kvEXbMjhWZynSsOC", title: "용팀장 영상 3" },
+  {
+    id: "lkpxv0H3TG0",
+    url: "https://youtu.be/lkpxv0H3TG0?si=LZyRxOqffwsM97AP",
+    title: "상위노출 시키려면 절대 이거 하지 마세요 | 억대 셀러는 절대 실수 안하는 3가지",
+  },
+  {
+    id: "AdYg6Gv-gpo",
+    url: "https://youtu.be/AdYg6Gv-gpo?si=XsSQBxQ4HXS2ZXD9",
+    title: "부업 강의팔이 아니고 진짜 매출나는 썸네일 자동화 프롬프트 그냥 드림",
+  },
+  {
+    id: "_dXN6UhhdEc",
+    url: "https://youtu.be/_dXN6UhhdEc?si=kvEXbMjhWZynSsOC",
+    title: "역대급입니다 매출로 바로 이어지는 상세페이지 제작법 무료나눔",
+  },
 ]
 
 // hqdefault: 480x360, ~25-50KB. maxresdefault (1280x720, ~80-150KB)은 모바일 카드(280-420px)에 과한 사이즈.
