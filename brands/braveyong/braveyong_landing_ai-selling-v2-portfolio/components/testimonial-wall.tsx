@@ -5,6 +5,8 @@ import { useState, type ReactNode } from "react"
 import { ChevronDown, X } from "lucide-react"
 import { Section } from "./section"
 import { highlights, captures, week1Reviews, cohort1Reviews } from "@/lib/testimonials"
+import { PaymentDialog } from "./payment-dialog"
+import { course, priceText } from "@/lib/config"
 
 /**
  * 04 후기 벽 — 하이브리드 (시안 A).
@@ -189,6 +191,26 @@ export function TestimonialWall({
             </article>
           )
         })}
+      </div>
+
+      {/* 후기 직후 결제 경로 — 여기가 페이지에서 결제 의향이 가장 높은 지점인데
+          다음 결제 버튼이 가격 섹션(문서 78% 지점)까지 없어서, 마음이 움직인 사람이
+          하단 스티키 바를 찾아 누르거나 한참 스크롤해야 했다. 후기 바로 밑에 길을 하나 낸다. */}
+      <div className="mt-10 flex flex-col items-center gap-3 border-2 border-foreground bg-background p-6 text-center sm:p-7">
+        <p className="text-base font-bold leading-snug tracking-tight sm:text-lg">
+          여기 있는 후기는 전부 1기가 지난 4주 동안 겪은 일입니다.
+        </p>
+        <p className="text-sm leading-relaxed text-foreground/70">
+          {course.cohort}는 {course.startDate} 시작하고, 정원은 {course.capacityMax}명이에요.
+        </p>
+        <PaymentDialog
+          amount={course.priceFirst}
+          label={priceText.payLabel}
+          className="mt-1 inline-flex w-full max-w-sm items-center justify-center gap-2 rounded-full border-2 border-brand bg-brand px-7 py-4 text-base font-bold tracking-tight text-brand-foreground transition-all hover:opacity-90"
+        />
+        <span className="text-xs text-foreground/55">
+          수강료 {priceText.headline}(부가세 별도) · 이름·연락처만 넣으면 결제창이 바로 열려요
+        </span>
       </div>
 
       {/* ▼ 더 보기 버튼 */}
