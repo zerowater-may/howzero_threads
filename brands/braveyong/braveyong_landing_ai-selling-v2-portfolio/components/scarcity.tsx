@@ -46,8 +46,10 @@ export function Scarcity() {
         </div>
         <CountdownTimer className="mt-3 scale-[1.6] text-foreground sm:scale-[2]" label="" />
         <p className="mt-6 text-base font-bold leading-snug tracking-tight sm:text-lg">
-          수강료 <span className="text-brand">{priceText.total}</span>
-          <span className="ml-1.5 text-sm font-normal text-foreground/60">부가세 포함</span>
+          수강료 <span className="text-brand">{priceText.headline}</span>
+          <span className="ml-1.5 text-sm font-normal text-foreground/60">
+            부가세 별도 · 포함 {priceText.total}
+          </span>
         </p>
         <PaymentDialog
           amount={course.priceFirst}

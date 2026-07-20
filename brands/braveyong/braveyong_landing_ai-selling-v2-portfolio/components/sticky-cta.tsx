@@ -39,8 +39,8 @@ export function StickyCTA() {
           <CountdownTimer compact className="text-foreground" label="" />
           <span className="text-foreground/30">·</span>
           <span className="tabular-nums">
-            <span className="text-base font-bold text-foreground sm:text-lg">{priceText.total}</span>
-            <span className="ml-1 text-xs text-foreground/55 sm:text-sm">부가세 포함</span>
+            <span className="text-base font-bold text-foreground sm:text-lg">{priceText.headline}</span>
+            <span className="ml-1 text-xs text-foreground/55 sm:text-sm">부가세 별도 · 포함 {priceText.total}</span>
             <span className="ml-1 hidden text-xs text-foreground/55 sm:inline sm:text-sm">
               · 월 {priceText.monthly6} / 6개월 무이자
             </span>

@@ -28,9 +28,9 @@ export function FinalCTA() {
 
         {/* 가격 — 결제창에 찍히는 숫자 그대로 */}
         <div className="mx-auto mt-8 inline-flex flex-col items-center gap-1">
-          <span className="text-4xl font-bold tabular-nums sm:text-5xl">{priceText.total}</span>
+          <span className="text-4xl font-bold tabular-nums sm:text-5xl">{priceText.headline}</span>
           <span className="font-mono mt-1 text-[11px] uppercase tracking-[0.14em] text-background/55">
-            부가세 포함 · 정원 {course.capacityMax}명
+            부가세 별도 · 포함 {priceText.total} · 정원 {course.capacityMax}명
           </span>
         </div>
 

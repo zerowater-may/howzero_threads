@@ -71,7 +71,13 @@ export const course = {
 const wan = (n: number) => `${(n / 10000).toLocaleString()}만원`
 
 export const priceText = {
-  /** 부가세 포함 실제 결제액 — 화면 헤드라인·버튼 라벨은 전부 이걸 쓴다 */
+  /**
+   * 화면 헤드라인 — 강의 비용 200만원(부가세 별도).
+   * 사장님 지시(2026-07-20): 큰 숫자는 200만원으로 보여주고,
+   * 부가세 포함 220만원은 바로 옆에 함께 밝힌다.
+   */
+  headline: wan(course.priceFirstSupply),
+  /** 부가세 포함 실제 결제액 — 결제창에 찍히는 금액. 버튼 라벨은 이걸 쓴다(모달 금액과 어긋나면 안 됨) */
   total: wan(course.priceFirst),
   /** 공급가 (부가세 별도) */
   supply: wan(course.priceFirstSupply),
@@ -80,6 +86,9 @@ export const priceText = {
   cohort1: wan(course.priceCohort1),
   /** 6개월 무이자 할부 시 월 납입액 — 만원 단위 반올림 (36.7만원처럼 소수점 노출 방지) */
   monthly6: `${Math.round(course.priceMonthly6 / 10000).toLocaleString()}만원`,
-  /** 결제 버튼 기본 라벨 — 모달 안 금액과 반드시 같은 숫자 */
-  payLabel: `지금 결제하기 — ${wan(course.priceFirst)}`,
+  /**
+   * 결제 버튼 기본 라벨 — 모달·결제창에 찍히는 금액(부가세 포함)을 그대로 쓴다.
+   * 헤드라인은 200만원이지만 버튼에 200만원을 쓰면 결제창에서 220만원이 떠 놀란다.
+   */
+  payLabel: `지금 결제하기 — ${wan(course.priceFirst)} (부가세 포함)`,
 } as const

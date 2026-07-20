@@ -31,26 +31,25 @@ export function Price() {
             <CountdownTimer className="text-brand" label="개강 전 결제 마감까지" />
           </div>
 
-          {/* 가격 — 부가세 포함 총액을 크게. 결제창에 찍히는 숫자와 같게 한다. */}
+          {/* 가격 — 강의 비용 200만원을 크게, 부가세 포함 220만원은 바로 아래 밝힌다 */}
           <div className="mt-4 flex items-baseline gap-2">
-            <span className="text-6xl font-bold tracking-tight tabular-nums">{priceWan}</span>
+            <span className="text-6xl font-bold tracking-tight tabular-nums">{supplyWan}</span>
             <span className="text-xl font-bold text-foreground/70">만원</span>
+            <span className="ml-1 text-sm font-bold text-foreground/60">부가세 별도</span>
           </div>
           <div className="mt-1.5 text-sm font-bold text-foreground/75">
-            부가세 포함 · 실제 결제되는 금액입니다
-            <span className="ml-2 font-normal text-foreground/55">
-              (공급가 {supplyWan}만원 + 부가세 {(course.priceFirst - course.priceFirstSupply) / 10000}만원)
-            </span>
+            부가세 포함하면 <span className="text-foreground">{priceWan}만원</span>,
+            <span className="ml-1 font-normal text-foreground/60">결제창에 찍히는 금액도 이 금액입니다.</span>
           </div>
 
           <div className="mt-3">
-            <ArrowNote>결제창에도 이 금액 그대로 찍혀요</ArrowNote>
+            <ArrowNote>세금계산서 발행됩니다</ArrowNote>
           </div>
 
           {/* 즉시 결제 — 페이지 안에서 바로 결제까지 끝난다 */}
           <PaymentDialog
             amount={course.priceFirst}
-            label={`지금 ${course.cohort} 결제하기 — ${priceWan}만원`}
+            label={`지금 ${course.cohort} 결제하기 — ${priceWan}만원 (부가세 포함)`}
             className="group mt-5 inline-flex w-full items-center justify-center gap-2.5 rounded-full border-2 border-brand bg-brand px-6 py-4 text-base font-bold tracking-tight text-brand-foreground transition-all hover:opacity-90 sm:py-5 sm:text-lg"
           />
           <p className="mt-2.5 text-center text-xs leading-relaxed text-foreground/60">

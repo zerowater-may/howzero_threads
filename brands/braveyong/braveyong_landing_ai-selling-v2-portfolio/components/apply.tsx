@@ -26,8 +26,8 @@ export function Apply() {
         </div>
         <p className="text-lg font-bold leading-snug tracking-tight text-foreground sm:text-xl">
           수강료는{" "}
-          <span className="underline decoration-brand/40 decoration-2 underline-offset-4">{priceText.total}</span>,
-          부가세까지 포함한 금액입니다.
+          <span className="underline decoration-brand/40 decoration-2 underline-offset-4">{priceText.headline}</span>,
+          부가세 포함하면 {priceText.total}입니다.
         </p>
         <p className="mt-2 text-sm leading-relaxed text-foreground/75 sm:text-base">
           신청서 쓰고 기다리는 절차 없습니다. 이름과 연락처만 넣으면{" "}
@@ -39,15 +39,15 @@ export function Apply() {
       <div className="mb-8 border-2 border-brand bg-background p-6 sm:p-8">
         <div className="flex flex-col items-center gap-1 text-center">
           <div className="font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-foreground/55">
-            {course.cohort} 수강료 (부가세 포함)
+            {course.cohort} 수강료 (부가세 별도)
           </div>
           <div className="mt-1 flex items-end justify-center gap-3">
             <span className="text-4xl font-extrabold tracking-tight text-brand sm:text-5xl">
-              {priceText.total}
+              {priceText.headline}
             </span>
           </div>
           <div className="mt-1 text-xs text-foreground/60 sm:text-sm">
-            공급가 {priceText.supply} + 부가세 {priceText.vat}
+            부가세 포함 {priceText.total} · 결제창에 찍히는 금액입니다
           </div>
           <CountdownTimer className="mt-3 text-foreground" label="개강 전 결제 마감까지" />
         </div>
