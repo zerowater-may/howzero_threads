@@ -23,7 +23,12 @@ export const config = {
    */
   contactEmail: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "",
   ga4Id: process.env.NEXT_PUBLIC_GA4_ID || "",
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://braveyong.example.com",
+  /**
+   * 사이트 절대 URL — og:image·canonical·sitemap·robots가 전부 이걸 쓴다.
+   * 폴백이 example.com이면 env가 한 번 비는 순간 카톡 공유 미리보기와
+   * 검색 색인이 통째로 존재하지 않는 도메인을 가리킨다. 실제 도메인으로 둔다.
+   */
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://www.gigclass.kr",
   /** 결제 전 분위기 보러 오는 단톡방 (공개) */
   kakaoOpenChatUrl: process.env.NEXT_PUBLIC_KAKAO_OPENCHAT_URL || "https://open.kakao.com/o/gcjQ8Hpi",
   /** 결제 전 1:1로 상황 남기는 곳 (용팀장 직통) */

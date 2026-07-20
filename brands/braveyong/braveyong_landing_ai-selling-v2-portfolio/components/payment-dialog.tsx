@@ -66,6 +66,25 @@ export function PaymentDialog({
     setMounted(true)
   }, [])
 
+  /**
+   * 모달이 열려 있는 동안: ESC로 닫히게 하고, 뒤 페이지 스크롤을 잠근다.
+   * 이전엔 ESC도 배경 클릭도 안 먹어서 34px짜리 X 버튼이 유일한 출구였고,
+   * 모달 안에서 스크롤하면 뒤 페이지가 같이 밀려 결제 도중 위치를 잃었다.
+   */
+  useEffect(() => {
+    if (!open) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false)
+    }
+    const prevOverflow = document.body.style.overflow
+    document.body.style.overflow = "hidden"
+    document.addEventListener("keydown", onKey)
+    return () => {
+      document.removeEventListener("keydown", onKey)
+      document.body.style.overflow = prevOverflow
+    }
+  }, [open])
+
   const monthly6 = Math.max(1, Math.round(amount / 6 / 10000))
 
   const triggerClassName =
@@ -170,7 +189,14 @@ export function PaymentDialog({
   }
 
   const dialog = open ? (
-    <div className="fixed inset-0 z-[80] overflow-y-auto bg-black/45 px-4 py-16 backdrop-blur-sm sm:py-20">
+    // 배경 클릭 시 닫힘 — 안쪽(dialog)에서 올라온 클릭은 무시한다.
+    // 결제 모달에서 빠져나올 길이 34px짜리 X 버튼 하나뿐이면 갇힌 느낌을 준다.
+    <div
+      className="fixed inset-0 z-[80] overflow-y-auto bg-black/45 px-4 py-16 backdrop-blur-sm sm:py-20"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) setOpen(false)
+      }}
+    >
           <div
             role="dialog"
             aria-modal="true"
@@ -190,7 +216,8 @@ export function PaymentDialog({
                 type="button"
                 aria-label="결제 청구서 모달 닫기"
                 data-track="payment_dialog_close"
-                className="rounded-full border border-foreground/20 p-2 transition-colors hover:border-foreground hover:bg-foreground hover:text-background"
+                // 모바일 최소 터치 영역 44px — 이전엔 34x34라 정확히 누르기 어려웠다
+                className="inline-flex h-11 w-11 flex-none items-center justify-center rounded-full border border-foreground/20 transition-colors hover:border-foreground hover:bg-foreground hover:text-background"
                 onClick={() => setOpen(false)}
               >
                 <X className="h-4 w-4" />
