@@ -54,7 +54,7 @@ howzero/
 │   ├── settings.json               ← 글로벌 Plugin 설정
 │   └── settings.local.json         ← Permissions + Hooks
 ├── howzero-web/                    ← 웹 프론트엔드
-│   (howzero AX 사업은 2026-07-19 별도 레포 hedgehogcandy/howzero-ax로 분리 — ax-web·hz-os·전략·페르소나 포함)
+│   (howzero AX 사업은 2026-07-19 별도 레포 zerowater-may/howzero-ax로 분리 — ax-web·hz-os·전략·페르소나 포함)
 ├── scripts/                        ← 유틸리티 스크립트
 │   ├── yt_highlights/              ← YouTube → highlights.json + 프레임
 │   ├── nano_carousel/              ← Carousel 자동화

@@ -20,7 +20,7 @@
 
 ## AX 전환 브레인
 
-2026-07-19 별도 레포 `hedgehogcandy/howzero-ax`의 `persona/`·`strategy/`로 이전했다. 이 vault에는 Commerce 축만 남는다.
+2026-07-19 별도 레포 `zerowater-may/howzero-ax`의 `persona/`·`strategy/`로 이전했다. 이 vault에는 Commerce 축만 남는다.
 
 ## 커머스 브레인
 
