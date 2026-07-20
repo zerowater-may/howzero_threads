@@ -94,9 +94,18 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "용감한 용팀장" }],
   creator: "용감한 용팀장",
+  /**
+   * canonical — 이게 없으면 vercel.app 배포 URL로 공유·색인된 것들이
+   * gigclass.kr과 별개 페이지로 흩어진다. 카톡은 og:url 기준으로 미리보기를
+   * 캐시하므로 공유 경로가 갈리는 것도 여기서 막는다.
+   */
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
     locale: "ko_KR",
+    url: "/",
     title: "4주 오프라인 AI 셀링 실전반 — 용감한 용팀장",
     description:
       "물건 찾기부터 고객 응대까지, 나만의 AI 직원한테 시키는 셀러로. 4주 동안 AI 직원 세팅 + 효자상품 10개를 같이 만듭니다.",
