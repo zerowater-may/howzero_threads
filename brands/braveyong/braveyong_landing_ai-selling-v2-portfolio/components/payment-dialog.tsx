@@ -18,7 +18,12 @@ type PaymentDialogProps = {
   deadlineLabel?: string
   /** 안내 문단 override (기본은 강의용 문구) */
   noticeCopy?: ReactNode
-  /** 설정 시 결제 후 `${completePathPrefix}?bill_id=...` 입장확인 링크 노출 */
+  /**
+   * 결제 후 `${completePathPrefix}?bill_id=...` 확인 링크 경로.
+   * 기본은 실전반 완료 페이지(/complete) — 예전엔 미지정이라 course 결제자는
+   * 확인 화면 없이 "지금 결제하세요" 섹션으로 되돌아가 중복 결제 불안을 겪었다.
+   * 815 특강은 자체 경로(/815/complete)를 명시적으로 넘긴다.
+   */
   completePathPrefix?: string
   /** true 시 6개월 할부 힌트 행 + 3개월 환불 보장 배지 숨김 (815 특강 전용) */
   hidePromoBadges?: boolean
@@ -44,7 +49,7 @@ export function PaymentDialog({
   deadline,
   deadlineLabel,
   noticeCopy,
-  completePathPrefix,
+  completePathPrefix = "/complete",
   hidePromoBadges,
 }: PaymentDialogProps) {
   const [open, setOpen] = useState(false)
@@ -293,14 +298,14 @@ export function PaymentDialog({
                   {completePathPrefix && result.billId && (
                     <div className="mt-3 border-t border-foreground/15 pt-3">
                       <p className="text-foreground/70">
-                        <span className="font-bold text-foreground">결제를 마쳤다면</span> 아래에서 카톡 오픈채팅방 입장 링크를 확인하세요.
+                        <span className="font-bold text-foreground">결제를 마쳤다면</span> 아래에서 결제가 제대로 됐는지 확인하세요.
                       </p>
                       <a
                         href={`${completePathPrefix}?bill_id=${encodeURIComponent(result.billId)}`}
                         data-track="payment_complete_link"
                         className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-brand bg-brand px-4 py-2.5 font-bold text-brand-foreground transition-colors hover:opacity-90"
                       >
-                        결제 완료 후 입장 링크 받기
+                        결제 확인하기
                         <ExternalLink className="h-3.5 w-3.5" />
                       </a>
                     </div>
