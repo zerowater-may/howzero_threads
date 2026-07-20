@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { config } from "@/lib/config"
 
 /**
- * 얼리버드가 마감 카운트다운.
+ * 개강 전 결제 마감 카운트다운. (얼리버드 이중 가격은 2026-07-20 폐지)
  * `config.cohort1Deadline` (ISO datetime, KST)까지 D-N · HH:MM:SS.
  * 마감 후 자동 숨김 → consumer가 `showWhenExpired={false}` 기본으로 조건부 렌더.
  *
@@ -62,13 +62,19 @@ export function CountdownTimer({
     )
   }
 
+  // flex-wrap + 각 조각 whitespace-nowrap — 좁은 폭(모달 375px 등)에서
+  // "D-4"가 "D-" / "4"로 쪼개지던 문제를 막는다. 줄바꿈은 조각 사이에서만 일어난다.
   return (
-    <div className={`font-mono inline-flex items-baseline gap-2 tabular-nums ${className}`}>
-      <span className="text-xs uppercase tracking-[0.18em] opacity-60">{label}</span>
-      <span className="text-lg font-bold">D-{r.d}</span>
-      <span className="opacity-50">·</span>
-      <span className="text-base font-bold">
-        {pad(r.h)}:{pad(r.m)}:{pad(r.s)}
+    <div className={`font-mono inline-flex flex-wrap items-baseline justify-center gap-x-2 gap-y-0.5 tabular-nums ${className}`}>
+      {label ? (
+        <span className="whitespace-nowrap text-xs uppercase tracking-[0.18em] opacity-60">{label}</span>
+      ) : null}
+      <span className="whitespace-nowrap">
+        <span className="text-lg font-bold">D-{r.d}</span>
+        <span className="mx-1.5 opacity-50">·</span>
+        <span className="text-base font-bold">
+          {pad(r.h)}:{pad(r.m)}:{pad(r.s)}
+        </span>
       </span>
     </div>
   )

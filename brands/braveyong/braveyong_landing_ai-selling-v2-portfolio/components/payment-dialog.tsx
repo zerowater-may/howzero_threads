@@ -13,7 +13,7 @@ type PaymentDialogProps = {
   dark?: boolean
   /** send-bill로 보낼 상품 key. 미지정 시 서버가 기존 강의(course)로 처리 */
   productKey?: string
-  /** 카운트다운 마감 ISO. 미지정 시 얼리버드 마감 */
+  /** 카운트다운 마감 ISO. 미지정 시 개강 전 결제 마감(config.cohort1Deadline) */
   deadline?: string
   deadlineLabel?: string
   /** 안내 문단 override (기본은 강의용 문구) */
@@ -195,9 +195,9 @@ export function PaymentDialog({
             <p className="mt-3 text-sm leading-relaxed text-foreground/70">
               {noticeCopy ?? (
                 <>
-                  이름과 휴대폰 번호를 입력하면, <span className="font-bold text-foreground">결제 페이지가 바로 열립니다.</span>{" "}
-                  바로 열 수 없는 결제선생 환경에서는 카톡 청구서로 자동 전환됩니다.{" "}
-                  결제 후 용팀장이 <span className="font-bold text-brand">카톡으로 1주차 일정·장소</span>를 직접 챙겨 드려요.
+                  이름과 휴대폰 번호만 넣으면 <span className="font-bold text-foreground">결제창이 바로 열립니다.</span>{" "}
+                  혹시 창이 안 열리면 같은 청구서를 카톡으로 보내드리니 그걸로 결제하셔도 돼요.{" "}
+                  결제가 끝나면 용팀장이 <span className="font-bold text-brand">카톡으로 1주차 일정·장소</span>를 직접 챙겨 드립니다.
                 </>
               )}
             </p>
@@ -228,27 +228,7 @@ export function PaymentDialog({
               </div>
             </div>
 
-            {/* 결제수단 + 안심 — 결제창 이탈 방지 */}
-            <div className="mt-3 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[11px] font-bold text-foreground/55">
-              <span className="inline-flex items-center gap-1"><CreditCard className="h-3.5 w-3.5" /> 카드</span>
-              <span className="text-foreground/25">·</span>
-              <span className="inline-flex items-center gap-1"><Landmark className="h-3.5 w-3.5" /> 계좌이체</span>
-              <span className="text-foreground/25">·</span>
-              <span>무이자 할부</span>
-            </div>
-            <div className="mt-2 flex flex-wrap items-center justify-center gap-x-2.5 gap-y-1 text-[11px] font-bold text-foreground/60">
-              {!hidePromoBadges && (
-                <>
-                  <span className="inline-flex items-center gap-1 text-brand"><ShieldCheck className="h-3.5 w-3.5" /> 3개월 환불 보장</span>
-                  <span className="text-foreground/25">·</span>
-                </>
-              )}
-              <span>결제 후 용팀장 직접 확인</span>
-              <span className="text-foreground/25">·</span>
-              <span>안전결제(결제선생)</span>
-            </div>
-
-            <form className="mt-5 space-y-4" onSubmit={submit}>
+            <form className="mt-4 space-y-4" onSubmit={submit}>
               <label className="block">
                 <span className="text-sm font-bold">이름</span>
                 <input
@@ -359,6 +339,27 @@ export function PaymentDialog({
                 {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : <CreditCard className="h-5 w-5" />}
                 지금 바로 결제하기
               </button>
+
+              {/* 결제수단·안심 배지 — 입력폼 위에 있으면 모바일에서 제출 버튼이 화면 밖으로 밀려난다.
+                  안심시키는 문구는 버튼 아래에 있어도 같은 일을 한다. */}
+              <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[11px] font-bold text-foreground/55">
+                <span className="inline-flex items-center gap-1"><CreditCard className="h-3.5 w-3.5" /> 카드</span>
+                <span className="text-foreground/25">·</span>
+                <span className="inline-flex items-center gap-1"><Landmark className="h-3.5 w-3.5" /> 계좌이체</span>
+                <span className="text-foreground/25">·</span>
+                <span>무이자 할부</span>
+              </div>
+              <div className="flex flex-wrap items-center justify-center gap-x-2.5 gap-y-1 text-[11px] font-bold text-foreground/60">
+                {!hidePromoBadges && (
+                  <>
+                    <span className="inline-flex items-center gap-1 text-brand"><ShieldCheck className="h-3.5 w-3.5" /> 3개월 환불 보장</span>
+                    <span className="text-foreground/25">·</span>
+                  </>
+                )}
+                <span>결제 후 용팀장 직접 확인</span>
+                <span className="text-foreground/25">·</span>
+                <span>안전결제(결제선생)</span>
+              </div>
             </form>
           </div>
         </div>
