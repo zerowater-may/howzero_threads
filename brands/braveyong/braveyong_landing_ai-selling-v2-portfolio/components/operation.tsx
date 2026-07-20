@@ -12,7 +12,7 @@ const stats = [
 const info = [
   { lbl: "본강의 시작", val: course.startDate, sub: `오프라인 ${course.offlineCount}회 + 줌 ${course.zoomCount}회` },
   { lbl: "장소", val: course.location, sub: course.detailAddress },
-  { lbl: "시간", val: course.scheduleTime, sub: "확정되면 참여자분께 따로 안내드려요" },
+  { lbl: "요일", val: course.scheduleTime, sub: "시작 시각은 확정되는 대로 바로 알려드려요" },
 ]
 
 export function Operation() {
