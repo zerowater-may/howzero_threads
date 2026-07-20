@@ -63,7 +63,7 @@ export function SituationChoice() {
               {path.body}
             </p>
             <div className="mt-5 border-t border-foreground/15 pt-4 text-sm font-bold text-foreground">
-              5주 안에 남길 것: {path.output}
+              4주 안에 남길 것: {path.output}
             </div>
           </article>
         ))}
@@ -73,7 +73,7 @@ export function SituationChoice() {
         <div className="grid gap-5 md:grid-cols-[1fr_auto] md:items-center">
           <div>
             <h3 className="text-xl font-bold tracking-tight sm:text-2xl">
-              어디서 시작하든, 5주 안에 효자상품 하나는 같이 만듭니다.
+              어디서 시작하든, 4주 안에 효자상품 하나는 같이 만듭니다.
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-background/75 sm:text-base">
               초보든, 대량등록만 해봤든 상관없어요. 지금 {course.cohort} 모집 중이고 정원은 {course.capacityMax}명입니다.

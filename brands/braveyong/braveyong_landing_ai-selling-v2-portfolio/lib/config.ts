@@ -38,7 +38,7 @@ export const config = {
 
 /** 강의·상품 고정값 (운영자가 변경할 때만 여기 수정) */
 export const course = {
-  name: "5주 오프라인 AI 셀링 실전반",
+  name: "4주 오프라인 AI 셀링 실전반",
   cohort: "2기",
   // ── 가격 (2기 확정 · 2026-07-20) ──
   // 단일 가격 구조. 화면 헤드라인은 부가세 포함 220만원으로 노출하고,
@@ -53,10 +53,10 @@ export const course = {
   cohort1Count: 25,                // 1기 실제 신청 인원 — 덱 p10-10b 근거
   freeLectureDate: "2026-07-20 (월) 19:00",
   startDate: "7월 25일 토요일",   // 화면 표기용 — 기계적인 ISO 날짜 대신 읽히는 형태
-  endDate: "8월 22일 토요일",
-  weeks: 5,
-  offlineCount: 5,
-  zoomCount: 4,
+  endDate: "8월 15일 토요일",     // 토요일 오프라인 4회: 7/25 · 8/1 · 8/8 · 8/15
+  weeks: 4,                        // 덱 p10-09 기준 — "토요일 오프라인 네 번"
+  offlineCount: 4,
+  zoomCount: 4,                    // 수요일 줌 보강 — 오프라인 각 주차 뒤 평일 저녁
   location: "서울 강남",
   detailAddress: "참여 확정자에게 안내",
   scheduleTime: "추후 안내",       // 운영 입력 필요

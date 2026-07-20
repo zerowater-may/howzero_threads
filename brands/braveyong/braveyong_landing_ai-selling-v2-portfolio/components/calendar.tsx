@@ -3,8 +3,8 @@ import { Section } from "./section"
 
 /**
  * 09-B 2기 강의일정 캘린더 — Operation 다음, WhyYong 직전.
- * 월간 grid (7월·8월) + 5주 timeline 카드 (origin-story 패턴).
- * 데이터: course.startDate 2026-07-25(토) 기준 매주 토요일 오프라인 5회, 줌은 2~5주차 직전 수요일 4회.
+ * 월간 grid (7월·8월) + 4주 timeline 카드 (origin-story 패턴).
+ * 데이터: course.startDate 2026-07-25(토) 기준 매주 토요일 오프라인 4회, 줌은 2~4주차 직전 수요일 4회.
  * grid 각 셀 hover 시 그 날 일정 detail tooltip 표시.
  */
 type OffEvent = { type: "off"; n: number; title: string }
@@ -22,8 +22,8 @@ const months: {
     daysInMonth: 31,
     startWeekday: 2, // 2026-07-01 = Wed
     events: {
-      25: { type: "off", n: 1, title: "소싱" },
-      29: { type: "zoom", week: 2 },
+      25: { type: "off", n: 1, title: "AI 직원 세팅" },
+      29: { type: "zoom", week: 1 },
     },
   },
   {
@@ -31,13 +31,12 @@ const months: {
     daysInMonth: 31,
     startWeekday: 5, // 2026-08-01 = Sat
     events: {
-      1: { type: "off", n: 2, title: "가공" },
-      5: { type: "zoom", week: 3 },
-      8: { type: "off", n: 3, title: "판매" },
-      12: { type: "zoom", week: 4 },
-      15: { type: "off", n: 4, title: "광고" },
-      19: { type: "zoom", week: 5 },
-      22: { type: "off", n: 5, title: "시스템화" },
+      1: { type: "off", n: 2, title: "소싱" },
+      5: { type: "zoom", week: 2 },
+      8: { type: "off", n: 3, title: "노출" },
+      12: { type: "zoom", week: 3 },
+      15: { type: "off", n: 4, title: "전환 · 시스템화" },
+      19: { type: "zoom", week: 4 },
     },
   },
 ]
@@ -57,7 +56,7 @@ function eventTip(ev: DayEvent, monthLabel: string, day: number): { head: string
   }
   return {
     head: `${dateStr} (수) · 줌 보강`,
-    body: `WEEK ${ev.week} 직전 보강 · 매주 과제 점검`,
+    body: `WEEK ${ev.week} 복습 · 막힌 부분 풀기`,
     tone: "outline",
   }
 }
@@ -186,8 +185,8 @@ export function Calendar() {
       tone="warm"
       id="calendar"
       label="Calendar"
-      title={<>2기, 같이 가는 5주 일정.</>}
-      lead="오프라인 5회 + 줌 보강 4회. 매주 토요일 오프라인으로 같이 작업하고, 사이 주중에 줌으로 보강합니다."
+      title={<>2기, 같이 가는 4주 일정.</>}
+      lead="오프라인 4회 + 줌 보강 4회. 매주 토요일 오프라인으로 같이 작업하고, 사이 주중에 줌으로 보강합니다."
     >
       {/* 월간 grid 보기 — 7월 + 8월. mx-auto + max-w로 셀 비대 방지 */}
       <div className="mb-4 grid gap-4 lg:grid-cols-2">

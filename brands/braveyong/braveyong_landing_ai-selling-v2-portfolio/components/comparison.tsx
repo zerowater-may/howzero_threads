@@ -2,7 +2,7 @@ import { Section } from "./section"
 import { Check } from "lucide-react"
 
 /**
- * 13 비교표 — 흔한 온라인 강의 vs 5주 오프라인 실전반.
+ * 13 비교표 — 흔한 온라인 강의 vs 4주 오프라인 실전반.
  * 인터뷰 톤: '녹화 한 묶음이 아니라 같이 만드는 과정'을 줄 단위로 풀어둔다.
  */
 const rows = [
@@ -22,7 +22,7 @@ export function Comparison() {
       tone="dark"
       label="무엇이 다른가"
       title={<>듣는 강의가 아니라, 만드는 실전반입니다.</>}
-      lead="같은 5주여도, 끝나고 내 손에 뭐가 남는지가 달라요."
+      lead="같은 4주여도, 끝나고 내 손에 뭐가 남는지가 달라요."
     >
       <p className="font-mono mb-2 text-[10px] uppercase tracking-[0.14em] text-background/55 sm:hidden">
         ← 옆으로 밀어서 비교해 보세요
@@ -36,7 +36,7 @@ export function Comparison() {
               </th>
               <th className="px-4 py-3 text-left text-sm font-bold text-background/70">일반 온라인 강의</th>
               <th className="border-l-2 border-background/30 bg-background text-foreground px-4 py-3 text-left text-sm font-bold">
-                5주 오프라인 실전반
+                4주 오프라인 실전반
               </th>
             </tr>
           </thead>

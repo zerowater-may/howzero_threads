@@ -32,7 +32,7 @@ export function AIDefinition() {
           <p className="mt-4 font-memo text-base leading-relaxed text-foreground/70 sm:text-lg">
             단, 이 직원은 <Marker>가르친 만큼만</Marker> 일합니다.<br />
             소싱·SEO 기준이 곧 월급이에요.<br />
-            그 기준 만드는 법을 5주 동안 같이 익혀 갑니다.
+            그 기준 만드는 법을 4주 동안 같이 익혀 갑니다.
           </p>
         </div>
 

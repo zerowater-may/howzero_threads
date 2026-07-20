@@ -68,7 +68,7 @@ export function Hero() {
               data-track="hero_see_curriculum"
               className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-foreground bg-foreground px-7 py-3.5 text-sm font-bold tracking-tight text-background transition-all hover:opacity-90 sm:px-8 sm:text-base"
             >
-              5주 동안 뭘 하는지 먼저 보기
+              4주 동안 뭘 하는지 먼저 보기
             </a>
             <p className="text-xs leading-relaxed text-foreground/55 sm:text-sm">
               {course.cohort} 모집 중 · {course.startDate} 개강 · 정원 {course.capacityMax}명
