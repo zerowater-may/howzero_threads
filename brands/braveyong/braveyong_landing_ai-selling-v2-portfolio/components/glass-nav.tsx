@@ -24,7 +24,9 @@ const links = [
   { href: "#problem", label: "막힌 지점" },
   { href: "#choice", label: "내 상황" },
   { href: "#curriculum", label: "커리큘럼" },
-  { href: "#price", label: "지금 결제", cta: true },
+  // 라벨을 "지금 결제"로 두면 우측 결제 버튼과 이름이 겹치는데 동작은 다르다(이건 스크롤 점프).
+  // 눌렀는데 결제창이 안 열리면 그 자리에서 이탈하므로, 하는 일을 그대로 쓴다.
+  { href: "#price", label: "가격 보기", cta: true },
 ]
 
 export function GlassNav() {
