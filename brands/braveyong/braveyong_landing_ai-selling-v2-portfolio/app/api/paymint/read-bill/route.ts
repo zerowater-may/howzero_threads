@@ -32,8 +32,13 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: false, error: error.errors[0]?.message || "입력값을 확인해주세요." }, { status: 400 })
     }
 
+    if (error instanceof SyntaxError) {
+      return NextResponse.json({ success: false, error: "요청 형식이 올바르지 않습니다." }, { status: 400 })
+    }
+    // 내부 오류 메시지를 사용자에게 노출하지 않는다 — 원인은 로그로만
+    console.error("[paymint.read-bill] error:", error)
     return NextResponse.json(
-      { success: false, error: error instanceof Error ? error.message : "청구서 조회 중 오류가 발생했습니다." },
+      { success: false, error: "결제 상태를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요." },
       { status: 500 },
     )
   }

@@ -71,8 +71,17 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: false, error: error.errors[0]?.message || "입력값을 확인해주세요." }, { status: 400 })
     }
 
+    // JSON 파싱 실패(깨진 요청 body) → 클라이언트 잘못이므로 400
+    if (error instanceof SyntaxError) {
+      return NextResponse.json({ success: false, error: "요청 형식이 올바르지 않습니다. 새로고침 후 다시 시도해 주세요." }, { status: 400 })
+    }
+
+    // 결제선생 API·네트워크 등 서버 측 오류.
+    // 원본 error.message에는 내부 URL·스택 위치가 섞여 나올 수 있어 사용자에겐 고정 문구만 준다.
+    // 진짜 원인은 서버 로그에만 남긴다.
+    console.error("[paymint.send-bill] error:", error)
     return NextResponse.json(
-      { success: false, error: error instanceof Error ? error.message : "청구서 발송 중 오류가 발생했습니다." },
+      { success: false, error: "결제 청구서 발송 중 문제가 생겼습니다. 잠시 후 다시 시도하거나 1:1 카톡으로 문의해 주세요." },
       { status: 500 },
     )
   }

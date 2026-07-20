@@ -24,8 +24,13 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: false, error: error.errors[0]?.message || "입력값을 확인해주세요." }, { status: 400 })
     }
 
+    if (error instanceof SyntaxError) {
+      return NextResponse.json({ success: false, error: "요청 형식이 올바르지 않습니다." }, { status: 400 })
+    }
+    // 내부 오류 메시지를 노출하지 않는다 (destroy는 운영/스크립트 전용이지만 일관성 유지)
+    console.error("[paymint.destroy-bill] error:", error)
     return NextResponse.json(
-      { success: false, error: error instanceof Error ? error.message : "청구서 파기 중 오류가 발생했습니다." },
+      { success: false, error: "청구서 파기 중 문제가 생겼습니다." },
       { status: 500 },
     )
   }
