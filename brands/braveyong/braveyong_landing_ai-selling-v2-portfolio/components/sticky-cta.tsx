@@ -9,13 +9,16 @@ import { PaymentDialog } from "./payment-dialog"
  * Sticky CTA — 스크롤 시작 직후 등장. 결제 버튼 하나만 둔다.
  * 이전에는 결제 버튼 옆에 "신청서 작성"(구글폼)을 나란히 뒀는데,
  * 결제 결심 직전에 무료 대안을 붙이는 꼴이라 결제 의도를 흡수했다 — 제거.
- * 등장 조건도 Hero 통과(=첫 화면 내내 안 보임) → 400px로 낮췄다.
+ * 등장 조건: 첫 화면을 지난 뒤. 히어로에서 가격을 뺀 이유와 같다 —
+ * 금액은 뭘 하는 수업인지 본 다음에 보여야 거부감이 덜하다.
  */
 export function StickyCTA() {
   const [show, setShow] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setShow(window.scrollY > 400)
+    const hero = document.querySelector("#hero") as HTMLElement | null
+    const trigger = hero ? hero.offsetTop + hero.offsetHeight - 120 : 600
+    const onScroll = () => setShow(window.scrollY > trigger)
     onScroll()
     window.addEventListener("scroll", onScroll, { passive: true })
     return () => window.removeEventListener("scroll", onScroll)

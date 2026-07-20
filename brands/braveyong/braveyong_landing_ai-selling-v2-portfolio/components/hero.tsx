@@ -1,17 +1,15 @@
 import Image from "next/image"
 import Link from "next/link"
-import { config, course, priceText } from "@/lib/config"
-import { PaymentDialog } from "./payment-dialog"
-import { CountdownTimer } from "./countdown-timer"
+import { config, course } from "@/lib/config"
 
 /**
- * 01 Hero — 포트폴리오 1컬럼 중앙 + 오퍼 박스.
- * ○ 얼굴(grayscale 원형) → 이름 → 임팩트 카피 → [가격·마감·결제 CTA] → 보조 링크
+ * 01 Hero — 포트폴리오 1컬럼 중앙.
+ * ○ 얼굴(grayscale 원형) → 이름 → 임팩트 카피 → 커리큘럼으로 내려보내는 CTA → 보조 링크
  *
- * 2026-07-20: 이 주석은 원래 "오퍼를 첫 화면에 전부 노출"이라고 써 있었지만
- * 실제 코드엔 가격도 카운트다운도 결제 버튼도 없었고, 첫 화면 유일한 액션이
- * 카톡 단톡방 링크(=이탈)였다. Clarity 실측 평균 스크롤 28%면 대부분이
- * 이 화면에서 끝나므로, 오퍼를 실제로 넣었다.
+ * 2026-07-20: 한때 여기에 가격(220만원)·카운트다운·결제 버튼을 올렸다가 뺐다.
+ * 첫 화면부터 금액이 꽂히니 거부감이 먼저 생긴다는 판단.
+ * 첫 화면의 일은 "뭘 하는 수업인지" 궁금하게 만드는 것까지고,
+ * 가격과 결제는 커리큘럼·후기를 본 뒤(스티키 바·가격 섹션)에서 만난다.
  */
 export function Hero() {
   return (
@@ -61,27 +59,19 @@ export function Hero() {
             </p>
           </div>
 
-          {/* 오퍼 — 가격·마감·결제 버튼을 첫 화면에. 평균 스크롤 28%라 여기서 끝나는 사람이 가장 많다. */}
-          <div className="hz-fade-up hz-delay-3 mx-auto max-w-md border-2 border-brand bg-background p-5 sm:p-6">
-            <div className="font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-brand">
-              {course.cohort} 모집 중 · 정원 {course.capacityMax}명
-            </div>
-            <div className="mt-2 flex items-baseline justify-center gap-2">
-              <span className="text-4xl font-bold tracking-tight tabular-nums sm:text-5xl">
-                {priceText.total}
-              </span>
-              <span className="text-sm font-bold text-foreground/65">부가세 포함</span>
-            </div>
-            <div className="mt-2">
-              <CountdownTimer className="text-foreground" label="개강 전 결제 마감까지" />
-            </div>
-            <PaymentDialog
-              amount={course.priceFirst}
-              label={priceText.payLabel}
-              className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-brand bg-brand px-6 py-4 text-base font-bold tracking-tight text-brand-foreground transition-all hover:opacity-90 sm:text-lg"
-            />
-            <p className="mt-2.5 text-xs leading-relaxed text-foreground/60">
-              {course.startDate} 개강 · 이름과 연락처만 넣으면 결제창이 바로 열려요
+          {/* 첫 화면엔 가격을 두지 않는다.
+              가격·결제 버튼을 히어로에 올렸더니 첫 화면부터 금액이 꽂혀 거부감이 생겼다.
+              무엇을 하는 수업인지 먼저 보게 하고, 결제는 아래에서 만나게 한다. */}
+          <div className="hz-fade-up hz-delay-3 flex flex-col items-center gap-3">
+            <a
+              href="#curriculum"
+              data-track="hero_see_curriculum"
+              className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-foreground bg-foreground px-7 py-3.5 text-sm font-bold tracking-tight text-background transition-all hover:opacity-90 sm:px-8 sm:text-base"
+            >
+              5주 동안 뭘 하는지 먼저 보기
+            </a>
+            <p className="text-xs leading-relaxed text-foreground/55 sm:text-sm">
+              {course.cohort} 모집 중 · {course.startDate} 개강 · 정원 {course.capacityMax}명
             </p>
           </div>
 
