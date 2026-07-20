@@ -1,9 +1,13 @@
 import { config } from "@/lib/config"
 
-/** 19 Footer — 디스클레이머 + © */
+/**
+ * 19 Footer — 디스클레이머 + ©
+ * 하단 여백을 크게 두는 이유: 화면 하단에 고정된 결제 바(모바일 약 143px)가
+ * 페이지 맨 끝 줄을 덮어서, 마지막 문구가 안 보이는 상태였다.
+ */
 export function Footer() {
   return (
-    <footer className="border-t border-foreground/10 bg-background px-4 py-14 sm:px-6 sm:py-16">
+    <footer className="border-t border-foreground/10 bg-background px-4 pb-40 pt-14 sm:px-6 sm:pb-44 sm:pt-16">
       <div className="mx-auto max-w-3xl text-center">
         {/* 인터뷰 톤 클로징 — 강의 한 번 듣고 끝나는 시장이 아니라는 마지막 한 줄 */}
         <p className="font-memo mb-8 text-base leading-relaxed text-foreground/75 sm:text-lg">

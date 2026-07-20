@@ -15,7 +15,13 @@ export const config = {
    */
   cohort1Deadline: process.env.NEXT_PUBLIC_COHORT1_DEADLINE || "2026-07-24T23:59:59+09:00",
   youtubeFreeUrl: process.env.NEXT_PUBLIC_YOUTUBE_FREE_URL || "#",
-  contactEmail: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "braveyong@example.com",
+  /**
+   * 문의 이메일. 미설정이면 빈 문자열 — 푸터에서 아예 감춘다.
+   * 예전 기본값이 braveyong@example.com이라 운영 env가 비어 있는 동안
+   * 220만원짜리 판매 페이지 푸터에 가짜 주소가 그대로 노출되고 있었다.
+   * 실제 주소가 생기면 NEXT_PUBLIC_CONTACT_EMAIL에 넣으면 다시 표시된다.
+   */
+  contactEmail: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "",
   ga4Id: process.env.NEXT_PUBLIC_GA4_ID || "",
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://braveyong.example.com",
   /** 결제 전 분위기 보러 오는 단톡방 (공개) */
