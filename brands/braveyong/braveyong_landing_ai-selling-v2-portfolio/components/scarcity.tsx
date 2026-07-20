@@ -1,5 +1,5 @@
 import { Section } from "./section"
-import { Clock, ArrowRight } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import { course, priceText } from "@/lib/config"
 import { CountdownTimer } from "@/components/countdown-timer"
 import { PaymentDialog } from "@/components/payment-dialog"
@@ -38,13 +38,15 @@ export function Scarcity() {
       title={<>{course.startDate} 개강하면 닫힙니다.</>}
       lead={`압박하려고 만든 가짜 마감이 아니에요. 정원 ${course.capacityMax}명이고, 1주차에 AI 직원 세팅부터 같이 하기 때문에 중간에 합류하실 수가 없습니다.`}
     >
-      {/* 큰 카운트다운 — 눈에 가장 먼저 들어오게 */}
+      {/* 큰 카운트다운 — 눈에 가장 먼저 들어오게.
+          '개강 전 결제 마감까지' 문구는 CountdownTimer 밖에 별도 div로 두면
+          마감(7/24 자정) 후 카운트다운만 사라지고 이 문구가 덩그러니 남는다.
+          label로 넘겨 카운트다운과 함께 사라지게 한다. */}
       <div className="flex flex-col items-center border-2 border-brand bg-background px-5 py-7 text-center sm:py-8">
-        <div className="font-mono inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-brand">
-          <Clock className="h-3.5 w-3.5" />
-          개강 전 결제 마감까지
-        </div>
-        <CountdownTimer className="mt-3 scale-[1.6] text-foreground sm:scale-[2]" label="" />
+        <CountdownTimer
+          className="scale-[1.35] text-foreground sm:scale-[1.7]"
+          label="개강 전 결제 마감까지"
+        />
         <p className="mt-6 text-base font-bold leading-snug tracking-tight sm:text-lg">
           수강료 <span className="text-brand">{priceText.headline}</span>
           <span className="ml-1.5 text-sm font-normal text-foreground/60">
