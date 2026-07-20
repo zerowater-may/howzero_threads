@@ -1,17 +1,14 @@
 /**
  * 운영 입력 통합 설정.
  * 환경변수가 비거나 placeholder면 페이지가 깨지지 않고 "운영 입력 필요" 상태가 자연 노출.
+ *
+ * 2026-07-20: 신청서(구글폼) 흐름 폐기. 결제가 유일한 신청 경로다.
+ * 결제 버튼 옆에 폼을 두면 결제 의도가 폼으로 흡수돼 전부 걷어냈고,
+ * 그와 함께 googleFormUrl · isFormUrlMissing · paymentUrl(미사용) 및
+ * ApplyFormFrame · CopyFormUrlButton 컴포넌트도 삭제했다.
+ * 폼을 되살릴 일이 생기면 이 주석이 아니라 사장님 지시를 근거로 판단할 것.
  */
-const rawGoogleFormUrl = process.env.NEXT_PUBLIC_GOOGLE_FORM_URL || ""
-const isGoogleFormUrlMissing =
-  !rawGoogleFormUrl ||
-  rawGoogleFormUrl === "#" ||
-  rawGoogleFormUrl.includes("XXXX") ||
-  rawGoogleFormUrl.includes("forms.gle/XXXX")
-
 export const config = {
-  // 폼 URL 미설정 시 페이지 top 튀는 것 방지 — 신청 섹션(#apply)으로 부드러운 스크롤
-  googleFormUrl: isGoogleFormUrlMissing ? "#apply" : rawGoogleFormUrl,
   /**
    * 2기 결제 마감 ISO datetime — 개강(7/25) 전날 자정.
    * 가짜 타이머가 아니라 "개강하면 못 들어온다"는 실제 마감. 지나면 카운트다운 자동 숨김.
@@ -25,15 +22,6 @@ export const config = {
   kakaoOpenChatUrl: process.env.NEXT_PUBLIC_KAKAO_OPENCHAT_URL || "https://open.kakao.com/o/gcjQ8Hpi",
   /** 결제 전 1:1로 상황 남기는 곳 (용팀장 직통) */
   kakao1to1Url: process.env.NEXT_PUBLIC_KAKAO_1TO1_URL || "https://open.kakao.com/o/srD2ziBe",
-  /**
-   * 결제 페이지 URL (Toss Payments Link / Stripe Payment Link / Kakao Pay 등).
-   * 운영자가 실제 결제 link 만들면 NEXT_PUBLIC_PAYMENT_URL에 주입.
-   * 미설정 시 kakao1to1로 fallback → 1:1 카톡으로 결제 안내 받는 경로.
-   * 가드: 사용자가 "신청서 작성 → 결제 link 자동 발송" 흐름 원함. 신청 후 응답 메시지에 이 URL 노출.
-   */
-  paymentUrl: process.env.NEXT_PUBLIC_PAYMENT_URL || process.env.NEXT_PUBLIC_KAKAO_1TO1_URL || "https://open.kakao.com/o/srD2ziBe",
-  /** 신청서 URL이 비었는가 → CTA에 안내문 노출 */
-  isFormUrlMissing: isGoogleFormUrlMissing,
 } as const
 
 /** 강의·상품 고정값 (운영자가 변경할 때만 여기 수정) */

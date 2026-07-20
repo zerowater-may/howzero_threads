@@ -2,8 +2,22 @@ import { Section } from "./section"
 import { ScribbleCircle } from "./handwriting"
 import { Check } from "lucide-react"
 
-/** 07 핵심 결과물 — 효자상품 10개 + 손그림 동그라미 + 7요소 + 가드 */
-const elements = ["키워드 · 카테고리", "상품명 · 대표이미지", "상세페이지 · 가격", "등록 전 체크까지 맞춰진 상품"]
+/**
+ * 07 핵심 결과물 — 효자상품 10개 + 손그림 동그라미 + 7요소 + 가드
+ *
+ * 7요소는 하나씩 나열한다. 전에는 "키워드 · 카테고리"처럼 둘씩 묶어 4줄로 뒀는데,
+ * 본문은 "아래 7가지"라고 하고 화면엔 4줄만 보여서 세어보면 어긋났다.
+ * FAQ의 효자상품 정의(7가지 열거)와도 이제 같은 항목·같은 순서다.
+ */
+const elements = [
+  "키워드",
+  "카테고리",
+  "상품명",
+  "대표이미지",
+  "상세페이지",
+  "가격",
+  "등록 전 체크",
+]
 const howto = [
   ["상품 선정 프레임은 제가 직접", " 드려요."],
   ["매주 과제로 1~2개씩", " 같이 만들어요."],
@@ -34,9 +48,12 @@ export function Outcome() {
           <p className="mb-4 text-sm leading-relaxed text-foreground/70">
             여기서 말하는 효자상품은 무작정 올린 상품이 아니에요. 아래 7가지가 다 맞춰진 상품을 말합니다.
           </p>
-          <ul className="space-y-2.5">
-            {elements.map((e) => (
-              <li key={e} className="flex items-start gap-2.5 text-sm">
+          <ul className="grid grid-cols-2 gap-x-4 gap-y-2.5">
+            {elements.map((e, i) => (
+              <li
+                key={e}
+                className={`flex items-start gap-2.5 text-sm ${i === elements.length - 1 ? "col-span-2" : ""}`}
+              >
                 <Check className="mt-0.5 h-4 w-4 flex-none" />
                 <span>{e}</span>
               </li>
