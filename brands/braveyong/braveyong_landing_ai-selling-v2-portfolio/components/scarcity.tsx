@@ -1,6 +1,6 @@
 import { Section } from "./section"
 import { ArrowRight } from "lucide-react"
-import { course, priceText } from "@/lib/config"
+import { course, nextCohort, priceText } from "@/lib/config"
 import { CountdownTimer } from "@/components/countdown-timer"
 import { PaymentDialog } from "@/components/payment-dialog"
 
@@ -24,7 +24,7 @@ const timeline = [
   },
   {
     time: "개강 후",
-    title: "4기까지 대기",
+    title: `${nextCohort}까지 대기`,
     body: `다음 기수 일정은 ${course.cohort} 끝나고 정합니다. 기다리는 동안 상품은 그대로예요.`,
     done: false,
   },
