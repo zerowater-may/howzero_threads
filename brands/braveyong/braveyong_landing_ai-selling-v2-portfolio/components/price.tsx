@@ -115,9 +115,12 @@ export function Price() {
               })}
             </ul>
 
+            {/* 예고는 과거 인상폭(+20/+30)과 숫자가 다르다. "3기까지는"으로 시제를 끊어
+                과거 이력과 미래 약속이 한 문장에서 섞이지 않게 한다. */}
             <p className="mt-3.5 border-t-2 border-[var(--warm-border)]/40 pt-3 text-sm leading-relaxed text-foreground/80">
-              미리 말씀드리면,{" "}
-              <span className="font-bold text-foreground">4기부터는 기수마다 10만원씩 오릅니다.</span>
+              3기까지는 이렇게 올렸고,{" "}
+              <span className="font-bold text-foreground">4기부터는 기수마다 10만원씩</span> 올릴
+              예정입니다.
             </p>
           </div>
 
