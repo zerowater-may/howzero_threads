@@ -44,6 +44,26 @@ const months: {
 
 const weekdayLabels = ["월", "화", "수", "목", "금", "토", "일"]
 
+/**
+ * 아래 '일정 요약' 줄의 날짜 — months 그리드에서 파생시킨다.
+ *
+ * 예전엔 "7.25 · 8.1 · 8.8 · 8.15" 처럼 손으로 적은 사본이었다. 2기 → 3기 전환에서
+ * months만 바뀌고 이 줄은 그대로 남아, 같은 섹션 안에서 그리드는 8/22 개강인데
+ * 요약 줄은 7/25 시작이라고 말하는 상태로 배포됐다.
+ * (기수 문자열 grep이 "7월 25일"만 보고 점 표기 "7.25"를 놓쳤다.)
+ *
+ * 사본을 없앴으니 이제 구조적으로 어긋날 수 없다.
+ * Object.entries 는 정수형 key를 오름차순으로 열거하고 months 는 시간순이라 정렬은 불필요하다.
+ */
+const summaryDates = (type: DayEvent["type"]) =>
+  months
+    .flatMap((m) =>
+      Object.entries(m.events)
+        .filter(([, e]) => e.type === type)
+        .map(([day]) => `${parseInt(m.label.split(".")[1], 10)}.${day}`)
+    )
+    .join(" · ")
+
 /** Tooltip 한 줄 정보 생성 */
 function eventTip(ev: DayEvent, monthLabel: string, day: number): { head: string; body: string; tone: "dark" | "outline" } {
   const m = parseInt(monthLabel.split(".")[1], 10) // "2026.06" → 6
@@ -218,13 +238,11 @@ export function Calendar() {
       <div className="grid gap-2 border-2 border-foreground bg-background p-5 text-sm sm:grid-cols-3 sm:text-base">
         <div>
           <span className="font-mono mr-2 text-[10px] font-bold uppercase tracking-[0.12em] text-foreground/55">오프라인 (토)</span>
-          {/* 그리드(오프라인 4회)와 반드시 같은 날짜여야 한다.
-              4주로 줄이면서 그리드에서는 8.22를 뺐는데 이 줄에만 남아 5개로 보였다. */}
-          <span className="font-bold tabular-nums">7.25 · 8.1 · 8.8 · 8.15</span>
+          <span className="font-bold tabular-nums">{summaryDates("off")}</span>
         </div>
         <div>
           <span className="font-mono mr-2 text-[10px] font-bold uppercase tracking-[0.12em] text-foreground/55">줌 보강 (수)</span>
-          <span className="font-bold tabular-nums">7.29 · 8.5 · 8.12 · 8.19</span>
+          <span className="font-bold tabular-nums">{summaryDates("zoom")}</span>
         </div>
         <div className="sm:text-right">
           <span className="font-mono mr-2 text-[10px] font-bold uppercase tracking-[0.12em] text-foreground/55">장소</span>

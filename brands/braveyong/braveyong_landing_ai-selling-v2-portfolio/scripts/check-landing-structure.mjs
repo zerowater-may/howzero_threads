@@ -128,7 +128,24 @@ if (violations.length > 0) {
   )
 }
 
-/* ── 4. og 배너 소스가 config 와 어긋나지 않는지 ──
+/* ── 4. 캘린더 날짜 사본 금지 ──
+   기수 값 가드(3번)는 "8월 22일 토요일" 형태만 잡는다. 캘린더는 같은 날짜를
+   "8.22 · 8.29 · 9.5 · 9.12" 점 표기로 쓰기 때문에 3번을 통과해 버린다.
+   실제로 2기 → 3기 전환에서 months 그리드만 바뀌고 이 요약 줄은 7.25 그대로 남아,
+   한 섹션 안에서 그리드와 요약이 다른 일정을 말하는 채로 배포됐다.
+   요약 줄은 months 에서 파생시켰으므로, 점 표기 날짜 나열이 다시 나타나면 사본이 부활한 것이다. */
+
+const calendar = stripComments(read("components/calendar.tsx"))
+const dateSequence = />[^<>{}]*\d{1,2}\.\d{1,2}\s*·\s*\d{1,2}\.\d{1,2}/
+
+if (dateSequence.test(calendar)) {
+  throw new Error(
+    "components/calendar.tsx 에 점 표기 날짜 나열(예: 8.22 · 8.29)이 하드코딩돼 있다. " +
+      "months 배열에서 파생시키는 summaryDates() 를 쓸 것 — 사본을 두면 기수 전환 때 그리드와 어긋난다."
+  )
+}
+
+/* ── 5. og 배너 소스가 config 와 어긋나지 않는지 ──
    og-banner.png 는 빌드 산출물이 아니라 커밋된 이미지다. 2기 배너는 소스 없이 손으로
    만들어져서 3기 전환 때 "2기 · 7월 25일 개강"이 박힌 채로 남아 있었다.
    scripts/build-og-banner.mjs 의 BANNER 상수가 config 와 맞는지만 확인한다.

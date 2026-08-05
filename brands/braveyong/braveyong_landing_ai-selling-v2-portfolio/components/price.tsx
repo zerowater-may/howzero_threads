@@ -30,7 +30,8 @@ export function Price() {
             <CountdownTimer className="text-brand" label="개강 전 결제 마감까지" />
           </div>
 
-          {/* 가격 — 강의 비용 200만원을 크게, 부가세 포함 220만원은 바로 아래 밝힌다 */}
+          {/* 가격 — 공급가를 크게, 부가세 포함 금액은 바로 아래 밝힌다.
+              금액 숫자는 주석에 적지 않는다. 기수마다 낡아서 코드와 어긋난다. */}
           <div className="mt-4 flex items-baseline gap-2">
             <span className="text-6xl font-bold tracking-tight tabular-nums">{supplyWan}</span>
             <span className="text-xl font-bold text-foreground/70">만원</span>

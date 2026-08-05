@@ -13,10 +13,13 @@ export const config = {
    * 현재 기수 결제 마감 ISO datetime — 개강(8/22) 전날 자정.
    * 가짜 타이머가 아니라 "개강하면 못 들어온다"는 실제 마감. 지나면 카운트다운 자동 숨김.
    *
-   * env 키는 NEXT_PUBLIC_COHORT1_DEADLINE 그대로 둔다. Vercel에 이 키로 등록돼 있어서
-   * 코드에서 키 이름을 바꾸면 env를 조용히 못 읽고 아래 기본값으로 폴백된다.
-   * (상수명만 cohort1Deadline → payDeadline 으로 바꿨다. 3기 마감을 담은 값이
-   *  cohort1이라는 이름을 달고 있으면 다음 기수 전환 때 잘못 건드린다.)
+   * 상수명만 cohort1Deadline → payDeadline 으로 바꿨다. 현재 기수 마감을 담은 값이
+   * cohort1이라는 이름을 달고 있으면 다음 기수 전환 때 잘못 건드린다.
+   *
+   * env 키는 NEXT_PUBLIC_COHORT1_DEADLINE 그대로 둔다. 2026-08-05 확인 시점에
+   * Vercel production 에는 이 키가 등록돼 있지 않아 아래 기본값이 쓰인다. 그래도 키를
+   * 바꾸지 않는 이유는, 누군가 나중에 대시보드에서 이 이름으로 넣었을 때 코드가 못 읽으면
+   * 마감 시각이 조용히 어긋나기 때문이다. env 에 값을 넣을 거면 기수 전환 때 같이 갱신할 것.
    */
   payDeadline: process.env.NEXT_PUBLIC_COHORT1_DEADLINE || "2026-08-21T23:59:59+09:00",
   youtubeFreeUrl: process.env.NEXT_PUBLIC_YOUTUBE_FREE_URL || "#",

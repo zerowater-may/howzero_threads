@@ -14,7 +14,9 @@ export const products: Record<ProductKey, Product> = {
     key: "course",
     // 결제선생 청구서에 찍히는 이름 — 기수는 config 단일 출처를 따라간다
     name: `용감한용팀장 AI셀링 실전반 오프라인 ${courseConfig.cohort}`,
-    amount: courseConfig.priceFirst, // 2,200,000 (공급가 200만 + VAT 20만) — config 단일 출처
+    // 금액은 config 단일 출처. 여기에 숫자를 주석으로 적어두면 기수마다 낡는다
+    // (실제로 3기 전환 후에도 "2,200,000" 이 남아 있었다) — 값은 lib/config.ts 를 볼 것.
+    amount: courseConfig.priceFirst,
   },
   "tonggwan-815": {
     key: "tonggwan-815",
