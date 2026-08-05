@@ -2,6 +2,7 @@ import Image from "next/image"
 import { Section } from "./section"
 import { Check } from "lucide-react"
 import { photos } from "@/lib/testimonials"
+import { course } from "@/lib/config"
 
 /** 11 졸업 후 오프라인 스터디 — 실제 모임·스터디 사진으로 증거 보강 */
 const how = [
@@ -58,7 +59,7 @@ export function Study() {
           <h3 className="mb-3 text-lg font-bold tracking-tight">참여 안내</h3>
           <p className="text-sm leading-relaxed text-foreground/75">
             <span className="font-bold text-foreground">강제 참여 아닙니다.</span> 의지 있는 분만 참여하는 선택 과정입니다.
-            비용·일정·장소는 2기 졸업 시점에 개별 안내드립니다.
+            비용·일정·장소는 {course.cohort} 졸업 시점에 개별 안내드립니다.
           </p>
           <hr className="my-4 border-foreground/10" />
           <ul className="space-y-2.5">
@@ -76,7 +77,7 @@ export function Study() {
             </li>
           </ul>
           <div className="mt-4 border border-[var(--warm-border)] bg-[var(--warm)] p-4 text-sm font-bold">
-            2기 수강생은 졸업 후 스터디 우선 참여권을 드립니다.
+            {course.cohort} 수강생은 졸업 후 스터디 우선 참여권을 드립니다.
           </div>
         </div>
       </div>

@@ -12,7 +12,8 @@ export type Product = {
 export const products: Record<ProductKey, Product> = {
   course: {
     key: "course",
-    name: "용감한용팀장 AI셀링 실전반 오프라인 2기",
+    // 결제선생 청구서에 찍히는 이름 — 기수는 config 단일 출처를 따라간다
+    name: `용감한용팀장 AI셀링 실전반 오프라인 ${courseConfig.cohort}`,
     amount: courseConfig.priceFirst, // 2,200,000 (공급가 200만 + VAT 20만) — config 단일 출처
   },
   "tonggwan-815": {

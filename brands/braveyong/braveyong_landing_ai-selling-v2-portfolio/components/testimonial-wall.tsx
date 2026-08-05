@@ -12,7 +12,7 @@ import { course, priceText } from "@/lib/config"
  * 04 후기 벽 — 하이브리드 (시안 A).
  * 하이라이트 8장 텍스트 카드 → ▼ 더 보기 → 캡처 46장 그리드 + Dialog lightbox.
  *
- * 하이라이트 슬롯은 운영 입력 — body 비면 "2기 모집 중" placeholder가 표시된다.
+ * 하이라이트 슬롯은 운영 입력 — body 비면 "N기 모집 중"(course.cohort) placeholder가 표시된다.
  * label/title/lead는 optional — 미지정 시 기존 강의 랜딩(/) 카피 그대로 (course 무손상).
  */
 export function TestimonialWall({
@@ -37,14 +37,16 @@ export function TestimonialWall({
         "이 8장은 그동안 진행한 스터디·라이브 클래스 카페에 실제로 달린 후기에서 따왔어요. 원본 캡처는 아래 ▼ 더 보기로 50장 전부 보실 수 있습니다."
       }
     >
-      {/* ── 1기 진행 중 후기 (featured) — 2주차까지 실제로 온 카톡 원문 ── */}
+      {/* ── 1기 수강 후기 (featured) — 진행 중 2주차까지 실제로 온 카톡 원문.
+          1·2기가 모두 끝난 뒤로는 현재진행형("지금 1기가 겪고 있는")이 사실이 아니라
+          과거형으로 바꿨다. 아래 마무리 문단도 이미 과거형이라 시제가 맞는다. ── */}
       <div className="mb-10">
         <div className="mb-4 flex flex-wrap items-center gap-2">
           <span className="font-mono inline-flex items-center rounded-full bg-brand px-3 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-brand-foreground">
-            1기 진행 중 후기
+            1기 수강 후기
           </span>
           <span className="text-sm font-bold tracking-tight text-foreground sm:text-base">
-            지금 1기가 겪고 있는 일입니다.
+            1기가 4주 동안 겪은 일입니다.
           </span>
         </div>
         <div className="grid gap-3 md:grid-cols-3">
@@ -185,7 +187,7 @@ export function TestimonialWall({
               </header>
               <p className="text-sm leading-relaxed">
                 {placeholder
-                  ? "2기 모집 중 — 첫 후기를 함께 만들 분의 자리입니다."
+                  ? `${course.cohort} 모집 중 — 첫 후기를 함께 만들 분의 자리입니다.`
                   : `“${h.body}”`}
               </p>
             </article>

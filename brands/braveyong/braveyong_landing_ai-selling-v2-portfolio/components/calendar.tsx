@@ -1,10 +1,11 @@
 import { Section } from "./section"
+import { course } from "@/lib/config"
 // calendar timeline 제거로 unused imports 정리 — 필요 시 부활
 
 /**
- * 09-B 2기 강의일정 캘린더 — Operation 다음, WhyYong 직전.
- * 월간 grid (7월·8월) + 4주 timeline 카드 (origin-story 패턴).
- * 데이터: course.startDate 2026-07-25(토) 기준 매주 토요일 오프라인 4회, 줌은 2~4주차 직전 수요일 4회.
+ * 09-B 강의일정 캘린더 — Operation 다음, WhyYong 직전.
+ * 월간 grid (8월·9월) + 4주 timeline 카드 (origin-story 패턴).
+ * 데이터: course.startDate 2026-08-22(토) 기준 매주 토요일 오프라인 4회, 줌은 각 회차 다음 수요일 4회.
  * grid 각 셀 hover 시 그 날 일정 detail tooltip 표시.
  */
 type OffEvent = { type: "off"; n: number; title: string }
@@ -18,25 +19,25 @@ const months: {
   events: Record<number, DayEvent>
 }[] = [
   {
-    label: "2026.07",
-    daysInMonth: 31,
-    startWeekday: 2, // 2026-07-01 = Wed
-    events: {
-      25: { type: "off", n: 1, title: "AI 직원 세팅" },
-      29: { type: "zoom", week: 1 },
-    },
-  },
-  {
     label: "2026.08",
     daysInMonth: 31,
     startWeekday: 5, // 2026-08-01 = Sat
     events: {
-      1: { type: "off", n: 2, title: "소싱" },
-      5: { type: "zoom", week: 2 },
-      8: { type: "off", n: 3, title: "노출" },
-      12: { type: "zoom", week: 3 },
-      15: { type: "off", n: 4, title: "전환 · 시스템화" },
-      19: { type: "zoom", week: 4 },
+      22: { type: "off", n: 1, title: "AI 직원 세팅" },
+      26: { type: "zoom", week: 1 },
+      29: { type: "off", n: 2, title: "소싱" },
+    },
+  },
+  {
+    label: "2026.09",
+    daysInMonth: 30,
+    startWeekday: 1, // 2026-09-01 = Tue
+    events: {
+      2: { type: "zoom", week: 2 },
+      5: { type: "off", n: 3, title: "노출" },
+      9: { type: "zoom", week: 3 },
+      12: { type: "off", n: 4, title: "전환 · 시스템화" },
+      16: { type: "zoom", week: 4 },
     },
   },
 ]
@@ -185,10 +186,10 @@ export function Calendar() {
       tone="warm"
       id="calendar"
       label="Calendar"
-      title={<>2기, 같이 가는 4주 일정.</>}
+      title={<>{course.cohort}, 같이 가는 {course.weeks}주 일정.</>}
       lead="오프라인 4회 + 줌 보강 4회. 매주 토요일 오프라인으로 같이 작업하고, 사이 주중에 줌으로 보강합니다."
     >
-      {/* 월간 grid 보기 — 7월 + 8월. mx-auto + max-w로 셀 비대 방지 */}
+      {/* 월간 grid 보기 — 8월 + 9월. mx-auto + max-w로 셀 비대 방지 */}
       <div className="mb-4 grid gap-4 lg:grid-cols-2">
         {months.map((m, i) => (
           <MonthGrid key={m.label} m={m} idx={i} />
@@ -232,7 +233,7 @@ export function Calendar() {
       </div>
 
       <p className="font-memo mt-6 text-sm leading-relaxed text-foreground/70 sm:text-base">
-        ※ 위 일정은 예정이에요. 정확한 시간·장소(선릉역 or 강남역 주변)는 2기 확정 후 참여자분께 따로 안내드립니다. 주차별 상세는 2기 신청 후 공개합니다.
+        ※ 위 일정은 예정이에요. 정확한 시간·장소(선릉역 or 강남역 주변)는 {course.cohort} 확정 후 참여자분께 따로 안내드립니다. 주차별 상세는 {course.cohort} 신청 후 공개합니다.
       </p>
     </Section>
   )

@@ -2,17 +2,16 @@ import { Section } from "./section"
 import { ArrowNote } from "./handwriting"
 import { CountdownTimer } from "./countdown-timer"
 import { PaymentDialog } from "@/components/payment-dialog"
-import { config, course, priceText } from "@/lib/config"
+import { config, course, priceHistory, priceText } from "@/lib/config"
 
 /**
- * 14 가격 — 2기 단일가 구조 (2026-07-20 확정).
- * 얼리버드/정가 이중 표기 폐지. 부가세 포함 220만원 하나만 크게 보여주고,
- * 앵커는 가짜 정가 대신 1기 실제 결제액(198만)을 쓴다.
- * 카운트다운 = 개강(7/25) 전날 마감이라는 실제 마감.
+ * 14 가격 — 3기 단일가 구조 (2026-08-05 확정).
+ * 얼리버드/정가 이중 표기 폐지. 공급가 230만원을 크게 보여주고,
+ * 앵커는 가짜 정가 대신 priceHistory(1기 180 → 2기 200 → 3기 230) 실제 이력을 쓴다.
+ * 카운트다운 = 개강(8/22) 전날 마감이라는 실제 마감.
  */
-const priceWan = (course.priceFirst / 10000).toLocaleString()          // 220
-const supplyWan = (course.priceFirstSupply / 10000).toLocaleString()   // 200
-const cohort1Wan = (course.priceCohort1 / 10000).toLocaleString()      // 198
+const priceWan = (course.priceFirst / 10000).toLocaleString()          // 253
+const supplyWan = (course.priceFirstSupply / 10000).toLocaleString()   // 230
 
 export function Price() {
   return (
@@ -71,18 +70,65 @@ export function Price() {
 
           <hr className="my-5 border-foreground/10" />
 
-          {/* 앵커 — 가짜 정가 대신 1기 실제 금액을 밝힌다 */}
-          <div className="border-l-2 border-brand bg-brand/[0.06] px-4 py-3">
-            <div className="font-mono text-[10px] font-bold uppercase tracking-[0.15em] text-foreground/55">
-              1기보다 올랐습니다
+          {/* 가격 사다리 — 지나간 기수는 긁어서 회색으로 눕히고, 이번 기수만 살린다.
+              가짜 정가 앵커가 아니라 1·2기 실제 결제 이력이라 숫자를 그대로 쓴다.
+              금액은 전부 공급가(부가세 별도) — 위 헤드라인과 기준을 맞춰야 따로 놀지 않는다. */}
+          <div className="border-2 border-[var(--warm-border)] bg-[var(--warm)] p-4 sm:p-5">
+            <div className="font-mono flex items-baseline justify-between gap-2 text-[10px] font-bold uppercase tracking-[0.15em] text-foreground/55">
+              <span>가격은 매 기수 올랐습니다</span>
+              <span className="shrink-0 font-normal tracking-normal">부가세 별도</span>
             </div>
-            <p className="mt-1 text-sm leading-relaxed text-foreground/85 sm:text-base">
-              숨기지 않을게요. 1기는 {cohort1Wan}만원이었고, {course.cohort}는 {priceWan}만원입니다.
-              1기 때 없던 <span className="font-bold text-foreground">줌 보강과 유선 케어</span>가 붙었고,
-              대신 정원을 {course.cohort1Count}명에서 <span className="font-bold text-foreground">{course.capacityMax}명으로 줄였어요.</span>{" "}
-              한 사람당 제가 쓸 시간을 늘리려고 그렇게 했습니다.
+
+            <ul className="mt-3.5 space-y-1">
+              {priceHistory.map((p) => {
+                const wanText = (p.supply / 10000).toLocaleString()
+                return p.closed ? (
+                  <li
+                    key={p.cohort}
+                    className="flex items-baseline gap-2.5 px-2 py-1.5 text-foreground/45"
+                  >
+                    <span className="font-mono w-6 shrink-0 text-[11px] font-bold">{p.cohort}</span>
+                    <span className="text-base font-bold tabular-nums line-through decoration-2">
+                      {wanText}만원
+                    </span>
+                    <span className="font-mono ml-auto shrink-0 text-[10px] font-bold uppercase tracking-[0.12em]">
+                      마감
+                    </span>
+                  </li>
+                ) : (
+                  <li
+                    key={p.cohort}
+                    className="flex items-baseline gap-2.5 border-l-4 border-brand bg-background px-2 py-2.5"
+                  >
+                    <span className="font-mono w-6 shrink-0 text-[11px] font-bold text-brand">
+                      {p.cohort}
+                    </span>
+                    <span className="text-xl font-bold tracking-tight tabular-nums text-brand sm:text-3xl">
+                      {wanText}
+                      <span className="text-sm font-bold sm:text-lg">만원</span>
+                    </span>
+                    <span className="font-mono ml-auto shrink-0 text-[10px] font-bold uppercase tracking-[0.12em] text-brand">
+                      모집 중
+                    </span>
+                  </li>
+                )
+              })}
+            </ul>
+
+            <p className="mt-3.5 border-t-2 border-[var(--warm-border)]/40 pt-3 text-sm leading-relaxed text-foreground/80">
+              미리 말씀드리면,{" "}
+              <span className="font-bold text-foreground">4기부터는 기수마다 10만원씩 오릅니다.</span>
             </p>
           </div>
+
+          {/* 숫자만 던지고 끝내면 그냥 인상 통보다 — 뭘 더 주고 올렸는지 밝힌다 */}
+          <p className="mt-3 text-sm leading-relaxed text-foreground/85 sm:text-base">
+            숨기지 않을게요. 1기 때 없던{" "}
+            <span className="font-bold text-foreground">줌 보강과 유선 케어</span>가 붙었고, 정원도 1기{" "}
+            {course.cohort1Count}명에서{" "}
+            <span className="font-bold text-foreground">{course.capacityMax}명으로 줄였습니다.</span>{" "}
+            한 사람당 제가 쓸 시간을 늘리려고 그렇게 했어요.
+          </p>
 
           <p className="font-memo mt-4 rounded border-l-2 border-foreground bg-background/60 px-3 py-2 text-sm leading-relaxed text-foreground">
             받는 건 4주가 아니라,<br />
@@ -108,7 +154,7 @@ export function Price() {
         <div className="space-y-3">
           <div className="border-l-4 border-foreground bg-background p-5 text-sm leading-relaxed">
             <p className="text-foreground/75">
-              1기를 마친 후기가 쌓였고, 그걸 보고 {course.cohort}를 다시 짰습니다. 보강도 케어도 1기에서 부족했던 걸 채운 거예요.<br />
+              1·2기를 마친 후기가 쌓였고, 그걸 보고 {course.cohort}를 다시 짰습니다. 보강도 케어도 앞 기수에서 부족했던 걸 채운 거예요.<br />
               <br />
               <span className="font-bold text-foreground">대신 4주 진심으로 함께할 분만 오세요.</span>
               <br />

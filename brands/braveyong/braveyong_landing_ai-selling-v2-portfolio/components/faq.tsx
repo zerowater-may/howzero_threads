@@ -1,6 +1,6 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Section } from "./section"
-import { priceText } from "@/lib/config"
+import { course, priceText } from "@/lib/config"
 
 /** 17 FAQ — 12문항 */
 const faqs = [
@@ -46,7 +46,7 @@ const faqs = [
   },
   {
     q: "졸업 후 스터디는 필수인가요?",
-    a: "아닙니다. 강제 참여가 아니라 의지 있는 분만 참여하는 선택 과정입니다. 2기 수강생은 우선 참여권을 드리고, 비용·일정은 졸업 시점에 개별 안내드립니다.",
+    a: `아닙니다. 강제 참여가 아니라 의지 있는 분만 참여하는 선택 과정입니다. ${course.cohort} 수강생은 우선 참여권을 드리고, 비용·일정은 졸업 시점에 개별 안내드립니다.`,
   },
     {
     q: "결제는 어떻게 하나요?",
@@ -54,7 +54,7 @@ const faqs = [
   },
   {
     q: "환불 기준은 어떻게 되나요?",
-    a: "환불 기준은 2기 시작 전까지 확정해서, 결제하신 분께 따로 안내드립니다. 다듬어지지 않은 임시 기준을 ‘예시’처럼 적어두지 않으려고 일부러 비워뒀어요. 결제 전에 미리 알고 싶으시면 단톡방이나 1:1로 물어봐 주세요.",
+    a: `환불 기준은 ${course.cohort} 시작 전까지 확정해서, 결제하신 분께 따로 안내드립니다. 다듬어지지 않은 임시 기준을 ‘예시’처럼 적어두지 않으려고 일부러 비워뒀어요. 결제 전에 미리 알고 싶으시면 단톡방이나 1:1로 물어봐 주세요.`,
   },
 ]
 

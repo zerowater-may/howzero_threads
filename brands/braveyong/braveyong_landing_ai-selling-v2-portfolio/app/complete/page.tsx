@@ -7,7 +7,7 @@ import { Loader2, CheckCircle2, Clock } from "lucide-react"
 import { config, course, priceText } from "@/lib/config"
 
 /**
- * 결제 완료 확인 — 실전반(2기)용.
+ * 결제 완료 확인 — 실전반(현재 기수)용 — 기수 표기는 course.cohort를 따른다.
  *
  * 이전에는 course 결제 후 돌아올 화면이 없어서 "지금 결제하세요" 섹션(/#apply)으로
  * 튕겼다. 220만원을 결제한 직후에 결제 권유 화면을 다시 보면

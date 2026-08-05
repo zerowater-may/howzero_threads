@@ -5,7 +5,7 @@ import { config } from "@/lib/config"
 
 /**
  * 개강 전 결제 마감 카운트다운. (얼리버드 이중 가격은 2026-07-20 폐지)
- * `config.cohort1Deadline` (ISO datetime, KST)까지 D-N · HH:MM:SS.
+ * `config.payDeadline` (ISO datetime, KST)까지 D-N · HH:MM:SS.
  * 마감 후 자동 숨김 → consumer가 `showWhenExpired={false}` 기본으로 조건부 렌더.
  *
  * 가드: fake daily reset 아님. 실제 마감 datetime 기반.
@@ -30,12 +30,12 @@ export function CountdownTimer({
   className?: string
   /** 모바일/sticky용 단일 줄 압축 표기 */
   compact?: boolean
-  /** ISO datetime(KST). 미지정 시 config.cohort1Deadline */
+  /** ISO datetime(KST). 미지정 시 config.payDeadline */
   deadline?: string
   /** 비-compact 라벨 텍스트 */
   label?: string
 }) {
-  const deadlineMs = new Date(deadline ?? config.cohort1Deadline).getTime()
+  const deadlineMs = new Date(deadline ?? config.payDeadline).getTime()
   const [r, setR] = useState<Remaining | null>(null)
 
   useEffect(() => {

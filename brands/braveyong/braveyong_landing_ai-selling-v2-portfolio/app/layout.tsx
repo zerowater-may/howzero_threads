@@ -80,7 +80,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://www.gigclass.kr"),
   title: "4주 오프라인 AI 셀링 실전반 — 용감한 용팀장",
   description:
-    "물건 찾기부터 고객 응대까지, 나만의 AI 직원한테 시키는 셀러로. 4주 동안 AI 직원 세팅 + 효자상품 10개. 서울 강남 오프라인 4회 + 줌 보강 4회 · 2기 모집 중.",
+    "물건 찾기부터 고객 응대까지, 나만의 AI 직원한테 시키는 셀러로. 4주 동안 AI 직원 세팅 + 효자상품 10개. 서울 강남 오프라인 4회 + 줌 보강 4회 · 3기 모집 중.",
   keywords: [
     "용감한 용팀장",
     "AI 셀링",
@@ -164,7 +164,7 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Course",
-              name: "4주 오프라인 AI 셀링 실전반 (2기)",
+              name: "4주 오프라인 AI 셀링 실전반 (3기)",
               description:
                 "나만의 AI 직원 세팅 + 효자상품 10개. 오프라인 4회 + 줌 보강 4회, 서울 강남, 소수정예.",
               provider: {

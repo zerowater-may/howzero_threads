@@ -27,7 +27,7 @@ import { RevealObserver } from "@/components/reveal-observer"
 import { OriginStory } from "@/components/origin-story"
 
 /**
- * 용감한 용팀장 — 4주 오프라인 AI 셀링 실전반 (2기) 랜딩 v2
+ * 용감한 용팀장 — 4주 오프라인 AI 셀링 실전반 (3기) 랜딩 v2
  *
  * spec: docs/superpowers/specs/2026-05-23-braveyong-ai-selling-landing-v2-portfolio-style-design.md
  * 18블록 wireframe + Hero/Footer/Sticky CTA.
@@ -49,7 +49,7 @@ export default function Page() {
         <OriginStory />       {/* 09 Origin Story — 증거 이후 감정 보강 */}
         <Curriculum />        {/* 10 */}
         <Operation />         {/* 11 */}
-        <Calendar />          {/* 12 2기 강의일정 캘린더 */}
+        <Calendar />          {/* 12 강의일정 캘린더 */}
         <YouTubeCarousel />   {/* 13 용팀장 노하우 (유튜브) */}
         <WhyYong />           {/* 14 */}
         <Study />             {/* 15 */}
