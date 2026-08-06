@@ -3,7 +3,7 @@
 import { FormEvent, useEffect, useState } from "react"
 import type { ReactNode } from "react"
 import { createPortal } from "react-dom"
-import { CreditCard, ExternalLink, Loader2, X, ShieldCheck, Landmark } from "lucide-react"
+import { CreditCard, ExternalLink, Loader2, X, Landmark } from "lucide-react"
 import { CountdownTimer } from "./countdown-timer"
 
 type PaymentDialogProps = {
@@ -25,7 +25,7 @@ type PaymentDialogProps = {
    * 815 특강은 자체 경로(/815/complete)를 명시적으로 넘긴다.
    */
   completePathPrefix?: string
-  /** true 시 6개월 할부 힌트 행 + 3개월 환불 보장 배지 숨김 (815 특강 전용) */
+  /** true 시 6개월 할부 힌트 행 숨김 (815 특강 전용 — 209,000원이라 할부 안내가 안 맞는다) */
   hidePromoBadges?: boolean
 }
 
@@ -381,13 +381,12 @@ export function PaymentDialog({
                 <span className="text-foreground/25">·</span>
                 <span>무이자 할부</span>
               </div>
+              {/* 여기에 "3개월 환불 보장" 배지가 있었다 (2026-08-06 제거).
+                  같은 페이지 FAQ가 "환불 기준은 기수 시작 전까지 확정해서 따로 안내드립니다.
+                  임시 기준을 예시처럼 적어두지 않으려고 일부러 비워뒀어요"라고 말하는데,
+                  결제 직전 화면만 3개월 환불을 확정 약속하고 있었다. 근거 문서가 없는 약속이라 뺐다.
+                  환불 기준이 실제로 확정되면 그 내용대로 다시 넣을 것 — FAQ와 반드시 같은 말을 해야 한다. */}
               <div className="flex flex-wrap items-center justify-center gap-x-2.5 gap-y-1 text-[11px] font-bold text-foreground/60">
-                {!hidePromoBadges && (
-                  <>
-                    <span className="inline-flex items-center gap-1 text-brand"><ShieldCheck className="h-3.5 w-3.5" /> 3개월 환불 보장</span>
-                    <span className="text-foreground/25">·</span>
-                  </>
-                )}
                 <span>결제 후 용팀장 직접 확인</span>
                 <span className="text-foreground/25">·</span>
                 <span>안전결제(결제선생)</span>
