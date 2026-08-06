@@ -4,7 +4,7 @@ import { Check } from "lucide-react"
 
 /** 10 왜 용팀장인가 — 인용 + 펜글씨 서명 + 인터뷰 scene 4개 */
 const directions = [
-  "회사 다니던 직장인 · 지금도 현업 셀러",
+  "회사 다니는 직장인 · 지금도 현업 셀러",
   "아이 학교 보내고 공유오피스로 출근",
   "1만 개 따라 올린 것 중에서 검색에 잡힌 몇 개를, 데이터 보면서 직접 가공",
   "상품명을 하루에 하나씩 만들면서, 순위 변화로 직접 검증",
@@ -35,7 +35,7 @@ export function WhyYong() {
             그런데 되는 방향은 맞습니다.
           </p>
           <div className="mt-6 text-right">
-            <Signature small="현업 셀러 · 부동산 투자자 · 회사 다니던 직장인 · 육아 아빠">— 용감한 용팀장 드림</Signature>
+            <Signature small="현업 셀러 · 부동산 투자자 · 직장인 · 육아 아빠">— 용감한 용팀장 드림</Signature>
           </div>
         </div>
 
