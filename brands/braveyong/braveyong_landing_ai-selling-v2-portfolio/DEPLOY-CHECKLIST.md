@@ -8,6 +8,20 @@ bulsaja Vercel 팀(`team_TJbZrrxEedAkxKUVSniHrdlr`)에 신규 프로젝트로 �
 
 ## 배포 기록
 
+### 2026-08-12 (15차) — 가격 헤드라인을 카드 6개월 무이자 월 납입액 기준으로 전환 (commit `589c561f`)
+- `vercel deploy --prod --yes --archive=tgz` → deployment `...l2mn75kn3` **READY (production)**
+- 큰 숫자를 253만원 총액 → **"월 422,000원"** (카드 6개월 무이자)으로 교체 — 2026-08-11 사장님 지시.
+  총액을 크게 걸면 253만원 하나로 판단이 끝나 실제 대부분이 쓰는 할부가 안 보인다
+- 총액(부가세 포함 253만)은 취소선 없이 병기 — 실제 청구액이라 긁으면 없는 할인을 만든다
+- 적용 6곳 동일 숫자·동일 단위: apply · price · final-cta · sticky-cta · faq · 결제 모달
+  (모달만 "월 42만원대"로 뭉개져 결제 직전에 숫자가 달라 보이던 것 제거)
+- price 헤드라인 폰트 clamp — "230"(3글자) 자리에 "422,000원"(8글자)이 들어오며
+  아이폰 폭에서 카드 밖으로 88px 삐져나오던 문제
+- `config.priceText`에 `monthly6Exact`·`totalExact` 단일 출처 추가, 사용처 없는 `freeLectureDate` 제거
+- 검증: tsc --noEmit / test:landing / build 통과
+- 라이브 검증: `https://www.gigclass.kr/`·`/complete` HTTP 200 —
+  `월 422,000원` 1 + `422,000원` 9 + `카드 6개월 무이자` 12 노출, 총액 253만원 병기 유지
+
 ### 2026-08-05 (14차) — 3기 전환 후속: 캘린더 2기 일정 잔재 수리 + 가드 강화 (commits `e1aa8071`·`현재`)
 - `vercel deploy --prod --yes --archive=tgz` → 배포 후 라이브 재검증
 - **사고**: 13차 배포에 캘린더 '일정 요약' 줄이 2기 날짜(`7.25 · 8.1 · 8.8 · 8.15` / `7.29 · 8.5 · 8.12 · 8.19`)
