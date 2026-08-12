@@ -26,11 +26,18 @@ export function FinalCTA() {
           그때 하신 그 결심, 지금 바로 잡으세요.
         </p>
 
-        {/* 가격 — 결제창에 찍히는 숫자 그대로 */}
+        {/* 가격 — 큰 숫자는 월 납입액(카드 6개월 무이자), 총액은 위·아래에 그대로 밝힌다.
+            총액에 취소선은 긋지 않는다 — 실제 청구액이라 긁으면 없는 할인을 만든다. */}
         <div className="mx-auto mt-8 inline-flex flex-col items-center gap-1">
-          <span className="text-4xl font-bold tabular-nums sm:text-5xl">{priceText.headline}</span>
+          <span className="text-sm font-bold tabular-nums text-background/50">
+            {priceText.totalExact} 부가세 포함
+          </span>
+          <span className="flex items-baseline gap-1.5">
+            <span className="text-xl font-bold text-background/70 sm:text-2xl">월</span>
+            <span className="text-4xl font-bold tabular-nums sm:text-5xl">{priceText.monthly6Exact}</span>
+          </span>
           <span className="font-mono mt-1 text-[11px] uppercase tracking-[0.14em] text-background/55">
-            부가세 별도 · 포함 {priceText.total} · 정원 {course.capacityMax}명
+            카드 6개월 무이자 기준 · 일시불 {priceText.total} · 정원 {course.capacityMax}명
           </span>
         </div>
 

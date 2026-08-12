@@ -85,7 +85,12 @@ export function PaymentDialog({
     }
   }, [open])
 
-  const monthly6 = Math.max(1, Math.round(amount / 6 / 10000))
+  /**
+   * 6개월 무이자 시 월 납입액 — 천원 단위 반올림.
+   * 페이지가 큰 숫자로 "월 422,000원"을 걸어두는데 모달만 "월 42만원대"로 뭉개면
+   * 결제 직전에 숫자가 달라 보인다. 같은 값을 같은 단위로 보여준다.
+   */
+  const monthly6 = (Math.round(amount / 6 / 1000) * 1000).toLocaleString()
 
   const triggerClassName =
     className ||
@@ -252,7 +257,7 @@ export function PaymentDialog({
               {!hidePromoBadges && (
                 <div className="mt-2 flex items-center justify-between gap-3 border-t border-foreground/10 pt-2 text-xs text-foreground/60">
                   <span>한 번에 부담되면</span>
-                  <span className="font-bold text-foreground">카드 6개월 무이자 · 월 {monthly6}만원대</span>
+                  <span className="font-bold text-foreground">카드 6개월 무이자 · 월 {monthly6}원</span>
                 </div>
               )}
               <div className="mt-2 border-t border-foreground/10 pt-2 text-center">

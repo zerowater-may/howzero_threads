@@ -25,9 +25,11 @@ export function Apply() {
           {course.cohort} 모집 중 · 정원 {course.capacityMax}명
         </div>
         <p className="text-lg font-bold leading-snug tracking-tight text-foreground sm:text-xl">
-          수강료는{" "}
-          <span className="underline decoration-brand/40 decoration-2 underline-offset-4">{priceText.headline}</span>,
-          부가세 포함하면 {priceText.total}입니다.
+          수강료는 카드 6개월 무이자로{" "}
+          <span className="underline decoration-brand/40 decoration-2 underline-offset-4">
+            월 {priceText.monthly6Exact}
+          </span>
+          , 한 번에 결제하면 {priceText.total}(공급가 {priceText.headline} + 부가세)입니다.
         </p>
         <p className="mt-2 text-sm leading-relaxed text-foreground/75 sm:text-base">
           신청서 쓰고 기다리는 절차 없습니다. 이름과 연락처만 넣으면{" "}
@@ -38,16 +40,23 @@ export function Apply() {
       {/* 가격 + 카운트다운 + 큰 결제 버튼 — 저스크롤 사용자 대응으로 위에 몰아넣음 */}
       <div className="mb-8 border-2 border-brand bg-background p-6 sm:p-8">
         <div className="flex flex-col items-center gap-1 text-center">
+          {/* 큰 숫자는 월 납입액(카드 6개월 무이자), 총액은 그 위·아래에서 숨기지 않고 밝힌다.
+              총액에 취소선은 긋지 않는다 — 실제 청구액이라 긁으면 없는 할인을 만든다. */}
           <div className="font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-foreground/55">
-            {course.cohort} 수강료 (부가세 별도)
+            {course.cohort} 수강료 · 카드 6개월 무이자 기준
           </div>
-          <div className="mt-1 flex items-end justify-center gap-3">
+          <div className="mt-1 text-base font-bold tabular-nums text-foreground/45">
+            {priceText.totalExact}
+            <span className="ml-1 text-sm font-normal">부가세 포함</span>
+          </div>
+          <div className="mt-0.5 flex items-baseline justify-center gap-1.5">
+            <span className="text-xl font-bold text-foreground/60 sm:text-2xl">월</span>
             <span className="text-4xl font-extrabold tracking-tight text-brand sm:text-5xl">
-              {priceText.headline}
+              {priceText.monthly6Exact}
             </span>
           </div>
           <div className="mt-1 text-xs text-foreground/60 sm:text-sm">
-            부가세 포함 {priceText.total} · 결제창에 찍히는 금액입니다
+            한 번에 결제하면 {priceText.total} · 결제창에 찍히는 금액입니다
           </div>
           <CountdownTimer className="mt-3 text-foreground" label="개강 전 결제 마감까지" />
         </div>
@@ -61,8 +70,8 @@ export function Apply() {
         </div>
 
         <p className="font-memo mt-4 text-center text-sm leading-relaxed text-foreground/70 sm:text-base">
-          한 번에 부담되시면 <span className="font-bold text-foreground">카드 무이자 할부</span>로 시작하셔도 됩니다.
-          6개월 기준 <span className="font-bold text-foreground">월 {priceText.monthly6}</span>대예요.
+          <span className="font-bold text-foreground">카드 3·6개월 무이자</span> 다 됩니다.
+          할부 개월 수는 결제창에서 카드 고르신 뒤 선택하시면 돼요.
         </p>
 
         {/* 결제 전 질문용 보조 링크 — 신청 경로가 아니라 문의 경로 */}

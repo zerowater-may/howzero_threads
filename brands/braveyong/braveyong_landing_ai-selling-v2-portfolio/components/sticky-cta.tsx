@@ -38,11 +38,13 @@ export function StickyCTA() {
           </span>
           <CountdownTimer compact className="text-foreground" label="" />
           <span className="text-foreground/30">·</span>
+          {/* 큰 숫자는 월 납입액. 총액은 좁은 화면에서도 같이 보여야 한다 —
+              할부 금액만 떠 있으면 결제창에서 총액을 보고 놀란다. */}
           <span className="tabular-nums">
-            <span className="text-base font-bold text-foreground sm:text-lg">{priceText.headline}</span>
-            <span className="ml-1 text-xs text-foreground/55 sm:text-sm">부가세 별도 · 포함 {priceText.total}</span>
+            <span className="text-base font-bold text-foreground sm:text-lg">월 {priceText.monthly6Exact}</span>
+            <span className="ml-1 text-xs text-foreground/55 sm:text-sm">· 총 {priceText.total}</span>
             <span className="ml-1 hidden text-xs text-foreground/55 sm:inline sm:text-sm">
-              · 월 {priceText.monthly6} / 6개월 무이자
+              (부가세 포함) · 카드 6개월 무이자 기준
             </span>
           </span>
         </div>

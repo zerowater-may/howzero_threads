@@ -30,16 +30,27 @@ export function Price() {
             <CountdownTimer className="text-brand" label="개강 전 결제 마감까지" />
           </div>
 
-          {/* 가격 — 공급가를 크게, 부가세 포함 금액은 바로 아래 밝힌다.
+          {/* 가격 — 큰 숫자는 월 납입액(카드 6개월 무이자 기준), 총액은 그 위에 회색으로 같이 둔다.
+              총액을 크게 걸면 숫자 하나로 판단이 끝나고, 정작 대부분이 쓰는 할부가 안 보인다.
+              총액에 취소선은 긋지 않는다 — 실제 청구액이라 긁으면 없는 할인을 만드는 셈이다.
               금액 숫자는 주석에 적지 않는다. 기수마다 낡아서 코드와 어긋난다. */}
-          <div className="mt-4 flex items-baseline gap-2">
-            <span className="text-6xl font-bold tracking-tight tabular-nums">{supplyWan}</span>
-            <span className="text-xl font-bold text-foreground/70">만원</span>
-            <span className="ml-1 text-sm font-bold text-foreground/60">부가세 별도</span>
+          <div className="mt-4 text-base font-bold tabular-nums text-foreground/45">
+            {priceText.totalExact}
+            <span className="ml-1 text-sm font-normal">부가세 포함</span>
+          </div>
+          {/* 폰트 크기는 고정값(text-6xl) 대신 clamp — "230"(3글자)이던 자리에 "422,000원"(8글자)이
+              들어오면서 아이폰 폭에서 카드 밖으로 88px 삐져나왔다. 뷰포트에 따라 40~60px로 흐른다. */}
+          <div className="mt-0.5 flex items-baseline gap-1.5">
+            <span className="text-[clamp(1.25rem,4.5vw,1.5rem)] font-bold text-foreground/70">월</span>
+            <span className="text-[clamp(2.5rem,11vw,3.75rem)] font-bold leading-none tracking-tight tabular-nums">
+              {priceText.monthly6Exact}
+            </span>
           </div>
           <div className="mt-1.5 text-sm font-bold text-foreground/75">
-            부가세 포함하면 <span className="text-foreground">{priceWan}만원</span>,
-            <span className="ml-1 font-normal text-foreground/60">결제창에 찍히는 금액도 이 금액입니다.</span>
+            카드 6개월 무이자 할부 기준.
+            <span className="ml-1 font-normal text-foreground/60">
+              한 번에 결제하시면 {priceWan}만원 (공급가 {supplyWan}만원 + 부가세)이고, 결제창에 찍히는 금액도 이 금액입니다.
+            </span>
           </div>
 
           <div className="mt-3">
@@ -64,9 +75,12 @@ export function Price() {
             </span>
           </div>
 
+          {/* 헤드라인이 할부 금액이 됐으니, 그 금액을 실제로 어떻게 받는지도 같이 적는다.
+              "월 42만원"만 크게 걸어두고 방법을 안 적으면 결제창에서 총액을 보고 놀란다. */}
           <p className="font-memo mt-3 text-sm leading-relaxed text-foreground/75 sm:text-base">
-            한 번에 부담되시면 <span className="font-bold text-foreground">카드 3·6개월 무이자 할부</span>로 나눠 결제하셔도 됩니다.
-            6개월로 나누면 <span className="font-bold text-foreground">월 {priceText.monthly6}</span>대예요.
+            위 금액은 <span className="font-bold text-foreground">카드 6개월 무이자</span>로 나눴을 때예요.
+            3개월 무이자도 되고, 한 번에 결제하셔도 됩니다.
+            <span className="ml-1 text-foreground/60">할부 개월 수는 결제창에서 카드 고르신 뒤 선택하시면 돼요.</span>
           </p>
 
           <hr className="my-5 border-foreground/10" />

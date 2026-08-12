@@ -57,7 +57,6 @@ export const course = {
   priceMonthly6: 422_000,
   capacityMax: 20,                 // 정원 — 덱 p10-10 기준 (1기 25명 → 2기부터 20명, 케어 가능한 최대)
   cohort1Count: 25,                // 1기 실제 신청 인원 — 덱 p10-10b 근거
-  freeLectureDate: "2026-08-13 (목) 19:00",
   startDate: "8월 22일 토요일",   // 화면 표기용 — 기계적인 ISO 날짜 대신 읽히는 형태
   endDate: "9월 12일 토요일",     // 토요일 오프라인 4회: 8/22 · 8/29 · 9/5 · 9/12
   weeks: 4,                        // 덱 p10-09 기준 — "토요일 오프라인 네 번"
@@ -123,6 +122,20 @@ export const priceText = {
   vat: wan(course.priceFirst - course.priceFirstSupply),
   /** 6개월 무이자 할부 시 월 납입액 — 만원 단위 반올림 (36.7만원처럼 소수점 노출 방지) */
   monthly6: `${Math.round(course.priceMonthly6 / 10000).toLocaleString()}만원`,
+  /**
+   * 큰 숫자 자리에 쓰는 할부 표기 (2026-08-11 사장님 지시 — 할부 기준으로 전환).
+   * 총액을 크게 걸면 253만원 하나로 판단이 끝나서, 실제로 대부분이 쓰는 결제 방식인
+   * 카드 6개월 무이자가 안 보인다. 헤드라인은 월 납입액, 총액은 바로 옆에서 같이 밝힌다.
+   * 원 단위로 쓰는 이유 — "월 42만원"보다 "월 422,000원"이 반올림 없이 정확하다.
+   * 앞에 "월"을 붙여서 쓴다.
+   */
+  monthly6Exact: `${course.priceMonthly6.toLocaleString()}원`,
+  /**
+   * 부가세 포함 총액 — 원 단위. 할부 헤드라인 옆 보조 표기용.
+   * 취소선을 긋지 않는다. 이건 실제 청구액이라 긁으면 있지도 않은 할인을 만든다.
+   * (가짜 정가 앵커 금지 — priceHistory의 실제 인상 이력이 이 페이지의 유일한 앵커다.)
+   */
+  totalExact: `${course.priceFirst.toLocaleString()}원`,
   /**
    * 결제 버튼 기본 라벨 — 모달·결제창에 찍히는 금액(부가세 포함)을 그대로 쓴다.
    * 헤드라인은 200만원이지만 버튼에 200만원을 쓰면 결제창에서 220만원이 떠 놀란다.
