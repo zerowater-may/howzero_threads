@@ -70,19 +70,41 @@ export function PaymentDialog({
    */
   const requireApplication = productKey !== tonggwan815.productKey
   const [step, setStep] = useState<"application" | "payment">(requireApplication ? "application" : "payment")
-  /** 구글폼을 실제로 열었는지 — 열지 않으면 "작성했다" 체크 자체를 못 하게 막는다 */
+  /**
+   * 구글폼을 열었는지 — 안내 문구를 바꾸는 용도. **체크박스를 잠그지는 않는다.**
+   *
+   * 처음엔 이 값으로 체크박스를 disabled 시켰는데, 그게 결제를 막았다:
+   * ① 링크를 안 누른 사람에겐 "다음" 버튼이 회색으로 죽어 보여 "결제가 안 된다"가 됐고
+   * ② 폼에 갔다 돌아오면(카톡·인스타 인앱 브라우저는 _blank 가 웹뷰를 갈아치운다)
+   *    페이지가 리로드돼 상태가 초기화, 영원히 잠긴 채로 루프에 빠졌다.
+   * 링크를 열었다는 사실은 localStorage 로 리로드 너머까지 유지한다.
+   */
+  const FORM_OPENED_KEY = "gigclass_form_opened"
   const [formOpened, setFormOpened] = useState(false)
   const [formConfirmed, setFormConfirmed] = useState(false)
 
   useEffect(() => {
     setMounted(true)
+    try {
+      if (window.localStorage.getItem(FORM_OPENED_KEY) === "1") setFormOpened(true)
+    } catch {
+      // 사파리 프라이빗 모드 등 — 결제를 막지 않는다
+    }
   }, [])
+
+  function markFormOpened() {
+    setFormOpened(true)
+    try {
+      window.localStorage.setItem(FORM_OPENED_KEY, "1")
+    } catch {
+      // 저장 실패해도 이번 세션 동안은 state 로 유지된다
+    }
+  }
 
   /** 모달을 닫으면 처음 단계로 되돌린다 — 다시 열었을 때 결제 단계부터 시작하면 관문이 뚫린다 */
   useEffect(() => {
     if (open) return
     setStep(requireApplication ? "application" : "payment")
-    setFormOpened(false)
     setFormConfirmed(false)
     setError(null)
   }, [open, requireApplication])
@@ -281,7 +303,7 @@ export function PaymentDialog({
                   target="_blank"
                   rel="noopener noreferrer"
                   data-track="application_form_open"
-                  onClick={() => setFormOpened(true)}
+                  onClick={markFormOpened}
                   className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-brand bg-brand px-6 py-4 text-base font-bold text-brand-foreground transition-all hover:opacity-90"
                 >
                   신청서 작성하러 가기
@@ -291,16 +313,15 @@ export function PaymentDialog({
                   새 탭에서 열립니다. 작성 후 이 창으로 돌아오세요.
                 </p>
 
-                {/* 링크를 열기 전에는 체크 자체를 막는다 — 신청서를 안 보고 통과하는 걸 한 번 더 거른다 */}
+                {/* 체크박스를 잠그지 않는다 — 잠그면 결제가 막힌다(위 formOpened 주석 참고) */}
                 <label
                   className={`mt-4 flex cursor-pointer items-start gap-3 border-2 p-3.5 transition-colors ${
                     formConfirmed ? "border-brand bg-brand/[0.06]" : "border-foreground/20"
-                  } ${formOpened ? "" : "cursor-not-allowed opacity-45"}`}
+                  }`}
                 >
                   <input
                     type="checkbox"
                     checked={formConfirmed}
-                    disabled={!formOpened}
                     onChange={(event) => {
                       setFormConfirmed(event.target.checked)
                       if (event.target.checked) setError(null)
@@ -311,8 +332,8 @@ export function PaymentDialog({
                     신청서 작성을 마쳤습니다
                     <span className="mt-0.5 block text-xs font-normal leading-relaxed text-foreground/60">
                       {formOpened
-                        ? "제출까지 끝내셨는지 확인해 주세요. 신청서가 없으면 자리 확정이 안 됩니다."
-                        : "위 버튼으로 신청서를 먼저 열어주세요."}
+                        ? "제출까지 끝내셨으면 체크하고 결제로 넘어가세요."
+                        : "이미 신청서를 쓰셨다면 바로 체크하고 넘어가셔도 됩니다."}
                     </span>
                   </span>
                 </label>
@@ -323,12 +344,16 @@ export function PaymentDialog({
                   </div>
                 )}
 
+                {/* disabled 로 두지 않는다 — 회색으로 죽은 버튼은 "결제가 안 된다"로 읽힌다.
+                    누르면 왜 안 넘어가는지 이유를 말해준다. */}
                 <button
                   type="button"
                   data-track="application_next"
                   onClick={goToPayment}
-                  disabled={!formConfirmed}
-                  className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-foreground bg-foreground px-6 py-4 text-base font-bold text-background transition-all hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-35"
+                  aria-disabled={!formConfirmed}
+                  className={`mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-foreground bg-foreground px-6 py-4 text-base font-bold text-background transition-all hover:opacity-90 ${
+                    formConfirmed ? "" : "opacity-70"
+                  }`}
                 >
                   다음 — 결제하기
                 </button>
