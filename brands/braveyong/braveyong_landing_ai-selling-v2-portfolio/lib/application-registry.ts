@@ -1,4 +1,4 @@
-import { put, list } from "@vercel/blob"
+import { put, list, get } from "@vercel/blob"
 import type { ApplicationAnswers } from "@/lib/application-form"
 
 /**
@@ -54,7 +54,14 @@ export async function saveApplication(
   }
 }
 
-/** 관리자 조회용 — 저장된 신청서를 최신순으로 읽어 반환한다. */
+/**
+ * 관리자 조회용 — 저장된 신청서를 최신순으로 읽어 반환한다.
+ *
+ * private blob 은 downloadUrl 을 그냥 fetch 하면 인증이 없어 못 읽는다.
+ * (실제로 첫 배포에서 저장은 됐는데 조회가 0건으로 나왔다.)
+ * SDK 의 get(pathname, { access: "private" }) 을 써야 토큰 인증이 붙는다.
+ * useCache:false — 방금 저장한 신청서가 CDN 캐시 때문에 안 보이면 안 된다.
+ */
 export async function listApplications(limit = 200): Promise<StoredApplication[]> {
   const { blobs } = await list({ prefix: PREFIX, limit })
   const sorted = [...blobs].sort((a, b) => new Date(b.uploadedAt).getTime() - new Date(a.uploadedAt).getTime())
@@ -62,9 +69,9 @@ export async function listApplications(limit = 200): Promise<StoredApplication[]
   const out: StoredApplication[] = []
   for (const blob of sorted) {
     try {
-      const response = await fetch(blob.downloadUrl, { cache: "no-store" })
-      if (!response.ok) continue
-      out.push((await response.json()) as StoredApplication)
+      const found = await get(blob.pathname, { access: "private", useCache: false })
+      if (!found) continue
+      out.push(JSON.parse(await new Response(found.stream).text()) as StoredApplication)
     } catch (error) {
       console.error("[application-registry] 조회 실패", { pathname: blob.pathname, error: String(error) })
     }
