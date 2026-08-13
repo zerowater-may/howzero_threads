@@ -48,9 +48,9 @@ export function Scarcity() {
           label="개강 전 결제 마감까지"
         />
         <p className="mt-6 text-base font-bold leading-snug tracking-tight sm:text-lg">
-          수강료 <span className="text-brand">{priceText.headline}</span>
+          수강료 <span className="text-brand">{priceText.total}</span>
           <span className="ml-1.5 text-sm font-normal text-foreground/60">
-            부가세 별도 · 포함 {priceText.total}
+            부가세 포함 · 카드 6개월 무이자 시 월 {priceText.monthly6Exact}
           </span>
         </p>
         <PaymentDialog

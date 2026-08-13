@@ -42,9 +42,11 @@ export function StickyCTA() {
               할부 금액만 떠 있으면 결제창에서 총액을 보고 놀란다. */}
           <span className="tabular-nums">
             <span className="text-base font-bold text-foreground sm:text-lg">월 {priceText.monthly6Exact}</span>
-            <span className="ml-1 text-xs text-foreground/55 sm:text-sm">· 총 {priceText.total}</span>
+            <span className="ml-1 text-xs text-foreground/55 sm:text-sm">
+              · 총 {priceText.total} (부가세 포함)
+            </span>
             <span className="ml-1 hidden text-xs text-foreground/55 sm:inline sm:text-sm">
-              (부가세 포함) · 카드 6개월 무이자 기준
+              · 카드 6개월 무이자 기준
             </span>
           </span>
         </div>

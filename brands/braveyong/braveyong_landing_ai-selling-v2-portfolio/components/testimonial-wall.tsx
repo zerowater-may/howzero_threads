@@ -211,7 +211,7 @@ export function TestimonialWall({
           className="mt-1 inline-flex w-full max-w-sm items-center justify-center gap-2 rounded-full border-2 border-brand bg-brand px-7 py-4 text-base font-bold tracking-tight text-brand-foreground transition-all hover:opacity-90"
         />
         <span className="text-xs text-foreground/55">
-          수강료 {priceText.headline}(부가세 별도) · 이름·연락처만 넣으면 결제창이 바로 열려요
+          수강료 {priceText.total}(부가세 포함) · 이름·연락처만 넣으면 결제창이 바로 열려요
         </span>
       </div>
 

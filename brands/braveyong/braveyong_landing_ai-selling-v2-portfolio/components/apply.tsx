@@ -29,7 +29,7 @@ export function Apply() {
           <span className="underline decoration-brand/40 decoration-2 underline-offset-4">
             월 {priceText.monthly6Exact}
           </span>
-          , 한 번에 결제하면 {priceText.total}(공급가 {priceText.headline} + 부가세)입니다.
+          , 한 번에 결제하면 {priceText.total}입니다. 부가세까지 포함한 금액이에요.
         </p>
         <p className="mt-2 text-sm leading-relaxed text-foreground/75 sm:text-base">
           신청서 쓰고 기다리는 절차 없습니다. 이름과 연락처만 넣으면{" "}

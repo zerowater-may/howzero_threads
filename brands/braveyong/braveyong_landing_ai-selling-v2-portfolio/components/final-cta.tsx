@@ -37,7 +37,7 @@ export function FinalCTA() {
             <span className="text-4xl font-bold tabular-nums sm:text-5xl">{priceText.monthly6Exact}</span>
           </span>
           <span className="font-mono mt-1 text-[11px] uppercase tracking-[0.14em] text-background/55">
-            카드 6개월 무이자 기준 · 일시불 {priceText.total} · 정원 {course.capacityMax}명
+            카드 6개월 무이자 기준 · 일시불 {priceText.total} (부가세 포함) · 정원 {course.capacityMax}명
           </span>
         </div>
 

@@ -117,7 +117,7 @@ export function OneYearGap() {
             className="inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-brand bg-brand px-7 py-4 text-base font-bold tracking-tight text-brand-foreground transition-all hover:opacity-90 sm:w-auto sm:px-9"
           />
           <span className="text-xs text-background/55">
-            {course.cohort} {course.startDate} 개강 · 정원 {course.capacityMax}명 · 수강료 {priceText.headline}(부가세 별도)
+            {course.cohort} {course.startDate} 개강 · 정원 {course.capacityMax}명 · 수강료 {priceText.total}(부가세 포함)
           </span>
         </div>
       </div>

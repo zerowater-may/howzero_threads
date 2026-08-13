@@ -80,7 +80,6 @@ const cohort = pick(/cohort:\s*"([^"]+)"/, "course.cohort") // "3기"
 const startDate = pick(/startDate:\s*"([^"]+)"/, "course.startDate") // "8월 22일 토요일"
 const endDate = pick(/endDate:\s*"([^"]+)"/, "course.endDate") // "9월 12일 토요일"
 const priceFirst = pick(/priceFirst:\s*([\d_]+)/, "course.priceFirst")
-const priceSupply = pick(/priceFirstSupply:\s*([\d_]+)/, "course.priceFirstSupply")
 
 const wan = (n) => `${(Number(String(n).replace(/_/g, "")) / 10000).toLocaleString()}만원`
 
@@ -90,8 +89,14 @@ const forbidden = [
   { value: startDate, hint: "course.startDate 를 쓸 것" },
   { value: endDate, hint: "course.endDate 를 쓸 것" },
   { value: wan(priceFirst), hint: "priceText.total 을 쓸 것" },
-  { value: wan(priceSupply), hint: "priceText.headline 을 쓸 것" },
 ]
+
+/**
+ * "부가세 별도" 는 화면에 남아 있으면 안 된다 (2026-08-13 가격 구조 변경).
+ * priceFirst 가 부가세 포함 최종 결제액이 됐으므로, 이 문구가 살아 있으면
+ * 페이지가 실제보다 10% 싼 것처럼 읽히고 결제창에서 금액이 달라 보인다.
+ */
+const forbiddenPhrases = [{ value: "부가세 별도", hint: "가격은 전부 부가세 포함이다 — '부가세 포함' 으로 쓸 것" }]
 
 /** 주석을 지운 뒤 검사 — 주석 속 기수 표기는 화면에 안 나가므로 문제가 아니다 */
 const stripComments = (s) =>
@@ -112,11 +117,17 @@ const walk = (dir) => {
 }
 
 const violations = []
+const phraseViolations = []
 for (const file of [...walk("components"), ...walk("app")]) {
   const src = stripComments(read(file))
   for (const f of forbidden) {
     if (src.includes(f.value)) {
       violations.push(`${file}: "${f.value}" 하드코딩 — ${f.hint}`)
+    }
+  }
+  for (const f of forbiddenPhrases) {
+    if (src.includes(f.value)) {
+      phraseViolations.push(`${file}: "${f.value}" — ${f.hint}`)
     }
   }
 }
@@ -125,6 +136,12 @@ if (violations.length > 0) {
   throw new Error(
     "기수 값이 컴포넌트에 하드코딩돼 있다. 다음 기수 전환 때 화면이 옛 값으로 남는다:\n  " +
       violations.join("\n  ")
+  )
+}
+
+if (phraseViolations.length > 0) {
+  throw new Error(
+    "가격 표기가 실제 청구 구조와 어긋난다:\n  " + phraseViolations.join("\n  ")
   )
 }
 

@@ -146,7 +146,7 @@ function CompleteInner() {
       )}
 
       <p className="mt-6 border-t border-foreground/10 pt-4 text-[11px] leading-relaxed text-foreground/45">
-        수강료 {priceText.headline}(부가세 별도) · 결제금액 {priceText.total}
+        수강료 {priceText.total} · 부가세 포함 결제금액입니다
       </p>
     </div>
   )

@@ -5,13 +5,11 @@ import { PaymentDialog } from "@/components/payment-dialog"
 import { config, course, nextCohort, priceHistory, priceText } from "@/lib/config"
 
 /**
- * 14 가격 — 3기 단일가 구조 (2026-08-05 확정).
- * 얼리버드/정가 이중 표기 폐지. 공급가 230만원을 크게 보여주고,
- * 앵커는 가짜 정가 대신 priceHistory(1기 180 → 2기 200 → 3기 230) 실제 이력을 쓴다.
- * 카운트다운 = 개강(8/22) 전날 마감이라는 실제 마감.
+ * 14 가격 — 단일가 구조. 화면에 나오는 금액은 전부 부가세 포함 최종 결제액 하나뿐이다.
+ * 얼리버드/정가 이중 표기 폐지. 앵커는 가짜 정가 대신 priceHistory 실제 결제 이력을 쓴다.
+ * 카운트다운 = 개강 전날 마감이라는 실제 마감.
+ * (금액 숫자는 주석에 적지 않는다 — 기수마다 낡아서 코드와 어긋난다.)
  */
-const priceWan = (course.priceFirst / 10000).toLocaleString()          // 253
-const supplyWan = (course.priceFirstSupply / 10000).toLocaleString()   // 230
 
 export function Price() {
   return (
@@ -38,8 +36,8 @@ export function Price() {
             {priceText.totalExact}
             <span className="ml-1 text-sm font-normal">부가세 포함</span>
           </div>
-          {/* 폰트 크기는 고정값(text-6xl) 대신 clamp — "230"(3글자)이던 자리에 "422,000원"(8글자)이
-              들어오면서 아이폰 폭에서 카드 밖으로 88px 삐져나왔다. 뷰포트에 따라 40~60px로 흐른다. */}
+          {/* 폰트 크기는 고정값(text-6xl) 대신 clamp — 만원 단위 3글자 자리에 원 단위 월 납입액
+              (8글자)이 들어오면서 아이폰 폭에서 카드 밖으로 88px 삐져나왔다. 뷰포트에 따라 40~60px로 흐른다. */}
           <div className="mt-0.5 flex items-baseline gap-1.5">
             <span className="text-[clamp(1.25rem,4.5vw,1.5rem)] font-bold text-foreground/70">월</span>
             <span className="text-[clamp(2.5rem,11vw,3.75rem)] font-bold leading-none tracking-tight tabular-nums">
@@ -49,7 +47,7 @@ export function Price() {
           <div className="mt-1.5 text-sm font-bold text-foreground/75">
             카드 6개월 무이자 할부 기준.
             <span className="ml-1 font-normal text-foreground/60">
-              한 번에 결제하시면 {priceWan}만원 (공급가 {supplyWan}만원 + 부가세)이고, 결제창에 찍히는 금액도 이 금액입니다.
+              한 번에 결제하시면 {priceText.total}, 부가세까지 포함한 금액입니다. 결제창에 찍히는 금액도 이 금액이에요.
             </span>
           </div>
 
@@ -60,7 +58,7 @@ export function Price() {
           {/* 즉시 결제 — 페이지 안에서 바로 결제까지 끝난다 */}
           <PaymentDialog
             amount={course.priceFirst}
-            label={`지금 ${course.cohort} 결제하기 — ${priceWan}만원 (부가세 포함)`}
+            label={`지금 ${course.cohort} 결제하기 — ${priceText.total} (부가세 포함)`}
             className="group mt-5 inline-flex w-full items-center justify-center gap-2.5 rounded-full border-2 border-brand bg-brand px-6 py-4 text-base font-bold tracking-tight text-brand-foreground transition-all hover:opacity-90 sm:py-5 sm:text-lg"
           />
           <p className="mt-2.5 text-center text-xs leading-relaxed text-foreground/60">
@@ -76,7 +74,7 @@ export function Price() {
           </div>
 
           {/* 헤드라인이 할부 금액이 됐으니, 그 금액을 실제로 어떻게 받는지도 같이 적는다.
-              "월 42만원"만 크게 걸어두고 방법을 안 적으면 결제창에서 총액을 보고 놀란다. */}
+              월 납입액만 크게 걸어두고 방법을 안 적으면 결제창에서 총액을 보고 놀란다. */}
           <p className="font-memo mt-3 text-sm leading-relaxed text-foreground/75 sm:text-base">
             위 금액은 <span className="font-bold text-foreground">카드 6개월 무이자</span>로 나눴을 때예요.
             3개월 무이자도 되고, 한 번에 결제하셔도 됩니다.
@@ -87,16 +85,16 @@ export function Price() {
 
           {/* 가격 사다리 — 지나간 기수는 긁어서 회색으로 눕히고, 이번 기수만 살린다.
               가짜 정가 앵커가 아니라 1·2기 실제 결제 이력이라 숫자를 그대로 쓴다.
-              금액은 전부 공급가(부가세 별도) — 위 헤드라인과 기준을 맞춰야 따로 놀지 않는다. */}
+              금액은 전부 부가세 포함 결제액 — 위 헤드라인과 기준을 맞춰야 따로 놀지 않는다. */}
           <div className="border-2 border-[var(--warm-border)] bg-[var(--warm)] p-4 sm:p-5">
             <div className="font-mono flex items-baseline justify-between gap-2 text-[10px] font-bold uppercase tracking-[0.15em] text-foreground/55">
               <span>가격은 매 기수 올랐습니다</span>
-              <span className="shrink-0 font-normal tracking-normal">부가세 별도</span>
+              <span className="shrink-0 font-normal tracking-normal">부가세 포함</span>
             </div>
 
             <ul className="mt-3.5 space-y-1">
               {priceHistory.map((p) => {
-                const wanText = (p.supply / 10000).toLocaleString()
+                const wanText = (p.total / 10000).toLocaleString()
                 return p.closed ? (
                   <li
                     key={p.cohort}
