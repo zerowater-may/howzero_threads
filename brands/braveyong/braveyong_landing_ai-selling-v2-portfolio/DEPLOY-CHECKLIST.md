@@ -8,6 +8,28 @@ bulsaja Vercel 팀(`team_TJbZrrxEedAkxKUVSniHrdlr`)에 신규 프로젝트로 �
 
 ## 배포 기록
 
+### 2026-08-13 (18차) — 신청서 관문을 구글폼 링크 방식으로 교체 (commit `현재`)
+- `vercel deploy --prod --yes --archive=tgz` → deployment `...ico8go4gu` **READY (production)**
+- **17차 되돌림**: 사장님이 준 구글폼(`forms.gle/bxWc3xg2Wr6BENmZA`)으로 보내라는 지시였는데
+  17차에서 문항을 결제 모달 안에 다시 구현했다. 그 구현을 걷어내고 링크 게이트로 교체
+- 결제 모달 1단계: `[신청서 작성하러 가기]` 새 탭 → **링크를 연 뒤에만** "작성 마쳤습니다"
+  체크가 활성화 → 체크해야 결제 단계로 진행
+- `config.googleFormUrl` 추가. **기본값에 3기 폼을 박았다** — Vercel env 에 등록돼 있던 값이
+  1기 폼(79일 전)이라 env 만 믿으면 3기 신청자가 옛 폼을 쓰게 된다.
+  Vercel production env 도 3기 링크로 교체 (`env rm` → `env add`)
+- `send-bill`: 응답 검증 → `applicationConfirmed` 확인으로 교체
+- **삭제**: `lib/application-form.ts`, `lib/application-registry.ts`, `/api/admin/applications`,
+  `ADMIN_SECRET` env. 응답은 구글 시트에 쌓이므로 사이트가 저장할 것이 없다
+- ⚠️ **한계 (알고 쓸 것)**: 구글폼은 외부 서비스라 **실제 제출 여부를 서버가 알 수 없다.**
+  관문이 막는 건 "신청서 단계를 건너뛴 요청"이지 "체크만 하고 폼을 안 쓴 사람"이 아니다.
+  완전 강제가 필요해지면 폼을 사이트 안으로 가져와야 한다
+- 검증(로컬 dry-run): 확인 없이 400 · `confirmed:false` 400 · `confirmed:true` 200 ·
+  815 면제 200 · admin 라우트 404 · 폼 링크 번들 포함
+- 라이브 검증: `/` 200 · 신청서 확인 없이 결제 **400 차단** · `confirmed:false` **400 차단** ·
+  `/api/admin/applications` 404 · 배포된 번들에서 3기 폼 링크 확인
+- **테스트 주의**: 프로덕션 `send-bill` 은 형식이 유효한 번호로 호출하지 말 것(17차 사고).
+  차단 케이스 검증은 `01000000000`(형식 부적합)으로 하면 청구서가 절대 발행되지 않는다
+
 ### 2026-08-13 (17차) — 결제 전 신청서 관문 (commits `현재`)
 - `vercel deploy --prod --yes --archive=tgz` → deployment `...ackrcw87s` → 수정 후 `...3i5ohhlu6` **READY (production)**
 - 사장님 지시: 결제 전에 신청서를 꼭 쓰게 한다.
