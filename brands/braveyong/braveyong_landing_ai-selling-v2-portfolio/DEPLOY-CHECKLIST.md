@@ -8,6 +8,29 @@ bulsaja Vercel 팀(`team_TJbZrrxEedAkxKUVSniHrdlr`)에 신규 프로젝트로 �
 
 ## 배포 기록
 
+### 2026-08-13 (17차) — 결제 전 신청서 관문 (commits `현재`)
+- `vercel deploy --prod --yes --archive=tgz` → deployment `...ackrcw87s` → 수정 후 `...3i5ohhlu6` **READY (production)**
+- 사장님 지시: 결제 전에 신청서를 꼭 쓰게 한다.
+  외부 구글폼(`forms.gle/bxWc3xg2Wr6BENmZA`)은 **제출 여부를 서버가 알 수 없어** 강제가 불가능하다.
+  → 문항을 결제 모달 안으로 흡수. 신청서를 통과해야만 청구서가 발행된다
+- `lib/application-form.ts` — 문항 단일 출처(객관식 4 + 선택 1). 1기 `APPLY_FORM.md` 이월,
+  일정 문구는 `course` 파생. `validateApplication` 을 클라·서버가 공유(판정 기준이 갈리면 안 됨)
+- `lib/application-registry.ts` — Vercel Blob 저장. **키는 billId 가 아니라 전화번호**:
+  발행 전에 저장 가능(발행 실패해도 신청서는 남음) + billId 에 번호가 인코딩돼 있어 매칭이 성립
+- `send-bill` — course 결제는 발행 **전에** 검증. 저장 실패는 결제를 막지 않고 응답 전문을 로그로 남김
+- `payment-dialog` — 2단계(신청서 → 결제). 모달을 닫으면 1단계로 리셋(우회 방지). 815 는 면제
+- `/api/admin/applications` — 운영자 조회(JSON·CSV, BOM 포함). `ADMIN_SECRET` 신규 등록.
+  `RECONCILE_SECRET` 재사용 금지 — 그 키는 crontab env·`/var/log` 에 URL 로 남는데 여기엔 개인정보가 있다
+- **사고 1**: 프로덕션 end-to-end 확인 중 유효 형식 번호(`01099998888`)로 호출해 **실결제 청구서가 발행**됐다
+  (`dryRun:false`, 카톡 발송). 즉시 `destroy-bill` 로 파기(`code 0000`). Blob 테스트 레코드도 삭제.
+  → **교훈: 프로덕션 send-bill 은 형식이 유효한 번호로 절대 호출하지 말 것.** 검증은 로컬 dry-run 으로 한다
+- **사고 2**: 저장은 되는데 조회가 항상 `count:0`. private blob 은 `downloadUrl` 직접 fetch 가
+  인증 없이 안 읽힌다 → SDK `get(pathname, { access:"private", useCache:false })` 로 교체
+- 검증: tsc / test:landing / build 통과. 로컬 dry-run 4케이스(신청서 누락·필수 미선택·옵션 위조 → 400,
+  정상 → 200) + 815 면제 통과
+- 라이브 검증: `/` 200 · 신청서 없이 결제 시도 **400 차단** · `/api/admin/applications` 키 없이 401,
+  정상 키 200 · CSV 헤더 정상 · 명단 0건(테스트 데이터 정리 완료)
+
 ### 2026-08-13 (16차) — 수강료를 부가세 포함 230만원으로 변경 (commit `c44a1dd0`)
 - `vercel deploy --prod --yes --archive=tgz` → deployment `...jol4xrvon` **READY (production)**
 - 사장님 지시: 화면 가격을 **부가세 포함 230만원**으로 통일.
