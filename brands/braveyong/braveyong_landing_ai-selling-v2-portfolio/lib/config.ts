@@ -37,6 +37,15 @@ export const config = {
    * 검색 색인이 통째로 존재하지 않는 도메인을 가리킨다. 실제 도메인으로 둔다.
    */
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://www.gigclass.kr",
+  /**
+   * 결제 전 필수 신청서 (구글폼) — 2026-08-13 사장님 지시로 부활.
+   * 결제 모달 1단계에서 이 링크를 열게 하고, 작성 확인 후에만 결제 단계로 넘어간다.
+   * 응답은 구글 시트에 쌓인다 — 사이트는 응답을 저장하지 않는다.
+   *
+   * 기본값에 3기 폼을 박아두는 이유: Vercel env 에 등록된 값이 1기 폼(79일 전)이라
+   * env 만 믿으면 3기 신청자가 옛 폼을 쓰게 된다. 기수 전환 때 이 값과 env 를 **같이** 갱신할 것.
+   */
+  googleFormUrl: process.env.NEXT_PUBLIC_GOOGLE_FORM_URL || "https://forms.gle/bxWc3xg2Wr6BENmZA",
   /** 결제 전 분위기 보러 오는 단톡방 (공개) */
   kakaoOpenChatUrl: process.env.NEXT_PUBLIC_KAKAO_OPENCHAT_URL || "https://open.kakao.com/o/gcjQ8Hpi",
   /** 결제 전 1:1로 상황 남기는 곳 (용팀장 직통) */

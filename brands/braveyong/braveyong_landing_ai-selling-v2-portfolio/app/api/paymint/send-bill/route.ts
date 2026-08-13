@@ -4,8 +4,6 @@ import { resolveProduct } from "@/lib/products"
 import { sendBill } from "@/lib/paymint/client"
 import { decodeBillId, sanitizePhone } from "@/lib/paymint/hash"
 import { registerPendingBill } from "@/lib/bill-registry"
-import { validateApplication, type ApplicationAnswers } from "@/lib/application-form"
-import { saveApplication } from "@/lib/application-registry"
 
 export const runtime = "nodejs"
 
@@ -13,8 +11,11 @@ const SendBillSchema = z.object({
   memberName: z.string().trim().min(2, "이름을 입력해주세요.").max(30, "이름은 30자 이하로 입력해주세요."),
   phoneNumber: z.string().trim().min(10, "연락처를 입력해주세요.").max(20, "연락처가 너무 깁니다."),
   productKey: z.string().trim().optional(), // 미지정 시 기존 강의(course)로 fallback
-  /** 결제 전 신청서 응답 — course 상품에서만 필수 (815 특강은 신청서를 받지 않는다) */
-  application: z.record(z.union([z.string(), z.array(z.string())])).optional(),
+  /**
+   * 구글폼 신청서 작성 확인 — course 상품에서만 필수 (815 특강은 신청서를 받지 않는다).
+   * 응답 자체는 구글 시트에 쌓이므로 서버는 저장하지 않는다.
+   */
+  applicationConfirmed: z.boolean().optional(),
 })
 
 function readString(value: unknown): string | undefined {
@@ -36,18 +37,17 @@ export async function POST(request: Request) {
     const product = resolveProduct(body.productKey)
 
     /**
-     * 신청서 관문 (2026-08-13) — course 결제는 신청서를 통과해야만 청구서가 발행된다.
-     * 클라이언트 폼은 우회할 수 있으므로 여기가 진짜 관문이다.
-     * 검증은 발행 **전에** 한다 — 실패한 신청으로 청구서가 나가면 안 된다.
+     * 신청서 관문 (2026-08-13) — course 결제는 구글폼 신청서 확인을 거쳐야 청구서가 발행된다.
+     *
+     * 한계를 분명히 해둔다: 구글폼은 외부 서비스라 **실제 제출 여부를 서버가 알 수 없다.**
+     * 여기서 막는 건 "신청서 단계를 건너뛴 요청"이지 "체크만 하고 폼을 안 쓴 사람"이 아니다.
+     * 완전 강제가 필요해지면 폼을 사이트 안으로 가져와야 한다(그때는 응답을 직접 받게 된다).
      */
-    if (product.key === "course") {
-      const invalid = validateApplication(body.application)
-      if (invalid) {
-        return NextResponse.json({ success: false, error: invalid }, { status: 400 })
-      }
-      // 저장은 발행 전에. 청구서 발행이 실패해도 신청서는 남아야 후속 연락이 된다.
-      // 저장 실패는 결제를 막지 않는다(응답 전문은 registry가 로그로 남긴다).
-      await saveApplication(phoneNumber, body.memberName, body.application as ApplicationAnswers)
+    if (product.key === "course" && body.applicationConfirmed !== true) {
+      return NextResponse.json(
+        { success: false, error: "결제 전에 신청서를 먼저 작성해 주세요." },
+        { status: 400 },
+      )
     }
 
     const result = await sendBill({

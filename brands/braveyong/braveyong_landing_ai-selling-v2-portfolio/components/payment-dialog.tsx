@@ -5,9 +5,8 @@ import type { ReactNode } from "react"
 import { createPortal } from "react-dom"
 import { CreditCard, ExternalLink, Loader2, X, Landmark } from "lucide-react"
 import { CountdownTimer } from "./countdown-timer"
-import { applicationFields, validateApplication, type ApplicationAnswers } from "@/lib/application-form"
 import { tonggwan815 } from "@/lib/products"
-import { course } from "@/lib/config"
+import { config, course } from "@/lib/config"
 
 type PaymentDialogProps = {
   label?: string
@@ -71,7 +70,9 @@ export function PaymentDialog({
    */
   const requireApplication = productKey !== tonggwan815.productKey
   const [step, setStep] = useState<"application" | "payment">(requireApplication ? "application" : "payment")
-  const [answers, setAnswers] = useState<ApplicationAnswers>({})
+  /** 구글폼을 실제로 열었는지 — 열지 않으면 "작성했다" 체크 자체를 못 하게 막는다 */
+  const [formOpened, setFormOpened] = useState(false)
+  const [formConfirmed, setFormConfirmed] = useState(false)
 
   useEffect(() => {
     setMounted(true)
@@ -81,28 +82,14 @@ export function PaymentDialog({
   useEffect(() => {
     if (open) return
     setStep(requireApplication ? "application" : "payment")
+    setFormOpened(false)
+    setFormConfirmed(false)
     setError(null)
   }, [open, requireApplication])
 
-  function setAnswer(key: string, value: string | string[]) {
-    setAnswers((prev) => ({ ...prev, [key]: value }))
-  }
-
-  function toggleCheckbox(key: string, option: string) {
-    setAnswers((prev) => {
-      const current = Array.isArray(prev[key]) ? (prev[key] as string[]) : []
-      return {
-        ...prev,
-        [key]: current.includes(option) ? current.filter((v) => v !== option) : [...current, option],
-      }
-    })
-  }
-
   function goToPayment() {
-    // 서버가 쓰는 것과 같은 검증 함수 — 화면과 서버가 다른 기준으로 판정하면 안 된다
-    const invalid = validateApplication(answers)
-    if (invalid) {
-      setError(invalid)
+    if (!formConfirmed) {
+      setError("신청서를 작성하신 뒤 아래 확인란을 체크해 주세요.")
       return
     }
     setError(null)
@@ -186,7 +173,7 @@ export function PaymentDialog({
           memberName,
           phoneNumber,
           productKey,
-          application: requireApplication ? answers : undefined,
+          applicationConfirmed: requireApplication ? formConfirmed : undefined,
         }),
       })
       const payload = await response.json()
@@ -285,63 +272,50 @@ export function PaymentDialog({
             {step === "application" ? (
               <div>
                 <p className="mt-3 text-sm leading-relaxed text-foreground/70">
-                  결제 전에 <span className="font-bold text-foreground">신청서를 먼저 받습니다.</span>{" "}
-                  용팀장이 이 답변을 보고 {course.cohort} 진행 방향을 잡아요. 객관식이라 30초면 끝납니다.
+                  결제 전에 <span className="font-bold text-foreground">신청서를 먼저 작성해 주세요.</span>{" "}
+                  용팀장이 이 답변을 보고 {course.cohort} 진행 방향을 잡습니다. 객관식이라 1분이면 끝나요.
                 </p>
 
-                <div className="mt-4 space-y-5">
-                  {applicationFields.map((field) => (
-                    <div key={field.key}>
-                      <p className="text-sm font-bold leading-snug">
-                        {field.label}
-                        {field.required && <span className="ml-1 text-brand">*</span>}
-                      </p>
-                      {field.help && (
-                        <p className="mt-1 text-xs leading-relaxed text-foreground/55">{field.help}</p>
-                      )}
+                <a
+                  href={config.googleFormUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-track="application_form_open"
+                  onClick={() => setFormOpened(true)}
+                  className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-brand bg-brand px-6 py-4 text-base font-bold text-brand-foreground transition-all hover:opacity-90"
+                >
+                  신청서 작성하러 가기
+                  <ExternalLink className="h-4 w-4" />
+                </a>
+                <p className="mt-2 text-center text-[11px] text-foreground/55">
+                  새 탭에서 열립니다. 작성 후 이 창으로 돌아오세요.
+                </p>
 
-                      {field.type === "text" ? (
-                        <textarea
-                          value={typeof answers[field.key] === "string" ? (answers[field.key] as string) : ""}
-                          onChange={(event) => setAnswer(field.key, event.target.value)}
-                          rows={3}
-                          maxLength={1000}
-                          className="mt-2 w-full rounded-none border-2 border-foreground/20 bg-background px-3 py-2.5 text-sm outline-none transition-colors focus:border-foreground"
-                        />
-                      ) : (
-                        <div className="mt-2 flex flex-wrap gap-1.5">
-                          {field.options?.map((option) => {
-                            const selected =
-                              field.type === "checkbox"
-                                ? Array.isArray(answers[field.key]) &&
-                                  (answers[field.key] as string[]).includes(option)
-                                : answers[field.key] === option
-                            return (
-                              <button
-                                key={option}
-                                type="button"
-                                onClick={() =>
-                                  field.type === "checkbox"
-                                    ? toggleCheckbox(field.key, option)
-                                    : setAnswer(field.key, option)
-                                }
-                                aria-pressed={selected}
-                                // 최소 터치 영역 확보 — 모바일에서 옵션이 촘촘하면 오터치가 난다
-                                className={`min-h-[40px] rounded-full border-2 px-3.5 py-2 text-left text-xs font-bold leading-tight transition-colors ${
-                                  selected
-                                    ? "border-brand bg-brand text-brand-foreground"
-                                    : "border-foreground/20 bg-background text-foreground/70 hover:border-foreground/50"
-                                }`}
-                              >
-                                {option}
-                              </button>
-                            )
-                          })}
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
+                {/* 링크를 열기 전에는 체크 자체를 막는다 — 신청서를 안 보고 통과하는 걸 한 번 더 거른다 */}
+                <label
+                  className={`mt-4 flex cursor-pointer items-start gap-3 border-2 p-3.5 transition-colors ${
+                    formConfirmed ? "border-brand bg-brand/[0.06]" : "border-foreground/20"
+                  } ${formOpened ? "" : "cursor-not-allowed opacity-45"}`}
+                >
+                  <input
+                    type="checkbox"
+                    checked={formConfirmed}
+                    disabled={!formOpened}
+                    onChange={(event) => {
+                      setFormConfirmed(event.target.checked)
+                      if (event.target.checked) setError(null)
+                    }}
+                    className="mt-0.5 h-5 w-5 flex-none accent-[var(--brand,#c0392b)]"
+                  />
+                  <span className="text-sm font-bold leading-snug">
+                    신청서 작성을 마쳤습니다
+                    <span className="mt-0.5 block text-xs font-normal leading-relaxed text-foreground/60">
+                      {formOpened
+                        ? "제출까지 끝내셨는지 확인해 주세요. 신청서가 없으면 자리 확정이 안 됩니다."
+                        : "위 버튼으로 신청서를 먼저 열어주세요."}
+                    </span>
+                  </span>
+                </label>
 
                 {error && (
                   <div className="mt-4 border-l-4 border-red-500 bg-red-50 px-4 py-3 text-sm text-red-700 dark:bg-red-950/30 dark:text-red-200">
@@ -353,12 +327,13 @@ export function PaymentDialog({
                   type="button"
                   data-track="application_next"
                   onClick={goToPayment}
-                  className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-brand bg-brand px-6 py-4 text-base font-bold text-brand-foreground transition-all hover:opacity-90"
+                  disabled={!formConfirmed}
+                  className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-foreground bg-foreground px-6 py-4 text-base font-bold text-background transition-all hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-35"
                 >
                   다음 — 결제하기
                 </button>
                 <p className="mt-2 text-center text-[11px] text-foreground/55">
-                  신청서를 제출해야 결제창이 열립니다.
+                  신청서를 작성해야 결제창이 열립니다.
                 </p>
               </div>
             ) : (
