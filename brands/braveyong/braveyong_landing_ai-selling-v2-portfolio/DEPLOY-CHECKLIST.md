@@ -8,6 +8,28 @@ bulsaja Vercel 팀(`team_TJbZrrxEedAkxKUVSniHrdlr`)에 신규 프로젝트로 �
 
 ## 배포 기록
 
+### 2026-08-13 (16차) — 수강료를 부가세 포함 230만원으로 변경 (commit `c44a1dd0`)
+- `vercel deploy --prod --yes --archive=tgz` → deployment `...jol4xrvon` **READY (production)**
+- 사장님 지시: 화면 가격을 **부가세 포함 230만원**으로 통일.
+  결제선생 청구액도 253만 → **230만**으로 같이 내려감 (`products.ts` 는 config 파생이라 자동 반영)
+- `priceFirst` 2,530,000 → 2,300,000 / `priceMonthly6` 422,000 → 383,000
+- `priceFirstSupply` 삭제, `priceText` 에서 `headline`·`supply`·`vat` 삭제 —
+  공급가를 따로 보여줄 이유가 사라졌다 (230만 ÷ 1.1 = 209만 909원이라 화면에 쓸 숫자도 아니다)
+- **가격 사다리 기준 전환**: 공급가 → 부가세 포함 결제액 (180/200/230 → **198/220/230**).
+  3기를 공급가로 두면 사다리 현재 행이 209만이 되어 같은 페이지 헤드라인 230만과 정면충돌한다.
+  과거 숫자는 실제 결제액이고 코드 이력으로 검증됨 (1기 옛 `priceCohort1`, 2기 옛 `products.ts` 금액)
+- "부가세 별도" 표기 9곳 제거: price · apply · faq · final-cta · sticky-cta · scarcity ·
+  one-year-gap · testimonial-wall · complete
+- **가드 추가** (`check-landing-structure.mjs`): 컴포넌트에 "부가세 별도"가 다시 나타나면 실패.
+  이 문구가 살아 있으면 페이지가 실제보다 10% 싸게 읽히고 결제창에서 금액이 달라 보인다
+- 검증: tsc --noEmit / test:landing / build 통과
+- 라이브 검증: `https://www.gigclass.kr/`·`/complete` HTTP 200 —
+  `230만원` 28 + `부가세 포함` 29 + `월 383,000원` 노출, **`부가세 별도`·`253만원`·`422,000` 0건**.
+  사다리 `198만원`·`220만원` 취소선 정상
+- 결제 API 실검증: `/api/paymint/send-bill` 응답 `amount: 2300000` 확인
+  (더미 번호로 호출해 청구서는 생성되지 않음)
+- ⚠️ **기존 3기 결제자 차액**: 253만원으로 이미 결제한 건이 있으면 23만원 차액 처리는 운영 판단 필요
+
 ### 2026-08-12 (15차) — 가격 헤드라인을 카드 6개월 무이자 월 납입액 기준으로 전환 (commit `589c561f`)
 - `vercel deploy --prod --yes --archive=tgz` → deployment `...l2mn75kn3` **READY (production)**
 - 큰 숫자를 253만원 총액 → **"월 422,000원"** (카드 6개월 무이자)으로 교체 — 2026-08-11 사장님 지시.
